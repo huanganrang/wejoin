@@ -1,7 +1,8 @@
- insert into mysql.user(Host,User,Password) values("localhost","dive",password("123456"));
- flush privileges;
+CREATE USER 'dive'@'127.0.0.1' IDENTIFIED BY '123456';
+flush privileges;
  create database dive;
- grant all privileges on dive.* to bshoot@localhost identified by '123456';
+ alter database dive character set utf8; 
+ grant all privileges on dive.* to dive@localhost identified by '123456';
  flush privileges;
  
  ---GRANT USAGE ON *.* TO 'appmonitor'@'localhost' IDENTIFIED BY '123456' WITH GRANT OPTION;

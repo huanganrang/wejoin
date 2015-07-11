@@ -69,7 +69,7 @@
 			<bean class="jb.interceptors.TokenInterceptor">
 				<property name="excludeUrls">
 					<list>
-						<value>/api/apiUserController/login</value><!-- 用户登录 -->
+						<value>/api/apiBaseDataController/basedata</value><!-- 用户登录 -->
 						<value>/api/bshootController/dataGrid</value>
 						<value>/api/apiUserController/register</value><!-- 用户注册 -->
 						<value>/api/apiFinderController/hotBshoot</value><!-- 热门 -->

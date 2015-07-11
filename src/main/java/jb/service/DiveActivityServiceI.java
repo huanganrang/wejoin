@@ -1,0 +1,54 @@
+﻿package jb.service;
+
+import jb.pageModel.DiveActivity;
+import jb.pageModel.DataGrid;
+import jb.pageModel.PageHelper;
+
+/**
+ * 
+ * @author John
+ * 
+ */
+public interface DiveActivityServiceI {
+
+	/**
+	 * 获取DiveActivity数据表格
+	 * 
+	 * @param diveActivity
+	 *            参数
+	 * @param ph
+	 *            分页帮助类
+	 * @return
+	 */
+	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph);
+
+	/**
+	 * 添加DiveActivity
+	 * 
+	 * @param diveActivity
+	 */
+	public void add(DiveActivity diveActivity);
+
+	/**
+	 * 获得DiveActivity对象
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public DiveActivity get(String id);
+
+	/**
+	 * 修改DiveActivity
+	 * 
+	 * @param diveActivity
+	 */
+	public void edit(DiveActivity diveActivity);
+
+	/**
+	 * 删除DiveActivity
+	 * 
+	 * @param id
+	 */
+	public void delete(String id);
+
+}

@@ -28,6 +28,22 @@
 			}
 		});
 		parent.$.messager.progress('close');
+		function ProcessFile() {
+			var file = document.getElementById('upLoadFileAddress').files[0];
+			if (file) {
+			var reader = new FileReader();
+			reader.onload = function ( event ) {
+				var txt = event.target.result;
+				$('.img-preview').attr('src',txt);
+				$('#icon').val(txt);
+			};
+			}
+			    reader.readAsDataURL(file);
+		}
+		$(document).delegate('#upLoadFileAddress','change',function () {
+			ProcessFile();
+			//$(this).parents('.uploader').find('.filename').val($(this).val().match(/[^\\]*$/)[0]);
+		});
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -52,6 +68,13 @@
 					</td>
 					<th>类型名称</th>
 					<td><input name="codeName" type="text" class="span2" value="${basedata.codeName}" readonly="readonly" ></td>
+				</tr>
+				<tr>
+					<th>icon</th>
+					<td><input name="icon" id="icon" type="hidden" class="span2" value="${basedata.icon}">
+						<img class="img-preview" src="${basedata.icon}" width="50" height="50"/>
+						<input type="file" id="upLoadFileAddress">
+					</td>
 				</tr>
 				<tr>
 					<th>描述</th>
