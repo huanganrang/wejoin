@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -60,24 +61,31 @@
 	}
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+	<div data-options="region:'center',border:false" title=""
+		style="overflow: hidden;">
 		<form id="form" method="post">
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th>编号</th>
-					<td><input name="id" type="text" class="span2" value="${bug.id}" readonly="readonly"></td>
+					<td><input name="id" type="text" class="span2"
+						value="${bug.id}" readonly="readonly"></td>
 					<th>BUG名称</th>
-					<td><input name="name" type="text" placeholder="请输入BUG名称" class="easyui-validatebox span2" data-options="required:true" value="${bug.name}"></td>
+					<td><input name="name" type="text" placeholder="请输入BUG名称"
+						class="easyui-validatebox span2" data-options="required:true"
+						value="${bug.name}"></td>
 				</tr>
 				<tr>
 					<th>BUG类型</th>
-					<td><select name="typeId" class="easyui-combobox" data-options="width:140,height:29,editable:false,panelHeight:'auto'">
+					<td><select name="typeId" class="easyui-combobox"
+						data-options="width:140,height:29,editable:false,panelHeight:'auto'">
 							<c:forEach items="${bugTypeList}" var="bugType">
-								<option value="${bugType.id}" <c:if test="${bugType.id == bug.typeId}">selected="selected"</c:if>>${bugType.name}</option>
+								<option value="${bugType.id}"
+									<c:if test="${bugType.id == bug.typeId}">selected="selected"</c:if>>${bugType.name}</option>
 							</c:forEach>
 					</select></td>
 					<c:choose>
-						<c:when test="${fn:contains(sessionInfo.resourceList, '/fileController/fileManage')}">
+						<c:when
+							test="${fn:contains(sessionInfo.resourceList, '/fileController/fileManage')}">
 							<th>浏览服务器附件</th>
 							<td>
 								<button type="button" class="btn" onclick="fileManage();">浏览服务器</button>
@@ -91,7 +99,8 @@
 				</tr>
 				<tr>
 					<th>BUG描述</th>
-					<td colspan="3"><textarea name="note" id="note" cols="50" rows="5" style="visibility: hidden;">${bug.note}</textarea></td>
+					<td colspan="3"><textarea name="note" id="note" cols="50"
+							rows="5" style="visibility: hidden;">${bug.note}</textarea></td>
 				</tr>
 			</table>
 		</form>

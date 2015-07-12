@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveStoreAddress" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveStoreAddress"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -32,27 +33,26 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+	<div data-options="region:'center',border:false" title=""
+		style="overflow: hidden;">
 		<form id="form" method="post">
-				<input type="hidden" name="id" value = "${diveStoreAddress.id}"/>
+			<input type="hidden" name="id" value="${diveStoreAddress.id}" />
 			<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveStoreAddress.ALIAS_STORE_ID%></th>	
-					<td>
-					<input class="span2" name="storeId" type="text" class="span2"  value="${diveStoreAddress.storeId}"/>
-					</td>							
-					<th><%=TdiveStoreAddress.ALIAS_ADDRESS_ID%></th>	
-					<td>
-					<input class="span2" name="addressId" type="text" class="span2"  value="${diveStoreAddress.addressId}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveStoreAddress.ALIAS_ADDTIME%></th>	
-					<td>
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveStoreAddress.FORMAT_ADDTIME%>'})"   maxlength="0" value="${diveStoreAddress.addtime}"/>
-					</td>							
-			</tr>	
-			</table>				
+				<tr>
+					<th><%=TdiveStoreAddress.ALIAS_STORE_ID%></th>
+					<td><input class="span2" name="storeId" type="text"
+						class="span2" value="${diveStoreAddress.storeId}" /></td>
+					<th><%=TdiveStoreAddress.ALIAS_ADDRESS_ID%></th>
+					<td><input class="span2" name="addressId" type="text"
+						class="span2" value="${diveStoreAddress.addressId}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveStoreAddress.ALIAS_ADDTIME%></th>
+					<td><input class="span2" name="addtime" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveStoreAddress.FORMAT_ADDTIME%>'})"
+						maxlength="0" value="${diveStoreAddress.addtime}" /></td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </div>

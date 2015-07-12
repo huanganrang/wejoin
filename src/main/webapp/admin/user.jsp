@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -6,22 +7,26 @@
 <head>
 <title>用户管理</title>
 <jsp:include page="../inc.jsp"></jsp:include>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/editPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/userController/editPage')}">
 	<script type="text/javascript">
 		$.canEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/delete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/userController/delete')}">
 	<script type="text/javascript">
 		$.canDelete = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/grantPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/userController/grantPage')}">
 	<script type="text/javascript">
 		$.canGrant = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/editPwdPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/userController/editPwdPage')}">
 	<script type="text/javascript">
 		$.canEditPwd = true;
 	</script>
@@ -319,20 +324,34 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div data-options="region:'north',title:'查询条件',border:false" style="height: 160px; overflow: hidden;">
+		<div data-options="region:'north',title:'查询条件',border:false"
+			style="height: 160px; overflow: hidden;">
 			<form id="searchForm">
-				<table class="table table-hover table-condensed" style="display: none;">
+				<table class="table table-hover table-condensed"
+					style="display: none;">
 					<tr>
 						<th>登录名</th>
 						<td><input name="name" placeholder="可以模糊查询登录名" class="span2" /></td>
 					</tr>
 					<tr>
 						<th>创建时间</th>
-						<td><input class="span2" name="createdatetimeStart" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" />至<input class="span2" name="createdatetimeEnd" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" /></td>
+						<td><input class="span2" name="createdatetimeStart"
+							placeholder="点击选择时间"
+							onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+							readonly="readonly" />至<input class="span2"
+							name="createdatetimeEnd" placeholder="点击选择时间"
+							onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+							readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<th>最后修改时间</th>
-						<td><input class="span2" name="modifydatetimeStart" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" />至<input class="span2" name="modifydatetimeEnd" placeholder="点击选择时间" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" /></td>
+						<td><input class="span2" name="modifydatetimeStart"
+							placeholder="点击选择时间"
+							onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+							readonly="readonly" />至<input class="span2"
+							name="modifydatetimeEnd" placeholder="点击选择时间"
+							onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+							readonly="readonly" /></td>
 					</tr>
 				</table>
 			</form>
@@ -342,26 +361,40 @@
 		</div>
 	</div>
 	<div id="toolbar" style="display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/addPage')}">
-			<a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'pencil_add'">添加</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/addPage')}">
+			<a onclick="addFun();" href="javascript:void(0);"
+				class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'pencil_add'">添加</a>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/grantPage')}">
-			<a onclick="batchGrantFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'tux'">批量授权</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/grantPage')}">
+			<a onclick="batchGrantFun();" href="javascript:void(0);"
+				class="easyui-linkbutton" data-options="plain:true,iconCls:'tux'">批量授权</a>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/batchDelete')}">
-			<a onclick="batchDeleteFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'delete'">批量删除</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/batchDelete')}">
+			<a onclick="batchDeleteFun();" href="javascript:void(0);"
+				class="easyui-linkbutton" data-options="plain:true,iconCls:'delete'">批量删除</a>
 		</c:if>
-		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_delete',plain:true" onclick="cleanFun();">清空条件</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a
+			href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_delete',plain:true"
+			onclick="cleanFun();">清空条件</a>
 	</div>
 
 	<div id="menu" class="easyui-menu" style="width: 120px; display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/addPage')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/addPage')}">
 			<div onclick="addFun();" data-options="iconCls:'pencil_add'">增加</div>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/delete')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/delete')}">
 			<div onclick="deleteFun();" data-options="iconCls:'pencil_delete'">删除</div>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/userController/editPage')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/userController/editPage')}">
 			<div onclick="editFun();" data-options="iconCls:'pencil'">编辑</div>
 		</c:if>
 	</div>

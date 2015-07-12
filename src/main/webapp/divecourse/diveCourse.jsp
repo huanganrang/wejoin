@@ -1,5 +1,6 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveCourse" %>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveCourse"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -7,17 +8,20 @@
 <head>
 <title>DiveCourse管理</title>
 <jsp:include page="../inc.jsp"></jsp:include>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/editPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/editPage')}">
 	<script type="text/javascript">
 		$.canEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/delete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/delete')}">
 	<script type="text/javascript">
 		$.canDelete = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/view')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/view')}">
 	<script type="text/javascript">
 		$.canView = true;
 	</script>
@@ -215,52 +219,48 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div data-options="region:'north',title:'查询条件',border:false" style="height: 160px; overflow: hidden;">
+		<div data-options="region:'north',title:'查询条件',border:false"
+			style="height: 160px; overflow: hidden;">
 			<form id="searchForm">
-				<table class="table table-hover table-condensed" style="display: none;">
-						<tr>	
-							<th><%=TdiveCourse.ALIAS_TITLE%></th>	
-							<td>
-									<input type="text" name="title" maxlength="128" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>	
-							<td>
-									<input type="text" name="courseType" maxlength="4" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_ICON%></th>	
-							<td>
-									<input type="text" name="icon" maxlength="2147483647" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_PRICE%></th>	
-							<td>
-									<input type="text" name="price" maxlength="12" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveCourse.ALIAS_CONTENT%></th>	
-							<td>
-									<input type="text" name="content" maxlength="2147483647" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>	
-							<td>
-									<input type="text" name="introduce" maxlength="2147483647" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>	
-							<td>
-									<input type="text" name="filePath" maxlength="128" class="span2"/>
-							</td>
-							<th><%=TdiveCourse.ALIAS_STATUS%></th>	
-							<td>
-									<input type="text" name="status" maxlength="4" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveCourse.ALIAS_ADDTIME%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})" id="addtimeBegin" name="addtimeBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})" id="addtimeEnd" name="addtimeEnd"/>
-							</td>
-						</tr>	
+				<table class="table table-hover table-condensed"
+					style="display: none;">
+					<tr>
+						<th><%=TdiveCourse.ALIAS_TITLE%></th>
+						<td><input type="text" name="title" maxlength="128"
+							class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
+						<td><input type="text" name="courseType" maxlength="4"
+							class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_ICON%></th>
+						<td><input type="text" name="icon" maxlength="2147483647"
+							class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_PRICE%></th>
+						<td><input type="text" name="price" maxlength="12"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveCourse.ALIAS_CONTENT%></th>
+						<td><input type="text" name="content" maxlength="2147483647"
+							class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
+						<td><input type="text" name="introduce"
+							maxlength="2147483647" class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
+						<td><input type="text" name="filePath" maxlength="128"
+							class="span2" /></td>
+						<th><%=TdiveCourse.ALIAS_STATUS%></th>
+						<td><input type="text" name="status" maxlength="4"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
+						<td><input type="text" class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"
+							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
+							class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"
+							id="addtimeEnd" name="addtimeEnd" /></td>
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -269,16 +269,27 @@
 		</div>
 	</div>
 	<div id="toolbar" style="display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/addPage')}">
-			<a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'bug_add'">添加</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/addPage')}">
+			<a onclick="addFun();" href="javascript:void(0);"
+				class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'bug_add'">添加</a>
 		</c:if>
-		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_delete',plain:true" onclick="cleanFun();">清空条件</a>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/download')}">
-			<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'server_go',plain:true" onclick="downloadTable();">导出</a>		
-			<form id="downloadTable" target="downloadIframe" method="post" style="display: none;">
-			</form>
-			<iframe id="downloadIframe" name="downloadIframe" style="display: none;"></iframe>
+		<a href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a
+			href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_delete',plain:true"
+			onclick="cleanFun();">清空条件</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/diveCourseController/download')}">
+			<a href="javascript:void(0);" class="easyui-linkbutton"
+				data-options="iconCls:'server_go',plain:true"
+				onclick="downloadTable();">导出</a>
+			<form id="downloadTable" target="downloadIframe" method="post"
+				style="display: none;"></form>
+			<iframe id="downloadIframe" name="downloadIframe"
+				style="display: none;"></iframe>
 		</c:if>
-	</div>	
+	</div>
 </body>
 </html>

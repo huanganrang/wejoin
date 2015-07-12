@@ -3,13 +3,11 @@
 <hibernate-configuration>
 	<!-- 用于反向生成类文件的配置，与项目启动时使用的数据库连接无关 -->
 	<session-factory>
-		<!-- 
-		<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
-		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@172.16.254.211:1521:orcl</property>
-		<property name="hibernate.connection.username">foton</property>
-		<property name="hibernate.connection.password">foton</property>
-		 -->
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property> 
+			<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+			<property name="hibernate.connection.url">jdbc:oracle:thin:@172.16.254.211:1521:orcl</property> 
+			<property name="hibernate.connection.username">foton</property> <property 
+			name="hibernate.connection.password">foton</property> -->
 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>

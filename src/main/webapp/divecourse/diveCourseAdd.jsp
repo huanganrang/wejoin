@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveCourse" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveCourse"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -32,57 +33,50 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">	
-		<form id="form" method="post">		
-				<input type="hidden" name="id"/>
+	<div data-options="region:'center',border:false" title=""
+		style="overflow: hidden;">
+		<form id="form" method="post">
+			<input type="hidden" name="id" />
 			<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveCourse.ALIAS_TITLE%></th>	
-					<td>
-					<input class="span2" name="title" type="text" class="span2"/>
-					</td>							
-					<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>	
-					<td>
-					<input class="span2" name="courseType" type="text" class="span2"/>
-					</td>							
-				</tr>	
-				<tr>	
-					<th><%=TdiveCourse.ALIAS_ICON%></th>	
-					<td>
-					<input class="span2" name="icon" type="text" class="span2"/>
-					</td>							
-					<th><%=TdiveCourse.ALIAS_PRICE%></th>	
-					<td>
-					<input class="span2" name="price" type="text" class="span2"/>
-					</td>							
-				</tr>	
-				<tr>	
-					<th><%=TdiveCourse.ALIAS_CONTENT%></th>	
-					<td>
-					<input class="span2" name="content" type="text" class="span2"/>
-					</td>							
-					<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>	
-					<td>
-					<input class="span2" name="introduce" type="text" class="span2"/>
-					</td>							
-				</tr>	
-				<tr>	
-					<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>	
-					<td>
-					<input class="span2" name="filePath" type="text" class="span2"/>
-					</td>							
-					<th><%=TdiveCourse.ALIAS_STATUS%></th>	
-					<td>
-					<input class="span2" name="status" type="text" class="span2"/>
-					</td>							
-				</tr>	
-				<tr>	
-					<th><%=TdiveCourse.ALIAS_ADDTIME%></th>	
-					<td>
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"  maxlength="0" class="" />
-					</td>							
-				</tr>	
-			</table>		
+				<tr>
+					<th><%=TdiveCourse.ALIAS_TITLE%></th>
+					<td><input class="span2" name="title" type="text"
+						class="span2" /></td>
+					<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
+					<td><input class="span2" name="courseType" type="text"
+						class="span2" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_ICON%></th>
+					<td><input class="span2" name="icon" type="text" class="span2" />
+					</td>
+					<th><%=TdiveCourse.ALIAS_PRICE%></th>
+					<td><input class="span2" name="price" type="text"
+						class="span2" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_CONTENT%></th>
+					<td><input class="span2" name="content" type="text"
+						class="span2" /></td>
+					<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
+					<td><input class="span2" name="introduce" type="text"
+						class="span2" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
+					<td><input class="span2" name="filePath" type="text"
+						class="span2" /></td>
+					<th><%=TdiveCourse.ALIAS_STATUS%></th>
+					<td><input class="span2" name="status" type="text"
+						class="span2" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
+					<td><input class="span2" name="addtime" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"
+						maxlength="0" class="" /></td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </div>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -6,12 +7,14 @@
 <head>
 <title>资源管理</title>
 <jsp:include page="../inc.jsp"></jsp:include>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/editPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/resourceController/editPage')}">
 	<script type="text/javascript">
 		$.canEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/delete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/resourceController/delete')}">
 	<script type="text/javascript">
 		$.canDelete = true;
 	</script>
@@ -189,25 +192,40 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true,border:false">
-		<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+		<div data-options="region:'center',border:false" title=""
+			style="overflow: hidden;">
 			<table id="treeGrid"></table>
 		</div>
 	</div>
 	<div id="toolbar" style="display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/addPage')}">
-			<a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'pencil_add'">添加</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/resourceController/addPage')}">
+			<a onclick="addFun();" href="javascript:void(0);"
+				class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'pencil_add'">添加</a>
 		</c:if>
-		<a onclick="redo();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'resultset_next'">展开</a> <a onclick="undo();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'resultset_previous'">折叠</a> <a onclick="treeGrid.treegrid('reload');" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'transmit'">刷新</a>
+		<a onclick="redo();" href="javascript:void(0);"
+			class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'resultset_next'">展开</a> <a
+			onclick="undo();" href="javascript:void(0);"
+			class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'resultset_previous'">折叠</a> <a
+			onclick="treeGrid.treegrid('reload');" href="javascript:void(0);"
+			class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'transmit'">刷新</a>
 	</div>
 
 	<div id="menu" class="easyui-menu" style="width: 120px; display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/addPage')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/resourceController/addPage')}">
 			<div onclick="addFun();" data-options="iconCls:'pencil_add'">增加</div>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/delete')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/resourceController/delete')}">
 			<div onclick="deleteFun();" data-options="iconCls:'pencil_delete'">删除</div>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/resourceController/editPage')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/resourceController/editPage')}">
 			<div onclick="editFun();" data-options="iconCls:'pencil'">编辑</div>
 		</c:if>
 	</div>

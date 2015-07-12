@@ -1,5 +1,6 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveLog" %>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveLog"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -7,17 +8,20 @@
 <head>
 <title>DiveLog管理</title>
 <jsp:include page="../inc.jsp"></jsp:include>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveLogController/editPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveLogController/editPage')}">
 	<script type="text/javascript">
 		$.canEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveLogController/delete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveLogController/delete')}">
 	<script type="text/javascript">
 		$.canDelete = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/diveLogController/view')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/diveLogController/view')}">
 	<script type="text/javascript">
 		$.canView = true;
 	</script>
@@ -247,91 +251,88 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div data-options="region:'north',title:'查询条件',border:false" style="height: 160px; overflow: hidden;">
+		<div data-options="region:'north',title:'查询条件',border:false"
+			style="height: 160px; overflow: hidden;">
 			<form id="searchForm">
-				<table class="table table-hover table-condensed" style="display: none;">
-						<tr>	
-							<th><%=TdiveLog.ALIAS_LOG_TYPE%></th>	
-							<td>
-									<input type="text" name="logType" maxlength="4" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_FILE_SRC%></th>	
-							<td>
-									<input type="text" name="fileSrc" maxlength="256" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_USER_ID%></th>	
-							<td>
-									<input type="text" name="userId" maxlength="36" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>	
-							<td>
-									<input type="text" name="diveType" maxlength="4" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveLog.ALIAS_DIVE_DATE%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})" id="diveDateBegin" name="diveDateBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})" id="diveDateEnd" name="diveDateEnd"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_WEATHER%></th>	
-							<td>
-									<input type="text" name="weather" maxlength="4" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_WATER_TEMPERATURE%></th>	
-							<td>
-									<input type="text" name="waterTemperature" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_SEEING%></th>	
-							<td>
-									<input type="text" name="seeing" maxlength="12" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveLog.ALIAS_IN_TIME%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})" id="inTimeBegin" name="inTimeBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})" id="inTimeEnd" name="inTimeEnd"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_OUT_TIME%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})" id="outTimeBegin" name="outTimeBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})" id="outTimeEnd" name="outTimeEnd"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_DIVE_HEIGHT%></th>	
-							<td>
-									<input type="text" name="diveHeight" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_DIVE_WEITH%></th>	
-							<td>
-									<input type="text" name="diveWeith" maxlength="12" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveLog.ALIAS_WEATHER_TEMPERATURE%></th>	
-							<td>
-									<input type="text" name="weatherTemperature" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_WIND_POWER%></th>	
-							<td>
-									<input type="text" name="windPower" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_GAS_START%></th>	
-							<td>
-									<input type="text" name="gasStart" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveLog.ALIAS_GAS_END%></th>	
-							<td>
-									<input type="text" name="gasEnd" maxlength="12" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveLog.ALIAS_ADDTIME%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})" id="addtimeBegin" name="addtimeBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})" id="addtimeEnd" name="addtimeEnd"/>
-							</td>
-						</tr>	
+				<table class="table table-hover table-condensed"
+					style="display: none;">
+					<tr>
+						<th><%=TdiveLog.ALIAS_LOG_TYPE%></th>
+						<td><input type="text" name="logType" maxlength="4"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_FILE_SRC%></th>
+						<td><input type="text" name="fileSrc" maxlength="256"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_USER_ID%></th>
+						<td><input type="text" name="userId" maxlength="36"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>
+						<td><input type="text" name="diveType" maxlength="4"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveLog.ALIAS_DIVE_DATE%></th>
+						<td><input type="text" class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})"
+							id="diveDateBegin" name="diveDateBegin" /> <input type="text"
+							class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})"
+							id="diveDateEnd" name="diveDateEnd" /></td>
+						<th><%=TdiveLog.ALIAS_WEATHER%></th>
+						<td><input type="text" name="weather" maxlength="4"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_WATER_TEMPERATURE%></th>
+						<td><input type="text" name="waterTemperature" maxlength="12"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_SEEING%></th>
+						<td><input type="text" name="seeing" maxlength="12"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveLog.ALIAS_IN_TIME%></th>
+						<td><input type="text" class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})"
+							id="inTimeBegin" name="inTimeBegin" /> <input type="text"
+							class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})"
+							id="inTimeEnd" name="inTimeEnd" /></td>
+						<th><%=TdiveLog.ALIAS_OUT_TIME%></th>
+						<td><input type="text" class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})"
+							id="outTimeBegin" name="outTimeBegin" /> <input type="text"
+							class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})"
+							id="outTimeEnd" name="outTimeEnd" /></td>
+						<th><%=TdiveLog.ALIAS_DIVE_HEIGHT%></th>
+						<td><input type="text" name="diveHeight" maxlength="12"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_DIVE_WEITH%></th>
+						<td><input type="text" name="diveWeith" maxlength="12"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveLog.ALIAS_WEATHER_TEMPERATURE%></th>
+						<td><input type="text" name="weatherTemperature"
+							maxlength="12" class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_WIND_POWER%></th>
+						<td><input type="text" name="windPower" maxlength="12"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_GAS_START%></th>
+						<td><input type="text" name="gasStart" maxlength="12"
+							class="span2" /></td>
+						<th><%=TdiveLog.ALIAS_GAS_END%></th>
+						<td><input type="text" name="gasEnd" maxlength="12"
+							class="span2" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveLog.ALIAS_ADDTIME%></th>
+						<td><input type="text" class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})"
+							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
+							class="span2"
+							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})"
+							id="addtimeEnd" name="addtimeEnd" /></td>
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -340,16 +341,27 @@
 		</div>
 	</div>
 	<div id="toolbar" style="display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/diveLogController/addPage')}">
-			<a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'bug_add'">添加</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/diveLogController/addPage')}">
+			<a onclick="addFun();" href="javascript:void(0);"
+				class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'bug_add'">添加</a>
 		</c:if>
-		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'brick_delete',plain:true" onclick="cleanFun();">清空条件</a>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/diveLogController/download')}">
-			<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'server_go',plain:true" onclick="downloadTable();">导出</a>		
-			<form id="downloadTable" target="downloadIframe" method="post" style="display: none;">
-			</form>
-			<iframe id="downloadIframe" name="downloadIframe" style="display: none;"></iframe>
+		<a href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_add',plain:true" onclick="searchFun();">过滤条件</a><a
+			href="javascript:void(0);" class="easyui-linkbutton"
+			data-options="iconCls:'brick_delete',plain:true"
+			onclick="cleanFun();">清空条件</a>
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/diveLogController/download')}">
+			<a href="javascript:void(0);" class="easyui-linkbutton"
+				data-options="iconCls:'server_go',plain:true"
+				onclick="downloadTable();">导出</a>
+			<form id="downloadTable" target="downloadIframe" method="post"
+				style="display: none;"></form>
+			<iframe id="downloadIframe" name="downloadIframe"
+				style="display: none;"></iframe>
 		</c:if>
-	</div>	
+	</div>
 </body>
 </html>

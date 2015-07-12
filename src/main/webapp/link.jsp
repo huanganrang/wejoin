@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,11 +13,14 @@
 		<div>
 			<ul>
 				<li>作者：孙宇</li>
-				<li>前台由EasyUI1.3.3编写，后台是JAVA语言编写，应用框架spring mvc+hibernate4+maven</li>
+				<li>前台由EasyUI1.3.3编写，后台是JAVA语言编写，应用框架spring
+					mvc+hibernate4+maven</li>
 			</ul>
 		</div>
 		<p>
-			<a class="btn btn-primary btn-large" href="${pageContext.request.contextPath}/index.jsp" target="_blank"> 进入(里面有源码下载哦) </a>
+			<a class="btn btn-primary btn-large"
+				href="${pageContext.request.contextPath}/index.jsp" target="_blank">
+				进入(里面有源码下载哦) </a>
 		</p>
 	</div>
 	<div class="hero-unit">
@@ -28,7 +32,8 @@
 			</ul>
 		</div>
 		<p>
-			<a class="btn btn-primary btn-large" href="http://www.ilikego.net:81" target="_blank"> 进入 </a>
+			<a class="btn btn-primary btn-large" href="http://www.ilikego.net:81"
+				target="_blank"> 进入 </a>
 		</p>
 	</div>
 	<div class="hero-unit">
@@ -40,7 +45,8 @@
 			</ul>
 		</div>
 		<p>
-			<a class="btn btn-primary btn-large" href="http://php-easyui-demo.btboys.com" target="_blank"> 进入 </a>
+			<a class="btn btn-primary btn-large"
+				href="http://php-easyui-demo.btboys.com" target="_blank"> 进入 </a>
 		</p>
 	</div>
 	<div class="hero-unit">
@@ -52,7 +58,8 @@
 			</ul>
 		</div>
 		<p>
-			<a class="btn btn-primary btn-large" href="http://app.btboys.com" target="_blank"> 进入 </a>
+			<a class="btn btn-primary btn-large" href="http://app.btboys.com"
+				target="_blank"> 进入 </a>
 		</p>
 	</div>
 </body>

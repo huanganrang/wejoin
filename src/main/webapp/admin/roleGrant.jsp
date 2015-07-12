@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	var resourceTree;
@@ -88,17 +89,21 @@
 		}
 	}
 </script>
-<div id="roleGrantLayout" class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'west'" title="系统资源" style="width: 300px; padding: 1px;">
+<div id="roleGrantLayout" class="easyui-layout"
+	data-options="fit:true,border:false">
+	<div data-options="region:'west'" title="系统资源"
+		style="width: 300px; padding: 1px;">
 		<div class="well well-small">
 			<form id="form" method="post">
-				<input name="id" type="hidden" class="span2" value="${role.id}" readonly="readonly">
+				<input name="id" type="hidden" class="span2" value="${role.id}"
+					readonly="readonly">
 				<ul id="resourceTree"></ul>
 				<input id="resourceIds" name="resourceIds" type="hidden" />
 			</form>
 		</div>
 	</div>
-	<div data-options="region:'center'" title="" style="overflow: hidden; padding: 10px;">
+	<div data-options="region:'center'" title=""
+		style="overflow: hidden; padding: 10px;">
 		<div class="well well-small">
 			<span class="label label-success">${role.name}</span>
 			<div>${role.remark}</div>

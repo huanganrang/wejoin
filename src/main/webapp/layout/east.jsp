@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html; charset=UTF-8"%>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 
@@ -22,10 +23,12 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'north',border:false" style="height: 180px; overflow: hidden;">
+	<div data-options="region:'north',border:false"
+		style="height: 180px; overflow: hidden;">
 		<div id="layout_east_calendar"></div>
 	</div>
-	<div data-options="region:'center',border:false" style="overflow: hidden;">
+	<div data-options="region:'center',border:false"
+		style="overflow: hidden;">
 		<%-- <div id="layout_east_onlinePanel" data-options="fit:true,border:false" title="SYPRO收到的捐助">
 			<div class="well well-small" style="margin: 3px;">
 				<a href="https://me.alipay.com/sypro" target="_blank"><img alt="捐助SyPro" src="${pageContext.request.contextPath}/style/images/alipay.jpg" /></a>

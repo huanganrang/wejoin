@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
+	<script type="text/javascript">
 	$(function() {
 	 	parent.$.messager.progress('close');
 		$('#bshoot_comments_Form').form({
@@ -32,7 +32,7 @@
 </script>
 
 	<div class="easyui-layout" data-options="fit:true">
-		
+
 		<div data-options="region:'center'">
 			<form id="bshoot_comments_Form" action="">
 				<table align="center" width="90%" class="tablex">
@@ -40,45 +40,42 @@
 						<td align="right" style="width: 80px;"><label>url：</label></td>
 						<td>${pageContext.request.contextPath}/api/bshootController/bshoot_comments</td>
 					</tr>
-					
+
 					<tr>
 						<td align="right" style="width: 180px;"><label>bshootId(视频)：</label></td>
-						<td><input name="bshootId" type="text" class="span2" value=""/></td>
+						<td><input name="bshootId" type="text" class="span2" value="" /></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>tokenId(token值)：</label></td>
-						<td><input name="tokenId" type="text" class="span2" value=""/></td>
+						<td><input name="tokenId" type="text" class="span2" value="" /></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>
-						<td><input name="page" type="text" class="span2" value="1"/></td>
+						<td><input name="page" type="text" class="span2" value="1" /></td>
 					</tr>
-					
+
 					<tr>
 						<td align="right" style="width: 180px;"><label>rows(每页数)：</label></td>
-						<td><input name="rows" type="text" class="span2" value="10"/></td>
+						<td><input name="rows" type="text" class="span2" value="10" /></td>
 					</tr>
-					
-					
-					
+
+
+
 					<tr>
-						<td colspan="2" align="center">
-						<input type="button"
-							value="提交" onclick="javascript:$('#bshoot_comments_Form').submit();" /></td>
+						<td colspan="2" align="center"><input type="button"
+							value="提交"
+							onclick="javascript:$('#bshoot_comments_Form').submit();" /></td>
 					</tr>
 				</table>
 			</form>
 			<label>结果：</label>
-				<div id="bshoot_comments_result">
-				</div>
+			<div id="bshoot_comments_result"></div>
 			<div>
-				结果说明：1、json格式<br/>
-					2、success:true 成功<br/>
-					3、obj:数组格式<br/>
-					  total：总数<br/>
-					 
+				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
+				total：总数<br />
 
-					  
+
+
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	var layout_west_tree;
@@ -67,7 +68,8 @@
 	}
 </script>
 <div class="easyui-accordion" data-options="fit:true,border:false">
-	<div title="系统菜单" style="padding: 5px;" data-options="border:false,isonCls:'anchor',tools : [ {
+	<div title="系统菜单" style="padding: 5px;"
+		data-options="border:false,isonCls:'anchor',tools : [ {
 				iconCls : 'database_refresh',
 				handler : function() {
 					$('#layout_west_tree').tree('reload');

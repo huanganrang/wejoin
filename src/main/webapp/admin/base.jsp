@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -6,34 +7,39 @@
 <head>
 <title>基础数据管理</title>
 <jsp:include page="../inc.jsp"></jsp:include>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedataEditPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedataEditPage')}">
 	<script type="text/javascript">
 		$.canEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedatadelete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedatadelete')}">
 	<script type="text/javascript">
 		$.canDelete = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeEdit')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeEdit')}">
 	<script type="text/javascript">
 		$.canBasetypeEdit = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeAddPage')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeAddPage')}">
 	<script type="text/javascript">
 		$.canBasetypeAddPage = true;
 	</script>
 </c:if>
-<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypedelete')}">
+<c:if
+	test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypedelete')}">
 	<script type="text/javascript">
 		$.canBasetypeDelete = true;
 	</script>
 </c:if>
 </head>
 <body>
-<script type="text/javascript">
+	<script type="text/javascript">
 	var layout_west_tree;
 	var layout_west_tree_url = '';
 	var sessionInfo_userId = '${sessionInfo.id}';
@@ -296,29 +302,38 @@
 	}
 </script>
 	<div class="easyui-layout" data-options="fit:true,border:false">
-		<div data-options="region:'west',split:true" title="基础类型" style="width: 200px; overflow: hidden;">
+		<div data-options="region:'west',split:true" title="基础类型"
+			style="width: 200px; overflow: hidden;">
 			<div class="well well-small">
 				<ul id="layout_west_tree"></ul>
 			</div>
 		</div>
-	
-		<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+
+		<div data-options="region:'center',border:false" title=""
+			style="overflow: hidden;">
 			<table id="dataGrid"></table>
 		</div>
-	</div>	
-	<div id="toolbar" style="display: none;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedataAddPage')}">
-			<a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'pencil_add'">添加</a>
-		</c:if>
-		<a onclick="dataGrid.datagrid('reload');" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'transmit'">刷新</a>
 	</div>
-	<div id="menu" class="easyui-menu" style="width:120px;">
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeAddPage')}">
+	<div id="toolbar" style="display: none;">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/basedataController/basedataAddPage')}">
+			<a onclick="addFun();" href="javascript:void(0);"
+				class="easyui-linkbutton"
+				data-options="plain:true,iconCls:'pencil_add'">添加</a>
+		</c:if>
+		<a onclick="dataGrid.datagrid('reload');" href="javascript:void(0);"
+			class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'transmit'">刷新</a>
+	</div>
+	<div id="menu" class="easyui-menu" style="width: 120px;">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypeAddPage')}">
 			<div onclick="appendFun()" data-options="iconCls:'pencil_add'">添加</div>
 		</c:if>
-		<c:if test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypedelete')}">
+		<c:if
+			test="${fn:contains(sessionInfo.resourceList, '/basedataController/basetypedelete')}">
 			<div onclick="removeitFun()" data-options="iconCls:'cancel'">删除</div>
-		</c:if>		
+		</c:if>
 	</div>
 </body>
 </html>

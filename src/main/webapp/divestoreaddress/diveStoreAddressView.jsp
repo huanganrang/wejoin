@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveStoreAddress" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveStoreAddress"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	$(function() {
@@ -9,22 +10,16 @@
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveStoreAddress.ALIAS_STORE_ID%></th>	
-					<td>
-						${diveStoreAddress.storeId}							
-					</td>							
-					<th><%=TdiveStoreAddress.ALIAS_ADDRESS_ID%></th>	
-					<td>
-						${diveStoreAddress.addressId}							
-					</td>							
-				</tr>		
-				<tr>	
-					<th><%=TdiveStoreAddress.ALIAS_ADDTIME%></th>	
-					<td>
-						${diveStoreAddress.addtime}							
-					</td>							
-				</tr>		
+			<tr>
+				<th><%=TdiveStoreAddress.ALIAS_STORE_ID%></th>
+				<td>${diveStoreAddress.storeId}</td>
+				<th><%=TdiveStoreAddress.ALIAS_ADDRESS_ID%></th>
+				<td>${diveStoreAddress.addressId}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveStoreAddress.ALIAS_ADDTIME%></th>
+				<td>${diveStoreAddress.addtime}</td>
+			</tr>
 		</table>
 	</div>
 </div>

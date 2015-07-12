@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveCertificateAuthority" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveCertificateAuthority"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -32,51 +33,47 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+	<div data-options="region:'center',border:false" title=""
+		style="overflow: hidden;">
 		<form id="form" method="post">
-				<input type="hidden" name="id" value = "${diveCertificateAuthority.id}"/>
+			<input type="hidden" name="id" value="${diveCertificateAuthority.id}" />
 			<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>	
-					<td>
-					<input class="span2" name="orgCode" type="text" class="span2"  value="${diveCertificateAuthority.orgCode}"/>
-					</td>							
-					<th><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>	
-					<td>
-					<input class="span2" name="levelCode" type="text" class="span2"  value="${diveCertificateAuthority.levelCode}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%></th>	
-					<td>
-					<input class="span2" name="authDate" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUTH_DATE%>'})"   maxlength="0" value="${diveCertificateAuthority.authDate}"/>
-					</td>							
-					<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>	
-					<td>
-					<input class="span2" name="reverseSide" type="text" class="span2"  value="${diveCertificateAuthority.reverseSide}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>	
-					<td>
-					<input class="span2" name="rightSide" type="text" class="span2"  value="${diveCertificateAuthority.rightSide}"/>
-					</td>							
-					<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>	
-					<td>
-					<input class="span2" name="auditDate" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"   maxlength="0" value="${diveCertificateAuthority.auditDate}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>	
-					<td>
-					<input class="span2" name="status" type="text" class="span2"  value="${diveCertificateAuthority.status}"/>
-					</td>							
-					<th><%=TdiveCertificateAuthority.ALIAS_ADDTIME%></th>	
-					<td>
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_ADDTIME%>'})"   maxlength="0" value="${diveCertificateAuthority.addtime}"/>
-					</td>							
-			</tr>	
-			</table>				
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
+					<td><input class="span2" name="orgCode" type="text"
+						class="span2" value="${diveCertificateAuthority.orgCode}" /></td>
+					<th><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>
+					<td><input class="span2" name="levelCode" type="text"
+						class="span2" value="${diveCertificateAuthority.levelCode}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%></th>
+					<td><input class="span2" name="authDate" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUTH_DATE%>'})"
+						maxlength="0" value="${diveCertificateAuthority.authDate}" /></td>
+					<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>
+					<td><input class="span2" name="reverseSide" type="text"
+						class="span2" value="${diveCertificateAuthority.reverseSide}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>
+					<td><input class="span2" name="rightSide" type="text"
+						class="span2" value="${diveCertificateAuthority.rightSide}" /></td>
+					<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
+					<td><input class="span2" name="auditDate" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"
+						maxlength="0" value="${diveCertificateAuthority.auditDate}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
+					<td><input class="span2" name="status" type="text"
+						class="span2" value="${diveCertificateAuthority.status}" /></td>
+					<th><%=TdiveCertificateAuthority.ALIAS_ADDTIME%></th>
+					<td><input class="span2" name="addtime" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_ADDTIME%>'})"
+						maxlength="0" value="${diveCertificateAuthority.addtime}" /></td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </div>

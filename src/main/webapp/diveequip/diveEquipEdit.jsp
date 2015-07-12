@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdiveEquip" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdiveEquip"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -32,47 +33,42 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+	<div data-options="region:'center',border:false" title=""
+		style="overflow: hidden;">
 		<form id="form" method="post">
-				<input type="hidden" name="id" value = "${diveEquip.id}"/>
+			<input type="hidden" name="id" value="${diveEquip.id}" />
 			<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
-					<td>
-					<input class="span2" name="equipIcon" type="text" class="span2"  value="${diveEquip.equipIcon}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>	
-					<td>
-					<input class="span2" name="equipSumary" type="text" class="span2"  value="${diveEquip.equipSumary}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
-					<td>
-					<input class="span2" name="equipName" type="text" class="span2"  value="${diveEquip.equipName}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_STATUS%></th>	
-					<td>
-					<input class="span2" name="status" type="text" class="span2"  value="${diveEquip.status}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
-					<td>
-					<input class="span2" name="equipBrand" type="text" class="span2"  value="${diveEquip.equipBrand}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>	
-					<td>
-					<input class="span2" name="equipDes" type="text" class="span2"  value="${diveEquip.equipDes}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
-					<td>
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveEquip.FORMAT_ADDTIME%>'})"   maxlength="0" value="${diveEquip.addtime}"/>
-					</td>							
-			</tr>	
-			</table>				
+				<tr>
+					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>
+					<td><input class="span2" name="equipIcon" type="text"
+						class="span2" value="${diveEquip.equipIcon}" /></td>
+					<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>
+					<td><input class="span2" name="equipSumary" type="text"
+						class="span2" value="${diveEquip.equipSumary}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>
+					<td><input class="span2" name="equipName" type="text"
+						class="span2" value="${diveEquip.equipName}" /></td>
+					<th><%=TdiveEquip.ALIAS_STATUS%></th>
+					<td><input class="span2" name="status" type="text"
+						class="span2" value="${diveEquip.status}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>
+					<td><input class="span2" name="equipBrand" type="text"
+						class="span2" value="${diveEquip.equipBrand}" /></td>
+					<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>
+					<td><input class="span2" name="equipDes" type="text"
+						class="span2" value="${diveEquip.equipDes}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveEquip.ALIAS_ADDTIME%></th>
+					<td><input class="span2" name="addtime" type="text"
+						onclick="WdatePicker({dateFmt:'<%=TdiveEquip.FORMAT_ADDTIME%>'})"
+						maxlength="0" value="${diveEquip.addtime}" /></td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </div>
