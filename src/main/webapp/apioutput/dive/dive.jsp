@@ -11,6 +11,8 @@
 		<div id="index_tabs" class="easyui-tabs" data-options="fit:true">
 			<div title="基础数据" data-options="href:'api_base.jsp'"
 				style="padding: 1px"></div>
+			<div title="个人中心" data-options="href:'api_people_center.jsp'"
+				style="padding: 1px"></div>
 			<div title="装备" data-options="href:'api_equip.jsp'"
 				style="padding: 1px"></div>
 			<div title="活动" data-options="href:'api_bd_query.jsp'"

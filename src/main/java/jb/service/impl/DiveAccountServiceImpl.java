@@ -10,15 +10,16 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveAccountDaoI;
 import jb.model.TdiveAccount;
-import jb.pageModel.DiveAccount;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveAccount;
 import jb.pageModel.PageHelper;
 import jb.service.DiveAccountServiceI;
+import jb.util.MD5Util;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> implements DiveAccountServiceI {
@@ -116,6 +117,35 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 	@Override
 	public void delete(String id) {
 		diveAccountDao.delete(diveAccountDao.get(TdiveAccount.class, id));
+	}
+
+	/**
+	 * 注册
+	 */
+	public DiveAccount reg(DiveAccount account) {
+		TdiveAccount t = new TdiveAccount();
+		account.setId(UUID.randomUUID().toString());
+		account.setAddtime(new Date());
+		account.setPassword(MD5Util.md5(account.getPassword()));
+		MyBeanUtils.copyProperties(account, t, true);
+		diveAccountDao.save(t);
+		
+		return account;
+	}
+
+	/**
+	 * 登录
+	 */
+	public DiveAccount login(DiveAccount account) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userName", account.getUserName());
+		params.put("password", MD5Util.md5(account.getPassword()));
+		TdiveAccount a = diveAccountDao.get("from TdiveAccount t where t.userName = :userName and t.password = :password", params);
+		if (a != null) {
+			BeanUtils.copyProperties(a, account);
+			return account;
+		}
+		return null;
 	}
 
 }
