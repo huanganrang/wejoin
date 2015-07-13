@@ -61,6 +61,15 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 				whereHql += " and t.equipName = :equipName";
 				params.put("equipName", diveEquip.getEquipName());
 			}		
+			if (!F.empty(diveEquip.getEquipDes())) {
+				whereHql += " and t.equipDes = :equipDes";
+				params.put("equipDes", diveEquip.getEquipDes());
+			}		
+			if (!F.empty(diveEquip.getEquipType())) {
+				whereHql += " and t.equipType = :equipType";
+				params.put("equipType", diveEquip.getEquipType());
+			}		
+				
 			if (!F.empty(diveEquip.getStatus())) {
 				whereHql += " and t.status = :status";
 				params.put("status", diveEquip.getStatus());
@@ -68,10 +77,6 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 			if (!F.empty(diveEquip.getEquipBrand())) {
 				whereHql += " and t.equipBrand = :equipBrand";
 				params.put("equipBrand", diveEquip.getEquipBrand());
-			}		
-			if (!F.empty(diveEquip.getEquipDes())) {
-				whereHql += " and t.equipDes = :equipDes";
-				params.put("equipDes", diveEquip.getEquipDes());
 			}		
 		}	
 		return whereHql;

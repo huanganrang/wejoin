@@ -9,13 +9,13 @@
 <body>
 
 	<div id="index_equip_tabs" class="easyui-tabs" data-options="fit:true">
-		<div title="热门" data-options="href:'api_find_hotBshoot.jsp'"
+		<div title="热门" data-options="href:'api_equip_hot.jsp'"
 			style="padding: 1px"></div>
-		<div title="类别" data-options="href:'api_find_bshootSquare.jsp'"
+		<div title="类别" data-options="href:'api_equip_type.jsp'"
 			style="padding: 1px"></div>
-		<div title="品牌" data-options="href:'api_find_bshootSquareTopic.jsp'"
+		<div title="品牌" data-options="href:'api_equip_brand.jsp'"
 			style="padding: 1px"></div>
-		<div title="详情" data-options="href:'api_find_bshootSquareDetail.jsp'"
+		<div title="详情" data-options="href:'api_equip_detail.jsp'"
 			style="padding: 1px"></div>
 	</div>
 

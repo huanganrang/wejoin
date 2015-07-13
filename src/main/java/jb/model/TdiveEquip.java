@@ -1,17 +1,19 @@
 ﻿
 /*
  * @author John
- * @date - 2015-07-06
+ * @date - 2015-07-13
  */
 
 package jb.model;
 
 import javax.persistence.*;
 
+import java.util.Date;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_equip")
 @DynamicInsert(true)
@@ -25,9 +27,13 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 	public static final String ALIAS_EQUIP_ICON = "图片";
 	public static final String ALIAS_EQUIP_SUMARY = "简介";
 	public static final String ALIAS_EQUIP_NAME = "装备名称";
+	public static final String ALIAS_EQUIP_DES = "设备描述";
+	public static final String ALIAS_EQUIP_TYPE = "设备类型";
+	public static final String ALIAS_SALE_NUM = "销售数量";
+	public static final String ALIAS_HOT = "热门系数";
+	public static final String ALIAS_PRICE = "市场价格";
 	public static final String ALIAS_STATUS = "状态（上架，下架）";
 	public static final String ALIAS_EQUIP_BRAND = "品牌";
-	public static final String ALIAS_EQUIP_DES = "设备描述";
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats
@@ -44,12 +50,20 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 	private java.lang.String equipSumary;
 	//@Length(max=128)
 	private java.lang.String equipName;
+	//@Length(max=2147483647)
+	private java.lang.String equipDes;
+	//@Length(max=4)
+	private java.lang.String equipType;
+	//
+	private java.lang.Integer saleNum;
+	//
+	private java.lang.Float hot;
+	//
+	private java.lang.Float price;
 	//@Length(max=4)
 	private java.lang.String status;
 	//@Length(max=4)
 	private java.lang.String equipBrand;
-	//@Length(max=2147483647)
-	private java.lang.String equipDes;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -99,6 +113,51 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 		this.equipName = equipName;
 	}
 	
+	@Column(name = "equip_des", unique = false, nullable = true, insertable = true, updatable = true, length = 2147483647)
+	public java.lang.String getEquipDes() {
+		return this.equipDes;
+	}
+	
+	public void setEquipDes(java.lang.String equipDes) {
+		this.equipDes = equipDes;
+	}
+	
+	@Column(name = "equip_type", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getEquipType() {
+		return this.equipType;
+	}
+	
+	public void setEquipType(java.lang.String equipType) {
+		this.equipType = equipType;
+	}
+	
+	@Column(name = "sale_num", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	public java.lang.Integer getSaleNum() {
+		return this.saleNum;
+	}
+	
+	public void setSaleNum(java.lang.Integer saleNum) {
+		this.saleNum = saleNum;
+	}
+	
+	@Column(name = "hot", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
+	public java.lang.Float getHot() {
+		return this.hot;
+	}
+	
+	public void setHot(java.lang.Float hot) {
+		this.hot = hot;
+	}
+	
+	@Column(name = "price", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
+	public java.lang.Float getPrice() {
+		return this.price;
+	}
+	
+	public void setPrice(java.lang.Float price) {
+		this.price = price;
+	}
+	
 	@Column(name = "status", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
 	public java.lang.String getStatus() {
 		return this.status;
@@ -117,17 +176,8 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 		this.equipBrand = equipBrand;
 	}
 	
-	@Column(name = "equip_des", unique = false, nullable = true, insertable = true, updatable = true, length = 2147483647)
-	public java.lang.String getEquipDes() {
-		return this.equipDes;
-	}
-	
-	public void setEquipDes(java.lang.String equipDes) {
-		this.equipDes = equipDes;
-	}
-	
 
-	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 19)
 	public java.util.Date getAddtime() {
 		return this.addtime;
 	}
@@ -144,9 +194,13 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 			.append("EquipIcon",getEquipIcon())
 			.append("EquipSumary",getEquipSumary())
 			.append("EquipName",getEquipName())
+			.append("EquipDes",getEquipDes())
+			.append("EquipType",getEquipType())
+			.append("SaleNum",getSaleNum())
+			.append("Hot",getHot())
+			.append("Price",getPrice())
 			.append("Status",getStatus())
 			.append("EquipBrand",getEquipBrand())
-			.append("EquipDes",getEquipDes())
 			.append("Addtime",getAddtime())
 			.toString();
 	}

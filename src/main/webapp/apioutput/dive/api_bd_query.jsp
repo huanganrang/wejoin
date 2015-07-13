@@ -46,7 +46,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 					<tr>
 						<td align="right" style="width: 180px;"><label>dataType(数据类型)：</label>性别(SX)<br>
 							潜水等级(LV)<br> 认证机构(OC)<br> 潜水特点(FT)<br> 装备品牌(EB)<br>
-							潜水类型(DT)<br> 装备品牌(EB)<br> 地区(AR)<br></td>
+							潜水类型(DT)<br> 装备分类(ET)<br> 地区(AR)<br></td>
 						<td><input name="dataType" type="text" class="span2" /></td>
 					</tr>
 					<tr>

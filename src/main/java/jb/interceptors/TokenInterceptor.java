@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jb.controller.BaseController;
 import jb.pageModel.SessionInfo;
 import jb.util.ConfigUtil;
 
@@ -74,7 +75,8 @@ public class TokenInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/baseController/") > -1 || excludeUrls.contains(url)) {// 如果要访问的资源是不需要验证的
 			return true;
 		}
-		String tokenId = request.getParameter(TokenManage.TOKEN_FIELD);			
+		String tokenId = request.getParameter(TokenManage.TOKEN_FIELD);		
+		if(BaseController.DEFAULT_TOKEN.equals(tokenId))return true;
 		return tokenManage.validToken(tokenId);
 	}
 

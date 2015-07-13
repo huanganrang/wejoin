@@ -56,6 +56,7 @@ import com.alibaba.fastjson.JSONObject;
 @RequestMapping("/baseController")
 public class BaseController {
 
+	public static final String DEFAULT_TOKEN = "1D96DACB84F21890ED9F4928FA8B352B";
 	private String _publishSettingVal = "2"; //生产环境
 	@Autowired
 	protected MessageServiceI messageService;
