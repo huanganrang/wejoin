@@ -51,4 +51,8 @@ public interface DiveAccountServiceI {
 	 */
 	public void delete(String id);
 
+	public DiveAccount reg(DiveAccount account);
+
+	public DiveAccount login(DiveAccount account);
+
 }
