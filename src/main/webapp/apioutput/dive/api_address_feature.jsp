@@ -68,7 +68,7 @@ String url = request.getContextPath()+"/api/apiAddressController/featurelist";
 					</tr>
 				</table>
 			</form>
-			<label>结果：装备类型结果集，查看基础数据接口</label>
+			<label>结果：潜点特征结果集，查看基础数据接口</label>
 			<div id="address_feature_result"></div>
 			<div>
 				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
