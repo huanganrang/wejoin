@@ -15,11 +15,15 @@
 				style="padding: 1px"></div>
 			<div title="装备" data-options="href:'api_equip.jsp'"
 				style="padding: 1px"></div>
+			<div title="潜点" data-options="href:'api_address.jsp'"
+				style="padding: 1px"></div>
+			<div title="度假村" data-options="href:'api_store.jsp'"
+				style="padding: 1px"></div>		
 			<div title="活动" data-options="href:'api_bd_query.jsp'"
 				style="padding: 1px"></div>
 			<div title="潜水" data-options="href:'api_bd_query.jsp'"
 				style="padding: 1px"></div>
-			<div title="学习" data-options="href:'api_bd_query.jsp'"
+			<div title="学习" data-options="href:'api_bd_course.jsp'"
 				style="padding: 1px"></div>
 			<div title="潜聊" data-options="href:'api_bd_query.jsp'"
 				style="padding: 1px"></div>
