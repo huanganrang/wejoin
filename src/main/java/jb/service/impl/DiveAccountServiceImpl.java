@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import jb.absx.F;
 import jb.dao.DiveAccountDaoI;
+import jb.dao.DiveLogDaoI;
 import jb.model.TdiveAccount;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAccount;
@@ -26,6 +27,9 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 
 	@Autowired
 	private DiveAccountDaoI diveAccountDao;
+	
+	@Autowired
+	private DiveLogDaoI diveLogDao;
 
 	@Override
 	public DataGrid dataGrid(DiveAccount diveAccount, PageHelper ph) {
@@ -109,7 +113,7 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 	public void edit(DiveAccount diveAccount) {
 		TdiveAccount t = diveAccountDao.get(TdiveAccount.class, diveAccount.getId());
 		if (t != null) {
-			MyBeanUtils.copyProperties(diveAccount, t, new String[] { "id" , "createdatetime" },true);
+			MyBeanUtils.copyProperties(diveAccount, t, new String[] { "id" , "addtime" },true);
 			//t.setModifydatetime(new Date());
 		}
 	}
@@ -148,4 +152,16 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		return null;
 	}
 
+	/**
+	 * 个人主页
+	 */
+	public DiveAccount personHome(String id) {
+		DiveAccount a = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", id);
+		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.userId = :userId", params);
+		a.setLogNum(logNum == null ? 0 : logNum.intValue());
+		return a;
+	}
+	
 }

@@ -112,6 +112,100 @@ public class ApiAccountController extends BaseController {
 		return j;
 	}
 	
+	/**
+	 * 个人主页
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/personHome")
+	public Json personHome(HttpServletRequest request) {
+		Json j = new Json();
+		try {
+			SessionInfo s = getSessionInfo(request);
+			DiveAccount account = accountService.personHome(s.getId());
+			j.setSuccess(true);
+			j.setObj(account);
+			j.setMsg("个人主页查询成功");
+		} catch (Exception e) {
+			// e.printStackTrace();
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
+	/**
+	 * 个人信息
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/personInfo")
+	public Json personInfo(HttpServletRequest request) {
+		Json j = new Json();
+		try {
+			SessionInfo s = getSessionInfo(request);
+			j.setSuccess(true);
+			j.setObj(accountService.get(s.getId()));
+			j.setMsg("个人信息查询成功");
+		} catch (Exception e) {
+			// e.printStackTrace();
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
+	/**
+	 * 个人信息修改
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/updateAccount")
+	public Json updatePersonInfo(DiveAccount account, HttpServletRequest request) {
+		Json j = new Json();
+		try {
+			SessionInfo s = getSessionInfo(request);
+			account.setId(s.getId());
+			accountService.edit(account);			
+			j.setSuccess(true);
+			j.setMsg("个人信息修改成功");
+		} catch (Exception e) {
+			// e.printStackTrace();
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
+	/**
+	 * 头像上传
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/headImgUpload")
+	public Json headImgUpload(DiveAccount account, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+		Json j = new Json();
+		try {
+			SessionInfo s = getSessionInfo(request);
+			account.setUserName(s.getName());
+			uploadFile(request, account, iconFile);
+			account.setId(s.getId());
+			accountService.edit(account);
+			j.setSuccess(true);
+			j.setMsg("头像上传成功");
+			j.setObj(account.getIcon());
+		} catch (Exception e) {
+			// e.printStackTrace();
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
 	private void uploadFile(HttpServletRequest request,DiveAccount account,MultipartFile imageFile){
 		if(imageFile==null||imageFile.isEmpty())
 			return;

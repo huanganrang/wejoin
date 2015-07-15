@@ -2,7 +2,6 @@ package jb.pageModel;
 
 import java.util.Date;
 
-@SuppressWarnings("serial")
 public class DiveAccount implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -18,7 +17,8 @@ public class DiveAccount implements java.io.Serializable {
 	private java.lang.String email;	
 	private Date addtime;			
 
-	
+	private int logNum; // 潜水日志数量
+	private String qrCodePath; // 二维码地址
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -92,5 +92,20 @@ public class DiveAccount implements java.io.Serializable {
 	public Date getAddtime() {
 		return this.addtime;
 	}
+	
+	public int getLogNum() {
+		return logNum;
+	}
 
+	public void setLogNum(int logNum) {
+		this.logNum = logNum;
+	}
+	
+	public String getQrCodePath() {
+		return qrCodePath;
+	}
+
+	public void setQrCodePath(String qrCodePath) {
+		this.qrCodePath = qrCodePath;
+	}
 }

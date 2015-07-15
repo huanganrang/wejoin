@@ -55,4 +55,6 @@ public interface DiveAccountServiceI {
 
 	public DiveAccount login(DiveAccount account);
 
+	public DiveAccount personHome(String id);
+
 }

@@ -14,6 +14,14 @@
 			style="padding: 1px"></div>
 		<div title="修改密码" data-options="href:'api_updatePass.jsp'"
 			style="padding: 1px"></div>
+		<div title="个人主页" data-options="href:'api_people_center_personHome.jsp'"
+			style="padding: 1px"></div>
+		<div title="个人信息（查）" data-options="href:'api_people_center_personInfo.jsp'"
+			style="padding: 1px"></div>
+		<div title="个人信息（改）" data-options="href:'api_people_center_personInfoUpdate.jsp'"
+			style="padding: 1px"></div>
+		<div title="头像上传" data-options="href:'api_people_center_headImageUpload.jsp'"
+			style="padding: 1px"></div>
 	</div>
 </body>
 </html>
