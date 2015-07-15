@@ -27,6 +27,8 @@
 				style="padding: 1px"></div>
 			<div title="潜聊" data-options="href:'api_bd_query.jsp'"
 				style="padding: 1px"></div>
+			<div title="赞/收藏" data-options="href:'api_point.jsp'"
+				style="padding: 1px"></div>	
 		</div>
 	</div>
 </body>
