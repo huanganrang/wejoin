@@ -2,7 +2,6 @@ package jb.pageModel;
 
 import java.util.Date;
 
-@SuppressWarnings("serial")
 public class DiveLog implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -10,7 +9,7 @@ public class DiveLog implements java.io.Serializable {
 	private java.lang.String id;	
 	private java.lang.String logType;	
 	private java.lang.String fileSrc;	
-	private java.lang.String userId;	
+	private java.lang.String accountId;	
 	private java.lang.String diveType;	
 	private Date diveDate;			
 	private java.lang.String weather;	
@@ -51,12 +50,12 @@ public class DiveLog implements java.io.Serializable {
 	public java.lang.String getFileSrc() {
 		return this.fileSrc;
 	}
-	public void setUserId(java.lang.String userId) {
-		this.userId = userId;
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
 	}
 	
-	public java.lang.String getUserId() {
-		return this.userId;
+	public java.lang.String getAccountId() {
+		return this.accountId;
 	}
 	public void setDiveType(java.lang.String diveType) {
 		this.diveType = diveType;

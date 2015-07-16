@@ -89,6 +89,9 @@ public class TokenManage {
 		tokenMap.putIfAbsent(tokenId, wrap);
 		return tokenId;
 	}
+	public void removeToken(String tokenId){
+		tokenMap.remove(tokenId);
+	}
 	class TokenWrap{
 		private String tokenId;
 		private String name;

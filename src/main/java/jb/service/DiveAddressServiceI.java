@@ -51,4 +51,12 @@ public interface DiveAddressServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 个人收藏潜点收藏列表查询
+	 * @param id
+	 * @param ph
+	 * @return
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
 }

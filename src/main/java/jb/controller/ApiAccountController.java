@@ -70,6 +70,24 @@ public class ApiAccountController extends BaseController {
 	}
 	
 	/**
+	 * 退出登录
+	 * @param account
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/logout")
+	public Json logout(HttpServletRequest request) {
+		Json j = new Json();
+		String tokenId = request.getParameter(TokenManage.TOKEN_FIELD);	
+		tokenManage.removeToken(tokenId);
+		j.setSuccess(true);
+		j.setMsg("退出登录成功！");
+		return j;
+	}
+	
+	/**
 	 * 用户登录
 	 * @param account
 	 * @param headImageFile

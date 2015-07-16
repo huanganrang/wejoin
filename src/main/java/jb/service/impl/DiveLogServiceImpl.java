@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveLogDaoI;
 import jb.model.TdiveLog;
-import jb.pageModel.DiveLog;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveLog;
 import jb.pageModel.PageHelper;
 import jb.service.DiveLogServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveLogServiceImpl extends BaseServiceImpl<DiveLog> implements DiveLogServiceI {
@@ -57,9 +56,9 @@ public class DiveLogServiceImpl extends BaseServiceImpl<DiveLog> implements Dive
 				whereHql += " and t.fileSrc = :fileSrc";
 				params.put("fileSrc", diveLog.getFileSrc());
 			}		
-			if (!F.empty(diveLog.getUserId())) {
-				whereHql += " and t.userId = :userId";
-				params.put("userId", diveLog.getUserId());
+			if (!F.empty(diveLog.getAccountId())) {
+				whereHql += " and t.accountId = :accountId";
+				params.put("accountId", diveLog.getAccountId());
 			}		
 			if (!F.empty(diveLog.getDiveType())) {
 				whereHql += " and t.diveType = :diveType";

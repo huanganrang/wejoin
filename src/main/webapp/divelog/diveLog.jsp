@@ -60,8 +60,8 @@
 				title : '<%=TdiveLog.ALIAS_FILE_SRC%>',
 				width : 50		
 				}, {
-				field : 'userId',
-				title : '<%=TdiveLog.ALIAS_USER_ID%>',
+				field : 'accountId',
+				title : '<%=TdiveLog.ALIAS_ACCOUNT_ID%>',
 				width : 50		
 				}, {
 				field : 'diveType',
@@ -263,8 +263,8 @@
 						<th><%=TdiveLog.ALIAS_FILE_SRC%></th>
 						<td><input type="text" name="fileSrc" maxlength="256"
 							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_USER_ID%></th>
-						<td><input type="text" name="userId" maxlength="36"
+						<th><%=TdiveLog.ALIAS_ACCOUNT_ID%></th>
+						<td><input type="text" name="accountId" maxlength="36"
 							class="span2" /></td>
 						<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>
 						<td><input type="text" name="diveType" maxlength="4"

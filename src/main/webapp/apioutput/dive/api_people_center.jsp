@@ -40,11 +40,9 @@
 			style="padding: 1px"></div>
 		<div title="电子日志添加" data-options="href:'api_people_center_addElectronLog.jsp'"
 			style="padding: 1px"></div>
-		<div title="电子日志详情" data-options="href:'api_people_center_electronLogDetail.jsp'"
-			style="padding: 1px"></div>
 		<div title="纸张日志添加" data-options="href:'api_people_center_addPaperLog.jsp'"
 			style="padding: 1px"></div>
-		<div title="纸张日志详情" data-options="href:'api_people_center_paperLogDetail.jsp'"
+		<div title="日志详情" data-options="href:'api_people_center_logDetail.jsp'"
 			style="padding: 1px"></div>
 		<div title="退出登录" data-options="href:'api_logout.jsp'"
 			style="padding: 1px"></div>
