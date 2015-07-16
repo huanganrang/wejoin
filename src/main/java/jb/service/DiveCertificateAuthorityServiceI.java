@@ -51,4 +51,13 @@ public interface DiveCertificateAuthorityServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 根据用户ID查询潜水认证信息
+	 * @param accountId
+	 * @return
+	 */
+	public DiveCertificateAuthority getInfoByAccountId(String accountId);
+
+	public int saveOrUpdate(DiveCertificateAuthority ca);
+
 }

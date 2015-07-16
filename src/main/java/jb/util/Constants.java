@@ -30,9 +30,14 @@ public interface Constants {
 
 	
 	/**
-	 * 日期格式
+	 * 日期格式yyyy-MM-dd HH:mm:ss
 	 */
 	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
+	/**
+	 * 日期格式yyyy-MM-dd
+	 */
+	public static final String DATE_FORMAT_YMD = "yyyy-MM-dd";
 	
 	public static final String DATE_FORMAT_FOR_ENTITY = "yyyy-MM-dd HH:mm:ss";
 	

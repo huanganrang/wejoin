@@ -1,5 +1,7 @@
 ﻿package jb.service;
 
+import java.util.Map;
+
 import jb.pageModel.DiveCollect;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -50,5 +52,12 @@ public interface DiveCollectServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+
+	/**
+	 * （收藏主页）根据用户id查询每个业务类型的收藏数量
+	 * @param accountId
+	 * @return
+	 */
+	public Map<String, Object> countCollectNum(String accountId);
 
 }

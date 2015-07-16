@@ -51,4 +51,12 @@ public interface DiveEquipServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 个人收藏查询
+	 * @param id
+	 * @param ph
+	 * @return
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
 }

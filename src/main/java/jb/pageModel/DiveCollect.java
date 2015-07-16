@@ -2,12 +2,12 @@ package jb.pageModel;
 
 import java.util.Date;
 
-@SuppressWarnings("serial")
 public class DiveCollect implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
 
 	private java.lang.String id;	
+	private java.lang.String accountId;
 	private java.lang.String businessId;	
 	private java.lang.String businessType;	
 	private Date addtime;			
@@ -22,6 +22,13 @@ public class DiveCollect implements java.io.Serializable {
 		return this.id;
 	}
 
+	public java.lang.String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
+	}
 	
 	public void setBusinessId(java.lang.String businessId) {
 		this.businessId = businessId;

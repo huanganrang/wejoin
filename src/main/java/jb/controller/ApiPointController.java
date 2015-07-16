@@ -1,9 +1,12 @@
 package jb.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import jb.interceptors.TokenManage;
 import jb.pageModel.DiveCollect;
 import jb.pageModel.DivePraise;
 import jb.pageModel.Json;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveCollectServiceI;
 import jb.service.DivePraiseServiceI;
 
@@ -41,10 +44,12 @@ public class ApiPointController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/addCollect")
-	public Json addCollect(String id,String businessType) {
+	public Json addCollect(String id,String businessType,HttpServletRequest request) {
 		Json j = new Json();
 		try{
+			SessionInfo s = getSessionInfo(request);
 			DiveCollect diveCollect = new DiveCollect();
+			diveCollect.setAccountId(s.getId());
 			diveCollect.setBusinessId(id);
 			diveCollect.setBusinessType(businessType);
 			diveCollectService.add(diveCollect);
@@ -77,5 +82,10 @@ public class ApiPointController extends BaseController {
 		}		
 		return j;
 	}	
+	
+	private SessionInfo getSessionInfo(HttpServletRequest request){
+		SessionInfo s = tokenManage.getSessionInfo(request);
+		return s;		
+	}
 	
 }

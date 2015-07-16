@@ -1,15 +1,13 @@
 package jb.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 import jb.interceptors.TokenManage;
-import jb.pageModel.BshootSquare;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveEquip;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
-import jb.pageModel.User;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveEquipServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +41,7 @@ public class ApiEquipController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/hotlist")
 	public DataGrid hotList(PageHelper ph) {
-		//TODO 暂时不知道怎么算热门
+		// 暂时不知道怎么算热门
 		/*ph.setOrder("desc");
 		ph.setSort("bsPraise");*/
 		DiveEquip diveEquip = new DiveEquip();
@@ -94,4 +92,29 @@ public class ApiEquipController extends BaseController {
 		return j;
 	}	
 	
+	/**
+	 * 个人收藏查询
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/collectlist")
+	public Json collectlist(PageHelper ph, HttpServletRequest request) {	
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			DataGrid dg = diveEquipService.dataGridCollect(s.getId(), ph);
+			j.setObj(dg);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	private SessionInfo getSessionInfo(HttpServletRequest request){
+		SessionInfo s = tokenManage.getSessionInfo(request);
+		return s;		
+	}
 }

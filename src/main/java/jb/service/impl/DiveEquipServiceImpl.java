@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveEquipDaoI;
 import jb.model.TdiveEquip;
-import jb.pageModel.DiveEquip;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveEquip;
 import jb.pageModel.PageHelper;
 import jb.service.DiveEquipServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements DiveEquipServiceI {
@@ -113,6 +112,33 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 	@Override
 	public void delete(String id) {
 		diveEquipDao.delete(diveEquipDao.get(TdiveEquip.class, id));
+	}
+
+	/**
+	 * 个人收藏查询
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph) {
+		List<DiveEquip> ol = new ArrayList<DiveEquip>();
+		ph.setSort("addtime");
+		ph.setOrder("desc");
+		
+		DataGrid dg = new DataGrid();
+		
+		String hql = "select e from TdiveEquip e ,TdiveCollect t  "
+				+ " where e.id = t.businessId and t.businessType='BT03' and t.accountId = :accountId";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		List<TdiveEquip> l = diveEquipDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
+		dg.setTotal(diveEquipDao.count("select count(*) " + hql.substring(8) , params));
+		if (l != null && l.size() > 0) {
+			for (TdiveEquip t : l) {
+				DiveEquip o = new DiveEquip();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
+		}
+		dg.setRows(ol);
+		return dg;
 	}
 
 }

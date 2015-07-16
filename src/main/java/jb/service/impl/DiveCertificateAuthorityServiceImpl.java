@@ -10,15 +10,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveCertificateAuthorityDaoI;
 import jb.model.TdiveCertificateAuthority;
-import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.PageHelper;
 import jb.service.DiveCertificateAuthorityServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCertificateAuthority> implements DiveCertificateAuthorityServiceI {
@@ -75,10 +75,10 @@ public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCer
 
 	@Override
 	public void add(DiveCertificateAuthority diveCertificateAuthority) {
+		diveCertificateAuthority.setId(UUID.randomUUID().toString());
 		TdiveCertificateAuthority t = new TdiveCertificateAuthority();
 		BeanUtils.copyProperties(diveCertificateAuthority, t);
-		t.setId(UUID.randomUUID().toString());
-		//t.setCreatedatetime(new Date());
+		t.setAddtime(new Date());
 		diveCertificateAuthorityDao.save(t);
 	}
 
@@ -96,14 +96,47 @@ public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCer
 	public void edit(DiveCertificateAuthority diveCertificateAuthority) {
 		TdiveCertificateAuthority t = diveCertificateAuthorityDao.get(TdiveCertificateAuthority.class, diveCertificateAuthority.getId());
 		if (t != null) {
-			MyBeanUtils.copyProperties(diveCertificateAuthority, t, new String[] { "id" , "createdatetime" },true);
-			//t.setModifydatetime(new Date());
+			MyBeanUtils.copyProperties(diveCertificateAuthority, t, new String[] { "id"},true);
 		}
 	}
 
 	@Override
 	public void delete(String id) {
 		diveCertificateAuthorityDao.delete(diveCertificateAuthorityDao.get(TdiveCertificateAuthority.class, id));
+	}
+
+	/**
+	 * 根据用户ID查询潜水认证信息
+	 */
+	public DiveCertificateAuthority getInfoByAccountId(String accountId) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		TdiveCertificateAuthority t = diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
+		if(t != null) {
+			DiveCertificateAuthority o = new DiveCertificateAuthority();
+			BeanUtils.copyProperties(t, o);
+			return o;
+		}
+		
+		return null;
+	}
+
+	/**
+	 * 新增或修改认证信息
+	 */
+	public int saveOrUpdate(DiveCertificateAuthority ca) {
+		if(F.empty(ca.getId())) {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("accountId", ca.getAccountId());
+			if(diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params) != null){
+				return -1;
+			}
+			add(ca);
+		} else {
+			edit(ca);
+		}
+		
+		return 1;
 	}
 
 }

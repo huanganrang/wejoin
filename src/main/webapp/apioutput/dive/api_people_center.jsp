@@ -22,6 +22,32 @@
 			style="padding: 1px"></div>
 		<div title="头像上传" data-options="href:'api_people_center_headImageUpload.jsp'"
 			style="padding: 1px"></div>
+		<div title="潜水认证（查）" data-options="href:'api_people_center_certificateInfo.jsp'"
+			style="padding: 1px"></div>
+		<div title="潜水认证（改）" data-options="href:'api_people_center_certificateInfoUpdate.jsp'"
+			style="padding: 1px"></div>
+		<div title="收藏主页" data-options="href:'api_people_center_collectHome.jsp'"
+			style="padding: 1px"></div>
+		<div title="潜水旅游收藏列表" data-options="href:'api_people_center_travelCollectList.jsp'"
+			style="padding: 1px"></div>
+		<div title="潜点收藏列表" data-options="href:'api_people_center_addressCollectList.jsp'"
+			style="padding: 1px"></div>
+		<div title="装备收藏列表" data-options="href:'api_people_center_equipCollectList.jsp'"
+			style="padding: 1px"></div>
+		<div title="活动收藏列表" data-options="href:'api_people_center_activityCollectList.jsp'"
+			style="padding: 1px"></div>
+		<div title="潜水日志" data-options="href:'api_people_center_logList.jsp'"
+			style="padding: 1px"></div>
+		<div title="电子日志添加" data-options="href:'api_people_center_addElectronLog.jsp'"
+			style="padding: 1px"></div>
+		<div title="电子日志详情" data-options="href:'api_people_center_electronLogDetail.jsp'"
+			style="padding: 1px"></div>
+		<div title="纸张日志添加" data-options="href:'api_people_center_addPaperLog.jsp'"
+			style="padding: 1px"></div>
+		<div title="纸张日志详情" data-options="href:'api_people_center_paperLogDetail.jsp'"
+			style="padding: 1px"></div>
+		<div title="退出登录" data-options="href:'api_logout.jsp'"
+			style="padding: 1px"></div>
 	</div>
 </body>
 </html>

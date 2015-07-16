@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_certificate_authority")
 @DynamicInsert(true)
@@ -24,6 +24,7 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 	//alias
 	public static final String TABLE_ALIAS = "DiveCertificateAuthority";
 	public static final String ALIAS_ID = "id";
+	public static final String ALIAS_ACCOUNT_ID = "用户id";
 	public static final String ALIAS_ORG_CODE = "机构代码";
 	public static final String ALIAS_LEVEL_CODE = "等级";
 	public static final String ALIAS_AUTH_DATE = "发证日期";
@@ -43,6 +44,8 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 	//columns START
 	//@Length(max=36)
 	private java.lang.String id;
+	//@Length(max=36)
+	private java.lang.String accountId;
 	//@Length(max=4)
 	private java.lang.String orgCode;
 	//@Length(max=4)
@@ -77,6 +80,15 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 	@Column(name = "id", unique = true, nullable = false, length = 36)
 	public java.lang.String getId() {
 		return this.id;
+	}
+	
+	@Column(name = "account_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getAccountId() {
+		return this.accountId;
+	}
+	
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
 	}
 	
 	@Column(name = "org_code", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
