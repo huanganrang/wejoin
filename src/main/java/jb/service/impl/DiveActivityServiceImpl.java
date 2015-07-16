@@ -69,6 +69,14 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				whereHql += " and t.description = :description";
 				params.put("description", diveActivity.getDescription());
 			}		
+			if (!F.empty(diveActivity.getStatus())) {
+				whereHql += " and t.status = :status";
+				params.put("status", diveActivity.getStatus());
+			}		
+			if (!F.empty(diveActivity.getStamp())) {
+				whereHql += " and t.stamp = :stamp";
+				params.put("stamp", diveActivity.getStamp());
+			}		
 		}	
 		return whereHql;
 	}
@@ -104,6 +112,14 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 	@Override
 	public void delete(String id) {
 		diveActivityDao.delete(diveActivityDao.get(TdiveActivity.class, id));
+	}
+
+
+	@Override
+	public DataGrid dataGriComplex(DiveActivity diveActivity, PageHelper ph) {
+		DataGrid datagrid = dataGrid(diveActivity,ph);
+		//TODO 查询报名人数，赞数，评论数
+		return datagrid;
 	}
 
 }

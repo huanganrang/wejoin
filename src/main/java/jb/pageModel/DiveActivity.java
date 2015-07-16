@@ -15,7 +15,14 @@ public class DiveActivity implements java.io.Serializable {
 	private java.lang.String addrId;	
 	private java.lang.String endAddr;	
 	private java.lang.String description;	
-	private Date addtime;			
+	private java.lang.String status;	
+	private java.lang.String stamp;	
+	private Date addtime;		
+	
+	private int commentNum; //评论数量
+	private int collectNum; //收藏数量
+	private int applyNum;  //报名人数
+	private int praiseNum;  //赞人数
 
 	
 
@@ -77,6 +84,20 @@ public class DiveActivity implements java.io.Serializable {
 	public java.lang.String getDescription() {
 		return this.description;
 	}
+	public void setStatus(java.lang.String status) {
+		this.status = status;
+	}
+	
+	public java.lang.String getStatus() {
+		return this.status;
+	}
+	public void setStamp(java.lang.String stamp) {
+		this.stamp = stamp;
+	}
+	
+	public java.lang.String getStamp() {
+		return this.stamp;
+	}
 	public void setAddtime(Date addtime) {
 		this.addtime = addtime;
 	}
@@ -84,5 +105,39 @@ public class DiveActivity implements java.io.Serializable {
 	public Date getAddtime() {
 		return this.addtime;
 	}
+
+	public int getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(int commentNum) {
+		this.commentNum = commentNum;
+	}
+
+	public int getCollectNum() {
+		return collectNum;
+	}
+
+	public void setCollectNum(int collectNum) {
+		this.collectNum = collectNum;
+	}
+
+	public int getApplyNum() {
+		return applyNum;
+	}
+
+	public void setApplyNum(int applyNum) {
+		this.applyNum = applyNum;
+	}
+
+	public int getPraiseNum() {
+		return praiseNum;
+	}
+
+	public void setPraiseNum(int praiseNum) {
+		this.praiseNum = praiseNum;
+	}
+	
+	
 
 }

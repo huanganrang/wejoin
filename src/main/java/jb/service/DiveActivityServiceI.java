@@ -21,6 +21,14 @@ public interface DiveActivityServiceI {
 	 * @return
 	 */
 	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph);
+	
+	/**
+	 * complex grid
+	 * @param diveActivity
+	 * @param ph
+	 * @return
+	 */
+	public DataGrid dataGriComplex(DiveActivity diveActivity, PageHelper ph);
 
 	/**
 	 * 添加DiveActivity

@@ -1,7 +1,7 @@
 ﻿
 /*
  * @author John
- * @date - 2015-07-11
+ * @date - 2015-07-16
  */
 
 package jb.model;
@@ -31,6 +31,8 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	public static final String ALIAS_ADDR_ID = "潜点ID";
 	public static final String ALIAS_END_ADDR = "目的地";
 	public static final String ALIAS_DESCRIPTION = "描述";
+	public static final String ALIAS_STATUS = "活动状态";
+	public static final String ALIAS_STAMP = "印章";
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats
@@ -57,6 +59,10 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	private java.lang.String endAddr;
 	//@Length(max=2147483647)
 	private java.lang.String description;
+	//@Length(max=4)
+	private java.lang.String status;
+	//@Length(max=4)
+	private java.lang.String stamp;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -144,6 +150,24 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 		this.description = description;
 	}
 	
+	@Column(name = "status", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getStatus() {
+		return this.status;
+	}
+	
+	public void setStatus(java.lang.String status) {
+		this.status = status;
+	}
+	
+	@Column(name = "stamp", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getStamp() {
+		return this.stamp;
+	}
+	
+	public void setStamp(java.lang.String stamp) {
+		this.stamp = stamp;
+	}
+	
 
 	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 19)
 	public java.util.Date getAddtime() {
@@ -166,6 +190,8 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 			.append("AddrId",getAddrId())
 			.append("EndAddr",getEndAddr())
 			.append("Description",getDescription())
+			.append("Status",getStatus())
+			.append("Stamp",getStamp())
 			.append("Addtime",getAddtime())
 			.toString();
 	}

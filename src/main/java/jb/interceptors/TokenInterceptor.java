@@ -76,7 +76,6 @@ public class TokenInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		String tokenId = request.getParameter(TokenManage.TOKEN_FIELD);		
-		if(BaseController.DEFAULT_TOKEN.equals(tokenId))return true;
 		return tokenManage.validToken(tokenId);
 	}
 

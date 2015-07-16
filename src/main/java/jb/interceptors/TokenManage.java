@@ -10,7 +10,10 @@ import jb.pageModel.SessionInfo;
 
 public class TokenManage {
 	
-	public static String TOKEN_FIELD = "tokenId";
+	public static final String TOKEN_FIELD = "tokenId";
+	
+	public static final String DEFAULT_TOKEN = "1D96DACB84F21890ED9F4928FA8B352B";
+
 	
 	private ConcurrentHashMap<String, TokenWrap> tokenMap = new ConcurrentHashMap<String, TokenWrap>();
 	
@@ -22,6 +25,7 @@ public class TokenManage {
 		
 	
 	public void init(){
+		this.buildToken(DEFAULT_TOKEN, "1","system");
 		new Thread("token 回收"){
 			public void run(){
 				while(true){
@@ -75,6 +79,11 @@ public class TokenManage {
 	
 	public String buildToken(String uid,String name){
 		String tokenId = UUID.uuid();
+		buildToken(tokenId,uid,name);
+		return tokenId;
+	}
+	
+	private String buildToken(String tokenId,String uid,String name){
 		TokenWrap wrap = new TokenWrap(tokenId,uid,name);
 		wrap.retime();
 		tokenMap.putIfAbsent(tokenId, wrap);

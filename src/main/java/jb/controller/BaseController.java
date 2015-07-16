@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jb.absx.F;
 import jb.android.push.NotificationManager;
+import jb.interceptors.TokenManage;
 import jb.listener.Application;
 import jb.model.TmessageCount;
 import jb.pageModel.Colum;
@@ -56,7 +57,7 @@ import com.alibaba.fastjson.JSONObject;
 @RequestMapping("/baseController")
 public class BaseController {
 
-	public static final String DEFAULT_TOKEN = "1D96DACB84F21890ED9F4928FA8B352B";
+	public static final String DEFAULT_TOKEN = TokenManage.DEFAULT_TOKEN;
 	private String _publishSettingVal = "2"; //生产环境
 	@Autowired
 	protected MessageServiceI messageService;

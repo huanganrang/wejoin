@@ -19,7 +19,7 @@
 				style="padding: 1px"></div>
 			<div title="度假村" data-options="href:'api_store.jsp'"
 				style="padding: 1px"></div>		
-			<div title="活动" data-options="href:'api_bd_query.jsp'"
+			<div title="活动" data-options="href:'api_activity.jsp'"
 				style="padding: 1px"></div>
 			<div title="潜水" data-options="href:'api_bd_query.jsp'"
 				style="padding: 1px"></div>
