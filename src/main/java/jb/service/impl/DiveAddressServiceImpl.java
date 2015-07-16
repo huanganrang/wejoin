@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveAddressDaoI;
 import jb.model.TdiveAddress;
-import jb.pageModel.DiveAddress;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveAddress;
 import jb.pageModel.PageHelper;
 import jb.service.DiveAddressServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> implements DiveAddressServiceI {
@@ -112,6 +111,33 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 	@Override
 	public void delete(String id) {
 		diveAddressDao.delete(diveAddressDao.get(TdiveAddress.class, id));
+	}
+
+	/**
+	 * 个人收藏潜点收藏列表查询
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph) {
+		List<DiveAddress> ol = new ArrayList<DiveAddress>();
+		ph.setSort("addtime");
+		ph.setOrder("desc");
+		
+		DataGrid dg = new DataGrid();
+		
+		String hql = "select a from TdiveAddress a ,TdiveCollect t  "
+				+ " where a.id = t.businessId and t.businessType='BT02' and t.accountId = :accountId";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		List<TdiveAddress> l = diveAddressDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
+		dg.setTotal(diveAddressDao.count("select count(*) " + hql.substring(8) , params));
+		if (l != null && l.size() > 0) {
+			for (TdiveAddress t : l) {
+				DiveAddress o = new DiveAddress();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
+		}
+		dg.setRows(ol);
+		return dg;
 	}
 
 }

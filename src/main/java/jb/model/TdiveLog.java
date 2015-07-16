@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_log")
 @DynamicInsert(true)
@@ -26,7 +26,7 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	public static final String ALIAS_ID = "id";
 	public static final String ALIAS_LOG_TYPE = "电子/纸质";
 	public static final String ALIAS_FILE_SRC = "纸质图片路径";
-	public static final String ALIAS_USER_ID = "会员ID";
+	public static final String ALIAS_ACCOUNT_ID = "会员ID";
 	public static final String ALIAS_DIVE_TYPE = "潜水类型";
 	public static final String ALIAS_DIVE_DATE = "时间";
 	public static final String ALIAS_WEATHER = "天气";
@@ -58,7 +58,7 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	//@Length(max=256)
 	private java.lang.String fileSrc;
 	//@Length(max=36)
-	private java.lang.String userId;
+	private java.lang.String accountId;
 	//@Length(max=4)
 	private java.lang.String diveType;
 	//
@@ -125,13 +125,13 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 		this.fileSrc = fileSrc;
 	}
 	
-	@Column(name = "user_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
-	public java.lang.String getUserId() {
-		return this.userId;
+	@Column(name = "account_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getAccountId() {
+		return this.accountId;
 	}
 	
-	public void setUserId(java.lang.String userId) {
-		this.userId = userId;
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
 	}
 	
 	@Column(name = "dive_type", unique = false, nullable = true, insertable = true, updatable = true, length = 4)

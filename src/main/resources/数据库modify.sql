@@ -7,4 +7,7 @@ ALTER TABLE `dive_certificate_authority`
 	
 ALTER TABLE `dive_collect`
 	ADD COLUMN `account_id` VARCHAR(36) NULL COMMENT '用户id' AFTER `id`;
+
+ALTER TABLE `dive_log`
+	CHANGE COLUMN `user_id` `account_id` VARCHAR(36) NULL DEFAULT NULL AFTER `seeing`;
 -- xuwenming 2015-07-16 end --

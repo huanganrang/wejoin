@@ -17,8 +17,8 @@
 				<td>${diveLog.fileSrc}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveLog.ALIAS_USER_ID%></th>
-				<td>${diveLog.userId}</td>
+				<th><%=TdiveLog.ALIAS_ACCOUNT_ID%></th>
+				<td>${diveLog.accountId}</td>
 				<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>
 				<td>${diveLog.diveType}</td>
 			</tr>

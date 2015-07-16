@@ -1,10 +1,13 @@
 package jb.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import jb.interceptors.TokenManage;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAddress;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveAddressServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,4 +77,29 @@ public class ApiAddressController extends BaseController {
 		return j;
 	}	
 	
+	/**
+	 * 个人收藏潜点收藏列表查询
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/collectlist")
+	public Json collectlist(PageHelper ph, HttpServletRequest request) {	
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			DataGrid dg = diveAddressService.dataGridCollect(s.getId(), ph);
+			j.setObj(dg);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	private SessionInfo getSessionInfo(HttpServletRequest request){
+		SessionInfo s = tokenManage.getSessionInfo(request);
+		return s;		
+	}
 }
