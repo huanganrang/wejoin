@@ -29,6 +29,7 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	public static final String ALIAS_ACCOUNT_ID = "会员ID";
 	public static final String ALIAS_DIVE_TYPE = "潜水类型";
 	public static final String ALIAS_DIVE_DATE = "时间";
+	public static final String ALIAS_DIVE_ADDRESS = "潜水地点";
 	public static final String ALIAS_WEATHER = "天气";
 	public static final String ALIAS_WATER_TEMPERATURE = "水温";
 	public static final String ALIAS_SEEING = "能见度";
@@ -40,6 +41,7 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	public static final String ALIAS_WIND_POWER = "风力";
 	public static final String ALIAS_GAS_START = "开始氧量";
 	public static final String ALIAS_GAS_END = "结束氧量";
+	public static final String ALIAS_HIGH_GAS = "是否高氧";
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats
@@ -87,6 +89,9 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	private java.lang.Float gasEnd;
 	//
 	private java.util.Date addtime;
+	//@Length(max=256)
+	private java.lang.String diveAddress;
+	private java.lang.Integer highGas;
 	//columns END
 
 
@@ -264,6 +269,23 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 		this.addtime = addtime;
 	}
 	
+	@Column(name = "dive_address", unique = false, nullable = true, insertable = true, updatable = true, length = 256)
+	public java.lang.String getDiveAddress() {
+		return diveAddress;
+	}
+	
+	public void setDiveAddress(java.lang.String diveAddress) {
+		this.diveAddress = diveAddress;
+	}
+	
+	@Column(name = "high_gas", unique = false, nullable = true, insertable = true, updatable = true, length = 1)
+	public java.lang.Integer getHighGas() {
+		return highGas;
+	}
+	
+	public void setHighGas(java.lang.Integer highGas) {
+		this.highGas = highGas;
+	}
 	
 	/*
 	public String toString() {

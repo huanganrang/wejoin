@@ -59,4 +59,12 @@ public interface DiveActivityServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 个人收藏-活动收藏列表查询
+	 * @param accountId
+	 * @param ph
+	 * @return
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
 }

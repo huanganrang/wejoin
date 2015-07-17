@@ -10,4 +10,13 @@ ALTER TABLE `dive_collect`
 
 ALTER TABLE `dive_log`
 	CHANGE COLUMN `user_id` `account_id` VARCHAR(36) NULL DEFAULT NULL AFTER `seeing`;
+	
+ALTER TABLE `dive_log`
+	ADD COLUMN `dive_address` VARCHAR(256) NULL DEFAULT NULL COMMENT '潜水地点' AFTER `addtime`,
+	ADD COLUMN `high_gas` VARCHAR(256) NULL DEFAULT NULL AFTER `file_src`,
+	CHANGE COLUMN `gas_end` `gas_end` INT(1) NULL DEFAULT NULL COMMENT '是否高氧（1：是；2：否）' AFTER `high_gas`;
+	
+ALTER TABLE `dive_log`
+	CHANGE COLUMN `in_time` `in_time` TIME NULL DEFAULT NULL AFTER `gas_start`,
+	CHANGE COLUMN `out_time` `out_time` TIME NULL DEFAULT NULL AFTER `log_type`;
 -- xuwenming 2015-07-16 end --

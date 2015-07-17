@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveActivityDaoI;
 import jb.model.TdiveActivity;
-import jb.pageModel.DiveActivity;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveActivity;
 import jb.pageModel.PageHelper;
 import jb.service.DiveActivityServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> implements DiveActivityServiceI {
@@ -122,4 +121,30 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		return datagrid;
 	}
 
+	/**
+	 * 个人收藏-活动收藏列表查询
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph) {
+		List<DiveActivity> ol = new ArrayList<DiveActivity>();
+		ph.setSort("addtime");
+		ph.setOrder("desc");
+		
+		DataGrid dg = new DataGrid();
+		
+		String hql = "select a from TdiveActivity a ,TdiveCollect t  "
+				+ " where a.id = t.businessId and t.businessType='BT04' and t.accountId = :accountId";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		List<TdiveActivity> l = diveActivityDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
+		dg.setTotal(diveActivityDao.count("select count(*) " + hql.substring(8) , params));
+		if (l != null && l.size() > 0) {
+			for (TdiveActivity t : l) {
+				DiveActivity o = new DiveActivity();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
+		}
+		dg.setRows(ol);
+		return dg;
+	}
 }

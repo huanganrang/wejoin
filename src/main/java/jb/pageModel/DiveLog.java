@@ -23,9 +23,9 @@ public class DiveLog implements java.io.Serializable {
 	private java.lang.Float windPower;	
 	private java.lang.Float gasStart;	
 	private java.lang.Float gasEnd;	
-	private Date addtime;			
-
-	
+	private Date addtime;	
+	private java.lang.String diveAddress;
+	private java.lang.Integer highGas;
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -154,6 +154,22 @@ public class DiveLog implements java.io.Serializable {
 	
 	public Date getAddtime() {
 		return this.addtime;
+	}
+
+	public java.lang.String getDiveAddress() {
+		return diveAddress;
+	}
+
+	public void setDiveAddress(java.lang.String diveAddress) {
+		this.diveAddress = diveAddress;
+	}
+
+	public java.lang.Integer getHighGas() {
+		return highGas;
+	}
+
+	public void setHighGas(java.lang.Integer highGas) {
+		this.highGas = highGas;
 	}
 
 }

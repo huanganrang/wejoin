@@ -1,6 +1,7 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +79,7 @@ public class DiveLogServiceImpl extends BaseServiceImpl<DiveLog> implements Dive
 		TdiveLog t = new TdiveLog();
 		BeanUtils.copyProperties(diveLog, t);
 		t.setId(UUID.randomUUID().toString());
-		//t.setCreatedatetime(new Date());
+		t.setAddtime(new Date());
 		diveLogDao.save(t);
 	}
 
