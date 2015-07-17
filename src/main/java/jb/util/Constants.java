@@ -82,4 +82,5 @@ public interface Constants {
 	 * 布尔false
 	 */
 	public static final String GLOBAL_BOOLEAN_FALSE = "0";
+	
 }

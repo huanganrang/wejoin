@@ -1,7 +1,7 @@
 ﻿
 /*
  * @author John
- * @date - 2015-07-06
+ * @date - 2015-07-17
  */
 
 package jb.model;
@@ -26,7 +26,8 @@ public class TdivePraise implements java.io.Serializable,IEntity{
 	public static final String ALIAS_ID = "id";
 	public static final String ALIAS_BUSINESS_ID = "业务ID";
 	public static final String ALIAS_BUSINESS_TYPE = "业务类型";
-	public static final String ALIAS_ADDTIME = "赞时间";
+	public static final String ALIAS_ACCOUNT_ID = "用户ID";
+	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats
 	public static final String FORMAT_ADDTIME = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
@@ -40,6 +41,8 @@ public class TdivePraise implements java.io.Serializable,IEntity{
 	private java.lang.String businessId;
 	//@Length(max=4)
 	private java.lang.String businessType;
+	//@Length(max=36)
+	private java.lang.String accountId;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -80,8 +83,17 @@ public class TdivePraise implements java.io.Serializable,IEntity{
 		this.businessType = businessType;
 	}
 	
+	@Column(name = "account_Id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getAccountId() {
+		return this.accountId;
+	}
+	
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
+	}
+	
 
-	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 19)
 	public java.util.Date getAddtime() {
 		return this.addtime;
 	}
@@ -97,6 +109,7 @@ public class TdivePraise implements java.io.Serializable,IEntity{
 			.append("Id",getId())
 			.append("BusinessId",getBusinessId())
 			.append("BusinessType",getBusinessType())
+			.append("AccountId",getAccountId())
 			.append("Addtime",getAddtime())
 			.toString();
 	}

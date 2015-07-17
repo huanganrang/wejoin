@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="jb.model.TdivePraise"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="jb.model.TdivePraise" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
@@ -33,26 +32,31 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
-		<form id="form" method="post">
-			<input type="hidden" name="id" />
+	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">	
+		<form id="form" method="post">		
+				<input type="hidden" name="id"/>
 			<table class="table table-hover table-condensed">
-				<tr>
-					<th><%=TdivePraise.ALIAS_BUSINESS_ID%></th>
-					<td><input class="span2" name="businessId" type="text"
-						class="span2" /></td>
-					<th><%=TdivePraise.ALIAS_BUSINESS_TYPE%></th>
-					<td><input class="span2" name="businessType" type="text"
-						class="span2" /></td>
-				</tr>
-				<tr>
-					<th><%=TdivePraise.ALIAS_ADDTIME%></th>
-					<td><input class="span2" name="addtime" type="text"
-						onclick="WdatePicker({dateFmt:'<%=TdivePraise.FORMAT_ADDTIME%>'})"
-						maxlength="0" class="" /></td>
-				</tr>
-			</table>
+				<tr>	
+					<th><%=TdivePraise.ALIAS_BUSINESS_ID%></th>	
+					<td>
+					<input class="span2" name="businessId" type="text" class="span2"/>
+					</td>							
+					<th><%=TdivePraise.ALIAS_BUSINESS_TYPE%></th>	
+					<td>
+					<input class="span2" name="businessType" type="text" class="span2"/>
+					</td>							
+				</tr>	
+				<tr>	
+					<th><%=TdivePraise.ALIAS_ACCOUNT_ID%></th>	
+					<td>
+					<input class="span2" name="accountId" type="text" class="span2"/>
+					</td>							
+					<th><%=TdivePraise.ALIAS_ADDTIME%></th>	
+					<td>
+					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdivePraise.FORMAT_ADDTIME%>'})"  maxlength="0" class="" />
+					</td>							
+				</tr>	
+			</table>		
 		</form>
 	</div>
 </div>

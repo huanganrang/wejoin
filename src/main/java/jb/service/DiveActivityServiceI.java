@@ -10,6 +10,7 @@ import jb.pageModel.PageHelper;
  * 
  */
 public interface DiveActivityServiceI {
+	public final String ACTIVITY_TAG = "BT04";
 
 	/**
 	 * 获取DiveActivity数据表格

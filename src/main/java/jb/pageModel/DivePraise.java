@@ -10,6 +10,7 @@ public class DivePraise implements java.io.Serializable {
 	private java.lang.String id;	
 	private java.lang.String businessId;	
 	private java.lang.String businessType;	
+	private java.lang.String accountId;	
 	private Date addtime;			
 
 	
@@ -36,6 +37,13 @@ public class DivePraise implements java.io.Serializable {
 	
 	public java.lang.String getBusinessType() {
 		return this.businessType;
+	}
+	public void setAccountId(java.lang.String accountId) {
+		this.accountId = accountId;
+	}
+	
+	public java.lang.String getAccountId() {
+		return this.accountId;
 	}
 	public void setAddtime(Date addtime) {
 		this.addtime = addtime;

@@ -68,11 +68,13 @@ public class ApiPointController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/addPraise")
-	public Json addPraise(String id,String businessType) {
+	public Json addPraise(String id,String businessType,HttpServletRequest request) {
 		Json j = new Json();
 		try{
+			SessionInfo s = getSessionInfo(request);
 			DivePraise divePraise = new DivePraise();
 			divePraise.setBusinessId(id);
+			divePraise.setAccountId(s.getId());
 			divePraise.setBusinessType(businessType);
 			divePraiseService.add(divePraise);
 			j.success();

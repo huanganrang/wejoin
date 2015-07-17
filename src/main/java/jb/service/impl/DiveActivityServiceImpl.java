@@ -7,7 +7,10 @@ import java.util.Map;
 import java.util.UUID;
 
 import jb.absx.F;
+import jb.dao.DiveActivityApplyDaoI;
+import jb.dao.DiveActivityCommentDaoI;
 import jb.dao.DiveActivityDaoI;
+import jb.dao.DivePraiseDaoI;
 import jb.model.TdiveActivity;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveActivity;
@@ -24,6 +27,12 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 
 	@Autowired
 	private DiveActivityDaoI diveActivityDao;
+	@Autowired
+	private DivePraiseDaoI divePraiseDao;
+	@Autowired
+	private DiveActivityCommentDaoI diveActivityCommentDao;
+	@Autowired
+	private DiveActivityApplyDaoI diveActivityApplyDao;
 
 	@Override
 	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph) {
@@ -117,7 +126,32 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 	@Override
 	public DataGrid dataGriComplex(DiveActivity diveActivity, PageHelper ph) {
 		DataGrid datagrid = dataGrid(diveActivity,ph);
-		//TODO 查询报名人数，赞数，评论数
+		List<DiveActivity> diveActivitys = datagrid.getRows();
+		if(diveActivitys!=null&&diveActivitys.size()>0){
+			String[] businessIds = new String[diveActivitys.size()];
+			int i = 0;
+			for(DiveActivity d : diveActivitys){
+				businessIds[i] = d.getId();
+				i++;
+			}
+			//查询报名人数，赞数，评论数
+			HashMap<String,Integer> praises = divePraiseDao.getCountPraiseNum(ACTIVITY_TAG, businessIds);
+			HashMap<String,Integer> comments = diveActivityCommentDao.getCountCommentNum(businessIds);
+			HashMap<String,Integer> applies = diveActivityApplyDao.getCountApplyNum(businessIds);
+			for(DiveActivity d : diveActivitys){
+				Integer num = praises.get(d.getId());
+				if(num != null)
+				d.setPraiseNum(num);
+				
+				num = comments.get(d.getId());
+				if(num != null)
+				d.setCommentNum(num);
+				
+				num = applies.get(d.getId());
+				if(num != null)
+				d.setApplyNum(num);
+			}
+		}
 		return datagrid;
 	}
 
@@ -132,7 +166,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		DataGrid dg = new DataGrid();
 		
 		String hql = "select a from TdiveActivity a ,TdiveCollect t  "
-				+ " where a.id = t.businessId and t.businessType='BT04' and t.accountId = :accountId";
+				+ " where a.id = t.businessId and t.businessType='"+ACTIVITY_TAG+"' and t.accountId = :accountId";
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("accountId", accountId);
 		List<TdiveActivity> l = diveActivityDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());

@@ -57,6 +57,10 @@ public class DivePraiseServiceImpl extends BaseServiceImpl<DivePraise> implement
 				whereHql += " and t.businessType = :businessType";
 				params.put("businessType", divePraise.getBusinessType());
 			}		
+			if (!F.empty(divePraise.getAccountId())) {
+				whereHql += " and t.accountId = :accountId";
+				params.put("accountId", divePraise.getAccountId());
+			}		
 		}	
 		return whereHql;
 	}
