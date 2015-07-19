@@ -45,6 +45,13 @@ public interface DiveActivityServiceI {
 	 * @return
 	 */
 	public DiveActivity get(String id);
+	
+	/**
+	 * 获取详细接口
+	 * @param id
+	 * @return
+	 */
+	public DiveActivity getDetail(String id);
 
 	/**
 	 * 修改DiveActivity

@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import jb.interceptors.TokenManage;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveActivity;
+import jb.pageModel.DiveActivityApply;
 import jb.pageModel.DiveActivityComment;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.pageModel.SessionInfo;
+import jb.service.DiveActivityApplyServiceI;
 import jb.service.DiveActivityCommentServiceI;
 import jb.service.DiveActivityServiceI;
 
@@ -37,6 +39,8 @@ public class ApiActivityController extends BaseController {
 	@Autowired
 	private DiveActivityCommentServiceI diveActivityCommentService;
 	
+	@Autowired
+	private DiveActivityApplyServiceI diveActivityApplyService;
 	
 	/**
 	 * 活动列表
@@ -64,7 +68,7 @@ public class ApiActivityController extends BaseController {
 		Json j = new Json();
 		try{
 			//TODO,详情接口需要完善
-			j.setObj(diveActivityService.get(id));
+			j.setObj(diveActivityService.getDetail(id));
 			j.success();
 		}catch(Exception e){
 			j.fail();
@@ -94,6 +98,26 @@ public class ApiActivityController extends BaseController {
 		return j;
 	}	
 	
+	/**
+	 * 报名
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/apply")
+	public Json apply(HttpServletRequest request,DiveActivityApply diveActivityApply) {	
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			diveActivityApply.setUserId(s.getId());
+			diveActivityApplyService.add(diveActivityApply);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
 	/**
 	 * 个人收藏-活动收藏列表查询
 	 * @param ph

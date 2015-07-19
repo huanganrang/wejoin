@@ -1,6 +1,9 @@
 package jb.pageModel;
 
 import java.util.Date;
+import java.util.List;
+
+import jb.model.TdiveAccount;
 
 @SuppressWarnings("serial")
 public class DiveActivity implements java.io.Serializable {
@@ -23,6 +26,11 @@ public class DiveActivity implements java.io.Serializable {
 	private int collectNum; //收藏数量
 	private int applyNum;  //报名人数
 	private int praiseNum;  //赞人数
+	
+	//报名者
+	private List<DiveAccount> applies;
+	//评论
+	private List<DiveActivityComment> diveActivityCommentList;
 
 	
 
@@ -137,6 +145,25 @@ public class DiveActivity implements java.io.Serializable {
 	public void setPraiseNum(int praiseNum) {
 		this.praiseNum = praiseNum;
 	}
+
+	public List<DiveAccount> getApplies() {
+		return applies;
+	}
+
+	public void setApplies(List<DiveAccount> applies) {
+		this.applies = applies;
+	}
+
+	public List<DiveActivityComment> getDiveActivityCommentList() {
+		return diveActivityCommentList;
+	}
+
+	public void setDiveActivityCommentList(
+			List<DiveActivityComment> diveActivityCommentList) {
+		this.diveActivityCommentList = diveActivityCommentList;
+	}
+
+	
 	
 	
 

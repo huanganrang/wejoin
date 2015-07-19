@@ -7,13 +7,18 @@ import java.util.Map;
 import java.util.UUID;
 
 import jb.absx.F;
+import jb.dao.DiveAccountDaoI;
 import jb.dao.DiveActivityApplyDaoI;
 import jb.dao.DiveActivityCommentDaoI;
 import jb.dao.DiveActivityDaoI;
 import jb.dao.DivePraiseDaoI;
+import jb.model.TdiveAccount;
 import jb.model.TdiveActivity;
+import jb.model.TdiveActivityComment;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveAccount;
 import jb.pageModel.DiveActivity;
+import jb.pageModel.DiveActivityComment;
 import jb.pageModel.PageHelper;
 import jb.service.DiveActivityServiceI;
 import jb.util.MyBeanUtils;
@@ -32,7 +37,9 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 	@Autowired
 	private DiveActivityCommentDaoI diveActivityCommentDao;
 	@Autowired
-	private DiveActivityApplyDaoI diveActivityApplyDao;
+	private DiveActivityApplyDaoI diveActivityApplyDao;	
+	@Autowired
+	private DiveAccountDaoI diveAccountDao;
 
 	@Override
 	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph) {
@@ -180,5 +187,40 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		}
 		dg.setRows(ol);
 		return dg;
+	}
+
+
+	@Override
+	public DiveActivity getDetail(String id) {
+		DiveActivity diveActivity = get(id);
+		List<TdiveAccount> applies = diveAccountDao.getDiveAccountByApply(id);
+		diveActivity.setApplies(convert(applies));
+		List<DiveAccount> commentUsers = convert(diveAccountDao.getDiveAccountByComment(id));
+		Map<String,DiveAccount> commentUsersMap = new HashMap<String,DiveAccount>();
+		for(DiveAccount t : commentUsers){
+			commentUsersMap.put(t.getId(), t);
+		}
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("activityId", id);
+		List<TdiveActivityComment> tDiveActivityCommentList = diveActivityCommentDao.find("from TdiveActivityComment t where t.activityId =:activityId order by addtime", params);
+		List<DiveActivityComment> diveActivityCommentList = new ArrayList<DiveActivityComment>();
+		for(TdiveActivityComment t : tDiveActivityCommentList){
+			DiveActivityComment diveActivityComment = new DiveActivityComment();
+			BeanUtils.copyProperties(t,diveActivityComment);
+			diveActivityComment.setCommentUser(commentUsersMap.get(t.getUserId()));
+			diveActivityCommentList.add(diveActivityComment);
+		}
+		diveActivity.setDiveActivityCommentList(diveActivityCommentList);
+		return diveActivity;
+	}
+	
+	private List<DiveAccount> convert(List<TdiveAccount> diveAccounts){
+		List<DiveAccount> list = new ArrayList<DiveAccount>();
+		for(TdiveAccount s : diveAccounts){
+			DiveAccount o = new DiveAccount();
+			BeanUtils.copyProperties(s, o);
+			list.add(o);
+		}
+		return list;		
 	}
 }

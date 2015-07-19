@@ -2,6 +2,7 @@ package jb.pageModel;
 
 import java.util.Date;
 
+
 @SuppressWarnings("serial")
 public class DiveActivityComment implements java.io.Serializable {
 
@@ -13,6 +14,7 @@ public class DiveActivityComment implements java.io.Serializable {
 	private java.lang.String pid;	
 	private java.lang.String userId;	
 	private Date addtime;			
+	private DiveAccount commentUser;
 
 	
 
@@ -60,5 +62,16 @@ public class DiveActivityComment implements java.io.Serializable {
 	public Date getAddtime() {
 		return this.addtime;
 	}
+
+	public DiveAccount getCommentUser() {
+		return commentUser;
+	}
+
+	public void setCommentUser(DiveAccount commentUser) {
+		this.commentUser = commentUser;
+	}
+
+
+	
 
 }

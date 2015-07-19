@@ -14,7 +14,9 @@
 		<div title="详情页" data-options="href:'api_activity_detail.jsp'"
 			style="padding: 1px"></div>
 		<div title="添加评论" data-options="href:'api_activity_add_comment.jsp'"
-			style="padding: 1px"></div>		
+			style="padding: 1px"></div>	
+		<div title="报名" data-options="href:'api_activity_apply.jsp'"
+			style="padding: 1px"></div>			
 	</div>
 
 </body>
