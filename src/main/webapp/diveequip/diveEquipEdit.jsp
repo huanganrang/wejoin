@@ -2,6 +2,7 @@
 <%@ page import="jb.model.TdiveEquip" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>
 <script type="text/javascript">
 	$(function() {
 		parent.$.messager.progress('close');
@@ -59,7 +60,7 @@
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
 					<td>
-					<input class="span2" name="equipType" type="text" class="span2"  value="${diveEquip.equipType}"/>
+						<jb:select dataType="ET" name="equipType" value="${diveEquip.equipType}"></jb:select>						
 					</td>							
 					<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
 					<td>
@@ -83,7 +84,7 @@
 					</td>							
 					<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
 					<td>
-					<input class="span2" name="equipBrand" type="text" class="span2"  value="${diveEquip.equipBrand}"/>
+						<jb:select dataType="EB" name="equipBrand" value="${diveEquip.equipBrand}"></jb:select>											
 					</td>							
 			</tr>	
 				<tr>	

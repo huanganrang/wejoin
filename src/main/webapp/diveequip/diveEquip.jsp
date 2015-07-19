@@ -2,6 +2,7 @@
 <%@ page import="jb.model.TdiveEquip" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -247,7 +248,7 @@
 						<tr>	
 							<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
 							<td>
-									<input type="text" name="equipType" maxlength="4" class="span2"/>
+								<jb:select dataType="ET" name="equipType"></jb:select>
 							</td>
 							<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
 							<td>
