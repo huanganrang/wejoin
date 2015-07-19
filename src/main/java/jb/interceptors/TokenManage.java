@@ -22,10 +22,12 @@ public class TokenManage {
 	 */
 	private long freeTime = 1000*60*60*24;
 	
-		
+	private void buidDefaultToken(){
+		buildToken(DEFAULT_TOKEN, "1","system");
+	}	
 	
 	public void init(){
-		this.buildToken(DEFAULT_TOKEN, "1","system");
+		
 		new Thread("token 回收"){
 			public void run(){
 				while(true){
@@ -45,7 +47,7 @@ public class TokenManage {
 	}
 	
 	public boolean validToken(String tid){
-		return tokenMap.get(tid)==null?false:true;
+		return getUid(tid)==null?false:true;
 	}
 	
 	public String getName(String tid){
@@ -58,17 +60,29 @@ public class TokenManage {
 	}
 	
 	public String getUid(String tid){
-		TokenWrap token = tokenMap.get(tid);
+		TokenWrap token = getTokenWrap(tid);
 		String uid = null;
 		if(token!=null){
 			uid = token.getUid(); 
 		}
 		return uid;
 	}
-	
+	private TokenWrap getTokenWrap(String tid){
+		TokenWrap token = tokenMap.get(tid);
+		if(token != null){
+			token.retime();
+		}else{
+			if(DEFAULT_TOKEN.equals(tid)){
+				buidDefaultToken();
+				token = tokenMap.get(DEFAULT_TOKEN);
+			}			
+		}
+		return token;
+		
+	}
 	public SessionInfo getSessionInfo(HttpServletRequest request){
 		String tokenId = request.getParameter(TokenManage.TOKEN_FIELD);	
-		TokenWrap token = tokenMap.get(tokenId);
+		TokenWrap token = getTokenWrap(tokenId);
 		if(token == null) return null;
 		SessionInfo s = new SessionInfo();		
 		s.setId(token.getUid());
