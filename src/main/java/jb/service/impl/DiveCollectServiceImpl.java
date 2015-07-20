@@ -92,6 +92,13 @@ public class DiveCollectServiceImpl extends BaseServiceImpl<DiveCollect> impleme
 	public void delete(String id) {
 		diveCollectDao.delete(diveCollectDao.get(TdiveCollect.class, id));
 	}
+	
+	/**
+	 * 根据参数删除收藏记录
+	 */
+	public void deleteByParam(Map<String, Object> params) {
+		diveCollectDao.delete(diveCollectDao.get("from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params));
+	}
 
 	/**
 	 * （收藏主页）根据用户id查询每个业务类型的收藏数量
@@ -108,5 +115,6 @@ public class DiveCollectServiceImpl extends BaseServiceImpl<DiveCollect> impleme
 		List<Map> l = diveCollectDao.findBySql2Map(sql, params);
 		return l.get(0);
 	}
+
 
 }

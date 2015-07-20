@@ -41,9 +41,16 @@ public class ApiAddressController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/arealist")
-	public DataGrid brandList(PageHelper ph,DiveAddress diveAddress) {
-		DataGrid dg = diveAddressService.dataGrid(diveAddress,ph);
-		return dg;
+	public Json arealist(PageHelper ph,DiveAddress diveAddress) {
+		Json j = new Json();
+		try{
+			j.setObj(diveAddressService.dataGrid(diveAddress,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	/**
@@ -53,9 +60,16 @@ public class ApiAddressController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/featurelist")
-	public DataGrid typelist(PageHelper ph,DiveAddress diveAddress) {		
-		DataGrid dg = diveAddressService.dataGrid(diveAddress,ph);
-		return dg;
+	public Json featurelist(PageHelper ph,DiveAddress diveAddress) {		
+		Json j = new Json();
+		try{
+			j.setObj(diveAddressService.dataGrid(diveAddress,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	/**

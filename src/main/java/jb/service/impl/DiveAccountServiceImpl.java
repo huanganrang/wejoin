@@ -125,16 +125,23 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 
 	/**
 	 * 注册
+	 * @throws Exception 
 	 */
-	public DiveAccount reg(DiveAccount account) {
-		TdiveAccount t = new TdiveAccount();
-		account.setId(UUID.randomUUID().toString());
-		account.setAddtime(new Date());
-		account.setPassword(MD5Util.md5(account.getPassword()));
-		MyBeanUtils.copyProperties(account, t, true);
-		diveAccountDao.save(t);
-		
-		return account;
+	public DiveAccount reg(DiveAccount account) throws Exception {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("userName", account.getUserName());
+		if(diveAccountDao.count("select count(*) from TdiveAccount t where t.userName = :userName", params) > 0) {
+			throw new Exception("用户名已存在！");
+		} else {
+			TdiveAccount t = new TdiveAccount();
+			account.setId(UUID.randomUUID().toString());
+			account.setAddtime(new Date());
+			account.setPassword(MD5Util.md5(account.getPassword()));
+			MyBeanUtils.copyProperties(account, t, true);
+			diveAccountDao.save(t);
+			
+			return account;
+		}
 	}
 
 	/**

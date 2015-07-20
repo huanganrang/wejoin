@@ -10,6 +10,7 @@ import jb.pageModel.PageHelper;
  * 
  */
 public interface DiveStoreServiceI {
+	public final String STORE_TAG = "BT05";
 
 	/**
 	 * 获取DiveStore数据表格
@@ -50,5 +51,15 @@ public interface DiveStoreServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+
+	public Object dataGriComplex(DiveStore diveStore, PageHelper ph);
+
+	/**
+	 * 获取详情信息
+	 * @param id
+	 * @param id2
+	 * @return
+	 */
+	public DiveStore getDetail(String id, String accountId);
 
 }

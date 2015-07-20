@@ -1,5 +1,8 @@
 package jb.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import jb.interceptors.TokenManage;
@@ -62,6 +65,30 @@ public class ApiPointController extends BaseController {
 	}	
 	
 	/**
+	 * 取消收藏接口
+	 * @param id
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/cancelCollect")
+	public Json cancelCollect(String id,String businessType,HttpServletRequest request) {
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("accountId", s.getId());
+			params.put("businessId", id);
+			params.put("businessType", businessType);
+			diveCollectService.deleteByParam(params);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 点赞接口
 	 * @param id
 	 * @return
@@ -77,6 +104,30 @@ public class ApiPointController extends BaseController {
 			divePraise.setAccountId(s.getId());
 			divePraise.setBusinessType(businessType);
 			divePraiseService.add(divePraise);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
+	 * 取消赞接口
+	 * @param id
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/cancelPraise")
+	public Json cancelPraise(String id,String businessType,HttpServletRequest request) {
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("accountId", s.getId());
+			params.put("businessId", id);
+			params.put("businessType", businessType);
+			divePraiseService.deleteByParam(params);
 			j.success();
 		}catch(Exception e){
 			j.fail();

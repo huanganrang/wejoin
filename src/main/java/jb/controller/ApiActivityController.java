@@ -49,11 +49,18 @@ public class ApiActivityController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/activityList")
-	public DataGrid activityList(PageHelper ph) {
-		
-		DiveActivity diveActivity = new DiveActivity();
-		DataGrid dg = diveActivityService.dataGriComplex(diveActivity,ph);
-		return dg;
+	public Json activityList(PageHelper ph) {
+		Json j = new Json();
+		try{
+			DiveActivity diveActivity = new DiveActivity();
+			DataGrid dg = diveActivityService.dataGriComplex(diveActivity,ph);
+			j.setObj(dg);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	

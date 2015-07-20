@@ -60,4 +60,6 @@ public interface DiveCollectServiceI {
 	 */
 	public Map<String, Object> countCollectNum(String accountId);
 
+	public void deleteByParam(Map<String, Object> params);
+
 }

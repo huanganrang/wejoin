@@ -1,30 +1,33 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import jb.absx.F;
+import jb.dao.DivePraiseDaoI;
 import jb.dao.DiveStoreDaoI;
 import jb.model.TdiveStore;
-import jb.pageModel.DiveStore;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveStore;
 import jb.pageModel.PageHelper;
 import jb.service.DiveStoreServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements DiveStoreServiceI {
 
 	@Autowired
 	private DiveStoreDaoI diveStoreDao;
+	
+	@Autowired
+	private DivePraiseDaoI divePraiseDao;
 
 	@Override
 	public DataGrid dataGrid(DiveStore diveStore, PageHelper ph) {
@@ -108,6 +111,46 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 	@Override
 	public void delete(String id) {
 		diveStoreDao.delete(diveStoreDao.get(TdiveStore.class, id));
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object dataGriComplex(DiveStore diveStore, PageHelper ph) {
+		DataGrid datagrid = dataGrid(diveStore, ph);
+		List<DiveStore> diveStores = datagrid.getRows();
+		if(diveStores != null && diveStores.size() > 0){
+			String[] businessIds = new String[diveStores.size()];
+			int i = 0;
+			for(DiveStore d : diveStores){
+				businessIds[i] = d.getId();
+				i++;
+			}
+			//查询赞数
+			HashMap<String,Integer> praises = divePraiseDao.getCountPraiseNum(STORE_TAG, businessIds);
+			for(DiveStore d : diveStores){
+				Integer num = praises.get(d.getId());
+				d.setPraiseNum(num == null ? 0 : num);
+			}
+		}
+		return datagrid;
+	}
+
+	/**
+	 * 获取详情信息
+	 */
+	public DiveStore getDetail(String id, String accountId) {
+		DiveStore d = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", STORE_TAG);
+		if(divePraiseDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			d.setPraise(true);
+		} else {
+			d.setPraise(false);
+		}
+		return d;
 	}
 
 }

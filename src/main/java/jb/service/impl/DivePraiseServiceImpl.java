@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DivePraiseDaoI;
 import jb.model.TdivePraise;
-import jb.pageModel.DivePraise;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DivePraise;
 import jb.pageModel.PageHelper;
 import jb.service.DivePraiseServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DivePraiseServiceImpl extends BaseServiceImpl<DivePraise> implements DivePraiseServiceI {
@@ -98,4 +97,10 @@ public class DivePraiseServiceImpl extends BaseServiceImpl<DivePraise> implement
 		divePraiseDao.delete(divePraiseDao.get(TdivePraise.class, id));
 	}
 
+	/**
+	 * 根据参数删除赞记录
+	 */
+	public void deleteByParam(Map<String, Object> params) {
+		divePraiseDao.delete(divePraiseDao.get("from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params));
+	}
 }

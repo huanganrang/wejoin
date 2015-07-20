@@ -13,6 +13,10 @@
 			style="padding: 1px"></div>
 		<div title="点赞" data-options="href:'api_point_praise.jsp'"
 			style="padding: 1px"></div>
+		<div title="取消收藏" data-options="href:'api_point_cancelCollect.jsp'"
+			style="padding: 1px"></div>
+		<div title="取消赞" data-options="href:'api_point_cancelPraise.jsp'"
+			style="padding: 1px"></div>
 	</div>
 
 </body>

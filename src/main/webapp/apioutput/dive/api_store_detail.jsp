@@ -62,7 +62,7 @@ String url = request.getContextPath()+"/api/apiStoreController/getStoreDetail";
 			<label>结果：</label>
 			<div id="store_detail_result"></div>
 			<div>
-				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
+				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:对象格式<br />
 
 <table x:str="" cellpadding="0" cellspacing="0" width="601">
     <colgroup>
@@ -101,7 +101,7 @@ String url = request.getContextPath()+"/api/apiStoreController/getStoreDetail";
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜水名称
+                度假村名称
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -134,19 +134,6 @@ String url = request.getContextPath()+"/api/apiStoreController/getStoreDetail";
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                description
-            </td>
-            <td style="border-top:none;border-left:none">
-                longtext
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                文案
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
                 area
             </td>
             <td style="border-top:none;border-left:none">
@@ -158,21 +145,6 @@ String url = request.getContextPath()+"/api/apiStoreController/getStoreDetail";
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
                 地区
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                feature
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                特点
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -192,30 +164,16 @@ String url = request.getContextPath()+"/api/apiStoreController/getStoreDetail";
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                price
+                isPraise
             </td>
             <td style="border-top:none;border-left:none">
-                float
+            	boolean
             </td>
             <td style="border-top:none;border-left:none" x:num="">
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                价格
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                price
-            </td>
-            <td style="border-top:none;border-left:none">
-                float
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                价格
+                是否赞过（true:是；false:否）
             </td>
         </tr>
     </tbody>

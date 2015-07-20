@@ -1,5 +1,7 @@
 ﻿package jb.service;
 
+import java.util.Map;
+
 import jb.pageModel.DivePraise;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -50,5 +52,7 @@ public interface DivePraiseServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+
+	public void deleteByParam(Map<String, Object> params);
 
 }

@@ -2,6 +2,8 @@ package jb.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,7 +62,10 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		account = accountService.login(account);
 		if (account != null) {
-			j.setObj(tokenManage.buildToken(account.getId(),account.getUserName()));
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("tokenId", tokenManage.buildToken(account.getId(),account.getUserName()));
+			result.put("accountId", account.getId());
+			j.setObj(result);
 			j.setSuccess(true);
 			j.setMsg("登陆成功！");
 		} else {
@@ -88,7 +93,7 @@ public class ApiAccountController extends BaseController {
 	}
 	
 	/**
-	 * 用户登录
+	 * 用户注册
 	 * @param account
 	 * @param headImageFile
 	 * @param request
@@ -100,8 +105,11 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		try {
 			account.setIcon(uploadFile(request, account.getUserName(), iconFile));
-			account = accountService.reg(account);		
-			j.setObj(tokenManage.buildToken(account.getId(),account.getUserName()));
+			account = accountService.reg(account);	
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("tokenId", tokenManage.buildToken(account.getId(),account.getUserName()));
+			result.put("accountId", account.getId());
+			j.setObj(result);
 			j.setSuccess(true);
 			j.setMsg("注册成功");
 		} catch (Exception e) {

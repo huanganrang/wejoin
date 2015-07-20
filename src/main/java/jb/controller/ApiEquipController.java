@@ -40,13 +40,21 @@ public class ApiEquipController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/hotlist")
-	public DataGrid hotList(PageHelper ph) {
-		// 暂时不知道怎么算热门
-		/*ph.setOrder("desc");
-		ph.setSort("bsPraise");*/
-		DiveEquip diveEquip = new DiveEquip();
-		DataGrid dg = diveEquipService.dataGrid(diveEquip,ph);
-		return dg;
+	public Json hotList(PageHelper ph) {
+		Json j = new Json();
+		try{
+			// 暂时不知道怎么算热门
+			/*ph.setOrder("desc");
+			ph.setSort("bsPraise");*/
+			DiveEquip diveEquip = new DiveEquip();
+			DataGrid dg = diveEquipService.dataGrid(diveEquip,ph);
+			j.setObj(dg);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	/**
@@ -56,9 +64,16 @@ public class ApiEquipController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/brandlist")
-	public DataGrid brandList(PageHelper ph,DiveEquip diveEquip) {
-		DataGrid dg = diveEquipService.dataGrid(diveEquip,ph);
-		return dg;
+	public Json brandList(PageHelper ph,DiveEquip diveEquip) {
+		Json j = new Json();
+		try{
+			j.setObj(diveEquipService.dataGrid(diveEquip,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	/**
@@ -68,9 +83,16 @@ public class ApiEquipController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/typelist")
-	public DataGrid typelist(PageHelper ph,DiveEquip diveEquip) {		
-		DataGrid dg = diveEquipService.dataGrid(diveEquip,ph);
-		return dg;
+	public Json typelist(PageHelper ph,DiveEquip diveEquip) {	
+		Json j = new Json();
+		try{
+			j.setObj(diveEquipService.dataGrid(diveEquip,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
 	}	
 	
 	/**
