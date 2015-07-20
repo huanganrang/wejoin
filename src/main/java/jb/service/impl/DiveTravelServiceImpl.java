@@ -1,7 +1,6 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,15 +9,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveTravelDaoI;
 import jb.model.TdiveTravel;
-import jb.pageModel.DiveTravel;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveTravel;
 import jb.pageModel.PageHelper;
 import jb.service.DiveTravelServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implements DiveTravelServiceI {
@@ -113,6 +112,33 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 	@Override
 	public void delete(String id) {
 		diveTravelDao.delete(diveTravelDao.get(TdiveTravel.class, id));
+	}
+
+	/**
+	 * 个人收藏-潜水旅游收藏列表查询
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph) {
+		List<DiveTravel> ol = new ArrayList<DiveTravel>();
+		ph.setSort("addtime");
+		ph.setOrder("desc");
+		
+		DataGrid dg = new DataGrid();
+		
+		String hql = "select a from TdiveTravel a ,TdiveCollect t  "
+				+ " where a.id = t.businessId and t.businessType='BT01' and t.accountId = :accountId";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		List<TdiveTravel> l = diveTravelDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
+		dg.setTotal(diveTravelDao.count("select count(*) " + hql.substring(8) , params));
+		if (l != null && l.size() > 0) {
+			for (TdiveTravel t : l) {
+				DiveTravel o = new DiveTravel();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
+		}
+		dg.setRows(ol);
+		return dg;
 	}
 
 }

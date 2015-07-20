@@ -21,7 +21,7 @@
 				style="padding: 1px"></div>		
 			<div title="活动" data-options="href:'api_activity.jsp'"
 				style="padding: 1px"></div>
-			<div title="潜水" data-options="href:'api_bd_query.jsp'"
+			<div title="潜水旅游" data-options="href:'api_travel.jsp'"
 				style="padding: 1px"></div>
 			<div title="学习" data-options="href:'api_bd_course.jsp'"
 				style="padding: 1px"></div>

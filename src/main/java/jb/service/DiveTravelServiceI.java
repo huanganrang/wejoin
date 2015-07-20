@@ -51,4 +51,12 @@ public interface DiveTravelServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 个人收藏-潜水旅游收藏列表查询
+	 * @param id
+	 * @param ph
+	 * @return
+	 */
+	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
 }
