@@ -158,8 +158,8 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 	public DiveAccount personHome(String id) {
 		DiveAccount a = get(id);
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("userId", id);
-		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.userId = :userId", params);
+		params.put("accountId", id);
+		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.accountId = :accountId", params);
 		a.setLogNum(logNum == null ? 0 : logNum.intValue());
 		return a;
 	}

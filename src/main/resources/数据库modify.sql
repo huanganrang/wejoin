@@ -13,8 +13,7 @@ ALTER TABLE `dive_log`
 	
 ALTER TABLE `dive_log`
 	ADD COLUMN `dive_address` VARCHAR(256) NULL DEFAULT NULL COMMENT '潜水地点' AFTER `addtime`,
-	ADD COLUMN `high_gas` VARCHAR(256) NULL DEFAULT NULL AFTER `file_src`,
-	CHANGE COLUMN `gas_end` `gas_end` INT(1) NULL DEFAULT NULL COMMENT '是否高氧（1：是；2：否）' AFTER `high_gas`;
+	ADD COLUMN `high_gas` INT(1)  NULL DEFAULT NULL AFTER `file_src`;
 	
 ALTER TABLE `dive_log`
 	CHANGE COLUMN `in_time` `in_time` TIME NULL DEFAULT NULL AFTER `gas_start`,
