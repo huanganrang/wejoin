@@ -23,11 +23,13 @@
 				style="padding: 1px"></div>
 			<div title="潜水旅游" data-options="href:'api_travel.jsp'"
 				style="padding: 1px"></div>
-			<div title="学习" data-options="href:'api_bd_course.jsp'"
+			<div title="学习" data-options="href:'api_course.jsp'"
 				style="padding: 1px"></div>
-			<div title="潜聊" data-options="href:'api_bd_query.jsp'"
+			<div title="潜聊" data-options="href:''"
 				style="padding: 1px"></div>
 			<div title="赞/收藏" data-options="href:'api_point.jsp'"
+				style="padding: 1px"></div>	
+			<div title="订单" data-options="href:'api_order.jsp'"
 				style="padding: 1px"></div>	
 		</div>
 	</div>
