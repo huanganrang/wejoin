@@ -34,11 +34,11 @@
 	<div class="easyui-layout" data-options="fit:true">
 		
 		<div data-options="region:'center'">
-			<form id="register_Form" method="post" enctype="multipart/form-data">
+			<form id="headImgUpload_Form" method="post" enctype="multipart/form-data">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
-						<td>${pageContext.request.contextPath}/api/apiAccountController/register</td>
+						<td>${pageContext.request.contextPath}/api/apiAccountController/headImgUpload</td>
 					</tr>
 					
 					<tr>
@@ -53,7 +53,7 @@
 					<tr>
 						<td colspan="2" align="center">
 						<input type="button"
-							value="提交" onclick="javascript:$('#register_Form').submit();" /></td>
+							value="提交" onclick="javascript:$('#headImgUpload_Form').submit();" /></td>
 					</tr>
 				</table>
 			</form>
