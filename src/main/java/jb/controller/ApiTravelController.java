@@ -79,10 +79,11 @@ public class ApiTravelController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getTravelDetail")
-	public Json getTravelDetail(String id) {
+	public Json getTravelDetail(String id, HttpServletRequest request) {
 		Json j = new Json();
 		try{
-			j.setObj(diveTravelService.get(id));
+			SessionInfo s = getSessionInfo(request);
+			j.setObj(diveTravelService.getDetail(id, s.getId()));
 			j.success();
 		}catch(Exception e){
 			j.fail();

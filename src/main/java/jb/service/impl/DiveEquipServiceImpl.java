@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import jb.absx.F;
+import jb.dao.DiveCollectDaoI;
 import jb.dao.DiveEquipDaoI;
 import jb.model.TdiveEquip;
 import jb.pageModel.DataGrid;
@@ -24,6 +25,9 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 
 	@Autowired
 	private DiveEquipDaoI diveEquipDao;
+	
+	@Autowired
+	private DiveCollectDaoI diveCollectDao;
 
 	@Override
 	public DataGrid dataGrid(DiveEquip diveEquip, PageHelper ph) {
@@ -113,6 +117,23 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 	public void delete(String id) {
 		diveEquipDao.delete(diveEquipDao.get(TdiveEquip.class, id));
 	}
+	
+	/**
+	 * 获取详情信息
+	 */
+	public DiveEquip getDetail(String id, String accountId) {
+		DiveEquip d = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", EQUIP_TAG);
+		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			d.setCollect(true); // 已收藏
+		} else {
+			d.setCollect(false); // 未收藏
+		}
+		return d;
+	}
 
 	/**
 	 * 个人收藏查询
@@ -125,7 +146,7 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 		DataGrid dg = new DataGrid();
 		
 		String hql = "select e from TdiveEquip e ,TdiveCollect t  "
-				+ " where e.id = t.businessId and t.businessType='BT03' and t.accountId = :accountId";
+				+ " where e.id = t.businessId and t.businessType='"+EQUIP_TAG+"' and t.accountId = :accountId";
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("accountId", accountId);
 		List<TdiveEquip> l = diveEquipDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());

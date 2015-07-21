@@ -71,11 +71,12 @@ public class ApiActivityController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getActivityDetail")
-	public Json getActivityDetail(String id) {
+	public Json getActivityDetail(String id, HttpServletRequest request) {
 		Json j = new Json();
 		try{
+			SessionInfo s = tokenManage.getSessionInfo(request);
 			//TODO,详情接口需要完善
-			j.setObj(diveActivityService.getDetail(id));
+			j.setObj(diveActivityService.getDetail(id, s.getId()));
 			j.success();
 		}catch(Exception e){
 			j.fail();

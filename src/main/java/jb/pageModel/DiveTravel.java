@@ -2,7 +2,6 @@ package jb.pageModel;
 
 import java.util.Date;
 
-@SuppressWarnings("serial")
 public class DiveTravel implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -18,7 +17,7 @@ public class DiveTravel implements java.io.Serializable {
 	private java.lang.String status;	
 	private Date addtime;			
 
-	
+	private boolean isCollect;
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -91,6 +90,14 @@ public class DiveTravel implements java.io.Serializable {
 	
 	public Date getAddtime() {
 		return this.addtime;
+	}
+
+	public boolean isCollect() {
+		return isCollect;
+	}
+
+	public void setCollect(boolean isCollect) {
+		this.isCollect = isCollect;
 	}
 
 }

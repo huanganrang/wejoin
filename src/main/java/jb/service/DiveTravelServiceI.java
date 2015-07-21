@@ -10,6 +10,8 @@ import jb.pageModel.PageHelper;
  * 
  */
 public interface DiveTravelServiceI {
+	
+	public final String TRAVEL_TAG = "BT01";
 
 	/**
 	 * 获取DiveTravel数据表格
@@ -58,5 +60,7 @@ public interface DiveTravelServiceI {
 	 * @return
 	 */
 	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
+	public DiveTravel getDetail(String id, String accountId);
 
 }

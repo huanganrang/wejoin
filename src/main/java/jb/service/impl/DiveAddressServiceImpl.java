@@ -8,6 +8,8 @@ import java.util.UUID;
 
 import jb.absx.F;
 import jb.dao.DiveAddressDaoI;
+import jb.dao.DiveCollectDaoI;
+import jb.dao.DivePraiseDaoI;
 import jb.model.TdiveAddress;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAddress;
@@ -24,6 +26,12 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 
 	@Autowired
 	private DiveAddressDaoI diveAddressDao;
+	
+	@Autowired
+	private DivePraiseDaoI divePraiseDao;
+	
+	@Autowired
+	private DiveCollectDaoI diveCollectDao;
 
 	@Override
 	public DataGrid dataGrid(DiveAddress diveAddress, PageHelper ph) {
@@ -112,6 +120,28 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 	public void delete(String id) {
 		diveAddressDao.delete(diveAddressDao.get(TdiveAddress.class, id));
 	}
+	
+	/**
+	 * 获取详情信息
+	 */
+	public DiveAddress getDetail(String id, String accountId) {
+		DiveAddress d = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", ADDRESS_TAG);
+		if(divePraiseDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			d.setPraise(true); // 已赞
+		} else {
+			d.setPraise(false); // 未赞
+		}
+		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			d.setCollect(true); // 已收藏
+		} else {
+			d.setCollect(false); // 未收藏
+		}
+		return d;
+	}
 
 	/**
 	 * 个人收藏潜点收藏列表查询
@@ -124,7 +154,7 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 		DataGrid dg = new DataGrid();
 		
 		String hql = "select a from TdiveAddress a ,TdiveCollect t  "
-				+ " where a.id = t.businessId and t.businessType='BT02' and t.accountId = :accountId";
+				+ " where a.id = t.businessId and t.businessType='"+ADDRESS_TAG+"' and t.accountId = :accountId";
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("accountId", accountId);
 		List<TdiveAddress> l = diveAddressDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
@@ -139,5 +169,6 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 		dg.setRows(ol);
 		return dg;
 	}
+
 
 }

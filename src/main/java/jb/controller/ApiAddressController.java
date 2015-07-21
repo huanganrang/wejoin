@@ -79,10 +79,11 @@ public class ApiAddressController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getAddressDetail")
-	public Json getAddressDetail(String id) {
+	public Json getAddressDetail(String id, HttpServletRequest request) {
 		Json j = new Json();
 		try{
-			j.setObj(diveAddressService.get(id));
+			SessionInfo s = tokenManage.getSessionInfo(request);
+			j.setObj(diveAddressService.getDetail(id, s.getId()));
 			j.success();
 		}catch(Exception e){
 			j.fail();

@@ -3,9 +3,6 @@ package jb.pageModel;
 import java.util.Date;
 import java.util.List;
 
-import jb.model.TdiveAccount;
-
-@SuppressWarnings("serial")
 public class DiveActivity implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -26,6 +23,8 @@ public class DiveActivity implements java.io.Serializable {
 	private int collectNum; //收藏数量
 	private int applyNum;  //报名人数
 	private int praiseNum;  //赞人数
+	
+	private boolean isCollect;
 	
 	//报名者
 	private List<DiveAccount> applies;
@@ -163,8 +162,13 @@ public class DiveActivity implements java.io.Serializable {
 		this.diveActivityCommentList = diveActivityCommentList;
 	}
 
-	
-	
-	
+	public boolean isCollect() {
+		return isCollect;
+	}
+
+	public void setCollect(boolean isCollect) {
+		this.isCollect = isCollect;
+	}
+
 
 }

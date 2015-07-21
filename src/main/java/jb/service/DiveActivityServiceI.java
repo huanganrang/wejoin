@@ -49,9 +49,10 @@ public interface DiveActivityServiceI {
 	/**
 	 * 获取详细接口
 	 * @param id
+	 * @param accountId 
 	 * @return
 	 */
-	public DiveActivity getDetail(String id);
+	public DiveActivity getDetail(String id, String accountId);
 
 	/**
 	 * 修改DiveActivity

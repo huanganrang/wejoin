@@ -10,6 +10,8 @@ import jb.pageModel.PageHelper;
  * 
  */
 public interface DiveAddressServiceI {
+	
+	public final String ADDRESS_TAG = "BT02";
 
 	/**
 	 * 获取DiveAddress数据表格
@@ -58,5 +60,7 @@ public interface DiveAddressServiceI {
 	 * @return
 	 */
 	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
+	public DiveAddress getDetail(String id, String accountId);
 
 }

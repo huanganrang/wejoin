@@ -10,6 +10,8 @@ import jb.pageModel.PageHelper;
  * 
  */
 public interface DiveEquipServiceI {
+	
+	public final String EQUIP_TAG = "BT03";
 
 	/**
 	 * 获取DiveEquip数据表格
@@ -58,5 +60,7 @@ public interface DiveEquipServiceI {
 	 * @return
 	 */
 	public DataGrid dataGridCollect(String accountId, PageHelper ph);
+
+	public DiveEquip getDetail(String id, String accountId);
 
 }

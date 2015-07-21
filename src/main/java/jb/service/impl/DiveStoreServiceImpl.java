@@ -146,9 +146,9 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 		params.put("businessId", id);
 		params.put("businessType", STORE_TAG);
 		if(divePraiseDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
-			d.setPraise(true);
+			d.setPraise(true); // 已赞
 		} else {
-			d.setPraise(false);
+			d.setPraise(false); // 未赞
 		}
 		return d;
 	}

@@ -102,10 +102,11 @@ public class ApiEquipController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/getEquipDetail")
-	public Json getEquipDetail(String id) {
+	public Json getEquipDetail(String id, HttpServletRequest request) {
 		Json j = new Json();
 		try{
-			j.setObj(diveEquipService.get(id));
+			SessionInfo s = tokenManage.getSessionInfo(request);
+			j.setObj(diveEquipService.getDetail(id, s.getId()));
 			j.success();
 		}catch(Exception e){
 			j.fail();

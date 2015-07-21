@@ -11,6 +11,7 @@ import jb.dao.DiveAccountDaoI;
 import jb.dao.DiveActivityApplyDaoI;
 import jb.dao.DiveActivityCommentDaoI;
 import jb.dao.DiveActivityDaoI;
+import jb.dao.DiveCollectDaoI;
 import jb.dao.DivePraiseDaoI;
 import jb.model.TdiveAccount;
 import jb.model.TdiveActivity;
@@ -34,6 +35,8 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 	private DiveActivityDaoI diveActivityDao;
 	@Autowired
 	private DivePraiseDaoI divePraiseDao;
+	@Autowired
+	private DiveCollectDaoI diveCollectDao;
 	@Autowired
 	private DiveActivityCommentDaoI diveActivityCommentDao;
 	@Autowired
@@ -130,6 +133,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public DataGrid dataGriComplex(DiveActivity diveActivity, PageHelper ph) {
 		DataGrid datagrid = dataGrid(diveActivity,ph);
@@ -191,8 +195,19 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 
 
 	@Override
-	public DiveActivity getDetail(String id) {
+	public DiveActivity getDetail(String id, String accountId) {
 		DiveActivity diveActivity = get(id);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", ACTIVITY_TAG);
+		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			diveActivity.setCollect(true); // 已收藏
+		} else {
+			diveActivity.setCollect(false); // 未收藏
+		}
+		
 		List<TdiveAccount> applies = diveAccountDao.getDiveAccountByApply(id);
 		diveActivity.setApplies(convert(applies));
 		List<DiveAccount> commentUsers = convert(diveAccountDao.getDiveAccountByComment(id));
@@ -200,7 +215,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		for(DiveAccount t : commentUsers){
 			commentUsersMap.put(t.getId(), t);
 		}
-		Map<String, Object> params = new HashMap<String, Object>();
+		params = new HashMap<String, Object>();
 		params.put("activityId", id);
 		List<TdiveActivityComment> tDiveActivityCommentList = diveActivityCommentDao.find("from TdiveActivityComment t where t.activityId =:activityId order by addtime", params);
 		List<DiveActivityComment> diveActivityCommentList = new ArrayList<DiveActivityComment>();

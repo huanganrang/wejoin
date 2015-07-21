@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import jb.absx.F;
+import jb.dao.DiveCollectDaoI;
 import jb.dao.DiveTravelDaoI;
 import jb.model.TdiveTravel;
 import jb.pageModel.DataGrid;
@@ -24,6 +25,9 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 
 	@Autowired
 	private DiveTravelDaoI diveTravelDao;
+	
+	@Autowired
+	private DiveCollectDaoI diveCollectDao;
 
 	@Override
 	public DataGrid dataGrid(DiveTravel diveTravel, PageHelper ph) {
@@ -113,6 +117,23 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 	public void delete(String id) {
 		diveTravelDao.delete(diveTravelDao.get(TdiveTravel.class, id));
 	}
+	
+	/**
+	 * 获取详情信息
+	 */
+	public DiveTravel getDetail(String id, String accountId) {
+		DiveTravel d = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", TRAVEL_TAG);
+		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			d.setCollect(true); // 已收藏
+		} else {
+			d.setCollect(false); // 未收藏
+		}
+		return d;
+	}
 
 	/**
 	 * 个人收藏-潜水旅游收藏列表查询
@@ -125,7 +146,7 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 		DataGrid dg = new DataGrid();
 		
 		String hql = "select a from TdiveTravel a ,TdiveCollect t  "
-				+ " where a.id = t.businessId and t.businessType='BT01' and t.accountId = :accountId";
+				+ " where a.id = t.businessId and t.businessType='"+TRAVEL_TAG+"' and t.accountId = :accountId";
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("accountId", accountId);
 		List<TdiveTravel> l = diveTravelDao.find(hql   + orderHql(ph), params, ph.getPage(), ph.getRows());
@@ -140,5 +161,6 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 		dg.setRows(ol);
 		return dg;
 	}
+
 
 }
