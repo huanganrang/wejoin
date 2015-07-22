@@ -4,7 +4,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>
 <script type="text/javascript">
+	var editor;
 	$(function() {
+		window.setTimeout(function() {
+			editor = KindEditor.create('#equipDes', {
+				width : '580px',
+				height : '300px',
+				items : [ 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink' ],
+				uploadJson : '${pageContext.request.contextPath}/fileController/upload',
+				fileManagerJson : '${pageContext.request.contextPath}/fileController/fileManage',
+				allowFileManager : true
+			});
+		}, 1);
 		parent.$.messager.progress('close');
 		$('#form').form({
 			url : '${pageContext.request.contextPath}/diveEquipController/edit',
@@ -17,6 +28,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -33,66 +45,68 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
-		<form id="form" method="post">
+	<div data-options="region:'center',border:false" title="" style="overflow: auto;">
+		<form id="form" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value = "${diveEquip.id}"/>
 			<table class="table table-hover table-condensed">
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
-					<td>
-					<input class="span2" name="equipIcon" type="text" class="span2"  value="${diveEquip.equipIcon}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>	
-					<td>
-					<input class="span2" name="equipSumary" type="text" class="span2"  value="${diveEquip.equipSumary}"/>
-					</td>							
-			</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
 					<td>
 					<input class="span2" name="equipName" type="text" class="span2"  value="${diveEquip.equipName}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>	
+					</td>
+					<th><%=TdiveEquip.ALIAS_PRICE%></th>	
 					<td>
-					<input class="span2" name="equipDes" type="text" class="span2"  value="${diveEquip.equipDes}"/>
-					</td>							
-			</tr>	
+					<input class="span2" name="price" type="text" class="span2"  value="${diveEquip.price}"/>
+					</td>	
+				</tr>	
 				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
+					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
 					<td>
-						<jb:select dataType="ET" name="equipType" value="${diveEquip.equipType}"></jb:select>						
-					</td>							
+					<input class="span2" name="equipIconFile" type="file" class="span2"/>
+					</td>
 					<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
 					<td>
 					<input class="span2" name="saleNum" type="text" class="span2"  value="${diveEquip.saleNum}"/>
-					</td>							
-			</tr>	
+					</td>									
+				</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_HOT%></th>	
 					<td>
 					<input class="span2" name="hot" type="text" class="span2"  value="${diveEquip.hot}"/>
-					</td>							
-					<th><%=TdiveEquip.ALIAS_PRICE%></th>	
-					<td>
-					<input class="span2" name="price" type="text" class="span2"  value="${diveEquip.price}"/>
-					</td>							
-			</tr>	
-				<tr>	
+					</td>	
 					<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 					<td>
 					<input class="span2" name="status" type="text" class="span2"  value="${diveEquip.status}"/>
-					</td>							
+					</td>	
+				</tr>
+				<tr>	
+					<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
+					<td>
+					<jb:select dataType="ET" name="equipType" value="${diveEquip.equipType}"></jb:select>	
+					</td>								
 					<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
 					<td>
-						<jb:select dataType="EB" name="equipBrand" value="${diveEquip.equipBrand}"></jb:select>											
+					<jb:select dataType="EB" name="equipBrand" value="${diveEquip.equipBrand}"></jb:select>					
 					</td>							
-			</tr>	
+				</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
-					<td>
+					<td colspan="3">
 					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveEquip.FORMAT_ADDTIME%>'})"   maxlength="0" value="${diveEquip.addtime}"/>
+					</td>						
+				</tr>	
+				<tr>	
+					<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>	
+					<td colspan="3">
+						<textarea style="width: 500px;" name="equipSumary">${diveEquip.equipSumary}</textarea>
 					</td>							
-			</tr>	
+				</tr>	
+				<tr>	
+					<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>	
+					<td colspan="3">
+						<textarea  name="equipDes" id="equipDes" style="height:180px;visibility:hidden;">${diveEquip.equipDes}</textarea>
+					</td>						
+				</tr>
 			</table>				
 		</form>
 	</div>

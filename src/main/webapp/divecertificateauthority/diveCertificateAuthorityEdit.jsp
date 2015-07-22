@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveCertificateAuthority"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <script type="text/javascript">
 	$(function() {
 		parent.$.messager.progress('close');
@@ -39,6 +40,12 @@
 			<input type="hidden" name="id" value="${diveCertificateAuthority.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
+					<td>
+						<jb:select dataType="AS" name="status" value="${diveCertificateAuthority.status}"></jb:select>		
+					</td>
+				</tr>
+				<!-- <tr>
 					<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
 					<td><input class="span2" name="orgCode" type="text"
 						class="span2" value="${diveCertificateAuthority.orgCode}" /></td>
@@ -72,7 +79,7 @@
 					<td><input class="span2" name="addtime" type="text"
 						onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_ADDTIME%>'})"
 						maxlength="0" value="${diveCertificateAuthority.addtime}" /></td>
-				</tr>
+				</tr> -->
 			</table>
 		</form>
 	</div>

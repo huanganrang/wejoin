@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_store")
 @DynamicInsert(true)
@@ -24,9 +24,10 @@ public class TdiveStore implements java.io.Serializable,IEntity{
 	//alias
 	public static final String TABLE_ALIAS = "DiveStore";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_NAME = "潜水名称";
+	public static final String ALIAS_NAME = "潜店名称";
 	public static final String ALIAS_ICON = "图标";
 	public static final String ALIAS_SUMARY = "简介";
+	public static final String ALIAS_DESCRIPTION = "介绍";
 	public static final String ALIAS_SERVER_SCOPE = "服务范围";
 	public static final String ALIAS_AREA = "地区";
 	public static final String ALIAS_STATUS = "状态（上架，下架）";
@@ -46,6 +47,8 @@ public class TdiveStore implements java.io.Serializable,IEntity{
 	private java.lang.String icon;
 	//@Length(max=2147483647)
 	private java.lang.String sumary;
+	//@Length(max=2147483647)
+	private java.lang.String description;
 	//@Length(max=2147483647)
 	private java.lang.String serverScope;
 	//@Length(max=4)
@@ -99,6 +102,15 @@ public class TdiveStore implements java.io.Serializable,IEntity{
 	
 	public void setSumary(java.lang.String sumary) {
 		this.sumary = sumary;
+	}
+	
+	@Column(name = "description", unique = false, nullable = true, insertable = true, updatable = true, length = 2147483647)
+	public java.lang.String getDescription() {
+		return this.description;
+	}
+	
+	public void setDescription(java.lang.String description) {
+		this.description = description;
 	}
 	
 	@Column(name = "serverScope", unique = false, nullable = true, insertable = true, updatable = true, length = 2147483647)

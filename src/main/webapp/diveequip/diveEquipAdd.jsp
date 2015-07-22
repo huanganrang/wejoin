@@ -28,6 +28,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -104,7 +105,7 @@
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>	
 					<td colspan="3">
-						<textarea name="equipDes" id="equipDes"></textarea>
+						<textarea  name="equipDes" id="equipDes" style="height:180px;visibility:hidden;"></textarea>
 					</td>						
 				</tr>	
 			</table>		

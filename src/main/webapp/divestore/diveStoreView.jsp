@@ -13,12 +13,6 @@
 			<tr>
 				<th><%=TdiveStore.ALIAS_NAME%></th>
 				<td>${diveStore.name}</td>
-				<th><%=TdiveStore.ALIAS_ICON%></th>
-				<td>${diveStore.icon}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveStore.ALIAS_SUMARY%></th>
-				<td>${diveStore.sumary}</td>
 				<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
 				<td>${diveStore.serverScope}</td>
 			</tr>
@@ -30,7 +24,19 @@
 			</tr>
 			<tr>
 				<th><%=TdiveStore.ALIAS_ADDTIME%></th>
-				<td>${diveStore.addtime}</td>
+				<td colspan="3">${diveStore.addtime}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveStore.ALIAS_ICON%></th>
+				<td colspan="3"><img alt="" src="${diveStore.icon}"></td>
+			</tr>
+			<tr>
+				<th><%=TdiveStore.ALIAS_SUMARY%></th>
+				<td colspan="3">${diveStore.sumary}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveStore.ALIAS_DESCRIPTION%></th>
+				<td colspan="3">${diveStore.description}</td>
 			</tr>
 		</table>
 	</div>

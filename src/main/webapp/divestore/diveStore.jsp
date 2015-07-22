@@ -56,18 +56,6 @@
 				title : '<%=TdiveStore.ALIAS_NAME%>',
 				width : 50		
 				}, {
-				field : 'icon',
-				title : '<%=TdiveStore.ALIAS_ICON%>',
-				width : 50		
-				}, {
-				field : 'sumary',
-				title : '<%=TdiveStore.ALIAS_SUMARY%>',
-				width : 50		
-				}, {
-				field : 'serverScope',
-				title : '<%=TdiveStore.ALIAS_SERVER_SCOPE%>',
-				width : 50		
-				}, {
 				field : 'area',
 				title : '<%=TdiveStore.ALIAS_AREA%>',
 				width : 50		
@@ -220,20 +208,11 @@
 						<th><%=TdiveStore.ALIAS_NAME%></th>
 						<td><input type="text" name="name" maxlength="128"
 							class="span2" /></td>
-						<th><%=TdiveStore.ALIAS_ICON%></th>
-						<td><input type="text" name="icon" maxlength="2147483647"
-							class="span2" /></td>
-						<th><%=TdiveStore.ALIAS_SUMARY%></th>
-						<td><input type="text" name="sumary" maxlength="2147483647"
-							class="span2" /></td>
-						<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
-						<td><input type="text" name="serverScope"
-							maxlength="2147483647" class="span2" /></td>
-					</tr>
-					<tr>
 						<th><%=TdiveStore.ALIAS_AREA%></th>
 						<td><input type="text" name="area" maxlength="4"
 							class="span2" /></td>
+					</tr>
+					<tr>
 						<th><%=TdiveStore.ALIAS_STATUS%></th>
 						<td><input type="text" name="status" maxlength="4"
 							class="span2" /></td>

@@ -17,7 +17,7 @@
 				style="padding: 1px"></div>
 			<div title="潜点" data-options="href:'api_address.jsp'"
 				style="padding: 1px"></div>
-			<div title="度假村" data-options="href:'api_store.jsp'"
+			<div title="度假村/潜店" data-options="href:'api_store.jsp'"
 				style="padding: 1px"></div>		
 			<div title="活动" data-options="href:'api_activity.jsp'"
 				style="padding: 1px"></div>

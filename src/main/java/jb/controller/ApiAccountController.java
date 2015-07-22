@@ -1,7 +1,5 @@
 package jb.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +18,6 @@ import jb.util.Constants;
 import jb.util.DateUtil;
 import jb.util.MD5Util;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -317,24 +314,6 @@ public class ApiAccountController extends BaseController {
 			j.setMsg(e.getMessage());
 		}
 		return j;
-	}
-	
-	private String uploadFile(HttpServletRequest request,String username,MultipartFile imageFile){
-		if(imageFile==null||imageFile.isEmpty())
-			return null;
-		String realPath = request.getSession().getServletContext().getRealPath("/"+Constants.UPLOADFILE_HEADIMAGE+"/"+username);  
-		File file = new File(realPath);
-		if(!file.exists())
-			file.mkdir();
-		String suffix = imageFile.getOriginalFilename().substring(imageFile.getOriginalFilename().lastIndexOf("."));
-		String fileName = username + System.currentTimeMillis() + suffix;		
-		 try {
-			FileUtils.copyInputStreamToFile(imageFile.getInputStream(), new File(realPath, fileName));
-			return Constants.UPLOADFILE_HEADIMAGE+"/"+username+"/"+fileName;
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		
 	}
 	
 	private SessionInfo getSessionInfo(HttpServletRequest request){

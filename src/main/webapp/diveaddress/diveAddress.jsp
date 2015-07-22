@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveAddress"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,18 +55,6 @@
 				}, {
 				field : 'name',
 				title : '<%=TdiveAddress.ALIAS_NAME%>',
-				width : 50		
-				}, {
-				field : 'sumary',
-				title : '<%=TdiveAddress.ALIAS_SUMARY%>',
-				width : 50		
-				}, {
-				field : 'icon',
-				title : '<%=TdiveAddress.ALIAS_ICON%>',
-				width : 50		
-				}, {
-				field : 'description',
-				title : '<%=TdiveAddress.ALIAS_DESCRIPTION%>',
 				width : 50		
 				}, {
 				field : 'area',
@@ -224,23 +213,16 @@
 						<th><%=TdiveAddress.ALIAS_NAME%></th>
 						<td><input type="text" name="name" maxlength="128"
 							class="span2" /></td>
-						<th><%=TdiveAddress.ALIAS_SUMARY%></th>
-						<td><input type="text" name="sumary" maxlength="256"
-							class="span2" /></td>
-						<th><%=TdiveAddress.ALIAS_ICON%></th>
-						<td><input type="text" name="icon" maxlength="2147483647"
-							class="span2" /></td>
-						<th><%=TdiveAddress.ALIAS_DESCRIPTION%></th>
-						<td><input type="text" name="description"
-							maxlength="2147483647" class="span2" /></td>
+						<th><%=TdiveAddress.ALIAS_AREA%></th>
+						<td>
+							<jb:select dataType="AR" name="area"></jb:select>
+						</td>
+						<th><%=TdiveAddress.ALIAS_FEATURE%></th>
+						<td>
+							<jb:select dataType="FT" name="feature"></jb:select>
+						</td>
 					</tr>
 					<tr>
-						<th><%=TdiveAddress.ALIAS_AREA%></th>
-						<td><input type="text" name="area" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveAddress.ALIAS_FEATURE%></th>
-						<td><input type="text" name="feature" maxlength="4"
-							class="span2" /></td>
 						<th><%=TdiveAddress.ALIAS_STATUS%></th>
 						<td><input type="text" name="status" maxlength="4"
 							class="span2" /></td>

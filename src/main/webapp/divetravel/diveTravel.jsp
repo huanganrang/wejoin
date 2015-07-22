@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveTravel"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,20 +57,8 @@
 				title : '<%=TdiveTravel.ALIAS_NAME%>',
 				width : 50		
 				}, {
-				field : 'sumary',
-				title : '<%=TdiveTravel.ALIAS_SUMARY%>',
-				width : 50		
-				}, {
 				field : 'price',
 				title : '<%=TdiveTravel.ALIAS_PRICE%>',
-				width : 50		
-				}, {
-				field : 'icon',
-				title : '<%=TdiveTravel.ALIAS_ICON%>',
-				width : 50		
-				}, {
-				field : 'description',
-				title : '<%=TdiveTravel.ALIAS_DESCRIPTION%>',
 				width : 50		
 				}, {
 				field : 'area',
@@ -228,31 +217,19 @@
 						<th><%=TdiveTravel.ALIAS_NAME%></th>
 						<td><input type="text" name="name" maxlength="128"
 							class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_SUMARY%></th>
-						<td><input type="text" name="sumary" maxlength="256"
-							class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_PRICE%></th>
-						<td><input type="text" name="price" maxlength="12"
-							class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_ICON%></th>
-						<td><input type="text" name="icon" maxlength="2147483647"
-							class="span2" /></td>
+						<th><%=TdiveTravel.ALIAS_AREA%></th>
+						<td>
+							<jb:select dataType="AR" name="area"></jb:select>
+						</td>
+						<th><%=TdiveTravel.ALIAS_FEATURE%></th>
+						<td>
+							<jb:select dataType="FT" name="feature"></jb:select>
+						</td>
 					</tr>
 					<tr>
-						<th><%=TdiveTravel.ALIAS_DESCRIPTION%></th>
-						<td><input type="text" name="description"
-							maxlength="2147483647" class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_AREA%></th>
-						<td><input type="text" name="area" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_FEATURE%></th>
-						<td><input type="text" name="feature" maxlength="4"
-							class="span2" /></td>
 						<th><%=TdiveTravel.ALIAS_STATUS%></th>
 						<td><input type="text" name="status" maxlength="4"
 							class="span2" /></td>
-					</tr>
-					<tr>
 						<th><%=TdiveTravel.ALIAS_ADDTIME%></th>
 						<td><input type="text" class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveTravel.FORMAT_ADDTIME%>'})"

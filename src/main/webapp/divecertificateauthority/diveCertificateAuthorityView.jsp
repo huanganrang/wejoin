@@ -11,6 +11,10 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 			<tr>
+				<th><%=TdiveCertificateAuthority.ALIAS_ACCOUNT_ID%></th>
+				<td colspan="3">${diveCertificateAuthority.accountId}</td>
+			</tr>
+			<tr>
 				<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
 				<td>${diveCertificateAuthority.orgCode}</td>
 				<th><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>
@@ -19,21 +23,24 @@
 			<tr>
 				<th><%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%></th>
 				<td>${diveCertificateAuthority.authDate}</td>
-				<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>
-				<td>${diveCertificateAuthority.reverseSide}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>
-				<td>${diveCertificateAuthority.rightSide}</td>
-				<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
-				<td>${diveCertificateAuthority.auditDate}</td>
+				<th><%=TdiveCertificateAuthority.ALIAS_ADDTIME%></th>
+				<td>${diveCertificateAuthority.addtime}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
 				<td>${diveCertificateAuthority.status}</td>
-				<th><%=TdiveCertificateAuthority.ALIAS_ADDTIME%></th>
-				<td>${diveCertificateAuthority.addtime}</td>
+				<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
+				<td>${diveCertificateAuthority.auditDate}</td>
 			</tr>
+			<tr>
+				<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>
+				<td colspan="3"><img alt="" src="${diveCertificateAuthority.rightSide}"> </td>
+			</tr>
+			<tr>
+				<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>
+				<td colspan="3"><img alt="" src="${diveCertificateAuthority.reverseSide}"> </td>
+			</tr>
+			
 		</table>
 	</div>
 </div>

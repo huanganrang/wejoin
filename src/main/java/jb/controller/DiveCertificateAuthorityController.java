@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jb.pageModel.Colum;
-import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.DiveCertificateAuthorityServiceI;
@@ -138,7 +139,8 @@ public class DiveCertificateAuthorityController extends BaseController {
 	@RequestMapping("/edit")
 	@ResponseBody
 	public Json edit(DiveCertificateAuthority diveCertificateAuthority) {
-		Json j = new Json();		
+		Json j = new Json();	
+		diveCertificateAuthority.setAuditDate(new Date());
 		diveCertificateAuthorityService.edit(diveCertificateAuthority);
 		j.setSuccess(true);
 		j.setMsg("编辑成功！");		

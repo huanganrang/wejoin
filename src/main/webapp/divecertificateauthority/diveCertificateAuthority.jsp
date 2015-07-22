@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveCertificateAuthority"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,6 +53,10 @@
 				width : 150,
 				hidden : true
 				}, {
+				field : 'accountId',
+				title : '<%=TdiveCertificateAuthority.ALIAS_ACCOUNT_ID%>',
+				width : 50		
+				}, {
 				field : 'orgCode',
 				title : '<%=TdiveCertificateAuthority.ALIAS_ORG_CODE%>',
 				width : 50		
@@ -62,14 +67,6 @@
 				}, {
 				field : 'authDate',
 				title : '<%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%>',
-				width : 50		
-				}, {
-				field : 'reverseSide',
-				title : '<%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%>',
-				width : 50		
-				}, {
-				field : 'rightSide',
-				title : '<%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%>',
 				width : 50		
 				}, {
 				field : 'auditDate',
@@ -222,26 +219,19 @@
 					style="display: none;">
 					<tr>
 						<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
-						<td><input type="text" name="orgCode" maxlength="4"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="OC" name="orgCode"></jb:select>	
+						</td>
 						<th><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>
-						<td><input type="text" name="levelCode" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUTH_DATE%>'})"
-							id="authDateBegin" name="authDateBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUTH_DATE%>'})"
-							id="authDateEnd" name="authDateEnd" /></td>
-						<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>
-						<td><input type="text" name="reverseSide" maxlength="128"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="LV" name="levelCode"></jb:select>		
+						</td>
 					</tr>
 					<tr>
-						<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>
-						<td><input type="text" name="rightSide" maxlength="128"
-							class="span2" /></td>
+						<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
+						<td>
+							<jb:select dataType="AS" name="status"></jb:select>		
+						</td>
 						<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
 						<td><input type="text" class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"
@@ -249,16 +239,6 @@
 							class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"
 							id="auditDateEnd" name="auditDateEnd" /></td>
-						<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
-						<td><input type="text" name="status" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveCertificateAuthority.ALIAS_ADDTIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_ADDTIME%>'})"
-							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_ADDTIME%>'})"
-							id="addtimeEnd" name="addtimeEnd" /></td>
 					</tr>
 				</table>
 			</form>

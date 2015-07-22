@@ -31,7 +31,7 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 	public static final String ALIAS_REVERSE_SIDE = "潜水证反面图片";
 	public static final String ALIAS_RIGHT_SIDE = "潜水证正面图片";
 	public static final String ALIAS_AUDIT_DATE = "审核日期";
-	public static final String ALIAS_STATUS = "状态（未审核，审核通过，审核中）";
+	public static final String ALIAS_STATUS = "审核状态";
 	public static final String ALIAS_ADDTIME = "申请时间";
 	
 	//date formats

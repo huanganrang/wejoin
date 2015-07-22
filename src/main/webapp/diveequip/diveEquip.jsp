@@ -49,20 +49,8 @@
 				width : 150,
 				hidden : true
 				}, {
-				field : 'equipIcon',
-				title : '<%=TdiveEquip.ALIAS_EQUIP_ICON%>',
-				width : 50		
-				}, {
-				field : 'equipSumary',
-				title : '<%=TdiveEquip.ALIAS_EQUIP_SUMARY%>',
-				width : 50		
-				}, {
 				field : 'equipName',
 				title : '<%=TdiveEquip.ALIAS_EQUIP_NAME%>',
-				width : 50		
-				}, {
-				field : 'equipDes',
-				title : '<%=TdiveEquip.ALIAS_EQUIP_DES%>',
 				width : 50		
 				}, {
 				field : 'equipType',
@@ -91,7 +79,7 @@
 				}, {
 				field : 'addtime',
 				title : '<%=TdiveEquip.ALIAS_ADDTIME%>',
-				width : 50		
+				width : 50
 			}, {
 				field : 'action',
 				title : '操作',
@@ -228,49 +216,23 @@
 			<form id="searchForm">
 				<table class="table table-hover table-condensed" style="display: none;">
 						<tr>	
-							<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
-							<td>
-									<input type="text" name="equipIcon" maxlength="2147483647" class="span2"/>
-							</td>
-							<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>	
-							<td>
-									<input type="text" name="equipSumary" maxlength="256" class="span2"/>
-							</td>
 							<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
 							<td>
 									<input type="text" name="equipName" maxlength="128" class="span2"/>
 							</td>
-							<th><%=TdiveEquip.ALIAS_EQUIP_DES%></th>	
-							<td>
-									<input type="text" name="equipDes" maxlength="2147483647" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
 							<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
 							<td>
 								<jb:select dataType="ET" name="equipType"></jb:select>
 							</td>
-							<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
+							<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
 							<td>
-									<input type="text" name="saleNum" maxlength="10" class="span2"/>
-							</td>
-							<th><%=TdiveEquip.ALIAS_HOT%></th>	
-							<td>
-									<input type="text" name="hot" maxlength="12" class="span2"/>
-							</td>
-							<th><%=TdiveEquip.ALIAS_PRICE%></th>	
-							<td>
-									<input type="text" name="price" maxlength="12" class="span2"/>
+								<jb:select dataType="EB" name="equipBrand"></jb:select>	
 							</td>
 						</tr>	
 						<tr>	
 							<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 							<td>
 									<input type="text" name="status" maxlength="4" class="span2"/>
-							</td>
-							<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
-							<td>
-									<input type="text" name="equipBrand" maxlength="4" class="span2"/>
 							</td>
 							<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
 							<td>

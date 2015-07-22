@@ -13,14 +13,8 @@
 			<tr>
 				<th><%=TdiveAddress.ALIAS_NAME%></th>
 				<td>${diveAddress.name}</td>
-				<th><%=TdiveAddress.ALIAS_SUMARY%></th>
-				<td>${diveAddress.sumary}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveAddress.ALIAS_ICON%></th>
-				<td>${diveAddress.icon}</td>
-				<th><%=TdiveAddress.ALIAS_DESCRIPTION%></th>
-				<td>${diveAddress.description}</td>
+				<th><%=TdiveAddress.ALIAS_STATUS%></th>
+				<td>${diveAddress.status}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveAddress.ALIAS_AREA%></th>
@@ -29,10 +23,20 @@
 				<td>${diveAddress.feature}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveAddress.ALIAS_STATUS%></th>
-				<td>${diveAddress.status}</td>
 				<th><%=TdiveAddress.ALIAS_ADDTIME%></th>
-				<td>${diveAddress.addtime}</td>
+				<td colspan="3">${diveAddress.addtime}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveAddress.ALIAS_ICON%></th>
+				<td colspan="3"><img alt="" src="${diveAddress.icon}"> 	</td>
+			</tr>
+			<tr>
+				<th><%=TdiveAddress.ALIAS_SUMARY%></th>
+				<td colspan="3">${diveAddress.sumary}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveAddress.ALIAS_DESCRIPTION%></th>
+				<td colspan="3">${diveAddress.description}</td>
 			</tr>
 		</table>
 	</div>

@@ -3,8 +3,20 @@
 <%@ page import="jb.model.TdiveAddress"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <script type="text/javascript">
+	var editor;
 	$(function() {
+		window.setTimeout(function() {
+			editor = KindEditor.create('#description', {
+				width : '580px',
+				height : '300px',
+				items : [ 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink' ],
+				uploadJson : '${pageContext.request.contextPath}/fileController/upload',
+				fileManagerJson : '${pageContext.request.contextPath}/fileController/fileManage',
+				allowFileManager : true
+			});
+		}, 1);
 		parent.$.messager.progress('close');
 		$('#form').form({
 			url : '${pageContext.request.contextPath}/diveAddressController/edit',
@@ -17,6 +29,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -34,33 +47,27 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
-		<form id="form" method="post">
+		style="overflow: auto;">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${diveAddress.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveAddress.ALIAS_NAME%></th>
 					<td><input class="span2" name="name" type="text" class="span2"
 						value="${diveAddress.name}" /></td>
-					<th><%=TdiveAddress.ALIAS_SUMARY%></th>
-					<td><input class="span2" name="sumary" type="text"
-						class="span2" value="${diveAddress.sumary}" /></td>
-				</tr>
-				<tr>
 					<th><%=TdiveAddress.ALIAS_ICON%></th>
-					<td><input class="span2" name="icon" type="text" class="span2"
-						value="${diveAddress.icon}" /></td>
-					<th><%=TdiveAddress.ALIAS_DESCRIPTION%></th>
-					<td><input class="span2" name="description" type="text"
-						class="span2" value="${diveAddress.description}" /></td>
+					<td><input class="span2" name="iconFile" type="file" />
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveAddress.ALIAS_AREA%></th>
-					<td><input class="span2" name="area" type="text" class="span2"
-						value="${diveAddress.area}" /></td>
+					<td>
+						<jb:select dataType="AR" name="area" value="${diveAddress.area}"></jb:select>
+					</td>
 					<th><%=TdiveAddress.ALIAS_FEATURE%></th>
-					<td><input class="span2" name="feature" type="text"
-						class="span2" value="${diveAddress.feature}" /></td>
+					<td>
+						<jb:select dataType="FT" name="feature" value="${diveAddress.feature}"></jb:select>
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveAddress.ALIAS_STATUS%></th>
@@ -70,6 +77,18 @@
 					<td><input class="span2" name="addtime" type="text"
 						onclick="WdatePicker({dateFmt:'<%=TdiveAddress.FORMAT_ADDTIME%>'})"
 						maxlength="0" value="${diveAddress.addtime}" /></td>
+				</tr>
+				<tr>
+					<th><%=TdiveAddress.ALIAS_SUMARY%></th>
+					<td colspan="3">
+						<textarea style="width: 500px;" name="sumary">${diveAddress.sumary}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveAddress.ALIAS_DESCRIPTION%></th>
+					<td colspan="3">
+						<textarea  name="description" id="description" style="height:180px;visibility:hidden;">${diveAddress.description}</textarea>
+					</td>	
 				</tr>
 			</table>
 		</form>

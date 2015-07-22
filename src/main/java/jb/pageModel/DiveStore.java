@@ -10,6 +10,7 @@ public class DiveStore implements java.io.Serializable {
 	private java.lang.String name;	
 	private java.lang.String icon;	
 	private java.lang.String sumary;	
+	private java.lang.String description;	
 	private java.lang.String serverScope;	
 	private java.lang.String area;	
 	private java.lang.String status;	
@@ -48,6 +49,14 @@ public class DiveStore implements java.io.Serializable {
 	public java.lang.String getSumary() {
 		return this.sumary;
 	}
+	public java.lang.String getDescription() {
+		return description;
+	}
+
+	public void setDescription(java.lang.String description) {
+		this.description = description;
+	}
+
 	public void setServerScope(java.lang.String serverScope) {
 		this.serverScope = serverScope;
 	}

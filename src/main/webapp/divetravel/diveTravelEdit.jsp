@@ -3,8 +3,20 @@
 <%@ page import="jb.model.TdiveTravel"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <script type="text/javascript">
+	var editor;
 	$(function() {
+		window.setTimeout(function() {
+			editor = KindEditor.create('#description', {
+				width : '580px',
+				height : '300px',
+				items : [ 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink' ],
+				uploadJson : '${pageContext.request.contextPath}/fileController/upload',
+				fileManagerJson : '${pageContext.request.contextPath}/fileController/fileManage',
+				allowFileManager : true
+			});
+		}, 1);
 		parent.$.messager.progress('close');
 		$('#form').form({
 			url : '${pageContext.request.contextPath}/diveTravelController/edit',
@@ -17,6 +29,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -34,48 +47,49 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
-		<form id="form" method="post">
+		style="overflow: auto;">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${diveTravel.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveTravel.ALIAS_NAME%></th>
 					<td><input class="span2" name="name" type="text" class="span2"
 						value="${diveTravel.name}" /></td>
-					<th><%=TdiveTravel.ALIAS_SUMARY%></th>
-					<td><input class="span2" name="sumary" type="text"
-						class="span2" value="${diveTravel.sumary}" /></td>
+					<th><%=TdiveTravel.ALIAS_ICON%></th>
+					<td><input class="span2" name="iconFile" type="file" />
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveTravel.ALIAS_AREA%></th>
+					<td>
+						<jb:select dataType="AR" name="area" value="${diveTravel.area}"></jb:select>
+					</td>
+					<th><%=TdiveTravel.ALIAS_FEATURE%></th>
+					<td>
+						<jb:select dataType="FT" name="feature" value="${diveTravel.feature}"></jb:select>
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveTravel.ALIAS_PRICE%></th>
 					<td><input class="span2" name="price" type="text"
 						class="span2" value="${diveTravel.price}" /></td>
-					<th><%=TdiveTravel.ALIAS_ICON%></th>
-					<td><input class="span2" name="icon" type="text" class="span2"
-						value="${diveTravel.icon}" /></td>
-				</tr>
-				<tr>
-					<th><%=TdiveTravel.ALIAS_DESCRIPTION%></th>
-					<td><input class="span2" name="description" type="text"
-						class="span2" value="${diveTravel.description}" /></td>
-					<th><%=TdiveTravel.ALIAS_AREA%></th>
-					<td><input class="span2" name="area" type="text" class="span2"
-						value="${diveTravel.area}" /></td>
-				</tr>
-				<tr>
-					<th><%=TdiveTravel.ALIAS_FEATURE%></th>
-					<td><input class="span2" name="feature" type="text"
-						class="span2" value="${diveTravel.feature}" /></td>
 					<th><%=TdiveTravel.ALIAS_STATUS%></th>
 					<td><input class="span2" name="status" type="text"
 						class="span2" value="${diveTravel.status}" /></td>
 				</tr>
 				<tr>
-					<th><%=TdiveTravel.ALIAS_ADDTIME%></th>
-					<td><input class="span2" name="addtime" type="text"
-						onclick="WdatePicker({dateFmt:'<%=TdiveTravel.FORMAT_ADDTIME%>'})"
-						maxlength="0" value="${diveTravel.addtime}" /></td>
+					<th><%=TdiveTravel.ALIAS_SUMARY%></th>
+					<td colspan="3">
+						<textarea style="width: 500px;" name="sumary">${diveTravel.sumary}</textarea>
+					</td>
 				</tr>
+				<tr>
+					<th><%=TdiveTravel.ALIAS_DESCRIPTION%></th>
+					<td colspan="3">
+						<textarea  name="description" id="description" style="height:180px;visibility:hidden;">${diveTravel.description}</textarea>
+					</td>	
+				</tr>
+			
 			</table>
 		</form>
 	</div>

@@ -4,7 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
+	var editor;
 	$(function() {
+		window.setTimeout(function() {
+			editor = KindEditor.create('#description', {
+				width : '580px',
+				height : '300px',
+				items : [ 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink' ],
+				uploadJson : '${pageContext.request.contextPath}/fileController/upload',
+				fileManagerJson : '${pageContext.request.contextPath}/fileController/fileManage',
+				allowFileManager : true
+			});
+		}, 1);
 		parent.$.messager.progress('close');
 		$('#form').form({
 			url : '${pageContext.request.contextPath}/diveStoreController/edit',
@@ -17,6 +28,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -34,25 +46,17 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
-		<form id="form" method="post">
+		style="overflow: auto;">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${diveStore.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveStore.ALIAS_NAME%></th>
-					<td><input class="span2" name="name" type="text" class="span2"
-						value="${diveStore.name}" /></td>
+					<td><input class="span2" name="name" type="text" class="span2" value="${diveStore.name}"/>
+					</td>
 					<th><%=TdiveStore.ALIAS_ICON%></th>
-					<td><input class="span2" name="icon" type="text" class="span2"
-						value="${diveStore.icon}" /></td>
-				</tr>
-				<tr>
-					<th><%=TdiveStore.ALIAS_SUMARY%></th>
-					<td><input class="span2" name="sumary" type="text"
-						class="span2" value="${diveStore.sumary}" /></td>
-					<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
-					<td><input class="span2" name="serverScope" type="text"
-						class="span2" value="${diveStore.serverScope}" /></td>
+					<td><input class="span2" name="iconFile" type="file" class="span2" />
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveStore.ALIAS_AREA%></th>
@@ -63,11 +67,27 @@
 						class="span2" value="${diveStore.status}" /></td>
 				</tr>
 				<tr>
+					<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
+					<td><input class="span2" name="serverScope" type="text"
+						class="span2" value="${diveStore.serverScope}"/></td>
 					<th><%=TdiveStore.ALIAS_ADDTIME%></th>
 					<td><input class="span2" name="addtime" type="text"
 						onclick="WdatePicker({dateFmt:'<%=TdiveStore.FORMAT_ADDTIME%>'})"
-						maxlength="0" value="${diveStore.addtime}" /></td>
+						maxlength="0" value="${diveStore.addtime}"/></td>
 				</tr>
+				<tr>
+					<th><%=TdiveStore.ALIAS_SUMARY%></th>
+					<td colspan="3">
+						<textarea style="width: 500px;" name="sumary">${diveStore.sumary}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveStore.ALIAS_DESCRIPTION%></th>
+					<td colspan="3">
+						<textarea  name="description" id="description" style="height:180px;visibility:hidden;">${diveStore.description}</textarea>
+					</td>	
+				</tr>
+			
 			</table>
 		</form>
 	</div>

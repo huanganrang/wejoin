@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_address")
 @DynamicInsert(true)
@@ -24,7 +24,7 @@ public class TdiveAddress implements java.io.Serializable,IEntity{
 	//alias
 	public static final String TABLE_ALIAS = "DiveAddress";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_NAME = "潜水名称";
+	public static final String ALIAS_NAME = "潜点名称";
 	public static final String ALIAS_SUMARY = "简介";
 	public static final String ALIAS_ICON = "图片";
 	public static final String ALIAS_DESCRIPTION = "文案";
