@@ -196,7 +196,7 @@ public class ApiAccountController extends BaseController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/updateAccount")
+	@RequestMapping("/updatePersonInfo")
 	public Json updatePersonInfo(DiveAccount account, HttpServletRequest request) {
 		Json j = new Json();
 		try {

@@ -118,7 +118,7 @@ public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCer
 			return o;
 		}
 		
-		return null;
+		return new DiveCertificateAuthority();
 	}
 
 	/**
