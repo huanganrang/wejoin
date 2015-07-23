@@ -158,4 +158,25 @@ public class DiveCountryController extends BaseController {
 		return j;
 	}
 
+	/**
+	 * 删除DiveCountry
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/getListByAdCode")
+	@ResponseBody
+	public Json getListByAdCode(String adCode) {
+		Json j = new Json();
+		try{
+			j.setObj(diveCountryService.findAllByAdCode(adCode));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}
+
+	
 }

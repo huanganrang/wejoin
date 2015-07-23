@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveStore"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <script type="text/javascript">
 	var editor;
 	$(function() {
@@ -42,13 +43,41 @@
 				}
 			}
 		});
+		
+		$('[name=adCode]').combobox({
+			onSelect: function(record){
+				var opts =[{ 'text':'请选择','id':''}];
+				$("#country").combobox("loadData", opts);
+				$("#province").combobox("loadData", opts);
+				var adCode = $('[name=adCode]').val();
+				if(adCode != "") {
+					drawCountry(adCode);
+				}
+				
+			}
+		});
 	});
+	
+	function drawCountry(adCode) {
+		$.post('${pageContext.request.contextPath}/diveCountryController/getListByAdCode', {
+			adCode : adCode
+		}, function(result) {
+			if (result.success) {
+				var opts =[{ 'text':'请选择','id':''}];
+				for(var i=0; i<result.obj.length; i++) {
+					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+     			}
+				$("#country").combobox("loadData", opts);
+			}
+		}, 'JSON');
+	}
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
 		style="overflow: auto;">
 		<form id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" />
+			<input type="hidden" name="area" id="area"/>
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveStore.ALIAS_NAME%></th>
@@ -59,8 +88,23 @@
 					</td>
 				</tr>
 				<tr>
-					<th><%=TdiveStore.ALIAS_AREA%></th>
-					<td><input class="span2" name="area" type="text" class="span2" />
+					<th>洲</th>
+					<td>
+						<jb:select dataType="AD" name="adCode"></jb:select>	
+					</td>
+					<th>国家</th>
+					<td>
+						<select class="easyui-combobox" data-options="width:140,height:29,editable:false" id="country">
+							<option value="">请选择</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>省</th>
+					<td>
+						<select class="easyui-combobox" data-options="width:140,height:29,editable:false" id="province">
+							<option value="">请选择</option>
+						</select>
 					</td>
 					<th><%=TdiveStore.ALIAS_STATUS%></th>
 					<td><input class="span2" name="status" type="text"
