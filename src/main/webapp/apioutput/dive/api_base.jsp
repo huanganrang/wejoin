@@ -11,7 +11,9 @@
 	<div id="index_equip_tabs" class="easyui-tabs" data-options="fit:true">
 		<div title="基础数据" data-options="href:'api_bd_query.jsp'"
 			style="padding: 1px"></div>
-		<div title="行政区划" data-options="href:'api_find_bshootSquare.jsp'"
+		<div title="国家地区查询" data-options="href:'api_bd_country_query.jsp'"
+			style="padding: 1px"></div>
+		<div title="省市区查询" data-options="href:'api_bd_area_query.jsp'"
 			style="padding: 1px"></div>
 
 	</div>

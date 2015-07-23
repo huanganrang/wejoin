@@ -141,6 +141,7 @@ public class BasedataServiceImpl implements BasedataServiceI {
 		return variable;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List<BaseData> getBaseDatas(String baseType) {
 		List<BaseData> bl = new ArrayList<BaseData>();
@@ -150,7 +151,7 @@ public class BasedataServiceImpl implements BasedataServiceI {
 		BaseData baseData = new BaseData();
 		baseData.setBasetypeCode(baseType);
 		String where = whereHql(baseData, params);
-		List l = basedataDao.find(hql + joinHql + where , params);
+		List l = basedataDao.find(hql + joinHql + where + " order by t.seq asc" , params);
 		if (l != null && l.size() > 0) {
 			Tbasedata temp = null;
 			for (Object t : l) {
