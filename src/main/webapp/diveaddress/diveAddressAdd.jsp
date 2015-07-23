@@ -71,8 +71,7 @@
 				</tr>
 				<tr>
 					<th><%=TdiveAddress.ALIAS_STATUS%></th>
-					<td><input class="span2" name="status" type="text"
-						class="span2" /></td>
+					<td><jb:select dataType="ST" name="status"></jb:select>	</td>
 					<th><%=TdiveAddress.ALIAS_ADDTIME%></th>
 					<td><input class="span2" name="addtime" type="text"
 						onclick="WdatePicker({dateFmt:'<%=TdiveAddress.FORMAT_ADDTIME%>'})"

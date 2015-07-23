@@ -77,7 +77,7 @@
 					</td>	
 					<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 					<td>
-					<input class="span2" name="status" type="text" class="span2"/>
+						<jb:select dataType="ST" name="status"></jb:select>	
 					</td>	
 				</tr>	
 				<tr>	

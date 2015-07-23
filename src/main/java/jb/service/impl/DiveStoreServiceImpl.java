@@ -69,8 +69,8 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 				params.put("serverScope", diveStore.getServerScope());
 			}		
 			if (!F.empty(diveStore.getArea())) {
-				whereHql += " and t.area = :area";
-				params.put("area", diveStore.getArea());
+				whereHql += " and t.area like :area";
+				params.put("area", diveStore.getArea() + "%%");
 			}		
 			if (!F.empty(diveStore.getStatus())) {
 				whereHql += " and t.status = :status";

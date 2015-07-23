@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveStore"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +96,63 @@
 				$(this).datagrid('tooltip');
 			}
 		});
+		
+		$('#adCode').combobox({
+			onSelect: function(record){
+				var opts =[{ 'text':'请选择','id':''}];
+				$("#country").combobox("loadData", opts);
+				$("#country").combobox("setValue", "");
+				$("#province").combobox("loadData", opts);
+				$("#province").combobox("setValue", "");
+				var adCode = $('[name=adCode]').val();
+				if(adCode != "") {
+					drawCountry(adCode);
+				}
+				
+			}
+		});
+		
+		$('#country').combobox({
+			onSelect: function(record){
+				var opts =[{ 'text':'请选择','id':''}];
+				$("#province").combobox("loadData", opts);
+				$("#province").combobox("setValue", "");
+				var countryCode = $('#country').combobox("getValue");
+				if(countryCode != "") {
+					drawProvince(countryCode);
+				}
+				
+			}
+		});
 	});
+	
+	function drawCountry(adCode) {
+		$.post('${pageContext.request.contextPath}/diveCountryController/getListByAdCode', {
+			adCode : adCode
+		}, function(result) {
+			if (result.success) {
+				var opts =[{ 'text':'请选择','id':''}];
+				for(var i=0; i<result.obj.length; i++) {
+					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+     			}
+				$("#country").combobox("loadData", opts);
+			}
+		}, 'JSON');
+	}
+	
+	function drawProvince(countryCode) {
+		$.post('${pageContext.request.contextPath}/diveAreaController/getAreaByCountryCode', {
+			countryCode : countryCode
+		}, function(result) {
+			if (result.success) {
+				var opts =[{ 'text':'请选择','id':''}];
+				for(var i=0; i<result.obj.length; i++) {
+					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+     			}
+				$("#province").combobox("loadData", opts);
+			}
+		}, 'JSON');
+	}
 
 	function deleteFun(id) {
 		if (id == undefined) {
@@ -189,6 +246,16 @@
         }); 
 	}
 	function searchFun() {
+		var area = $("[name=adCode]").val();
+		var countryCode = $("#country").combobox("getValue");
+		var provinceCode = $("#province").combobox("getValue");
+		if(countryCode != "") {
+			area += "_" + countryCode;
+		}
+		if(provinceCode != "") {
+			area += "_" + provinceCode;
+		}
+		$("#area").val(area);
 		dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
 	}
 	function cleanFun() {
@@ -199,23 +266,19 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div data-options="region:'north',title:'查询条件',border:false"
-			style="height: 160px; overflow: hidden;">
+		<div data-options="region:'north',title:'查询条件',border:false" style="height: 160px; overflow: hidden;">
 			<form id="searchForm">
+				<input type="hidden" name="area" id="area"/>
 				<table class="table table-hover table-condensed"
 					style="display: none;">
 					<tr>
 						<th><%=TdiveStore.ALIAS_NAME%></th>
 						<td><input type="text" name="name" maxlength="128"
 							class="span2" /></td>
-						<th><%=TdiveStore.ALIAS_AREA%></th>
-						<td><input type="text" name="area" maxlength="4"
-							class="span2" /></td>
-					</tr>
-					<tr>
 						<th><%=TdiveStore.ALIAS_STATUS%></th>
-						<td><input type="text" name="status" maxlength="4"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="ST" name="status"></jb:select>	
+						</td>
 						<th><%=TdiveStore.ALIAS_ADDTIME%></th>
 						<td><input type="text" class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveStore.FORMAT_ADDTIME%>'})"
@@ -223,6 +286,24 @@
 							class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveStore.FORMAT_ADDTIME%>'})"
 							id="addtimeEnd" name="addtimeEnd" /></td>
+					</tr>
+					<tr>
+						<th>洲</th>
+						<td>
+							<jb:select dataType="AD" name="adCode"></jb:select>	
+						</td>
+						<th>国家</th>
+						<td>
+							<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="country">
+								<option value="">请选择</option>
+							</select>
+						</td>
+						<th>省</th>
+						<td>
+							<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="province">
+								<option value="">请选择</option>
+							</select>
+						</td>
 					</tr>
 				</table>
 			</form>

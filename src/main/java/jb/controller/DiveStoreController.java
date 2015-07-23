@@ -129,6 +129,16 @@ public class DiveStoreController extends BaseController {
 	public String editPage(HttpServletRequest request, String id) {
 		DiveStore diveStore = diveStoreService.get(id);
 		request.setAttribute("diveStore", diveStore);
+		String[] areas = diveStore.getArea().split("_");
+		if(areas.length > 0) {
+			request.setAttribute("adCode", areas[0]);
+		}
+		if(areas.length > 1) {
+			request.setAttribute("countryCode", areas[1]);
+		}
+		if(areas.length > 2) {
+			request.setAttribute("provinceCode", areas[2]);
+		}
 		return "/divestore/diveStoreEdit";
 	}
 

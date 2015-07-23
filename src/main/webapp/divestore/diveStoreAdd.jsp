@@ -28,8 +28,19 @@
 				var isValid = $(this).form('validate');
 				if (!isValid) {
 					parent.$.messager.progress('close');
+				} else {
+					editor.sync();
+					var area = $("[name=adCode]").val();
+					var countryCode = $("#country").combobox("getValue");
+					var provinceCode = $("#province").combobox("getValue");
+					if(countryCode != "") {
+						area += "_" + countryCode;
+					}
+					if(provinceCode != "") {
+						area += "_" + provinceCode;
+					}
+					$("#area").val(area);
 				}
-				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -48,10 +59,25 @@
 			onSelect: function(record){
 				var opts =[{ 'text':'请选择','id':''}];
 				$("#country").combobox("loadData", opts);
+				$("#country").combobox("setValue", "");
 				$("#province").combobox("loadData", opts);
+				$("#province").combobox("setValue", "");
 				var adCode = $('[name=adCode]').val();
 				if(adCode != "") {
 					drawCountry(adCode);
+				}
+				
+			}
+		});
+		
+		$('#country').combobox({
+			onSelect: function(record){
+				var opts =[{ 'text':'请选择','id':''}];
+				$("#province").combobox("loadData", opts);
+				$("#province").combobox("setValue", "");
+				var countryCode = $('#country').combobox("getValue");
+				if(countryCode != "") {
+					drawProvince(countryCode);
 				}
 				
 			}
@@ -68,6 +94,20 @@
 					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
      			}
 				$("#country").combobox("loadData", opts);
+			}
+		}, 'JSON');
+	}
+	
+	function drawProvince(countryCode) {
+		$.post('${pageContext.request.contextPath}/diveAreaController/getAreaByCountryCode', {
+			countryCode : countryCode
+		}, function(result) {
+			if (result.success) {
+				var opts =[{ 'text':'请选择','id':''}];
+				for(var i=0; i<result.obj.length; i++) {
+					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+     			}
+				$("#province").combobox("loadData", opts);
 			}
 		}, 'JSON');
 	}
@@ -94,7 +134,7 @@
 					</td>
 					<th>国家</th>
 					<td>
-						<select class="easyui-combobox" data-options="width:140,height:29,editable:false" id="country">
+						<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="country">
 							<option value="">请选择</option>
 						</select>
 					</td>
@@ -102,13 +142,14 @@
 				<tr>
 					<th>省</th>
 					<td>
-						<select class="easyui-combobox" data-options="width:140,height:29,editable:false" id="province">
+						<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="province">
 							<option value="">请选择</option>
 						</select>
 					</td>
 					<th><%=TdiveStore.ALIAS_STATUS%></th>
-					<td><input class="span2" name="status" type="text"
-						class="span2" /></td>
+					<td>
+						<jb:select dataType="ST" name="status"></jb:select>	
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>

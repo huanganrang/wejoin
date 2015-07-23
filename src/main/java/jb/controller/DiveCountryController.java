@@ -159,7 +159,7 @@ public class DiveCountryController extends BaseController {
 	}
 
 	/**
-	 * 删除DiveCountry
+	 * 根据洲编码获取国家列表
 	 * 
 	 * @param id
 	 * @return

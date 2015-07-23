@@ -232,7 +232,7 @@
 						<tr>	
 							<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 							<td>
-									<input type="text" name="status" maxlength="4" class="span2"/>
+								<jb:select dataType="ST" name="status"></jb:select>	
 							</td>
 							<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
 							<td>

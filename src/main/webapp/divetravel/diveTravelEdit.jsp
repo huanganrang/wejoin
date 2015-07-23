@@ -74,8 +74,9 @@
 					<td><input class="span2" name="price" type="text"
 						class="span2" value="${diveTravel.price}" /></td>
 					<th><%=TdiveTravel.ALIAS_STATUS%></th>
-					<td><input class="span2" name="status" type="text"
-						class="span2" value="${diveTravel.status}" /></td>
+					<td>
+						<jb:select dataType="ST" name="status" value="${diveTravel.status}"></jb:select>		
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveTravel.ALIAS_SUMARY%></th>

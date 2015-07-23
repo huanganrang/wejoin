@@ -157,5 +157,28 @@ public class DiveAreaController extends BaseController {
 		j.setSuccess(true);
 		return j;
 	}
+	
+	/**
+	 * 根据国家代码获取省份
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/getAreaByCountryCode")
+	@ResponseBody
+	public Json getAreaByCountryCode(String countryCode) {
+		Json j = new Json();
+		try{
+			DiveArea diveArea = new DiveArea();
+			diveArea.setCountryCode(countryCode);
+			diveArea.setParentCode("0");
+			j.setObj(diveAreaService.findAllByParams(diveArea));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}
 
 }
