@@ -166,4 +166,10 @@ public class BasedataServiceImpl implements BasedataServiceI {
 		return bl;
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List<Map> getSelectMapList(String sql, Map params) {	
+		return basedataDao.findBySql2Map(sql);
+	}
+
 }

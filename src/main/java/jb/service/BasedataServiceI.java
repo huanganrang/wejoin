@@ -63,6 +63,15 @@ public interface BasedataServiceI {
 	public List<BaseData> getBaseDatas(String baseType);
 	
 	/**
+	 * 根据动态sql查找结果
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> getSelectMapList(String sql,Map params);
+	
+	/**
 	 * 获取系统环境变量
 	 */
 	public Map<String,BaseData> getAppVariable();
