@@ -162,5 +162,14 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 		return dg;
 	}
 
+	/**
+	 * 首页-潜水旅游列表查询
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> findHomeList() {
+		String sql = "select t.id, t.name, t.icon from dive_travel t join tbasedata b on b.name = t.id and b.basetype_code = '" + TRAVEL_HOME_TAG + "' order by b.seq asc";
+		List<Map> l = diveTravelDao.findBySql2Map(sql);
+		return l == null ? new ArrayList<Map>() : l;
+	}
 
 }

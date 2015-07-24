@@ -1,5 +1,8 @@
 ﻿package jb.service;
 
+import java.util.List;
+import java.util.Map;
+
 import jb.pageModel.DiveStore;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -11,6 +14,7 @@ import jb.pageModel.PageHelper;
  */
 public interface DiveStoreServiceI {
 	public final String STORE_TAG = "BT05";
+	public final String STORE_HOME_TAG = "HS";
 
 	/**
 	 * 获取DiveStore数据表格
@@ -61,5 +65,13 @@ public interface DiveStoreServiceI {
 	 * @return
 	 */
 	public DiveStore getDetail(String id, String accountId);
+
+	/**
+	 * 首页-度假村列表查询
+	 * @param ids
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> findHomeList();
 
 }

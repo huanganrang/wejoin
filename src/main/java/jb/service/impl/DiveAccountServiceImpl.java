@@ -105,7 +105,9 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		params.put("id", id);
 		TdiveAccount t = diveAccountDao.get("from TdiveAccount t  where t.id = :id", params);
 		DiveAccount o = new DiveAccount();
-		BeanUtils.copyProperties(t, o);
+		if(t != null) {
+			BeanUtils.copyProperties(t, o);
+		}
 		return o;
 	}
 

@@ -1,7 +1,10 @@
 ﻿package jb.service;
 
-import jb.pageModel.DiveTravel;
+import java.util.List;
+import java.util.Map;
+
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveTravel;
 import jb.pageModel.PageHelper;
 
 /**
@@ -12,6 +15,7 @@ import jb.pageModel.PageHelper;
 public interface DiveTravelServiceI {
 	
 	public final String TRAVEL_TAG = "BT01";
+	public final String TRAVEL_HOME_TAG = "HT";
 
 	/**
 	 * 获取DiveTravel数据表格
@@ -62,5 +66,13 @@ public interface DiveTravelServiceI {
 	public DataGrid dataGridCollect(String accountId, PageHelper ph);
 
 	public DiveTravel getDetail(String id, String accountId);
+
+	/**
+	 * 首页-潜水旅游列表查询
+	 * @param ids
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> findHomeList();
 
 }

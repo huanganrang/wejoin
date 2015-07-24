@@ -153,4 +153,13 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 		return d;
 	}
 
+	/**
+	 * 首页-度假村列表查询
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> findHomeList() {
+		String sql = "select t.id, t.name, t.icon from dive_store t join tbasedata b on b.name = t.id and b.basetype_code = '" + STORE_HOME_TAG + "' order by b.seq asc";
+		List<Map> l = diveStoreDao.findBySql2Map(sql);
+		return l == null ? new ArrayList<Map>() : l;
+	}
 }

@@ -1,5 +1,8 @@
 ﻿package jb.service;
 
+import java.util.List;
+import java.util.Map;
+
 import jb.pageModel.DiveAddress;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -12,6 +15,7 @@ import jb.pageModel.PageHelper;
 public interface DiveAddressServiceI {
 	
 	public final String ADDRESS_TAG = "BT02";
+	public final String ADDRESS_HOME_TAG = "HA";
 
 	/**
 	 * 获取DiveAddress数据表格
@@ -62,5 +66,13 @@ public interface DiveAddressServiceI {
 	public DataGrid dataGridCollect(String accountId, PageHelper ph);
 
 	public DiveAddress getDetail(String id, String accountId);
+
+	/**
+	 * 首页-潜点列表查询
+	 * @param ids
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> findHomeList();
 
 }

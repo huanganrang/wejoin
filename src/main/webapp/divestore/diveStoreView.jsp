@@ -11,6 +11,10 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 			<tr>
+				<th>主键ID</th>
+				<td colspan="3">${diveStore.id}</td>
+			</tr>
+			<tr>
 				<th><%=TdiveStore.ALIAS_NAME%></th>
 				<td>${diveStore.name}</td>
 				<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>

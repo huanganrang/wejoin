@@ -16,6 +16,8 @@
 			style="padding: 1px"></div>
 		<div title="修改数量" data-options="href:'api_order_update_number.jsp'"
 			style="padding: 1px"></div>
+		<div title="删除购物车" data-options="href:'api_order_del_shop_cart.jsp'"
+			style="padding: 1px"></div>
 		<div title="订单列表" data-options="href:'api_order_list.jsp'"
 			style="padding: 1px"></div>
 		<div title="订单详情" data-options="href:'api_order_detail.jsp'"

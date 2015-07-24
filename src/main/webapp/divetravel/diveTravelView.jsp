@@ -10,7 +10,10 @@
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
-		
+			<tr>
+				<th>主键ID</th>
+				<td colspan="3">${diveTravel.id}</td>
+			</tr>
 			<tr>
 				<th><%=TdiveTravel.ALIAS_NAME%></th>
 				<td>${diveTravel.name}</td>
