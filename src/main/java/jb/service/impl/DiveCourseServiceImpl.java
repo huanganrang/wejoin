@@ -10,15 +10,15 @@ import java.util.UUID;
 import jb.absx.F;
 import jb.dao.DiveCourseDaoI;
 import jb.model.TdiveCourse;
-import jb.pageModel.DiveCourse;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveCourse;
 import jb.pageModel.PageHelper;
 import jb.service.DiveCourseServiceI;
+import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jb.util.MyBeanUtils;
 
 @Service
 public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implements DiveCourseServiceI {
@@ -87,7 +87,7 @@ public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implement
 		TdiveCourse t = new TdiveCourse();
 		BeanUtils.copyProperties(diveCourse, t);
 		t.setId(UUID.randomUUID().toString());
-		//t.setCreatedatetime(new Date());
+		t.setAddtime(new Date());
 		diveCourseDao.save(t);
 	}
 

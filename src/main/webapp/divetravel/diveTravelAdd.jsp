@@ -43,20 +43,44 @@
 				}
 			}
 		});
+		
+		function ProcessFile() {
+			var file = document.getElementById('iconFile').files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function ( event ) {
+					var txt = event.target.result;
+					$('.img-preview').attr('src',txt);
+					$('#icon').val(txt);
+				};
+			}
+		    reader.readAsDataURL(file);
+		}
+		$(document).delegate('#iconFile','change',function () {
+			ProcessFile();
+		});
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
 		style="overflow: auto;">
-		<form id="form" method="post" enctype="multipart/form-data">
+		<form id="form" method="post">
 			<input type="hidden" name="id" />
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveTravel.ALIAS_NAME%></th>
 					<td><input class="span2" name="name" type="text" />
 					</td>
+					<th><%=TdiveTravel.ALIAS_PRICE%></th>
+					<td><input class="span2" name="price" type="text"
+						class="span2" /></td>
+				</tr>
+				<tr>
 					<th><%=TdiveTravel.ALIAS_ICON%></th>
-					<td><input class="span2" name="iconFile" type="file" />
+					<td colspan="3">
+						<input name="icon" id="icon" type="hidden"> 
+						<img class="img-preview" src="" width="50" height="50"/> 
+						<input type="file" id="iconFile">
 					</td>
 				</tr>
 				<tr>
@@ -70,19 +94,10 @@
 					</td>
 				</tr>
 				<tr>
-					<th><%=TdiveTravel.ALIAS_PRICE%></th>
-					<td><input class="span2" name="price" type="text"
-						class="span2" /></td>
 					<th><%=TdiveTravel.ALIAS_STATUS%></th>
-					<td>
+					<td colspan="3">
 						<jb:select dataType="ST" name="status"></jb:select>	
 					</td>
-				</tr>
-				<tr>
-					<th><%=TdiveTravel.ALIAS_ADDTIME%></th>
-					<td colspan="3"><input class="span2" name="addtime" type="text"
-						onclick="WdatePicker({dateFmt:'<%=TdiveTravel.FORMAT_ADDTIME%>'})"
-						maxlength="0" class="" /></td>
 				</tr>
 				<tr>
 					<th><%=TdiveTravel.ALIAS_SUMARY%></th>

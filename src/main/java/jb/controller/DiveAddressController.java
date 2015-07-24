@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jb.pageModel.Colum;
-import jb.pageModel.DiveAddress;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveAddress;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.DiveAddressServiceI;
@@ -18,9 +18,7 @@ import jb.service.DiveAddressServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
 
@@ -99,9 +97,8 @@ public class DiveAddressController extends BaseController {
 	 */
 	@RequestMapping("/add")
 	@ResponseBody
-	public Json add(DiveAddress diveAddress, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+	public Json add(DiveAddress diveAddress) {
 		Json j = new Json();	
-		diveAddress.setIcon(uploadFile(request, "address", iconFile));
 		diveAddressService.add(diveAddress);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		
@@ -140,9 +137,8 @@ public class DiveAddressController extends BaseController {
 	 */
 	@RequestMapping("/edit")
 	@ResponseBody
-	public Json edit(DiveAddress diveAddress, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+	public Json edit(DiveAddress diveAddress) {
 		Json j = new Json();		
-		diveAddress.setIcon(uploadFile(request, "address", iconFile));
 		diveAddressService.edit(diveAddress);
 		j.setSuccess(true);
 		j.setMsg("编辑成功！");		

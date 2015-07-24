@@ -224,7 +224,7 @@ public class BaseController {
 		if(!f.exists())
 			f.mkdir();
 		String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-		String fileName = dirName + System.currentTimeMillis() + suffix;		
+		String fileName = dirName + "_" + System.currentTimeMillis() + suffix;		
 		 try {
 			FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, fileName));
 			return Constants.UPLOADFILE+"/"+dirName+"/"+fileName;

@@ -13,31 +13,34 @@
 			<tr>
 				<th><%=TdiveCourse.ALIAS_TITLE%></th>
 				<td>${diveCourse.title}</td>
-				<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
-				<td>${diveCourse.courseType}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveCourse.ALIAS_ICON%></th>
-				<td>${diveCourse.icon}</td>
 				<th><%=TdiveCourse.ALIAS_PRICE%></th>
 				<td>${diveCourse.price}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveCourse.ALIAS_CONTENT%></th>
-				<td>${diveCourse.content}</td>
-				<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
-				<td>${diveCourse.introduce}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
-				<td>${diveCourse.filePath}</td>
+				<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
+				<td>${diveCourse.courseType}</td>
 				<th><%=TdiveCourse.ALIAS_STATUS%></th>
 				<td>${diveCourse.status}</td>
 			</tr>
 			<tr>
+				<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
+				<td><a href="javascript:void(0);">${diveCourse.filePath}</a> </td>
 				<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
 				<td>${diveCourse.addtime}</td>
 			</tr>
+			<tr>
+				<th><%=TdiveCourse.ALIAS_ICON%></th>
+				<td colspan="3"><img alt="" src="${diveCourse.icon}"> </td>
+			</tr>
+			<tr>
+				<th><%=TdiveCourse.ALIAS_CONTENT%></th>
+				<td colspan="3">${diveCourse.content}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
+				<td colspan="3">${diveCourse.introduce}</td>
+			</tr>
+			
 		</table>
 	</div>
 </div>

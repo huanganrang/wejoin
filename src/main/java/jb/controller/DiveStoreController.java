@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jb.pageModel.Colum;
-import jb.pageModel.DiveStore;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveStore;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.DiveStoreServiceI;
@@ -18,9 +18,7 @@ import jb.service.DiveStoreServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
 
@@ -99,9 +97,8 @@ public class DiveStoreController extends BaseController {
 	 */
 	@RequestMapping("/add")
 	@ResponseBody
-	public Json add(DiveStore diveStore, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+	public Json add(DiveStore diveStore) {
 		Json j = new Json();		
-		diveStore.setIcon(uploadFile(request, "store", iconFile));
 		diveStoreService.add(diveStore);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		
@@ -150,9 +147,8 @@ public class DiveStoreController extends BaseController {
 	 */
 	@RequestMapping("/edit")
 	@ResponseBody
-	public Json edit(DiveStore diveStore, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+	public Json edit(DiveStore diveStore) {
 		Json j = new Json();
-		diveStore.setIcon(uploadFile(request, "store", iconFile));
 		diveStoreService.edit(diveStore);
 		j.setSuccess(true);
 		j.setMsg("编辑成功！");		

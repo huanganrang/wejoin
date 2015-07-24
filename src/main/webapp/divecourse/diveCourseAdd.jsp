@@ -3,9 +3,22 @@
 <%@ page import="jb.model.TdiveCourse"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <script type="text/javascript">
+	var editor;
 	$(function() {
-	 parent.$.messager.progress('close');
+		window.setTimeout(function() {
+			editor = KindEditor.create('#introduce', {
+				width : '580px',
+				height : '300px',
+				items : [ 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste', 'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript', 'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/', 'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak', 'anchor', 'link', 'unlink' ],
+				uploadJson : '${pageContext.request.contextPath}/fileController/upload',
+				fileManagerJson : '${pageContext.request.contextPath}/fileController/fileManage',
+				allowFileManager : true
+			});
+		}, 1);
+		
+	 	parent.$.messager.progress('close');
 		$('#form').form({
 			url : '${pageContext.request.contextPath}/diveCourseController/add',
 			onSubmit : function() {
@@ -17,6 +30,7 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				editor.sync();
 				return isValid;
 			},
 			success : function(result) {
@@ -30,51 +44,72 @@
 				}
 			}
 		});
+		
+		function ProcessFile() {
+			var file = document.getElementById('iconFile').files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function ( event ) {
+					var txt = event.target.result;
+					$('.img-preview').attr('src',txt);
+					$('#icon').val(txt);
+				};
+			}
+		    reader.readAsDataURL(file);
+		}
+		$(document).delegate('#iconFile','change',function () {
+			ProcessFile();
+		});
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
-		<form id="form" method="post">
-			<input type="hidden" name="id" />
+		style="overflow: auto;">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th><%=TdiveCourse.ALIAS_TITLE%></th>
 					<td><input class="span2" name="title" type="text"
 						class="span2" /></td>
-					<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
-					<td><input class="span2" name="courseType" type="text"
-						class="span2" /></td>
-				</tr>
-				<tr>
-					<th><%=TdiveCourse.ALIAS_ICON%></th>
-					<td><input class="span2" name="icon" type="text" class="span2" />
-					</td>
 					<th><%=TdiveCourse.ALIAS_PRICE%></th>
 					<td><input class="span2" name="price" type="text"
 						class="span2" /></td>
 				</tr>
 				<tr>
-					<th><%=TdiveCourse.ALIAS_CONTENT%></th>
-					<td><input class="span2" name="content" type="text"
-						class="span2" /></td>
-					<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
-					<td><input class="span2" name="introduce" type="text"
-						class="span2" /></td>
+					<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
+					<td>
+						<jb:select dataType="CT" name="courseType"></jb:select>
+					</td>
+					<th><%=TdiveCourse.ALIAS_STATUS%></th>
+					<td>
+						<jb:select dataType="ST" name="status"></jb:select>
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_ICON%></th>
+					<td colspan="3">
+						<input name="icon" id="icon" type="hidden"> 
+						<img class="img-preview" src="" width="50" height="50"/> 
+						<input type="file" id="iconFile">
+					</td>
 				</tr>
 				<tr>
 					<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
-					<td><input class="span2" name="filePath" type="text"
-						class="span2" /></td>
-					<th><%=TdiveCourse.ALIAS_STATUS%></th>
-					<td><input class="span2" name="status" type="text"
-						class="span2" /></td>
+					<td colspan="3">
+						<input type="file" name="filePathFile">
+					</td>
 				</tr>
 				<tr>
-					<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
-					<td><input class="span2" name="addtime" type="text"
-						onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"
-						maxlength="0" class="" /></td>
+					<th><%=TdiveCourse.ALIAS_CONTENT%></th>
+					<td colspan="3">
+						<textarea style="width: 500px;" name="content"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
+					<td colspan="3">
+						<textarea  name="introduce" id="introduce" style="height:180px;visibility:hidden;"></textarea>
+					</td>	
 				</tr>
 			</table>
 		</form>

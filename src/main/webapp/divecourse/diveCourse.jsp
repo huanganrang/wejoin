@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveCourse"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,28 +57,12 @@
 				title : '<%=TdiveCourse.ALIAS_TITLE%>',
 				width : 50		
 				}, {
-				field : 'courseType',
-				title : '<%=TdiveCourse.ALIAS_COURSE_TYPE%>',
-				width : 50		
-				}, {
-				field : 'icon',
-				title : '<%=TdiveCourse.ALIAS_ICON%>',
-				width : 50		
-				}, {
 				field : 'price',
 				title : '<%=TdiveCourse.ALIAS_PRICE%>',
 				width : 50		
 				}, {
-				field : 'content',
-				title : '<%=TdiveCourse.ALIAS_CONTENT%>',
-				width : 50		
-				}, {
-				field : 'introduce',
-				title : '<%=TdiveCourse.ALIAS_INTRODUCE%>',
-				width : 50		
-				}, {
-				field : 'filePath',
-				title : '<%=TdiveCourse.ALIAS_FILE_PATH%>',
+				field : 'courseType',
+				title : '<%=TdiveCourse.ALIAS_COURSE_TYPE%>',
 				width : 50		
 				}, {
 				field : 'status',
@@ -229,32 +214,17 @@
 						<td><input type="text" name="title" maxlength="128"
 							class="span2" /></td>
 						<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
-						<td><input type="text" name="courseType" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveCourse.ALIAS_ICON%></th>
-						<td><input type="text" name="icon" maxlength="2147483647"
-							class="span2" /></td>
-						<th><%=TdiveCourse.ALIAS_PRICE%></th>
-						<td><input type="text" name="price" maxlength="12"
-							class="span2" /></td>
-					</tr>
-					<tr>
-						<th><%=TdiveCourse.ALIAS_CONTENT%></th>
-						<td><input type="text" name="content" maxlength="2147483647"
-							class="span2" /></td>
-						<th><%=TdiveCourse.ALIAS_INTRODUCE%></th>
-						<td><input type="text" name="introduce"
-							maxlength="2147483647" class="span2" /></td>
-						<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
-						<td><input type="text" name="filePath" maxlength="128"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="CT" name="courseType"></jb:select>
+						</td>
 						<th><%=TdiveCourse.ALIAS_STATUS%></th>
-						<td><input type="text" name="status" maxlength="4"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="ST" name="status"></jb:select>
+						</td>
 					</tr>
 					<tr>
 						<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
-						<td><input type="text" class="span2"
+						<td colspan="5"><input type="text" class="span2"
 							onclick="WdatePicker({dateFmt:'<%=TdiveCourse.FORMAT_ADDTIME%>'})"
 							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
 							class="span2"

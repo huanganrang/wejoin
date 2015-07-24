@@ -42,6 +42,22 @@
 				}
 			}
 		});
+		
+		function ProcessFile() {
+			var file = document.getElementById('iconFile').files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function ( event ) {
+					var txt = event.target.result;
+					$('.img-preview').attr('src',txt);
+					$('#icon').val(txt);
+				};
+			}
+		    reader.readAsDataURL(file);
+		}
+		$(document).delegate('#iconFile','change',function () {
+			ProcessFile();
+		});
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -52,49 +68,46 @@
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
 					<td>
-					<input class="span2" name="equipName" type="text" class="span2"/>
+						<input class="span2" name="equipName" type="text" class="span2"/>
 					</td>
 					<th><%=TdiveEquip.ALIAS_PRICE%></th>	
 					<td>
-					<input class="span2" name="price" type="text" class="span2"/>
+						<input class="span2" name="price" type="text" class="span2"/>
 					</td>	
-											
 				</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
-					<td>
-					<input class="span2" name="equipIconFile" type="file" class="span2"/>
+					<td colspan="3">
+						<input name="equipIcon" id="icon" type="hidden"> 
+						<img class="img-preview" src="" width="50" height="50"/> 
+						<input type="file" id="iconFile">
 					</td>
-					<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
-					<td>
-					<input class="span2" name="saleNum" type="text" class="span2"/>
-					</td>									
-				</tr>	
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_HOT%></th>	
-					<td>
-					<input class="span2" name="hot" type="text" class="span2"/>
-					</td>	
-					<th><%=TdiveEquip.ALIAS_STATUS%></th>	
-					<td>
-						<jb:select dataType="ST" name="status"></jb:select>	
-					</td>	
 				</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
 					<td>
-					<jb:select dataType="ET" name="equipType"></jb:select>	
+						<jb:select dataType="ET" name="equipType"></jb:select>	
 					</td>								
 					<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
 					<td>
 						<jb:select dataType="EB" name="equipBrand"></jb:select>					
 					</td>							
 				</tr>	
-				<tr>	
-					<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
+				<tr>
+					<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 					<td colspan="3">
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveEquip.FORMAT_ADDTIME%>'})"  maxlength="0" class="" />
-					</td>						
+						<jb:select dataType="ST" name="status"></jb:select>	
+					</td>		
+				</tr>
+				<tr>	
+					<th><%=TdiveEquip.ALIAS_HOT%></th>	
+					<td>
+						<input class="span2" name="hot" type="text" class="span2"/>
+					</td>
+					<th><%=TdiveEquip.ALIAS_SALE_NUM%></th>	
+					<td>
+						<input class="span2" name="saleNum" type="text" class="span2"/>
+					</td>	
 				</tr>	
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_SUMARY%></th>	

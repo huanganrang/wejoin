@@ -82,6 +82,22 @@
 				
 			}
 		});
+		
+		function ProcessFile() {
+			var file = document.getElementById('iconFile').files[0];
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function ( event ) {
+					var txt = event.target.result;
+					$('.img-preview').attr('src',txt);
+					$('#icon').val(txt);
+				};
+			}
+		    reader.readAsDataURL(file);
+		}
+		$(document).delegate('#iconFile','change',function () {
+			ProcessFile();
+		});
 	});
 	
 	function drawCountry(adCode) {
@@ -123,8 +139,17 @@
 					<th><%=TdiveStore.ALIAS_NAME%></th>
 					<td><input class="span2" name="name" type="text" class="span2" />
 					</td>
+					<th><%=TdiveStore.ALIAS_STATUS%></th>
+					<td>
+						<jb:select dataType="ST" name="status"></jb:select>	
+					</td>
+				</tr>
+				<tr>
 					<th><%=TdiveStore.ALIAS_ICON%></th>
-					<td><input class="span2" name="iconFile" type="file" class="span2" />
+					<td colspan="3">
+						<input name="icon" id="icon" type="hidden"> 
+						<img class="img-preview" src="" width="50" height="50"/> 
+						<input type="file" id="iconFile">					
 					</td>
 				</tr>
 				<tr>
@@ -146,19 +171,9 @@
 							<option value="">请选择</option>
 						</select>
 					</td>
-					<th><%=TdiveStore.ALIAS_STATUS%></th>
-					<td>
-						<jb:select dataType="ST" name="status"></jb:select>	
-					</td>
-				</tr>
-				<tr>
 					<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
 					<td><input class="span2" name="serverScope" type="text"
 						class="span2" /></td>
-					<th><%=TdiveStore.ALIAS_ADDTIME%></th>
-					<td><input class="span2" name="addtime" type="text"
-						onclick="WdatePicker({dateFmt:'<%=TdiveStore.FORMAT_ADDTIME%>'})"
-						maxlength="0" class="" /></td>
 				</tr>
 				<tr>
 					<th><%=TdiveStore.ALIAS_SUMARY%></th>

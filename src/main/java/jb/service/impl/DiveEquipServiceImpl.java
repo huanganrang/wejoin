@@ -1,6 +1,7 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +91,7 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 		TdiveEquip t = new TdiveEquip();
 		BeanUtils.copyProperties(diveEquip, t);
 		t.setId(UUID.randomUUID().toString());
-		//t.setCreatedatetime(new Date());
+		t.setAddtime(new Date());
 		diveEquipDao.save(t);
 	}
 
