@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_activity")
 @DynamicInsert(true)
@@ -36,8 +36,8 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats
-	public static final String FORMAT_START_DATE = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
-	public static final String FORMAT_END_DATE = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
+	public static final String FORMAT_START_DATE = jb.util.Constants.DATE_FORMAT_YMD;
+	public static final String FORMAT_END_DATE = jb.util.Constants.DATE_FORMAT_YMD;
 	public static final String FORMAT_ADDTIME = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
 	
 

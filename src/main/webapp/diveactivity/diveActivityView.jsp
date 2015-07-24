@@ -13,49 +13,43 @@
 					<th><%=TdiveActivity.ALIAS_NAME%></th>	
 					<td>
 						${diveActivity.name}							
-					</td>							
-					<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
-					<td>
-						${diveActivity.startDate}							
-					</td>							
-				</tr>		
-				<tr>	
-					<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
-					<td>
-						${diveActivity.endDate}							
-					</td>							
-					<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	
-					<td>
-						${diveActivity.startAddr}							
-					</td>							
-				</tr>		
-				<tr>	
+					</td>
 					<th><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
 					<td>
 						${diveActivity.addrId}							
-					</td>							
-					<th><%=TdiveActivity.ALIAS_END_ADDR%></th>	
-					<td>
-						${diveActivity.endAddr}							
-					</td>							
+					</td>								
 				</tr>		
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
+					<td>
+						${diveActivity.startDate}							
+					</td>		
+					<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
+					<td>
+						${diveActivity.endDate}							
+					</td>						
+				</tr>
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	
+					<td colspan="3">
+						${diveActivity.startAddr}							
+					</td>					
+				</tr>
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_END_ADDR%></th>	
+					<td colspan="3">
+						${diveActivity.endAddr}							
+					</td>					
+				</tr>
 				<tr>	
 					<th><%=TdiveActivity.ALIAS_DESCRIPTION%></th>	
-					<td>
+					<td colspan="3">
 						${diveActivity.description}							
-					</td>							
-					<th><%=TdiveActivity.ALIAS_STATUS%></th>	
-					<td>
-						${diveActivity.status}							
 					</td>							
 				</tr>		
 				<tr>	
-					<th><%=TdiveActivity.ALIAS_STAMP%></th>	
-					<td>
-						${diveActivity.stamp}							
-					</td>							
 					<th><%=TdiveActivity.ALIAS_ADDTIME%></th>	
-					<td>
+					<td colspan="3">
 						${diveActivity.addtime}							
 					</td>							
 				</tr>		

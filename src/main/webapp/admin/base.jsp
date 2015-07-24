@@ -303,7 +303,7 @@
 </script>
 	<div class="easyui-layout" data-options="fit:true,border:false">
 		<div data-options="region:'west',split:true" title="基础类型"
-			style="width: 200px; overflow: hidden;">
+			style="width: 200px; overflow: auto;">
 			<div class="well well-small">
 				<ul id="layout_west_tree"></ul>
 			</div>

@@ -51,7 +51,7 @@ public class SelectTagBySql extends TagSupport{
         	for(Map bd : baseDataList){
         		value = bd.get("value").toString();
         		text = bd.get("text").toString();
-        		if(F.empty(value)||!value.equals(bd.get("value"))){
+        		if(F.empty(this.value)||!this.value.equals(value)){
                 	out.print("<option value=\""+value+"\">"+text+"</option>");
         		}else{
                 	out.print("<option value=\""+value+"\" selected=\"selected\">"+text+"</option>");

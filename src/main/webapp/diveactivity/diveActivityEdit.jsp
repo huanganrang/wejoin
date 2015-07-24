@@ -2,6 +2,7 @@
 <%@ page import="jb.model.TdiveActivity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>
 <script type="text/javascript">
 	$(function() {
 		parent.$.messager.progress('close');
@@ -39,53 +40,44 @@
 				<tr>	
 					<th><%=TdiveActivity.ALIAS_NAME%></th>	
 					<td>
-					<input class="span2" name="name" type="text" class="span2"  value="${diveActivity.name}"/>
-					</td>							
-					<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
-					<td>
-					<input class="span2" name="startDate" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_START_DATE%>'})"   maxlength="0" value="${diveActivity.startDate}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
-					<td>
-					<input class="span2" name="endDate" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})"   maxlength="0" value="${diveActivity.endDate}"/>
-					</td>							
-					<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	
-					<td>
-					<input class="span2" name="startAddr" type="text" class="span2"  value="${diveActivity.startAddr}"/>
-					</td>							
-			</tr>	
-				<tr>	
+					<input class="span2" name="name" type="text" value="${diveActivity.name}"/>
+					</td>	
 					<th><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
 					<td>
-					<input class="span2" name="addrId" type="text" class="span2"  value="${diveActivity.addrId}"/>
-					</td>							
-					<th><%=TdiveActivity.ALIAS_END_ADDR%></th>	
+						<jb:selectSql dataType="SL002" name="addrId" value="${diveActivity.addrId}"></jb:selectSql>
+					</td>													
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
 					<td>
-					<input class="span2" name="endAddr" type="text" class="span2"  value="${diveActivity.endAddr}"/>
+					<input class="span2" name="startDateStr" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_START_DATE%>'})"  
+							maxlength="0" class="" value="${diveActivity.startDate}"/>
+					</td>	
+					<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
+					<td>
+					<input class="span2" name="endDateStr" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})"  
+							maxlength="0" class=""  value="${diveActivity.endDate}"/>
 					</td>							
-			</tr>	
+											
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	
+					<td colspan="3">
+						<input class="span2" name="startAddr" type="text" style="width: 500px;" value="${diveActivity.startAddr}"/>
+					</td>	
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_END_ADDR%></th>	
+					<td colspan="3">
+						<input class="span2" name="endAddr" type="text"  style="width: 500px;" value="${diveActivity.endAddr}"/>
+					</td>								
+				</tr>	
 				<tr>	
 					<th><%=TdiveActivity.ALIAS_DESCRIPTION%></th>	
-					<td>
-					<input class="span2" name="description" type="text" class="span2"  value="${diveActivity.description}"/>
+					<td colspan="3">
+						<textarea style="width: 500px;" name="description">${diveActivity.description}</textarea>
 					</td>							
-					<th><%=TdiveActivity.ALIAS_STATUS%></th>	
-					<td>
-					<input class="span2" name="status" type="text" class="span2"  value="${diveActivity.status}"/>
-					</td>							
-			</tr>	
-				<tr>	
-					<th><%=TdiveActivity.ALIAS_STAMP%></th>	
-					<td>
-					<input class="span2" name="stamp" type="text" class="span2"  value="${diveActivity.stamp}"/>
-					</td>							
-					<th><%=TdiveActivity.ALIAS_ADDTIME%></th>	
-					<td>
-					<input class="span2" name="addtime" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_ADDTIME%>'})"   maxlength="0" value="${diveActivity.addtime}"/>
-					</td>							
-			</tr>	
+				</tr>
 			</table>				
 		</form>
 	</div>

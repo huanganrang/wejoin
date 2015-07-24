@@ -64,24 +64,8 @@
 				title : '<%=TdiveActivity.ALIAS_START_ADDR%>',
 				width : 50		
 				}, {
-				field : 'addrId',
-				title : '<%=TdiveActivity.ALIAS_ADDR_ID%>',
-				width : 50		
-				}, {
 				field : 'endAddr',
 				title : '<%=TdiveActivity.ALIAS_END_ADDR%>',
-				width : 50		
-				}, {
-				field : 'description',
-				title : '<%=TdiveActivity.ALIAS_DESCRIPTION%>',
-				width : 50		
-				}, {
-				field : 'status',
-				title : '<%=TdiveActivity.ALIAS_STATUS%>',
-				width : 50		
-				}, {
-				field : 'stamp',
-				title : '<%=TdiveActivity.ALIAS_STAMP%>',
 				width : 50		
 				}, {
 				field : 'addtime',
@@ -236,39 +220,6 @@
 							<td>
 								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})" id="endDateBegin" name="endDateBegin"/>
 								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})" id="endDateEnd" name="endDateEnd"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	
-							<td>
-									<input type="text" name="startAddr" maxlength="128" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
-							<td>
-									<input type="text" name="addrId" maxlength="36" class="span2"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_END_ADDR%></th>	
-							<td>
-									<input type="text" name="endAddr" maxlength="128" class="span2"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_DESCRIPTION%></th>	
-							<td>
-									<input type="text" name="description" maxlength="2147483647" class="span2"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_STATUS%></th>	
-							<td>
-									<input type="text" name="status" maxlength="4" class="span2"/>
-							</td>
-						</tr>	
-						<tr>	
-							<th><%=TdiveActivity.ALIAS_STAMP%></th>	
-							<td>
-									<input type="text" name="stamp" maxlength="4" class="span2"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_ADDTIME%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_ADDTIME%>'})" id="addtimeBegin" name="addtimeBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_ADDTIME%>'})" id="addtimeEnd" name="addtimeEnd"/>
 							</td>
 						</tr>	
 				</table>

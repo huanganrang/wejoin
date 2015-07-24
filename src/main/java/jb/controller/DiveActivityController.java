@@ -3,17 +3,18 @@
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jb.pageModel.Colum;
-import jb.pageModel.DiveActivity;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveActivity;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.DiveActivityServiceI;
+import jb.util.Constants;
+import jb.util.DateUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,8 +86,6 @@ public class DiveActivityController extends BaseController {
 	 */
 	@RequestMapping("/addPage")
 	public String addPage(HttpServletRequest request) {
-		DiveActivity diveActivity = new DiveActivity();
-		diveActivity.setId(UUID.randomUUID().toString());
 		return "/diveactivity/diveActivityAdd";
 	}
 
@@ -97,8 +96,10 @@ public class DiveActivityController extends BaseController {
 	 */
 	@RequestMapping("/add")
 	@ResponseBody
-	public Json add(DiveActivity diveActivity) {
+	public Json add(DiveActivity diveActivity, String startDateStr, String endDateStr) {
 		Json j = new Json();		
+		diveActivity.setStartDate(DateUtil.parse(startDateStr, Constants.DATE_FORMAT_YMD));
+		diveActivity.setEndDate(DateUtil.parse(endDateStr, Constants.DATE_FORMAT_YMD));
 		diveActivityService.add(diveActivity);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		
@@ -137,8 +138,10 @@ public class DiveActivityController extends BaseController {
 	 */
 	@RequestMapping("/edit")
 	@ResponseBody
-	public Json edit(DiveActivity diveActivity) {
+	public Json edit(DiveActivity diveActivity, String startDateStr, String endDateStr) {
 		Json j = new Json();		
+		diveActivity.setStartDate(DateUtil.parse(startDateStr, Constants.DATE_FORMAT_YMD));
+		diveActivity.setEndDate(DateUtil.parse(endDateStr, Constants.DATE_FORMAT_YMD));
 		diveActivityService.edit(diveActivity);
 		j.setSuccess(true);
 		j.setMsg("编辑成功！");		
