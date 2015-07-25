@@ -2,6 +2,8 @@ package jb.pageModel;
 
 import java.util.Date;
 
+import jb.listener.Application;
+
 public class DiveCertificateAuthority implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -15,7 +17,17 @@ public class DiveCertificateAuthority implements java.io.Serializable {
 	private java.lang.String rightSide;	
 	private Date auditDate;			
 	private java.lang.String status;	
-	private Date addtime;			
+	private Date addtime;	
+	
+	public String getOrgCodeZh() {
+		return Application.getString(this.orgCode);
+	}
+	public String getLevelCodeZh() {
+		return Application.getString(this.levelCode);
+	}
+	public String getStatusZh() {
+		return Application.getString(this.status);
+	}
 	
 	public void setId(java.lang.String value) {
 		this.id = value;

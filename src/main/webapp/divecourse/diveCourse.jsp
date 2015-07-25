@@ -61,11 +61,11 @@
 				title : '<%=TdiveCourse.ALIAS_PRICE%>',
 				width : 50		
 				}, {
-				field : 'courseType',
+				field : 'courseTypeZh',
 				title : '<%=TdiveCourse.ALIAS_COURSE_TYPE%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveCourse.ALIAS_STATUS%>',
 				width : 50		
 				}, {

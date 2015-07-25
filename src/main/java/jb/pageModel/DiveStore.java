@@ -2,6 +2,8 @@ package jb.pageModel;
 
 import java.util.Date;
 
+import jb.listener.Application;
+
 public class DiveStore implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -18,6 +20,10 @@ public class DiveStore implements java.io.Serializable {
 
 	private int praiseNum;
 	private boolean isPraise;
+	
+	public String getStatusZh() {
+		return Application.getString(this.status);
+	}
 	
 	public void setId(java.lang.String value) {
 		this.id = value;

@@ -61,7 +61,7 @@
 				title : '<%=TdiveStore.ALIAS_AREA%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveStore.ALIAS_STATUS%>',
 				width : 50		
 				}, {

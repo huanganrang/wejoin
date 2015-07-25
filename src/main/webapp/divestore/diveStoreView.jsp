@@ -15,16 +15,16 @@
 				<td colspan="3">${diveStore.id}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveStore.ALIAS_NAME%></th>
-				<td>${diveStore.name}</td>
-				<th><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
-				<td>${diveStore.serverScope}</td>
+				<th width="8%"><%=TdiveStore.ALIAS_NAME%></th>
+				<td width="42%">${diveStore.name}</td>
+				<th width="8%"><%=TdiveStore.ALIAS_SERVER_SCOPE%></th>
+				<td width="42%">${diveStore.serverScope}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveStore.ALIAS_AREA%></th>
 				<td>${diveStore.area}</td>
 				<th><%=TdiveStore.ALIAS_STATUS%></th>
-				<td>${diveStore.status}</td>
+				<td>${diveStore.statusZh}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveStore.ALIAS_ADDTIME%></th>

@@ -136,11 +136,11 @@
 			<input type="hidden" name="area" id="area"/>
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th><%=TdiveStore.ALIAS_NAME%></th>
-					<td><input class="span2" name="name" type="text" class="span2" />
+					<th width="8%"><%=TdiveStore.ALIAS_NAME%></th>
+					<td width="42%"><input class="span2" name="name" type="text" class="span2" />
 					</td>
-					<th><%=TdiveStore.ALIAS_STATUS%></th>
-					<td>
+					<th width="8%"><%=TdiveStore.ALIAS_STATUS%></th>
+					<td width="42%">
 						<jb:select dataType="ST" name="status"></jb:select>	
 					</td>
 				</tr>

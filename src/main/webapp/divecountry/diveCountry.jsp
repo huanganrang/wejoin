@@ -57,7 +57,7 @@
 				title : '<%=TdiveCountry.ALIAS_CODE%>',
 				width : 50		
 				}, {
-				field : 'adCode',
+				field : 'adCodeZh',
 				title : '<%=TdiveCountry.ALIAS_AD_CODE%>',
 				width : 50		
 			}, {

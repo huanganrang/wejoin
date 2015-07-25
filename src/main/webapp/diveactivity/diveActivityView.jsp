@@ -10,12 +10,12 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 				<tr>	
-					<th><%=TdiveActivity.ALIAS_NAME%></th>	
-					<td>
+					<th width="8%"><%=TdiveActivity.ALIAS_NAME%></th>	
+					<td width="42%">
 						${diveActivity.name}							
 					</td>
-					<th><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
-					<td>
+					<th width="8%"><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
+					<td width="42%">
 						${diveActivity.addrId}							
 					</td>								
 				</tr>		

@@ -68,11 +68,11 @@
 			<input type="hidden" name="id" />
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th><%=TdiveAddress.ALIAS_NAME%></th>
-					<td><input class="span2" name="name" type="text" />
+					<th width="8%"><%=TdiveAddress.ALIAS_NAME%></th>
+					<td width="42%"><input class="span2" name="name" type="text" />
 					</td>
-					<th><%=TdiveAddress.ALIAS_STATUS%></th>
-					<td><jb:select dataType="ST" name="status"></jb:select>	</td>
+					<th width="8%"><%=TdiveAddress.ALIAS_STATUS%></th>
+					<td width="42%"><jb:select dataType="ST" name="status"></jb:select>	</td>
 				</tr>
 				<tr>
 					<th><%=TdiveAddress.ALIAS_ICON%></th>

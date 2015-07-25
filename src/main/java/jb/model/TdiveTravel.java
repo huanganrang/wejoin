@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_travel")
 @DynamicInsert(true)
@@ -31,7 +31,7 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 	public static final String ALIAS_DESCRIPTION = "文案";
 	public static final String ALIAS_AREA = "地区";
 	public static final String ALIAS_FEATURE = "特点";
-	public static final String ALIAS_STATUS = "状态（上架，下架）";
+	public static final String ALIAS_STATUS = "状态";
 	public static final String ALIAS_ADDTIME = "报名时间";
 	
 	//date formats

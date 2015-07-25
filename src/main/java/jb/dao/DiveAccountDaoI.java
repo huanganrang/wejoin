@@ -3,7 +3,6 @@
 import java.util.List;
 
 import jb.model.TdiveAccount;
-import jb.pageModel.DiveAccount;
 
 /**
  * DiveAccount数据库操作类

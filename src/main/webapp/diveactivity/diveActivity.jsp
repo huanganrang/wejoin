@@ -52,13 +52,23 @@
 				title : '<%=TdiveActivity.ALIAS_NAME%>',
 				width : 50		
 				}, {
-				field : 'startDate',
-				title : '<%=TdiveActivity.ALIAS_START_DATE%>',
-				width : 50		
+					field : 'startDate',
+					title : '<%=TdiveActivity.ALIAS_START_DATE%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 10) {
+							return value.substring(0, 10);
+						}
+					}
 				}, {
-				field : 'endDate',
-				title : '<%=TdiveActivity.ALIAS_END_DATE%>',
-				width : 50		
+					field : 'endDate',
+					title : '<%=TdiveActivity.ALIAS_END_DATE%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 10) {
+							return value.substring(0, 10);
+						}
+					}
 				}, {
 				field : 'startAddr',
 				title : '<%=TdiveActivity.ALIAS_START_ADDR%>',

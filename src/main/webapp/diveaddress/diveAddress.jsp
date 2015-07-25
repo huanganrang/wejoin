@@ -57,15 +57,15 @@
 				title : '<%=TdiveAddress.ALIAS_NAME%>',
 				width : 50		
 				}, {
-				field : 'area',
+				field : 'areaZh',
 				title : '<%=TdiveAddress.ALIAS_AREA%>',
 				width : 50		
 				}, {
-				field : 'feature',
+				field : 'featureZh',
 				title : '<%=TdiveAddress.ALIAS_FEATURE%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveAddress.ALIAS_STATUS%>',
 				width : 50		
 				}, {

@@ -10,23 +10,23 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 			<tr>
-				<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
-				<td>
+				<th width="8%"><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
+				<td width="42%">
 					${diveEquip.equipName}							
 				</td>
-				<th><%=TdiveEquip.ALIAS_PRICE%></th>	
-				<td>
+				<th width="8%"><%=TdiveEquip.ALIAS_PRICE%></th>	
+				<td width="42%">
 					${diveEquip.price}							
 				</td>
 			</tr>
 			<tr>
 				<th><%=TdiveEquip.ALIAS_EQUIP_TYPE%></th>	
 				<td>
-					${diveEquip.equipType}							
+					${diveEquip.equipTypeZh}							
 				</td>	
 				<th><%=TdiveEquip.ALIAS_EQUIP_BRAND%></th>	
 				<td>
-					${diveEquip.equipBrand}							
+					${diveEquip.equipBrandZh}							
 				</td>
 			</tr>
 			<tr>
@@ -42,7 +42,7 @@
 			<tr>
 				<th><%=TdiveEquip.ALIAS_STATUS%></th>	
 				<td>
-					${diveEquip.status}							
+					${diveEquip.statusZh}							
 				</td>
 				<th><%=TdiveEquip.ALIAS_ADDTIME%></th>	
 				<td>

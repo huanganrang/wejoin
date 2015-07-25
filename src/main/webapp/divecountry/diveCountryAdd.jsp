@@ -40,20 +40,17 @@
 				<tr>	
 					<th><%=TdiveCountry.ALIAS_NAME%></th>	
 					<td>
-					
-											<input  name="name" type="text" class="easyui-validatebox span2" data-options="required:true"/>
+						<input  name="name" type="text" class="easyui-validatebox span2" data-options="required:true"/>
 					</td>							
 					<th><%=TdiveCountry.ALIAS_CODE%></th>	
 					<td>
-					
-											<input  name="code" type="text" class="easyui-validatebox span2" data-options="required:true"/>
+						<input  name="code" type="text" class="easyui-validatebox span2" data-options="required:true"/>
 					</td>							
 				</tr>	
 				<tr>	
 					<th><%=TdiveCountry.ALIAS_AD_CODE%></th>	
-					<td>
-					
-											<jb:select dataType="AD" name="adCode"></jb:select>	
+					<td colspan="3">
+						<jb:select dataType="AD" name="adCode"></jb:select>	
 					</td>							
 				</tr>	
 			</table>		

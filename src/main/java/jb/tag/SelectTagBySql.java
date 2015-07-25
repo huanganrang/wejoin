@@ -10,7 +10,6 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import jb.absx.F;
 import jb.listener.Application;
-import jb.pageModel.BaseData;
 import jb.service.BasedataServiceI;
 
 public class SelectTagBySql extends TagSupport{
@@ -36,6 +35,7 @@ public class SelectTagBySql extends TagSupport{
 	public void setValue(String value) {
 		this.value = value;
 	}
+	@SuppressWarnings("rawtypes")
 	@Override  
     public int doStartTag() throws JspException {  
 		JspWriter out = pageContext.getOut();  		  

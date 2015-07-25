@@ -2,6 +2,8 @@ package jb.pageModel;
 
 import java.util.Date;
 
+import jb.listener.Application;
+
 public class DiveTravel implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -18,6 +20,16 @@ public class DiveTravel implements java.io.Serializable {
 	private Date addtime;			
 
 	private boolean isCollect;
+	
+	public String getStatusZh() {
+		return Application.getString(this.status);
+	}
+	public String getAreaZh() {
+		return Application.getString(this.area);
+	}
+	public String getFeatureZh() {
+		return Application.getString(this.feature);
+	}
 
 	public void setId(java.lang.String value) {
 		this.id = value;

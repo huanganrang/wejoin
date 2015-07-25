@@ -20,12 +20,9 @@ import jb.absx.F;
 import jb.android.push.NotificationManager;
 import jb.interceptors.TokenManage;
 import jb.listener.Application;
-import jb.model.TmessageCount;
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.Json;
-import jb.pageModel.Message;
-import jb.service.MessageServiceI;
 import jb.util.Constants;
 import jb.util.StringEscapeEditor;
 
@@ -36,7 +33,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -44,8 +40,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * 基础控制器
@@ -61,8 +55,6 @@ public class BaseController {
 
 	public static final String DEFAULT_TOKEN = TokenManage.DEFAULT_TOKEN;
 	private String _publishSettingVal = "2"; //生产环境
-	@Autowired
-	protected MessageServiceI messageService;
 	
 	@InitBinder
 	public void initBinder(ServletRequestDataBinder binder) {
@@ -168,35 +160,6 @@ public class BaseController {
 			if (out != null)
 				out.close();			
 		}	
-	}
-
-	
-	protected void addMessage(String mtype,String attUserId,String relationId){
-		//这里可以异步处理
-		try{
-			Message message = new Message();
-			message.setMtype(mtype);
-			message.setRelationId(relationId);
-			message.setUserId(attUserId);
-			TmessageCount tcount = messageService.addAndCount(message);
-			notification(JSON.toJSONString(tcount));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-	
-	protected void addMessage(String mtype,String relationId){
-		//这里可以异步处理
-		try{
-			Message message = new Message();
-			message.setMtype(mtype);
-			message.setRelationId(relationId);
-			//message.setUserId(attUserId);
-			TmessageCount tcount = messageService.addAndCount(message);
-			notification(JSON.toJSONString(tcount));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 	}
 	
 	public void notification(String rs) {

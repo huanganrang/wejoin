@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_equip")
 @DynamicInsert(true)
@@ -32,7 +32,7 @@ public class TdiveEquip implements java.io.Serializable,IEntity{
 	public static final String ALIAS_SALE_NUM = "销售数量";
 	public static final String ALIAS_HOT = "热门系数";
 	public static final String ALIAS_PRICE = "市场价格";
-	public static final String ALIAS_STATUS = "状态（上架，下架）";
+	public static final String ALIAS_STATUS = "状态";
 	public static final String ALIAS_EQUIP_BRAND = "品牌";
 	public static final String ALIAS_ADDTIME = "addtime";
 	

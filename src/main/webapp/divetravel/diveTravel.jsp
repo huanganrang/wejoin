@@ -61,15 +61,15 @@
 				title : '<%=TdiveTravel.ALIAS_PRICE%>',
 				width : 50		
 				}, {
-				field : 'area',
+				field : 'areaZh',
 				title : '<%=TdiveTravel.ALIAS_AREA%>',
 				width : 50		
 				}, {
-				field : 'feature',
+				field : 'featureZh',
 				title : '<%=TdiveTravel.ALIAS_FEATURE%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveTravel.ALIAS_STATUS%>',
 				width : 50		
 				}, {

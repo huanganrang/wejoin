@@ -12,7 +12,6 @@ import org.androidpn.server.service.UserNotFoundException;
 import org.androidpn.server.service.UserService;
 import org.androidpn.server.xmpp.session.ClientSession;
 import org.androidpn.server.xmpp.session.SessionManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 

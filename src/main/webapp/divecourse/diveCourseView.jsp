@@ -11,16 +11,16 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 			<tr>
-				<th><%=TdiveCourse.ALIAS_TITLE%></th>
-				<td>${diveCourse.title}</td>
-				<th><%=TdiveCourse.ALIAS_PRICE%></th>
-				<td>${diveCourse.price}</td>
+				<th width="8%"><%=TdiveCourse.ALIAS_TITLE%></th>
+				<td width="42%">${diveCourse.title}</td>
+				<th width="8%"><%=TdiveCourse.ALIAS_PRICE%></th>
+				<td width="42%">${diveCourse.price}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveCourse.ALIAS_COURSE_TYPE%></th>
-				<td>${diveCourse.courseType}</td>
+				<td>${diveCourse.courseTypeZh}</td>
 				<th><%=TdiveCourse.ALIAS_STATUS%></th>
-				<td>${diveCourse.status}</td>
+				<td>${diveCourse.statusZh}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>

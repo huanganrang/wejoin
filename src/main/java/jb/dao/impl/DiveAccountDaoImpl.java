@@ -6,7 +6,6 @@ import java.util.Map;
 
 import jb.dao.DiveAccountDaoI;
 import jb.model.TdiveAccount;
-import jb.pageModel.DiveAccount;
 
 import org.springframework.stereotype.Repository;
 

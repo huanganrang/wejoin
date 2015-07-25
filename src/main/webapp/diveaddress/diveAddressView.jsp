@@ -15,16 +15,16 @@
 				<td colspan="3">${diveAddress.id}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveAddress.ALIAS_NAME%></th>
-				<td>${diveAddress.name}</td>
-				<th><%=TdiveAddress.ALIAS_STATUS%></th>
-				<td>${diveAddress.status}</td>
+				<th width="8%"><%=TdiveAddress.ALIAS_NAME%></th>
+				<td width="42%">${diveAddress.name}</td>
+				<th width="8%"><%=TdiveAddress.ALIAS_STATUS%></th>
+				<td width="42%">${diveAddress.statusZh}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveAddress.ALIAS_AREA%></th>
-				<td>${diveAddress.area}</td>
+				<td>${diveAddress.areaZh}</td>
 				<th><%=TdiveAddress.ALIAS_FEATURE%></th>
-				<td>${diveAddress.feature}</td>
+				<td>${diveAddress.featureZh}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveAddress.ALIAS_ADDTIME%></th>

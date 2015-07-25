@@ -15,10 +15,10 @@
 				<td colspan="3">${diveCertificateAuthority.accountId}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
-				<td>${diveCertificateAuthority.orgCode}</td>
-				<th><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>
-				<td>${diveCertificateAuthority.levelCode}</td>
+				<th width="15%"><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>
+				<td width="35%">${diveCertificateAuthority.orgCodeZh}</td>
+				<th width="15%"><%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%></th>
+				<td width="35%">${diveCertificateAuthority.levelCodeZh}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%></th>
@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
-				<td>${diveCertificateAuthority.status}</td>
+				<td>${diveCertificateAuthority.statusZh}</td>
 				<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
 				<td>${diveCertificateAuthority.auditDate}</td>
 			</tr>

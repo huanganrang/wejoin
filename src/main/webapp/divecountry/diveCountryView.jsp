@@ -21,8 +21,8 @@
 				</tr>		
 				<tr>	
 					<th><%=TdiveCountry.ALIAS_AD_CODE%></th>	
-					<td>
-						${diveCountry.adCode}							
+					<td colspan="3">
+						${diveCountry.adCodeZh}							
 					</td>							
 				</tr>		
 		</table>

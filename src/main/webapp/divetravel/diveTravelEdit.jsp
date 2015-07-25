@@ -68,11 +68,11 @@
 			<input type="hidden" name="id" value="${diveTravel.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th><%=TdiveTravel.ALIAS_NAME%></th>
-					<td><input class="span2" name="name" type="text" class="span2"
+					<th width="8%"><%=TdiveTravel.ALIAS_NAME%></th>
+					<td width="42%"><input class="span2" name="name" type="text" class="span2"
 						value="${diveTravel.name}" /></td>
-					<th><%=TdiveTravel.ALIAS_PRICE%></th>
-					<td><input class="span2" name="price" type="text"
+					<th width="8%"><%=TdiveTravel.ALIAS_PRICE%></th>
+					<td width="42%"><input class="span2" name="price" type="text"
 						class="span2" value="${diveTravel.price}" /></td>
 				</tr>
 				<tr>

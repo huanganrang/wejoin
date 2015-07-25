@@ -6,14 +6,14 @@
 
 package jb.model;
 
-import javax.persistence.*;
-
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "dive_course")
 @DynamicInsert(true)
@@ -31,7 +31,7 @@ public class TdiveCourse implements java.io.Serializable,IEntity{
 	public static final String ALIAS_CONTENT = "内容";
 	public static final String ALIAS_INTRODUCE = "介绍";
 	public static final String ALIAS_FILE_PATH = "视频地址";
-	public static final String ALIAS_STATUS = "状态（上架，下架）";
+	public static final String ALIAS_STATUS = "状态";
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats

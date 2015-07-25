@@ -30,7 +30,7 @@ public class TdiveStore implements java.io.Serializable,IEntity{
 	public static final String ALIAS_DESCRIPTION = "介绍";
 	public static final String ALIAS_SERVER_SCOPE = "服务范围";
 	public static final String ALIAS_AREA = "地区";
-	public static final String ALIAS_STATUS = "状态（上架，下架）";
+	public static final String ALIAS_STATUS = "状态";
 	public static final String ALIAS_ADDTIME = "addtime";
 	
 	//date formats

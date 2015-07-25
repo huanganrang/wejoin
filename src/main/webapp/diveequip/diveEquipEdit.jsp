@@ -66,12 +66,12 @@
 				<input type="hidden" name="id" value = "${diveEquip.id}"/>
 			<table class="table table-hover table-condensed">
 				<tr>	
-					<th><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
-					<td>
+					<th width="8%"><%=TdiveEquip.ALIAS_EQUIP_NAME%></th>	
+					<td width="42%">
 						<input class="span2" name="equipName" type="text" class="span2"  value="${diveEquip.equipName}"/>
 					</td>
-					<th><%=TdiveEquip.ALIAS_PRICE%></th>	
-					<td>
+					<th width="8%"><%=TdiveEquip.ALIAS_PRICE%></th>	
+					<td width="42%">
 						<input class="span2" name="price" type="text" class="span2"  value="${diveEquip.price}"/>
 					</td>	
 				</tr>	

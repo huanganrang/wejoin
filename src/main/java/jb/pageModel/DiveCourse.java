@@ -2,6 +2,8 @@ package jb.pageModel;
 
 import java.util.Date;
 
+import jb.listener.Application;
+
 public class DiveCourse implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -17,8 +19,14 @@ public class DiveCourse implements java.io.Serializable {
 	private java.lang.String status;	
 	private Date addtime;			
 
+	public String getCourseTypeZh() {
+		return Application.getString(this.courseType);
+	}
 	
-
+	public String getStatusZh() {
+		return Application.getString(this.status);
+	}
+	
 	public void setId(java.lang.String value) {
 		this.id = value;
 	}

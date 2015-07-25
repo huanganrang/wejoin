@@ -69,11 +69,11 @@
 			<input type="hidden" name="id" value="${diveCourse.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th><%=TdiveCourse.ALIAS_TITLE%></th>
-					<td><input class="span2" name="title" type="text"
+					<th width="8%"><%=TdiveCourse.ALIAS_TITLE%></th>
+					<td width="42%"><input class="span2" name="title" type="text"
 						class="span2" value="${diveCourse.title}"/></td>
-					<th><%=TdiveCourse.ALIAS_PRICE%></th>
-					<td><input class="span2" name="price" type="text"
+					<th width="8%"><%=TdiveCourse.ALIAS_PRICE%></th>
+					<td width="42%"><input class="span2" name="price" type="text"
 						class="span2" value="${diveCourse.price}"/></td>
 				</tr>
 				<tr>

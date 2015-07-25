@@ -35,15 +35,23 @@
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
-		style="overflow: hidden;">
+		style="overflow: auto;">
 		<form id="form" method="post">
 			<input type="hidden" name="id" value="${diveCertificateAuthority.id}" />
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
+					<th width="15%"><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
 					<td>
 						<jb:select dataType="AS" name="status" value="${diveCertificateAuthority.status}"></jb:select>		
 					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_RIGHT_SIDE%></th>
+					<td><img alt="" src="${diveCertificateAuthority.rightSide}"> </td>
+				</tr>
+				<tr>
+					<th><%=TdiveCertificateAuthority.ALIAS_REVERSE_SIDE%></th>
+					<td><img alt="" src="${diveCertificateAuthority.reverseSide}"> </td>
 				</tr>
 				<!-- <tr>
 					<th><%=TdiveCertificateAuthority.ALIAS_ORG_CODE%></th>

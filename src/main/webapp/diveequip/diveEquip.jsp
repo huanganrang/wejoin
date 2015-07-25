@@ -53,7 +53,7 @@
 				title : '<%=TdiveEquip.ALIAS_EQUIP_NAME%>',
 				width : 50		
 				}, {
-				field : 'equipType',
+				field : 'equipTypeZh',
 				title : '<%=TdiveEquip.ALIAS_EQUIP_TYPE%>',
 				width : 50		
 				}, {
@@ -69,11 +69,11 @@
 				title : '<%=TdiveEquip.ALIAS_PRICE%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveEquip.ALIAS_STATUS%>',
 				width : 50		
 				}, {
-				field : 'equipBrand',
+				field : 'equipBrandZh',
 				title : '<%=TdiveEquip.ALIAS_EQUIP_BRAND%>',
 				width : 50		
 				}, {

@@ -33,17 +33,17 @@
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-	<div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+	<div data-options="region:'center',border:false" title="" style="overflow: auto;">
 		<form id="form" method="post">
 				<input type="hidden" name="id" value = "${diveActivity.id}"/>
 			<table class="table table-hover table-condensed">
 				<tr>	
-					<th><%=TdiveActivity.ALIAS_NAME%></th>	
-					<td>
+					<th width="8%"><%=TdiveActivity.ALIAS_NAME%></th>	
+					<td width="42%">
 					<input class="span2" name="name" type="text" value="${diveActivity.name}"/>
 					</td>	
-					<th><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
-					<td>
+					<th width="8%"><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
+					<td width="42%">
 						<jb:selectSql dataType="SL002" name="addrId" value="${diveActivity.addrId}"></jb:selectSql>
 					</td>													
 				</tr>	

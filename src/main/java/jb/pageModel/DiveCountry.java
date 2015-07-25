@@ -1,5 +1,7 @@
 package jb.pageModel;
 
+import jb.listener.Application;
+
 
 public class DiveCountry implements java.io.Serializable {
 
@@ -10,7 +12,9 @@ public class DiveCountry implements java.io.Serializable {
 	private java.lang.String code;	
 	private java.lang.String adCode;	
 
-	
+	public String getAdCodeZh() {
+		return Application.getString(this.adCode) + "_" + this.adCode;
+	}
 
 	public void setId(java.lang.Integer value) {
 		this.id = value;

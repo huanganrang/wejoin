@@ -49,7 +49,7 @@
 			</tr>	
 				<tr>	
 					<th><%=TdiveCountry.ALIAS_AD_CODE%></th>	
-					<td>
+					<td colspan="3">
 											<jb:select dataType="AD" name="adCode" value="${diveCountry.adCode}"></jb:select>	
 					</td>							
 			</tr>	

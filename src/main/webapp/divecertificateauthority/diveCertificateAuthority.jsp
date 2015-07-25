@@ -57,23 +57,28 @@
 				title : '<%=TdiveCertificateAuthority.ALIAS_ACCOUNT_ID%>',
 				width : 50		
 				}, {
-				field : 'orgCode',
+				field : 'orgCodeZh',
 				title : '<%=TdiveCertificateAuthority.ALIAS_ORG_CODE%>',
 				width : 50		
 				}, {
-				field : 'levelCode',
+				field : 'levelCodeZh',
 				title : '<%=TdiveCertificateAuthority.ALIAS_LEVEL_CODE%>',
 				width : 50		
 				}, {
-				field : 'authDate',
-				title : '<%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%>',
-				width : 50		
+					field : 'authDate',
+					title : '<%=TdiveCertificateAuthority.ALIAS_AUTH_DATE%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 10) {
+							return value.substring(0, 10);
+						}
+					}
 				}, {
 				field : 'auditDate',
 				title : '<%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%>',
 				width : 50		
 				}, {
-				field : 'status',
+				field : 'statusZh',
 				title : '<%=TdiveCertificateAuthority.ALIAS_STATUS%>',
 				width : 50		
 				}, {
@@ -226,19 +231,10 @@
 						<td>
 							<jb:select dataType="LV" name="levelCode"></jb:select>		
 						</td>
-					</tr>
-					<tr>
 						<th><%=TdiveCertificateAuthority.ALIAS_STATUS%></th>
 						<td>
 							<jb:select dataType="AS" name="status"></jb:select>		
 						</td>
-						<th><%=TdiveCertificateAuthority.ALIAS_AUDIT_DATE%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"
-							id="auditDateBegin" name="auditDateBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveCertificateAuthority.FORMAT_AUDIT_DATE%>'})"
-							id="auditDateEnd" name="auditDateEnd" /></td>
 					</tr>
 				</table>
 			</form>
