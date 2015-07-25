@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<th><%=TdiveCourse.ALIAS_FILE_PATH%></th>
-				<td><a href="javascript:void(0);">${diveCourse.filePath}</a> </td>
+				<td><a href="${pageContext.request.contextPath}/fileController/download?filePath=${diveCourse.filePath}">点击下载</a> </td>
 				<th><%=TdiveCourse.ALIAS_ADDTIME%></th>
 				<td>${diveCourse.addtime}</td>
 			</tr>

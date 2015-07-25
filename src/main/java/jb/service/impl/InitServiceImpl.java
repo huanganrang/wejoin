@@ -695,6 +695,16 @@ public class InitServiceImpl implements InitServiceI {
 		wjglUpload.setUrl("/fileController/upload");
 		wjglUpload.setIcon("server_database");
 		resourceDao.saveOrUpdate(wjglUpload);
+		
+		Tresource wjglDownload = new Tresource();
+		wjglDownload.setId("wjglDownload");
+		wjglDownload.setName("上传下载");
+		wjglDownload.setTresourcetype(funType);
+		wjglDownload.setTresource(wjgl);
+		wjglDownload.setSeq(3);
+		wjglDownload.setUrl("/fileController/download");
+		wjglDownload.setIcon("server_database");
+		resourceDao.saveOrUpdate(wjglDownload);
 
 		Tresource chart = new Tresource();
 		chart.setId("chart");
