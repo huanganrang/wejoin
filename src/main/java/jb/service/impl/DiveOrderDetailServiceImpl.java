@@ -1,5 +1,6 @@
 package jb.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,6 +96,35 @@ public class DiveOrderDetailServiceImpl extends BaseServiceImpl<DiveOrderDetail>
 	@Override
 	public void delete(String id) {
 		diveOrderDetailDao.delete(diveOrderDetailDao.get(TdiveOrderDetail.class, id));
+	}
+
+	/**
+	 * 查询订单明细
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<DiveOrderDetail> getOrderDetail(String orderId) {
+		List<DiveOrderDetail> rl = new ArrayList<DiveOrderDetail>();
+		String sql = "select t.id id, t.order_id orderId, t.business_id businessId, "
+				+ " t.business_type businessType, t.number number, t.price price, "
+				+ " (case t.business_type when 'BT01' then (select dt.name from dive_travel dt where dt.id = t.business_id) "
+				+ " when 'BT03' then (select de.equip_name from dive_equip de where de.id = t.business_id) "
+				+ " when 'BT06' then (select dc.title from dive_course dc where dc.id = t.business_id) end) businessName"
+				+ " from dive_order_detail t where t.order_id = '" + orderId + "'";
+		List<Map> l = diveOrderDetailDao.findBySql2Map(sql);
+		if (l != null && l.size() > 0) {
+			for (Map m : l) {
+				DiveOrderDetail r = new DiveOrderDetail();
+				try {
+					org.apache.commons.beanutils.BeanUtils.populate(r, m);
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				}
+				rl.add(r);
+			}
+		}
+		return rl;
 	}
 
 }

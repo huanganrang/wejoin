@@ -1,6 +1,7 @@
 package jb.pageModel;
 
 import java.util.Date;
+import java.util.List;
 
 public class DiveOrder implements java.io.Serializable {
 
@@ -19,7 +20,7 @@ public class DiveOrder implements java.io.Serializable {
 	private Date paytime;			
 	private Date addtime;			
 
-	
+	private List<DiveOrderDetail> detail_list;
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -108,4 +109,11 @@ public class DiveOrder implements java.io.Serializable {
 		return this.addtime;
 	}
 
+	public List<DiveOrderDetail> getDetail_list() {
+		return detail_list;
+	}
+
+	public void setDetail_list(List<DiveOrderDetail> detail_list) {
+		this.detail_list = detail_list;
+	}
 }

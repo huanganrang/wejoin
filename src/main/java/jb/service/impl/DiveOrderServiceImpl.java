@@ -1,6 +1,7 @@
 package jb.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,10 +91,9 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 
 	@Override
 	public void add(DiveOrder diveOrder) {
+		diveOrder.setId(UUID.randomUUID().toString());
 		TdiveOrder t = new TdiveOrder();
 		BeanUtils.copyProperties(diveOrder, t);
-		t.setId(UUID.randomUUID().toString());
-		//t.setCreatedatetime(new Date());
 		diveOrderDao.save(t);
 	}
 
@@ -119,6 +119,37 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 	@Override
 	public void delete(String id) {
 		diveOrderDao.delete(diveOrderDao.get(TdiveOrder.class, id));
+	}
+
+
+	/**
+	 * 订单创建
+	 */
+	public String createOrder(String cardIds, String accountId) {
+		// 创建订单
+		DiveOrder order = new DiveOrder();
+		order.setAccountId(accountId); 
+		order.setOrderStatus("OS02"); // 未完成
+		order.setPayStatus("PS02"); // 待支付
+		order.setAddtime(new Date());
+		this.add(order);
+		
+		// 添加订单明细
+		String[] idArr = cardIds.split(",");
+		String inWhere = "";
+		for(String cardId : idArr) {
+			inWhere += ",'" + cardId + "'";
+		}
+		String sql = "insert into dive_order_detail(order_id, id, business_id, business_type, number, price) "
+				+ "select '" + order.getId() + "', t.id, t.business_id, t.business_type, t.number, t.price "
+				+ "from dive_shop_cart t where t.id in (" + inWhere.substring(1) + ")";
+		diveOrderDao.executeSql(sql);
+		
+		// 删除购物车
+		sql = "delete from dive_shop_cart where id in (" + inWhere.substring(1) + ")";
+		diveOrderDao.executeSql(sql);
+		
+		return order.getId();
 	}
 
 }

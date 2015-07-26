@@ -1,5 +1,7 @@
 ﻿package jb.service;
 
+import java.util.List;
+
 import jb.pageModel.DiveOrderDetail;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -50,5 +52,12 @@ public interface DiveOrderDetailServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+
+	/**
+	 * 查询订单明细
+	 * @param orderId
+	 * @return
+	 */
+	public List<DiveOrderDetail> getOrderDetail(String orderId);
 
 }

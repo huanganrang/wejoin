@@ -24,11 +24,11 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	//alias
 	public static final String TABLE_ALIAS = "DiveLog";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_LOG_TYPE = "电子/纸质";
-	public static final String ALIAS_FILE_SRC = "纸质图片路径";
+	public static final String ALIAS_LOG_TYPE = "日志类型";
+	public static final String ALIAS_FILE_SRC = "纸质图片";
 	public static final String ALIAS_ACCOUNT_ID = "会员ID";
 	public static final String ALIAS_DIVE_TYPE = "潜水类型";
-	public static final String ALIAS_DIVE_DATE = "时间";
+	public static final String ALIAS_DIVE_DATE = "潜水时间";
 	public static final String ALIAS_DIVE_ADDRESS = "潜水地点";
 	public static final String ALIAS_WEATHER = "天气";
 	public static final String ALIAS_WATER_TEMPERATURE = "水温";

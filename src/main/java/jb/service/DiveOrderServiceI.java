@@ -1,7 +1,7 @@
 ﻿package jb.service;
 
-import jb.pageModel.DiveOrder;
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveOrder;
 import jb.pageModel.PageHelper;
 
 /**
@@ -50,5 +50,13 @@ public interface DiveOrderServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+
+	/**
+	 * 订单创建
+	 * @param cardIds
+	 * @param id
+	 * @return
+	 */
+	public String createOrder(String cardIds, String accountId);
 
 }

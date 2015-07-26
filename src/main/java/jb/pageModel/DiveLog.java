@@ -2,6 +2,8 @@ package jb.pageModel;
 
 import java.util.Date;
 
+import jb.listener.Application;
+
 public class DiveLog implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -26,6 +28,16 @@ public class DiveLog implements java.io.Serializable {
 	private Date addtime;	
 	private java.lang.String diveAddress;
 	private java.lang.Integer highGas;
+	
+	public String getLogTypeZh() {
+		return Application.getString(this.logType);
+	}
+	public String getDiveTypeZh() {
+		return Application.getString(this.diveType);
+	}
+	public String getWeatherZh() {
+		return Application.getString(this.weather);
+	}
 
 	public void setId(java.lang.String value) {
 		this.id = value;

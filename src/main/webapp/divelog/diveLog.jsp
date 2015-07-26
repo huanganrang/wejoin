@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveLog"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,29 +53,38 @@
 				width : 150,
 				hidden : true
 				}, {
-				field : 'logType',
+				field : 'logTypeZh',
 				title : '<%=TdiveLog.ALIAS_LOG_TYPE%>',
-				width : 50		
-				}, {
-				field : 'fileSrc',
-				title : '<%=TdiveLog.ALIAS_FILE_SRC%>',
 				width : 50		
 				}, {
 				field : 'accountId',
 				title : '<%=TdiveLog.ALIAS_ACCOUNT_ID%>',
 				width : 50		
 				}, {
-				field : 'diveType',
+					field : 'diveDate',
+					title : '<%=TdiveLog.ALIAS_DIVE_DATE%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 16) {
+							return value.substring(0, 16);
+						}
+					}
+				}, {
+					field : 'diveAddress',
+					title : '<%=TdiveLog.ALIAS_DIVE_ADDRESS%>',
+					width : 50		
+				}, {
+				field : 'diveTypeZh',
 				title : '<%=TdiveLog.ALIAS_DIVE_TYPE%>',
 				width : 50		
 				}, {
-				field : 'diveDate',
-				title : '<%=TdiveLog.ALIAS_DIVE_DATE%>',
-				width : 50		
-				}, {
-				field : 'weather',
+				field : 'weatherZh',
 				title : '<%=TdiveLog.ALIAS_WEATHER%>',
 				width : 50		
+				}, {
+					field : 'weatherTemperature',
+					title : '<%=TdiveLog.ALIAS_WEATHER_TEMPERATURE%>',
+					width : 50		
 				}, {
 				field : 'waterTemperature',
 				title : '<%=TdiveLog.ALIAS_WATER_TEMPERATURE%>',
@@ -84,29 +94,38 @@
 				title : '<%=TdiveLog.ALIAS_SEEING%>',
 				width : 50		
 				}, {
-				field : 'inTime',
-				title : '<%=TdiveLog.ALIAS_IN_TIME%>',
-				width : 50		
+					field : 'windPower',
+					title : '<%=TdiveLog.ALIAS_WIND_POWER%>',
+					width : 50		
 				}, {
-				field : 'outTime',
-				title : '<%=TdiveLog.ALIAS_OUT_TIME%>',
-				width : 50		
+					field : 'inTime',
+					title : '<%=TdiveLog.ALIAS_IN_TIME%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 16) {
+							return value.substring(11, 16);
+						}
+					}
+				}, {
+					field : 'outTime',
+					title : '<%=TdiveLog.ALIAS_OUT_TIME%>',
+					width : 50,
+					formatter: function(value,row,index){
+						if(value && value.length > 16) {
+							return value.substring(11, 16);
+						}
+					}
 				}, {
 				field : 'diveHeight',
 				title : '<%=TdiveLog.ALIAS_DIVE_HEIGHT%>',
 				width : 50		
 				}, {
-				field : 'diveWeith',
-				title : '<%=TdiveLog.ALIAS_DIVE_WEITH%>',
-				width : 50		
-				}, {
-				field : 'weatherTemperature',
-				title : '<%=TdiveLog.ALIAS_WEATHER_TEMPERATURE%>',
-				width : 50		
-				}, {
-				field : 'windPower',
-				title : '<%=TdiveLog.ALIAS_WIND_POWER%>',
-				width : 50		
+					field : 'highGas',
+					title : '<%=TdiveLog.ALIAS_HIGH_GAS%>',
+					width : 50,
+					formatter: function(value,row,index){
+						return value == 1 ? "是" : "否";
+					}
 				}, {
 				field : 'gasStart',
 				title : '<%=TdiveLog.ALIAS_GAS_START%>',
@@ -258,80 +277,13 @@
 					style="display: none;">
 					<tr>
 						<th><%=TdiveLog.ALIAS_LOG_TYPE%></th>
-						<td><input type="text" name="logType" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_FILE_SRC%></th>
-						<td><input type="text" name="fileSrc" maxlength="256"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_ACCOUNT_ID%></th>
-						<td><input type="text" name="accountId" maxlength="36"
-							class="span2" /></td>
+						<td>
+							<jb:select dataType="LT" name="logType"></jb:select>
+						</td>
 						<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>
-						<td><input type="text" name="diveType" maxlength="4"
-							class="span2" /></td>
-					</tr>
-					<tr>
-						<th><%=TdiveLog.ALIAS_DIVE_DATE%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})"
-							id="diveDateBegin" name="diveDateBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_DIVE_DATE%>'})"
-							id="diveDateEnd" name="diveDateEnd" /></td>
-						<th><%=TdiveLog.ALIAS_WEATHER%></th>
-						<td><input type="text" name="weather" maxlength="4"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_WATER_TEMPERATURE%></th>
-						<td><input type="text" name="waterTemperature" maxlength="12"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_SEEING%></th>
-						<td><input type="text" name="seeing" maxlength="12"
-							class="span2" /></td>
-					</tr>
-					<tr>
-						<th><%=TdiveLog.ALIAS_IN_TIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})"
-							id="inTimeBegin" name="inTimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_IN_TIME%>'})"
-							id="inTimeEnd" name="inTimeEnd" /></td>
-						<th><%=TdiveLog.ALIAS_OUT_TIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})"
-							id="outTimeBegin" name="outTimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_OUT_TIME%>'})"
-							id="outTimeEnd" name="outTimeEnd" /></td>
-						<th><%=TdiveLog.ALIAS_DIVE_HEIGHT%></th>
-						<td><input type="text" name="diveHeight" maxlength="12"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_DIVE_WEITH%></th>
-						<td><input type="text" name="diveWeith" maxlength="12"
-							class="span2" /></td>
-					</tr>
-					<tr>
-						<th><%=TdiveLog.ALIAS_WEATHER_TEMPERATURE%></th>
-						<td><input type="text" name="weatherTemperature"
-							maxlength="12" class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_WIND_POWER%></th>
-						<td><input type="text" name="windPower" maxlength="12"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_GAS_START%></th>
-						<td><input type="text" name="gasStart" maxlength="12"
-							class="span2" /></td>
-						<th><%=TdiveLog.ALIAS_GAS_END%></th>
-						<td><input type="text" name="gasEnd" maxlength="12"
-							class="span2" /></td>
-					</tr>
-					<tr>
-						<th><%=TdiveLog.ALIAS_ADDTIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})"
-							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveLog.FORMAT_ADDTIME%>'})"
-							id="addtimeEnd" name="addtimeEnd" /></td>
+						<td>
+							<jb:select dataType="DT" name="diveType"></jb:select>
+						</td>
 					</tr>
 				</table>
 			</form>

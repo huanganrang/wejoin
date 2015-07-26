@@ -11,32 +11,33 @@
 	<div data-options="region:'center',border:false">
 		<table class="table table-hover table-condensed">
 			<tr>
-				<th><%=TdiveAccount.ALIAS_USER_NAME%></th>
-				<td>${diveAccount.userName}</td>
-				<th><%=TdiveAccount.ALIAS_PASSWORD%></th>
-				<td>${diveAccount.password}</td>
-			</tr>
-			<tr>
-				<th><%=TdiveAccount.ALIAS_ICON%></th>
-				<td>${diveAccount.icon}</td>
-				<th><%=TdiveAccount.ALIAS_NICKNAME%></th>
-				<td>${diveAccount.nickname}</td>
+				<th width="8%"><%=TdiveAccount.ALIAS_USER_NAME%></th>
+				<td width="42%">${diveAccount.userName}</td>
+				<th width="8%"><%=TdiveAccount.ALIAS_NICKNAME%></th>
+				<td width="42%">${diveAccount.nickname}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveAccount.ALIAS_SEX%></th>
-				<td>${diveAccount.sex}</td>
+				<td>${diveAccount.sexZh}</td>
 				<th><%=TdiveAccount.ALIAS_CITY%></th>
 				<td>${diveAccount.city}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveAccount.ALIAS_PERSONALITY%></th>
-				<td>${diveAccount.personality}</td>
 				<th><%=TdiveAccount.ALIAS_EMAIL%></th>
 				<td>${diveAccount.email}</td>
-			</tr>
-			<tr>
 				<th><%=TdiveAccount.ALIAS_ADDTIME%></th>
 				<td>${diveAccount.addtime}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveAccount.ALIAS_PERSONALITY%></th>
+				<td colspan="3">${diveAccount.personality}</td>
+			</tr>
+			
+			<tr>
+				<th>头像</th>
+				<td colspan="3">
+					<img alt="" src="${diveAccount.icon}">
+				</td>
 			</tr>
 		</table>
 	</div>

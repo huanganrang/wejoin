@@ -3,6 +3,7 @@
 <%@ page import="jb.model.TdiveAccount"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,28 +57,16 @@
 				title : '<%=TdiveAccount.ALIAS_USER_NAME%>',
 				width : 50		
 				}, {
-				field : 'password',
-				title : '<%=TdiveAccount.ALIAS_PASSWORD%>',
-				width : 50		
-				}, {
-				field : 'icon',
-				title : '<%=TdiveAccount.ALIAS_ICON%>',
-				width : 50		
-				}, {
 				field : 'nickname',
 				title : '<%=TdiveAccount.ALIAS_NICKNAME%>',
 				width : 50		
 				}, {
-				field : 'sex',
+				field : 'sexZh',
 				title : '<%=TdiveAccount.ALIAS_SEX%>',
 				width : 50		
 				}, {
 				field : 'city',
 				title : '<%=TdiveAccount.ALIAS_CITY%>',
-				width : 50		
-				}, {
-				field : 'personality',
-				title : '<%=TdiveAccount.ALIAS_PERSONALITY%>',
 				width : 50		
 				}, {
 				field : 'email',
@@ -228,39 +217,16 @@
 						<th><%=TdiveAccount.ALIAS_USER_NAME%></th>
 						<td><input type="text" name="userName" maxlength="18"
 							class="span2" /></td>
-						<th><%=TdiveAccount.ALIAS_PASSWORD%></th>
-						<td><input type="text" name="password" maxlength="128"
-							class="span2" /></td>
-						<th><%=TdiveAccount.ALIAS_ICON%></th>
-						<td><input type="text" name="icon" maxlength="128"
-							class="span2" /></td>
 						<th><%=TdiveAccount.ALIAS_NICKNAME%></th>
 						<td><input type="text" name="nickname" maxlength="128"
 							class="span2" /></td>
-					</tr>
-					<tr>
+						<tr>
 						<th><%=TdiveAccount.ALIAS_SEX%></th>
-						<td><input type="text" name="sex" maxlength="4" class="span2" />
+						<td>
+							<jb:select dataType="SX" name="sex"></jb:select>
 						</td>
-						<th><%=TdiveAccount.ALIAS_CITY%></th>
-						<td><input type="text" name="city" maxlength="36"
-							class="span2" /></td>
-						<th><%=TdiveAccount.ALIAS_PERSONALITY%></th>
-						<td><input type="text" name="personality" maxlength="256"
-							class="span2" /></td>
-						<th><%=TdiveAccount.ALIAS_EMAIL%></th>
-						<td><input type="text" name="email" maxlength="128"
-							class="span2" /></td>
 					</tr>
-					<tr>
-						<th><%=TdiveAccount.ALIAS_ADDTIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveAccount.FORMAT_ADDTIME%>'})"
-							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveAccount.FORMAT_ADDTIME%>'})"
-							id="addtimeEnd" name="addtimeEnd" /></td>
-					</tr>
+					
 				</table>
 			</form>
 		</div>

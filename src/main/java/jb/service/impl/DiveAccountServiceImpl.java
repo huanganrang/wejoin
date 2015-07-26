@@ -55,8 +55,8 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		if (diveAccount != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveAccount.getUserName())) {
-				whereHql += " and t.userName = :userName";
-				params.put("userName", diveAccount.getUserName());
+				whereHql += " and t.userName like :userName";
+				params.put("userName", "%%" + diveAccount.getUserName() + "%%");
 			}		
 			if (!F.empty(diveAccount.getPassword())) {
 				whereHql += " and t.password = :password";
@@ -67,8 +67,8 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 				params.put("icon", diveAccount.getIcon());
 			}		
 			if (!F.empty(diveAccount.getNickname())) {
-				whereHql += " and t.nickname = :nickname";
-				params.put("nickname", diveAccount.getNickname());
+				whereHql += " and t.nickname like :nickname";
+				params.put("nickname", "%%" + diveAccount.getNickname() + "%%");
 			}		
 			if (!F.empty(diveAccount.getSex())) {
 				whereHql += " and t.sex = :sex";

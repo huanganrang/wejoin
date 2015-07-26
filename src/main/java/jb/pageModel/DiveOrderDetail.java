@@ -12,7 +12,7 @@ public class DiveOrderDetail implements java.io.Serializable {
 	private java.lang.Integer number;	
 	private java.lang.Float price;	
 
-	
+	private String businessName;
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -58,5 +58,11 @@ public class DiveOrderDetail implements java.io.Serializable {
 	public java.lang.Float getPrice() {
 		return this.price;
 	}
+	public String getBusinessName() {
+		return businessName;
+	}
 
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
 }
