@@ -51,11 +51,11 @@
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>orgCode(认证机构代码)：</label></td>
-						<td><input name="orgCode" type="text" class="span2" value=""/></td>
+						<td><input name="orgCode" type="text" class="span2" value=""/>（参考基础数据OS）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>levelCode(认证等级代码)：</label></td>
-						<td><input name="levelCode" type="text" class="span2" value=""/></td>
+						<td><input name="levelCode" type="text" class="span2" value=""/>（参考基础 数据LV，pid=orgCode联动）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>authDateStr(发证日期)：</label></td>

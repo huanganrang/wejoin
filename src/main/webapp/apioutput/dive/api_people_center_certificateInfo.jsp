@@ -96,7 +96,7 @@
                 
             </td>
             <td width="148" style="border-left-style: none;">
-                认证机构代码
+                认证机构代码(参考基础数据OS)
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -111,7 +111,7 @@
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                认证等级代码
+                认证等级代码（参考基础数据LV）
             </td>
         </tr>
         <tr height="19" style="height:19px">
