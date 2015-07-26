@@ -129,4 +129,22 @@ public class DiveShopCartServiceImpl extends BaseServiceImpl<DiveShopCart> imple
 		return rl;
 	}
 
+	/**
+	 * 加入购物车
+	 */
+	public void addShopCart(DiveShopCart diveShopCart) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", diveShopCart.getAccountId());
+		params.put("businessId", diveShopCart.getBusinessId());
+		params.put("businessType", diveShopCart.getBusinessType());
+		TdiveShopCart t = diveShopCartDao.get("from TdiveShopCart t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params);
+		if(t != null) {
+			diveShopCart.setNumber(t.getNumber() + 1);
+			MyBeanUtils.copyProperties(diveShopCart, t, new String[] { "id" },true);
+		} else {
+			diveShopCart.setNumber(1);
+			this.add(diveShopCart);
+		}
+	}
+
 }

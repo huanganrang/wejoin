@@ -77,6 +77,7 @@ public class ApiOrderController extends BaseController {
 		try{
 			SessionInfo s = getSessionInfo(request);
 			diveShopCart.setAccountId(s.getId());
+			diveShopCartService.addShopCart(diveShopCart);
 			diveShopCart.setNumber(1);
 			diveShopCartService.add(diveShopCart);
 			j.setMsg("加入购物车成功");

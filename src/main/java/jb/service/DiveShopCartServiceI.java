@@ -60,4 +60,10 @@ public interface DiveShopCartServiceI {
 	 */
 	public List<DiveShopCart> findListByAccountId(String accountId);
 
+	/**
+	 * 加入购物车
+	 * @param diveShopCart
+	 */
+	public void addShopCart(DiveShopCart diveShopCart);
+
 }

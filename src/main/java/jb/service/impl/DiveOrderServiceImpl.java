@@ -138,6 +138,7 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 		String[] idArr = cardIds.split(",");
 		String inWhere = "";
 		for(String cardId : idArr) {
+			if(F.empty(cardId)) continue;
 			inWhere += ",'" + cardId + "'";
 		}
 		String sql = "insert into dive_order_detail(order_id, id, business_id, business_type, number, price) "
