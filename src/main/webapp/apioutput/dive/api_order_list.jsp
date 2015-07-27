@@ -50,7 +50,7 @@ String url = request.getContextPath()+"/api/apiOrderController/orderList";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>orderStatus(订单状态)：</label></td>
-						<td><input name="orderStatus" type="text" class="span2" value="OS01" />（OS01：已完成；OS02：未完成）</td>
+						<td><input name="orderStatus" type="text" class="span2" value="OS01" />（OS01：已完成；OS02：未完成;不传查全部）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>

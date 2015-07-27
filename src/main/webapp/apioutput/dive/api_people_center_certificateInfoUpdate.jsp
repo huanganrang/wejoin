@@ -51,7 +51,7 @@
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>orgCode(认证机构代码)：</label></td>
-						<td><input name="orgCode" type="text" class="span2" value=""/>（参考基础数据OS）</td>
+						<td><input name="orgCode" type="text" class="span2" value=""/>（参考基础数据OC）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>levelCode(认证等级代码)：</label></td>

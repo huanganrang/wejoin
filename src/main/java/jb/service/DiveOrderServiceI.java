@@ -1,5 +1,7 @@
 ﻿package jb.service;
 
+import java.util.Map;
+
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveOrder;
 import jb.pageModel.PageHelper;
@@ -58,5 +60,12 @@ public interface DiveOrderServiceI {
 	 * @return
 	 */
 	public String createOrder(String cardIds, String accountId);
+
+	/**
+	 * 获取订单不同状态的数量
+	 * @param id
+	 * @return
+	 */
+	public Map<String, Integer> getOrderNumber(String accountId);
 
 }

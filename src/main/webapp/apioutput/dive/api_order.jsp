@@ -10,6 +10,8 @@
 
 	<div id="index_order_tabs" class="easyui-tabs" data-options="fit:true">
 		
+		<div title="订单首页数量" data-options="href:'api_order_number_count.jsp'"
+			style="padding: 1px"></div>
 		<div title="购物车查询" data-options="href:'api_order_shop_cart_list.jsp'"
 			style="padding: 1px"></div>
 		<div title="加入购物车" data-options="href:'api_order_add_shop_cart.jsp'"

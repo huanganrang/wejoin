@@ -45,6 +45,26 @@ public class ApiOrderController extends BaseController {
 	private DiveOrderDetailServiceI diveOrderDetailService;
 	
 	/**
+	 * 获取订单数量
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getOrderNumber")
+	public Json getOrderNumber(HttpServletRequest request) {
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			j.setObj(diveOrderService.getOrderNumber(s.getId()));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 购物车列表
 	 * @param ph
 	 * @return

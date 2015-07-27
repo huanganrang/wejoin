@@ -153,4 +153,19 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 		return order.getId();
 	}
 
+	/**
+	 * 获取订单不同状态的数量
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Map<String, Integer> getOrderNumber(String accountId) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		String sql = "select count(case when order_status='OS01' then id end) complete_number, "
+				+ "count(case when order_status='OS02' then id end) uncomplete_number, "
+				+ "count(case when order_status='OS03' then id end) cancel_number "
+				+ " from dive_order where account_id = :accountId";
+		List<Map> l = diveOrderDao.findBySql2Map(sql, params);
+		return l.get(0);
+	}
+
 }

@@ -49,7 +49,7 @@
 				<tr>
 					<th><%=TdiveLog.ALIAS_ACCOUNT_ID%></th>
 					<td><input class="span2" name="accountId" type="text"
-						class="span2" value="${diveLog.userId}" /></td>
+						class="span2" value="${diveLog.accountId}" /></td>
 					<th><%=TdiveLog.ALIAS_DIVE_TYPE%></th>
 					<td><input class="span2" name="diveType" type="text"
 						class="span2" value="${diveLog.diveType}" /></td>
