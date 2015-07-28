@@ -109,6 +109,21 @@ String url = request.getContextPath()+"/api/apiOrderController/getOrderNumber";
               已取消订单数量
             </td>
         </tr>
+        <tr height="19" style="height:14.25pt">
+            <td height="14" class="xl22" style="border-top-style: none;">
+                cart_number
+            </td>
+             <td class="xl22" width="54" style="border-left-style: none;">
+            </td>
+            <td class="xl22" width="54" style="border-left-style: none;">
+             int
+            </td>
+            <td class="xl22" width="54" style="border-left-style: none;">
+            </td>
+            <td class="xl22" style="border-top:none;border-left:none" width="117">
+              购物车数量
+            </td>
+        </tr>
     </tbody>
 </table>
 

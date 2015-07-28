@@ -133,7 +133,7 @@ public class ApiAccountController extends BaseController {
 			j.setMsg("邮件发送成功");
 			j.success();
 		} catch (Exception e) {
-			j.setMsg(e.getMessage());
+			j.setMsg("邮件发送失败");
 		}
 		return j;
 	}

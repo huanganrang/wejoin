@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import jb.absx.F;
 import jb.dao.DiveOrderDaoI;
+import jb.dao.DiveShopCartDaoI;
 import jb.model.TdiveOrder;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveOrder;
@@ -25,6 +26,9 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 
 	@Autowired
 	private DiveOrderDaoI diveOrderDao;
+	
+	@Autowired
+	private DiveShopCartDaoI diveShopCartDao;
 
 	@Override
 	public DataGrid dataGrid(DiveOrder diveOrder, PageHelper ph) {
@@ -165,7 +169,9 @@ public class DiveOrderServiceImpl extends BaseServiceImpl<DiveOrder> implements 
 				+ "count(case when order_status='OS03' then id end) cancel_number "
 				+ " from dive_order where account_id = :accountId";
 		List<Map> l = diveOrderDao.findBySql2Map(sql, params);
-		return l.get(0);
+		Map m = l.get(0);
+		m.put("cart_number", diveShopCartDao.count("select count(*) from TdiveShopCart t where t.accountId = :accountId", params));
+		return m;
 	}
 
 }

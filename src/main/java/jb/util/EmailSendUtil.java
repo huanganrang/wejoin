@@ -22,7 +22,7 @@ public class EmailSendUtil {
 	 * @param title 标题
 	 * @param content 内容
 	 */
-	public static void sendMessage(String toUser, String title, String content) {
+	public static boolean sendMessage(String toUser, String title, String content) {
 		SimpleEmail email = new SimpleEmail();
 		try {
 			email.setCharset("UTF-8");
@@ -34,9 +34,11 @@ public class EmailSendUtil {
 			email.setMsg(content);
 			email.send();
 			System.out.println("-------------------邮件发送成功！Congratulations, mail sent successfully!-------------------");
+			return true;
 		} catch (EmailException e) {
 			System.out.println("-------------------邮件发送失败！Would you please change the password of email failed!-------------------");
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -50,7 +52,7 @@ public class EmailSendUtil {
 	 * @param title 标题
 	 * @param content 内容
 	 */	
-	public static void sendHtmlMessage(String toUser, String title, String content) throws EmailException{
+	public static boolean sendHtmlMessage(String toUser, String title, String content) {
 		try {
 			HtmlEmail email = new HtmlEmail();
 			email.setCharset("UTF-8");
@@ -63,9 +65,11 @@ public class EmailSendUtil {
 			email.setTextMsg(title);
 			email.send();
 			System.out.println("邮件发送成功！Congratulations, mail sent successfully! ");
+			return true;
 		} catch (EmailException e) {
 			System.out.println("邮件发送失败！Would you please change the password of email failed!");
-			throw e;
+			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -75,7 +79,7 @@ public class EmailSendUtil {
 	 * @throws Exception 
 	 * @throws EmailException 
 	 */
-	public static void sendPassword(String toUser, String password) throws EmailException {
+	public static boolean sendPassword(String toUser, String password) {
 		String title = "潜伴账号密码安全邮件（系统邮件，请勿回复。）";
 		String content="<div style='font-family:Verdana; padding:2px;'>";
 		content += "<div style='color:#666666;font-size:14px;'>";
@@ -84,10 +88,6 @@ public class EmailSendUtil {
 		content += "<div style='margin-top:25px; margin-left:40px;'>潜伴团队 敬上</div>";		
 		content += "<div style='margin-top:5px; margin-left:40px;'><a href='javascript:void(0);' target='_blank' style='color: #006699;'>www.dive.com</a></div>";
 		content += "</div></div>";
-		try {
-			sendHtmlMessage(toUser, title, content);
-		} catch (EmailException e) {
-			throw new EmailException("邮件发送失败！");
-		}
+		return sendHtmlMessage(toUser, title, content);
 	}
 }
