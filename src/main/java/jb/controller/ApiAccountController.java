@@ -16,6 +16,7 @@ import jb.service.DiveCertificateAuthorityServiceI;
 import jb.service.DiveCollectServiceI;
 import jb.util.Constants;
 import jb.util.DateUtil;
+import jb.util.EmailSendUtil;
 import jb.util.MD5Util;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,28 @@ public class ApiAccountController extends BaseController {
 			j.setObj(result);
 			j.setSuccess(true);
 			j.setMsg("注册成功");
+		} catch (Exception e) {
+			j.setMsg(e.getMessage());
+		}
+		return j;
+	}
+	
+	/**
+	 * 发送密码邮件
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/sendPassword")
+	public Json sendPassword(String email) {
+		Json j = new Json();
+		try {
+			// 待完善
+			String password = "";
+			EmailSendUtil.sendPassword(email, password);
+			j.setMsg("邮件发送成功");
+			j.success();
 		} catch (Exception e) {
 			j.setMsg(e.getMessage());
 		}

@@ -88,6 +88,7 @@
 						<value>/api/apiBaseDataController/basedata</value><!-- 基础数据 -->
 						<value>/api/apiAccountController/register</value><!-- 用户注册 -->
 						<value>/api/apiAccountController/login</value><!-- 用户登录 -->
+						<value>/api/apiAccountController/sendPassword</value><!-- 忘记密码，发送邮件 -->
 					</list>
 				</property>
 				<property name="tokenManage" ref="tokenManage" />
