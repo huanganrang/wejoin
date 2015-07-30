@@ -15,6 +15,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.DiveEquip;
 import jb.pageModel.PageHelper;
 import jb.service.DiveEquipServiceI;
+import jb.util.Constants;
 import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
@@ -39,8 +40,10 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 		List<TdiveEquip> l = dg.getRows();
 		if (l != null && l.size() > 0) {
 			for (TdiveEquip t : l) {
+//				t.setEquipDes(null);
 				DiveEquip o = new DiveEquip();
 				BeanUtils.copyProperties(t, o);
+				o.setEquipDes(null);
 				ol.add(o);
 			}
 		}
@@ -133,6 +136,9 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 		} else {
 			d.setCollect(false); // 未收藏
 		}
+		
+		String desPath = Constants.DETAIL_HTML_PATH.replace("TYPE", EQUIP_TAG).replace("ID", id);
+		d.setEquipDes(desPath);
 		return d;
 	}
 
