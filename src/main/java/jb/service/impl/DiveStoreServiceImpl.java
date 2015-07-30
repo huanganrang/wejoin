@@ -15,6 +15,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.DiveStore;
 import jb.pageModel.PageHelper;
 import jb.service.DiveStoreServiceI;
+import jb.util.Constants;
 import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
@@ -41,6 +42,7 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 			for (TdiveStore t : l) {
 				DiveStore o = new DiveStore();
 				BeanUtils.copyProperties(t, o);
+				o.setDescription(null);
 				ol.add(o);
 			}
 		}
@@ -151,6 +153,9 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 		} else {
 			d.setPraise(false); // 未赞
 		}
+		
+		String desPath = Constants.DETAIL_HTML_PATH.replace("TYPE", STORE_TAG).replace("ID", id);
+		d.setDescription(desPath);
 		return d;
 	}
 

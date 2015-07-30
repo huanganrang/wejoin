@@ -50,7 +50,6 @@
 				reader.onload = function ( event ) {
 					var txt = event.target.result;
 					$('.img-preview').attr('src',txt);
-					$('#icon').val(txt);
 				};
 			}
 		    reader.readAsDataURL(file);
@@ -78,9 +77,8 @@
 				<tr>	
 					<th><%=TdiveEquip.ALIAS_EQUIP_ICON%></th>	
 					<td colspan="3">
-						<input name="equipIcon" id="icon" type="hidden" value="${diveEquip.equipIcon}"> 
 						<img class="img-preview" src="${diveEquip.equipIcon}" width="50" height="50"/> 
-						<input type="file" id="iconFile">
+						<input type="file" id="iconFile" name="equipIconFile">
 					</td>
 				</tr>	
 				<tr>	

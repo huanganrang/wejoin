@@ -37,6 +37,7 @@ public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implement
 			for (TdiveCourse t : l) {
 				DiveCourse o = new DiveCourse();
 				BeanUtils.copyProperties(t, o);
+				o.setIntroduce(null);
 				ol.add(o);
 			}
 		}

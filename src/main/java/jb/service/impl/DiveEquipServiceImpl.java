@@ -162,6 +162,7 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 			for (TdiveEquip t : l) {
 				DiveEquip o = new DiveEquip();
 				BeanUtils.copyProperties(t, o);
+				o.setEquipDes(null);
 				ol.add(o);
 			}
 		}

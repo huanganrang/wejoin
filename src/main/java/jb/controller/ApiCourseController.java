@@ -7,6 +7,7 @@ import jb.pageModel.DiveCourse;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.DiveCourseServiceI;
+import jb.util.Constants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,9 @@ public class ApiCourseController extends BaseController {
 		try{
 //			SessionInfo s = getSessionInfo(request);
 			// TODO 详情需要完善
-			j.setObj(diveCourseService.get(id));
+			DiveCourse diveCourse = diveCourseService.get(id);
+			diveCourse.setIntroduce(Constants.DETAIL_HTML_PATH.replace("TYPE", "BT06").replace("ID", id));
+			j.setObj(diveCourse);
 			j.success();
 		}catch(Exception e){
 			j.fail();

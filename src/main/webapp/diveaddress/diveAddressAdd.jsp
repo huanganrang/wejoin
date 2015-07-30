@@ -51,7 +51,6 @@
 				reader.onload = function ( event ) {
 					var txt = event.target.result;
 					$('.img-preview').attr('src',txt);
-					$('#icon').val(txt);
 				};
 			}
 		    reader.readAsDataURL(file);
@@ -64,7 +63,7 @@
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
 		style="overflow: auto;">
-		<form id="form" method="post">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" />
 			<table class="table table-hover table-condensed">
 				<tr>
@@ -77,9 +76,8 @@
 				<tr>
 					<th><%=TdiveAddress.ALIAS_ICON%></th>
 					<td colspan="3">
-						<input name="icon" id="icon" type="hidden"> 
 						<img class="img-preview" src="" width="50" height="50"/> 
-						<input type="file" id="iconFile">
+						<input type="file" id="iconFile" name="iconFile">
 					</td>
 				</tr>
 				<tr>

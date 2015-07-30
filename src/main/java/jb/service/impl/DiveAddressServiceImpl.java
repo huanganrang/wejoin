@@ -16,6 +16,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAddress;
 import jb.pageModel.PageHelper;
 import jb.service.DiveAddressServiceI;
+import jb.util.Constants;
 import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
@@ -45,6 +46,7 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 			for (TdiveAddress t : l) {
 				DiveAddress o = new DiveAddress();
 				BeanUtils.copyProperties(t, o);
+				o.setDescription(null);
 				ol.add(o);
 			}
 		}
@@ -141,6 +143,8 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 		} else {
 			d.setCollect(false); // 未收藏
 		}
+		String desPath = Constants.DETAIL_HTML_PATH.replace("TYPE", ADDRESS_TAG).replace("ID", id);
+		d.setDescription(desPath);
 		return d;
 	}
 
@@ -164,6 +168,7 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 			for (TdiveAddress t : l) {
 				DiveAddress o = new DiveAddress();
 				BeanUtils.copyProperties(t, o);
+				o.setDescription(null);
 				ol.add(o);
 			}
 		}

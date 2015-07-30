@@ -15,6 +15,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.DiveTravel;
 import jb.pageModel.PageHelper;
 import jb.service.DiveTravelServiceI;
+import jb.util.Constants;
 import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
@@ -41,6 +42,7 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 			for (TdiveTravel t : l) {
 				DiveTravel o = new DiveTravel();
 				BeanUtils.copyProperties(t, o);
+				o.setDescription(null);
 				ol.add(o);
 			}
 		}
@@ -133,6 +135,9 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 		} else {
 			d.setCollect(false); // 未收藏
 		}
+		
+		String desPath = Constants.DETAIL_HTML_PATH.replace("TYPE", TRAVEL_TAG).replace("ID", id);
+		d.setDescription(desPath);
 		return d;
 	}
 
@@ -156,6 +161,7 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 			for (TdiveTravel t : l) {
 				DiveTravel o = new DiveTravel();
 				BeanUtils.copyProperties(t, o);
+				o.setDescription(null);
 				ol.add(o);
 			}
 		}
