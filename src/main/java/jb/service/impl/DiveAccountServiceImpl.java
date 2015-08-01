@@ -55,8 +55,8 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		if (diveAccount != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveAccount.getUserName())) {
-				whereHql += " and t.userName like :userName";
-				params.put("userName", "%%" + diveAccount.getUserName() + "%%");
+				whereHql += " and t.userName = :userName";
+				params.put("userName", diveAccount.getUserName());
 			}		
 			if (!F.empty(diveAccount.getPassword())) {
 				whereHql += " and t.password = :password";
@@ -86,6 +86,11 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 				whereHql += " and t.email = :email";
 				params.put("email", diveAccount.getEmail());
 			}		
+			if (!F.empty(diveAccount.getHxStatus())) {
+				whereHql += " and t.hxStatus = :hxStatus";
+				params.put("hxStatus", diveAccount.getHxStatus());
+			}		
+				
 		}	
 		return whereHql;
 	}
@@ -109,6 +114,17 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 			BeanUtils.copyProperties(t, o);
 		}
 		return o;
+	}
+	
+	@Override
+	public DiveAccount get(DiveAccount account) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String where = whereHql(account, params);
+		TdiveAccount t = diveAccountDao.get("from TdiveAccount t " + where, params);
+		if(t != null) {
+			BeanUtils.copyProperties(t, account);
+		}
+		return account;
 	}
 
 	@Override
@@ -134,16 +150,35 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		params.put("userName", account.getUserName());
 		if(diveAccountDao.count("select count(*) from TdiveAccount t where t.userName = :userName", params) > 0) {
 			throw new Exception("用户名已存在！");
-		} else {
-			TdiveAccount t = new TdiveAccount();
-			account.setId(UUID.randomUUID().toString());
-			account.setAddtime(new Date());
-			account.setPassword(MD5Util.md5(account.getPassword()));
-			MyBeanUtils.copyProperties(account, t, true);
-			diveAccountDao.save(t);
-			
-			return account;
 		}
+		params = new HashMap<String, Object>();
+		params.put("email", account.getEmail());
+		if(!F.empty(account.getEmail())
+				&& diveAccountDao.count("select count(*) from TdiveAccount t where t.email = :email", params) > 0) {
+			throw new Exception("邮箱已被使用！");
+		}
+		params = new HashMap<String, Object>();
+		params.put("recommend", account.getRecommend());
+		if(!F.empty(account.getRecommend())) {
+			TdiveAccount ta = diveAccountDao.get("from TdiveAccount t where t.userName = :recommend", params);
+			if(ta != null) {
+				account.setRecommend(ta.getId());
+			} else {
+				account.setRecommend(null);
+			}
+		}
+		
+		TdiveAccount t = new TdiveAccount();
+		account.setId(jb.absx.UUID.uuid().toLowerCase());
+		account.setAddtime(new Date());
+		account.setHxPassword(account.getPassword());
+		account.setPassword(MD5Util.md5(account.getPassword()));
+		account.setHxStatus("2");
+		MyBeanUtils.copyProperties(account, t, true);
+		diveAccountDao.save(t);
+		
+		return account;
+		
 	}
 
 	/**
@@ -171,6 +206,21 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.accountId = :accountId", params);
 		a.setLogNum(logNum == null ? 0 : logNum.intValue());
 		return a;
+	}
+
+	/**
+	 * 检查邮箱是否存在
+	 */
+	public boolean emailExists(DiveAccount account) {
+		if(F.empty(account.getEmail())) return false;
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("email", account.getEmail());
+		TdiveAccount t = diveAccountDao.get("from TdiveAccount t where t.email = :email", params);
+		if(t != null && t.getId() != account.getId()) {
+			return true;
+		}
+		return false;
 	}
 	
 }

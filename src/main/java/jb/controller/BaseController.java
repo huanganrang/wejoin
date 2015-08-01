@@ -25,6 +25,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.Json;
 import jb.util.Constants;
 import jb.util.StringEscapeEditor;
+import jb.util.Util;
 
 import org.androidpn.server.xmpp.XmppServer;
 import org.androidpn.server.xmpp.session.ClientSession;
@@ -179,7 +180,7 @@ public class BaseController {
 		}
 	}
 	
-	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file){
+	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file,  String fileName){
 		if(file==null||file.isEmpty())
 			return null;
 		String realPath = request.getSession().getServletContext().getRealPath("/"+Constants.UPLOADFILE+"/"+dirName);  
@@ -187,13 +188,18 @@ public class BaseController {
 		if(!f.exists())
 			f.mkdir();
 		String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-		String fileName = dirName + "_" + System.currentTimeMillis() + suffix;		
+		fileName = fileName + "_" + Util.CreateNoncestr(4) + System.currentTimeMillis() + suffix;		
 		 try {
 			FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, fileName));
 			return Constants.UPLOADFILE+"/"+dirName+"/"+fileName;
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		
+	}
+	
+	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file){
+		return uploadFile(request, dirName, file, dirName);
 		
 	}
 }

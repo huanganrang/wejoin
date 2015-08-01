@@ -50,11 +50,15 @@ public interface DiveAccountServiceI {
 	 * @param id
 	 */
 	public void delete(String id);
+	
+	public DiveAccount get(DiveAccount account);
 
 	public DiveAccount reg(DiveAccount account) throws Exception;
 
 	public DiveAccount login(DiveAccount account);
-
+	
 	public DiveAccount personHome(String id);
+
+	public boolean emailExists(DiveAccount account);
 
 }

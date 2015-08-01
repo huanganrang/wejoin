@@ -140,6 +140,21 @@
                 个性签名
             </td>
         </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                email
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none">
+            	128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                邮箱
+            </td>
+        </tr>
     </tbody>
 </table>
 

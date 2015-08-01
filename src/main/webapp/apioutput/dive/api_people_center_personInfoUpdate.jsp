@@ -59,6 +59,10 @@
 						<td><input name="city" type="text" class="span2" value=""/>（格式：国家代码countryCode_省code_市code_区code;如：CN_310000_310100_310101）</td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>email(邮箱)：</label></td>
+						<td><input name="email" type="text" class="span2" value=""/></td>
+					</tr>
+					<tr>
 						<td align="right" style="width: 180px;"><label>personality(个性签名)：</label></td>
 						<td><input name="personality" type="text" class="span2" value=""/></td>
 					</tr>

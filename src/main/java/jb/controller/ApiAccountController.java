@@ -6,7 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import jb.absx.F;
 import jb.interceptors.TokenManage;
+import jb.listener.TokenListener;
 import jb.pageModel.DiveAccount;
 import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.Json;
@@ -18,6 +20,7 @@ import jb.util.Constants;
 import jb.util.DateUtil;
 import jb.util.EmailSendUtil;
 import jb.util.MD5Util;
+import jb.util.easemob.HuanxinUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -110,6 +113,25 @@ public class ApiAccountController extends BaseController {
 			j.setObj(result);
 			j.setSuccess(true);
 			j.setMsg("注册成功");
+			
+			final DiveAccount hx = account;
+			TokenListener.executors.execute(new Runnable() {
+				public void run() {
+					// 注册环信
+					if(!F.empty(HuanxinUtil.createUser(hx.getId(), hx.getHxPassword()))) {
+						DiveAccount a = new DiveAccount();
+						a.setId(hx.getId());
+						a.setHxStatus("1");
+						accountService.edit(a);
+						
+						if(!F.empty(hx.getRecommend())) {
+							HuanxinUtil.addFriend(hx.getId(), hx.getRecommend());
+						}
+					}
+				}
+			});
+			
+			
 		} catch (Exception e) {
 			j.setMsg(e.getMessage());
 		}
@@ -150,15 +172,20 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			account.setId(s.getId());
-			DiveAccount a = accountService.get(s.getId());
-			if(oldPass.equals(a.getPassword())) {
-				j.setMsg("旧密码不正确！");
+			if(!F.empty(HuanxinUtil.resetPass(s.getId(), account.getPassword()))) {
+				account.setId(s.getId());
+				DiveAccount a = accountService.get(s.getId());
+				oldPass = MD5Util.md5(oldPass);
+				if(!oldPass.equals(a.getPassword())) {
+					j.setMsg("旧密码不正确！");
+				} else {
+					account.setPassword(MD5Util.md5(account.getPassword()));
+					accountService.edit(account);
+					j.setSuccess(true);
+					j.setMsg("密码修改成功");
+				}
 			} else {
-				account.setPassword(MD5Util.md5(account.getPassword()));
-				accountService.edit(account);
-				j.setSuccess(true);
-				j.setMsg("密码修改成功");
+				j.setMsg("密码修改失败");
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();
@@ -225,9 +252,13 @@ public class ApiAccountController extends BaseController {
 		try {
 			SessionInfo s = getSessionInfo(request);
 			account.setId(s.getId());
-			accountService.edit(account);			
-			j.setSuccess(true);
-			j.setMsg("个人信息修改成功");
+			if(!accountService.emailExists(account)) {
+				accountService.edit(account);			
+				j.setSuccess(true);
+				j.setMsg("个人信息修改成功");
+			} else {
+				j.setMsg("邮箱已被使用！");
+			}
 		} catch (Exception e) {
 			// e.printStackTrace();
 			j.setMsg(e.getMessage());

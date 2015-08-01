@@ -19,6 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert(true)
 @DynamicUpdate(true)
 public class TdiveAccount implements java.io.Serializable,IEntity{
+
 	private static final long serialVersionUID = 5454155825314635342L;
 	
 	//alias
@@ -33,6 +34,8 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	public static final String ALIAS_PERSONALITY = "个性签名";
 	public static final String ALIAS_EMAIL = "邮箱";
 	public static final String ALIAS_ADDTIME = "addtime";
+	public static final String ALIAS_RECOMMEND = "推荐人";
+	public static final String ALIAS_HX_PASSWORD = "环信登录密码";
 	
 	//date formats
 	public static final String FORMAT_ADDTIME = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
@@ -58,6 +61,9 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	private java.lang.String personality;
 	//@Email @Length(max=128)
 	private java.lang.String email;
+	private java.lang.String recommend;
+	private java.lang.String hxPassword;
+	private java.lang.String hxStatus;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -152,6 +158,32 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 		this.email = email;
 	}
 	
+	@Column(name = "recommend", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getRecommend() {
+		return recommend;
+	}
+	
+	public void setRecommend(java.lang.String recommend) {
+		this.recommend = recommend;
+	}
+	
+	@Column(name = "hx_password", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getHxPassword() {
+		return hxPassword;
+	}
+	
+	public void setHxPassword(java.lang.String hxPassword) {
+		this.hxPassword = hxPassword;
+	}
+	
+	@Column(name = "hx_status", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getHxStatus() {
+		return hxStatus;
+	}
+	
+	public void setHxStatus(java.lang.String hxStatus) {
+		this.hxStatus = hxStatus;
+	}
 
 	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
 	public java.util.Date getAddtime() {

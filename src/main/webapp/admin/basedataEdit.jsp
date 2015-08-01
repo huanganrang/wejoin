@@ -36,7 +36,6 @@
 			reader.onload = function ( event ) {
 				var txt = event.target.result;
 				$('.img-preview').attr('src',txt);
-				$('#icon').val(txt);
 			};
 			}
 			    reader.readAsDataURL(file);
@@ -50,7 +49,7 @@
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
 		style="overflow: hidden;">
-		<form id="form" method="post">
+		<form id="form" method="post" enctype="multipart/form-data">
 			<table class="table table-hover table-condensed">
 				<tr>
 					<th>编码</th>
@@ -80,10 +79,9 @@
 				</tr>
 				<tr>
 					<th>icon</th>
-					<td><input name="icon" id="icon" type="hidden" class="span2"
-						value="${basedata.icon}"> <img class="img-preview"
+					<td><img class="img-preview"
 						src="${basedata.icon}" width="50" height="50" /> <input
-						type="file" id="upLoadFileAddress"></td>
+						type="file" id="upLoadFileAddress" name="iconFile"></td>
 				</tr>
 				<tr>
 					<th>描述</th>

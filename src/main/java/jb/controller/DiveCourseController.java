@@ -102,7 +102,7 @@ public class DiveCourseController extends BaseController {
 	public Json add(DiveCourse diveCourse, @RequestParam MultipartFile filePathFile, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
 		Json j = new Json();
 		diveCourse.setIcon(uploadFile(request, "course", iconFile));
-		diveCourse.setFilePath(uploadFile(request, "course/video", filePathFile));
+		diveCourse.setFilePath(uploadFile(request, "course/video", filePathFile, "video"));
 		diveCourseService.add(diveCourse);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		
@@ -144,7 +144,7 @@ public class DiveCourseController extends BaseController {
 	public Json edit(DiveCourse diveCourse, @RequestParam MultipartFile filePathFile, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
 		Json j = new Json();	
 		diveCourse.setIcon(uploadFile(request, "course", iconFile));
-		diveCourse.setFilePath(uploadFile(request, "course/video", filePathFile));
+		diveCourse.setFilePath(uploadFile(request, "course/video", filePathFile, "video"));
 		diveCourseService.edit(diveCourse);
 		j.setSuccess(true);
 		j.setMsg("编辑成功！");		

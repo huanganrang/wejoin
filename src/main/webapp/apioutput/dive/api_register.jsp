@@ -58,6 +58,14 @@
 						<td><input name="password" type="text" class="span2" value="123456"/></td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>email(邮箱)：</label></td>
+						<td><input name="email" type="text" class="span2" value=""/></td>
+					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>recommend(推荐人账号)：</label></td>
+						<td><input name="recommend" type="text" class="span2" value=""/></td>
+					</tr>
+					<tr>
 						<td colspan="2" align="center">
 						<input type="button"
 							value="提交" onclick="javascript:$('#register_Form').submit();" /></td>

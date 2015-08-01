@@ -17,6 +17,9 @@ public class DiveAccount implements java.io.Serializable {
 	private java.lang.String city;	
 	private java.lang.String personality;	
 	private java.lang.String email;	
+	private java.lang.String recommend;
+	private java.lang.String hxPassword;
+	private java.lang.String hxStatus;
 	private Date addtime;			
 
 	private int logNum; // 潜水日志数量
@@ -113,5 +116,28 @@ public class DiveAccount implements java.io.Serializable {
 
 	public void setQrCodePath(String qrCodePath) {
 		this.qrCodePath = qrCodePath;
+	}
+	
+	public java.lang.String getRecommend() {
+		return recommend;
+	}
+
+	public void setRecommend(java.lang.String recommend) {
+		this.recommend = recommend;
+	}
+
+	public java.lang.String getHxPassword() {
+		return hxPassword;
+	}
+
+	public void setHxPassword(java.lang.String hxPassword) {
+		this.hxPassword = hxPassword;
+	}
+	public java.lang.String getHxStatus() {
+		return hxStatus;
+	}
+
+	public void setHxStatus(java.lang.String hxStatus) {
+		this.hxStatus = hxStatus;
 	}
 }
