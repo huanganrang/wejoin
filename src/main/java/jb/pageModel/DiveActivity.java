@@ -98,15 +98,18 @@ public class DiveActivity implements java.io.Serializable {
 	}
 	
 	public java.lang.String getStatus() {
-		if(!F.empty(this.status)) return this.status;
-		Date now = new Date();
-		if(now.before(this.getStartDate())) {
-			return "AT01"; // 报名中
-		} else if(now.after(this.getEndDate())) {
-			return "AT03"; // 已结束
-		} else {
-			return "AT02"; // 进行中
+		if(F.empty(this.status) && this.startDate != null && this.endDate != null) {
+			Date now = new Date();
+			if(now.before(this.startDate)) {
+				return "AT01"; // 报名中
+			} else if(now.after(this.endDate)) {
+				return "AT03"; // 已结束
+			} else {
+				return "AT02"; // 进行中
+			}
 		}
+		
+		return this.status;
 	}
 	
 	public void setStamp(java.lang.String stamp) {
