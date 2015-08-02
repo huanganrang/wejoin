@@ -146,14 +146,18 @@ public class ApiAccountController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/sendPassword")
-	public Json sendPassword(String email) {
+	public Json sendPassword(DiveAccount account) {
 		Json j = new Json();
 		try {
-			// 待完善
-			String password = "";
-			EmailSendUtil.sendPassword(email, password);
-			j.setMsg("邮件发送成功");
-			j.success();
+			account = accountService.get(account);
+			if(account != null) {
+				EmailSendUtil.sendPassword(account.getEmail(), account.getHxPassword());
+				j.setMsg("邮件发送成功");
+				j.success();
+			} else {
+				j.setMsg("邮箱不存在！");
+				j.fail();
+			}
 		} catch (Exception e) {
 			j.setMsg("邮件发送失败");
 		}

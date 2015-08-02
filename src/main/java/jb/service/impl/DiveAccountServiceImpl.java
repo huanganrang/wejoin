@@ -118,13 +118,15 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 	
 	@Override
 	public DiveAccount get(DiveAccount account) {
+		DiveAccount r = new DiveAccount();
 		Map<String, Object> params = new HashMap<String, Object>();
 		String where = whereHql(account, params);
 		TdiveAccount t = diveAccountDao.get("from TdiveAccount t " + where, params);
 		if(t != null) {
-			BeanUtils.copyProperties(t, account);
+			BeanUtils.copyProperties(t, r);
+			return r;
 		}
-		return account;
+		return null;
 	}
 
 	@Override
