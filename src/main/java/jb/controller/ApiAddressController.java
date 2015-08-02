@@ -73,6 +73,25 @@ public class ApiAddressController extends BaseController {
 	}	
 	
 	/**
+	 * 搜索
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/search")
+	public Json search(PageHelper ph,DiveAddress diveAddress) {		
+		Json j = new Json();
+		try{
+			j.setObj(diveAddressService.dataGrid(diveAddress,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 获取详情接口
 	 * @param id
 	 * @return

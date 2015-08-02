@@ -73,6 +73,25 @@ public class ApiTravelController extends BaseController {
 	}	
 	
 	/**
+	 * 搜索
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/search")
+	public Json search(PageHelper ph,DiveTravel diveTravel) {	
+		Json j = new Json();
+		try{
+			j.setObj(diveTravelService.dataGrid(diveTravel,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}
+	
+	/**
 	 * 获取详情接口
 	 * @param id
 	 * @return

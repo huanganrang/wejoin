@@ -49,10 +49,9 @@ public class ApiActivityController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/activityList")
-	public Json activityList(PageHelper ph) {
+	public Json activityList(PageHelper ph, DiveActivity diveActivity) {
 		Json j = new Json();
 		try{
-			DiveActivity diveActivity = new DiveActivity();
 			DataGrid dg = diveActivityService.dataGriComplex(diveActivity,ph);
 			j.setObj(dg);
 			j.success();

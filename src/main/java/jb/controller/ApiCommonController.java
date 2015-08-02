@@ -2,9 +2,18 @@ package jb.controller;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jb.interceptors.TokenManage;
+import jb.pageModel.DiveActivity;
+import jb.pageModel.DiveAddress;
+import jb.pageModel.DiveCourse;
+import jb.pageModel.DiveEquip;
+import jb.pageModel.DiveStore;
+import jb.pageModel.DiveTravel;
+import jb.pageModel.Json;
+import jb.service.DiveActivityServiceI;
 import jb.service.DiveAddressServiceI;
 import jb.service.DiveCourseServiceI;
 import jb.service.DiveEquipServiceI;
@@ -14,6 +23,7 @@ import jb.service.DiveTravelServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 公共模块接口
@@ -36,6 +46,8 @@ public class ApiCommonController extends BaseController {
 	@Autowired
 	private DiveEquipServiceI diveEquipService;
 	@Autowired
+	private DiveActivityServiceI diveActivityService;
+	@Autowired
 	private DiveStoreServiceI diveStoreService;
 	@Autowired
 	private DiveCourseServiceI diveCourseService;
@@ -51,15 +63,15 @@ public class ApiCommonController extends BaseController {
 		try{
 			response.setContentType("text/html");  
 			response.setCharacterEncoding("UTF-8");
-			if("BT01".equals(type)) {
+			if("BT01".equals(type)) { // 潜水旅游
 				content = diveTravelService.get(id).getDescription();
-			} else if("BT02".equals(type)) {
+			} else if("BT02".equals(type)) { // 潜点
 				content = diveAddressService.get(id).getDescription();
-			} else if("BT03".equals(type)) {
+			} else if("BT03".equals(type)) { // 装备
 				content = diveEquipService.get(id).getEquipDes();
-			} else if("BT05".equals(type)) {
+			} else if("BT05".equals(type)) { // 度假村
 				content = diveStoreService.get(id).getDescription();
-			} else if("BT06".equals(type)) {
+			} else if("BT06".equals(type)) { // 学习
 				content = diveCourseService.get(id).getIntroduce();
 			}
 			out = response.getWriter();
@@ -76,4 +88,61 @@ public class ApiCommonController extends BaseController {
 		}	
 	}	
 	
+	/**
+	 * 
+	 * @param lvAccount
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/error")
+	public Json error() {
+		Json j = new Json();
+		j.setObj("token_expire");
+		j.setSuccess(false);
+		j.setMsg("token过期，请重新登录！");
+		return j;
+	}
+	
+	/**
+	 * 分享统一入口
+	 * @param type
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/share")
+	public String share(String businessId,String businessType,HttpServletRequest request) {
+		String title = "";
+		String content = "";
+		if("BT01".equals(businessType)) { // 潜水旅游
+			DiveTravel t = diveTravelService.get(businessId);
+			content = t.getDescription();
+			title = t.getName();
+		} else if("BT02".equals(businessType)) { // 潜点
+			DiveAddress t = diveAddressService.get(businessId);
+			content = t.getDescription();
+			title = t.getName();
+		} else if("BT03".equals(businessType)) { // 装备
+			DiveEquip t = diveEquipService.get(businessId);
+			content = t.getEquipDes();
+			title = t.getEquipName();
+		} else if("BT04".equals(businessType)) { // 活动
+			DiveActivity t = diveActivityService.getDetail(businessId, null);
+			request.setAttribute("activity", t);
+			return "/diveshare/activityshare";
+//			content = t.getEquipDes();
+//			title = t.getEquipName();
+		} else if("BT05".equals(businessType)) { // 度假村
+			DiveStore t = diveStoreService.get(businessId);
+			content = t.getDescription();
+			title = t.getName();
+		} else if("BT06".equals(businessType)) { // 学习
+			DiveCourse t = diveCourseService.get(businessId);
+			content = t.getIntroduce();
+			title = t.getTitle();
+		}
+		request.setAttribute("title", title);
+		request.setAttribute("content", content);
+		return "/diveshare/diveshare";
+	}
 }

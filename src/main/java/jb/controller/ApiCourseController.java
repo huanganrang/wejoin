@@ -53,6 +53,25 @@ public class ApiCourseController extends BaseController {
 	}	
 	
 	/**
+	 * 搜索
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/search")
+	public Json search(PageHelper ph,DiveCourse diveCourse) {
+		Json j = new Json();
+		try{
+			j.setObj(diveCourseService.dataGrid(diveCourse,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 获取详情接口
 	 * @param id
 	 * @return

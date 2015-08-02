@@ -64,6 +64,7 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	private java.lang.String recommend;
 	private java.lang.String hxPassword;
 	private java.lang.String hxStatus;
+	private java.util.Date birthday;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -183,6 +184,15 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	
 	public void setHxStatus(java.lang.String hxStatus) {
 		this.hxStatus = hxStatus;
+	}
+	
+	@Column(name = "birthday", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	public java.util.Date getBirthday() {
+		return birthday;
+	}
+	
+	public void setBirthday(java.util.Date birthday) {
+		this.birthday = birthday;
 	}
 
 	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 10)

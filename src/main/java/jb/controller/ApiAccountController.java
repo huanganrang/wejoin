@@ -247,12 +247,15 @@ public class ApiAccountController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/updatePersonInfo")
-	public Json updatePersonInfo(DiveAccount account, HttpServletRequest request) {
+	public Json updatePersonInfo(DiveAccount account, String birthdayStr, HttpServletRequest request) {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
 			account.setId(s.getId());
 			if(!accountService.emailExists(account)) {
+				if(!F.empty(birthdayStr)) {
+					account.setBirthday(DateUtil.parse(birthdayStr, Constants.DATE_FORMAT_YMD));
+				}
 				accountService.edit(account);			
 				j.setSuccess(true);
 				j.setMsg("个人信息修改成功");

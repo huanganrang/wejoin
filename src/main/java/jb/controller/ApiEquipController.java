@@ -96,6 +96,25 @@ public class ApiEquipController extends BaseController {
 	}	
 	
 	/**
+	 * 品牌查询
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/search")
+	public Json search(PageHelper ph,DiveEquip diveEquip) {
+		Json j = new Json();
+		try{
+			j.setObj(diveEquipService.dataGrid(diveEquip,ph));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 获取详情接口
 	 * @param id
 	 * @return

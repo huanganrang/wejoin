@@ -58,6 +58,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 							支付状态(PS)<br>
 							订单状态(OS)<br>
 							潜点特征(FT)<br>
+							潜水旅游兴趣(TT)<br>
 							学习分类(CT)<br>
 							业务类型(BT)<br>
 							审核状态(AS)<br>

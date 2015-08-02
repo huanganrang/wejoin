@@ -55,6 +55,10 @@
 						<td><input name="sex" type="text" class="span2" value=""/>（SX01：男；SX02：女）</td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>birthdayStr(生日)：</label></td>
+						<td><input name="birthdayStr" type="text" class="span2" value=""/>(格式：yyyy-MM-dd)</td>
+					</tr>
+					<tr>
 						<td align="right" style="width: 180px;"><label>city(我的地址)：</label></td>
 						<td><input name="city" type="text" class="span2" value=""/>（格式：国家代码countryCode_省code_市code_区code;如：CN_310000_310100_310101）</td>
 					</tr>

@@ -88,7 +88,7 @@
 					</td>
 					<th><%=TdiveTravel.ALIAS_FEATURE%></th>
 					<td>
-						<jb:select dataType="FT" name="feature" value="${diveTravel.feature}"></jb:select>
+						<jb:select dataType="TT" name="feature" value="${diveTravel.feature}"></jb:select>
 					</td>
 				</tr>
 				<tr>

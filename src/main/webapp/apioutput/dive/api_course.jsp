@@ -12,6 +12,8 @@
 		
 		<div title="列表" data-options="href:'api_course_list.jsp'"
 			style="padding: 1px"></div>
+		<div title="搜索" data-options="href:'api_course_search.jsp'"
+			style="padding: 1px"></div>
 		<div title="详情" data-options="href:'api_course_detail.jsp'"
 			style="padding: 1px"></div>
 	</div>

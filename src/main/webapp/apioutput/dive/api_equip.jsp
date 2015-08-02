@@ -15,6 +15,8 @@
 			style="padding: 1px"></div>
 		<div title="品牌" data-options="href:'api_equip_brand.jsp'"
 			style="padding: 1px"></div>
+		<div title="搜索" data-options="href:'api_equip_search.jsp'"
+			style="padding: 1px"></div>
 		<div title="详情" data-options="href:'api_equip_detail.jsp'"
 			style="padding: 1px"></div>
 	</div>

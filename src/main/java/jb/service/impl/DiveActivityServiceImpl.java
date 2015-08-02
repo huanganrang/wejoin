@@ -70,7 +70,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveActivity.getName())) {
 				whereHql += " and t.name = :name";
-				params.put("name", diveActivity.getName());
+				params.put("name", "%%" + diveActivity.getName() + "%%");
 			}		
 			if (!F.empty(diveActivity.getStartAddr())) {
 				whereHql += " and t.startAddr = :startAddr";
@@ -200,13 +200,15 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		DiveActivity diveActivity = get(id);
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("accountId", accountId);
-		params.put("businessId", id);
-		params.put("businessType", ACTIVITY_TAG);
-		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
-			diveActivity.setCollect(true); // 已收藏
-		} else {
-			diveActivity.setCollect(false); // 未收藏
+		if(!F.empty(accountId)) {
+			params.put("accountId", accountId);
+			params.put("businessId", id);
+			params.put("businessType", ACTIVITY_TAG);
+			if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+				diveActivity.setCollect(true); // 已收藏
+			} else {
+				diveActivity.setCollect(false); // 未收藏
+			}
 		}
 		
 		List<TdiveAccount> applies = diveAccountDao.getDiveAccountByApply(id);

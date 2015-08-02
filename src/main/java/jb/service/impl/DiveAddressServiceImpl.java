@@ -61,7 +61,7 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveAddress.getName())) {
 				whereHql += " and t.name = :name";
-				params.put("name", diveAddress.getName());
+				params.put("name", "%%" + diveAddress.getName() + "%%");
 			}		
 			if (!F.empty(diveAddress.getSumary())) {
 				whereHql += " and t.sumary = :sumary";

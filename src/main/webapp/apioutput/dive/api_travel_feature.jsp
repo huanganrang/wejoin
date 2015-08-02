@@ -50,7 +50,7 @@ String url = request.getContextPath()+"/api/apiTravelController/featurelist";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>feature(特点*)：</label></td>
-						<td><input name="feature" type="text" class="span2" value="FT01" /></td>
+						<td><input name="feature" type="text" class="span2" value="TT01" /></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>

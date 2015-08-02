@@ -49,10 +49,14 @@ String url = request.getContextPath()+"/api/apiActivityController/activityList";
 						<td><input name="tokenId" type="text" class="span2"  value="<%=BaseController.DEFAULT_TOKEN%>"/></td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>name(搜索值)：</label></td>
+						<td><input name="name" type="text" class="span2" value="" />（按名称模糊搜索，不传查全部）</td>
+					</tr>
+					
+					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>
 						<td><input name="page" type="text" class="span2" value="1" /></td>
 					</tr>
-
 					<tr>
 						<td align="right" style="width: 180px;"><label>rows(每页数)：</label></td>
 						<td><input name="rows" type="text" class="span2" value="10" /></td>
