@@ -48,6 +48,45 @@ dd,dl,dt{ margin:0 ; padding:0;}
 .wm .bottom{ background-image:url(${pageContext.request.contextPath}/diveshare/bottom.png); height:100px; margin-top:1%;}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+	function download() {
+		if(isWeiXin()) {   
+// 	        alert('微信扫描无法下载，请点击右上角切换其他浏览器打开.') 
+			 window.location.href="http://www.goodiver.com/Download/download"; 
+	    } else {  
+	        switch(getDevice()) {  
+	            case 'Android':  
+	                window.location.href="http://www.goodiver.com/Download/download";  
+	                break;  
+	            case 'iOS':  
+	                window.location.href="http://www.goodiver.com/Download/download";  
+	                break;  
+	            default:  
+	                break;  
+	        }  
+	    }  
+	}
+	
+	function isWeiXin() {   
+	    var ua = window.navigator.userAgent.toLowerCase();  
+	    if(ua.match(/MicroMessenger/i) == 'micromessenger') {   
+	        return true;  
+	    } else {   
+	        return false;  
+	    }   
+	}  
+	  
+	function getDevice() {  
+	    var u = navigator.userAgent;  
+	    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {  
+	        return 'Android';  
+	    } else if (u.indexOf('iPhone') > -1) {  
+	        return 'iOS';  
+	    } else {  
+	        return 'none';  
+	    }  
+	}  
+</script>
 </head>
 <body>
 	<div class="content">
@@ -61,7 +100,7 @@ dd,dl,dt{ margin:0 ; padding:0;}
         	<div class="gw"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/xz.png" alt=""></a></div>
         	<h3 style="line-height:1em;">扫码下载</h3>
         	<div class="wm">
-        		<div class="down_wm"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/20150724_down_wm.png"></a></div>
+        		<div class="down_wm"><a href="javascript:download();"><img src="${pageContext.request.contextPath}/diveshare/20150724_down_wm.png"></a></div>
 		    	<div class="down_wen">点击或长按二维码下载</div>
 		    	<div class="top"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/logo2.png" width="395" height="72"></a></div>
 		    	<div class="bottom"></div>

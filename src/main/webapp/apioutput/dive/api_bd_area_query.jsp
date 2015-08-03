@@ -50,7 +50,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/area";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>countryCode(国家代码)：</label></td>
-						<td><input name="adCode" type="text" class="span2" value="CN" /></td>
+						<td><input name="countryCode" type="text" class="span2" value="CN" /></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>parentCode(父级编码)：</label></td>
