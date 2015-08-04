@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TokenListener implements ServletContextListener {
-	public final static ExecutorService executors = Executors.newCachedThreadPool();
+	public final static ExecutorService executors = Executors.newFixedThreadPool(1);
 	private static Logger log = LoggerFactory.getLogger(TokenListener.class);
 	public static AccessToken accessToken = null;
 	@Override
@@ -34,13 +34,9 @@ public class TokenListener implements ServletContextListener {
 							Thread.sleep(60 * 1000);
 						}
 						
-					} catch (InterruptedException e) {
-						try {
-							Thread.sleep(60 * 1000);
-						} catch (InterruptedException e1) {
-							log.error("{}", e1);
-						}
-						log.error("{}", e);
+					} catch (InterruptedException e) {						
+						log.error("刷token线程中断了", e);
+						break;
 					}
 				}
 			}
