@@ -50,8 +50,8 @@
 						<td><input name="userName" type="text" class="span2" value="18700000000"/>（手机/邮箱）</td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>nickName(昵称)：</label></td>
-						<td><input name="nickName" type="text" class="span2" value="John"/></td>
+						<td align="right" style="width: 180px;"><label>nickname(昵称)：</label></td>
+						<td><input name="nickname" type="text" class="span2" value="John"/></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>password(密码)：</label></td>
