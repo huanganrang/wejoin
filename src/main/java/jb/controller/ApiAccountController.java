@@ -102,7 +102,7 @@ public class ApiAccountController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/register")
-	public Json register(DiveAccount account, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
+	public Json register(DiveAccount account, @RequestParam(required=false) MultipartFile iconFile, HttpServletRequest request) {
 		Json j = new Json();
 		try {
 			account.setIcon(uploadFile(request, account.getUserName(), iconFile));

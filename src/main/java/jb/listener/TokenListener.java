@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TokenListener implements ServletContextListener {
-	public final static ExecutorService executors = Executors.newFixedThreadPool(1);
+	public final static ExecutorService executors = Executors.newFixedThreadPool(2);
 	private static Logger log = LoggerFactory.getLogger(TokenListener.class);
 	public static AccessToken accessToken = null;
 	@Override
