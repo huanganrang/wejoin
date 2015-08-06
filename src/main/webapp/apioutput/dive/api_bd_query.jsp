@@ -67,7 +67,11 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 							日志类型(LT)<br>
 						</td>
 						<td><input name="dataType" type="text" class="span2" /></td>
+					</tr><tr>
+						<td align="right" style="width: 180px;"><label>pid(字典父key值)：</label></td>
+						<td><input name="pid" type="text" class="span2" value="0" />（用于联动，有则传）</td>
 					</tr>
+					
 
 					<tr>
 						<td colspan="2" align="center"><input type="button"
@@ -126,6 +130,19 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
                 字典图标
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                pid
+            </td>
+            <td style="border-top:none;border-left:none">
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                字典父key值
             </td>
         </tr>
     </tbody>

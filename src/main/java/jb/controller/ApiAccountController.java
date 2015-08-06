@@ -330,7 +330,7 @@ public class ApiAccountController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/updateCertificateInfo")
 	public Json updateCertificateInfo(DiveCertificateAuthority ca, String authDateStr, 
-			@RequestParam MultipartFile rightSideFile, @RequestParam MultipartFile reverseSideFile, 
+			@RequestParam(required=false) MultipartFile rightSideFile, @RequestParam(required=false) MultipartFile reverseSideFile, 
 			HttpServletRequest request) {
 		Json j = new Json();
 		try {

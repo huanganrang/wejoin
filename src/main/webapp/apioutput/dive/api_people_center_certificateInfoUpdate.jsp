@@ -62,11 +62,11 @@
 						<td><input name="authDateStr" type="text" class="span2" value=""/>(格式:yyyy-MM-dd)</td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>rightSide(潜水证正面照上传)：</label></td>
+						<td align="right" style="width: 180px;"><label>rightSideFile(潜水证正面照上传)：</label></td>
 						<td><input name="rightSideFile" type="file" class="span2" value=""/></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>reverseSide(潜水证反面照上传)：</label></td>
+						<td align="right" style="width: 180px;"><label>reverseSideFile(潜水证反面照上传)：</label></td>
 						<td><input name="reverseSideFile" type="file" class="span2" value=""/></td>
 					</tr>
 					<tr>

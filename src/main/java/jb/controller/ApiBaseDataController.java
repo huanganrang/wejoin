@@ -1,11 +1,11 @@
 package jb.controller;
 
-import jb.pageModel.DiveArea;
+import jb.pageModel.BaseData;
+import jb.pageModel.DiveRegion;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
 import jb.service.BasedataServiceI;
-import jb.service.DiveAreaServiceI;
-import jb.service.DiveCountryServiceI;
+import jb.service.DiveRegionServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,10 +26,7 @@ public class ApiBaseDataController extends BaseController {
 	private BasedataServiceI basedataService;
 	
 	@Autowired
-	private DiveCountryServiceI diveCountryService;
-	
-	@Autowired
-	private DiveAreaServiceI diveAreaService;
+	private DiveRegionServiceI diveRegionService;
 	
 	/**
 	 * 获取基础数据
@@ -39,10 +36,13 @@ public class ApiBaseDataController extends BaseController {
 	 */
 	@RequestMapping("/basedata")
 	@ResponseBody
-	public Json dataGridNewFriend(PageHelper ph,String dataType) {
+	public Json basedata(PageHelper ph,String dataType,String pid) {
 		Json j = new Json();
 		try{
-			j.setObj(basedataService.getBaseDatas(dataType));
+			BaseData baseData = new BaseData();
+			baseData.setBasetypeCode(dataType);
+			baseData.setPid(pid);
+			j.setObj(basedataService.getBaseDatas(baseData));
 			j.success();
 		}catch(Exception e){
 			j.fail();
@@ -52,37 +52,17 @@ public class ApiBaseDataController extends BaseController {
 	}	
 	
 	/**
-	 * 获取国家地区列表
+	 * 获取行政区域列表
 	 * 
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping("/country")
+	@RequestMapping("/region")
 	@ResponseBody
-	public Json country(String adCode) {
+	public Json region(DiveRegion diveRegion) {
 		Json j = new Json();
 		try{
-			j.setObj(diveCountryService.findAllByAdCode(adCode));
-			j.success();
-		}catch(Exception e){
-			j.fail();
-			e.printStackTrace();
-		}		
-		return j;
-	}	
-	
-	/**
-	 * 获取省市区列表
-	 * 
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping("/area")
-	@ResponseBody
-	public Json area(DiveArea diveArea) {
-		Json j = new Json();
-		try{
-			j.setObj(diveAreaService.findAllByParams(diveArea));
+			j.setObj(diveRegionService.findAllByParams(diveRegion));
 			j.success();
 		}catch(Exception e){
 			j.fail();

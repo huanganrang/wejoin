@@ -158,4 +158,23 @@ public class DiveRegionController extends BaseController {
 		return j;
 	}
 
+	/**
+	 * 根据父编码获取列表
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/getByParentRegionId")
+	@ResponseBody
+	public Json getByParentRegionId(DiveRegion diveRegion) {
+		Json j = new Json();
+		try{
+			j.setObj(diveRegionService.findAllByParams(diveRegion));
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}
 }

@@ -57,10 +57,10 @@ public interface BasedataServiceI {
 	
 	/**
 	 * 根据类型取基础数据
-	 * @param baseType
+	 * @param baseData
 	 * @return
 	 */
-	public List<BaseData> getBaseDatas(String baseType);
+	public List<BaseData> getBaseDatas(BaseData baseData);
 	
 	/**
 	 * 根据动态sql查找结果

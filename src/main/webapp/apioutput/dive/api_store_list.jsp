@@ -49,8 +49,8 @@ String url = request.getContextPath()+"/api/apiStoreController/storelist";
 						<td><input name="tokenId" type="text" class="span2"  value="<%=BaseController.DEFAULT_TOKEN%>"/></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>area(地区代码)：</label></td>
-						<td><input name="area" type="text" class="span2" value="" />(不传查全部,格式：洲编码adCode_国家代码countryCode_省code,如：AD01_CN_310000、AD01_CN、AD01)</td>
+						<td align="right" style="width: 180px;"><label>area(地区搜索)：</label></td>
+						<td><input name="area" type="text" class="span2" value="" />(不传查全部,格式：洲_国_省,如：亚洲_中国_上海市或亚洲_中国或亚洲)</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jb.absx.F;
 import jb.dao.BasedataDaoI;
 import jb.dao.BasetypeDaoI;
 import jb.listener.Application;
@@ -107,6 +108,10 @@ public class BasedataServiceImpl implements BasedataServiceI {
 				whereHql += " and type.code = :code";
 				params.put("code",bd.getBasetypeCode());
 			}
+			if(!F.empty(bd.getPid())) {
+				whereHql += " and t.pid = :pid";
+				params.put("pid",bd.getPid());
+			}
 		}
 		return whereHql;
 	}
@@ -143,13 +148,13 @@ public class BasedataServiceImpl implements BasedataServiceI {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public List<BaseData> getBaseDatas(String baseType) {
+	public List<BaseData> getBaseDatas(BaseData baseData) {
 		List<BaseData> bl = new ArrayList<BaseData>();
 		Map<String, Object> params = new HashMap<String, Object>();
 		String hql = " from Tbasedata t ";
 		String joinHql = " left join t.baseType type ";
-		BaseData baseData = new BaseData();
-		baseData.setBasetypeCode(baseType);
+//		BaseData baseData = new BaseData();
+//		baseData.setBasetypeCode(baseType);
 		String where = whereHql(baseData, params);
 		List l = basedataDao.find(hql + joinHql + where + " order by t.seq asc" , params);
 		if (l != null && l.size() > 0) {

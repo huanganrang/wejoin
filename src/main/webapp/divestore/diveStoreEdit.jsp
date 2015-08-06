@@ -31,16 +31,16 @@
 					parent.$.messager.progress('close');
 				} else {
 					editor.sync();
-					var area = $("[name=adCode]").val();
-					var countryCode = $("#country").combobox("getValue");
-					var provinceCode = $("#province").combobox("getValue");
-					if(countryCode != "") {
-						area += "_" + countryCode;
+					var delta = $("#delta").combobox("getText");
+					var country = $("#country").combobox("getText");
+					var province = $("#province").combobox("getText");
+					if(country != "请选择") {
+						delta += "_" + country;
 					}
-					if(provinceCode != "") {
-						area += "_" + provinceCode;
+					if(province != "请选择") {
+						delta += "_" + province;
 					}
-					$("#area").val(area);
+					$("#area").val(delta);
 				}
 				
 				return isValid;
@@ -56,7 +56,7 @@
 				}
 			}
 		});
-		$('[name=adCode]').combobox({
+		$('#delta').combobox({
 			onSelect: function(record){
 				first = false;
 				var opts =[{ 'text':'请选择','id':''}];
@@ -64,9 +64,9 @@
 				$("#country").combobox("setValue", "");
 				$("#province").combobox("loadData", opts);
 				$("#province").combobox("setValue", "");
-				var adCode = $('[name=adCode]').val();
-				if(adCode != "") {
-					drawCountry(adCode);
+				var delta = $('#delta').combobox("getValue");
+				if(delta != "") {
+					drawRegion($('#country'), delta);
 				}
 				
 			}
@@ -74,18 +74,19 @@
 		
 		$('#country').combobox({
 			onSelect: function(record){
+				first = false;
 				var opts =[{ 'text':'请选择','id':''}];
 				$("#province").combobox("loadData", opts);
 				$("#province").combobox("setValue", "");
 				var countryCode = $('#country').combobox("getValue");
 				if(countryCode != "") {
-					drawProvince(countryCode);
+					drawRegion($("#province"), countryCode);
 				}
+				
 			}
 		});
 		
-		drawCountry($('[name=adCode]').val());
-		drawProvince("${countryCode}");
+		drawRegion($('#delta'), 0, "${delta}", 1);
 		
 		function ProcessFile() {
 			var file = document.getElementById('iconFile').files[0];
@@ -103,40 +104,37 @@
 		});
 	});
 	
-	function drawCountry(adCode) {
-		$.post('${pageContext.request.contextPath}/diveCountryController/getListByAdCode', {
-			adCode : adCode
+	// 获取数据填充洲国省
+	function drawRegion(obj, regionParentId, region, level) {
+		$.post('${pageContext.request.contextPath}/diveRegionController/getByParentRegionId', {
+			regionParentId : regionParentId
 		}, function(result) {
 			if (result.success) {
 				var opts =[{ 'text':'请选择','id':''}];
 				for(var i=0; i<result.obj.length; i++) {
-					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+					opts.push({"text":result.obj[i].regionNameZh,"id":result.obj[i].regionId});
      			}
-				$("#country").combobox("loadData", opts);
+				$(obj).combobox("loadData", opts);
 				if(first) {
-					$("#country").combobox("setValue", "${countryCode}");
+					$(obj).combobox("setText", region);
+					if(region != '请选择') {
+						for(var i=0; i<$(obj).combobox("getData").length; i++) {
+							if($(obj).combobox("getData")[i].text == region) {
+								if(level == 1) {
+									drawRegion($('#country'), $(obj).combobox("getData")[i].id, "${country}" || '请选择', 2);
+								} else if(level == 2) {
+									drawRegion($('#province'),  $(obj).combobox("getData")[i].id, "${province}"||'请选择', 3);
+								}
+								break;
+							}
+						}
+					}
+					
 				}
-				
 			}
 		}, 'JSON');
 	}
 	
-	function drawProvince(countryCode) {
-		$.post('${pageContext.request.contextPath}/diveAreaController/getAreaByCountryCode', {
-			countryCode : countryCode
-		}, function(result) {
-			if (result.success) {
-				var opts =[{ 'text':'请选择','id':''}];
-				for(var i=0; i<result.obj.length; i++) {
-					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
-     			}
-				$("#province").combobox("loadData", opts);
-				if(first) {
-					$("#province").combobox("setValue", "${provinceCode}");
-				}
-			}
-		}, 'JSON');
-	}
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
 	<div data-options="region:'center',border:false" title=""
@@ -164,9 +162,11 @@
 				<tr>
 					<th>洲</th>
 					<td>
-						<jb:select dataType="AD" name="adCode" value="${adCode}"></jb:select>	
+						<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="delta">
+							<option value="">请选择</option>
+						</select>
 					</td>
-					<th>国家</th>
+					<th>国</th>
 					<td>
 						<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="country">
 							<option value="">请选择</option>

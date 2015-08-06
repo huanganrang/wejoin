@@ -104,4 +104,21 @@ public class DiveRegionServiceImpl extends BaseServiceImpl<DiveRegion> implement
 		diveRegionDao.delete(diveRegionDao.get(TdiveRegion.class, id));
 	}
 
+
+	@Override
+	public List<DiveRegion> findAllByParams(DiveRegion diveRegion) {
+		List<DiveRegion> r = new ArrayList<DiveRegion>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		String whereHql = whereHql(diveRegion, params);
+		List<TdiveRegion> l = diveRegionDao.find("from TdiveRegion t " + whereHql + " order by t.regionId asc", params);
+		if (l != null && l.size() > 0) {
+			for (TdiveRegion t : l) {
+				DiveRegion o = new DiveRegion();
+				BeanUtils.copyProperties(t, o);
+				r.add(o);
+			}
+		}
+		return r;
+	}
+
 }

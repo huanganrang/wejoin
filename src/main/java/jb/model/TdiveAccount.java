@@ -132,7 +132,7 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 		this.sex = sex;
 	}
 	
-	@Column(name = "city", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	@Column(name = "city", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
 	public java.lang.String getCity() {
 		return this.city;
 	}

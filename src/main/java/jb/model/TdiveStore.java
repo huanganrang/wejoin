@@ -122,7 +122,7 @@ public class TdiveStore implements java.io.Serializable,IEntity{
 		this.serverScope = serverScope;
 	}
 	
-	@Column(name = "area", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	@Column(name = "area", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
 	public java.lang.String getArea() {
 		return this.area;
 	}

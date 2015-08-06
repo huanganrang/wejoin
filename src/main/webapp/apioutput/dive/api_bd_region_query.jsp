@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%
-String url = request.getContextPath()+"/api/apiBaseDataController/area";
+String url = request.getContextPath()+"/api/apiBaseDataController/region";
 %>
 <title>Insert title here</title>
 </head>
@@ -49,12 +49,8 @@ String url = request.getContextPath()+"/api/apiBaseDataController/area";
 						<td><input name="tokenId" type="text" class="span2"  value="<%=BaseController.DEFAULT_TOKEN%>"/></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>countryCode(国家代码)：</label></td>
-						<td><input name="countryCode" type="text" class="span2" value="CN" /></td>
-					</tr>
-					<tr>
-						<td align="right" style="width: 180px;"><label>parentCode(父级编码)：</label></td>
-						<td><input name="parentCode" type="text" class="span2" value="0" />（不传查全部，0代表查省份）</td>
+						<td align="right" style="width: 180px;"><label>regionParentId(父级编码)：</label></td>
+						<td><input name="regionParentId" type="text" class="span2" value="0" />（不传查全部，0代表查洲）</td>
 					</tr>
 					
 					<tr>
@@ -63,7 +59,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/area";
 					</tr>
 				</table>
 			</form>
-			<label>结果：省市区结果集，查看基础数据接口</label>
+			<label>结果：行政区域结果集，查看基础数据接口</label>
 			<div id="area_query_result"></div>
 			<div>
 				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
@@ -95,62 +91,76 @@ String url = request.getContextPath()+"/api/apiBaseDataController/area";
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                name
+                region_level
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                区域级别(1：洲；2：国家；3：省；4：市区)
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                region_name_zh
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
             </td>
             <td style="border-top:none;border-left:none" x:num="">
-                20
+                128
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                省市区名称
+                区域中文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                code
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                6
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                省市区编码
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                parentCode
+                region_name_en
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
             </td>
             <td style="border-top:none;border-left:none">
-            	6
+            	128
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                父级编码（0：代表省）
+               区域英文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                countryCode
+                region_parent_id
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
             </td>
             <td style="border-top:none;border-left:none">
-            	6
+            	10
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                国家代码
+              区域父编码（0表示最上级洲）
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                region_id
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none">
+            	10
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+              区域编码
             </td>
         </tr>
     </tbody>

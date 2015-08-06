@@ -1,7 +1,9 @@
 ﻿package jb.service;
 
-import jb.pageModel.DiveRegion;
+import java.util.List;
+
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveRegion;
 import jb.pageModel.PageHelper;
 
 /**
@@ -50,5 +52,7 @@ public interface DiveRegionServiceI {
 	 * @param id
 	 */
 	public void delete(Integer id);
+
+	public List<DiveRegion> findAllByParams(DiveRegion diveRegion);
 
 }

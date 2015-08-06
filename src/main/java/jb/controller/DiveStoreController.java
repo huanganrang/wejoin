@@ -131,13 +131,13 @@ public class DiveStoreController extends BaseController {
 		request.setAttribute("diveStore", diveStore);
 		String[] areas = diveStore.getArea().split("_");
 		if(areas.length > 0) {
-			request.setAttribute("adCode", areas[0]);
+			request.setAttribute("delta", areas[0]);
 		}
 		if(areas.length > 1) {
-			request.setAttribute("countryCode", areas[1]);
+			request.setAttribute("country", areas[1]);
 		}
 		if(areas.length > 2) {
-			request.setAttribute("provinceCode", areas[2]);
+			request.setAttribute("province", areas[2]);
 		}
 		return "/divestore/diveStoreEdit";
 	}

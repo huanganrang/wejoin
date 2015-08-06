@@ -60,7 +60,7 @@
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>city(我的地址)：</label></td>
-						<td><input name="city" type="text" class="span2" value=""/>（格式：国家代码countryCode_省code_市code_区code;如：CN_310000_310100_310101）</td>
+						<td><input name="city" type="text" class="span2" value=""/>（格式：洲_国_省_市区; 如：亚洲_中国_上海市_浦东新区）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>email(邮箱)：</label></td>

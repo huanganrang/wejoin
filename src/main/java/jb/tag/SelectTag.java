@@ -41,7 +41,9 @@ public class SelectTag extends TagSupport{
         try{
         	out.print("<select name=\""+name+"\" id=\""+name+"\" class=\"easyui-combobox\" data-options=\"width:140,height:29,editable:false,panelHeight:'auto'\">");
         	BasedataServiceI service = Application.getBasedataService();
-        	List<BaseData> baseDataList = service.getBaseDatas(dataType);
+        	BaseData baseData = new BaseData();
+			baseData.setBasetypeCode(dataType);
+        	List<BaseData> baseDataList = service.getBaseDatas(baseData);
         	if(!mustSelect)
         	out.print("<option value=\"\">    </option>");
         	for(BaseData bd : baseDataList){

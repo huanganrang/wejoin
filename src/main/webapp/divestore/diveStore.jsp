@@ -97,16 +97,18 @@
 			}
 		});
 		
-		$('#adCode').combobox({
+		drawRegion($('#delta'), 0);
+		
+		$('#delta').combobox({
 			onSelect: function(record){
 				var opts =[{ 'text':'请选择','id':''}];
 				$("#country").combobox("loadData", opts);
 				$("#country").combobox("setValue", "");
 				$("#province").combobox("loadData", opts);
 				$("#province").combobox("setValue", "");
-				var adCode = $('[name=adCode]').val();
-				if(adCode != "") {
-					drawCountry(adCode);
+				var delta = $('#delta').combobox("getValue");
+				if(delta != "") {
+					drawRegion($('#country'), delta);
 				}
 				
 			}
@@ -119,37 +121,23 @@
 				$("#province").combobox("setValue", "");
 				var countryCode = $('#country').combobox("getValue");
 				if(countryCode != "") {
-					drawProvince(countryCode);
+					drawRegion($("#province"), countryCode);
 				}
-				
 			}
 		});
 	});
 	
-	function drawCountry(adCode) {
-		$.post('${pageContext.request.contextPath}/diveCountryController/getListByAdCode', {
-			adCode : adCode
+	// 获取数据填充洲国省
+	function drawRegion(obj, regionParentId) {
+		$.post('${pageContext.request.contextPath}/diveRegionController/getByParentRegionId', {
+			regionParentId : regionParentId
 		}, function(result) {
 			if (result.success) {
 				var opts =[{ 'text':'请选择','id':''}];
 				for(var i=0; i<result.obj.length; i++) {
-					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
+					opts.push({"text":result.obj[i].regionNameZh,"id":result.obj[i].regionId});
      			}
-				$("#country").combobox("loadData", opts);
-			}
-		}, 'JSON');
-	}
-	
-	function drawProvince(countryCode) {
-		$.post('${pageContext.request.contextPath}/diveAreaController/getAreaByCountryCode', {
-			countryCode : countryCode
-		}, function(result) {
-			if (result.success) {
-				var opts =[{ 'text':'请选择','id':''}];
-				for(var i=0; i<result.obj.length; i++) {
-					opts.push({"text":result.obj[i].name,"id":result.obj[i].code});
-     			}
-				$("#province").combobox("loadData", opts);
+				$(obj).combobox("loadData", opts);
 			}
 		}, 'JSON');
 	}
@@ -246,16 +234,16 @@
         }); 
 	}
 	function searchFun() {
-		var area = $("[name=adCode]").val();
-		var countryCode = $("#country").combobox("getValue");
-		var provinceCode = $("#province").combobox("getValue");
-		if(countryCode != "") {
-			area += "_" + countryCode;
+		var delta = $("#delta").combobox("getText");
+		var country = $("#country").combobox("getText");
+		var province = $("#province").combobox("getText");
+		if(country != "请选择") {
+			delta += "_" + country;
 		}
-		if(provinceCode != "") {
-			area += "_" + provinceCode;
+		if(province != "请选择") {
+			delta += "_" + province;
 		}
-		$("#area").val(area);
+		$("#area").val(delta);
 		dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
 	}
 	function cleanFun() {
@@ -290,9 +278,11 @@
 					<tr>
 						<th>洲</th>
 						<td>
-							<jb:select dataType="AD" name="adCode"></jb:select>	
+							<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="delta">
+								<option value="">请选择</option>
+							</select>
 						</td>
-						<th>国家</th>
+						<th>国</th>
 						<td>
 							<select class="easyui-combobox" data-options="valueField:'id',textField:'text',width:140,height:29,editable:false" id="country">
 								<option value="">请选择</option>
