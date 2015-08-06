@@ -53,7 +53,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 							潜水类型(DT)<br> 
 							装备分类(ET)<br> 
 							地区-条件(AR)<br>
-							地区-洲(AD)<br>
+							<!-- 地区-洲(AD)<br> -->
 							发货状态(SS)<br>
 							支付状态(PS)<br>
 							订单状态(OS)<br>
