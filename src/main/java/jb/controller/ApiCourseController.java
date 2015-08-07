@@ -6,8 +6,8 @@ import jb.interceptors.TokenManage;
 import jb.pageModel.DiveCourse;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveCourseServiceI;
-import jb.util.Constants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,10 +81,8 @@ public class ApiCourseController extends BaseController {
 	public Json getCourseDetail(String id, HttpServletRequest request) {
 		Json j = new Json();
 		try{
-//			SessionInfo s = getSessionInfo(request);
-			// TODO 详情需要完善
-			DiveCourse diveCourse = diveCourseService.get(id);
-			diveCourse.setIntroduce(Constants.DETAIL_HTML_PATH.replace("TYPE", "BT06").replace("ID", id));
+			SessionInfo s = getSessionInfo(request);
+			DiveCourse diveCourse = diveCourseService.getDetail(id, s.getId());
 			j.setObj(diveCourse);
 			j.success();
 		}catch(Exception e){
@@ -94,8 +92,8 @@ public class ApiCourseController extends BaseController {
 		return j;
 	}	
 	
-//	private SessionInfo getSessionInfo(HttpServletRequest request){
-//		SessionInfo s = tokenManage.getSessionInfo(request);
-//		return s;		
-//	}
+	private SessionInfo getSessionInfo(HttpServletRequest request){
+		SessionInfo s = tokenManage.getSessionInfo(request);
+		return s;		
+	}
 }

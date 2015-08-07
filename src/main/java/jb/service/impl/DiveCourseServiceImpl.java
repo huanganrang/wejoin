@@ -14,6 +14,7 @@ import jb.pageModel.DataGrid;
 import jb.pageModel.DiveCourse;
 import jb.pageModel.PageHelper;
 import jb.service.DiveCourseServiceI;
+import jb.util.Constants;
 import jb.util.MyBeanUtils;
 
 import org.springframework.beans.BeanUtils;
@@ -114,6 +115,25 @@ public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implement
 	@Override
 	public void delete(String id) {
 		diveCourseDao.delete(diveCourseDao.get(TdiveCourse.class, id));
+	}
+
+
+	/**
+	 * 获取详情信息
+	 */
+	public DiveCourse getDetail(String id, String accountId) {
+		DiveCourse dc = get(id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("accountId", accountId);
+		params.put("businessId", id);
+		params.put("businessType", "BT06");
+		params.put("orderStatus", "OS01");
+		dc.setPay(false); // 未买
+		if(diveCourseDao.count("select count(*) from TdiveOrder t where t.accountId = :accountId and t.orderStatus = :orderStatus and exists (select 1 from TdiveOrderDetail d where d.orderId = t.id and d.businessType = :businessType and d.businessId = :businessId)", params) > 0) {
+			dc.setPay(true); // 已买
+		}
+		dc.setIntroduce(Constants.DETAIL_HTML_PATH.replace("TYPE", "BT06").replace("ID", id));
+		return dc;
 	}
 
 }

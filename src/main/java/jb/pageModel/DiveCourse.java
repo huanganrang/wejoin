@@ -19,6 +19,8 @@ public class DiveCourse implements java.io.Serializable {
 	private java.lang.String status;	
 	private Date addtime;			
 
+	private boolean isPay;
+	
 	public String getCourseTypeZh() {
 		return Application.getString(this.courseType);
 	}
@@ -99,5 +101,11 @@ public class DiveCourse implements java.io.Serializable {
 	public Date getAddtime() {
 		return this.addtime;
 	}
+	public boolean isPay() {
+		return isPay;
+	}
 
+	public void setPay(boolean isPay) {
+		this.isPay = isPay;
+	}
 }

@@ -51,4 +51,12 @@ public interface DiveCourseServiceI {
 	 */
 	public void delete(String id);
 
+	/**
+	 * 获取学习详情
+	 * @param id
+	 * @param accountId
+	 * @return
+	 */
+	public DiveCourse getDetail(String id, String accountId);
+
 }
