@@ -69,7 +69,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 						<td><input name="dataType" type="text" class="span2" /></td>
 					</tr><tr>
 						<td align="right" style="width: 180px;"><label>pid(字典父key值)：</label></td>
-						<td><input name="pid" type="text" class="span2" value="0" />（用于联动，有则传）</td>
+						<td><input name="pid" type="text" class="span2" value="" />（用于联动，有则传）</td>
 					</tr>
 					
 
