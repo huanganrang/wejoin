@@ -56,7 +56,7 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 		if (diveStore != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveStore.getName())) {
-				whereHql += " and t.name = :name";
+				whereHql += " and t.name like :name";
 				params.put("name", "%%" + diveStore.getName() + "%%");
 			}		
 			if (!F.empty(diveStore.getIcon())) {

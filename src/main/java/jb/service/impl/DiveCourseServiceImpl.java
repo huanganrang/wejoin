@@ -52,7 +52,7 @@ public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implement
 		if (diveCourse != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveCourse.getTitle())) {
-				whereHql += " and t.title = :title";
+				whereHql += " and t.title like :title";
 				params.put("title", "%%" + diveCourse.getTitle() + "%%");
 			}		
 			if (!F.empty(diveCourse.getCourseType())) {

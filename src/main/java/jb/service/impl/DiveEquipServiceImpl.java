@@ -65,7 +65,7 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 				params.put("equipSumary", diveEquip.getEquipSumary());
 			}		
 			if (!F.empty(diveEquip.getEquipName())) {
-				whereHql += " and t.equipName = :equipName";
+				whereHql += " and t.equipName like :equipName";
 				params.put("equipName", "%%" + diveEquip.getEquipName() + "%%");
 			}		
 			if (!F.empty(diveEquip.getEquipDes())) {

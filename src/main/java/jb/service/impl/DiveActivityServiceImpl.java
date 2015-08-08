@@ -69,7 +69,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		if (diveActivity != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveActivity.getName())) {
-				whereHql += " and t.name = :name";
+				whereHql += " and t.name like :name";
 				params.put("name", "%%" + diveActivity.getName() + "%%");
 			}		
 			if (!F.empty(diveActivity.getStartAddr())) {

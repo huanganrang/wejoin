@@ -56,7 +56,7 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 		if (diveTravel != null) {
 			whereHql += " where 1=1 ";
 			if (!F.empty(diveTravel.getName())) {
-				whereHql += " and t.name = :name";
+				whereHql += " and t.name like :name";
 				params.put("name", "%%" + diveTravel.getName() + "%%");
 			}		
 			if (!F.empty(diveTravel.getSumary())) {
