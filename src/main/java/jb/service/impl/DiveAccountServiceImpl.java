@@ -90,6 +90,10 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 				whereHql += " and t.hxStatus = :hxStatus";
 				params.put("hxStatus", diveAccount.getHxStatus());
 			}		
+			if (!F.empty(diveAccount.getSearchValue())) {
+				whereHql += " and (t.userName like :searchValue or t.nickname like :searchValue or t.email like :searchValue)";
+				params.put("searchValue", "%%" + diveAccount.getSearchValue() + "%%");
+			}		
 				
 		}	
 		return whereHql;
@@ -223,6 +227,50 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 根据条件查询用户信息
+	 */
+	public List<DiveAccount> findListByParams(DiveAccount account) {
+		List<DiveAccount> ol = new ArrayList<DiveAccount>();
+		Map<String, Object> params = new HashMap<String, Object>();
+		String where = whereHql(account, params);
+		List<TdiveAccount> l = diveAccountDao.find("from TdiveAccount t " + where, params);
+		if (l != null && l.size() > 0) {
+			for (TdiveAccount t : l) {
+				DiveAccount o = new DiveAccount();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
+		}
+		return ol;
+	}
+
+
+	/**
+	 * 根据用户ID集合获取用户信息
+	 */
+	public List<DiveAccount> findListByIds(String ids) {
+		List<DiveAccount> ol = new ArrayList<DiveAccount>();
+		// 添加订单明细
+		String[] idArr = ids.split(",");
+		String inWhere = "";
+		for(String id : idArr) {
+			if(F.empty(id)) continue;
+			inWhere += ",'" + id + "'";
+		}
+		if(inWhere != "") {
+			List<TdiveAccount> l = diveAccountDao.find("from TdiveAccount t where t.id in (" + inWhere.substring(1) + ")");
+			if (l != null && l.size() > 0) {
+				for (TdiveAccount t : l) {
+					DiveAccount o = new DiveAccount();
+					BeanUtils.copyProperties(t, o);
+					ol.add(o);
+				}
+			}
+		}
+		return ol;
 	}
 	
 }

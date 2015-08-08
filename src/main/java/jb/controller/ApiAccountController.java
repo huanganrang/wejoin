@@ -183,6 +183,7 @@ public class ApiAccountController extends BaseController {
 				if(!oldPass.equals(a.getPassword())) {
 					j.setMsg("旧密码不正确！");
 				} else {
+					account.setHxPassword(account.getPassword());
 					account.setPassword(MD5Util.md5(account.getPassword()));
 					accountService.edit(account);
 					j.setSuccess(true);
@@ -229,11 +230,11 @@ public class ApiAccountController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/personInfo")
-	public Json personInfo(HttpServletRequest request) {
+	public Json personInfo(String accountId, HttpServletRequest request) {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			j.setObj(accountService.get(s.getId()));
+			j.setObj(accountService.get(F.empty(accountId) ? s.getId():accountId));
 			j.setSuccess(true);
 			j.setMsg("个人信息查询成功");
 		} catch (Exception e) {

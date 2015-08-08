@@ -87,7 +87,7 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 		return this.id;
 	}
 	
-	@Column(name = "user_name", unique = false, nullable = true, insertable = true, updatable = true, length = 18)
+	@Column(name = "user_name", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
 	public java.lang.String getUserName() {
 		return this.userName;
 	}

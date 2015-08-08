@@ -1,5 +1,7 @@
 ﻿package jb.service;
 
+import java.util.List;
+
 import jb.pageModel.DiveAccount;
 import jb.pageModel.DataGrid;
 import jb.pageModel.PageHelper;
@@ -60,5 +62,9 @@ public interface DiveAccountServiceI {
 	public DiveAccount personHome(String id);
 
 	public boolean emailExists(DiveAccount account);
+
+	public List<DiveAccount> findListByParams(DiveAccount account);
+
+	public List<DiveAccount> findListByIds(String ids);
 
 }

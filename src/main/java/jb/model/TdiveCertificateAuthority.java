@@ -91,7 +91,7 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 		this.accountId = accountId;
 	}
 	
-	@Column(name = "org_code", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	@Column(name = "org_code", unique = false, nullable = true, insertable = true, updatable = true, length = 6)
 	public java.lang.String getOrgCode() {
 		return this.orgCode;
 	}
@@ -100,7 +100,7 @@ public class TdiveCertificateAuthority implements java.io.Serializable,IEntity{
 		this.orgCode = orgCode;
 	}
 	
-	@Column(name = "level_code", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	@Column(name = "level_code", unique = false, nullable = true, insertable = true, updatable = true, length = 6)
 	public java.lang.String getLevelCode() {
 		return this.levelCode;
 	}

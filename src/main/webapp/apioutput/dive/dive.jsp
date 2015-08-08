@@ -27,7 +27,7 @@
 				style="padding: 1px"></div>
 			<div title="学习" data-options="href:'api_course.jsp'"
 				style="padding: 1px"></div>
-			<div title="潜聊" data-options="href:''"
+			<div title="潜聊" data-options="href:'api_dive_chat.jsp'"
 				style="padding: 1px"></div>
 			<div title="赞/收藏" data-options="href:'api_point.jsp'"
 				style="padding: 1px"></div>	

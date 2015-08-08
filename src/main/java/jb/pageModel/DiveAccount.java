@@ -26,6 +26,8 @@ public class DiveAccount implements java.io.Serializable {
 	private int logNum; // 潜水日志数量
 	private String qrCodePath; // 二维码地址
 	
+	private String searchValue;
+	
 	public String getSexZh() {
 		return Application.getString(this.sex);
 	}
@@ -148,5 +150,13 @@ public class DiveAccount implements java.io.Serializable {
 
 	public void setBirthday(java.util.Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	public String getSearchValue() {
+		return searchValue;
+	}
+
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
 	}
 }

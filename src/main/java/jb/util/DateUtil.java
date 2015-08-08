@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import jb.absx.F;
+
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
 
@@ -22,10 +24,11 @@ public final class DateUtil {
 	 */
 	public static Date parse(String date, String fmt) {
 		try {
+			if(F.empty(date)) return null;
 			SimpleDateFormat sdf = new SimpleDateFormat(fmt);
 			Date newdate = sdf.parse(date);
 			return newdate;
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			log.error("Util>>DateUtil.parse>>" + date + ">>" + fmt+"-->>" +e.getMessage());
 			return null;
 		}
