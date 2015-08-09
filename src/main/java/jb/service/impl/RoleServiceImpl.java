@@ -127,7 +127,7 @@ public class RoleServiceImpl implements RoleServiceI {
 		List<Role> rl = new ArrayList<Role>();
 		List<Trole> tl = null;
 		Map<String, Object> params = new HashMap<String, Object>();
-		if (sessionInfo != null) {
+		if (sessionInfo != null && !"0".equals(sessionInfo.getId())) {
 			params.put("userId", sessionInfo.getId());// 查自己有权限的角色
 			tl = roleDao.find("select distinct t from Trole t left join fetch t.tresources resource join fetch t.tusers user where user.id = :userId order by t.seq", params);
 		} else {
@@ -187,7 +187,7 @@ public class RoleServiceImpl implements RoleServiceI {
 		List<Tree> lt = new ArrayList<Tree>();
 
 		Map<String, Object> params = new HashMap<String, Object>();
-		if (sessionInfo != null) {
+		if (sessionInfo != null && !"0".equals(sessionInfo.getId())) {
 			params.put("userId", sessionInfo.getId());// 查自己有权限的角色
 			l = roleDao.find("select distinct t from Trole t join fetch t.tusers user where user.id = :userId order by t.seq", params);
 		} else {
