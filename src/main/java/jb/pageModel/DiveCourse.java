@@ -18,6 +18,7 @@ public class DiveCourse implements java.io.Serializable {
 	private java.lang.String filePath;	
 	private java.lang.String status;	
 	private Date addtime;			
+	private java.lang.String addUserId;
 
 	private boolean isPay;
 	
@@ -97,10 +98,18 @@ public class DiveCourse implements java.io.Serializable {
 	public void setAddtime(Date addtime) {
 		this.addtime = addtime;
 	}
+	public java.lang.String getAddUserId() {
+		return addUserId;
+	}
+	public void setAddUserId(java.lang.String addUserId) {
+		this.addUserId = addUserId;
+	}
 	
 	public Date getAddtime() {
 		return this.addtime;
 	}
+	
+	
 	public boolean isPay() {
 		return isPay;
 	}

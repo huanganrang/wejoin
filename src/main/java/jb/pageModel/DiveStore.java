@@ -16,7 +16,8 @@ public class DiveStore implements java.io.Serializable {
 	private java.lang.String serverScope;	
 	private java.lang.String area;	
 	private java.lang.String status;	
-	private Date addtime;			
+	private Date addtime;		
+	private java.lang.String addUserId;
 
 	private int praiseNum;
 	private boolean isPraise;
@@ -90,6 +91,13 @@ public class DiveStore implements java.io.Serializable {
 	
 	public Date getAddtime() {
 		return this.addtime;
+	}
+	
+	public java.lang.String getAddUserId() {
+		return addUserId;
+	}
+	public void setAddUserId(java.lang.String addUserId) {
+		this.addUserId = addUserId;
 	}
 	
 	public int getPraiseNum() {

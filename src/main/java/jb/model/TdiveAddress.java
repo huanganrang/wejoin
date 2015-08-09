@@ -57,6 +57,8 @@ public class TdiveAddress implements java.io.Serializable,IEntity{
 	private java.lang.String status;
 	//
 	private java.util.Date addtime;
+	//@Length(max=36)
+	private java.lang.String addUserId;
 	//columns END
 
 
@@ -150,7 +152,13 @@ public class TdiveAddress implements java.io.Serializable,IEntity{
 		this.addtime = addtime;
 	}
 	
-	
+	@Column(name = "add_user_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getAddUserId() {
+		return addUserId;
+	}
+	public void setAddUserId(java.lang.String addUserId) {
+		this.addUserId = addUserId;
+	}
 	/*
 	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)

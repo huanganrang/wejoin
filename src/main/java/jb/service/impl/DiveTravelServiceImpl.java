@@ -83,7 +83,11 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 			if (!F.empty(diveTravel.getStatus())) {
 				whereHql += " and t.status = :status";
 				params.put("status", diveTravel.getStatus());
-			}		
+			}
+			if (!F.empty(diveTravel.getAddUserId())) {
+				whereHql += " and t.addUserId = :addUserId";
+				params.put("addUserId", diveTravel.getAddUserId());
+			}
 		}	
 		return whereHql;
 	}

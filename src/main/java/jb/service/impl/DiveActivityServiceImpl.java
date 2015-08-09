@@ -96,6 +96,10 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				whereHql += " and t.stamp = :stamp";
 				params.put("stamp", diveActivity.getStamp());
 			}		
+			if (!F.empty(diveActivity.getAddUserId())) {
+				whereHql += " and t.addUserId = :addUserId";
+				params.put("addUserId", diveActivity.getAddUserId());
+			}		
 		}	
 		return whereHql;
 	}

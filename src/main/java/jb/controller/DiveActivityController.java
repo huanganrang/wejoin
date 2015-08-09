@@ -6,13 +6,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveActivity;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveActivityServiceI;
+import jb.util.ConfigUtil;
 import jb.util.Constants;
 import jb.util.DateUtil;
 
@@ -55,7 +58,11 @@ public class DiveActivityController extends BaseController {
 	 */
 	@RequestMapping("/dataGrid")
 	@ResponseBody
-	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph) {
+	public DataGrid dataGrid(DiveActivity diveActivity, PageHelper ph,HttpSession session) {
+		SessionInfo sessionInfo = (SessionInfo)session.getAttribute(ConfigUtil.getSessionInfoName());
+		if(checkRoleMark("RL04", sessionInfo)) {
+			diveActivity.setAddUserId(sessionInfo.getId());
+		}
 		return diveActivityService.dataGrid(diveActivity, ph);
 	}
 	/**
@@ -71,8 +78,8 @@ public class DiveActivityController extends BaseController {
 	 * @throws IOException 
 	 */
 	@RequestMapping("/download")
-	public void download(DiveActivity diveActivity, PageHelper ph,String downloadFields,HttpServletResponse response) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
-		DataGrid dg = dataGrid(diveActivity,ph);		
+	public void download(DiveActivity diveActivity, PageHelper ph,String downloadFields,HttpServletResponse response, HttpSession session) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
+		DataGrid dg = dataGrid(diveActivity,ph,session);		
 		downloadFields = downloadFields.replace("&quot;", "\"");
 		downloadFields = downloadFields.substring(1,downloadFields.length()-1);
 		List<Colum> colums = JSON.parseArray(downloadFields, Colum.class);
@@ -96,10 +103,11 @@ public class DiveActivityController extends BaseController {
 	 */
 	@RequestMapping("/add")
 	@ResponseBody
-	public Json add(DiveActivity diveActivity, String startDateStr, String endDateStr) {
+	public Json add(DiveActivity diveActivity, String startDateStr, String endDateStr, HttpSession session) {
 		Json j = new Json();		
 		diveActivity.setStartDate(DateUtil.parse(startDateStr, Constants.DATE_FORMAT_YMD));
 		diveActivity.setEndDate(DateUtil.parse(endDateStr, Constants.DATE_FORMAT_YMD));
+		diveActivity.setAddUserId(((SessionInfo)session.getAttribute(ConfigUtil.getSessionInfoName())).getId());
 		diveActivityService.add(diveActivity);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		

@@ -17,7 +17,8 @@ public class DiveTravel implements java.io.Serializable {
 	private java.lang.String area;	
 	private java.lang.String feature;	
 	private java.lang.String status;	
-	private Date addtime;			
+	private Date addtime;	
+	private java.lang.String addUserId;
 
 	private boolean isCollect;
 	
@@ -102,6 +103,12 @@ public class DiveTravel implements java.io.Serializable {
 	
 	public Date getAddtime() {
 		return this.addtime;
+	}
+	public java.lang.String getAddUserId() {
+		return addUserId;
+	}
+	public void setAddUserId(java.lang.String addUserId) {
+		this.addUserId = addUserId;
 	}
 
 	public boolean isCollect() {

@@ -7,13 +7,16 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAddress;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveAddressServiceI;
+import jb.util.ConfigUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +59,11 @@ public class DiveAddressController extends BaseController {
 	 */
 	@RequestMapping("/dataGrid")
 	@ResponseBody
-	public DataGrid dataGrid(DiveAddress diveAddress, PageHelper ph) {
+	public DataGrid dataGrid(DiveAddress diveAddress, PageHelper ph, HttpSession session) {
+		SessionInfo sessionInfo = (SessionInfo)session.getAttribute(ConfigUtil.getSessionInfoName());
+		if(checkRoleMark("RL02", sessionInfo)) {
+			diveAddress.setAddUserId(sessionInfo.getId());
+		}
 		return diveAddressService.dataGrid(diveAddress, ph);
 	}
 	/**
@@ -72,8 +79,8 @@ public class DiveAddressController extends BaseController {
 	 * @throws IOException 
 	 */
 	@RequestMapping("/download")
-	public void download(DiveAddress diveAddress, PageHelper ph,String downloadFields,HttpServletResponse response) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
-		DataGrid dg = dataGrid(diveAddress,ph);		
+	public void download(DiveAddress diveAddress, PageHelper ph,String downloadFields,HttpServletResponse response, HttpSession session) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
+		DataGrid dg = dataGrid(diveAddress,ph,session);		
 		downloadFields = downloadFields.replace("&quot;", "\"");
 		downloadFields = downloadFields.substring(1,downloadFields.length()-1);
 		List<Colum> colums = JSON.parseArray(downloadFields, Colum.class);
@@ -102,6 +109,7 @@ public class DiveAddressController extends BaseController {
 	public Json add(DiveAddress diveAddress, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
 		Json j = new Json();	
 		diveAddress.setIcon(uploadFile(request, "address", iconFile));
+		diveAddress.setAddUserId(((SessionInfo)request.getSession().getAttribute(ConfigUtil.getSessionInfoName())).getId());
 		diveAddressService.add(diveAddress);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		

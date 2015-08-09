@@ -20,6 +20,7 @@ public class DiveActivity implements java.io.Serializable {
 	private java.lang.String status;	
 	private java.lang.String stamp;	
 	private Date addtime;		
+	private java.lang.String addUserId;
 	
 	private int commentNum; //评论数量
 	private int collectNum; //收藏数量
@@ -125,6 +126,13 @@ public class DiveActivity implements java.io.Serializable {
 	
 	public Date getAddtime() {
 		return this.addtime;
+	}
+	
+	public java.lang.String getAddUserId() {
+		return addUserId;
+	}
+	public void setAddUserId(java.lang.String addUserId) {
+		this.addUserId = addUserId;
 	}
 
 	public int getCommentNum() {

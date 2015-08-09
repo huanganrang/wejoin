@@ -66,6 +66,7 @@ public class UserController extends BaseController {
 			BeanUtils.copyProperties(u, sessionInfo);
 			sessionInfo.setIp(IpUtil.getIpAddr(request));
 			sessionInfo.setResourceList(userService.resourceList(u.getId()));
+			sessionInfo.setRoleIds(userService.get(u.getId()).getRoleIds());
 			session.setAttribute(ConfigUtil.getSessionInfoName(), sessionInfo);
 
 			j.setObj(sessionInfo);

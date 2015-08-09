@@ -7,13 +7,16 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveStore;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveStoreServiceI;
+import jb.util.ConfigUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +59,11 @@ public class DiveStoreController extends BaseController {
 	 */
 	@RequestMapping("/dataGrid")
 	@ResponseBody
-	public DataGrid dataGrid(DiveStore diveStore, PageHelper ph) {
+	public DataGrid dataGrid(DiveStore diveStore, PageHelper ph, HttpSession session) {
+		SessionInfo sessionInfo = (SessionInfo)session.getAttribute(ConfigUtil.getSessionInfoName());
+		if(checkRoleMark("RL05", sessionInfo)) {
+			diveStore.setAddUserId(sessionInfo.getId());
+		}
 		return diveStoreService.dataGrid(diveStore, ph);
 	}
 	/**
@@ -72,8 +79,8 @@ public class DiveStoreController extends BaseController {
 	 * @throws IOException 
 	 */
 	@RequestMapping("/download")
-	public void download(DiveStore diveStore, PageHelper ph,String downloadFields,HttpServletResponse response) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
-		DataGrid dg = dataGrid(diveStore,ph);		
+	public void download(DiveStore diveStore, PageHelper ph,String downloadFields,HttpServletResponse response, HttpSession session) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
+		DataGrid dg = dataGrid(diveStore,ph,session);		
 		downloadFields = downloadFields.replace("&quot;", "\"");
 		downloadFields = downloadFields.substring(1,downloadFields.length()-1);
 		List<Colum> colums = JSON.parseArray(downloadFields, Colum.class);
@@ -102,6 +109,7 @@ public class DiveStoreController extends BaseController {
 	public Json add(DiveStore diveStore, @RequestParam MultipartFile iconFile, HttpServletRequest request) {
 		Json j = new Json();		
 		diveStore.setIcon(uploadFile(request, "store", iconFile));
+		diveStore.setAddUserId(((SessionInfo)request.getSession().getAttribute(ConfigUtil.getSessionInfoName())).getId());
 		diveStoreService.add(diveStore);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		

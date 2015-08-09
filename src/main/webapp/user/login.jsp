@@ -187,6 +187,7 @@
 	</div>
 </div>
 
+<!-- 
 <div id="defaultUserInfoDialog" title="系统测试账号"
 	style="width: 300px; height: 260px; overflow: hidden; display: none;">
 	<div class="well well-small" style="margin: 3px;">请大家不要随意更改系统默认账户的信息，如果想测试，请自己新建立用户进行测试</div>
@@ -213,4 +214,4 @@
 			<span class="badge">7</span>来宾用户：guest/123456
 		</div>
 	</div>
-</div>
+</div> -->

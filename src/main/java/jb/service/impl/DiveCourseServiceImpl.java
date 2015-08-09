@@ -79,7 +79,11 @@ public class DiveCourseServiceImpl extends BaseServiceImpl<DiveCourse> implement
 			if (!F.empty(diveCourse.getStatus())) {
 				whereHql += " and t.status = :status";
 				params.put("status", diveCourse.getStatus());
-			}		
+			}	
+			if (!F.empty(diveCourse.getAddUserId())) {
+				whereHql += " and t.addUserId = :addUserId";
+				params.put("addUserId", diveCourse.getAddUserId());
+			}
 		}	
 		return whereHql;
 	}

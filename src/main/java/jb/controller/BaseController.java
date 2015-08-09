@@ -23,6 +23,7 @@ import jb.listener.Application;
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.Json;
+import jb.pageModel.SessionInfo;
 import jb.util.Constants;
 import jb.util.StringEscapeEditor;
 import jb.util.Util;
@@ -201,5 +202,22 @@ public class BaseController {
 	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file){
 		return uploadFile(request, dirName, file, dirName);
 		
+	}
+	
+	public boolean checkRoleMark(String rlKey, SessionInfo sessionInfo) {
+		boolean mark = false;
+		String rlValue = Application.getString(rlKey);
+		if(!F.empty(rlValue)) {
+			String[] roleIds = sessionInfo.getRoleIds().split(",");
+			for(String roleId : roleIds) {
+				if(F.empty(roleId)) continue;
+				if(roleId.trim().equals(rlValue.trim())) {
+					mark = true;
+					break;
+				}
+			}
+		}
+		
+		return mark;
 	}
 }

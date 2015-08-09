@@ -86,7 +86,12 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 			if (!F.empty(diveAddress.getStatus())) {
 				whereHql += " and t.status = :status";
 				params.put("status", diveAddress.getStatus());
-			}		
+			}	
+			if (!F.empty(diveAddress.getAddUserId())) {
+				whereHql += " and t.addUserId = :addUserId";
+				params.put("addUserId", diveAddress.getAddUserId());
+			}	
+			
 		}	
 		return whereHql;
 	}

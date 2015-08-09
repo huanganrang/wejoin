@@ -75,9 +75,9 @@ public class ApiCommonController extends BaseController {
 				content = diveCourseService.get(id).getIntroduce();
 			}
 			out = response.getWriter();
-			out.write("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />  </head><body>");
+			out.write("<html>");
 			out.write(content);
-			out.write("</body></html>");
+			out.write("</html>");
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

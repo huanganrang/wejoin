@@ -84,7 +84,11 @@ public class DiveEquipServiceImpl extends BaseServiceImpl<DiveEquip> implements 
 			if (!F.empty(diveEquip.getEquipBrand())) {
 				whereHql += " and t.equipBrand = :equipBrand";
 				params.put("equipBrand", diveEquip.getEquipBrand());
-			}		
+			}	
+			if (!F.empty(diveEquip.getAddUserId())) {
+				whereHql += " and t.addUserId = :addUserId";
+				params.put("addUserId", diveEquip.getAddUserId());
+			}
 		}	
 		return whereHql;
 	}

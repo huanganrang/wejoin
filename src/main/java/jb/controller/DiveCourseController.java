@@ -7,13 +7,16 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jb.pageModel.Colum;
 import jb.pageModel.DiveCourse;
 import jb.pageModel.DataGrid;
 import jb.pageModel.Json;
 import jb.pageModel.PageHelper;
+import jb.pageModel.SessionInfo;
 import jb.service.DiveCourseServiceI;
+import jb.util.ConfigUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +59,11 @@ public class DiveCourseController extends BaseController {
 	 */
 	@RequestMapping("/dataGrid")
 	@ResponseBody
-	public DataGrid dataGrid(DiveCourse diveCourse, PageHelper ph) {
+	public DataGrid dataGrid(DiveCourse diveCourse, PageHelper ph, HttpSession session) {
+		SessionInfo sessionInfo = (SessionInfo)session.getAttribute(ConfigUtil.getSessionInfoName());
+		if(checkRoleMark("RL06", sessionInfo)) {
+			diveCourse.setAddUserId(sessionInfo.getId());
+		}
 		return diveCourseService.dataGrid(diveCourse, ph);
 	}
 	/**
@@ -72,8 +79,8 @@ public class DiveCourseController extends BaseController {
 	 * @throws IOException 
 	 */
 	@RequestMapping("/download")
-	public void download(DiveCourse diveCourse, PageHelper ph,String downloadFields,HttpServletResponse response) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
-		DataGrid dg = dataGrid(diveCourse,ph);		
+	public void download(DiveCourse diveCourse, PageHelper ph,String downloadFields,HttpServletResponse response, HttpSession session) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException{
+		DataGrid dg = dataGrid(diveCourse,ph,session);		
 		downloadFields = downloadFields.replace("&quot;", "\"");
 		downloadFields = downloadFields.substring(1,downloadFields.length()-1);
 		List<Colum> colums = JSON.parseArray(downloadFields, Colum.class);
@@ -103,6 +110,7 @@ public class DiveCourseController extends BaseController {
 		Json j = new Json();
 		diveCourse.setIcon(uploadFile(request, "course", iconFile));
 		diveCourse.setFilePath(uploadFile(request, "course/video", filePathFile, "video"));
+		diveCourse.setAddUserId(((SessionInfo)request.getSession().getAttribute(ConfigUtil.getSessionInfoName())).getId());
 		diveCourseService.add(diveCourse);
 		j.setSuccess(true);
 		j.setMsg("添加成功！");		
