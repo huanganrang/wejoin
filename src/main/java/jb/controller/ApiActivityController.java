@@ -13,6 +13,7 @@ import jb.pageModel.SessionInfo;
 import jb.service.DiveActivityApplyServiceI;
 import jb.service.DiveActivityCommentServiceI;
 import jb.service.DiveActivityServiceI;
+import jb.service.DiveAddressServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,9 @@ public class ApiActivityController extends BaseController {
 	
 	@Autowired
 	private DiveActivityApplyServiceI diveActivityApplyService;
+	
+	@Autowired
+	private DiveAddressServiceI diveAddressService;
 	
 	/**
 	 * 活动列表
@@ -74,8 +78,10 @@ public class ApiActivityController extends BaseController {
 		Json j = new Json();
 		try{
 			SessionInfo s = tokenManage.getSessionInfo(request);
-			//TODO,详情接口需要完善
-			j.setObj(diveActivityService.getDetail(id, s.getId()));
+			//详情接口需要完善
+			DiveActivity diveActivity = diveActivityService.getDetail(id, s.getId());
+			diveActivity.setDiveAddress(diveAddressService.getDetail(diveActivity.getAddrId(), s.getId()));
+			j.setObj(diveActivity);
 			j.success();
 		}catch(Exception e){
 			j.fail();

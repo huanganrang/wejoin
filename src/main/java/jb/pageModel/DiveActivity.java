@@ -34,7 +34,7 @@ public class DiveActivity implements java.io.Serializable {
 	//评论
 	private List<DiveActivityComment> diveActivityCommentList;
 
-	
+	private DiveAddress diveAddress;
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -192,5 +192,11 @@ public class DiveActivity implements java.io.Serializable {
 		this.isCollect = isCollect;
 	}
 
+	public DiveAddress getDiveAddress() {
+		return diveAddress;
+	}
 
+	public void setDiveAddress(DiveAddress diveAddress) {
+		this.diveAddress = diveAddress;
+	}
 }

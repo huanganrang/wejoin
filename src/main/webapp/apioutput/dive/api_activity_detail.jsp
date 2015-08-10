@@ -170,6 +170,20 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
             </td>
         </tr>
         <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                diveAddress
+            </td>
+            <td style="border-top:none;border-left:none">
+                DiveAddress对象
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                潜点信息
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
             <td height="19" style="">
                 applies
             </td>
@@ -283,6 +297,77 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
                 评论时间
             </td>
             <td style="border-top:none;border-left:none"></td>
+        </tr>
+    </tbody>
+</table>
+
+潜点信息
+<table x:str="" cellpadding="0" cellspacing="0" width="673">
+    <colgroup>
+        <col width="192" style=";width:192px"/>
+        <col width="117" style=";width:117px"/>
+        <col width="72" span="2" style="width:72px"/>
+        <col width="148" style=";width:148px"/>
+        <col width="72" style="width:72px"/>
+    </colgroup>
+    <tbody>
+        <tr height="19" style="height:19px" class="firstRow">
+            <td height="19" width="192" style="">
+                id
+            </td>
+            <td width="117" style="border-left-style: none;">
+                varchar
+            </td>
+            <td width="72" style="border-left-style: none;" x:num="">
+                36
+            </td>
+            <td width="72" style="border-left-style: none;">
+                PK
+            </td>
+            <td width="148" style="border-left-style: none;">
+                主键
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                name
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                潜水名称
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                icon
+            </td>
+            <td style="border-top:none;border-left:none">
+                longtext
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                图片地址
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                description
+            </td>
+            <td style="border-top:none;border-left:none">
+                longtext
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                详情地址
+            </td>
         </tr>
     </tbody>
 </table>
