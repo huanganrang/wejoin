@@ -75,9 +75,17 @@ public class ApiCommonController extends BaseController {
 				content = diveCourseService.get(id).getIntroduce();
 			}
 			out = response.getWriter();
-			out.write("<html>");
+			out.write("<html><head>");
+			out.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\">");
+			out.write("<style type=\"text/css\">");
+			out.write("body {font-family:\"微软雅黑\";font-size:12px; background-color:#f8f7f5;}");
+			out.write("img{border:0; line-height:0;}");
+			out.write("ol,ul {list-style:none;}");
+			out.write("a { color: #000; text-decoration: none; outline: none;}");
+			out.write("a img { border: none; }");
+			out.write("</style></head><body>");
 			out.write(content);
-			out.write("</html>");
+			out.write("</body></html>");
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

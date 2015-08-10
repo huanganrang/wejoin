@@ -37,7 +37,7 @@ dd,dl,dt{ margin:0 ; padding:0;}
 .content .cont_ft .ft_ew .ew dt i{ display:block; position:absolute; width:97%; overflow:hidden; top:1px; left:1.5%; font-style:normal;}
 .content .cont_ft .ft_ew .ew p{ font-size:14px; line-height:1.5em;}
 .content .nr{ margin-top:15px; overflow:hidden;}
-.content .nr p{ text-indent:2em; font-size:14px; color:#666; line-height:1.8em; margin:.8em 0;}
+.content .nr p{ font-size:14px; color:#666; line-height:1.8em; margin:.8em 0;}
 .content .nr img{ width:100%;}
 
 .wm { min-width:480px; max-width:740px; overflow:hidden; margin:0 auto; margin-top:30px;}
