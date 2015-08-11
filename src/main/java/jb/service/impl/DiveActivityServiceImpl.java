@@ -230,6 +230,9 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 			DiveActivityComment diveActivityComment = new DiveActivityComment();
 			BeanUtils.copyProperties(t,diveActivityComment);
 			diveActivityComment.setCommentUser(commentUsersMap.get(t.getUserId()));
+			if(!F.empty(t.getPid())) {
+				diveActivityComment.setParentCommentUser(commentUsersMap.get(t.getPid()));
+			}
 			diveActivityCommentList.add(diveActivityComment);
 		}
 		diveActivity.setDiveActivityCommentList(diveActivityCommentList);
@@ -240,7 +243,7 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		List<DiveAccount> list = new ArrayList<DiveAccount>();
 		for(TdiveAccount s : diveAccounts){
 			DiveAccount o = new DiveAccount();
-			BeanUtils.copyProperties(s, o);
+			MyBeanUtils.copyProperties(s, o, new String[] { "password" , "personality", "email", "recommend", "hxPassword", "hxStatus", "addtime" }, true );
 			list.add(o);
 		}
 		return list;		

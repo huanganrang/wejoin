@@ -16,19 +16,24 @@ public class MyBeanUtils extends BeanUtils {
   public static void copyProperties(Object source, Object target, boolean isNull)
 		    throws BeansException
   {
-    copyProperties(source, target, null, null, isNull);
+    copyProperties(source, target, null, null,null, isNull);
   }
 
   public static void copyProperties(Object source, Object target, Class<?> editable, boolean isNull)
     throws BeansException
   {
-    copyProperties(source, target, editable, null, isNull);
+    copyProperties(source, target, editable, null,null, isNull);
   }
 
   public static void copyProperties(Object source, Object target, String[] ignoreProperties, boolean isNull)
     throws BeansException
   {
-    copyProperties(source, target, null, ignoreProperties, isNull);
+    copyProperties(source, target, null, ignoreProperties,null, isNull);
+  }
+  public static void copyProperties(Object source, Object target, String[] ignoreProperties, String[] markProperties, boolean isNull)
+		  throws BeansException
+  {
+	  copyProperties(source, target, null, ignoreProperties,markProperties, isNull);
   }
   
   /**
@@ -36,11 +41,13 @@ public class MyBeanUtils extends BeanUtils {
    * @param source
    * @param target
    * @param editable
-   * @param ignoreProperties
+   * @param ignoreProperties 忽略的属性
+   * @param markProperties 不忽略的属性
    * @param isNull isNull=true：表示字段为null时不进行copy,false反之
    * @throws BeansException
    */
-  private static void copyProperties(Object source, Object target, Class<?> editable, String[] ignoreProperties, boolean isNull)
+  private static void copyProperties(Object source, Object target, Class<?> editable, 
+		  String[] ignoreProperties, String[] markProperties, boolean isNull)
 		    throws BeansException
 		  {
 		    Assert.notNull(source, "Source must not be null");
@@ -56,9 +63,11 @@ public class MyBeanUtils extends BeanUtils {
 		    }
 		    PropertyDescriptor[] targetPds = getPropertyDescriptors(actualEditable);
 		    List ignoreList = ignoreProperties != null ? Arrays.asList(ignoreProperties) : null;
+		    List markList = markProperties != null ? Arrays.asList(markProperties) : null;
 
 		    for (PropertyDescriptor targetPd : targetPds)
-		      if ((targetPd.getWriteMethod() != null) && ((ignoreProperties == null) || (!ignoreList.contains(targetPd.getName()))))
+		      if ((targetPd.getWriteMethod() != null) && ((ignoreProperties == null) || (!ignoreList.contains(targetPd.getName())))
+		    		  && ((markProperties == null) || (markList.contains(targetPd.getName()))))
 		      {
 		        PropertyDescriptor sourcePd = getPropertyDescriptor(source.getClass(), targetPd.getName());
 		        if ((sourcePd != null) && (sourcePd.getReadMethod() != null))

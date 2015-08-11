@@ -14,7 +14,7 @@ public class DiveActivityComment implements java.io.Serializable {
 	private java.lang.String userId;	
 	private Date addtime;			
 	private DiveAccount commentUser;
-
+	private DiveAccount parentCommentUser;
 	
 
 	public void setId(java.lang.String value) {
@@ -68,6 +68,14 @@ public class DiveActivityComment implements java.io.Serializable {
 
 	public void setCommentUser(DiveAccount commentUser) {
 		this.commentUser = commentUser;
+	}
+
+	public DiveAccount getParentCommentUser() {
+		return parentCommentUser;
+	}
+
+	public void setParentCommentUser(DiveAccount parentCommentUser) {
+		this.parentCommentUser = parentCommentUser;
 	}
 
 

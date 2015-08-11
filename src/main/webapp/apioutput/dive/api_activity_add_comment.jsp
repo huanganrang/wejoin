@@ -52,6 +52,10 @@ String url = request.getContextPath()+"/api/apiActivityController/addComment";
 						<td align="right" style="width: 180px;"><label>activityId(活动Id)：</label></td>
 						<td><input name="activityId" type="text" class="span2" value="" /></td>
 					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>pid(@用户ID)：</label></td>
+						<td><input name="pid" type="text" class="span2" value="" />(@其他用户时传入)</td>
+					</tr>
 					
 					<tr>
 						<td align="right" style="width: 180px;"><label>comment(评论)：</label></td>
