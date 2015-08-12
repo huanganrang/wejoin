@@ -51,4 +51,6 @@ public interface DiveActivityApplyServiceI {
 	 */
 	public void delete(String id);
 
+	public void deleteByParam(DiveActivityApply diveActivityApply);
+
 }

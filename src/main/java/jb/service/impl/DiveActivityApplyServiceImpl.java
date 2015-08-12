@@ -97,4 +97,11 @@ public class DiveActivityApplyServiceImpl extends BaseServiceImpl<DiveActivityAp
 		diveActivityApplyDao.delete(diveActivityApplyDao.get(TdiveActivityApply.class, id));
 	}
 
+	@Override
+	public void deleteByParam(DiveActivityApply diveActivityApply) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String where = whereHql(diveActivityApply, params);
+		diveActivityApplyDao.delete(diveActivityApplyDao.get("from TdiveActivityApply t " + where, params));
+	}
+
 }

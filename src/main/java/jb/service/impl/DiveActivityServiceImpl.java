@@ -213,6 +213,15 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 			} else {
 				diveActivity.setCollect(false); // 未收藏
 			}
+			
+			params = new HashMap<String, Object>();
+			params.put("activityId", id);
+			params.put("userId", accountId);
+			if(diveActivityApplyDao.count("select count(*) from TdiveActivityApply t where t.activityId = :activityId and t.userId = :userId", params) > 0) {
+				diveActivity.setApply(true); // 已报名
+			} else {
+				diveActivity.setApply(false); // 未报名
+			}
 		}
 		
 		List<TdiveAccount> applies = diveAccountDao.getDiveAccountByApply(id);

@@ -131,6 +131,28 @@ public class ApiActivityController extends BaseController {
 		}		
 		return j;
 	}	
+	
+	/**
+	 * 取消报名
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/unapply")
+	public Json unapply(HttpServletRequest request,DiveActivityApply diveActivityApply) {	
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			diveActivityApply.setUserId(s.getId());
+			diveActivityApplyService.deleteByParam(diveActivityApply);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
 	/**
 	 * 个人收藏-活动收藏列表查询
 	 * @param ph

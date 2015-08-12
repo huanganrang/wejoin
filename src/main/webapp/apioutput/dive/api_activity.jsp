@@ -17,6 +17,8 @@
 			style="padding: 1px"></div>	
 		<div title="报名" data-options="href:'api_activity_apply.jsp'"
 			style="padding: 1px"></div>			
+		<div title="取消报名" data-options="href:'api_activity_unapply.jsp'"
+			style="padding: 1px"></div>			
 	</div>
 
 </body>

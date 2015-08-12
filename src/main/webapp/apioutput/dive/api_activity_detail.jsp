@@ -171,6 +171,20 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
+                isApply
+            </td>
+            <td style="border-top:none;border-left:none">
+                boolean
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                是否已报名（true:是；false:否）
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
                 diveAddress
             </td>
             <td style="border-top:none;border-left:none">
