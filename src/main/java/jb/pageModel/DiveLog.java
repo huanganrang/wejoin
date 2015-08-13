@@ -22,7 +22,7 @@ public class DiveLog implements java.io.Serializable {
 	private java.lang.Float diveHeight;	
 	private java.lang.Float diveWeith;	
 	private java.lang.Float weatherTemperature;	
-	private java.lang.Float windPower;	
+	private java.lang.String windPower;	
 	private java.lang.Float gasStart;	
 	private java.lang.Float gasEnd;	
 	private Date addtime;	
@@ -139,11 +139,11 @@ public class DiveLog implements java.io.Serializable {
 	public java.lang.Float getWeatherTemperature() {
 		return this.weatherTemperature;
 	}
-	public void setWindPower(java.lang.Float windPower) {
+	public void setWindPower(java.lang.String windPower) {
 		this.windPower = windPower;
 	}
 	
-	public java.lang.Float getWindPower() {
+	public java.lang.String getWindPower() {
 		return this.windPower;
 	}
 	public void setGasStart(java.lang.Float gasStart) {

@@ -54,11 +54,6 @@ String url = request.getContextPath()+"/api/apiActivityController/unapply";
 					</tr>
 					
 					<tr>
-						<td align="right" style="width: 180px;"><label>remark(备注)：</label></td>
-						<td><input name="remark" type="text" class="span2" value="" /></td>
-					</tr>
-					
-					<tr>
 						<td colspan="2" align="center"><input type="button"
 							value="提交" onclick="javascript:$('#activity_unapply_Form').submit();" /></td>
 					</tr>

@@ -81,8 +81,8 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 	private java.lang.Float diveWeith;
 	//
 	private java.lang.Float weatherTemperature;
-	//
-	private java.lang.Float windPower;
+	//@Length(max=4)
+	private java.lang.String windPower;
 	//
 	private java.lang.Float gasStart;
 	//
@@ -232,12 +232,12 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 		this.weatherTemperature = weatherTemperature;
 	}
 	
-	@Column(name = "wind_power", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
-	public java.lang.Float getWindPower() {
+	@Column(name = "wind_power", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getWindPower() {
 		return this.windPower;
 	}
 	
-	public void setWindPower(java.lang.Float windPower) {
+	public void setWindPower(java.lang.String windPower) {
 		this.windPower = windPower;
 	}
 	

@@ -176,21 +176,22 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			if(!F.empty(HuanxinUtil.resetPass(s.getId(), account.getPassword()))) {
-				account.setId(s.getId());
-				DiveAccount a = accountService.get(s.getId());
-				oldPass = MD5Util.md5(oldPass);
-				if(!oldPass.equals(a.getPassword())) {
-					j.setMsg("旧密码不正确！");
-				} else {
+			
+			account.setId(s.getId());
+			DiveAccount a = accountService.get(s.getId());
+			oldPass = MD5Util.md5(oldPass);
+			if(!oldPass.equals(a.getPassword())) {
+				j.setMsg("旧密码不正确！");
+			} else {
+				if(!F.empty(HuanxinUtil.resetPass(s.getId(), account.getPassword()))) {
 					account.setHxPassword(account.getPassword());
 					account.setPassword(MD5Util.md5(account.getPassword()));
 					accountService.edit(account);
 					j.setSuccess(true);
 					j.setMsg("密码修改成功");
+				} else {
+					j.setMsg("密码修改失败");
 				}
-			} else {
-				j.setMsg("密码修改失败");
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();

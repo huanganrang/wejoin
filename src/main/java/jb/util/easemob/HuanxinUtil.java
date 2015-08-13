@@ -205,7 +205,7 @@ public class HuanxinUtil {
 	public static String resetPass(String username, String password) {
 		
 		String params = "{\"newpassword\": \""+password+"\"}";
-		String response = httpsRequest(getUrl(username+"/password"), "PUT", params, true);
+		String response = httpsRequest(getUrl("users/"+username+"/password"), "PUT", params, true);
 		log.info(response);
 		return response;
 	}

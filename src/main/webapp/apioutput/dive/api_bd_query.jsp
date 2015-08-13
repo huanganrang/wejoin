@@ -63,6 +63,7 @@ String url = request.getContextPath()+"/api/apiBaseDataController/basedata";
 							业务类型(BT)<br>
 							审核状态(AS)<br>
 							天气(WT)<br>
+							风力(WP)<br>
 							业务状态(ST)<br>
 							日志类型(LT)<br>
 						</td>

@@ -82,7 +82,7 @@ String url = request.getContextPath()+"/api/apiLogController/addElectronLog";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>windPower(风力)：</label>
-						<td><input name="windPower" type="text" class="span2"  value=""/></td>
+						<td><input name="windPower" type="text" class="span2"  value="WP10"/>(参考基础数据类型WP)</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>inTimeStr(入水时间)：</label>
