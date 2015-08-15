@@ -31,6 +31,7 @@
 		$.canEditPwd = true;
 	</script>
 </c:if>
+
 <script type="text/javascript">
 	var dataGrid;
 	$(function() {
@@ -91,26 +92,40 @@
 				width : 100,
 				formatter : function(value, row, index) {
 					var str = '';
-					if ($.canEdit) {
-						str += $.formatString('<img onclick="editFun(\'{0}\');" src="{1}" title="编辑"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/pencil.png');
-					}
-					str += '&nbsp;';
-					if ($.canGrant) {
-						str += $.formatString('<img onclick="grantFun(\'{0}\');" src="{1}" title="授权"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/key.png');
-					}
-					str += '&nbsp;';
-					if ($.canDelete) {
-						str += $.formatString('<img onclick="deleteFun(\'{0}\');" src="{1}" title="删除"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/cancel.png');
-					}
-					str += '&nbsp;';
-					if ($.canEditPwd) {
-						str += $.formatString('<img onclick="editPwdFun(\'{0}\');" src="{1}" title="修改密码"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/lock/lock_edit.png');
+					if(row.id == '0' && '${sessionInfo.id}' != '0') {
+						str = '超级管理员';
+					} else {
+						if ($.canEdit) {
+							str += $.formatString('<img onclick="editFun(\'{0}\');" src="{1}" title="编辑"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/pencil.png');
+						}
+						str += '&nbsp;';
+						if ($.canGrant) {
+							str += $.formatString('<img onclick="grantFun(\'{0}\');" src="{1}" title="授权"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/key.png');
+						}
+						str += '&nbsp;';
+						if ($.canDelete) {
+							str += $.formatString('<img onclick="deleteFun(\'{0}\');" src="{1}" title="删除"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/cancel.png');
+						}
+						str += '&nbsp;';
+						if ($.canEditPwd) {
+							str += $.formatString('<img onclick="editPwdFun(\'{0}\');" src="{1}" title="修改密码"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/lock/lock_edit.png');
+						}
 					}
 					return str;
 				}
 			} ] ],
 			toolbar : '#toolbar',
-			onLoadSuccess : function() {
+			onLoadSuccess : function(data) {
+				var panel = dataGrid.datagrid('getPanel');
+				var checkbox = panel.find('div.datagrid-cell-check input[type=checkbox]');
+			   	// 去除系统管理员checkbox
+			   	for(var i=0; i<data.rows.length; i++) {
+			   		if(data.rows[i]['id'] == '0') {
+			   			var index = $("#dataGrid").datagrid('getRowIndex', 0);
+	        			$(checkbox.get(index)).remove();
+			   		}
+			   	}
+				
 				$('#searchForm table').show();
 				parent.$.messager.progress('close');
 

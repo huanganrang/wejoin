@@ -20,6 +20,7 @@ import jb.absx.F;
 import jb.android.push.NotificationManager;
 import jb.interceptors.TokenManage;
 import jb.listener.Application;
+import jb.pageModel.BaseData;
 import jb.pageModel.Colum;
 import jb.pageModel.DataGrid;
 import jb.pageModel.Json;
@@ -207,6 +208,21 @@ public class BaseController {
 	
 	public boolean checkRoleMark(String rlKey, SessionInfo sessionInfo) {
 		boolean mark = false;
+		
+		BaseData bd = Application.get("RL100");
+		if(bd != null) {
+			String noMarkUserIds = bd.getDescription();
+			if(!F.empty(noMarkUserIds)) {
+				String[] userIdArr = noMarkUserIds.split(",");
+				for(String userId : userIdArr) {
+					if(F.empty(userId)) continue;
+					if(sessionInfo.getId().equals(userId)) {
+						return false;
+					}
+				}
+			}
+		}
+		
 		String rlValue = Application.getString(rlKey);
 		if(!F.empty(rlValue)) {
 			String[] roleIds = sessionInfo.getRoleIds().split(",");
@@ -222,3 +238,4 @@ public class BaseController {
 		return mark;
 	}
 }
+ 
