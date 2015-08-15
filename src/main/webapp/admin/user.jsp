@@ -103,7 +103,7 @@
 							str += $.formatString('<img onclick="grantFun(\'{0}\');" src="{1}" title="授权"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/key.png');
 						}
 						str += '&nbsp;';
-						if ($.canDelete) {
+						if (row.id != '0' && $.canDelete) {
 							str += $.formatString('<img onclick="deleteFun(\'{0}\');" src="{1}" title="删除"/>', row.id, '${pageContext.request.contextPath}/style/images/extjs_icons/cancel.png');
 						}
 						str += '&nbsp;';
