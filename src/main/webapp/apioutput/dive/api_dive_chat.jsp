@@ -13,6 +13,8 @@
 			style="padding: 1px"></div>
 		<div title="潜友列表" data-options="href:'api_dive_chat_friendList.jsp'"
 			style="padding: 1px"></div>
+		<div title="附近人" data-options="href:'api_dive_chat_nearbyList.jsp'"
+			style="padding: 1px"></div>
 	</div>
 
 </body>

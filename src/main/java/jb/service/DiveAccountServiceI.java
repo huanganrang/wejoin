@@ -67,4 +67,14 @@ public interface DiveAccountServiceI {
 
 	public List<DiveAccount> findListByIds(String ids);
 
+	/**
+	 * 附近人列表
+	 * @param ph
+	 * @param longitude
+	 * @param latitude
+	 * @return
+	 */
+	public DataGrid dataGridNearby(PageHelper ph, Double longitude,
+			Double latitude);
+
 }

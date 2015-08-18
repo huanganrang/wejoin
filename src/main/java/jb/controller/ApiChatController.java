@@ -3,6 +3,7 @@ package jb.controller;
 import jb.interceptors.TokenManage;
 import jb.pageModel.DiveAccount;
 import jb.pageModel.Json;
+import jb.pageModel.PageHelper;
 import jb.service.DiveAccountServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,6 @@ public class ApiChatController extends BaseController {
 	
 	/**
 	 * 潜友搜索
-	 * @param lvAccount
-	 * @param request
 	 * @return
 	 */
 	@ResponseBody
@@ -50,8 +49,6 @@ public class ApiChatController extends BaseController {
 	
 	/**
 	 * 潜聊好友列表信息查询
-	 * @param lvAccount
-	 * @param request
 	 * @return
 	 */
 	@ResponseBody
@@ -68,4 +65,21 @@ public class ApiChatController extends BaseController {
 		return j;
 	}
 	
+	/**
+	 * 附近人列表
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/nearbyList")
+	public Json nearbyList(PageHelper ph, Double longitude, Double latitude) {
+		Json j = new Json();
+		try {
+			j.setObj(accountService.dataGridNearby(ph, longitude, latitude));
+			j.setMsg("附近人查询");
+			j.success();
+		} catch (Exception e) {
+			j.setMsg("附近人查询失败");
+		}
+		return j;
+	}
 }

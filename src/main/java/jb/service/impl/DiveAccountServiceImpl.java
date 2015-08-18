@@ -272,5 +272,20 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		}
 		return ol;
 	}
+
+	/**
+	 * 附近人列表
+	 */
+	public DataGrid dataGridNearby(PageHelper ph, Double longitude,
+			Double latitude) {
+		DataGrid dataGrid = new DataGrid();
+		
+		String sql = "select id, icon, nickname, sex, city, user_name userName, birthday, "
+				+ "round(6378.138*2*asin(sqrt(pow(sin(("+latitude+"*pi()/180-latitude*pi()/180)/2),2)+cos("+latitude+"*pi()/180)*cos(latitude*pi()/180)*pow(sin(("+longitude+"*pi()/180-longitude*pi()/180)/2),2)))*1000) as distance"
+				+ " from dive_account order by case when distance is null then 1 else 0 end ,distance";
+		dataGrid.setRows(diveAccountDao.findBySql2Map(sql, ph.getPage(), ph.getRows()));
+		dataGrid.setTotal(diveAccountDao.count("select count(*) from TdiveAccount"));
+		return dataGrid;
+	}
 	
 }

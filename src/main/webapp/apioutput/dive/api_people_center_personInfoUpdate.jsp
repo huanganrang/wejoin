@@ -72,6 +72,18 @@
 					</tr>
 					
 					<tr>
+						<td colspan="2">每次启动手机app则调用此接口进行修改经纬度</td>
+					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>longitude(经度)：</label></td>
+						<td><input name="longitude" type="text" class="span2" value=""/>（小数点不得超过10位有效数字）</td>
+					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>latitude(纬度)：</label></td>
+						<td><input name="latitude" type="text" class="span2" value=""/>（小数点不得超过10位有效数字）</td>
+					</tr>
+					
+					<tr>
 						<td colspan="2" align="center">
 						<input type="button"
 							value="提交" onclick="javascript:$('#personInfoUpdate_Form').submit();" /></td>

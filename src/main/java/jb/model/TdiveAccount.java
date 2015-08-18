@@ -65,6 +65,11 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	private java.lang.String hxPassword;
 	private java.lang.String hxStatus;
 	private java.util.Date birthday;
+	
+	//
+	private Double longitude;
+	//
+	private Double latitude;
 	//
 	private java.util.Date addtime;
 	//columns END
@@ -193,6 +198,24 @@ public class TdiveAccount implements java.io.Serializable,IEntity{
 	
 	public void setBirthday(java.util.Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	@Column(name = "longitude", unique = false, nullable = true, insertable = true, updatable = true, length = 14)
+	public Double getLongitude() {
+		return this.longitude;
+	}
+	
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+	
+	@Column(name = "latitude", unique = false, nullable = true, insertable = true, updatable = true, length = 14)
+	public Double getLatitude() {
+		return this.latitude;
+	}
+	
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	@Column(name = "addtime", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
