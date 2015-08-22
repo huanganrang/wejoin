@@ -28,6 +28,7 @@ public class DiveActivity implements java.io.Serializable {
 	private int praiseNum;  //赞人数
 	
 	private boolean isCollect;
+	private boolean isPraise;
 	private boolean isApply; 
 	
 	//报名者
@@ -191,6 +192,14 @@ public class DiveActivity implements java.io.Serializable {
 
 	public void setCollect(boolean isCollect) {
 		this.isCollect = isCollect;
+	}
+	
+	public boolean isPraise() {
+		return isPraise;
+	}
+
+	public void setPraise(boolean isPraise) {
+		this.isPraise = isPraise;
 	}
 
 	public DiveAddress getDiveAddress() {

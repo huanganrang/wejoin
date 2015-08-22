@@ -46,6 +46,10 @@
 						<td><input name="tokenId" type="text" class="span2" value=""/></td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>accountId(用户ID)：</label></td>
+						<td><input name="accountId" type="text" class="span2" value=""/>（不传查自己，传入则查询潜友信息）</td>
+					</tr>
+					<tr>
 						<td colspan="2" align="center">
 						<input type="button"
 							value="提交" onclick="javascript:$('#certificateInfo_Form').submit();" /></td>

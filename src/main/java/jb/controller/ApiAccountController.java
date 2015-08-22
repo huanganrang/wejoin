@@ -151,9 +151,12 @@ public class ApiAccountController extends BaseController {
 		try {
 			account = accountService.get(account);
 			if(account != null) {
-				EmailSendUtil.sendPassword(account.getEmail(), account.getHxPassword());
-				j.setMsg("邮件发送成功");
-				j.success();
+				if(EmailSendUtil.sendPassword(account.getEmail(), account.getHxPassword())) {
+					j.setMsg("邮件发送成功");
+					j.success();
+				} else {
+					j.setMsg("邮件发送失败");
+				}
 			} else {
 				j.setMsg("邮箱不存在！");
 				j.fail();
@@ -201,7 +204,7 @@ public class ApiAccountController extends BaseController {
 	}
 	
 	/**
-	 * 个人主页
+	 * 个人主页-废弃
 	 * @param lvAccount
 	 * @param request
 	 * @return
@@ -224,7 +227,7 @@ public class ApiAccountController extends BaseController {
 	}
 	
 	/**
-	 * 个人信息
+	 * 个人主页/信息
 	 * @param lvAccount
 	 * @param request
 	 * @return
@@ -235,7 +238,7 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			j.setObj(accountService.get(F.empty(accountId) ? s.getId():accountId));
+			j.setObj(accountService.personHome(F.empty(accountId) ? s.getId():accountId));
 			j.setSuccess(true);
 			j.setMsg("个人信息查询成功");
 		} catch (Exception e) {
@@ -258,6 +261,9 @@ public class ApiAccountController extends BaseController {
 		try {
 			SessionInfo s = getSessionInfo(request);
 			account.setId(s.getId());
+			if(F.empty(account.getNickname())) {
+				account.setNickname(null);
+			}
 			if(!accountService.emailExists(account)) {
 				if(!F.empty(birthdayStr)) {
 					account.setBirthday(DateUtil.parse(birthdayStr, Constants.DATE_FORMAT_YMD));
@@ -309,11 +315,11 @@ public class ApiAccountController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/certificateInfo")
-	public Json certificateInfo(HttpServletRequest request) {
+	public Json certificateInfo(String accountId, HttpServletRequest request) {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			j.setObj(certificateAuthorityService.getInfoByAccountId(s.getId()));
+			j.setObj(certificateAuthorityService.getInfoByAccountId(F.empty(accountId) ? s.getId():accountId));
 			j.setSuccess(true);
 			j.setMsg("潜水认证信息查询成功");
 		} catch (Exception e) {

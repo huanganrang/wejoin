@@ -173,6 +173,32 @@
                 生日
             </td>
         </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                logNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                潜水日志数量
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                certificate
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+               认证信息（格式：机构:等级、机构:-1；-1代表无）
+            </td>
+        </tr>
     </tbody>
 </table>
 

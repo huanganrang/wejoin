@@ -27,6 +27,7 @@ public class DiveAccount implements java.io.Serializable {
 
 	private int logNum; // 潜水日志数量
 	private String qrCodePath; // 二维码地址
+	private String certificate; // 潜水等级信息
 	
 	private String searchValue;
 	
@@ -138,6 +139,14 @@ public class DiveAccount implements java.io.Serializable {
 		this.qrCodePath = qrCodePath;
 	}
 	
+	public String getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+	
 	public java.lang.String getRecommend() {
 		return recommend;
 	}
@@ -176,4 +185,6 @@ public class DiveAccount implements java.io.Serializable {
 	public void setSearchValue(String searchValue) {
 		this.searchValue = searchValue;
 	}
+	
+	
 }

@@ -50,7 +50,9 @@ public class ApiLogController extends BaseController {
 		Json j = new Json();
 		try{
 			SessionInfo s = getSessionInfo(request);
-			diveLog.setAccountId(s.getId());
+			if(F.empty(diveLog.getAccountId())) {
+				diveLog.setAccountId(s.getId());
+			}
 			
 			ph.setSort("addtime");
 			ph.setOrder("desc");

@@ -150,7 +150,8 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				businessIds[i] = d.getId();
 				i++;
 			}
-			//查询报名人数，赞数，评论数
+			//查询收藏数，报名人数，赞数，评论数
+			HashMap<String,Integer> collects = diveCollectDao.getCountCollectNum(ACTIVITY_TAG, businessIds);
 			HashMap<String,Integer> praises = divePraiseDao.getCountPraiseNum(ACTIVITY_TAG, businessIds);
 			HashMap<String,Integer> comments = diveActivityCommentDao.getCountCommentNum(businessIds);
 			HashMap<String,Integer> applies = diveActivityApplyDao.getCountApplyNum(businessIds);
@@ -166,6 +167,10 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				num = applies.get(d.getId());
 				if(num != null)
 				d.setApplyNum(num);
+				
+				num = collects.get(d.getId());
+				if(num != null)
+				d.setCollectNum(num);
 			}
 		}
 		return datagrid;
@@ -212,6 +217,16 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				diveActivity.setCollect(true); // 已收藏
 			} else {
 				diveActivity.setCollect(false); // 未收藏
+			}
+			
+			params = new HashMap<String, Object>();
+			params.put("accountId", accountId);
+			params.put("businessId", id);
+			params.put("businessType", ACTIVITY_TAG);
+			if(diveCollectDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+				diveActivity.setPraise(true); // 已赞
+			} else {
+				diveActivity.setPraise(false); // 未赞
 			}
 			
 			params = new HashMap<String, Object>();

@@ -9,8 +9,11 @@ import java.util.UUID;
 
 import jb.absx.F;
 import jb.dao.DiveAccountDaoI;
+import jb.dao.DiveCertificateAuthorityDaoI;
 import jb.dao.DiveLogDaoI;
+import jb.listener.Application;
 import jb.model.TdiveAccount;
+import jb.model.TdiveCertificateAuthority;
 import jb.pageModel.DataGrid;
 import jb.pageModel.DiveAccount;
 import jb.pageModel.PageHelper;
@@ -30,6 +33,9 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 	
 	@Autowired
 	private DiveLogDaoI diveLogDao;
+	
+	@Autowired
+	private DiveCertificateAuthorityDaoI diveCertificateAuthorityDao;
 
 	@Override
 	public DataGrid dataGrid(DiveAccount diveAccount, PageHelper ph) {
@@ -174,6 +180,10 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 			}
 		}
 		
+		if(F.empty(account.getNickname())) {
+			account.setNickname(account.getUserName());
+		}
+		
 		TdiveAccount t = new TdiveAccount();
 		account.setId(jb.absx.UUID.uuid().toLowerCase());
 		account.setAddtime(new Date());
@@ -211,6 +221,14 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		params.put("accountId", id);
 		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.accountId = :accountId", params);
 		a.setLogNum(logNum == null ? 0 : logNum.intValue());
+		TdiveCertificateAuthority t = diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
+		if(t != null) {
+			String org = Application.getString(t.getOrgCode());
+			String level = Application.getString(t.getLevelCode());
+			a.setCertificate((org == null?"-1":org) + ":" + (level == null ? "-1":level));
+		} else {
+			a.setCertificate("-1:-1");
+		}
 		return a;
 	}
 
