@@ -75,6 +75,7 @@
 						<value>/userController/currentUserRolePage</value><!-- 查看自己的角色页面 -->
 						<value>/userController/currentUserResourcePage</value><!-- 查看自己的权限页面 -->
 						<value>/diveRegionController/getByParentRegionId</value><!-- 根据父编码获取行政区域 -->
+						<value>/fileController/download</value><!-- 下载 -->
 					</list>
 				</property>
 			</bean>
@@ -91,6 +92,7 @@
 						<value>/api/apiCommon/html</value><!-- 获取详情html -->
 						<value>/api/apiCommon/error</value><!-- token过期错误返回 -->
 						<value>/api/apiCommon/share</value><!-- 分享 -->
+						<value>/api/apiCommon/upload_errorlog</value><!-- token过期错误返回 -->
 					</list>
 				</property>
 				<property name="tokenManage" ref="tokenManage" />
