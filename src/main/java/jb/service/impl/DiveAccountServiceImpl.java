@@ -20,6 +20,7 @@ import jb.pageModel.PageHelper;
 import jb.service.DiveAccountServiceI;
 import jb.util.MD5Util;
 import jb.util.MyBeanUtils;
+import jb.util.easemob.HuanxinUtil;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,9 +190,14 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		account.setAddtime(new Date());
 		account.setHxPassword(account.getPassword());
 		account.setPassword(MD5Util.md5(account.getPassword()));
-		account.setHxStatus("2");
+		account.setHxStatus("1");
 		MyBeanUtils.copyProperties(account, t, true);
-		diveAccountDao.save(t);
+		if(!F.empty(HuanxinUtil.createUser(account.getId(), account.getHxPassword()))) {
+			if(!F.empty(account.getRecommend())) {
+				HuanxinUtil.addFriend(account.getId(), account.getRecommend());
+			}
+			diveAccountDao.save(t);
+		}
 		
 		return account;
 		

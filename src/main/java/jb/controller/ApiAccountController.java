@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import jb.absx.F;
 import jb.interceptors.TokenManage;
-import jb.listener.TokenListener;
 import jb.pageModel.DiveAccount;
 import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.Json;
@@ -114,22 +113,22 @@ public class ApiAccountController extends BaseController {
 			j.setSuccess(true);
 			j.setMsg("注册成功");
 			
-			final DiveAccount hx = account;
-			TokenListener.executors.execute(new Runnable() {
-				public void run() {
-					// 注册环信
-					if(!F.empty(HuanxinUtil.createUser(hx.getId(), hx.getHxPassword()))) {
-						DiveAccount a = new DiveAccount();
-						a.setId(hx.getId());
-						a.setHxStatus("1");
-						accountService.edit(a);
-						
-						if(!F.empty(hx.getRecommend())) {
-							HuanxinUtil.addFriend(hx.getId(), hx.getRecommend());
-						}
-					}
-				}
-			});
+//			final DiveAccount hx = account;
+//			TokenListener.executors.execute(new Runnable() {
+//				public void run() {
+//					// 注册环信
+//					if(!F.empty(HuanxinUtil.createUser(hx.getId(), hx.getHxPassword()))) {
+//						DiveAccount a = new DiveAccount();
+//						a.setId(hx.getId());
+//						a.setHxStatus("1");
+//						accountService.edit(a);
+//						
+//						if(!F.empty(hx.getRecommend())) {
+//							HuanxinUtil.addFriend(hx.getId(), hx.getRecommend());
+//						}
+//					}
+//				}
+//			});
 			
 			
 		} catch (Exception e) {
