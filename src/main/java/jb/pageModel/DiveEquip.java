@@ -23,6 +23,7 @@ public class DiveEquip implements java.io.Serializable {
 	private java.lang.String addUserId;
 
 	private boolean isCollect;
+	private int collectNum; //收藏数量
 	
 	public String getStatusZh() {
 		return Application.getString(this.status);
@@ -134,6 +135,12 @@ public class DiveEquip implements java.io.Serializable {
 
 	public void setCollect(boolean isCollect) {
 		this.isCollect = isCollect;
+	}
+	public int getCollectNum() {
+		return collectNum;
+	}
+	public void setCollectNum(int collectNum) {
+		this.collectNum = collectNum;
 	}
 
 }

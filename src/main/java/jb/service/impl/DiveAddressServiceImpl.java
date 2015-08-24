@@ -134,16 +134,24 @@ public class DiveAddressServiceImpl extends BaseServiceImpl<DiveAddress> impleme
 	 */
 	public DiveAddress getDetail(String id, String accountId) {
 		DiveAddress d = get(id);
+		
+		String cHql = "select count(*) from TdiveCollect t ";
+		String pHql = "select count(*) from TdivePraise t ";
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("accountId", accountId);
 		params.put("businessId", id);
 		params.put("businessType", ADDRESS_TAG);
-		if(divePraiseDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+		String where = " where t.businessId = :businessId and t.businessType = :businessType ";
+		d.setCollectNum(diveCollectDao.count(cHql + where, params).intValue()); // 收藏数
+		d.setPraiseNum(divePraiseDao.count(pHql + where, params).intValue()); // 赞数
+		
+		params.put("accountId", accountId);
+		where += " and t.accountId = :accountId ";
+		if(divePraiseDao.count(pHql + where, params) > 0) {
 			d.setPraise(true); // 已赞
 		} else {
 			d.setPraise(false); // 未赞
 		}
-		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+		if(diveCollectDao.count(cHql + where, params) > 0) {
 			d.setCollect(true); // 已收藏
 		} else {
 			d.setCollect(false); // 未收藏

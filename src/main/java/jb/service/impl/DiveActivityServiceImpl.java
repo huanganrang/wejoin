@@ -210,20 +210,23 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		if(!F.empty(accountId)) {
-			params.put("accountId", accountId);
+			String cHql = "select count(*) from TdiveCollect t ";
+			String pHql = "select count(*) from TdivePraise t ";
 			params.put("businessId", id);
 			params.put("businessType", ACTIVITY_TAG);
-			if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			String where = " where t.businessId = :businessId and t.businessType = :businessType ";
+			diveActivity.setCollectNum(diveCollectDao.count(cHql + where, params).intValue()); // 收藏数
+			diveActivity.setPraiseNum(divePraiseDao.count(pHql + where, params).intValue()); // 赞数
+			
+			params.put("accountId", accountId);
+			where += " and t.accountId = :accountId ";
+			if(diveCollectDao.count(cHql + where, params) > 0) {
 				diveActivity.setCollect(true); // 已收藏
 			} else {
 				diveActivity.setCollect(false); // 未收藏
 			}
 			
-			params = new HashMap<String, Object>();
-			params.put("accountId", accountId);
-			params.put("businessId", id);
-			params.put("businessType", ACTIVITY_TAG);
-			if(diveCollectDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+			if(divePraiseDao.count(pHql + where, params) > 0) {
 				diveActivity.setPraise(true); // 已赞
 			} else {
 				diveActivity.setPraise(false); // 未赞

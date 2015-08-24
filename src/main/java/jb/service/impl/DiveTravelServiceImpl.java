@@ -130,11 +130,17 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 	 */
 	public DiveTravel getDetail(String id, String accountId) {
 		DiveTravel d = get(id);
+		
+		String hql = "select count(*) from TdiveCollect t ";
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("accountId", accountId);
 		params.put("businessId", id);
 		params.put("businessType", TRAVEL_TAG);
-		if(diveCollectDao.count("select count(*) from TdiveCollect t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+		String where = " where t.businessId = :businessId and t.businessType = :businessType ";
+		d.setCollectNum(diveCollectDao.count(hql + where, params).intValue()); // 收藏数
+		
+		params.put("accountId", accountId);
+		where += " and t.accountId = :accountId ";
+		if(diveCollectDao.count(hql + where, params) > 0) {
 			d.setCollect(true); // 已收藏
 		} else {
 			d.setCollect(false); // 未收藏

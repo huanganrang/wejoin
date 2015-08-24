@@ -218,6 +218,34 @@ String url = request.getContextPath()+"/api/apiAddressController/getAddressDetai
                  是否赞过（true:是；false:否）
             </td>
         </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                collectNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                收藏数量
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                praiseNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                 赞数量
+            </td>
+        </tr>
     </tbody>
 </table>
 

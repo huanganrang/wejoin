@@ -148,11 +148,17 @@ public class DiveStoreServiceImpl extends BaseServiceImpl<DiveStore> implements 
 	 */
 	public DiveStore getDetail(String id, String accountId) {
 		DiveStore d = get(id);
+		
+		String hql = "select count(*) from TdivePraise t ";
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("accountId", accountId);
 		params.put("businessId", id);
 		params.put("businessType", STORE_TAG);
-		if(divePraiseDao.count("select count(*) from TdivePraise t where t.accountId = :accountId and t.businessId = :businessId and t.businessType = :businessType", params) > 0) {
+		String where = " where t.businessId = :businessId and t.businessType = :businessType ";
+		d.setPraiseNum(divePraiseDao.count(hql + where, params).intValue()); // 赞数
+		
+		params.put("accountId", accountId);
+		where += " and t.accountId = :accountId ";
+		if(divePraiseDao.count(hql + where, params) > 0) {
 			d.setPraise(true); // 已赞
 		} else {
 			d.setPraise(false); // 未赞

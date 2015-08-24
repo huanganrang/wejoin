@@ -249,6 +249,20 @@ String url = request.getContextPath()+"/api/apiEquipController/getEquipDetail";
                 是否已收藏（true:是；false:否）
             </td>
         </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                collectNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                收藏数量
+            </td>
+        </tr>
     </tbody>
 </table>
 

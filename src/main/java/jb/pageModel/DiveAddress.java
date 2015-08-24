@@ -22,6 +22,9 @@ public class DiveAddress implements java.io.Serializable {
 	private boolean isCollect;
 	private boolean isPraise;
 	
+	private int collectNum;
+	private int praiseNum;
+	
 	public String getStatusZh() {
 		return Application.getString(this.status);
 	}
@@ -119,6 +122,18 @@ public class DiveAddress implements java.io.Serializable {
 
 	public void setPraise(boolean isPraise) {
 		this.isPraise = isPraise;
+	}
+	public int getCollectNum() {
+		return collectNum;
+	}
+	public void setCollectNum(int collectNum) {
+		this.collectNum = collectNum;
+	}
+	public int getPraiseNum() {
+		return praiseNum;
+	}
+	public void setPraiseNum(int praiseNum) {
+		this.praiseNum = praiseNum;
 	}
 
 }

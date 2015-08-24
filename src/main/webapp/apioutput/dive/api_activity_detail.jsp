@@ -199,6 +199,34 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
+                collectNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                收藏数量
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                praiseNum
+            </td>
+            <td style="border-top:none;border-left:none">
+                int
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                赞数量
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
                 diveAddress
             </td>
             <td style="border-top:none;border-left:none">
