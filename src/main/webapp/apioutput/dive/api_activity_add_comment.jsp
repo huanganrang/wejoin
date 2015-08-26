@@ -38,7 +38,7 @@ String url = request.getContextPath()+"/api/apiActivityController/addComment";
 	<div class="easyui-layout" data-options="fit:true">
 
 		<div data-options="region:'center'">
-			<form id="activity_add_comment_Form" action="">
+			<form id="activity_add_comment_Form" action="" method="post">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
@@ -53,8 +53,8 @@ String url = request.getContextPath()+"/api/apiActivityController/addComment";
 						<td><input name="activityId" type="text" class="span2" value="" /></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>pid(@用户ID)：</label></td>
-						<td><input name="pid" type="text" class="span2" value="" />(@其他用户时传入)</td>
+						<td align="right" style="width: 180px;"><label>pid(上级评论ID)：</label></td>
+						<td><input name="pid" type="text" class="span2" value="" />(回复时传入)</td>
 					</tr>
 					
 					<tr>

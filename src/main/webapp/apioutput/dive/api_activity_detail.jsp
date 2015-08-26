@@ -320,7 +320,7 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                评论上级
+                评论上级(当pid为空时为最上级评论)
             </td>
             <td style="border-top:none;border-left:none"></td>
         </tr>

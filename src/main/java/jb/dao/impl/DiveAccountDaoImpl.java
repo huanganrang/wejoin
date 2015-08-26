@@ -15,7 +15,7 @@ public class DiveAccountDaoImpl extends BaseDaoImpl<TdiveAccount> implements Div
 	@Override
 	public List<TdiveAccount> getDiveAccountByComment(String activityId) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		String hql = " from TdiveAccount a where (exists (select 1 from TdiveActivityComment c where c.userId = a.id and c.activityId = :activityId) or exists (select 1 from TdiveActivityComment pc where pc.pid = a.id and pc.activityId = :activityId))";
+		String hql = " from TdiveAccount a where exists (select 1 from TdiveActivityComment c where c.userId = a.id and c.activityId = :activityId)";
 		params.put("activityId", activityId);
 		List<TdiveAccount> diveAccountList = find(hql,params);	
 		return diveAccountList;

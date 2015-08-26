@@ -244,28 +244,41 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 		
 		List<TdiveAccount> applies = diveAccountDao.getDiveAccountByApply(id);
 		diveActivity.setApplies(convert(applies));
-		List<DiveAccount> commentUsers = convert(diveAccountDao.getDiveAccountByComment(id));
+		
+		setCommentList(diveActivity);
+		return diveActivity;
+	}
+	
+	private void setCommentList(DiveActivity diveActivity) {
+		List<DiveAccount> commentUsers = convert(diveAccountDao.getDiveAccountByComment(diveActivity.getId()));
 		Map<String,DiveAccount> commentUsersMap = new HashMap<String,DiveAccount>();
 		for(DiveAccount t : commentUsers){
 			commentUsersMap.put(t.getId(), t);
 		}
-		params = new HashMap<String, Object>();
-		params.put("activityId", id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("activityId", diveActivity.getId());
 		List<TdiveActivityComment> tDiveActivityCommentList = diveActivityCommentDao.find("from TdiveActivityComment t where t.activityId =:activityId order by addtime", params);
 		List<DiveActivityComment> diveActivityCommentList = new ArrayList<DiveActivityComment>();
+		Map<String, DiveAccount> commentAccountMap = new HashMap<String, DiveAccount>();
+		for(TdiveActivityComment t : tDiveActivityCommentList) {
+			commentAccountMap.put(t.getId(), commentUsersMap.get(t.getUserId()));
+		}
+		
 		for(TdiveActivityComment t : tDiveActivityCommentList){
 			DiveActivityComment diveActivityComment = new DiveActivityComment();
 			BeanUtils.copyProperties(t,diveActivityComment);
 			diveActivityComment.setCommentUser(commentUsersMap.get(t.getUserId()));
 			if(!F.empty(t.getPid())) {
-				diveActivityComment.setParentCommentUser(commentUsersMap.get(t.getPid()));
+				diveActivityComment.setParentCommentUser(commentAccountMap.get(t.getPid()));
 			}
 			diveActivityCommentList.add(diveActivityComment);
+			
 		}
+		
 		diveActivity.setDiveActivityCommentList(diveActivityCommentList);
-		return diveActivity;
 	}
-	
+
+
 	private List<DiveAccount> convert(List<TdiveAccount> diveAccounts){
 		List<DiveAccount> list = new ArrayList<DiveAccount>();
 		for(TdiveAccount s : diveAccounts){
