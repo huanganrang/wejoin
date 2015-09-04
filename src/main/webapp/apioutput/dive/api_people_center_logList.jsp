@@ -178,14 +178,13 @@ String url = request.getContextPath()+"/api/apiLogController/loglist";
                 fileSrc
             </td>
             <td style="border-top:none;border-left:none">
-                varchar
+                longtext
             </td>
             <td style="border-top:none;border-left:none" x:num="">
-                256
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                纸张日志图片地址
+                日志图片地址(电子日志多个图片以“||”切割)
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -200,7 +199,7 @@ String url = request.getContextPath()+"/api/apiLogController/loglist";
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                纸张日志描述
+                日志描述
             </td>
         </tr>
         <tr height="19" style="height:19px">

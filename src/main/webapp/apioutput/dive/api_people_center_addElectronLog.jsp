@@ -38,7 +38,7 @@ String url = request.getContextPath()+"/api/apiLogController/addElectronLog";
 	<div class="easyui-layout" data-options="fit:true">
 
 		<div data-options="region:'center'">
-			<form id="add_electronLog_Form" action="">
+			<form id="add_electronLog_Form"  method="post" enctype="multipart/form-data">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
@@ -111,6 +111,14 @@ String url = request.getContextPath()+"/api/apiLogController/addElectronLog";
 					<tr>
 						<td align="right" style="width: 180px;"><label>gasEnd(结束氧量)：</label>
 						<td><input name="gasEnd" type="text" class="span2"  value="50"/>（单位：bar）</td>
+					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>imageFiles(图片上传)：</label>
+						<td><input name="imageFiles" type="file" class="span2" value=""/>（支持多个同时上传）</td>
+					</tr>
+					<tr>
+						<td align="right" style="width: 180px;"><label>sumary(描述)：</label>
+						<td><input name="sumary" type="text" class="span2"  value=""/></td>
 					</tr>
 					
 					<tr>

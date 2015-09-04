@@ -93,7 +93,8 @@ public class ApiLogController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/addElectronLog")
 	public Json addElectronLog(DiveLog log, HttpServletRequest request,
-			String diveDateStr, String inTimeStr, String outTimeStr) {
+			String diveDateStr, String inTimeStr, String outTimeStr, 
+			@RequestParam(required=false) MultipartFile[] imageFiles) {
 		Json j = new Json();
 		try{
 			SessionInfo s = getSessionInfo(request);
@@ -106,11 +107,24 @@ public class ApiLogController extends BaseController {
 			if(!F.empty(outTimeStr)) {
 				log.setOutTime(DateUtil.parse(outTimeStr, Constants.DATE_FORMAT_HM));
 			}
+			String fileSrc = "";
+			for(MultipartFile f : imageFiles){
+				if(!"".equals(fileSrc)) {
+					fileSrc += "||";
+				}
+				fileSrc += uploadFile(request, s.getName() + "/log", f, "log");
+			}
 			log.setAccountId(s.getId());
 			if(F.empty(log.getId())) {
+				log.setFileSrc(fileSrc);
 				diveLogService.add(log);
 				j.setMsg("潜水电子日志添加成功");
 			} else {
+				DiveLog t = diveLogService.get(log.getId());
+				if(!F.empty(t.getFileSrc())) {
+					fileSrc = t.getFileSrc() + "||" + fileSrc;
+				}
+				log.setFileSrc(fileSrc);
 				diveLogService.edit(log);
 				j.setMsg("潜水电子日志修改成功");
 			}
@@ -132,7 +146,7 @@ public class ApiLogController extends BaseController {
 		Json j = new Json();
 		try{
 			SessionInfo s = getSessionInfo(request);
-			String fileSrc = uploadFile(request, s.getName(), fileSrcFile);
+			String fileSrc = uploadFile(request, s.getName() + "/log", fileSrcFile, "log");
 			if(!F.empty(fileSrc)) {
 				log.setFileSrc(fileSrc);
 			}

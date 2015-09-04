@@ -124,7 +124,7 @@ public class TdiveLog implements java.io.Serializable,IEntity{
 		this.logType = logType;
 	}
 	
-	@Column(name = "file_src", unique = false, nullable = true, insertable = true, updatable = true, length = 256)
+	@Column(name = "file_src", unique = false, nullable = true, insertable = true, updatable = true, length = 2147483647)
 	public java.lang.String getFileSrc() {
 		return this.fileSrc;
 	}
