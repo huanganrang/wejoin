@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%
-String url = request.getContextPath()+"/api/apiLogController/addPaperLog";
+String url = request.getContextPath()+"/api/apiOrderController/delDetail";
 %>
 <title>Insert title here</title>
 </head>
@@ -14,7 +14,7 @@ String url = request.getContextPath()+"/api/apiLogController/addPaperLog";
 	<script type="text/javascript">
 	$(function() {
 	 	parent.$.messager.progress('close');
-		$('#add_paperLog_Form').form({
+		$('#del_detail_Form').form({
 			url : '<%=url%>',
 			onSubmit : function() {
 				parent.$.messager.progress({
@@ -29,7 +29,7 @@ String url = request.getContextPath()+"/api/apiLogController/addPaperLog";
 			},
 			success : function(result) {
 				parent.$.messager.progress('close');
-				$("#add_paperLog_result").text(result);
+				$("#del_detail_result").text(result);
 			}
 		});
 	});
@@ -38,7 +38,7 @@ String url = request.getContextPath()+"/api/apiLogController/addPaperLog";
 	<div class="easyui-layout" data-options="fit:true">
 
 		<div data-options="region:'center'">
-			<form id="add_paperLog_Form" method="post" enctype="multipart/form-data">
+			<form id="del_detail_Form" action="">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
@@ -46,35 +46,23 @@ String url = request.getContextPath()+"/api/apiLogController/addPaperLog";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>tokenId(token值)：</label>
-						<td><input name="tokenId" type="text" class="span2"  value=""/></td>
+						<td><input name="tokenId" type="text" class="span2"  value="<%=BaseController.DEFAULT_TOKEN%>"/></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>id(日志id)：</label>
-						<td><input name="id" type="text" class="span2"  value=""/>(传id即为修改接口)</td>
-					</tr>
-					<tr>
-						<td align="right" style="width: 180px;"><label>logType(日志类型)：</label>
-						<td><input name="logType" type="text" class="span2"  value="LT02"/></td>
-					</tr>
-					<tr>
-						<td align="right" style="width: 180px;"><label>fileSrc(纸张日志图片地址)：</label></td>
-						<td><input name="fileSrcFile" type="file" class="span2" value=""/></td>
-					</tr>
-					<tr>
-						<td align="right" style="width: 180px;"><label>sumary(描述)：</label>
-						<td><input name="sumary" type="text" class="span2"  value=""/></td>
+						<td align="right" style="width: 180px;"><label>detailId(订单物品详情ID)：</label></td>
+						<td><input name="detailId" type="text" class="span2" value="" /></td>
 					</tr>
 
 					<tr>
 						<td colspan="2" align="center"><input type="button"
-							value="提交" onclick="javascript:$('#add_paperLog_Form').submit();" /></td>
+							value="提交" onclick="javascript:$('#del_detail_Form').submit();" /></td>
 					</tr>
 				</table>
 			</form>
-			<label>结果：添加纸张潜水日志接口</label>
-			<div id="add_paperLog_result"></div>
+			<label>结果：</label>
+			<div id="del_detail_result"></div>
 			<div>
-				结果说明：1、json格式<br /> 2、success:true 成功<br /> 
+				结果说明：1、json格式<br /> 2、success:true 成功<br />
 
 			</div>
 		</div>

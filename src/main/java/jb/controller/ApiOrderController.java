@@ -196,6 +196,27 @@ public class ApiOrderController extends BaseController {
 	}	
 	
 	/**
+	 * 订单详情物品删除
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/delDetail")
+	public Json delDetail(String detailId) {
+		Json j = new Json();
+		try{
+			diveOrderDetailService.delete(detailId);
+			j.setMsg("订单详情物品删除成功");
+			j.success();
+		}catch(Exception e){
+			j.setMsg("订单详情物品删除失败");
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
 	 * 订单创建
 	 * @param ph
 	 * @return

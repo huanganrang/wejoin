@@ -108,17 +108,22 @@ public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCer
 	/**
 	 * 根据用户ID查询潜水认证信息
 	 */
-	public DiveCertificateAuthority getInfoByAccountId(String accountId) {
+	public List<DiveCertificateAuthority> getListByAccountId(String accountId) {
+		List<DiveCertificateAuthority> ol = new ArrayList<DiveCertificateAuthority>();
+		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("accountId", accountId);
-		TdiveCertificateAuthority t = diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
-		if(t != null) {
-			DiveCertificateAuthority o = new DiveCertificateAuthority();
-			BeanUtils.copyProperties(t, o);
-			return o;
+		List<TdiveCertificateAuthority> l = diveCertificateAuthorityDao.find("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
+		
+		if (l != null && l.size() > 0) {
+			for (TdiveCertificateAuthority t : l) {
+				DiveCertificateAuthority o = new DiveCertificateAuthority();
+				BeanUtils.copyProperties(t, o);
+				ol.add(o);
+			}
 		}
 		
-		return new DiveCertificateAuthority();
+		return ol;
 	}
 
 	/**

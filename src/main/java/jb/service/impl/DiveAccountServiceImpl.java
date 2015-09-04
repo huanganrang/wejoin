@@ -227,14 +227,21 @@ public class DiveAccountServiceImpl extends BaseServiceImpl<DiveAccount> impleme
 		params.put("accountId", id);
 		Long logNum = diveLogDao.count("select count(*) from TdiveLog t where t.accountId = :accountId", params);
 		a.setLogNum(logNum == null ? 0 : logNum.intValue());
-		TdiveCertificateAuthority t = diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
-		if(t != null) {
-			String org = Application.getString(t.getOrgCode());
-			String level = Application.getString(t.getLevelCode());
-			a.setCertificate((org == null?"-1":org) + ":" + (level == null ? "-1":level));
+		List<TdiveCertificateAuthority> l = diveCertificateAuthorityDao.find("from TdiveCertificateAuthority t  where t.accountId = :accountId", params);
+		String certificate = "";
+		if (l != null && l.size() > 0) {
+			for (TdiveCertificateAuthority t : l) {
+				String org = Application.getString(t.getOrgCode());
+				String level = Application.getString(t.getLevelCode());
+				if(!"".equals(certificate)) {
+					certificate += " ";
+				}
+				certificate += (org == null?"-1":org) + ":" + (level == null ? "-1":level);
+			}
 		} else {
-			a.setCertificate("-1:-1");
+			certificate = "-1:-1";
 		}
+		a.setCertificate(certificate);
 		return a;
 	}
 

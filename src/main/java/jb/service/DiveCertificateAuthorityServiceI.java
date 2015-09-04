@@ -1,7 +1,9 @@
 ﻿package jb.service;
 
-import jb.pageModel.DiveCertificateAuthority;
+import java.util.List;
+
 import jb.pageModel.DataGrid;
+import jb.pageModel.DiveCertificateAuthority;
 import jb.pageModel.PageHelper;
 
 /**
@@ -56,7 +58,7 @@ public interface DiveCertificateAuthorityServiceI {
 	 * @param accountId
 	 * @return
 	 */
-	public DiveCertificateAuthority getInfoByAccountId(String accountId);
+	public List<DiveCertificateAuthority> getListByAccountId(String accountId);
 
 	public int saveOrUpdate(DiveCertificateAuthority ca);
 

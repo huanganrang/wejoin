@@ -24,6 +24,8 @@
 			style="padding: 1px"></div>
 		<div title="订单详情" data-options="href:'api_order_detail.jsp'"
 			style="padding: 1px"></div>
+		<div title="订单详情物品删除" data-options="href:'api_order_del_detail.jsp'"
+			style="padding: 1px"></div>
 		<div title="订单创建" data-options="href:'api_order_create.jsp'"
 			style="padding: 1px"></div>
 		<div title="支付成功回调" data-options="href:'api_order_pay_success.jsp'"

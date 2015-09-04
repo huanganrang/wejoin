@@ -107,8 +107,13 @@ public class ApiLogController extends BaseController {
 				log.setOutTime(DateUtil.parse(outTimeStr, Constants.DATE_FORMAT_HM));
 			}
 			log.setAccountId(s.getId());
-			diveLogService.add(log);
-			j.setMsg("潜水电子日志添加成功");
+			if(F.empty(log.getId())) {
+				diveLogService.add(log);
+				j.setMsg("潜水电子日志添加成功");
+			} else {
+				diveLogService.edit(log);
+				j.setMsg("潜水电子日志修改成功");
+			}
 			j.success();
 		}catch(Exception e){
 			j.fail();
@@ -131,9 +136,15 @@ public class ApiLogController extends BaseController {
 			if(!F.empty(fileSrc)) {
 				log.setFileSrc(fileSrc);
 			}
+			
 			log.setAccountId(s.getId());
-			diveLogService.add(log);
-			j.setMsg("潜水纸张日志添加成功");
+			if(F.empty(log.getId())) {
+				diveLogService.add(log);
+				j.setMsg("潜水纸张日志添加成功");
+			} else {
+				diveLogService.edit(log);
+				j.setMsg("潜水纸张日志修改成功");
+			}
 			j.success();
 		}catch(Exception e){
 			j.fail();

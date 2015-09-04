@@ -318,7 +318,7 @@ public class ApiAccountController extends BaseController {
 		Json j = new Json();
 		try {
 			SessionInfo s = getSessionInfo(request);
-			j.setObj(certificateAuthorityService.getInfoByAccountId(F.empty(accountId) ? s.getId():accountId));
+			j.setObj(certificateAuthorityService.getListByAccountId(F.empty(accountId) ? s.getId():accountId));
 			j.setSuccess(true);
 			j.setMsg("潜水认证信息查询成功");
 		} catch (Exception e) {

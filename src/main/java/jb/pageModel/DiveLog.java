@@ -27,7 +27,9 @@ public class DiveLog implements java.io.Serializable {
 	private java.lang.Float gasEnd;	
 	private Date addtime;	
 	private java.lang.String diveAddress;
-	private java.lang.Integer highGas;
+	private java.lang.String highGas;
+	private java.lang.String sumary;
+	
 	
 	public String getLogTypeZh() {
 		return Application.getString(this.logType);
@@ -176,12 +178,19 @@ public class DiveLog implements java.io.Serializable {
 		this.diveAddress = diveAddress;
 	}
 
-	public java.lang.Integer getHighGas() {
+	public java.lang.String getHighGas() {
 		return highGas;
 	}
 
-	public void setHighGas(java.lang.Integer highGas) {
+	public void setHighGas(java.lang.String highGas) {
 		this.highGas = highGas;
 	}
 
+	public java.lang.String getSumary() {
+		return sumary;
+	}
+	
+	public void setSumary(java.lang.String sumary) {
+		this.sumary = sumary;
+	}
 }

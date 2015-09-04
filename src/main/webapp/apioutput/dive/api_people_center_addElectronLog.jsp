@@ -49,6 +49,10 @@ String url = request.getContextPath()+"/api/apiLogController/addElectronLog";
 						<td><input name="tokenId" type="text" class="span2"  value=""/></td>
 					</tr>
 					<tr>
+						<td align="right" style="width: 180px;"><label>id(日志id)：</label>
+						<td><input name="id" type="text" class="span2"  value=""/>(传id即为修改接口)</td>
+					</tr>
+					<tr>
 						<td align="right" style="width: 180px;"><label>logType(日志类型)：</label>
 						<td><input name="logType" type="text" class="span2"  value="LT01"/>(LT01：电子日志；LT02：纸张日志)</td>
 					</tr>
@@ -97,8 +101,8 @@ String url = request.getContextPath()+"/api/apiLogController/addElectronLog";
 						<td><input name="diveHeight" type="text" class="span2"  value="20"/>（单位：m）</td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>highGas(是否高氧)：</label>
-						<td><input name="highGas" type="text" class="span2"  value="1"/>（1：是；2：否）</td>
+						<td align="right" style="width: 180px;"><label>highGas(含氧量)：</label>
+						<td><input name="highGas" type="text" class="span2"  value=""/></td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>gasStart(开始氧量)：</label>

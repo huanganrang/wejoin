@@ -190,6 +190,21 @@ String url = request.getContextPath()+"/api/apiLogController/loglist";
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
+                sumary
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                256
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                纸张日志描述
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
                 logType
             </td>
             <td style="border-top:none;border-left:none">
