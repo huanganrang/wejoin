@@ -108,11 +108,13 @@ public class ApiLogController extends BaseController {
 				log.setOutTime(DateUtil.parse(outTimeStr, Constants.DATE_FORMAT_HM));
 			}
 			String fileSrc = "";
-			for(MultipartFile f : imageFiles){
-				if(!"".equals(fileSrc)) {
-					fileSrc += "||";
+			if(imageFiles != null) {
+				for(MultipartFile f : imageFiles){
+					if(!"".equals(fileSrc)) {
+						fileSrc += "||";
+					}
+					fileSrc += uploadFile(request, s.getName() + "/log", f, "log");
 				}
-				fileSrc += uploadFile(request, s.getName() + "/log", f, "log");
 			}
 			log.setAccountId(s.getId());
 			if(F.empty(log.getId())) {
@@ -162,6 +164,50 @@ public class ApiLogController extends BaseController {
 			j.success();
 		}catch(Exception e){
 			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}	
+	
+	/**
+	 * 潜水日志详情
+	 * @param ph
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/deleteLogImage")
+	public Json deleteLogImage(String id, String imagePath, HttpServletRequest request) {
+		Json j = new Json();
+		try{
+			SessionInfo s = getSessionInfo(request);
+			DiveLog log = diveLogService.get(id);
+			if(!log.getAccountId().equals(s.getId())) {
+				j.fail();
+				j.setMsg("无权删除他人图片");
+			}
+			String fileSrc = "";
+			if(!F.empty(imagePath) && !F.empty(log.getFileSrc())) {
+				String[] fileSrcArr = log.getFileSrc().split("\\|\\|");
+				for(String str : fileSrcArr) {
+					if(F.empty(str)) continue;
+					if(imagePath.indexOf(str) != -1) {
+						deleteFile(request, str);
+					} else {
+						if(!"".equals(fileSrc)) {
+							fileSrc += "||";
+						}
+						fileSrc += str;
+					}
+				}
+				
+				log.setFileSrc(fileSrc);
+				diveLogService.edit(log);
+			}
+			j.setMsg("删除成功");
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			j.setMsg("删除失败");
 			e.printStackTrace();
 		}		
 		return j;

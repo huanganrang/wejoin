@@ -203,7 +203,13 @@ public class BaseController {
 	
 	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file){
 		return uploadFile(request, dirName, file, dirName);
-		
+	}
+	
+	public boolean deleteFile(HttpServletRequest request, String filePath){
+		String realPath = request.getSession().getServletContext().getRealPath("/");  
+		filePath = realPath + "/" + filePath;
+		File f = new File(filePath);
+		return f.delete();
 	}
 	
 	public boolean checkRoleMark(String rlKey, SessionInfo sessionInfo) {

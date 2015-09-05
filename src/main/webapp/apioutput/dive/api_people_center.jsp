@@ -46,6 +46,8 @@
 			style="padding: 1px"></div>
 		<div title="日志详情" data-options="href:'api_people_center_logDetail.jsp'"
 			style="padding: 1px"></div>
+		<div title="日志图片删除" data-options="href:'api_people_center_del_logImage.jsp'"
+			style="padding: 1px"></div>
 		<div title="退出登录" data-options="href:'api_logout.jsp'"
 			style="padding: 1px"></div>
 	</div>
