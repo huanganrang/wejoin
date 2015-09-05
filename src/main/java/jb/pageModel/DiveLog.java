@@ -40,6 +40,9 @@ public class DiveLog implements java.io.Serializable {
 	public String getWeatherZh() {
 		return Application.getString(this.weather);
 	}
+	public String getWindPowerZh() {
+		return Application.getString(this.windPower);
+	}
 
 	public void setId(java.lang.String value) {
 		this.id = value;

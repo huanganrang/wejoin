@@ -131,15 +131,21 @@ public class DiveCertificateAuthorityServiceImpl extends BaseServiceImpl<DiveCer
 	 */
 	public int saveOrUpdate(DiveCertificateAuthority ca) {
 		if(F.empty(ca.getId())) {
-			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("accountId", ca.getAccountId());
-			if(diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params) != null){
-				return -1;
-			}
-			add(ca);
-		} else {
-			edit(ca);
+			ca.setId(UUID.randomUUID().toString());
 		}
+		TdiveCertificateAuthority t = new TdiveCertificateAuthority();
+		BeanUtils.copyProperties(ca, t);
+		diveCertificateAuthorityDao.saveOrUpdate(t);
+//		if(F.empty(ca.getId())) {
+//			Map<String, Object> params = new HashMap<String, Object>();
+//			params.put("accountId", ca.getAccountId());
+//			if(diveCertificateAuthorityDao.get("from TdiveCertificateAuthority t  where t.accountId = :accountId", params) != null){
+//				return -1;
+//			}
+//			add(ca);
+//		} else {
+//			edit(ca);
+//		}
 		
 		return 1;
 	}

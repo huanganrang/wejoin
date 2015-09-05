@@ -61,12 +61,6 @@ dd,dl,dt{ margin:0 ; padding:0;}
 .pl i{border-bottom:#ccc solid 1px; line-height:80px; height:80px; color:#4c4c4c; text-align:center;display:block; width:100%; font-style:normal;}
 .pl i a:hover{color:#0070c6; text-decoration:none;}
 .pl .zxpl span{ color:#0070c6;}
-.wm { min-width:480px; max-width:740px; overflow:hidden; margin:0 auto; margin-top:30px;}
-.wm .top{padding-left:35px;padding-right:35px; padding-bottom:35px; text-align:center; margin-top:6%;}
-.wm .down_wm{ overflow:hidden; text-align:center; width:40%; margin:0 auto;}
-.wm .down_wm img{ width:100%; margin-bottom:9%;}
-.wm .down_wen{ font-size:20px; color:#999; text-align:center; overflow:hidden;}
-.wm .bottom{ background-image:url(${pageContext.request.contextPath}/diveshare/bottom.png); height:100px; margin-top:1%;}
 .content .nr{ margin-top:15px; overflow:hidden;}
 .content .nr p{ text-indent:2em; font-size:14px; color:#666; line-height:1.8em; margin:.8em 0;}
 .content .nr img{ width:100%;}
@@ -127,11 +121,12 @@ dd,dl,dt{ margin:0 ; padding:0;}
       		</div>
     	</div> -->
   	</div>
-  	<div class="wm">
+  	<jsp:include page="bottom.jsp"></jsp:include>
+  	<!-- <div class="wm">
    		<div class="down_wm"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/20150724_down_wm.png"></a></div>
 	    <div class="down_wen">点击或长按二维码下载</div>
 	    <div class="top"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/logo2.png" width="395" height="72"></a></div>
 	    <div class="bottom"></div>
-	</div>
+	</div> -->
 </body>
 </html>

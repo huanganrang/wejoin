@@ -2,26 +2,33 @@ package jb.controller;
 
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jb.absx.F;
 import jb.interceptors.TokenManage;
 import jb.pageModel.Bug;
+import jb.pageModel.DiveAccount;
 import jb.pageModel.DiveActivity;
 import jb.pageModel.DiveAddress;
 import jb.pageModel.DiveCourse;
 import jb.pageModel.DiveEquip;
+import jb.pageModel.DiveLog;
 import jb.pageModel.DiveStore;
 import jb.pageModel.DiveTravel;
 import jb.pageModel.Json;
 import jb.service.BugServiceI;
+import jb.service.DiveAccountServiceI;
 import jb.service.DiveActivityServiceI;
 import jb.service.DiveAddressServiceI;
 import jb.service.DiveCourseServiceI;
 import jb.service.DiveEquipServiceI;
+import jb.service.DiveLogServiceI;
 import jb.service.DiveStoreServiceI;
 import jb.service.DiveTravelServiceI;
 
@@ -58,6 +65,10 @@ public class ApiCommonController extends BaseController {
 	private DiveStoreServiceI diveStoreService;
 	@Autowired
 	private DiveCourseServiceI diveCourseService;
+	@Autowired
+	private DiveLogServiceI diveLogService;
+	@Autowired
+	private DiveAccountServiceI diveAccountService;
 	
 	@Autowired
 	private BugServiceI bugService;
@@ -159,6 +170,25 @@ public class ApiCommonController extends BaseController {
 			DiveCourse t = diveCourseService.get(businessId);
 			content = t.getIntroduce();
 			title = t.getTitle();
+		} else if("BT07".equals(businessType)) { // 潜水日志
+			DiveLog t = diveLogService.get(businessId);
+			List<String> imageList = new ArrayList<String>();
+			if(!F.empty(t.getFileSrc())) {
+				String[] fileSrcArr = t.getFileSrc().split("\\|\\|");
+				for(String str : fileSrcArr) {
+					if(F.empty(str)) continue;
+					imageList.add(str);
+				}
+			}
+			DiveAccount account = diveAccountService.get(t.getAccountId());
+			
+			request.setAttribute("log", t);
+			request.setAttribute("imageList", imageList);
+			request.setAttribute("account", account);
+			if(t.getOutTime() != null && t.getInTime() != null)
+				request.setAttribute("duration", (t.getOutTime().getTime()-t.getInTime().getTime())/(60*1000));
+			return "/diveshare/divelog/logshare";
+			
 		}
 		request.setAttribute("title", title);
 		request.setAttribute("content", content);
