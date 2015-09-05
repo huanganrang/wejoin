@@ -144,7 +144,7 @@ public class ApiLogController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("/addPaperLog")
-	public Json addPaperLog(DiveLog log, @RequestParam MultipartFile fileSrcFile, HttpServletRequest request) {
+	public Json addPaperLog(DiveLog log, @RequestParam(required=false) MultipartFile fileSrcFile, HttpServletRequest request) {
 		Json j = new Json();
 		try{
 			SessionInfo s = getSessionInfo(request);
@@ -170,7 +170,7 @@ public class ApiLogController extends BaseController {
 	}	
 	
 	/**
-	 * 潜水日志详情
+	 * 潜水日志图片删除
 	 * @param ph
 	 * @return
 	 */
