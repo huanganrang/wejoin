@@ -213,7 +213,7 @@ width:26px;top:-10px;left:18px;
 .xc_bom { background:#f9f6f6; height:50px; padding:10px 0 5px 0;}
 .sc_icon,.xh_icon,.ll_icon{ font-size:15px; display:block; color:#0eacf4; margin-bottom:5px;}
 .sc_icon{font-size:20px;}
-.some_info{ margin-left:15px;color:#fff;}
+.some_info{ color:#fff;}
 .some_info span.country_img, .some_info span.place_img, .some_info span.shop_img, .some_info li i{ color:#fff; text-shadow:0 2px 2px rgba(0,0,0,.8);}
 .part_bg { background:#fff; padding:10px; border-bottom:1px solid #bfbfbf; margin-bottom:15px;}
 .dive_tags ul li.tag_item{ height:20px; line-height:20px; font-size:12px; color:#fff; padding:0 5px;}

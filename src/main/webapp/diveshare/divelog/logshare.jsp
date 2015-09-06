@@ -33,7 +33,7 @@
                         		<span class="user_name">${account.nickname}</span>
                      		</p>
                      		<c:if test="${log.logType == 'LT01'}">
-	                     		<table class="record_info some_info" style="width: 100%;">
+	                     		<table class="record_info some_info" >
 	                     			<tr>
 	                     				<td colspan="2"><i>潜水地点：${log.diveAddress}</i></td>
 	                     			</tr>
@@ -41,24 +41,24 @@
 	                     				<td colspan="2"><i>潜水时间：<fmt:formatDate value="${log.diveDate}" pattern="yyyy-MM-dd HH:mm"/></i></td>
 	                     			</tr>
 	                     			<tr>
-	                     				<td width="50%"><i>潜水深度：<fmt:formatNumber value="${log.diveHeight}" pattern="#m"/></i></td>
-	                     				<td width="50%"><i>潜水时长：<fmt:formatNumber value="${duration}" pattern="#min"/></i></td>
+	                     				<td><i>潜水深度：<fmt:formatNumber value="${log.diveHeight}" pattern="#m"/></i></td>
+	                     				<td><i>潜水时长：<fmt:formatNumber value="${duration}" pattern="#min"/></i></td>
 	                     			</tr>
 	                     			<tr>
-	                     				<td width="50%"><i>天气：${log.weatherZh}</i></td>
-	                     				<td width="50%"><i>风力：${log.windPowerZh}</i></td>
+	                     				<td><i>天气：${log.weatherZh}</i></td>
+	                     				<td><i>风力：${log.windPowerZh}</i></td>
 	                     			</tr>
 	                     			<tr>
-	                     				<td width="50%"><i>气温：<fmt:formatNumber value="${log.weatherTemperature}" pattern="#°C"/></i></td>
-	                     				<td width="50%"><i>水温：<fmt:formatNumber value="${log.waterTemperature}" pattern="#°C"/></i></td>
+	                     				<td><i>气温：<fmt:formatNumber value="${log.weatherTemperature}" pattern="#°C"/></i></td>
+	                     				<td><i>水温：<fmt:formatNumber value="${log.waterTemperature}" pattern="#°C"/></i></td>
 	                     			</tr>
 	                     			<tr>
-	                     				<td width="50%"><i>能见度：<fmt:formatNumber value="${log.seeing}" pattern="#m"/></i></td>
-	                     				<td width="50%"><i>潜水类型：${log.diveTypeZh}</i></td>
+	                     				<td><i>能见度：<fmt:formatNumber value="${log.seeing}" pattern="#m"/></i></td>
+	                     				<td><i>潜水类型：${log.diveTypeZh}</i></td>
 	                     			</tr>
 	                     			<tr>
-	                     				<td width="50%"><i>开始氧量：<fmt:formatNumber value="${log.gasStart}" pattern="#Bar"/></i></td>
-	                     				<td width="50%"><i>结束氧量：<fmt:formatNumber value="${log.gasEnd}" pattern="#Bar"/></i></td>
+	                     				<td><i>开始氧量：<fmt:formatNumber value="${log.gasStart}" pattern="#Bar"/></i></td>
+	                     				<td><i>结束氧量：<fmt:formatNumber value="${log.gasEnd}" pattern="#Bar"/></i></td>
 	                     			</tr>
 	                     		</table>
 	                     	</c:if>
