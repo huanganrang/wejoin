@@ -3,8 +3,6 @@ package jb.pageModel;
 import java.util.Date;
 import java.util.List;
 
-import jb.absx.F;
-
 public class DiveActivity implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -101,7 +99,7 @@ public class DiveActivity implements java.io.Serializable {
 	}
 	
 	public java.lang.String getStatus() {
-		if(F.empty(this.status) && this.startDate != null && this.endDate != null) {
+		if(this.startDate != null && this.endDate != null) {
 			Date now = new Date();
 			if(now.before(this.startDate)) {
 				return "AT01"; // 报名中
