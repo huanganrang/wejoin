@@ -29,7 +29,7 @@
        	<div class="gw"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/xz.png" alt=""></a></div>
        	<h3 style="line-height:1em;">扫码下载</h3>
        	<div class="wm">
-       		<div class="down_wm"><a href="javascript:download();"><img src="${pageContext.request.contextPath}/diveshare/20150724_down_wm.png"></a></div>
+       		<div class="down_wm"><a href="${pageContext.request.contextPath}/diveshare/download.jsp"><img src="${pageContext.request.contextPath}/diveshare/20150910__down_wm.png"></a></div>
 	    	<div class="down_wen">点击或长按二维码下载</div>
 	    	<div class="top"><a href="javascript:void(0);"><img src="${pageContext.request.contextPath}/diveshare/logo2.png" width="395" height="72"></a></div>
 	    	<div class="bottom"></div>

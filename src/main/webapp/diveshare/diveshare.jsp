@@ -32,45 +32,6 @@ dd,dl,dt{ margin:0 ; padding:0;}
 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<script type="text/javascript">
-	function download() {
-		if(isWeiXin()) {   
-// 	        alert('微信扫描无法下载，请点击右上角切换其他浏览器打开.') 
-			 window.location.href="http://www.goodiver.com/Download/download"; 
-	    } else {  
-	        switch(getDevice()) {  
-	            case 'Android':  
-	                window.location.href="http://www.goodiver.com/Download/download";  
-	                break;  
-	            case 'iOS':  
-	                window.location.href="http://www.goodiver.com/Download/download";  
-	                break;  
-	            default:  
-	                break;  
-	        }  
-	    }  
-	}
-	
-	function isWeiXin() {   
-	    var ua = window.navigator.userAgent.toLowerCase();  
-	    if(ua.match(/MicroMessenger/i) == 'micromessenger') {   
-	        return true;  
-	    } else {   
-	        return false;  
-	    }   
-	}  
-	  
-	function getDevice() {  
-	    var u = navigator.userAgent;  
-	    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {  
-	        return 'Android';  
-	    } else if (u.indexOf('iPhone') > -1) {  
-	        return 'iOS';  
-	    } else {  
-	        return 'none';  
-	    }  
-	}  
-</script>
 </head>
 <body>
 	<div class="content">
