@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -144,18 +145,22 @@ public class ApiCommonController extends BaseController {
 	public String share(String businessId,String businessType,HttpServletRequest request) {
 		String title = "";
 		String content = "";
+		Date date = null;
 		if("BT01".equals(businessType)) { // 潜水旅游
 			DiveTravel t = diveTravelService.get(businessId);
 			content = t.getDescription();
 			title = t.getName();
+			date = t.getAddtime();
 		} else if("BT02".equals(businessType)) { // 潜点
 			DiveAddress t = diveAddressService.get(businessId);
 			content = t.getDescription();
 			title = t.getName();
+			date = t.getAddtime();
 		} else if("BT03".equals(businessType)) { // 装备
 			DiveEquip t = diveEquipService.get(businessId);
 			content = t.getEquipDes();
 			title = t.getEquipName();
+			date = t.getAddtime();
 		} else if("BT04".equals(businessType)) { // 活动
 			DiveActivity t = diveActivityService.getDetail(businessId, null);
 			request.setAttribute("activity", t);
@@ -166,10 +171,12 @@ public class ApiCommonController extends BaseController {
 			DiveStore t = diveStoreService.get(businessId);
 			content = t.getDescription();
 			title = t.getName();
+			date = t.getAddtime();
 		} else if("BT06".equals(businessType)) { // 学习
 			DiveCourse t = diveCourseService.get(businessId);
 			content = t.getIntroduce();
 			title = t.getTitle();
+			date = t.getAddtime();
 		} else if("BT07".equals(businessType)) { // 潜水日志
 			DiveLog t = diveLogService.get(businessId);
 			List<String> imageList = new ArrayList<String>();
@@ -192,6 +199,7 @@ public class ApiCommonController extends BaseController {
 		}
 		request.setAttribute("title", title);
 		request.setAttribute("content", content);
+		request.setAttribute("date", date);
 		return "/diveshare/diveshare";
 	}
 	
