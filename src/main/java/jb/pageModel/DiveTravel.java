@@ -14,20 +14,22 @@ public class DiveTravel implements java.io.Serializable {
 	private java.lang.Float price;	
 	private java.lang.String icon;	
 	private java.lang.String description;	
-	private java.lang.String area;	
 	private java.lang.String feature;	
 	private java.lang.String status;	
 	private Date addtime;	
 	private java.lang.String addUserId;
+	private java.lang.String nameEn;	
+	private java.lang.String countryName;	
+	private java.lang.String countryNameEn;	
+	private java.lang.String areaName;	
+	private java.lang.String areaNameEn;
 
 	private boolean isCollect;
 	private int collectNum;
+	private String searchValue;
 	
 	public String getStatusZh() {
 		return Application.getString(this.status);
-	}
-	public String getAreaZh() {
-		return Application.getString(this.area);
 	}
 	public String getFeatureZh() {
 		return Application.getString(this.feature);
@@ -77,13 +79,6 @@ public class DiveTravel implements java.io.Serializable {
 	public java.lang.String getDescription() {
 		return this.description;
 	}
-	public void setArea(java.lang.String area) {
-		this.area = area;
-	}
-	
-	public java.lang.String getArea() {
-		return this.area;
-	}
 	public void setFeature(java.lang.String feature) {
 		this.feature = feature;
 	}
@@ -111,7 +106,41 @@ public class DiveTravel implements java.io.Serializable {
 	public void setAddUserId(java.lang.String addUserId) {
 		this.addUserId = addUserId;
 	}
-
+	public void setNameEn(java.lang.String nameEn) {
+		this.nameEn = nameEn;
+	}
+	
+	public java.lang.String getNameEn() {
+		return this.nameEn;
+	}
+	public void setCountryName(java.lang.String countryName) {
+		this.countryName = countryName;
+	}
+	
+	public java.lang.String getCountryName() {
+		return this.countryName;
+	}
+	public void setCountryNameEn(java.lang.String countryNameEn) {
+		this.countryNameEn = countryNameEn;
+	}
+	
+	public java.lang.String getCountryNameEn() {
+		return this.countryNameEn;
+	}
+	public void setAreaName(java.lang.String areaName) {
+		this.areaName = areaName;
+	}
+	
+	public java.lang.String getAreaName() {
+		return this.areaName;
+	}
+	public void setAreaNameEn(java.lang.String areaNameEn) {
+		this.areaNameEn = areaNameEn;
+	}
+	
+	public java.lang.String getAreaNameEn() {
+		return this.areaNameEn;
+	}
 	public boolean isCollect() {
 		return isCollect;
 	}
@@ -125,5 +154,10 @@ public class DiveTravel implements java.io.Serializable {
 	public void setCollectNum(int collectNum) {
 		this.collectNum = collectNum;
 	}
-
+	public String getSearchValue() {
+		return searchValue;
+	}
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
+	}
 }

@@ -67,11 +67,11 @@
 			<input type="hidden" name="id" />
 			<table class="table table-hover table-condensed">
 				<tr>
-					<th width="8%"><%=TdiveTravel.ALIAS_NAME%></th>
-					<td width="42%"><input class="span2" name="name" type="text" />
+					<th width="10%"><%=TdiveTravel.ALIAS_NAME%></th>
+					<td width="40%"><input class="span2" name="name" type="text" />
 					</td>
-					<th width="8%"><%=TdiveTravel.ALIAS_PRICE%></th>
-					<td width="42%"><input class="span2" name="price" type="text"
+					<th width="10%"><%=TdiveTravel.ALIAS_NAME_EN%></th>
+					<td width="40%"><input class="span2" name="nameEn" type="text"
 						class="span2" /></td>
 				</tr>
 				<tr>
@@ -82,20 +82,33 @@
 					</td>
 				</tr>
 				<tr>
-					<th><%=TdiveTravel.ALIAS_AREA%></th>
+					<th><%=TdiveTravel.ALIAS_COUNTRY_NAME%></th>
+					<td><input class="span2 easyui-validatebox" name="countryName" type="text" data-options="required:true"/></td>
+					<th><%=TdiveTravel.ALIAS_COUNTRY_NAME_EN%></th>
 					<td>
-						<jb:select dataType="AR" name="area"></jb:select>
-					</td>
-					<th><%=TdiveTravel.ALIAS_FEATURE%></th>
-					<td>
-						<jb:select dataType="TT" name="feature"></jb:select>
+						<input class="span2" name="countryNameEn" type="text" />
 					</td>
 				</tr>
 				<tr>
+					<th><%=TdiveTravel.ALIAS_AREA_NAME%></th>
+					<td><input class="span2 easyui-validatebox" name="areaName" type="text" data-options="required:true"/></td>
+					<th><%=TdiveTravel.ALIAS_AREA_NAME_EN%></th>
+					<td>
+						<input class="span2" name="areaNameEn" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<th><%=TdiveTravel.ALIAS_PRICE%></th>
+					<td><input class="span2" name="price" type="text"
+						class="span2" /></td>
 					<th><%=TdiveTravel.ALIAS_STATUS%></th>
-					<td colspan="3">
+					<td>
 						<jb:select dataType="ST" name="status"></jb:select>	
 					</td>
+					<!-- <th><%=TdiveTravel.ALIAS_FEATURE%></th>
+					<td>
+						<jb:select dataType="TT" name="feature"></jb:select>
+					</td> -->
 				</tr>
 				<tr>
 					<th><%=TdiveTravel.ALIAS_SUMARY%></th>

@@ -75,4 +75,12 @@ public interface DiveTravelServiceI {
 	@SuppressWarnings("rawtypes")
 	public List<Map> findHomeList();
 
+	/**
+	 * 获取所有的国家/地区列表
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> getAllArea();
+
+
 }

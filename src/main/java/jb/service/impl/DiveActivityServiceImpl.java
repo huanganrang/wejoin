@@ -76,10 +76,6 @@ public class DiveActivityServiceImpl extends BaseServiceImpl<DiveActivity> imple
 				whereHql += " and t.startAddr = :startAddr";
 				params.put("startAddr", diveActivity.getStartAddr());
 			}		
-			if (!F.empty(diveActivity.getAddrId())) {
-				whereHql += " and t.addrId = :addrId";
-				params.put("addrId", diveActivity.getAddrId());
-			}		
 			if (!F.empty(diveActivity.getEndAddr())) {
 				whereHql += " and t.endAddr = :endAddr";
 				params.put("endAddr", diveActivity.getEndAddr());

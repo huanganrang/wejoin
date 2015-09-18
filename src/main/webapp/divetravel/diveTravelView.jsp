@@ -15,22 +15,34 @@
 				<td colspan="3">${diveTravel.id}</td>
 			</tr>
 			<tr>
-				<th width="8%"><%=TdiveTravel.ALIAS_NAME%></th>
-				<td width="42%">${diveTravel.name}</td>
-				<th width="8%"><%=TdiveTravel.ALIAS_PRICE%></th>
-				<td width="42%">${diveTravel.price}</td>
+				<th width="10%"><%=TdiveTravel.ALIAS_NAME%></th>
+				<td width="40%">${diveTravel.name}</td>
+				<th width="10%"><%=TdiveTravel.ALIAS_NAME_EN%></th>
+				<td width="40%">${diveTravel.nameEn}</td>
 			</tr>
 			<tr>
-				<th><%=TdiveTravel.ALIAS_AREA%></th>
-				<td>${diveTravel.areaZh}</td>
-				<th><%=TdiveTravel.ALIAS_FEATURE%></th>
-				<td>${diveTravel.featureZh}</td>
+				<th><%=TdiveTravel.ALIAS_COUNTRY_NAME%></th>
+				<td>${diveTravel.countryName}</td>
+				<th><%=TdiveTravel.ALIAS_COUNTRY_NAME_EN%></th>
+				<td>${diveTravel.countryNameEn}</td>
 			</tr>
 			<tr>
+				<th><%=TdiveTravel.ALIAS_AREA_NAME%></th>
+				<td>${diveTravel.areaName}</td>
+				<th><%=TdiveTravel.ALIAS_AREA_NAME_EN%></th>
+				<td>${diveTravel.areaNameEn}</td>
+			</tr>
+			<tr>
+				<th><%=TdiveTravel.ALIAS_PRICE%></th>
+				<td>${diveTravel.price}</td>
+				<!-- <th><%=TdiveTravel.ALIAS_FEATURE%></th>
+				<td>${diveTravel.featureZh}</td> -->
 				<th><%=TdiveTravel.ALIAS_STATUS%></th>
 				<td>${diveTravel.statusZh}</td>
+			</tr>
+			<tr>
 				<th><%=TdiveTravel.ALIAS_ADDTIME%></th>
-				<td>${diveTravel.addtime}</td>
+				<td colspan="3">${diveTravel.addtime}</td>
 			</tr>
 			<tr>
 				<th><%=TdiveTravel.ALIAS_ICON%></th>

@@ -114,7 +114,7 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                addr_id
+                business_id
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
@@ -124,7 +124,22 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜点ID
+          业务ID
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                business_type
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                36
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+          业务类型
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -153,6 +168,71 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
                 描述
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                room_type
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                房型
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                diver_price
+            </td>
+            <td style="border-top:none;border-left:none">
+                float
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                潜水员/位
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                non_drive_price
+            </td>
+            <td style="border-top:none;border-left:none">
+                float
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+               非潜水员
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                single_room_price
+            </td>
+            <td style="border-top:none;border-left:none">
+                float
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+               单人房差/位
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                peer_name
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+              同行
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -227,16 +307,16 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                diveAddress
+                business
             </td>
             <td style="border-top:none;border-left:none">
-                DiveAddress对象
+                Object对象
             </td>
             <td style="border-top:none;border-left:none" x:num="">
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜点信息
+               业务信息
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -357,7 +437,7 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
     </tbody>
 </table>
 
-潜点信息
+业务信息
 <table x:str="" cellpadding="0" cellspacing="0" width="673">
     <colgroup>
         <col width="192" style=";width:192px"/>
@@ -396,7 +476,7 @@ String url = request.getContextPath()+"/api/apiActivityController/getActivityDet
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜水名称
+                名称
             </td>
         </tr>
         <tr height="19" style="height:19px">

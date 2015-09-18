@@ -2,7 +2,9 @@
 <%@ page import="jb.model.TdiveActivity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>
+
 <script type="text/javascript">
 	$(function() {
 		parent.$.messager.progress('close');
@@ -17,6 +19,13 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				var businessId;
+				if($("input:radio[name=businessType]:checked").val() == 'BT01') {
+					businessId = $('[name=travelId]').val();
+				} else {
+					businessId = $('[name=storeId]').val();
+				}
+				$("#businessId").val(businessId);
 				return isValid;
 			},
 			success : function(result) {
@@ -30,6 +39,19 @@
 				}
 			}
 		});
+		
+		$("input:radio[name=businessType]").bind('click', function(){
+			if($(this).val() == 'BT01') {
+				$("#travel").show();
+				$("#store").hide();
+			} else {
+				$("#travel").hide();
+				$("#store").show();
+			}
+		});
+		
+		$('[name=travelId]').val($("#businessId").val());
+		$('[name=storeId]').val($("#businessId").val());
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -38,25 +60,63 @@
 				<input type="hidden" name="id" value = "${diveActivity.id}"/>
 			<table class="table table-hover table-condensed">
 				<tr>	
-					<th width="8%"><%=TdiveActivity.ALIAS_NAME%></th>	
-					<td width="42%">
+					<th width="10%"><%=TdiveActivity.ALIAS_NAME%></th>	
+					<td width="40%">
 					<input class="span2" name="name" type="text" value="${diveActivity.name}"/>
+					</td>
+					<th width="10%"><%=TdiveActivity.ALIAS_ROOM_TYPE%></th>	
+					<td width="40%">
+						<jb:select dataType="RT" name="roomType" value="${diveActivity.roomType}"></jb:select>	
+					</td>		
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_BUSINESS_TYPE%></th>	
+					<td>
+						<input type="radio" name="businessType" value="BT01" <c:if test="${diveActivity.businessType=='BT01'}">checked</c:if>/> 船宿
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="businessType" value="BT05" <c:if test="${diveActivity.businessType=='BT05'}">checked</c:if>/> 度假村
 					</td>	
-					<th width="8%"><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
-					<td width="42%">
-						<jb:selectSql dataType="SL002" name="addrId" value="${diveActivity.addrId}"></jb:selectSql>
+					<th>选择业务</th>	
+					<td>
+						<div id="travel" <c:if test="${diveActivity.businessType=='BT05'}">style="display: none;"</c:if>>
+							<jb:selectSql dataType="SL003" name="travelId"></jb:selectSql>
+						</div>
+						<div id="store" <c:if test="${diveActivity.businessType=='BT01'}">style="display: none;"</c:if>>
+							<jb:selectSql dataType="SL004" name="storeId"></jb:selectSql>
+						</div>
+						<input type="hidden" name="businessId" id="businessId"  value ="${diveActivity.businessId}"/>
+					</td>	
+				</tr>
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_DIVER_PRICE%></th>	
+					<td>
+						<input class="span2" name="diverPrice" type="text" value="${diveActivity.diverPrice}"/>
+					</td>	
+					<th><%=TdiveActivity.ALIAS_NON_DRIVE_PRICE%></th>	
+					<td>
+						<input class="span2" name="nonDrivePrice" type="text" value="${diveActivity.nonDrivePrice}"/>
+					</td>													
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_SINGLE_ROOM_PRICE%></th>	
+					<td>
+						<input class="span2" name="singleRoomPrice" type="text" value="${diveActivity.singleRoomPrice}"/>
+					</td>	
+					<th><%=TdiveActivity.ALIAS_PEER_NAME%></th>	
+					<td>
+						<input class="span2" name="peerName" type="text" value="${diveActivity.peerName}"/>
 					</td>													
 				</tr>	
 				<tr>	
 					<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
 					<td>
 					<input class="span2" name="startDateStr" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_START_DATE%>'})"  
-							maxlength="0" class="" value="${diveActivity.startDate}"/>
+							maxlength="0" class="" value="<fmt:formatDate value="${diveActivity.startDate}" pattern="yyyy-MM-dd"/>"/>
 					</td>	
 					<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
 					<td>
 					<input class="span2" name="endDateStr" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})"  
-							maxlength="0" class=""  value="${diveActivity.endDate}"/>
+							maxlength="0" class=""  value="<fmt:formatDate value="${diveActivity.endDate}" pattern="yyyy-MM-dd"/>"/>
 					</td>							
 											
 				</tr>	

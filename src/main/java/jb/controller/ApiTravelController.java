@@ -35,16 +35,16 @@ public class ApiTravelController extends BaseController {
 	
 	
 	/**
-	 * 地区查询
+	 * 国家/地区列表
 	 * @param ph
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/arealist")
-	public Json arealist(PageHelper ph,DiveTravel diveTravel) {
+	public Json arealist() {
 		Json j = new Json();
 		try{
-			j.setObj(diveTravelService.dataGrid(diveTravel,ph));
+			j.setObj(diveTravelService.getAllArea());
 			j.success();
 		}catch(Exception e){
 			j.fail();
@@ -54,13 +54,13 @@ public class ApiTravelController extends BaseController {
 	}	
 	
 	/**
-	 * 特点查询
+	 * 船宿列表查询
 	 * @param ph
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/featurelist")
-	public Json featurelist(PageHelper ph,DiveTravel diveTravel) {	
+	@RequestMapping("/travellist")
+	public Json travellist(PageHelper ph,DiveTravel diveTravel) {	
 		Json j = new Json();
 		try{
 			j.setObj(diveTravelService.dataGrid(diveTravel,ph));
@@ -82,6 +82,8 @@ public class ApiTravelController extends BaseController {
 	public Json search(PageHelper ph,DiveTravel diveTravel) {	
 		Json j = new Json();
 		try{
+			diveTravel.setSearchValue(diveTravel.getName());
+			diveTravel.setName(null);
 			j.setObj(diveTravelService.dataGrid(diveTravel,ph));
 			j.success();
 		}catch(Exception e){

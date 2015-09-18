@@ -14,7 +14,7 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
 	<script type="text/javascript">
 	$(function() {
 	 	parent.$.messager.progress('close');
-		$('#travel_area_Form').form({
+		$('#area_list_Form').form({
 			url : '<%=url%>',
 			onSubmit : function() {
 				parent.$.messager.progress({
@@ -29,7 +29,7 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
 			},
 			success : function(result) {
 				parent.$.messager.progress('close');
-				$("#travel_area_result").text(result);
+				$("#area_list_result").text(result);
 			}
 		});
 	});
@@ -38,21 +38,17 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
 	<div class="easyui-layout" data-options="fit:true">
 
 		<div data-options="region:'center'">
-			<form id="travel_area_Form" action="">
+			<form id="area_list_Form" action="">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
 						<td><%=url%></td>
 					</tr>
 					<tr>
-						<td align="right" style="width: 180px;"><label>tokenId(token值)：
+						<td align="right" style="width: 180px;"><label>tokenId(token值)：</label>
 						<td><input name="tokenId" type="text" class="span2"  value="<%=BaseController.DEFAULT_TOKEN%>"/></td>
 					</tr>
-					<tr>
-						<td align="right" style="width: 180px;"><label>area(地区代码*)：</label></td>
-						<td><input name="area" type="text" class="span2" value="AR01" /></td>
-					</tr>
-					<tr>
+					<!-- <tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>
 						<td><input name="page" type="text" class="span2" value="1" /></td>
 					</tr>
@@ -60,16 +56,16 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
 					<tr>
 						<td align="right" style="width: 180px;"><label>rows(每页数)：</label></td>
 						<td><input name="rows" type="text" class="span2" value="10" /></td>
-					</tr>
+					</tr> -->
 
 					<tr>
 						<td colspan="2" align="center"><input type="button"
-							value="提交" onclick="javascript:$('#travel_area_Form').submit();" /></td>
+							value="提交" onclick="javascript:$('#area_list_Form').submit();" /></td>
 					</tr>
 				</table>
 			</form>
-			<label>结果：潜水旅游地区代码结果集，查看基础数据接口</label>
-			<div id="travel_area_result"></div>
+			<label>结果：国家/地区列表结果集，查看基础数据接口</label>
+			<div id="area_list_result"></div>
 			<div>
 				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
 
@@ -84,24 +80,23 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
     <tbody>
         <tr height="19" style="height:19px" class="firstRow">
             <td height="19" width="192" style="">
-                id
+                countryName
             </td>
             <td width="117" style="border-left-style: none;">
                 varchar
             </td>
             <td width="72" style="border-left-style: none;" x:num="">
-                36
+                128
             </td>
             <td width="72" style="border-left-style: none;">
-                PK
             </td>
             <td width="148" style="border-left-style: none;">
-                主键
+                国家中文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                name
+                countryNameEn
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
@@ -111,106 +106,37 @@ String url = request.getContextPath()+"/api/apiTravelController/arealist";
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                旅游名称
+                国家英文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                sumary
+                areaName
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
             </td>
             <td style="border-top:none;border-left:none" x:num="">
-                256
+                128
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                简介
+                地区中文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                icon
-            </td>
-            <td style="border-top:none;border-left:none">
-                longtext
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                图片
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                description
-            </td>
-            <td style="border-top:none;border-left:none">
-                longtext
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                文案
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                area
+                areaNameEn
             </td>
             <td style="border-top:none;border-left:none">
                 varchar
             </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
+            <td style="border-top:none;border-left:none">
+            	128
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                地区
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                feature
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                特点
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                status
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                状态（上架，下架）
-            </td>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                price
-            </td>
-            <td style="border-top:none;border-left:none">
-                float
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                价格
+                地区英文名
             </td>
         </tr>
     </tbody>

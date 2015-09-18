@@ -38,7 +38,7 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
 	<div class="easyui-layout" data-options="fit:true">
 
 		<div data-options="region:'center'">
-			<form id="travel_search_Form" action="">
+			<form id="travel_search_Form" action="" method="post">
 				<table align="center" width="90%" class="tablex">
 					<tr>
 						<td align="right" style="width: 80px;"><label>url：</label></td>
@@ -50,7 +50,7 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>name(搜索值)：</label></td>
-						<td><input name="name" type="text" class="span2" value="" />（按名称模糊搜索）</td>
+						<td><input name="name" type="text" class="span2" value="" />（按名称/英文名/国家/地区模糊搜索）</td>
 					</tr>
 					<tr>
 						<td align="right" style="width: 180px;"><label>page(第几页)：</label></td>
@@ -68,7 +68,7 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
 					</tr>
 				</table>
 			</form>
-			<label>结果：潜水旅游特征结果集，查看基础数据接口</label>
+			<label>结果：船宿搜索列表结果集，查看基础数据接口</label>
 			<div id="travel_search_result"></div>
 			<div>
 				结果说明：1、json格式<br /> 2、success:true 成功<br /> 3、obj:数组格式<br />
@@ -111,7 +111,22 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜水名称
+                船宿名称
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                nameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                船宿英文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -157,36 +172,6 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                area
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                地区
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                feature
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                特点
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
                 status
             </td>
             <td style="border-top:none;border-left:none">
@@ -212,6 +197,67 @@ String url = request.getContextPath()+"/api/apiTravelController/search";
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
                 价格
+            </td>
+        </tr>
+        <tr height="19" style="height:19px" class="firstRow">
+            <td height="19" width="192" style="">
+                countryName
+            </td>
+            <td width="117" style="border-left-style: none;">
+                varchar
+            </td>
+            <td width="72" style="border-left-style: none;" x:num="">
+                128
+            </td>
+            <td width="72" style="border-left-style: none;">
+            </td>
+            <td width="148" style="border-left-style: none;">
+                国家中文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                countryNameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                国家英文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                areaName
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                地区中文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                areaNameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none">
+            	128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                地区英文名
             </td>
         </tr>
     </tbody>

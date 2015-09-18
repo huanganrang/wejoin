@@ -59,22 +59,9 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 				whereHql += " and t.name like :name";
 				params.put("name", "%%" + diveTravel.getName() + "%%");
 			}		
-			if (!F.empty(diveTravel.getSumary())) {
-				whereHql += " and t.sumary = :sumary";
-				params.put("sumary", diveTravel.getSumary());
-			}		
-				
-			if (!F.empty(diveTravel.getIcon())) {
-				whereHql += " and t.icon = :icon";
-				params.put("icon", diveTravel.getIcon());
-			}		
-			if (!F.empty(diveTravel.getDescription())) {
-				whereHql += " and t.description = :description";
-				params.put("description", diveTravel.getDescription());
-			}		
-			if (!F.empty(diveTravel.getArea())) {
-				whereHql += " and t.area = :area";
-				params.put("area", diveTravel.getArea());
+			if (!F.empty(diveTravel.getNameEn())) {
+				whereHql += " and t.nameEn like :nameEn";
+				params.put("nameEn", "%%" + diveTravel.getNameEn() + "%%");
 			}		
 			if (!F.empty(diveTravel.getFeature())) {
 				whereHql += " and t.feature = :feature";
@@ -87,6 +74,18 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 			if (!F.empty(diveTravel.getAddUserId())) {
 				whereHql += " and t.addUserId = :addUserId";
 				params.put("addUserId", diveTravel.getAddUserId());
+			}
+			if (!F.empty(diveTravel.getCountryName())) {
+				whereHql += " and t.countryName like :countryName";
+				params.put("countryName", "%%" + diveTravel.getCountryName() + "%%");
+			}
+			if (!F.empty(diveTravel.getAreaName())) {
+				whereHql += " and t.areaName like :areaName";
+				params.put("areaName", "%%" + diveTravel.getAreaName() + "%%");
+			}
+			if (!F.empty(diveTravel.getSearchValue())) {
+				whereHql += " and (t.name like :searchValue or t.nameEn like :searchValue or t.countryName like :searchValue or t.areaName like :searchValue or t.countryNameEn like :searchValue or t.areaNameEn like :searchValue)";
+				params.put("searchValue", "%%" + diveTravel.getSearchValue() + "%%");
 			}
 		}	
 		return whereHql;
@@ -185,6 +184,16 @@ public class DiveTravelServiceImpl extends BaseServiceImpl<DiveTravel> implement
 	@SuppressWarnings("rawtypes")
 	public List<Map> findHomeList() {
 		String sql = "select t.id, t.name, t.icon from dive_travel t join tbasedata b on b.name = t.id and b.basetype_code = '" + TRAVEL_HOME_TAG + "' order by b.seq asc";
+		List<Map> l = diveTravelDao.findBySql2Map(sql);
+		return l == null ? new ArrayList<Map>() : l;
+	}
+
+	/**
+	 * 获取所有的国家/地区列表
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> getAllArea() {
+		String sql = "select t.area_name areaName, t.area_name_en areaNameEn, t.country_name countryName, t.country_name_en countryNameEn from dive_travel t group by t.area_name, t.country_name";
 		List<Map> l = diveTravelDao.findBySql2Map(sql);
 		return l == null ? new ArrayList<Map>() : l;
 	}

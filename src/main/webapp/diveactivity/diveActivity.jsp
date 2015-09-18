@@ -2,6 +2,7 @@
 <%@ page import="jb.model.TdiveActivity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="jb" uri="http://www.jb.cn/jbtag"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +51,10 @@
 				}, {
 				field : 'name',
 				title : '<%=TdiveActivity.ALIAS_NAME%>',
+				width : 50		
+				}, {
+				field : 'roomTypeZh',
+				title : '<%=TdiveActivity.ALIAS_ROOM_TYPE%>',
 				width : 50		
 				}, {
 					field : 'startDate',
@@ -213,25 +218,19 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div data-options="region:'north',title:'查询条件',border:false" style="height: 160px; overflow: hidden;">
+		<div data-options="region:'north',title:'查询条件',border:false" style="height: 80px; overflow: hidden;">
 			<form id="searchForm">
 				<table class="table table-hover table-condensed" style="display: none;">
-						<tr>	
-							<th><%=TdiveActivity.ALIAS_NAME%></th>	
-							<td>
-									<input type="text" name="name" maxlength="128" class="span2"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_START_DATE%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_START_DATE%>'})" id="startDateBegin" name="startDateBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_START_DATE%>'})" id="startDateEnd" name="startDateEnd"/>
-							</td>
-							<th><%=TdiveActivity.ALIAS_END_DATE%></th>	
-							<td>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})" id="endDateBegin" name="endDateBegin"/>
-								<input type="text" class="span2" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})" id="endDateEnd" name="endDateEnd"/>
-							</td>
-						</tr>	
+					<tr>	
+						<th><%=TdiveActivity.ALIAS_NAME%></th>	
+						<td>
+							<input type="text" name="name" maxlength="128" class="span2"/>
+						</td>
+						<th><%=TdiveActivity.ALIAS_ROOM_TYPE%></th>	
+						<td>
+							<jb:select dataType="RT" name="roomType"></jb:select>	
+						</td>
+					</tr>	
 				</table>
 			</form>
 		</div>

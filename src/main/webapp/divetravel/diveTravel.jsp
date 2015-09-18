@@ -57,16 +57,20 @@
 				title : '<%=TdiveTravel.ALIAS_NAME%>',
 				width : 50		
 				}, {
+				field : 'nameEn',
+				title : '<%=TdiveTravel.ALIAS_NAME_EN%>',
+				width : 50		
+				}, {
 				field : 'price',
 				title : '<%=TdiveTravel.ALIAS_PRICE%>',
 				width : 50		
 				}, {
-				field : 'areaZh',
-				title : '<%=TdiveTravel.ALIAS_AREA%>',
+				field : 'countryName',
+				title : '<%=TdiveTravel.ALIAS_COUNTRY_NAME%>',
 				width : 50		
 				}, {
-				field : 'featureZh',
-				title : '<%=TdiveTravel.ALIAS_FEATURE%>',
+				field : 'areaName',
+				title : '<%=TdiveTravel.ALIAS_AREA_NAME%>',
 				width : 50		
 				}, {
 				field : 'statusZh',
@@ -209,7 +213,7 @@
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
 		<div data-options="region:'north',title:'查询条件',border:false"
-			style="height: 160px; overflow: hidden;">
+			style="height: 120px; overflow: hidden;">
 			<form id="searchForm">
 				<table class="table table-hover table-condensed"
 					style="display: none;">
@@ -217,27 +221,27 @@
 						<th><%=TdiveTravel.ALIAS_NAME%></th>
 						<td><input type="text" name="name" maxlength="128"
 							class="span2" /></td>
-						<th><%=TdiveTravel.ALIAS_AREA%></th>
+						<th><%=TdiveTravel.ALIAS_NAME_EN%></th>
 						<td>
-							<jb:select dataType="AR" name="area"></jb:select>
+							<input type="text" name="nameEn" maxlength="128" class="span2" />
 						</td>
-						<th><%=TdiveTravel.ALIAS_FEATURE%></th>
+						<!-- <th><%=TdiveTravel.ALIAS_FEATURE%></th>
 						<td>
 							<jb:select dataType="TT" name="feature"></jb:select>
-						</td>
-					</tr>
-					<tr>
+						</td> -->
 						<th><%=TdiveTravel.ALIAS_STATUS%></th>
 						<td>
 							<jb:select dataType="ST" name="status"></jb:select>	
 						</td>
-						<th><%=TdiveTravel.ALIAS_ADDTIME%></th>
-						<td><input type="text" class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveTravel.FORMAT_ADDTIME%>'})"
-							id="addtimeBegin" name="addtimeBegin" /> <input type="text"
-							class="span2"
-							onclick="WdatePicker({dateFmt:'<%=TdiveTravel.FORMAT_ADDTIME%>'})"
-							id="addtimeEnd" name="addtimeEnd" /></td>
+					</tr>
+					<tr>
+						<th><%=TdiveTravel.ALIAS_COUNTRY_NAME%></th>
+						<td><input type="text" name="countryName" maxlength="128"
+							class="span2" /></td>
+						<th><%=TdiveTravel.ALIAS_AREA_NAME%></th>
+						<td colspan="3">
+							<input type="text" name="areaName" maxlength="128" class="span2" />
+						</td>
 					</tr>
 				</table>
 			</form>

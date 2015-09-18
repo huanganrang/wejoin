@@ -28,12 +28,18 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	public static final String ALIAS_START_DATE = "开始时间";
 	public static final String ALIAS_END_DATE = "结束时间";
 	public static final String ALIAS_START_ADDR = "始发地";
-	public static final String ALIAS_ADDR_ID = "潜点ID";
 	public static final String ALIAS_END_ADDR = "目的地";
 	public static final String ALIAS_DESCRIPTION = "描述";
 	public static final String ALIAS_STATUS = "活动状态";
 	public static final String ALIAS_STAMP = "印章";
 	public static final String ALIAS_ADDTIME = "addtime";
+	public static final String ALIAS_BUSINESS_TYPE = "业务类型";
+	public static final String ALIAS_BUSINESS_ID = "业务ID";
+	public static final String ALIAS_ROOM_TYPE = "房型";
+	public static final String ALIAS_DIVER_PRICE = "潜水员/位";
+	public static final String ALIAS_NON_DRIVE_PRICE = "非潜水员";
+	public static final String ALIAS_SINGLE_ROOM_PRICE = "单人房差/位";
+	public static final String ALIAS_PEER_NAME = "同行";
 	
 	//date formats
 	public static final String FORMAT_START_DATE = jb.util.Constants.DATE_FORMAT_YMD;
@@ -53,8 +59,6 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	private java.util.Date endDate;
 	//@Length(max=128)
 	private java.lang.String startAddr;
-	//@Length(max=36)
-	private java.lang.String addrId;
 	//@Length(max=128)
 	private java.lang.String endAddr;
 	//@Length(max=2147483647)
@@ -67,6 +71,20 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	private java.util.Date addtime;
 	//@Length(max=36)
 	private java.lang.String addUserId;
+	//@Length(max=4)
+	private java.lang.String businessType;
+	//@Length(max=36)
+	private java.lang.String businessId;
+	//@Length(max=4)
+	private java.lang.String roomType;
+	//
+	private java.lang.Float diverPrice;
+	//
+	private java.lang.Float nonDrivePrice;
+	//
+	private java.lang.Float singleRoomPrice;
+	//@Length(max=128)
+	private java.lang.String peerName;
 	//columns END
 
 
@@ -125,15 +143,6 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 		this.startAddr = startAddr;
 	}
 	
-	@Column(name = "addr_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
-	public java.lang.String getAddrId() {
-		return this.addrId;
-	}
-	
-	public void setAddrId(java.lang.String addrId) {
-		this.addrId = addrId;
-	}
-	
 	@Column(name = "end_addr", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
 	public java.lang.String getEndAddr() {
 		return this.endAddr;
@@ -186,6 +195,69 @@ public class TdiveActivity implements java.io.Serializable,IEntity{
 	}
 	public void setAddUserId(java.lang.String addUserId) {
 		this.addUserId = addUserId;
+	}
+	
+	@Column(name = "business_type", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getBusinessType() {
+		return this.businessType;
+	}
+	
+	public void setBusinessType(java.lang.String businessType) {
+		this.businessType = businessType;
+	}
+	
+	@Column(name = "business_id", unique = false, nullable = true, insertable = true, updatable = true, length = 36)
+	public java.lang.String getBusinessId() {
+		return this.businessId;
+	}
+	
+	public void setBusinessId(java.lang.String businessId) {
+		this.businessId = businessId;
+	}
+	
+	@Column(name = "room_type", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
+	public java.lang.String getRoomType() {
+		return this.roomType;
+	}
+	
+	public void setRoomType(java.lang.String roomType) {
+		this.roomType = roomType;
+	}
+	
+	@Column(name = "diver_price", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
+	public java.lang.Float getDiverPrice() {
+		return this.diverPrice;
+	}
+	
+	public void setDiverPrice(java.lang.Float diverPrice) {
+		this.diverPrice = diverPrice;
+	}
+	
+	@Column(name = "non_drive_price", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
+	public java.lang.Float getNonDrivePrice() {
+		return this.nonDrivePrice;
+	}
+	
+	public void setNonDrivePrice(java.lang.Float nonDrivePrice) {
+		this.nonDrivePrice = nonDrivePrice;
+	}
+	
+	@Column(name = "single_room_price", unique = false, nullable = true, insertable = true, updatable = true, length = 12)
+	public java.lang.Float getSingleRoomPrice() {
+		return this.singleRoomPrice;
+	}
+	
+	public void setSingleRoomPrice(java.lang.Float singleRoomPrice) {
+		this.singleRoomPrice = singleRoomPrice;
+	}
+	
+	@Column(name = "peer_name", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getPeerName() {
+		return this.peerName;
+	}
+	
+	public void setPeerName(java.lang.String peerName) {
+		this.peerName = peerName;
 	}
 	
 	/*

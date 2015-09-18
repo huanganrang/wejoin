@@ -3,6 +3,8 @@ package jb.pageModel;
 import java.util.Date;
 import java.util.List;
 
+import jb.listener.Application;
+
 public class DiveActivity implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -12,14 +14,20 @@ public class DiveActivity implements java.io.Serializable {
 	private Date startDate;			
 	private Date endDate;			
 	private java.lang.String startAddr;	
-	private java.lang.String addrId;	
 	private java.lang.String endAddr;	
 	private java.lang.String description;	
 	private java.lang.String status;	
 	private java.lang.String stamp;	
 	private Date addtime;		
 	private java.lang.String addUserId;
-	
+	private java.lang.String businessType;	
+	private java.lang.String businessId;	
+	private java.lang.String roomType;	
+	private java.lang.Float diverPrice;	
+	private java.lang.Float nonDrivePrice;	
+	private java.lang.Float singleRoomPrice;	
+	private java.lang.String peerName;
+
 	private int commentNum; //评论数量
 	private int collectNum; //收藏数量
 	private int applyNum;  //报名人数
@@ -34,7 +42,15 @@ public class DiveActivity implements java.io.Serializable {
 	//评论
 	private List<DiveActivityComment> diveActivityCommentList;
 
-	private DiveAddress diveAddress;
+	private Object business;
+	
+	public String getRoomTypeZh() {
+		return Application.getString(this.roomType);
+	}
+	
+	public String getBusinessTypeZh() {
+		return Application.getString(this.businessType);
+	}
 
 	public void setId(java.lang.String value) {
 		this.id = value;
@@ -72,13 +88,6 @@ public class DiveActivity implements java.io.Serializable {
 	
 	public java.lang.String getStartAddr() {
 		return this.startAddr;
-	}
-	public void setAddrId(java.lang.String addrId) {
-		this.addrId = addrId;
-	}
-	
-	public java.lang.String getAddrId() {
-		return this.addrId;
 	}
 	public void setEndAddr(java.lang.String endAddr) {
 		this.endAddr = endAddr;
@@ -133,6 +142,63 @@ public class DiveActivity implements java.io.Serializable {
 	}
 	public void setAddUserId(java.lang.String addUserId) {
 		this.addUserId = addUserId;
+	}
+	
+
+	public java.lang.String getBusinessType() {
+		return businessType;
+	}
+
+	public void setBusinessType(java.lang.String businessType) {
+		this.businessType = businessType;
+	}
+
+	public java.lang.String getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(java.lang.String businessId) {
+		this.businessId = businessId;
+	}
+
+	public java.lang.String getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(java.lang.String roomType) {
+		this.roomType = roomType;
+	}
+
+	public java.lang.Float getDiverPrice() {
+		return diverPrice;
+	}
+
+	public void setDiverPrice(java.lang.Float diverPrice) {
+		this.diverPrice = diverPrice;
+	}
+
+	public java.lang.Float getNonDrivePrice() {
+		return nonDrivePrice;
+	}
+
+	public void setNonDrivePrice(java.lang.Float nonDrivePrice) {
+		this.nonDrivePrice = nonDrivePrice;
+	}
+
+	public java.lang.Float getSingleRoomPrice() {
+		return singleRoomPrice;
+	}
+
+	public void setSingleRoomPrice(java.lang.Float singleRoomPrice) {
+		this.singleRoomPrice = singleRoomPrice;
+	}
+
+	public java.lang.String getPeerName() {
+		return peerName;
+	}
+
+	public void setPeerName(java.lang.String peerName) {
+		this.peerName = peerName;
 	}
 
 	public int getCommentNum() {
@@ -199,14 +265,6 @@ public class DiveActivity implements java.io.Serializable {
 	public void setPraise(boolean isPraise) {
 		this.isPraise = isPraise;
 	}
-
-	public DiveAddress getDiveAddress() {
-		return diveAddress;
-	}
-
-	public void setDiveAddress(DiveAddress diveAddress) {
-		this.diveAddress = diveAddress;
-	}
 	
 	public boolean isApply() {
 		return isApply;
@@ -215,4 +273,14 @@ public class DiveActivity implements java.io.Serializable {
 	public void setApply(boolean isApply) {
 		this.isApply = isApply;
 	}
+
+	public Object getBusiness() {
+		return business;
+	}
+
+	public void setBusiness(Object business) {
+		this.business = business;
+	}
+	
+	
 }

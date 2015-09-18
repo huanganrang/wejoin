@@ -13,7 +13,8 @@ import jb.pageModel.SessionInfo;
 import jb.service.DiveActivityApplyServiceI;
 import jb.service.DiveActivityCommentServiceI;
 import jb.service.DiveActivityServiceI;
-import jb.service.DiveAddressServiceI;
+import jb.service.DiveStoreServiceI;
+import jb.service.DiveTravelServiceI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +45,9 @@ public class ApiActivityController extends BaseController {
 	private DiveActivityApplyServiceI diveActivityApplyService;
 	
 	@Autowired
-	private DiveAddressServiceI diveAddressService;
+	private DiveTravelServiceI diveTravelService;
+	@Autowired
+	private DiveStoreServiceI diveStoreService;
 	
 	/**
 	 * 活动列表
@@ -80,7 +83,12 @@ public class ApiActivityController extends BaseController {
 			SessionInfo s = tokenManage.getSessionInfo(request);
 			//详情接口需要完善
 			DiveActivity diveActivity = diveActivityService.getDetail(id, s.getId());
-			diveActivity.setDiveAddress(diveAddressService.getDetail(diveActivity.getAddrId(), s.getId()));
+			if("BT01".equals(diveActivity.getBusinessType())) {
+				diveActivity.setBusiness(diveTravelService.getDetail(diveActivity.getBusinessId(), s.getId()));
+			} else {
+				diveActivity.setBusiness(diveStoreService.getDetail(diveActivity.getBusinessId(), s.getId()));
+			}
+//			diveActivity.setDiveAddress(diveAddressService.getDetail(diveActivity.getAddrId(), s.getId()));
 			j.setObj(diveActivity);
 			j.success();
 		}catch(Exception e){

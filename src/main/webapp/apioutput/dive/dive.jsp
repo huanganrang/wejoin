@@ -11,7 +11,7 @@
 		<div id="index_tabs" class="easyui-tabs" data-options="fit:true">
 			<div title="基础数据" data-options="href:'api_base.jsp'"
 				style="padding: 1px"></div>
-			<div title="潜水首页" data-options="href:'api_homePage.jsp'"
+			<div title="潜水首页(废弃)" data-options="href:'api_homePage.jsp'"
 				style="padding: 1px"></div>
 			<div title="个人中心" data-options="href:'api_people_center.jsp'"
 				style="padding: 1px"></div>
@@ -23,7 +23,7 @@
 				style="padding: 1px"></div>		
 			<div title="活动" data-options="href:'api_activity.jsp'"
 				style="padding: 1px"></div>
-			<div title="潜水旅游" data-options="href:'api_travel.jsp'"
+			<div title="船宿" data-options="href:'api_travel.jsp'"
 				style="padding: 1px"></div>
 			<div title="学习" data-options="href:'api_course.jsp'"
 				style="padding: 1px"></div>

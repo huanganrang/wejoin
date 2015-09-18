@@ -17,6 +17,13 @@
 				if (!isValid) {
 					parent.$.messager.progress('close');
 				}
+				var businessId;
+				if($("input:radio[name=businessType]:checked").val() == 'BT01') {
+					businessId = $('[name=travelId]').val();
+				} else {
+					businessId = $('[name=storeId]').val();
+				}
+				$("#businessId").val(businessId);
 				return isValid;
 			},
 			success : function(result) {
@@ -30,6 +37,18 @@
 				}
 			}
 		});
+		
+		$("input:radio[name=businessType]").bind('click', function(){
+			if($(this).val() == 'BT01') {
+				$("#travel").show();
+				$("#store").hide();
+			} else {
+				$("#travel").hide();
+				$("#store").show();
+			}
+			
+		});
+		
 	});
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -38,13 +57,52 @@
 				<input type="hidden" name="id"/>
 			<table class="table table-hover table-condensed">
 				<tr>	
-					<th width="8%"><%=TdiveActivity.ALIAS_NAME%></th>	
-					<td width="42%">
+					<th width="10%"><%=TdiveActivity.ALIAS_NAME%></th>	
+					<td width="40%">
 					<input class="span2" name="name" type="text" class="span2"/>
 					</td>	
-					<th width="8%"><%=TdiveActivity.ALIAS_ADDR_ID%></th>	
-					<td width="42%">
-						<jb:selectSql dataType="SL002" name="addrId"></jb:selectSql>
+					<th width="10%"><%=TdiveActivity.ALIAS_ROOM_TYPE%></th>	
+					<td width="40%">
+						<jb:select dataType="RT" name="roomType"></jb:select>	
+					</td>													
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_BUSINESS_TYPE%></th>	
+					<td>
+						<input type="radio" name="businessType" value="BT01" checked="checked"/> 船宿
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="businessType" value="BT05" /> 度假村
+					</td>	
+					<th>选择业务</th>	
+					<td>
+						<div id="travel">
+							<jb:selectSql dataType="SL003" name="travelId"></jb:selectSql>
+						</div>
+						<div id="store" style="display: none;">
+							<jb:selectSql dataType="SL004" name="storeId"></jb:selectSql>
+						</div>
+						<input type="hidden" name="businessId" id="businessId"/>
+					</td>	
+																	
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_DIVER_PRICE%></th>	
+					<td>
+						<input class="span2" name="diverPrice" type="text"/>
+					</td>	
+					<th><%=TdiveActivity.ALIAS_NON_DRIVE_PRICE%></th>	
+					<td>
+						<input class="span2" name="nonDrivePrice" type="text"/>
+					</td>													
+				</tr>	
+				<tr>	
+					<th><%=TdiveActivity.ALIAS_SINGLE_ROOM_PRICE%></th>	
+					<td>
+						<input class="span2" name="singleRoomPrice" type="text"/>
+					</td>	
+					<th><%=TdiveActivity.ALIAS_PEER_NAME%></th>	
+					<td>
+						<input class="span2" name="peerName" type="text"/>
 					</td>													
 				</tr>	
 				<tr>	
@@ -56,7 +114,6 @@
 					<td>
 					<input class="span2" name="endDateStr" type="text" onclick="WdatePicker({dateFmt:'<%=TdiveActivity.FORMAT_END_DATE%>'})"  maxlength="0" class="" />
 					</td>							
-											
 				</tr>	
 				<tr>	
 					<th><%=TdiveActivity.ALIAS_START_ADDR%></th>	

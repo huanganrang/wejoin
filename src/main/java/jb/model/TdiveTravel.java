@@ -24,15 +24,19 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 	//alias
 	public static final String TABLE_ALIAS = "DiveTravel";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_NAME = "旅游名称";
+	public static final String ALIAS_NAME = "船宿名称";
 	public static final String ALIAS_SUMARY = "简介";
 	public static final String ALIAS_PRICE = "价格";
 	public static final String ALIAS_ICON = "图片";
 	public static final String ALIAS_DESCRIPTION = "文案";
-	public static final String ALIAS_AREA = "地区";
 	public static final String ALIAS_FEATURE = "特点";
 	public static final String ALIAS_STATUS = "状态";
-	public static final String ALIAS_ADDTIME = "报名时间";
+	public static final String ALIAS_ADDTIME = "创建时间";
+	public static final String ALIAS_NAME_EN = "英文名";
+	public static final String ALIAS_COUNTRY_NAME = "国家";
+	public static final String ALIAS_COUNTRY_NAME_EN = "国家英文名";
+	public static final String ALIAS_AREA_NAME = "地区";
+	public static final String ALIAS_AREA_NAME_EN = "地区英文名";
 	
 	//date formats
 	public static final String FORMAT_ADDTIME = jb.util.Constants.DATE_FORMAT_FOR_ENTITY;
@@ -53,8 +57,6 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 	//@Length(max=2147483647)
 	private java.lang.String description;
 	//@Length(max=4)
-	private java.lang.String area;
-	//@Length(max=4)
 	private java.lang.String feature;
 	//@Length(max=4)
 	private java.lang.String status;
@@ -62,6 +64,16 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 	private java.util.Date addtime;
 	//@Length(max=36)
 	private java.lang.String addUserId;
+	//@Length(max=128)
+	private java.lang.String nameEn;
+	//@Length(max=128)
+	private java.lang.String countryName;
+	//@Length(max=128)
+	private java.lang.String countryNameEn;
+	//@Length(max=128)
+	private java.lang.String areaName;
+	//@Length(max=128)
+	private java.lang.String areaNameEn;
 	//columns END
 
 
@@ -127,15 +139,6 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 		this.description = description;
 	}
 	
-	@Column(name = "area", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
-	public java.lang.String getArea() {
-		return this.area;
-	}
-	
-	public void setArea(java.lang.String area) {
-		this.area = area;
-	}
-	
 	@Column(name = "feature", unique = false, nullable = true, insertable = true, updatable = true, length = 4)
 	public java.lang.String getFeature() {
 		return this.feature;
@@ -170,6 +173,51 @@ public class TdiveTravel implements java.io.Serializable,IEntity{
 	}
 	public void setAddUserId(java.lang.String addUserId) {
 		this.addUserId = addUserId;
+	}
+	
+	@Column(name = "name_en", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getNameEn() {
+		return this.nameEn;
+	}
+	
+	public void setNameEn(java.lang.String nameEn) {
+		this.nameEn = nameEn;
+	}
+	
+	@Column(name = "country_name", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getCountryName() {
+		return this.countryName;
+	}
+	
+	public void setCountryName(java.lang.String countryName) {
+		this.countryName = countryName;
+	}
+	
+	@Column(name = "country_name_en", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getCountryNameEn() {
+		return this.countryNameEn;
+	}
+	
+	public void setCountryNameEn(java.lang.String countryNameEn) {
+		this.countryNameEn = countryNameEn;
+	}
+	
+	@Column(name = "area_name", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getAreaName() {
+		return this.areaName;
+	}
+	
+	public void setAreaName(java.lang.String areaName) {
+		this.areaName = areaName;
+	}
+	
+	@Column(name = "area_name_en", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
+	public java.lang.String getAreaNameEn() {
+		return this.areaNameEn;
+	}
+	
+	public void setAreaNameEn(java.lang.String areaNameEn) {
+		this.areaNameEn = areaNameEn;
 	}
 	/*
 	public String toString() {

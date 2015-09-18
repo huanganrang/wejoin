@@ -10,9 +10,9 @@
 
 	<div id="index_travel_tabs" class="easyui-tabs" data-options="fit:true">
 		
-		<div title="地区" data-options="href:'api_travel_area.jsp'"
+		<div title="国家/地区列表" data-options="href:'api_travel_area.jsp'"
 			style="padding: 1px"></div>
-		<div title="特点" data-options="href:'api_travel_feature.jsp'"
+		<div title="船宿列表" data-options="href:'api_travel_list.jsp'"
 			style="padding: 1px"></div>
 		<div title="搜索" data-options="href:'api_travel_search.jsp'"
 			style="padding: 1px"></div>

@@ -101,7 +101,22 @@ String url = request.getContextPath()+"/api/apiTravelController/getTravelDetail"
             </td>
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
-                潜水名称
+                船宿名称
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                nameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                船宿英文名
             </td>
         </tr>
         <tr height="19" style="height:19px">
@@ -147,36 +162,6 @@ String url = request.getContextPath()+"/api/apiTravelController/getTravelDetail"
         </tr>
         <tr height="19" style="height:19px">
             <td height="19" style="border-top-style: none;">
-                area
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                地区
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
-                feature
-            </td>
-            <td style="border-top:none;border-left:none">
-                varchar
-            </td>
-            <td style="border-top:none;border-left:none" x:num="">
-                4
-            </td>
-            <td style="border-top:none;border-left:none"></td>
-            <td style="border-top:none;border-left:none">
-                特点
-            </td>
-        </tr>
-        <tr height="19" style="height:19px">
-            <td height="19" style="border-top-style: none;">
                 status
             </td>
             <td style="border-top:none;border-left:none">
@@ -202,6 +187,67 @@ String url = request.getContextPath()+"/api/apiTravelController/getTravelDetail"
             <td style="border-top:none;border-left:none"></td>
             <td style="border-top:none;border-left:none">
                 价格
+            </td>
+        </tr>
+        <tr height="19" style="height:19px" class="firstRow">
+            <td height="19" width="192" style="">
+                countryName
+            </td>
+            <td width="117" style="border-left-style: none;">
+                varchar
+            </td>
+            <td width="72" style="border-left-style: none;" x:num="">
+                128
+            </td>
+            <td width="72" style="border-left-style: none;">
+            </td>
+            <td width="148" style="border-left-style: none;">
+                国家中文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                countryNameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                国家英文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                areaName
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none" x:num="">
+                128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                地区中文名
+            </td>
+        </tr>
+        <tr height="19" style="height:19px">
+            <td height="19" style="border-top-style: none;">
+                areaNameEn
+            </td>
+            <td style="border-top:none;border-left:none">
+                varchar
+            </td>
+            <td style="border-top:none;border-left:none">
+            	128
+            </td>
+            <td style="border-top:none;border-left:none"></td>
+            <td style="border-top:none;border-left:none">
+                地区英文名
             </td>
         </tr>
          <tr height="19" style="height:19px">
