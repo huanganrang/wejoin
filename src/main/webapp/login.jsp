@@ -46,10 +46,10 @@
 		                   </div>
 		                   <ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt1" onblur="if(this.value==''){this.value='请输入用户名';this.style.color='#ccc'}" onfocus="if(this.value=='请输入用户名'){this.value='';this.style.color='#333'}" value="请输入用户名" id="textfield" name="telphone" style="color:#ccc;"><b></b></li>
-		                       <li><input type="password" class="pt1" onblur="if(this.value==''){this.value='请输入密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入密码'){this.value='';this.style.color='#333'}" value="请输入密码" id="textfield" name="telphone" style="color:#ccc;"><p></p></li>
-		                       <strong><a href="#" onclick="showTjcgBox()">找回密码</a></strong>
-		                       <input name="" type="submit" value="登  录" class="tzam"/>
+		                   	<li><input type="text" class="pt1" onblur="if(this.value==''){this.value='请输入用户名';this.style.color='#ccc'}" onfocus="if(this.value=='请输入用户名'){this.value='';this.style.color='#333'}" value="请输入用户名" id="username" style="color:#ccc;"><b></b></li>
+		                       <li><input type="password" class="pt1" onblur="if(this.value==''){this.value='请输入密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入密码'){this.value='';this.style.color='#333'}" value="请输入密码" id="password" style="color:#ccc;"><p></p></li>
+		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
+		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
 		                       </form>
 		                   </ul>
 		               </div>
@@ -93,7 +93,6 @@
 		</div>
 		<!--找回密码 结束-->
 
-
 		<!--注册 开始-->
 		<div class="windows syldBox" id="syldBox" style="display:none;" >
 			  <div class="windowsBg"></div>
@@ -111,11 +110,11 @@
 		               <div class="tjcg_list">
 		               	<ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
-		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield" name="telphone" style="color:#ccc;"></li>
-		                       <li><span>注册帐号：</span><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入用户名';this.style.color='#ccc'}" onfocus="if(this.value=='请输入用户名'){this.value='';this.style.color='#333'}" value="请输入用户名" id="textfield" name="telphone" style="color:#ccc;"></li>
-		                       <li style="margin-bottom:40px; "><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入密码'){this.value='';this.style.color='#333'}" value="请输入密码" id="textfield" name="telphone" style="color:#ccc;"></li>
-		                       <input name="" type="submit" value="注  册" class="tzam"/>
+		                   	<li><input type="text" class="pt2" placeholder="请输入手机号获取验证码" id="telphone" style="color:#333;"><ol><a href="javascript:void(0);" class="validCode_btn">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" placeholder="请输入验证码" id="validCode" style="color:#333;"></li>
+		                       <li><span>注册帐号：</span><input type="text" class="pt2" placeholder="请输入用户名" id="username" style="color:#333;"></li>
+		                       <li style="margin-bottom:40px; "><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" placeholder="请输入密码" id="password" style="color:#333;"></li>
+		                       <input name="" type="button" value="注  册" class="tzam" id="register_btn"/>
 		                       </form>
 		                   </ul>
 		               </div>

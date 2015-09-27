@@ -31,6 +31,14 @@ public class HttpUtil {
         }
     };
     
+    public static String doGet(String url) {
+    	return httpRequest(url, "GET", null);
+    }
+    
+    public static String doPost(String url, String param) {
+    	return httpRequest(url, "POST", param);
+    }
+    
 	/**
 	 * 发起http请求获取返回结果
 	 * 

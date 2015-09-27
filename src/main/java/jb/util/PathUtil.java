@@ -23,4 +23,8 @@ public abstract class PathUtil {
 		return getBathPath()+"/"+Constants.UPLOADFILE_SQUARE+"/"+dbPath;
 	}
 	
+	public static String getApiUrl(String type) {
+		return Application.getString("SV100") + "/" + Application.getString(type);
+	}
+	
 }

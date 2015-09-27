@@ -40,7 +40,46 @@ $(function(){
 		$(this).parent().attr("tar",ci)	;											   
 	});
 	
+	$("#login_btn").bind('click', login);
+	$(".validCode_btn").bind('click', getValidCode);
+	$("#register_btn").bind('click', register);
 });
+
+
+function register() {
+	var mobile = $(".syldBox #telphone").val();
+	var valiCode = $(".syldBox #validCode").val();
+    var password = $(".syldBox #password").val();
+    var username = $(".syldBox #username").val();
+    $.ajax({
+        type: "POST",
+        url: "api/apiCommon/doPost",
+        data: {"type":"UL003", "param":JSON.stringify({"mobile":mobile,"nickName":username,"password":password,"validCode":valiCode})},
+        dataType:"json",
+        success:function (data) {
+        	alert(data.obj);
+        	var json = JSON.parse(data.obj);
+        }
+    });
+}
+
+function login() {
+}
+
+function getValidCode() {
+	var mobile = $(".syldBox #telphone").val();
+    $.ajax({
+        type: "POST",
+        url: "api/apiCommon/doPost",
+        data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":"register"})},
+        dataType:"json",
+        success:function (data) {
+        	alert(data.obj);
+        	var json = JSON.parse(data.obj);
+        }
+        
+    });
+}
 
 function showSyplqBox(){
 	$("#syplqBox").show();
