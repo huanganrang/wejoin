@@ -41,16 +41,16 @@ $(function(){
 	});
 	
 	$("#login_btn").bind('click', login);
-	$(".validCode_btn").bind('click', getValidCode);
+	$("#syldBox .validCode_btn").bind('click', "register", getValidCode);
 	$("#register_btn").bind('click', register);
 });
 
 
 function register() {
-	var mobile = $(".syldBox #telphone").val();
-	var valiCode = $(".syldBox #validCode").val();
-    var password = $(".syldBox #password").val();
-    var username = $(".syldBox #username").val();
+	var mobile = $("#syldBox #telphone").val();
+	var valiCode = $("#syldBox #validCode").val();
+    var password = $("#syldBox #password").val();
+    var username = $("#syldBox #username").val();
     $.ajax({
         type: "POST",
         url: "api/apiCommon/doPost",
@@ -64,14 +64,26 @@ function register() {
 }
 
 function login() {
+    var password = $("#djcgBox #password").val();
+    var username = $("#djcgBox #username").val();
+    $.ajax({
+        type: "GET",
+        url: "api/apiCommon/doGet",
+        data: {"type":"UL001", "mobile":username, "password":password, "validCode":""},
+        dataType:"json",
+        success:function (data) {
+        	alert(data.obj);
+        	var json = JSON.parse(data.obj);
+        }
+    });
 }
 
-function getValidCode() {
+function getValidCode(event) {
 	var mobile = $(".syldBox #telphone").val();
     $.ajax({
         type: "POST",
         url: "api/apiCommon/doPost",
-        data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":"register"})},
+        data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":event.data})},
         dataType:"json",
         success:function (data) {
         	alert(data.obj);

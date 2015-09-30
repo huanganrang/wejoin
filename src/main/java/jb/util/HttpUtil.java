@@ -154,7 +154,8 @@ public class HttpUtil {
 	}
 	
 	public static void main(String[] args) {
-		
-		System.out.println(httpRequest("http://139.196.34.76/ValidCode/ValidCode", "POST", "{\"mobile\": \"18701959799\", \"channel\": \"register\"}"));
+		System.out.println(doGet("http://139.196.34.76/Category/Category"));
+//		System.out.println(doGet("http://139.196.34.76/User/User?mobile=18701959799&password=123456&validCode="));
+//		System.out.println(httpRequest("http://139.196.34.76/ValidCode/ValidCode", "POST", "{\"mobile\": \"18701959799\", \"channel\": \"register\"}"));
 	}
 }
