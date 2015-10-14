@@ -54,8 +54,9 @@ function register() {
         	var json = JSON.parse(data.obj);
         	if(json.serverStatus == 0) {
         		alert("注册成功");
+        		showDjcgBox();	
         	} else {
-        		// 登录失败
+        		// 注册失败
         		alert(json.returnMessage);
         	}
         }

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 公共模块接口
  * 
@@ -49,7 +52,15 @@ public class ApiCommonController extends BaseController {
 				paramStr += "".equals(paramStr) ? "?" : "&";
 				paramStr += key + "=" + paramMap.get(key)[0];
 			}
-			j.setObj(HttpUtil.doGet(PathUtil.getApiUrl(type) + paramStr));
+			String result = HttpUtil.doGet(PathUtil.getApiUrl(type) + paramStr);
+			// 登录
+			if("UL001".equals(type)) {
+				JSONObject jsonObject = JSON.parseObject(result);
+				if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
+					request.getSession().setAttribute("token", jsonObject.getString("returnValue"));
+				}
+			}
+			j.setObj(result);
 			j.success();
 		}catch(Exception e){
 			j.fail();
