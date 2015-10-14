@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>微区首页</title>
+<script type="text/javascript">
+var base = '${pageContext.request.contextPath}/';
+</script>
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -73,6 +76,25 @@
         
       <div class="list_txt">
        	  <div id="con_one_1">
+       	  <script type="text/javascript">
+       		channelPage(1);
+		    function channelPage(pageNo){
+		    	$.ajax({
+		            type: "POST",
+		            url: base+"api/apiCommon/doGet",
+		            data:{"pageSize":16,"pageNo":pageNo,"type":"UL005"},
+		            dataType:"json",
+		            success:function (data) {
+		            	if(data.obj){
+		            		var result = $.parseJSON(data.obj);
+			            	var channels = result.returnObject;
+			            	//TODO  徐总等你来搞
+		            	}		            	
+		            }
+		           }
+		        );
+		    }
+		</script>
            	  <div class="list_main1">
            	    <ul>
                	  <li>
