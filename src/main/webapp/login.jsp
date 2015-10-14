@@ -9,23 +9,24 @@
 <link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div class="login_bj"></div>
 		<div class="login_zt">
 			<span></span>
-		    <a href="#" class="a1">下载APP</a>
-		    <a href="#" class="a2">下载客户端</a>
+		    <a href="javascript:void(0);" class="a1">下载APP</a>
+		    <a href="javascript:void(0);" class="a2">下载客户端</a>
 		    <div class="clear"></div>
-		    <ol><a href="#">进入微社区</a></ol>
+		    <ol><a href="${pageContext.request.contextPath}/wejoin/home.jsp">进入微社区</a></ol>
 		</div>
 
 		<div class="copyright">
 			<span>
-				<a href="javascript:void();" class="a_1">登录</a> | 
-				<a href="javascript:void();" onclick="showSyldBox()">注册</a> | 
-				<a href="javascript:void();">关于我们</a> | 
-				<a href="javascript:void();">联系我们</a>
+				<a href="javascript:void(0);" class="a_1">登录</a> | 
+				<a href="javascript:void(0);" onclick="showSyldBox()">注册</a> | 
+				<a href="javascript:void(0);">关于我们</a> | 
+				<a href="javascript:void(0);">联系我们</a>
 			</span>
 		    <ol>浙ICP备13025616-1号</ol>
 		</div>
@@ -112,7 +113,7 @@
 		                   	<form action="" method="get">
 		                   	<li><input type="text" class="pt2" placeholder="请输入手机号获取验证码" id="telphone" style="color:#333;"><ol><a href="javascript:void(0);" class="validCode_btn">点击获取</a></ol></li>
 		                       <li><input type="text" class="pt3" placeholder="请输入验证码" id="validCode" style="color:#333;"></li>
-		                       <li><span>注册帐号：</span><input type="text" class="pt2" placeholder="请输入用户名" id="username" style="color:#333;"></li>
+		                       <li><span>用户昵称：</span><input type="text" class="pt2" placeholder="请输入用户昵称" id="username" style="color:#333;"></li>
 		                       <li style="margin-bottom:40px; "><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" placeholder="请输入密码" id="password" style="color:#333;"></li>
 		                       <input name="" type="button" value="注  册" class="tzam" id="register_btn"/>
 		                       </form>

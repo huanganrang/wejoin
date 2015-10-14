@@ -1,89 +1,92 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>教室</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link href="css/jquery.style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-<script src="js/jquery-1.5.1.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<title>房间</title>
+<link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-var openTip = oOpenTip || "";
-var shutTip = oShutTip || "";
-if(targetObj.style.display!="none"){
-   if(shutAble) return;
-   targetObj.style.display="none";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = shutTip;
-   }
-} else {
-   targetObj.style.display="block";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = openTip;
-   }
-}
-}
+	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+	var openTip = oOpenTip || "";
+	var shutTip = oShutTip || "";
+	if(targetObj.style.display!="none"){
+	   if(shutAble) return;
+	   targetObj.style.display="none";
+	   if(openTip && shutTip){
+	    sourceObj.innerHTML = shutTip;
+	   }
+	} else {
+	   targetObj.style.display="block";
+	   if(openTip && shutTip){
+	    sourceObj.innerHTML = openTip;
+	   }
+	}
+	}
 
-$(function(){
-	$(document).click(function(e){
-		if(!$(e.target).hasClass("gift_div_ac")){
-			$(".gift_div").hide();
-		}
-		if(!$(e.target).hasClass("face_div_ac")){
-			$(".face_div").hide();
-		}	
-	})
-	$(".a_toggle").toggle(
-	  function () {
-		$('.img_x').attr('src','images/1.png');
-		$('.main_right').hide();
-		$(".main_center").css("width","85%");
-	  },
-	  function () {
-		$('.img_x').attr('src','images/2.png');
-		$('.main_right').show();
-		$(".main_center").css("width","59%");
-	  }
-	);
-	
-	$(".ltia_2").click(function(e){
-		$(".someone_div").hide();
-		$(".all_div").hide();
-		if($(this).find("div").attr("class")=="v_bc gift_div"){
-			
-			$(".face_div").hide();
-			if($(this).find(".v_bc").is(":hidden")){
-				$(this).find(".v_bc").show();
-			}else{
-				$(this).find(".v_bc").hide();
+	$(function(){
+		$(document).click(function(e){
+			if(!$(e.target).hasClass("gift_div_ac")){
+				$(".gift_div").hide();
 			}
-		}
-		if($(this).find("div").attr("class")=="v_bc face_div"){
-			$(".gift_div").hide();
-			if($(this).find(".v_bc").is(":hidden")){
-				$(this).find(".v_bc").show();
-			}else{
-				$(this).find(".v_bc").hide();
-			}
-		}
+			if(!$(e.target).hasClass("face_div_ac")){
+				$(".face_div").hide();
+			}	
+		})
+		$(".a_toggle").toggle(
+		  function () {
+			$('.img_x').attr('src','images/1.png');
+			$('.main_right').hide();
+			$(".main_center").css("width","85%");
+		  },
+		  function () {
+			$('.img_x').attr('src','images/2.png');
+			$('.main_right').show();
+			$(".main_center").css("width","59%");
+		  }
+		);
 		
-	})
-	$(".ltia_1").click(function(){
-		$(".face_div").hide();
-		$(".gift_div").hide();
-		if($(this).find("div").attr("class")=="v_hover all_div"){
+		$(".ltia_2").click(function(e){
 			$(".someone_div").hide();
-			$(".all_div").show();
-		}else{
-			$(".someone_div").show();
 			$(".all_div").hide();
-		}
+			if($(this).find("div").attr("class")=="v_bc gift_div"){
+				
+				$(".face_div").hide();
+				if($(this).find(".v_bc").is(":hidden")){
+					$(this).find(".v_bc").show();
+				}else{
+					$(this).find(".v_bc").hide();
+				}
+			}
+			if($(this).find("div").attr("class")=="v_bc face_div"){
+				$(".gift_div").hide();
+				if($(this).find(".v_bc").is(":hidden")){
+					$(this).find(".v_bc").show();
+				}else{
+					$(this).find(".v_bc").hide();
+				}
+			}
+			
+		})
+		$(".ltia_1").click(function(){
+			$(".face_div").hide();
+			$(".gift_div").hide();
+			if($(this).find("div").attr("class")=="v_hover all_div"){
+				$(".someone_div").hide();
+				$(".all_div").show();
+			}else{
+				$(".someone_div").show();
+				$(".all_div").hide();
+			}
+		})
 	})
-})
 </script>
 </head>
 

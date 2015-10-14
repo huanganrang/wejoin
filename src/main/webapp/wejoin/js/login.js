@@ -1,5 +1,6 @@
 var windowHeight=$(window).height();
- 
+var time = 59;
+
 $(function(){
 	
 	$(".close_btn").click(function(){
@@ -7,37 +8,6 @@ $(function(){
 	});
 	$(".a_1").click(function(){
 		showDjcgBox();							   
-	});
-	$(".ndztBox .a_2").click(function(){
-		showDjcgBox();							   
-	});
-	
-	$(".syld_from ul li dd.d_3 .s_1 a").mouseover(function(){												   
-		var s_i=$(this).index()+1;
-		var this_parent=$(this).parent();
-		this_parent.children("a").attr("class","");
-		for(var i=0;i<s_i;i++){
-			this_parent.children("a").eq(i).attr("class","click");
-		}
-		this_parent.parent().children(".s_2").html(s_i+"心");
-	});
-	$(".syld_from ul li dd.d_3 .s_1 a").mouseout(function(){
-		var pTar=$(this).parent().attr("tar");
-		var this_parent=$(this).parent();
-		this_parent.children("a").attr("class","");	
-		if(!pTar){
-			this_parent.parent().children(".s_2").html("");
-		}else{
-			this_parent.parent().children(".s_2").html(pTar+"心");
-			for(var i=0;i<pTar;i++){
-				this_parent.children("a").eq(i).attr("class","click")
-			}
-		}
-	});
-	
-	$(".syld_from ul li dd.d_3 .s_1 a").click(function(){
-		var ci=$(this).index()+1;
-		$(this).parent().attr("tar",ci)	;											   
 	});
 	
 	$("#login_btn").bind('click', login);
@@ -48,9 +18,32 @@ $(function(){
 
 function register() {
 	var mobile = $("#syldBox #telphone").val();
+	if(!checkMobile(mobile)) {
+		$("#syldBox #telphone").focus();
+		return;
+	}
 	var valiCode = $("#syldBox #validCode").val();
+	if(valiCode == '') {
+		$("#syldBox #validCode").focus();
+		return;
+	}
+	var username = $("#syldBox #username").val();
+	if(username == '') {
+		$("#syldBox #username").focus();
+		return;
+	}
     var password = $("#syldBox #password").val();
-    var username = $("#syldBox #username").val();
+    if(password == '') {
+    	$("#syldBox #password").focus();
+		return;
+	} else {
+		if(!checkpassword(password)) {
+			alert("密码由6-20位字母,数字组合");
+			$("#syldBox #password").focus();
+ 	 		return;
+		}
+	}
+    
     $.ajax({
         type: "POST",
         url: "api/apiCommon/doPost",
@@ -59,38 +52,97 @@ function register() {
         success:function (data) {
         	alert(data.obj);
         	var json = JSON.parse(data.obj);
+        	if(json.serverStatus == 0) {
+        		alert("注册成功");
+        	} else {
+        		// 登录失败
+        		alert(json.returnMessage);
+        	}
         }
     });
 }
 
 function login() {
+	var username = $("#djcgBox #username").val();
+	if(username == "") {
+		$("#djcgBox #username").focus();
+		return false;
+	}
     var password = $("#djcgBox #password").val();
-    var username = $("#djcgBox #username").val();
+    if(password == "") {
+    	$("#djcgBox #password").focus();
+		return false;
+	} 
     $.ajax({
         type: "GET",
         url: "api/apiCommon/doGet",
-        data: {"type":"UL001", "mobile":username, "password":password, "validCode":""},
+        data: {"type":"UL001", "mobile":username, "password":password},
         dataType:"json",
         success:function (data) {
-        	alert(data.obj);
+//        	alert(data.obj);
         	var json = JSON.parse(data.obj);
+        	if(json.serverStatus == 0) {
+        		window.location.href = 'wejoin/home.jsp';
+        	} else {
+        		// 登录失败
+        		alert(json.returnMessage);
+        	}
         }
     });
 }
 
+var interval;
 function getValidCode(event) {
-	var mobile = $(".syldBox #telphone").val();
+	var mobile = $.trim($(".syldBox #telphone").val());
+	if(!checkMobile(mobile)) {
+		return;
+	}
+	
+	$("#syldBox .validCode_btn").html("<div style='font-size:8pt;'>重新发送（<font id=\"time\" style='font-size:8pt;'>"+time+"</font>）</div>").unbind("click");
+	time--;
+	interval = setInterval(function(){
+		$("#time").html(time);
+		if(time == 0) {
+			clearInterval(interval);
+			$("#syldBox .validCode_btn").html("点击获取").bind('click', "register", getValidCode);
+			time = 59;
+		} else {
+			time -- ;
+		}
+  	}, 1000);
+	
     $.ajax({
         type: "POST",
         url: "api/apiCommon/doPost",
         data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":event.data})},
         dataType:"json",
         success:function (data) {
-        	alert(data.obj);
+//        	alert(data.obj);
         	var json = JSON.parse(data.obj);
+        	if(json.serverStatus == 0) {
+        		// 成功
+        	} else {
+        		alert("获取验证码失败");
+        		clearInterval(interval);
+    			$("#syldBox .validCode_btn").html("点击获取").bind('click', "register", getValidCode);
+    			time = 59;
+        	}
         }
         
     });
+}
+
+function checkMobile(mobile) {
+	if(mobile == "") {
+		alert("请输入手机号");
+		return false;
+	}
+	if(!checkphone(mobile)) {
+		alert("手机号格式不正确");
+		return false;
+	}
+
+	return true;
 }
 
 function showSyplqBox(){
@@ -104,13 +156,6 @@ function showDjcgBox(){
 	$("#djcgBox").show();
 	var top=(windowHeight-473)/2;
 	$("#djcgBox .windows_box").css("top",top);
-}
-
-function showLoginBox(){
-	$(".windows").hide();
-	$("#loginBox").show();
-	var top=(windowHeight-377)/2;
-	$("#loginBox .windows_box").css("top",top);		
 }
 
 function showSyldBox(){
