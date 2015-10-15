@@ -19,6 +19,7 @@ var base = '${pageContext.request.contextPath}/';
 </head>
 
 <body class="ltbj">
+<input type="hidden" id="userToken" value="${sessionScope.token}" />
 <div class="header">
 	<div class="logo_list"></div>
     <div class="lb_menu">
