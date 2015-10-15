@@ -46,11 +46,11 @@ function register() {
     
     $.ajax({
         type: "POST",
-        url: "api/apiCommon/doPost",
+        url: "api/apiCommon/doPost", // User/User
         data: {"type":"UL003", "param":JSON.stringify({"mobile":mobile,"nickName":username,"password":password,"validCode":valiCode})},
         dataType:"json",
         success:function (data) {
-        	alert(data.obj);
+//        	alert(data.obj);
         	var json = JSON.parse(data.obj);
         	if(json.serverStatus == 0) {
         		alert("注册成功");
@@ -76,7 +76,7 @@ function login() {
 	} 
     $.ajax({
         type: "GET",
-        url: "api/apiCommon/doGet",
+        url: "api/apiCommon/doGet", // User/User
         data: {"type":"UL001", "mobile":username, "password":password},
         dataType:"json",
         success:function (data) {
@@ -114,7 +114,7 @@ function getValidCode(event) {
 	
     $.ajax({
         type: "POST",
-        url: "api/apiCommon/doPost",
+        url: "api/apiCommon/doPost", // ValidCode/ValidCode
         data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":event.data})},
         dataType:"json",
         success:function (data) {

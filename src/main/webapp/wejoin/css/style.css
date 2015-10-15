@@ -271,9 +271,9 @@ background:#fff;
 color: #777;
 cursor: pointer;
 text-align: center;
-background:#fff url(../images/xj.gif) no-repeat center 18px; margin-bottom:20px; 
 }
-.btn_addPic span{display: block;line-height: 29px; font-size:20px; color:#999; margin-top:98px; cursor:pointer;}
+.btn_addPic .img-preview{margin-top: 10px;height: 75px;width: 75px;}
+.btn_addPic span{display: block;line-height: 29px; font-size:20px; color:#999; margin-top:10px; cursor:pointer;}
 
 .filePrew {
 display: block;
