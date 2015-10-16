@@ -67,28 +67,23 @@ var base = '${pageContext.request.contextPath}/';
        	  <div id="con_one_1">
            	  <div class="list_main1">
            	    <ul>
-               	  <li id="channelTemplate" style="display: none;">
+               	  <li id="channelTemplate" style="display:none;">
                        	  <div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
-                          <div class="list_2"><span><img src="images/pic1.gif" onerror="javascript:this.src='images/pic1.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区</em></div>
+                          <div class="list_2"><span><img src="images/pic1.gif" onerror="javascript:this.src='images/pic1.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
                           <div class="list_3"><span>创建者：会飞的鱼</span>  <em><a href="javascript:void(0);" class="a_1">进入频道</a></em></div>
                   </li>
                 </ul>
                    <div class="clear"></div> 
                   <div class="fax" style="right:60px; bottom:-30px;">
-                      <a href="javascript:void(0);">上一页</a>
+                      <a href="javascript:void(0);" onclick="previousPage(this, 1);">上一页</a>
                           <div class="fax_list">
                               <span>1</span>
                               <div class="span_list">
-                                  <div class="content mCustomScrollbar" style="height:95px;">
-                                    <a href="javascript:void(0);">1</a>
-                                    <a href="javascript:void(0);">2</a>
-                                    <a href="javascript:void(0);">3</a>
-                                    <a href="javascript:void(0);">4</a>
-                                    <a href="javascript:void(0);">5</a>
-                                  <a href="javascript:void(0);">6</a>                                </div>
+                                  <div class="content" style="height:95px;">
+                                  </div>
                               </div>
-                      </div>
-                  <a href="javascript:void(0);">下一页</a>                </div>
+                      	</div>
+                  	<a href="javascript:void(0);" onclick="nextPage(this, 1);">下一页</a>                </div>
               </div>
           </div>
           <div id="con_one_2" style="display:none;">
@@ -102,20 +97,14 @@ var base = '${pageContext.request.contextPath}/';
                 </ul>
                    <div class="clear"></div> 
                   <div class="fax" style="right:60px; bottom:-30px;">
-                      <a href="javascript:void(0);">上一页</a>
+                      <a href="javascript:void(0);" onclick="previousPage(this, 2);">上一页</a>
                           <div class="fax_list">
                               <span>1</span>
                               <div class="span_list">
-                                  <div class="content mCustomScrollbar" style="height:95px;">
-                                    <a href="javascript:void(0);">1</a>
-                                    <a href="javascript:void(0);">2</a>
-                                    <a href="javascript:void(0);">3</a>
-                                    <a href="javascript:void(0);">4</a>
-                                    <a href="javascript:void(0);">5</a>
-                                  <a href="javascript:void(0);">6</a>                                </div>
+                                  <div class="content" style="height:95px;"></div>
                               </div>
                       </div>
-                  <a href="javascript:void(0);">下一页</a>                </div>
+                  <a href="javascript:void(0);" onclick="nextPage(this, 2);">下一页</a>                </div>
               </div>
           </div>
       </div>

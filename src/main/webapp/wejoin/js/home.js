@@ -1,4 +1,5 @@
 var windowHeight=$(window).height();
+var pageSize = 16;
  
 $(function(){
 	$(".close_btn").click(function(){
@@ -88,11 +89,10 @@ function createChannel() {
             		$("#con_one_1 .list_main1 ul").prepend($channelItem);
             		$("#con_one_1 .list_main1 ul li:last").remove();
             		$channelItem.find(".list_1 span").html(channel.name);
-            		$channelItem.find(".list_1 em").html("在线：" + channel.id); //TODO 在线数量不明
+            		$channelItem.find(".list_1 em").html("在线：0"); 
             		$channelItem.find(".list_2 span img").attr("src", channel.url + "/" + channel.channelIcon);
             		$channelItem.find(".list_2 em").html(channel.shortDesc); 
-            		var username = channel.token.length > 10 ? channel.token.substring(0,10) + "..." : channel.token;
-            		$channelItem.find(".list_3 span").html("创建者：" + username); //TODO 创建者不明
+            		$channelItem.find(".list_3 span").html("创建者："); //TODO 创建者不名或从session中取
             		$channelItem.find(".list_3 em a").attr("channelId", channel.id).bind("click", showDjcgBox); 
             		
             		$(".windows").hide();
@@ -105,33 +105,80 @@ function createChannel() {
     });
 }
 
+var channelTotal;
 function channelPage(pageNo){
 	$.ajax({
         type: "POST",
         url: base+"api/apiCommon/doGet", // Channel/Page
-        data:{"pageSize":16,"pageNo":pageNo,"type":"UL010"},
+        data:{"pageSize":pageSize,"pageNo":pageNo,"type":"UL010"},
         dataType:"json",
         success:function (data) {
         	if(data.obj){
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
+        			if(!channelTotal) {
+//        				channelTotal = result.returnValue;
+        				channelTotal = 100;
+        				createPage(channelTotal, 1);
+        			}
         			var channels = result.returnObject;
                 	var $channelTemplate = $("#channelTemplate");
+                	$("#con_one_1 .list_main1 ul li:not(:first)").remove();
                 	for(var i=0; i<channels.length; i++) {
                 		var $channelItem = $channelTemplate.clone().removeAttr("id").show();
                 		$("#con_one_1 .list_main1 ul").append($channelItem);
-                		$channelItem.find(".list_1 span").html(channels[i].name);
-                		$channelItem.find(".list_1 em").html("在线：" + channels[i].id); //TODO 在线数量不明
+                		$channelItem.find(".list_1 span").attr('title', channels[i].name).html(channels[i].name);
+                		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount); 
                 		$channelItem.find(".list_2 span img").attr("src", channels[i].url + "/" + channels[i].channelIcon);
-                		$channelItem.find(".list_2 em").html(channels[i].shortDesc); 
-                		var username = channels[i].token.length > 10 ? channels[i].token.substring(0,10) + "..." : channels[i].token;
-                		$channelItem.find(".list_3 span").html("创建者：" + username); //TODO 创建者不明
+                		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
+                		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName); 
                 		$channelItem.find(".list_3 em a").attr("channelId", channels[i].id).bind("click", showDjcgBox); 
                 	}
         		}
         	}		            	
         }
 	});
+}
+
+function createPage(total, type) {
+	var totalPage = parseInt(total%pageSize == 0 ? total/pageSize : total/pageSize + 1);
+	var $page = $("#con_one_" + type).find(".content");
+	$page.empty();
+	var html = '';
+	for(var i=1; i<=totalPage; i++) {
+		html += '<a href="javascript:void(0);">'+i+'</a>';
+	}
+	$page.append(html);
+	$page.find("a").bind("click", function(){
+		var currentPage = $(this).closest(".fax_list").find('span').html();
+		var selPage = $(this).html();
+		if(selPage != currentPage) {
+			$(this).closest(".fax_list").find('span').html(selPage);
+			if(type == 1) channelPage(selPage);
+			else if(type == 2) communityPage(selPage);
+		}
+	});
+	
+	$page.mCustomScrollbar();
+}
+
+function previousPage(self, type) {
+	var currentPage = parseInt($(self).parent().find(".fax_list span").html());
+	if(currentPage == 1) return;
+	
+	$(self).parent().find(".fax_list span").html(currentPage-1);
+	if(type == 1) channelPage(currentPage-1);
+	else if(type == 2) communityPage(currentPage-1);
+}
+
+function nextPage(self, type) {
+	var maxPage = parseInt($(self).parent().find(".content a:last").html());
+	var currentPage =  parseInt($(self).parent().find(".fax_list span").html());
+	if(currentPage == maxPage) return;
+	
+	$(self).parent().find(".fax_list span").html(currentPage+1);
+	if(type == 1) channelPage(currentPage+1);
+	else if(type == 2) communityPage(currentPage+1);
 }
 
 function channel_roomPage(){
@@ -150,7 +197,7 @@ function channel_roomPage(){
                 		var $roomItem = $roomTemplate.clone().removeAttr("id").show();
                 		$(".fz_xt ul").append($roomItem);
                 		$roomItem.find(".list_1 span").html(rooms[i].name);
-                		$roomItem.find(".list_1 em").html("在线：" + rooms[i].id); //TODO 在线数量不明
+                		$roomItem.find(".list_1 em").html("在线：" + rooms[i].userOnlineCount); //TODO 在线数量不明
                 		$roomItem.find(".list_2 span img").attr("src", rooms[i].url + "/" + rooms[i].channelIcon);
                 		$roomItem.find(".list_2 em").html(rooms[i].shortDesc); 
                 		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
@@ -171,27 +218,33 @@ function channel_roomPage(){
 	});
 }
 
+var communityTotal;
 function communityPage(pageNo){
 	$.ajax({
         type: "POST",
         url: base+"api/apiCommon/doGet", // 
-        data:{"pageSize":16,"pageNo":pageNo,"type":"UL020"}, 
+        data:{"pageSize":pageSize,"pageNo":pageNo,"type":"UL020"}, 
         dataType:"json",
         success:function (data) {
         	if(data.obj){
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
+        			if(!communityTotal) {
+//        				channelTotal = result.returnValue;
+        				communityTotal = 100;
+        				createPage(communityTotal, 2);
+        			}
         			var communitys = result.returnObject;
                 	var $communityTemplate = $("#communityTemplate");
+                	$("#con_one_2 .list_main1 ul li:not(:first)").remove();
                 	for(var i=0; i<communitys.length; i++) {
                 		var $communityItem = $communityTemplate.clone().removeAttr("id").show();
                 		$("#con_one_2 .list_main1 ul").append($communityItem);
                 		$communityItem.find(".list_1 span").html(communitys[i].name);
-                		$communityItem.find(".list_1 em").html("在线：" + communitys[i].id); //TODO 在线数量不明
+                		$communityItem.find(".list_1 em").html("在线：" + communitys[i].userOnlineCount); 
                 		$communityItem.find(".list_2 span img").attr("src", communitys[i].url + "/" + communitys[i].channelIcon);
                 		$communityItem.find(".list_2 em").html(communitys[i].shortDesc); 
-                		var username = communitys[i].token.length > 10 ? communitys[i].token.substring(0,10) + "..." : communitys[i].token;
-                		$communityItem.find(".list_3 span").html("创建者：" + username); //TODO 创建者不明
+                		$communityItem.find(".list_3 span").html("创建者：" + communitys[i].nickName); 
                 		$communityItem.find(".list_3 em a").attr("communityId", communitys[i].id); 
                 	}
         		}
