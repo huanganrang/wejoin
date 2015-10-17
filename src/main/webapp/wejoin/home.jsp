@@ -143,7 +143,7 @@ var base = '${pageContext.request.contextPath}/';
                 <div class="dj_con">
                 	<div class="dj_title">
                     	<span><strong>会飞的鱼</strong> 的频道</span>
-                        <ol>房间数：<strong>200</strong></ol>
+                        <ol>房间数：<strong id="roomsCount"></strong></ol>
                     </div>
 					
                     <div class="fz_xt">
@@ -151,7 +151,7 @@ var base = '${pageContext.request.contextPath}/';
                         	<ul>
                             	<li id="channel_roomTemplate" style="display: none;">
                                   <div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
-                                  <div class="list_2"><span><img src="images/pic1.gif"  onerror="javascript:this.src='images/pic1.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区</em></div>
+                                  <div class="list_2"><span><img src="images/pic1.gif"  onerror="javascript:this.src='images/pic1.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
                                   <div class="list_3"><span>房号：292680</span>   <span>房主：会飞的鱼</span> <em><a href="javascript:void(0);">进入房间</a></em></div>
                               	</li>
                             </ul>

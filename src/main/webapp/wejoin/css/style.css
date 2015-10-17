@@ -236,12 +236,12 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .fz_xt{ width:730px; height:410px;  margin:30px 0 0 33px; }
 .fz_xt li{ width:340px; height:190px; border:1px solid #e2e2e2; border-bottom:none; background: url(../images/xdd.gif) repeat-x 0 bottom; float:left; margin:0 18px 18px 0;}
 .fz_xt li .list_1{ height:45px; clear:both;}
-.fz_xt li .list_1 span{ float:left; font-size:18px; display:block; height:45px; line-height:45px; text-indent:37px; background: url(../images/xtb.png) no-repeat 2px -92px;}
+.fz_xt li .list_1 span{ float:left; font-size:18px; display:block;width:70%; height:45px; line-height:45px; text-indent:37px; background: url(../images/xtb.png) no-repeat 2px -92px;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;white-space: normal;word-break: break-all;}
 .fz_xt li .list_1 em{ float:right; font-style:normal; color:#999; line-height:45px; padding-right:15px; }
 .fz_xt li .list_2{ height:100px; clear:both;}
 .fz_xt li .list_2 span{ margin-left:17px; display:block; float:left; }
 .fz_xt li .list_2 span img{ width:100px; height:100px; display:block;}
-.fz_xt li .list_2 em{ float:left; font-style:normal; line-height:22px; width:200px; display:block; margin-left:15px; height:100px; overflow:hidden;}
+.fz_xt li .list_2 em{ float:left; font-style:normal; line-height:22px; width:200px; display:block; margin-left:15px;  overflow:hidden;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;white-space: normal;word-break: break-all;}
 .fz_xt li .list_3{ height:40px; clear:both;}
 .fz_xt li .list_3 span{ float:left; line-height:40px; text-indent:17px; }
 .fz_xt li .list_3 em{ float:right; font-style:normal; line-height:45px; padding-right:15px; }

@@ -12,7 +12,7 @@ $(function(){
 	communityPage(1); // 社区列表
 	channelCategory(); // 频道分类
 	communityCategory(); // 社区分类
-	channel_roomPage(); // 频道房间列表
+//	channel_roomPage(); // 频道房间列表
 	
 	function ProcessFile() {
 		var file = document.getElementById('channelIcon').files[0];
@@ -93,7 +93,9 @@ function createChannel() {
             		$channelItem.find(".list_2 span img").attr("src", channel.url + "/" + channel.channelIcon);
             		$channelItem.find(".list_2 em").html(channel.shortDesc); 
             		$channelItem.find(".list_3 span").html("创建者："); //TODO 创建者不名或从session中取
-            		$channelItem.find(".list_3 em a").attr("channelId", channel.id).bind("click", showDjcgBox); 
+            		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).bind("click", function(){
+            			channel_roomPage($(this).attr('channelToken'));
+            		}); 
             		
             		$(".windows").hide();
 	        	} else {
@@ -132,7 +134,9 @@ function channelPage(pageNo){
                 		$channelItem.find(".list_2 span img").attr("src", channels[i].url + "/" + channels[i].channelIcon);
                 		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
                 		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName); 
-                		$channelItem.find(".list_3 em a").attr("channelId", channels[i].id).bind("click", showDjcgBox); 
+                		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).bind("click", function(){
+                			channel_roomPage($(this).attr('channelToken'));
+                		}); 
                 	}
         		}
         	}		            	
@@ -181,37 +185,45 @@ function nextPage(self, type) {
 	else if(type == 2) communityPage(currentPage+1);
 }
 
-function channel_roomPage(){
+function channel_roomPage(channelToken){
 	$.ajax({
         type: "POST",
-        url: base+"api/apiCommon/doGet", // 
-        data:{"pageSize":6,"pageNo":1,"type":"UL012"},
+        url: base+"api/apiCommon/doGet", // House/Houses
+        data:{"channelToken":channelToken,"type":"UL012"},
         dataType:"json",
         success:function (data) {
         	if(data.obj){
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			var rooms = result.returnObject;
-                	var $roomTemplate = $("#channel_roomTemplate");
-                	for(var i=0; i<rooms.length; i++) {
-                		var $roomItem = $roomTemplate.clone().removeAttr("id").show();
-                		$(".fz_xt ul").append($roomItem);
-                		$roomItem.find(".list_1 span").html(rooms[i].name);
-                		$roomItem.find(".list_1 em").html("在线：" + rooms[i].userOnlineCount); //TODO 在线数量不明
-                		$roomItem.find(".list_2 span img").attr("src", rooms[i].url + "/" + rooms[i].channelIcon);
-                		$roomItem.find(".list_2 em").html(rooms[i].shortDesc); 
-                		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
-                		$roomItem.find(".list_3 span:eq(1)").html("房主：会飞的鱼"); //TODO 房主不明
-                		$roomItem.find(".list_3 em a").attr("roomId", rooms[i].id).bind("click", function(){
-                			var userToken = $("#userToken").val();
-                			if(userToken) {
-                				// TODO 调用joinHouse接口
-                				window.location.href = 'room.jsp';
-                			} else {
-                				alert("您还未登录，请先登录！");
-                			}
-                		}); 
-                	}
+        			if(rooms.length > 0) {
+        				$("#roomsCount").html(rooms.length);
+        				var $roomTemplate = $("#channel_roomTemplate");
+        				$(".fz_xt ul li:not(:first)").remove();
+                    	for(var i=0; i<rooms.length; i++) {
+                    		var $roomItem = $roomTemplate.clone().removeAttr("id").show();
+                    		$(".fz_xt ul").append($roomItem);
+                    		$roomItem.find(".list_1 span").attr('title', rooms[i].title).html(rooms[i].title);
+                    		$roomItem.find(".list_1 em").html("在线：" + (rooms[i].onlineUserCount || 0)); 
+                    		$roomItem.find(".list_2 span img").attr("src", rooms[i].url);
+//                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
+                    		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
+                    		$roomItem.find(".list_3 span:eq(1)").html("房主：会飞的鱼"); //TODO 房主不明
+                    		$roomItem.find(".list_3 em a").attr("roomId", rooms[i].id).bind("click", function(){
+                    			var userToken = $("#userToken").val();
+                    			if(userToken) {
+                    				// TODO 调用joinHouse接口
+                    				window.location.href = 'room.jsp';
+                    			} else {
+                    				alert("您还未登录，请先登录！");
+                    			}
+                    		}); 
+                    	}
+                    	
+                    	showDjcgBox();
+        			} else {
+        				alert("亲！该频道下还没有房间！");
+        			}
         		}
         	}		            	
         }
