@@ -124,7 +124,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .ltian_menu .ltia_2{ width:40px; height:30px; float:left; position:relative; cursor:pointer; margin-left:10px; }
 .ltian_menu .ltia_2 ol{ width:20px; display:block; margin:0 auto; margin-top:4px; }
 .ltian_menu .v_bc{ width:270px; background:#d9d9d9; position:absolute; left:-120px; top:-166px; padding:11px 5px 5px 11px;  border-radius: 5px; display:none;}
-.ltian_menu .v_bc a{ width:26px; height:26px; float:left; margin:0 4px 4px 0; display:block; background:#666; text-indent:-99999px; }
+.ltian_menu .v_bc a{ width:26px; height:26px; float:left; margin:0 4px 4px 0; display:block; background:#666; }
 
 .ltian_menu .ltia_2:hover .v_bc{ display:block;}
 .ltian_menu .ltia_2:hover{ background:#d0d0d0; border-radius: 5px; border-top-left-radius:0px; border-top-right-radius:0px;}

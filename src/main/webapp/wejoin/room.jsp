@@ -11,6 +11,7 @@
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
@@ -94,16 +95,16 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 <div class="header">
 	<div class="logo"></div>
     <ul>
-    	<li class="on"><a href="#">黑 板</a></li>
-        <li><a href="#">文 档</a></li>
-        <li><a href="#">影 音</a></li>
+    	<li class="on"><a href="javascript:void(0);">黑 板</a></li>
+        <li><a href="javascript:void(0);">文 档</a></li>
+        <li><a href="javascript:void(0);">影 音</a></li>
     </ul>
     
     <div class="aa">
     <span>游客：我是会飞的鱼</span>
-    <ol><a href="#">注册</a>  |   <a href="#">登录</a>   </ol>
-    <div class="hed_1"><a href="#">下载APP</a></div>
-    <div class="hed_2"><a href="#">下载PC客户端</a></div>
+    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>
+    <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
+    <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
     <div class="qq">客服QQ <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1794691101&site=qq&menu=yes"><img src="images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a></div>
     <div class="tel"></div>
     <div class="clear"></div>
@@ -116,26 +117,26 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 	<div class="video" id="box">
     	<img src="images/video.gif" />
         <span></span>
-        <div class="col"><a href="#" onclick="openShutManager(this,'box')"><img src="images/x.gif" /></a></div>
+        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box')"><img src="images/x.gif" /></a></div>
     </div>
     
     <div class="video" id="box1">
     	<img src="images/video.gif" />
         <ol></ol>
-        <div class="col"><a href="#" onclick="openShutManager(this,'box1')"><img src="images/x.gif" /></a></div>
+        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box1')"><img src="images/x.gif" /></a></div>
     </div>
     
     <div class="video" id="box2">
     	<img src="images/video.gif" />
         <ol></ol>
-        <div class="col"><a href="#" onclick="openShutManager(this,'box2')"><img src="images/x.gif" /></a></div>
+        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box2')"><img src="images/x.gif" /></a></div>
     </div>
     </div>
     
     <div class="hy_title">
     	<span>在线会员</span>
-        <a href="#" class="le">男</a>
-        <a href="#">女</a>
+        <a href="javascript:void(0);" class="le">男</a>
+        <a href="javascript:void(0);">女</a>
     </div>
     
     <div class="search">
@@ -149,22 +150,22 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
     <div class="content mCustomScrollbar">
     <div class="list_name">
     	<ul>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="#" class="le">语音</a> <a href="#">视频</a>  </li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
         </ul>
     </div>
     </div>
@@ -178,23 +179,23 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
         <div class="main_pic"><img src="images/pic.gif" /></div>
     </div>
     <div class="fax">
-    	<a href="#">上一页</a>
+    	<a href="javascript:void(0);">上一页</a>
         	<div class="fax_list">
             	<span>1</span>
                 <div class="span_list">
                 	<div class="content mCustomScrollbar" style="height:95px;">
-                	<a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
+                	<a href="javascript:void(0);">1</a>
+                    <a href="javascript:void(0);">2</a>
+                    <a href="javascript:void(0);">3</a>
+                    <a href="javascript:void(0);">4</a>
+                    <a href="javascript:void(0);">5</a>
+                    <a href="javascript:void(0);">6</a>
                 </div>
                 </div>
             </div>
-        <a href="#">下一页</a>    
+        <a href="javascript:void(0);">下一页</a>    
     </div>
-  <div class="col" style="top:42px; right:0px; "><a href="#" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
+  <div class="col" style="top:42px; right:0px; "><a href="javascript:void(0);" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
     <div class="sj"><a class="a_toggle" href="javascript:;;"><img class="img_x" src="images/1.png" /></a></div>
 </div>
 
@@ -203,8 +204,8 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 	<div class="content mCustomScrollbar" style="height:580px;">
 	<div class="ltian">
     	<ul>
-        	<li>
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+        	<!-- <li>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
@@ -214,7 +215,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li class="wo">
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们123123123！</div>
@@ -224,7 +225,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li>
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
@@ -234,7 +235,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li class="wo">
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们123123123！</div>
@@ -244,7 +245,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li>
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
@@ -254,7 +255,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li class="wo">
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们123123123！</div>
@@ -263,7 +264,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
                 <div class="clear"></div>
             </li>
             <li>
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们1241242342呢！</div>
@@ -273,15 +274,15 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </li>
             
             <li class="wo">
-            	<div class="ltian_img"><a href="#"><img src="images/tx.gif" /></a></div>
+            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
                     <div class="txt_zi">我们123123123！</div>
                     <em></em>
                 </div>
-                <ol class="ol1"></ol>
-            </li>
-            <div class="clear"></div>
+                <div class="clear"></div>
+            </li> 
+             -->
         </ul>
     </div>
     </div>
@@ -289,104 +290,59 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
     <div class="ltian_menu">
     	<div class="ltia_2">
         	<ol class="face_div_ac"><img class="img_tb3 face_div_ac" src="images/tb3.png" /></ol>
-            <div class="v_bc face_div">
-        	<a href="#">表情图片aaa</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-        </div>
+            <div class="v_bc face_div" id="faceWrapper">
+        	</div>
         </div>
         
         
         <div class="ltia_2" style="margin-left:5px;">
         	<ol class="gift_div_ac"><img class="img_tb3 gift_div_ac" src="images/tb2.png" /></ol>
             <div class="v_bc gift_div">
-        	<a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
-            <a href="#">表情图片</a>
+        	<a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a>
         </div>
         </div>
 
@@ -396,20 +352,20 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             <div class="content mCustomScrollbar" style="height:320px;">
             <div class="v_ren">
             	<ul>
-                	<li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="#"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                	<li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                 </ul>
             </div>
             </div>
@@ -419,22 +375,22 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
         <div class="ltia_1">
         	<span>所有人</span>
             <div class="v_hover all_div">
-            	<a href="#">所有人聊天</a>
-                <a href="#">私聊</a>
+            	<a href="javascript:void(0);">所有人聊天</a>
+                <a href="javascript:void(0);">私聊</a>
             </div>
         </div>
         
     </div>
     <div class="ltian_form">
     	<form action="" method="get">
-        <textarea name="" cols="" rows="" class="pt3"></textarea>
+        	<textarea name="" cols="" rows="" class="pt3" id="content"></textarea>
         </form>
     </div> 
     <div class="itian_tb">
-    	<span><a href="#" class="a1">录制</a></span>
-        <span><a href="#" class="a2">屏幕共享</a></span>
-        <span><a href="#" class="a3">分享</a></span>
-        <span><a href="#" class="a4">房间设置</a></span>
+    	<span><a href="javascript:void(0);" class="a1">录制</a></span>
+        <span><a href="javascript:void(0);" class="a2">屏幕共享</a></span>
+        <span><a href="javascript:void(0);" class="a3">分享</a></span>
+        <span><a href="javascript:void(0);" class="a4">房间设置</a></span>
         <div class="clear"></div>
     </div>
 </div>

@@ -119,8 +119,7 @@ function channelPage(pageNo){
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			if(!channelTotal) {
-//        				channelTotal = result.returnValue;
-        				channelTotal = 100;
+        				channelTotal = result.returnValue;
         				createPage(channelTotal, 1);
         			}
         			var channels = result.returnObject;
@@ -242,8 +241,7 @@ function communityPage(pageNo){
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			if(!communityTotal) {
-//        				channelTotal = result.returnValue;
-        				communityTotal = 100;
+        				communityTotal = result.returnValue;
         				createPage(communityTotal, 2);
         			}
         			var communitys = result.returnObject;
