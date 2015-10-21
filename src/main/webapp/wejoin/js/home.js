@@ -208,11 +208,27 @@ function channel_roomPage(channelToken){
 //                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
                     		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
                     		$roomItem.find(".list_3 span:eq(1)").html("房主：会飞的鱼"); //TODO 房主不明
-                    		$roomItem.find(".list_3 em a").attr("roomId", rooms[i].id).bind("click", function(){
+                    		var roomId = rooms[i].id;
+                    		$roomItem.find(".list_3 em a").bind("click", function(){
                     			var userToken = $("#userToken").val();
                     			if(userToken) {
                     				// TODO 调用joinHouse接口
-                    				window.location.href = 'room.jsp';
+                    				$.ajax({
+                    			        type: "POST",
+                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
+                    			        data: {"type":"UL014", "param":JSON.stringify({"houseId":roomId,"userToken":userToken,"identification":0})},
+                    			        dataType:"json",
+                    			        success:function (data) {
+                    			        	alert(data.obj);
+                    			        	result = $.parseJSON(data.obj);
+                    			        	if(result.serverStatus == 0) {
+                    			        		window.location.href = 'room.jsp';
+                    			        	} else {
+                    			        		// 加入房间失败
+                    			        		alert(result.returnMessage);
+                    			        	}
+                    			        }
+                    			    });
                     			} else {
                     				alert("您还未登录，请先登录！");
                     			}
