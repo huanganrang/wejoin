@@ -19,10 +19,10 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 
-.header{min-width:1330px; max-width:100%;  height:72px; background:#63b30e;}
-.header .logo{ width:15%; height:72px; background:#4f900a url(../images/logo.png) no-repeat center 10px; text-align:center; line-height:72px; font-size:50px; color:#fff; font-size:40px; float:left;}
+.header{min-width:1330px; max-width:100%;  height:43px; background:#63b30e;}
+.header .logo{ width:15%; height:43px; background:#4f900a; text-align:center;  float:left;}
 .header ul{ float:left; margin-left:1%; }
-.header li{ float:left; margin-top:29px; margin-left:1px;}
+.header li{ float:left; margin-left:1px;}
 .header li a{ padding:0px 30px; display:block; font-size:17px; color:#fff; height:43px; line-height:43px;}
 .header li:hover{ background:#fff url(../images/hov.gif) no-repeat;}
 .header li:hover a{ background: url(../images/hov.gif) no-repeat right -43px; color:#63b30e;}
@@ -31,13 +31,13 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .header span{ color:#fff; float:left; font-size:14px; margin-top:41px; display:block; }
 .header ol{ float:left; display:block; margin-top:41px; color:#fff; margin-left:20px; }
 .header ol a{ color:#fff; margin:0 10px;}
-.header .hed_1{ float:left; width:97px; height:26px; background: url(../images/header.gif) no-repeat; text-align:center; line-height:26px;  font-size:14px; margin-top:37px; }
+.header .hed_1{ float:left; width:97px; height:26px; background: url(../images/header.gif) no-repeat; text-align:center; line-height:26px;  font-size:14px; margin-top:9px; }
 .header .hed_1:hover{ opacity:0.9;}
 .header a{ color:#fff; }
-.header .hed_2{float:left; width:127px; height:26px; background: url(../images/header.gif) no-repeat 0 -26px; text-align:center; line-height:26px; margin-top:37px; margin-left:5px;}
+.header .hed_2{float:left; width:127px; height:26px; background: url(../images/header.gif) no-repeat 0 -26px; text-align:center; line-height:26px; margin-top:9px; margin-left:5px;}
 .header .hed_2:hover{ opacity:0.9;}
-.header .qq{ float:left; color:#fff; margin-top:37px; margin-left:2%; line-height:25px; font-size:14px; }
-.header .tel{ width:154px; height:27px; background: url(../images/header.gif) no-repeat 0 -62px; float:left; margin-top:35px; margin-left:10px; }
+.header .qq{ float:left; color:#fff; margin-top:9px; margin-left:2%; line-height:25px; font-size:14px; }
+.header .tel{ width:154px; height:27px; background: url(../images/header.gif) no-repeat 0 -62px; float:left; margin-top:7px; margin-left:10px; }
 .aa{ width:60%; float:right; }
 
 
@@ -45,7 +45,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .main_left{  width:15%; float:left; background:#eee; }
-.main_left .video{ background:#fff; margin:10px 10px 0 10px; position:relative;}
+.main_left .video{ background:#fff; margin:13px 10px 0 10px; position:relative;}
 .main_left .video span{ width:70px; height:29px; background: url(../images/hy.png) no-repeat; position:absolute; left:0px; top:0px; display:block;}
 .main_left .video ol{ width:70px; height:29px; background: url(../images/hy.png) no-repeat 0 -37px; position:absolute; left:0px; top:0px; display:block;}
 .col{ width:20px; height:20px; position:absolute; right:11px; top:11px; }
@@ -57,30 +57,32 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_left .hy_title a.le{background: url(../images/ren.gif) no-repeat 0 -60px; margin-right:20px; }
 .main_left .hy_title a:hover{ background: url(../images/ren.gif) no-repeat 0 2px;}
 .main_left .hy_title a.le:hover{background: url(../images/ren.gif) no-repeat 0 -58px;}
-.main_left .search{ margin-top:10px; margin-bottom:10px; }
-.main_left .search .tzbm{ float:left; width:20%; height:33px; background: url(../images/sek.gif) no-repeat; cursor:pointer; margin-left:15px; }
-.main_left .search .pt1{ float:left; width:55%; height:33px; background: url(../images/sek.gif) no-repeat -37px 0; line-height:33px; text-indent:5px; font-size:14px; }
-.main_left .search span{ width:15%; height:33px; background: url(../images/sek.gif) no-repeat -220px 0; display:block; float:left; }
+.main_left .search{ height:50px; width:100%; background:#eee;}
+
+.main_left .search .tzbm{ float:left; width:20%; height:33px; background: url(../images/sek.gif) no-repeat; cursor:pointer; margin-left:15px; margin-top:10px;}
+.main_left .search .pt1{ float:left; width:55%; height:33px; background: url(../images/sek.gif) no-repeat -37px 0; line-height:33px; text-indent:5px; font-size:14px; margin-top:10px;}
+.main_left .search span{ width:15%; height:33px; background: url(../images/sek.gif) no-repeat -220px 0; display:block; float:left; margin-top:10px;}
 
 .main_left .list_name{ width:100%; margin-bottom:5px; }
 .main_left .list_name li{ width:100%; height:36px; line-height:36px; clear:both;}
 .main_left .list_name li img{ float:left; width:28px; height:28px; border-radius:5px; display:block; margin-left:15px; margin-top:4px; }
 .main_left .list_name li span{ float:left; text-indent:10px; color:#333;}
-.main_left .list_name li a{ float:right; width:15px; height:16px; display:block; background:url(../images/be.png) no-repeat; text-indent:-99999px;  margin-top:10px; }
-.main_left .list_name li a:hover{background:url(../images/be.png) no-repeat 0 -57px;}
-.main_left .list_name li a.le{ background:url(../images/be.png) no-repeat 0 -114px;  margin-right:15px; margin-left:8px; }
-.main_left .list_name li a.le:hover{background:url(../images/be.png) no-repeat 0 -179px;}
+.main_left .list_name li a{ float:right; width:22px; height:32px; display:block; background:url(../images/be.png) no-repeat 0 10px; text-indent:-99999px;   }
+.main_left .list_name li a:hover{background:url(../images/be.png) no-repeat 0 -47px;}
+.main_left .list_name li a.le{ background:url(../images/be.png) no-repeat 0 -104px;  margin-right:10px;  }
+.main_left .list_name li a.le:hover{background:url(../images/be.png) no-repeat 0 -169px;}
 .main_left .list_name li:hover{ background:#fff;}
+.main_left .list_name li a.on{background:url(../images/be.png) no-repeat 0 -47px;}
+.main_left .list_name li a.le_on{background:url(../images/be.png) no-repeat 0 -169px; margin-right:10px;  }
+
+.content_buttom{ background:#eee;}
 
 
-
-
-
-.main_center{ width:59%; float:left; position:relative; height:100%; line-height:100%; }
+.main_center{ width:61%; float:left; position:relative; height:100%; line-height:100%; }
 .main_center .cneter_menu{ width:100%; height:42px; background:#e4e4e4;}
 .main_center .scroll{ height:54px; border:1px solid #ccc; line-height:54px; margin-top:35px; margin-bottom:40px; font-size:15px; }
-.main_center .center_max{ padding:0 5%; }
-.fax{ position: absolute; right:10px; bottom:-80px; }
+.main_center .center_max{ padding:40px 5% 50px 5%; }
+.fax{ position: absolute; right:10px; bottom:0px; }
 .fax a{ width:78px; height:24px; display:block; background:#cccccc; text-align:center; line-height:24px; color:#fff; float:left; }
 .fax a:hover{ background:#63b30e;}
 .fax_list{ float:left; width:75px; height:24px; background: url(../images/k.gif) no-repeat; line-height:24px; font-size:14px; color:#333; margin:0px 3px; position:relative;}
@@ -92,11 +94,11 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_pic{ text-align:center;}
 
 
-.main_right{ width:26%; float:left; position:relative;}
-.main_right .ltian{ background:#eee;  padding:22px; }
+.main_right{ width:24%; float:left; position:relative;}
+.main_right .ltian{ background:#eee;  padding:20px 20px; }
 .main_right .ltian li{ width:100%; clear:both; margin-bottom:18px; }
-.main_right .ltian_img{ float:left; width:50px; margin-right:18px; margin-top:21px; }
-.main_right .ltian_img img{width:50px; height:50px; display:block; border-radius:8px;}
+.main_right .ltian_img{ float:left; width:35px; margin-right:15px; margin-top:21px; }
+.main_right .ltian_img img{width:35px; height:35px; display:block; border-radius:8px;}
 .main_right .ltian_txt{ white-space:normal; word-wrap:break-word; float:left; position:relative; min-width:10%; max-width:75%;}
 .main_right .ltian_txt span{ font-size:12px; color:#999;}
 .main_right .ltian_txt .txt_zi{ background:#fff; padding:10px 15px; border-radius:4px; margin-top:3px; font-size:15px; }
@@ -109,9 +111,9 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_right li.wo .ltian_txt span{ font-size:12px; color:#999; text-align:right; display:block;}
 .ltian_menu{ width:100%; height:30px; background:#e4e4e4; position:relative;}
 .ltian_form{ border:1px solid #dadada;}
-.ltian_form .pt3{height:110px; background:#fff; border:none; box-shadow:0 0 1px #d3d3d3, 2px 3px 3px #e5e5e5 inset; width:96%; padding:2%; }
+.ltian_form .pt3{height:50px; background:#fff; border:none; box-shadow:0 0 1px #d3d3d3, 2px 3px 3px #e5e5e5 inset; width:96%; padding:2%; }
 
-.ltian_menu .ltia_1{ width:25%; height:30px; float:right; position:relative; cursor:pointer;}
+.ltian_menu .ltia_1{ width:145px; height:30px; float:right; position:relative; cursor:pointer;}
 .ltian_menu .ltia_1 span{background: url(../images/sj.gif) no-repeat 0px -58px; width:11px; height:6px; display:block; height:30px; width:100px;  text-align:center; line-height:30px; font-size:14px; margin:0 auto;}
 .ltian_menu .ltia_1:hover{ background:#d0d0d0; border-radius: 5px; border-top-left-radius:0px; border-top-right-radius:0px}
 .ltian_menu .ltia_1:hover span{background: url(../images/sj.gif) no-repeat 0px 12px;} 
@@ -121,16 +123,17 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .ltia_1 .v_hover a:hover{ background:#fff; border-radius: 5px;}
 
 
+
 .ltian_menu .ltia_2{ width:40px; height:30px; float:left; position:relative; cursor:pointer; margin-left:10px; }
 .ltian_menu .ltia_2 ol{ width:20px; display:block; margin:0 auto; margin-top:4px; }
-.ltian_menu .v_bc{ width:270px; background:#d9d9d9; position:absolute; left:-120px; top:-166px; padding:11px 5px 5px 11px;  border-radius: 5px; display:none;}
+.ltian_menu .v_bc{ width:270px; background:#d9d9d9; position:absolute; left:-120px; top:-136px; padding:11px 5px 5px 11px;  border-radius: 5px; display:none;}
 .ltian_menu .v_bc a{ width:26px; height:26px; float:left; margin:0 4px 4px 0; display:block; background:#666; }
 
 .ltian_menu .ltia_2:hover .v_bc{ display:block;}
 .ltian_menu .ltia_2:hover{ background:#d0d0d0; border-radius: 5px; border-top-left-radius:0px; border-top-right-radius:0px;}
 
 
-.ltia_1 .v_ren{ width:125px; height:300px;    padding:0px 10px 0px 20px;}
+.ltia_1 .v_ren{ width:125px; height:300px;    padding:0px 10px 0px 10px;}
 .ltia_1 .v_ren li img{ float:left; width:28px; height:28px; border-radius:5px; display:block; margin-right:8px; }
 .ltia_1 .v_ren li{ width:100%; height:34px; line-height:32px; font-size:14px; }
 .ltia_1 .v_ren li a{ display:block; height:28px; margin-top:6px; width:100%;line-height:28px;}
@@ -138,9 +141,12 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .ltia_bj{background:#e4e4e4; border-radius: 5px; border-bottom-left-radius:0px; border-bottom-right-radius:0px; position:absolute; left:0px; top:-330px; padding:5px 0; display:none;}
 .ltia_1:hover .ltia_bj{ display:block;}
 
+.ltia_1{ float:left;}
+.ltia_1 label{ font-family:"微软雅黑"; line-height:30px; font-size:14px; padding-left:5px;}
 
-.itian_tb{ padding:25px 25px 15px 25px; background:#eee;}
-.itian_tb span{ width:25%; float:left; display:block; text-align:center;}
+
+.itian_tb{ padding:0px 25px 0px 25px; background:#eee;}
+.itian_tb span{ width:25%; float:left; display:block; text-align:center; margin-top:25px; margin-bottom:15px;}
 .itian_tb a{  width:70px; height:25px; font-size:14px; text-align:center;  display:block; background: url(../images/tb.png) no-repeat; padding-top:75px; margin:0 auto;}
 .itian_tb a.a2{background: url(../images/tb.png) no-repeat 0 -163px; }
 .itian_tb a.a3{background: url(../images/tb.png) no-repeat 0 -321px; }

@@ -14,80 +14,75 @@
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-	var openTip = oOpenTip || "";
-	var shutTip = oShutTip || "";
-	if(targetObj.style.display!="none"){
-	   if(shutAble) return;
-	   targetObj.style.display="none";
-	   if(openTip && shutTip){
-	    sourceObj.innerHTML = shutTip;
-	   }
-	} else {
-	   targetObj.style.display="block";
-	   if(openTip && shutTip){
-	    sourceObj.innerHTML = openTip;
-	   }
-	}
-	}
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+$(function(){
+	changeHeightRight();
+	//changeHeightLeft();
+	$(".a_toggle").toggle(
+	  function () {
+		$('.img_x').attr('src','images/1.png');
+		$('.main_right').hide();
+		$(".main_center").css("width","85%");
+	  },
+	  function () {
+		$('.img_x').attr('src','images/2.png');
+		$('.main_right').show();
+		$(".main_center").css("width","61%");
+	  }
+	);
+})
+$(function(){
+	//changeHeight();
+	//changeHeightLeft();
+})
+	$(window).resize(function() {
+		changeHeightRight();
+		changeHeightLeft();
+	});
+function changeHeightRight(){
+	var head_h = $('.header').height();
+	var ltian_menu_h = $('.ltian_menu').height();
+	var ltian_form_h = $('.ltian_form').height();
+	var itian_tb_h = $('.itian_tb').height();
+	var b_h = $(window).height();
+	var content_h = b_h - head_h - ltian_menu_h - ltian_form_h - itian_tb_h;
+	$('.content_right').height(content_h)
+}
+function changeHeightLeft(){
+	var head_h = $('.header').height();
+	var hy_title_h = $('.hy_title').height();
+	var search_h = parseInt($('.search').height());
+	var m_search_t = parseInt($('.search').css('margin-top').replace('px', ''));
+	var m_search_b = parseInt($('.search').css('margin-bottom').replace('px', ''));
+	
+	var content_buttom_h = $('.content_buttom').height();
+	var content_img_h = $('.content_img').height();
+	var b_h = $(window).height();
+	var content_h = b_h - head_h - hy_title_h - content_buttom_h - search_h - content_img_h;
 
-	$(function(){
-		$(document).click(function(e){
-			if(!$(e.target).hasClass("gift_div_ac")){
-				$(".gift_div").hide();
-			}
-			if(!$(e.target).hasClass("face_div_ac")){
-				$(".face_div").hide();
-			}	
-		})
-		$(".a_toggle").toggle(
-		  function () {
-			$('.img_x').attr('src','images/1.png');
-			$('.main_right').hide();
-			$(".main_center").css("width","85%");
-		  },
-		  function () {
-			$('.img_x').attr('src','images/2.png');
-			$('.main_right').show();
-			$(".main_center").css("width","59%");
-		  }
-		);
-		
-		$(".ltia_2").click(function(e){
-			$(".someone_div").hide();
-			$(".all_div").hide();
-			if($(this).find("div").attr("class")=="v_bc gift_div"){
-				
-				$(".face_div").hide();
-				if($(this).find(".v_bc").is(":hidden")){
-					$(this).find(".v_bc").show();
-				}else{
-					$(this).find(".v_bc").hide();
-				}
-			}
-			if($(this).find("div").attr("class")=="v_bc face_div"){
-				$(".gift_div").hide();
-				if($(this).find(".v_bc").is(":hidden")){
-					$(this).find(".v_bc").show();
-				}else{
-					$(this).find(".v_bc").hide();
-				}
-			}
-			
-		})
-		$(".ltia_1").click(function(){
-			$(".face_div").hide();
-			$(".gift_div").hide();
-			if($(this).find("div").attr("class")=="v_hover all_div"){
-				$(".someone_div").hide();
-				$(".all_div").show();
-			}else{
-				$(".someone_div").show();
-				$(".all_div").hide();
-			}
-		})
-	})
+	$('.content_main').height((b_h - head_h)/2);
+	$('.content_buttom').height((b_h - head_h)/2-hy_title_h-(search_h+m_search_t+m_search_b)-content_img_h);
+	$('.main_left').height(content_h);
+}
+$(window).load(function(){
+	changeHeightLeft();
+})
 </script>
 </head>
 
@@ -101,8 +96,8 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
     </ul>
     
     <div class="aa">
-    <span>游客：我是会飞的鱼</span>
-    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>
+    <!--<span>游客：我是会飞的鱼</span>
+    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
     <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
     <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
     <div class="qq">客服QQ <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1794691101&site=qq&menu=yes"><img src="images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a></div>
@@ -113,23 +108,17 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 
 
 <div class="main_left">
-	<div class="content mCustomScrollbar" style="height:440px;">
-	<div class="video" id="box">
+	<div class="content mCustomScrollbar content_main" style="height:340px;">
+	<div class="video">
     	<img src="images/video.gif" />
-        <span></span>
-        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box')"><img src="images/x.gif" /></a></div>
     </div>
     
-    <div class="video" id="box1">
+    <div class="video">
     	<img src="images/video.gif" />
-        <ol></ol>
-        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box1')"><img src="images/x.gif" /></a></div>
     </div>
     
-    <div class="video" id="box2">
+    <div class="video">
     	<img src="images/video.gif" />
-        <ol></ol>
-        <div class="col"><a href="javascript:void(0);" onclick="openShutManager(this,'box2')"><img src="images/x.gif" /></a></div>
     </div>
     </div>
     
@@ -143,16 +132,17 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
     	<form action="" method="get">
         <input name="" type="submit" class="tzbm" value=""/>
         <input type="text" class="pt1" onblur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onfocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfield" name="telphone" style="color:#ccc;">
+        
         <span></span>
         </form>
         <div class="clear"></div>
     </div>
-    <div class="content mCustomScrollbar">
+    <div class="content mCustomScrollbar content_buttom">
     <div class="list_name">
     	<ul>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le_on">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);" class="on">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
@@ -169,13 +159,12 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
         </ul>
     </div>
     </div>
-    <img src="images/c.gif" style="width:100%;"/>
+    <div class="content_img"><img src="images/c.gif" style="width:100%;"/></div>
 </div>
 
 <div class="main_center" id="box3">
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
     <div class="center_max">
-    	<div class="scroll"><marquee scrollamount="3" id="notice" direction="left">☆☆《投资宝典》已经上线，内含老师技术教学视频以及投资心得，免费领取,详情请咨询【高级客服QQ】↑↑↑</marquee></div>
         <div class="main_pic"><img src="images/pic.gif" /></div>
     </div>
     <div class="fax">
@@ -201,10 +190,11 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 
 <div class="main_right" id="box4">
 	
-	<div class="content mCustomScrollbar" style="height:580px;">
+	<div class="content mCustomScrollbar content_right" style="height:580px;">
 	<div class="ltian">
     	<ul>
-        	<!-- <li>
+    	<!-- 
+        	<li>
             	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
                 <div class="ltian_txt">
                 	<span>我是会飞的鱼</span>
@@ -280,9 +270,9 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
                     <div class="txt_zi">我们123123123！</div>
                     <em></em>
                 </div>
-                <div class="clear"></div>
-            </li> 
-             -->
+                <ol class="ol1"></ol>
+            </li>
+            <div class="clear"></div> -->
         </ul>
     </div>
     </div>
@@ -346,7 +336,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
         </div>
         </div>
 
-        <div class="ltia_1" style="width:155px; float:right;">
+        <div class="ltia_1" style=" width:135px; float:right;">
         	<span>选择成员</span>
             <div class="ltia_bj someone_div">
             <div class="content mCustomScrollbar" style="height:320px;">
@@ -372,18 +362,14 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
             </div>
         </div>
         
-        <div class="ltia_1">
-        	<span>所有人</span>
-            <div class="v_hover all_div">
-            	<a href="javascript:void(0);">所有人聊天</a>
-                <a href="javascript:void(0);">私聊</a>
-            </div>
+        <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; ">
+        	<input type="checkbox" name="name" value="456" id="an1"><label for="an1">所有人</label>
         </div>
         
     </div>
     <div class="ltian_form">
     	<form action="" method="get">
-        	<textarea name="" cols="" rows="" class="pt3" id="content"></textarea>
+        <textarea name="" cols="" rows="" class="pt3" id="content"></textarea>
         </form>
     </div> 
     <div class="itian_tb">

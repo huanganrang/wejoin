@@ -20,18 +20,18 @@ var base = '${pageContext.request.contextPath}/';
 
 <body class="ltbj">
 <input type="hidden" id="userToken" value="${sessionScope.token}" />
-<div class="header">
+<div class="header" style="height:72px;">
 	<div class="logo_list"></div>
     <div class="lb_menu">
-    	<a href="javascript:void(0);" class="pd_1" onclick="showChannelAddBox()">免费创建频道</a>
+    	<a href="javascript:void(0);" class="pd_1" onclick="showSyldBox()">免费创建频道</a>
         <a href="javascript:void(0);" class="pd_2">免费创建社群</a>
         <a href="javascript:void(0);" class="pd_3">微币充值</a>
         <a href="javascript:void(0);" class="pd_4">使用帮助</a>
     </div>
     
-    <div class="aa" style="width:48%;">
-    <span>游客：我是会飞的鱼</span>
-    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>
+    <div class="aa" style="width:48%; margin-top:13px;">
+    <!--<span>游客：我是会飞的鱼</span>
+    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
     <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
     <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
     <div class="tel"></div>
