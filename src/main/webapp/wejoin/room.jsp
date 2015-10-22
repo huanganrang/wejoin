@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	String houseToken = request.getParameter("houseToken");
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房间</title>
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
@@ -11,6 +14,9 @@
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/stomp.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -87,6 +93,8 @@ $(window).load(function(){
 </head>
 
 <body>
+<input type="hidden" id="userToken" value="${sessionScope.token}" />
+<input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <div class="header">
 	<div class="logo"></div>
     <ul>

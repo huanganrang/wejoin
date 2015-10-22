@@ -3,28 +3,46 @@ $(function(){
 	wechat.init();
 });
 var WeChat = function() {
-	this.socket = null;
+	this.stompClient = null;
 };
+
+function ApplicationModel(wechat) {
+    var self = this;
+    self.connect = function() {
+    	wechat.stompClient.connect({}, function(frame) {
+
+            console.log('Connected ' + frame);
+
+            wechat.stompClient.subscribe("/app/participants", function(message) {
+               console.info(message);
+            });
+
+            wechat.stompClient.subscribe("/topic/message/"+$("#houseToken").val(), function(message) {
+            	var body = $.parseJSON(message.body);
+            	if(body.userToken != $("#userToken").val()) {
+            		wechat._displayNewMsg({'username':'我是会飞的鱼','owner':false, 'content':decodeURIComponent(body.content)});
+            	}
+                console.info(decodeURIComponent(body.content));
+            });
+        }, function(error) {
+            console.log("STOMP protocol error " + error);
+        });
+    }
+
+    self.logout = function() {
+    	wechat.stompClient.disconnect();
+//        window.location.href = "../logout.html";
+    }
+}
 
 WeChat.prototype = {
 	init : function() {
 		var _this = this;
-		this.socket = new WebSocket('ws://127.0.0.1:8080/wechat');
-		// 建立连接
-		this.socket.onopen = function(event) {
-			// 发送身份信息
-			//_this.socket.send({'userToken':''});
-		};
-		// 监听消息
-		this.socket.onmessage = function(event) {
-			console.log("Receive message", event.data);
-//			var rs = $.parseJSON(event.data);
-			_this._displayNewMsg({'username':'我是会飞的鱼','owner':false, 'content':'消息内容'});
-		};
-		// 关闭
-		this.socket.onclose = function(event) {
-			console.log("socket has colsed!", event);
-		};
+		var socket = new SockJS('service.weiqu168.com:8080/ws');
+		this.stompClient = Stomp.over(socket);
+        var appModel = new ApplicationModel(this);
+        ko.applyBindings(appModel);
+        appModel.connect();
 		this._initFace();
 		// 回车发送消息
 		$("#content").bind('keyup', function(e){
@@ -33,6 +51,11 @@ WeChat.prototype = {
 				$("#content").val('');
 				// 发送聊天消息
 //				_this.socket.send({'content':content});
+				_this.stompClient.send("/topic/message/"+$("#houseToken").val(),{},JSON.stringify({
+		            'houseToken':encodeURIComponent($("#houseToken").val()),
+		            'userToken':encodeURIComponent($("#userToken").val()),
+		            'content':encodeURIComponent(content)
+		        }));
 				_this._displayNewMsg({'username':'我是会飞的鱼','owner':true, 'content':content});
             };
 		});
@@ -43,6 +66,14 @@ WeChat.prototype = {
 			content += '[ee_' + $(this).find('img').attr("title") + ']';
 			$("#content").val(content);
 		});
+		//监听浏览器关闭前的事件
+		window.onbeforeunload = function(){
+			return "确认离开";
+		};
+		//监听浏览器关闭时
+		window.onunload = function(){
+			appModel.logout();
+		};
 	},
 	_initFace: function() {
     	var $face = $("#faceWrapper");
@@ -54,8 +85,8 @@ WeChat.prototype = {
     // 渲染文本消息
 	_displayNewMsg: function(data) {
 		var owner = data.owner;
-		var ownerClass = (owner && 'wo') || (!owmer && '');
-        var $arrow = (owner && '<em></em>') || (!owmer && '<ol></ol>');
+		var ownerClass = (owner && 'wo') || (!owner && '');
+        var $arrow = (owner && '<em></em>') || (!owner && '<ol></ol>');
         
         var content = this._showFace(data.content); // 过滤表情
         	
