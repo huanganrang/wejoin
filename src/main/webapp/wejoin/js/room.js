@@ -98,7 +98,7 @@ WeChat.prototype = {
 					+ '</div><div class="clear"></div></li>';
 		
 		$(".ltian ul").append($messageHtml);
-		$(".content").scrollTop($(".content")[0].scrollHeight); // 设置无效
+		$("#box4 .content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
     },
     
     // 显示符号表情格式化
