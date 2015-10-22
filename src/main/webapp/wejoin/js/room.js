@@ -66,6 +66,15 @@ WeChat.prototype = {
 			content += '[ee_' + $(this).find('img').attr("title") + ']';
 			$("#content").val(content);
 		});
+		// 右键清屏
+		$("#box4 .content").smartMenu([[{
+				text: "清屏",
+				func: function() {
+					$(this).find("ul").empty();
+				}
+			}]], {
+			name: "clear"
+		});
 		//监听浏览器关闭前的事件
 		window.onbeforeunload = function(){
 			return "确认离开";

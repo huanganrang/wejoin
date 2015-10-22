@@ -12,11 +12,13 @@
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/stomp.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -201,86 +203,6 @@ $(window).load(function(){
 	<div class="content mCustomScrollbar content_right" style="height:580px;">
 	<div class="ltian">
     	<ul>
-    	<!-- 
-        	<li>
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
-                    <ol></ol>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li class="wo">
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们123123123！</div>
-                    <em></em>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li>
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
-                    <ol></ol>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li class="wo">
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们123123123！</div>
-                    <em></em>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li>
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！</div>
-                    <ol></ol>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li class="wo">
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们123123123！</div>
-                    <em></em>
-                </div>
-                <div class="clear"></div>
-            </li>
-            <li>
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们1241242342呢！</div>
-                    <ol></ol>
-                </div>
-                <div class="clear"></div>
-            </li>
-            
-            <li class="wo">
-            	<div class="ltian_img"><a href="javascript:void(0);"><img src="images/tx.gif" /></a></div>
-                <div class="ltian_txt">
-                	<span>我是会飞的鱼</span>
-                    <div class="txt_zi">我们123123123！</div>
-                    <em></em>
-                </div>
-                <ol class="ol1"></ol>
-            </li>
-            <div class="clear"></div> -->
         </ul>
     </div>
     </div>
@@ -296,7 +218,7 @@ $(window).load(function(){
         <div class="ltia_2" style="margin-left:5px;">
         	<ol class="gift_div_ac"><img class="img_tb3 gift_div_ac" src="images/tb2.png" /></ol>
             <div class="v_bc gift_div">
-        	<a href="javascript:void(0);">表情图片</a>
+        	<!-- <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
@@ -340,7 +262,7 @@ $(window).load(function(){
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
+            <a href="javascript:void(0);">表情图片</a> -->
         </div>
         </div>
 
