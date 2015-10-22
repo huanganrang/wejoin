@@ -23,7 +23,7 @@ var base = '${pageContext.request.contextPath}/';
 <div class="header" style="height:72px;">
 	<div class="logo_list"></div>
     <div class="lb_menu">
-    	<a href="javascript:void(0);" class="pd_1" onclick="showSyldBox()">免费创建频道</a>
+    	<a href="javascript:void(0);" class="pd_1" onclick="showChannelAddBox()">免费创建频道</a>
         <a href="javascript:void(0);" class="pd_2">免费创建社群</a>
         <a href="javascript:void(0);" class="pd_3">微币充值</a>
         <a href="javascript:void(0);" class="pd_4">使用帮助</a>
