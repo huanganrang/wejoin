@@ -3,18 +3,14 @@ package jb.util;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import net.sf.jmimemagic.Magic;
-import net.sf.jmimemagic.MagicMatch;
+import org.springframework.web.multipart.MultipartFile;
 
 public class HttpPostUploadUtil {
 
@@ -22,18 +18,18 @@ public class HttpPostUploadUtil {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String filepath = "D:\\test\\a.jpg";
-		String filepath1 = "D:\\test\\a.html";
-		String urlStr = "http://127.0.0.1:8181/bshoot/api/bshootController/upload";
-		Map<String, String> textMap = new HashMap<String, String>();
-		textMap.put("bsTitle", "testname");      //主题
-		textMap.put("tokenId", "6A98C9F43BBE41ACBB3576F2F87572EA"); //token值
-		textMap.put("bsDescription", "我的地盘我做主");		//描述
-		Map<String, String> fileMap = new HashMap<String, String>();
-		fileMap.put("movies", filepath); //视频文件
-		fileMap.put("icons", filepath1); //视频文件中的一帧作为icon图标
-		String ret = formUpload(urlStr, textMap, fileMap);
-		System.out.println(ret);
+//		String filepath = "D:\\test\\a.jpg";
+//		String filepath1 = "D:\\test\\a.html";
+//		String urlStr = "http://127.0.0.1:8181/bshoot/api/bshootController/upload";
+//		Map<String, String> textMap = new HashMap<String, String>();
+//		textMap.put("bsTitle", "testname");      //主题
+//		textMap.put("tokenId", "6A98C9F43BBE41ACBB3576F2F87572EA"); //token值
+//		textMap.put("bsDescription", "我的地盘我做主");		//描述
+//		Map<String, String> fileMap = new HashMap<String, String>();
+//		fileMap.put("movies", filepath); //视频文件
+//		fileMap.put("icons", filepath1); //视频文件中的一帧作为icon图标
+//		String ret = formUpload(urlStr, textMap, fileMap);
+//		System.out.println(ret);
 	}
 
 	/**
@@ -43,7 +39,7 @@ public class HttpPostUploadUtil {
 	 * @param fileMap
 	 * @return
 	 */
-	public static String formUpload(String urlStr, Map<String, String> textMap, Map<String, String> fileMap) {
+	public static String formUpload(String urlStr, Map<String, String> textMap,  Map<String, MultipartFile> fileMap) {
 		String res = "";
 		HttpURLConnection conn = null;
 		String BOUNDARY = "---------------------------123821742118716"; //boundary就是request头和上传文件内容的分隔符  
@@ -81,27 +77,23 @@ public class HttpPostUploadUtil {
 
 			// file  
 			if (fileMap != null) {
-				Iterator<Map.Entry<String, String>> iter = fileMap.entrySet().iterator();
+				Iterator<Map.Entry<String, MultipartFile>> iter = fileMap.entrySet().iterator();
 				while (iter.hasNext()) {
-					Map.Entry<String, String> entry = iter.next();
+					Map.Entry<String, MultipartFile> entry = iter.next();
 					String inputName = (String) entry.getKey();
-					String inputValue = (String) entry.getValue();
+					MultipartFile inputValue = (MultipartFile) entry.getValue();
 					if (inputValue == null) {
 						continue;
 					}
-					File file = new File(inputValue);
-					String filename = file.getName(); 
-					MagicMatch match = Magic.getMagicMatch(file, false, true);
-					String contentType = match.getMimeType();
 
 					StringBuffer strBuf = new StringBuffer();
 					strBuf.append("\r\n").append("--").append(BOUNDARY).append("\r\n");
-					strBuf.append("Content-Disposition: form-data; name=\"" + inputName + "\"; filename=\"" + filename + "\"\r\n");
-					strBuf.append("Content-Type:" + contentType + "\r\n\r\n");
+					strBuf.append("Content-Disposition: form-data; name=\"" + inputName + "\"; filename=\"" + inputValue.getOriginalFilename() + "\"\r\n");
+					strBuf.append("Content-Type:" + inputValue.getContentType() + "\r\n\r\n");
 
 					out.write(strBuf.toString().getBytes());
 
-					DataInputStream in = new DataInputStream(new FileInputStream(file));
+					DataInputStream in = new DataInputStream(inputValue.getInputStream());
 					int bytes = 0;
 					byte[] bufferOut = new byte[1024];
 					while ((bytes = in.read(bufferOut)) != -1) {
@@ -121,7 +113,7 @@ public class HttpPostUploadUtil {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = null;
 			while ((line = reader.readLine()) != null) {
-				strBuf.append(line).append("\n");
+				strBuf.append(line);
 			}
 			res = strBuf.toString();
 			reader.close();

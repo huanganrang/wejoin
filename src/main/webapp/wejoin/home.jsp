@@ -13,6 +13,7 @@ var base = '${pageContext.request.contextPath}/';
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-easyui-1.3.3/jquery.easyui.min.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/tab.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/home.js" type="text/javascript" charset="utf-8"></script>
@@ -175,11 +176,13 @@ var base = '${pageContext.request.contextPath}/';
                 	<span>创建频道</span>
                 </div>
                 <div class="tjcg_list">
-                	<form action="" method="get">
+                	<form action="" method="post" enctype="multipart/form-data" id="createChannelForm">
+                		<input type="hidden" name="type" id="type"> 
+                		<input type="hidden" name="param" id="param"> 
                     	<a class="btn_addPic" href="javascript:void(0);">
                     	<img class="img-preview" src="images/xj.gif">
                     	<span>频道封面照上传</span> 
-                        <input class="filePrew" title="支持jpg、jpeg、gif、png格式，文件小于5M" tabIndex="3" type="file" size="3" name="channelIcon" id="channelIcon"></a>
+                        <input class="filePrew" title="支持jpg、jpeg、gif、png格式，文件小于5M" tabIndex="3" type="file" size="3" name="uploadFile" id="uploadFile"></a>
                         <ul>
                         	<li><input type="text" class="putc" placeholder="请填写频道名称" id="channelName" name="channelName" style="color:#333;"></li>
                             <li>
@@ -188,7 +191,7 @@ var base = '${pageContext.request.contextPath}/';
                                 </span>
                             </li>
                             <li><textarea class="pute" name="shortDesc" id="shortDesc" placeholder="频道简介" style="color:#333;"></textarea></li>
-                            <li><input id="createChannelBtn" type="button" value="创建频道" class="putf"/></li>
+                            <li><input id="createChannelBtn" type="button" value="创建频道" class="putf" onclick="javascript:$('#createChannelForm').submit();"/></li>
                             <div class="clear"></div>
                         </ul>
                         <div class="clear"></div>

@@ -27,4 +27,8 @@ public abstract class PathUtil {
 		return Application.getString("SV100") + "/" + Application.getString(type);
 	}
 	
+	public static String getUploadUrl() {
+		return Application.getString("SV100") + "/upload";
+	}
+	
 }

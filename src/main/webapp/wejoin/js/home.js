@@ -6,7 +6,76 @@ $(function(){
 		$(this).parent().parent().hide();			  
 	});
 	
-	$("#createChannelBtn").bind('click', createChannel);
+//	$("#createChannelBtn").bind('click', function(){
+//		$("#createChannelForm").submit();
+//	});
+	
+	$('#createChannelForm').form({
+		url : base+"api/apiCommon/doPost", //
+		onSubmit : function() {
+			var isValid = true;
+			
+			var userToken = $("#userToken").val();
+			if(!userToken) {
+				alert("您还未登录，请先登录！");
+				isValid = false;
+			}
+			
+			var channelIcon = $("#uploadFile").val();
+		    if(channelIcon == '') {
+				alert("请选择频道封面照");
+				isValid = false;
+			}
+		    var name = $("#channelName").val();
+		    if(name == '') {
+				$("#channelName").focus();
+				isValid = false;
+			}
+		    var categoryId = $("#categoryId").val();
+		    if(categoryId == '') {
+				alert("请选择频道类别");
+				isValid = false;
+			}
+		    var shortDesc = $("#shortDesc").val();
+			if(shortDesc == '') {
+				$("#shortDesc").focus();
+				isValid = false;
+			}
+			if(isValid) {
+				$("#type").val("UL011");
+				$("#param").val(JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"userToken":userToken}));
+			}
+			
+			return isValid;
+		},
+		success : function(data) {
+			console.log(data);
+			data = $.parseJSON(data);
+			if(data.obj){
+        		var result = $.parseJSON(data.obj);
+				if(result.serverStatus == 0) {
+	        		var channel = result.returnObject;
+	        		var $channelTemplate = $("#channelTemplate");	
+	        		var $channelItem = $channelTemplate.clone().removeAttr("id").show();
+	        		$("#con_one_1 .list_main1 ul").prepend($channelItem);
+	        		$("#con_one_1 .list_main1 ul li:last").remove();
+	        		$channelItem.find(".list_1 span").html(channel.name);
+	        		$channelItem.find(".list_1 em").html("在线：0"); 
+	        		$channelItem.find(".list_2 span img").attr("src", channel.url + "/" + channel.channelIcon);
+	        		$channelItem.find(".list_2 em").html(channel.shortDesc); 
+	        		$channelItem.find(".list_3 span").html("创建者："); //TODO 创建者不名或从session中取
+	        		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).bind("click", function(){
+	        			channel_roomPage($(this).attr('channelToken'));
+	        		}); 
+	        		
+	        		$(".windows").hide();
+	        	} else {
+	        		// 创建失败
+	        		alert(result.returnMessage);
+	        	}
+			}
+		}
+	});
 	
 	channelPage(1); // 频道列表
 	communityPage(1); // 社区列表
@@ -15,7 +84,7 @@ $(function(){
 //	channel_roomPage(); // 频道房间列表
 	
 	function ProcessFile() {
-		var file = document.getElementById('channelIcon').files[0];
+		var file = document.getElementById('uploadFile').files[0];
 		if (file) {
 			var reader = new FileReader();
 			reader.onload = function ( event ) {
@@ -25,7 +94,7 @@ $(function(){
 		}
 	    reader.readAsDataURL(file);
 	}
-	$(document).delegate('#channelIcon','change',function () {
+	$(document).delegate('#uploadFile','change',function () {
 		ProcessFile();
 	});
 });
@@ -50,61 +119,6 @@ function showChannelAddBox(){
 		var $option = $('<option value="'+categorys[i].id+'">'+categorys[i].name+'</option>');
 		$("#categoryId").append($option);
 	}
-}
-
-function createChannel() {
-	var channelIcon = $("#channelIcon").val();
-    if(channelIcon == '') {
-		alert("请选择频道封面照");
-		return;
-	}
-    var name = $("#channelName").val();
-    if(name == '') {
-		$("#channelName").focus();
-		return;
-	}
-    var categoryId = $("#categoryId").val();
-    if(categoryId == '') {
-		alert("请选择频道类别");
-		return;
-	}
-    var shortDesc = $("#shortDesc").val();
-	if(shortDesc == '') {
-		$("#shortDesc").focus();
-		return;
-	}
-    
-	$.ajax({
-        type: "POST",
-        url: base+"api/apiCommon/doPost", // Channel/Channel
-        data: {"type":"UL011", "param":JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"channelIcon":channelIcon})},
-        dataType:"json",
-        success:function (data) {
-        	if(data.obj){
-        		var result = $.parseJSON(data.obj);
-	        	if(result.serverStatus == 0) {
-	        		var channel = result.returnObject;
-	        		var $channelTemplate = $("#channelTemplate");	
-	        		var $channelItem = $channelTemplate.clone().removeAttr("id").show();
-            		$("#con_one_1 .list_main1 ul").prepend($channelItem);
-            		$("#con_one_1 .list_main1 ul li:last").remove();
-            		$channelItem.find(".list_1 span").html(channel.name);
-            		$channelItem.find(".list_1 em").html("在线：0"); 
-            		$channelItem.find(".list_2 span img").attr("src", channel.url + "/" + channel.channelIcon);
-            		$channelItem.find(".list_2 em").html(channel.shortDesc); 
-            		$channelItem.find(".list_3 span").html("创建者："); //TODO 创建者不名或从session中取
-            		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).bind("click", function(){
-            			channel_roomPage($(this).attr('channelToken'));
-            		}); 
-            		
-            		$(".windows").hide();
-	        	} else {
-	        		// 创建失败
-	        		alert(result.returnMessage);
-	        	}
-        	}
-        }
-    });
 }
 
 var channelTotal;

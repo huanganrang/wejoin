@@ -13,17 +13,27 @@ function ApplicationModel(wechat) {
 
             console.log('Connected ' + frame);
 
-            wechat.stompClient.subscribe("/app/participants", function(message) {
+            wechat.stompClient.subscribe("/topic/participants/"+$("#houseToken").val(), function(message) {
                console.info(message);
+               var body = $.parseJSON(message.body);
+           		if(body.userToken != $("#userToken").val()) {
+	           		wechat._displayNewMsg({'username':'系统消息','owner':false, 'content':decodeURIComponent(body.content)});
+	           	}
             });
 
             wechat.stompClient.subscribe("/topic/message/"+$("#houseToken").val(), function(message) {
+            	console.info(message);
             	var body = $.parseJSON(message.body);
             	if(body.userToken != $("#userToken").val()) {
             		wechat._displayNewMsg({'username':'我是会飞的鱼','owner':false, 'content':decodeURIComponent(body.content)});
             	}
-                console.info(decodeURIComponent(body.content));
             });
+            
+            wechat.stompClient.send("/app/participants",{},JSON.stringify({
+            	'houseToken':encodeURIComponent($("#houseToken").val()),
+                'userToken':encodeURIComponent($("#userToken").val()),
+                'content':encodeURIComponent("哥华丽的上线了！")
+            }));
         }, function(error) {
             console.log("STOMP protocol error " + error);
         });
@@ -38,11 +48,12 @@ function ApplicationModel(wechat) {
 WeChat.prototype = {
 	init : function() {
 		var _this = this;
-		var socket = new SockJS('service.weiqu168.com:8080/ws');
+		var socket = new SockJS('http://service.weiqu168.com:8080/ws');
 		this.stompClient = Stomp.over(socket);
         var appModel = new ApplicationModel(this);
         ko.applyBindings(appModel);
         appModel.connect();
+        
 		this._initFace();
 		// 回车发送消息
 		$("#content").bind('keyup', function(e){
@@ -51,7 +62,7 @@ WeChat.prototype = {
 				$("#content").val('');
 				// 发送聊天消息
 //				_this.socket.send({'content':content});
-				_this.stompClient.send("/topic/message/"+$("#houseToken").val(),{},JSON.stringify({
+				_this.stompClient.send("/app/message",{},JSON.stringify({
 		            'houseToken':encodeURIComponent($("#houseToken").val()),
 		            'userToken':encodeURIComponent($("#userToken").val()),
 		            'content':encodeURIComponent(content)

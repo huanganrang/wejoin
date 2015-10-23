@@ -217,8 +217,8 @@ $(window).load(function(){
         
         <div class="ltia_2" style="margin-left:5px;">
         	<ol class="gift_div_ac"><img class="img_tb3 gift_div_ac" src="images/tb2.png" /></ol>
-            <div class="v_bc gift_div">
-        	<!-- <a href="javascript:void(0);">表情图片</a>
+            <div class="v_bc gift_div" style="top: -166px;">
+        	<a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
@@ -262,7 +262,7 @@ $(window).load(function(){
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
             <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a> -->
+            <a href="javascript:void(0);">表情图片</a> 
         </div>
         </div>
 
