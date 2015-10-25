@@ -1,10 +1,34 @@
 $(function(){
 	var wechat = new WeChat();
 	wechat.init();
+	
+	initMembersList();
 });
 var WeChat = function() {
 	this.stompClient = null;
 };
+
+function initMembersList() {
+	$.ajax({
+        type: "POST",
+        url: base+"api/apiCommon/doGet", // HouseUser/Users
+        data:{"type":"UL030", "houseToken":$("#houseToken").val()},
+        dataType:"json",
+        async: false,
+        success:function (data) {
+        	if(data.obj){
+        		var result = $.parseJSON(data.obj);
+        		if(result.serverStatus == 0) {
+        			var members = result.returnObject;
+        			for(var i in members) {
+        				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+members[i].userIcon+'" />'+members[i].nickName+'</a></a></li>');
+        				$(".v_ren ul").append($li);
+        			}
+        		}
+        	}		            	
+    	}
+   });
+}
 
 function ApplicationModel(wechat) {
     var self = this;

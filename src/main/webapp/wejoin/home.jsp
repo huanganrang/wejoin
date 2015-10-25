@@ -70,7 +70,7 @@ var base = '${pageContext.request.contextPath}/';
            	    <ul>
                	  <li id="channelTemplate" style="display:none;">
                        	  <div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
-                          <div class="list_2"><span><img src="images/pic1.gif" onerror="javascript:this.src='images/pic1.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
+                          <div class="list_2"><span><img src="" /></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
                           <div class="list_3"><span>创建者：会飞的鱼</span>  <em><a href="javascript:void(0);" class="a_1">进入频道</a></em></div>
                   </li>
                 </ul>

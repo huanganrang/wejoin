@@ -9,6 +9,9 @@
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房间</title>
+<script type="text/javascript">
+var base = '${pageContext.request.contextPath}/';
+</script>
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -94,7 +97,7 @@ $(window).load(function(){
 </script>
 </head>
 
-<body>
+<body style="overflow: hidden;">
 <input type="hidden" id="userToken" value="${sessionScope.token}" />
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <div class="header">
@@ -269,10 +272,10 @@ $(window).load(function(){
         <div class="ltia_1" style=" width:135px; float:right;">
         	<span>选择成员</span>
             <div class="ltia_bj someone_div">
-            <div class="content mCustomScrollbar" style="height:320px;">
-            <div class="v_ren">
+            <div class="content" style="height:320px;">
+            <div class="v_ren mCustomScrollbar">
             	<ul>
-                	<li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                	<!-- <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
@@ -286,6 +289,16 @@ $(window).load(function(){
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
                     <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
+                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li> -->
                 </ul>
             </div>
             </div>

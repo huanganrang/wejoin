@@ -61,9 +61,9 @@ $(function(){
 	        		$("#con_one_1 .list_main1 ul li:last").remove();
 	        		$channelItem.find(".list_1 span").html(channel.name);
 	        		$channelItem.find(".list_1 em").html("在线：0"); 
-	        		$channelItem.find(".list_2 span img").attr("src", channel.url + "/" + channel.channelIcon);
+	        		$channelItem.find(".list_2 span img").attr("src", 'imageCreate.jsp?src=' + channel.displayIconUrl);
 	        		$channelItem.find(".list_2 em").html(channel.shortDesc); 
-	        		$channelItem.find(".list_3 span").html("创建者："); //TODO 创建者不名或从session中取
+	        		$channelItem.find(".list_3 span").html("创建者：" + nickName.nickName); 
 	        		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).bind("click", function(){
 	        			channel_roomPage($(this).attr('channelToken'));
 	        		}); 
@@ -144,7 +144,7 @@ function channelPage(pageNo){
                 		$("#con_one_1 .list_main1 ul").append($channelItem);
                 		$channelItem.find(".list_1 span").attr('title', channels[i].name).html(channels[i].name);
                 		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount); 
-                		$channelItem.find(".list_2 span img").attr("src", channels[i].url + "/" + channels[i].channelIcon);
+                		$channelItem.find(".list_2 span img").attr("src", 'imageCreate.jsp?src=' + channels[i].displayIconUrl);
                 		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
                 		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName); 
                 		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).bind("click", function(){
