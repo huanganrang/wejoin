@@ -146,9 +146,11 @@ function channelPage(pageNo){
                 		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount); 
                 		$channelItem.find(".list_2 span img").attr("src", 'imageCreate.jsp?src=' + channels[i].displayIconUrl);
                 		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
-                		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName); 
+                		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName);
+                		var channelId = channels[i].id;
+                		var channelToken = channels[i].token;
                 		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).bind("click", function(){
-                			channel_roomPage($(this).attr('channelToken'));
+                			channel_roomPage(channelId, channelToken);
                 		}); 
                 	}
         		}
@@ -198,7 +200,7 @@ function nextPage(self, type) {
 	else if(type == 2) communityPage(currentPage+1);
 }
 
-function channel_roomPage(channelToken){
+function channel_roomPage(channelId, channelToken){
 	$.ajax({
         type: "POST",
         url: base+"api/apiCommon/doGet", // House/Houses
@@ -223,10 +225,11 @@ function channel_roomPage(channelToken){
                     		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
                     		$roomItem.find(".list_3 span:eq(1)").html("房主：会飞的鱼"); //TODO 房主不明
                     		var houseToken = rooms[i].token;
+                    		var houseId = rooms[i].id;
                     		$roomItem.find(".list_3 em a").bind("click", function(){
                     			var userToken = $("#userToken").val();
                     			if(userToken) {
-                    				// TODO 调用joinHouse接口
+                    				//  调用joinHouse接口
                     				$.ajax({
                     			        type: "POST",
                     			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
@@ -235,7 +238,9 @@ function channel_roomPage(channelToken){
                     			        success:function (data) {
                     			        	result = $.parseJSON(data.obj);
                     			        	if(result.serverStatus == 0) {
-                    			        		window.location.href = 'room.jsp?houseToken=' + houseToken;
+                    			        		window.location.href = 'room.jsp?houseToken=' + houseToken
+                    			        							+ '&houseId=' + houseId
+                    			        							+ '&channelId=' + channelId;
                     			        	} else {
                     			        		// 加入房间失败
                     			        		alert(result.returnMessage);

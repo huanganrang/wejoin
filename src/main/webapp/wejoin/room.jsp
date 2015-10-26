@@ -6,6 +6,8 @@
 <head>
 <%
 	String houseToken = request.getParameter("houseToken");
+	String houseId = request.getParameter("houseId");
+	String channelId = request.getParameter("channelId");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房间</title>
@@ -16,6 +18,7 @@ var base = '${pageContext.request.contextPath}/';
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
@@ -23,7 +26,11 @@ var base = '${pageContext.request.contextPath}/';
 <script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/jslib/video-js/video.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+
+videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
+
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
 var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
@@ -178,8 +185,16 @@ $(window).load(function(){
 <div class="main_center" id="box3">
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
     <div class="center_max">
-        <div class="main_pic"><img src="images/pic.gif" /></div>
+        <div class="main_pic">
+        	<!-- <img src="images/pic.gif" /> -->
+        	<!----> <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
+      				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
+		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
+		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+		  	</video> 
+        </div>
     </div>
+    <!-- 
     <div class="fax">
     	<a href="javascript:void(0);">上一页</a>
         	<div class="fax_list">
@@ -196,7 +211,7 @@ $(window).load(function(){
                 </div>
             </div>
         <a href="javascript:void(0);">下一页</a>    
-    </div>
+    </div> -->
   <div class="col" style="top:42px; right:0px; "><a href="javascript:void(0);" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
     <div class="sj"><a class="a_toggle" href="javascript:;;"><img class="img_x" src="images/1.png" /></a></div>
 </div>
