@@ -61,12 +61,14 @@ $(function(){
 	        		$("#con_one_1 .list_main1 ul li:last").remove();
 	        		$channelItem.find(".list_1 span").html(channel.name);
 	        		$channelItem.find(".list_1 em").html("在线：0"); 
-	        		$channelItem.find(".list_2 span img").attr("src", 'imageCreate.jsp?src=' + channel.displayIconUrl);
+	        		$channelItem.find(".list_2 span img").attr("src", 'http://' + channel.displayIconUrl);
 	        		$channelItem.find(".list_2 em").html(channel.shortDesc); 
 	        		$channelItem.find(".list_3 span").html("创建者：" + nickName.nickName); 
-	        		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).bind("click", function(){
-	        			channel_roomPage($(this).attr('channelToken'));
-	        		}); 
+	        		var channelId = channel.id;
+            		var channelToken = channel.token;
+            		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).attr("channelId", channel.id).bind("click", function(){
+            			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
+            		}); 
 	        		
 	        		$(".windows").hide();
 	        	} else {
@@ -144,13 +146,11 @@ function channelPage(pageNo){
                 		$("#con_one_1 .list_main1 ul").append($channelItem);
                 		$channelItem.find(".list_1 span").attr('title', channels[i].name).html(channels[i].name);
                 		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount); 
-                		$channelItem.find(".list_2 span img").attr("src", 'imageCreate.jsp?src=' + channels[i].displayIconUrl);
+                		$channelItem.find(".list_2 span img").attr("src", 'http://' + channels[i].displayIconUrl);
                 		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
                 		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName);
-                		var channelId = channels[i].id;
-                		var channelToken = channels[i].token;
-                		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).bind("click", function(){
-                			channel_roomPage(channelId, channelToken);
+                		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).attr("channelId", channels[i].id).bind("click", function(){
+                			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
                 		}); 
                 	}
         		}
@@ -220,15 +220,15 @@ function channel_roomPage(channelId, channelToken){
                     		$(".fz_xt ul").append($roomItem);
                     		$roomItem.find(".list_1 span").attr('title', rooms[i].title).html(rooms[i].title);
                     		$roomItem.find(".list_1 em").html("在线：" + (rooms[i].onlineUserCount || 0)); 
-                    		$roomItem.find(".list_2 span img").attr("src", rooms[i].url);
+                    		$roomItem.find(".list_2 span img").attr("src", "http://" + rooms[i].houseIcon);
 //                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
                     		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
-                    		$roomItem.find(".list_3 span:eq(1)").html("房主：会飞的鱼"); //TODO 房主不明
-                    		var houseToken = rooms[i].token;
-                    		var houseId = rooms[i].id;
-                    		$roomItem.find(".list_3 em a").bind("click", function(){
+                    		$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName); //TODO 房主不明
+                    		$roomItem.find(".list_3 em a").attr("houseId", rooms[i].id).attr("houseToken", rooms[i].token).bind("click", function(){
                     			var userToken = $("#userToken").val();
                     			if(userToken) {
+                    				var houseToken = $(this).attr("houseToken");
+                            		var houseId = $(this).attr("houseId");
                     				//  调用joinHouse接口
                     				$.ajax({
                     			        type: "POST",
