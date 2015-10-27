@@ -92,8 +92,8 @@ public class ApiCommonController extends BaseController {
 	
 	@SuppressWarnings("unchecked")
 	@ResponseBody
-	@RequestMapping("/doDetele")
-	public Json doDetele(String type, HttpServletRequest request) {
+	@RequestMapping("/doDelete")
+	public Json doDelete(String type, HttpServletRequest request) {
 		Json j = new Json();
 		try{
 			Map<String, String[]> paramMap = request.getParameterMap();
@@ -103,7 +103,7 @@ public class ApiCommonController extends BaseController {
 				paramStr += "".equals(paramStr) ? "?" : "&";
 				paramStr += key + "=" + paramMap.get(key)[0];
 			}
-			String result = HttpUtil.doDetele(PathUtil.getApiUrl(type) + paramStr);
+			String result = HttpUtil.doDelete(PathUtil.getApiUrl(type) + paramStr);
 			j.setObj(result);
 			j.success();
 		}catch(Exception e){

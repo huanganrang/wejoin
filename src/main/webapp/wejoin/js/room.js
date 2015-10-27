@@ -111,25 +111,24 @@ WeChat.prototype = {
 		});
 		//监听浏览器关闭前的事件
 		window.onbeforeunload = function(){
-			return "确认离开";
+//			var houseToken = $("#houseToken").val();
+//	    	var userToken = $("#userToken").val();
+//	    	$.ajax({
+//		        type: "POST",
+//		        url: base+"api/apiCommon/doDelete", // HouseUser/HouseUser
+//		        data: {"type":"UL014", "houseToken":houseToken,"userToken":userToken},
+//		        dataType:"json",
+//		        success:function (data) {
+//		        	console.log(data.obj);
+//		        	result = $.parseJSON(data.obj);
+//		        }
+//		    });
+			return "确认离开？";
 		};
 		//监听浏览器关闭时
-		window.onunload = function(){
-			alert(123);
-			//appModel.logout();
-			var houseToken = $("#houseToken").val();
-	    	var userToken = $("#userToken").val();
-	    	$.ajax({
-		        type: "POST",
-		        url: base+"api/apiCommon/doDetele", // HouseUser/HouseUser
-		        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
-		        dataType:"json",
-		        success:function (data) {
-		        	console.log(data.obj);
-		        	result = $.parseJSON(data.obj);
-		        }
-		    });
-		};
+//		window.onunload = function(){
+//			
+//		};
 	},
 	_initFace: function() {
     	var $face = $("#faceWrapper");

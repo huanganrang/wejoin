@@ -39,8 +39,8 @@ public class HttpUtil {
     	return httpRequest(url, "POST", param);
     }
     
-    public static String doDetele(String url) {
-    	return httpRequest(url, "DETELE", null);
+    public static String doDelete(String url) {
+    	return httpRequest(url, "DELETE", null);
     }
     
 	/**
@@ -162,7 +162,8 @@ public class HttpUtil {
 //		System.out.println(doGet("http://service.weiqu168.com:8080/Community/Category"));
 //		System.out.println(doGet("http://service.weiqu168.com:8080/Community/Category"));
 //		System.out.println(doGet("http://service.weiqu168.com:8080/User/User?mobile=18701959799&password=123456"));
-		System.out.println(doGet("http://service.weiqu168.com:8080/Channel/Page?pageNo=7&pageSize=16"));
+//		System.out.println(doGet("http://service.weiqu168.com:8080/Channel/Page?pageNo=7&pageSize=16"));
+		System.out.println(doDelete("http://service.weiqu168.com:8080/HouseUser/HouseUser?userToken=809198b99dc4bd1d2ea595b4c83df9a1&houseToken=0a6aef8aa4b9749114fcd59df9aca7d3"));
 //		System.out.println(httpRequest("http://139.196.34.76/ValidCode/ValidCode", "POST", "{\"mobile\": \"18701959799\", \"channel\": \"register\"}"));
 	}
 }

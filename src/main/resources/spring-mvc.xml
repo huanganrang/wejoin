@@ -87,6 +87,7 @@
 					<list>
 						<value>/api/apiCommon/doGet</value>
 						<value>/api/apiCommon/doPost</value>
+						<value>/api/apiCommon/doDelete</value>
 					</list>
 				</property>
 				<property name="tokenManage" ref="tokenManage" />
