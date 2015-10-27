@@ -39,6 +39,10 @@ public class HttpUtil {
     	return httpRequest(url, "POST", param);
     }
     
+    public static String doDetele(String url) {
+    	return httpRequest(url, "DETELE", null);
+    }
+    
 	/**
 	 * 发起http请求获取返回结果
 	 * 
@@ -154,9 +158,11 @@ public class HttpUtil {
 	}
 	
 	public static void main(String[] args) {
-//		System.out.println(doGet("http://139.196.34.76/Category/Category"));
 //		System.out.println(doGet("http://service.weiqu168.com:8080/Category/Category"));
-		System.out.println(doGet("http://service.weiqu168.com:8080/User/User?mobile=18701959799&password=123456"));
+//		System.out.println(doGet("http://service.weiqu168.com:8080/Community/Category"));
+//		System.out.println(doGet("http://service.weiqu168.com:8080/Community/Category"));
+//		System.out.println(doGet("http://service.weiqu168.com:8080/User/User?mobile=18701959799&password=123456"));
+		System.out.println(doGet("http://service.weiqu168.com:8080/Channel/Page?pageNo=7&pageSize=16"));
 //		System.out.println(httpRequest("http://139.196.34.76/ValidCode/ValidCode", "POST", "{\"mobile\": \"18701959799\", \"channel\": \"register\"}"));
 	}
 }

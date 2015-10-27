@@ -65,7 +65,6 @@ function ApplicationModel(wechat) {
 
     self.logout = function() {
     	wechat.stompClient.disconnect();
-//        window.location.href = "../logout.html";
     }
 }
 
@@ -116,7 +115,20 @@ WeChat.prototype = {
 		};
 		//监听浏览器关闭时
 		window.onunload = function(){
-			appModel.logout();
+			alert(123);
+			//appModel.logout();
+			var houseToken = $("#houseToken").val();
+	    	var userToken = $("#userToken").val();
+	    	$.ajax({
+		        type: "POST",
+		        url: base+"api/apiCommon/doDetele", // HouseUser/HouseUser
+		        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
+		        dataType:"json",
+		        success:function (data) {
+		        	console.log(data.obj);
+		        	result = $.parseJSON(data.obj);
+		        }
+		    });
 		};
 	},
 	_initFace: function() {

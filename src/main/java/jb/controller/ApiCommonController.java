@@ -90,4 +90,27 @@ public class ApiCommonController extends BaseController {
 		return j;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@ResponseBody
+	@RequestMapping("/doDetele")
+	public Json doDetele(String type, HttpServletRequest request) {
+		Json j = new Json();
+		try{
+			Map<String, String[]> paramMap = request.getParameterMap();
+			String paramStr = "";
+			for(String key : paramMap.keySet()) {
+				if("type".equals(key)) continue;
+				paramStr += "".equals(paramStr) ? "?" : "&";
+				paramStr += key + "=" + paramMap.get(key)[0];
+			}
+			String result = HttpUtil.doDetele(PathUtil.getApiUrl(type) + paramStr);
+			j.setObj(result);
+			j.success();
+		}catch(Exception e){
+			j.fail();
+			e.printStackTrace();
+		}		
+		return j;
+	}
+	
 }

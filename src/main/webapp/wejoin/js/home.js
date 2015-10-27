@@ -64,8 +64,6 @@ $(function(){
 	        		$channelItem.find(".list_2 span img").attr("src", 'http://' + channel.displayIconUrl);
 	        		$channelItem.find(".list_2 em").html(channel.shortDesc); 
 	        		$channelItem.find(".list_3 span").html("创建者：" + nickName.nickName); 
-	        		var channelId = channel.id;
-            		var channelToken = channel.token;
             		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).attr("channelId", channel.id).bind("click", function(){
             			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
             		}); 
