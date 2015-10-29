@@ -13,40 +13,37 @@ $(function(){
 	$('#createChannelForm').form({
 		url : base+"api/apiCommon/doPost", //
 		onSubmit : function() {
-			var isValid = true;
 			
 			var userToken = $("#userToken").val();
 			if(!userToken) {
 				alert("您还未登录，请先登录！");
-				isValid = false;
+				return false;
 			}
 			
 			var channelIcon = $("#uploadFile").val();
 		    if(channelIcon == '') {
 				alert("请选择频道封面照");
-				isValid = false;
+				return false;
 			}
 		    var name = $("#channelName").val();
 		    if(name == '') {
 				$("#channelName").focus();
-				isValid = false;
+				return false;
 			}
 		    var categoryId = $("#categoryId").val();
 		    if(categoryId == '') {
 				alert("请选择频道类别");
-				isValid = false;
+				return false;
 			}
 		    var shortDesc = $("#shortDesc").val();
 			if(shortDesc == '') {
 				$("#shortDesc").focus();
-				isValid = false;
+				return false;
 			}
-			if(isValid) {
-				$("#type").val("UL011");
-				$("#param").val(JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"userToken":userToken}));
-			}
+			$("#type").val("UL011");
+			$("#param").val(JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"userToken":userToken}));
 			
-			return isValid;
+			return true;
 		},
 		success : function(data) {
 			console.log(data);
@@ -63,7 +60,7 @@ $(function(){
 	        		$channelItem.find(".list_1 em").html("在线：0"); 
 	        		$channelItem.find(".list_2 span img").attr("src", 'http://' + channel.displayIconUrl);
 	        		$channelItem.find(".list_2 em").html(channel.shortDesc); 
-	        		$channelItem.find(".list_3 span").html("创建者：" + nickName.nickName); 
+	        		$channelItem.find(".list_3 span").html("创建者：" + channel.nickName); 
             		$channelItem.find(".list_3 em a").attr('channelToken', channel.token).attr("channelId", channel.id).bind("click", function(){
             			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
             		}); 
