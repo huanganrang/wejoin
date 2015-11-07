@@ -8,6 +8,7 @@
 	String houseToken = request.getParameter("houseToken");
 	String houseId = request.getParameter("houseId");
 	String channelId = request.getParameter("channelId");
+	String huanxinRoomId = request.getParameter("huanxinRoomId");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房间</title>
@@ -19,14 +20,20 @@ var base = '${pageContext.request.contextPath}/';
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/jquery-1.11.1.js"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/stomp.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/jslib/video-js/video.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
+<!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
 videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
@@ -105,8 +112,14 @@ $(window).load(function(){
 </head>
 
 <body style="overflow: hidden;">
-<input type="hidden" id="userToken" value="${sessionScope.token}" />
+<input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
+<input type="hidden" id="nickName" value="${sessionScope.userToken.nickName}" />
+<!--  --><input type="hidden" id="huanxinUid" value="${sessionScope.userToken.huanxinUid}" />
+<input type="hidden" id="password" value="${sessionScope.userToken.password}" />
+<!--  <input type="hidden" id="huanxinUid" value="test" />
+<input type="hidden" id="password" value="123456" />-->
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
+<input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
 	<div class="logo"></div>
     <ul>
@@ -184,14 +197,18 @@ $(window).load(function(){
 
 <div class="main_center" id="box3">
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
-    <div class="center_max">
+    <div class="center_max">  
         <div class="main_pic">
         	<!-- <img src="images/pic.gif" /> -->
-        	<!----> <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
+        	<!----> 
+        	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
 		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 		  	</video> 
+		  	<div class="hidden_area">
+				<iframe id="cameraPush" width="700" height="500"></iframe>
+			</div>
         </div>
     </div>
     <!-- 
@@ -337,9 +354,19 @@ $(window).load(function(){
         <span><a href="javascript:void(0);" class="a4">房间设置</a></span>
         <div class="clear"></div>
     </div>
+    
 </div>
 
 <div class="clear"></div>
 
+<script type="text/javascript">
+$(function(){
+	$(".a1").click(function(){
+		$("#example_video_1").hide();
+		$(".hidden_area").show();
+		$("#cameraPush").attr("src","${pageContext.request.contextPath}/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>");
+	});
+});
+</script>
 </body>
 </html>
