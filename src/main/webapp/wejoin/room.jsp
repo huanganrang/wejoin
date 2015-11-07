@@ -184,14 +184,18 @@ $(window).load(function(){
 
 <div class="main_center" id="box3">
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
-    <div class="center_max">
+    <div class="center_max">  
         <div class="main_pic">
         	<!-- <img src="images/pic.gif" /> -->
-        	<!----> <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
+        	<!----> 
+        	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
 		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 		  	</video> 
+		  	<div class="hidden_area">
+				<iframe id="cameraPush" width="700" height="500"></iframe>
+			</div>
         </div>
     </div>
     <!-- 
@@ -337,9 +341,19 @@ $(window).load(function(){
         <span><a href="javascript:void(0);" class="a4">房间设置</a></span>
         <div class="clear"></div>
     </div>
+    
 </div>
 
 <div class="clear"></div>
 
+<script type="text/javascript">
+$(function(){
+	$(".a1").click(function(){
+		$("#example_video_1").hide();
+		$(".hidden_area").show();
+		$("#cameraPush").attr("src","${pageContext.request.contextPath}/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>");
+	});
+});
+</script>
 </body>
 </html>
