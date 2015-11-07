@@ -203,6 +203,7 @@ function channel_roomPage(channelId, channelToken){
         dataType:"json",
         success:function (data) {
         	if(data.obj){
+        		console.log(data.obj);
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			var rooms = result.returnObject;
@@ -219,11 +220,12 @@ function channel_roomPage(channelId, channelToken){
 //                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
                     		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
                     		$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName); //TODO 房主不明
-                    		$roomItem.find(".list_3 em a").attr("houseId", rooms[i].id).attr("houseToken", rooms[i].token).bind("click", function(){
+                    		$roomItem.find(".list_3 em a").attr({"houseId":rooms[i].id,"houseToken":rooms[i].token,"huanxinRoomId":rooms[i].huanxinRoomId}).bind("click", function(){
                     			var userToken = $("#userToken").val();
                     			if(userToken) {
                     				var houseToken = $(this).attr("houseToken");
                             		var houseId = $(this).attr("houseId");
+                            		var huanxinRoomId = $(this).attr("huanxinRoomId");
                     				//  调用joinHouse接口
                     				$.ajax({
                     			        type: "POST",
@@ -235,7 +237,8 @@ function channel_roomPage(channelId, channelToken){
                     			        	if(result.serverStatus == 0) {
                     			        		window.location.href = 'room.jsp?houseToken=' + houseToken
                     			        							+ '&houseId=' + houseId
-                    			        							+ '&channelId=' + channelId;
+                    			        							+ '&channelId=' + channelId
+                    			        							+ '&huanxinRoomId=' + huanxinRoomId;
                     			        	} else {
                     			        		// 加入房间失败
                     			        		alert(result.returnMessage);

@@ -1,82 +1,11 @@
-var conn = null;
-var wechat = null;
 $(function(){
-//	login();
-	wechat = new WeChat();
+	var wechat = new WeChat();
 	wechat.init();
-	connInit();
 	
 	initMembersList();
-	
-    login();
-    
-    $(window).bind('beforeunload', function() {
-        if (conn) {
-        	conn.clear();
-			conn.onClosed();
-            if (navigator.userAgent.indexOf("Firefox") > 0)
-                return ' ';
-            else
-                return '';
-        }
-    });
 });
-
-function connInit() {
-	 conn = new Easemob.im.Connection();
-     
-    conn.init({
-         onOpened : function() {
-//		         alert("成功登录");
-	         conn.setPresence();
-         },
-         onTextMessage : function(message){
-			console.log(message);
-        	wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message.data});
-		},
-		//收到表情消息时的回调方法
-        onEmotionMessage : function(message) {
-        	console.log(message);
-        	wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message});
-        },
-		//当连接关闭时的回调方法
-		onClosed : function() {
-		}
-    });
-}
-
-var login = function(){
-	var user = $("#huanxinUid").val();
-    var pass = $("#password").val();
-    //根据用户名密码登录系统
-    conn.open({
-        apiUrl : Easemob.im.config.apiURL,
-        user : user,
-        pwd : pass,
-        //连接时提供appkey
-        appKey : Easemob.im.config.appkey
-    });         
-    return false;
-};
-
-var sendText = function(msg) {
-	if(!conn.isOpened()) {
-		connInit();
-		login();
-	}
-	var options = {
-		to : $("#huanxinRoomId").val(),
-//		to : '125914257123443160',
-		msg : msg,
-		type : "groupchat"
-	};
-	conn.sendTextMessage(options);
-	msg = msg.replace(/\n/g, '<br>');
-	wechat._displayNewMsg({'username':$("#nickName").val(),'owner':true, 'content':msg});
-};
-
 var WeChat = function() {
-	//this.stompClient = null;
+	this.stompClient = null;
 };
 
 function initMembersList() {
@@ -92,8 +21,7 @@ function initMembersList() {
         		if(result.serverStatus == 0) {
         			var members = result.returnObject;
         			for(var i in members) {
-        				var userIcon = members[i].userIcon || '';
-        				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+userIcon+'" />'+members[i].nickName+'</a></a></li>');
+        				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+members[i].userIcon+'" />'+members[i].nickName+'</a></a></li>');
         				$(".v_ren ul").append($li);
         			}
         		}
@@ -102,8 +30,53 @@ function initMembersList() {
    });
 }
 
+function ApplicationModel(wechat) {
+    var self = this;
+    self.connect = function() {
+    	wechat.stompClient.connect({}, function(frame) {
+
+            console.log('Connected ' + frame);
+
+            wechat.stompClient.subscribe("/topic/participants/"+$("#houseToken").val(), function(message) {
+               console.info(message);
+               var body = $.parseJSON(message.body);
+           		if(body.userToken != $("#userToken").val()) {
+	           		wechat._displayNewMsg({'username':'系统消息','owner':false, 'content':decodeURIComponent(body.content)});
+	           	}
+            });
+
+            wechat.stompClient.subscribe("/topic/message/"+$("#houseToken").val(), function(message) {
+            	console.info(message);
+            	var body = $.parseJSON(message.body);
+            	if(body.userToken != $("#userToken").val()) {
+            		wechat._displayNewMsg({'username':'我是会飞的鱼','owner':false, 'content':decodeURIComponent(body.content)});
+            	}
+            });
+            
+            wechat.stompClient.send("/app/participants",{},JSON.stringify({
+            	'houseToken':encodeURIComponent($("#houseToken").val()),
+                'userToken':encodeURIComponent($("#userToken").val()),
+                'content':encodeURIComponent("哥华丽的上线了！")
+            }));
+        }, function(error) {
+            console.log("STOMP protocol error " + error);
+        });
+    }
+
+    self.logout = function() {
+    	wechat.stompClient.disconnect();
+    }
+}
+
 WeChat.prototype = {
 	init : function() {
+		var _this = this;
+		var socket = new SockJS('http://service.weiqu168.com:8080/ws');
+		this.stompClient = Stomp.over(socket);
+        var appModel = new ApplicationModel(this);
+        ko.applyBindings(appModel);
+        appModel.connect();
+        
 		this._initFace();
 		// 回车发送消息
 		$("#content").bind('keyup', function(e){
@@ -111,8 +84,21 @@ WeChat.prototype = {
 			if (e.keyCode == 13 && $.trim(content) != '') {
 				$("#content").val('');
 				// 发送聊天消息
-				sendText(content);
+//				_this.socket.send({'content':content});
+				_this.stompClient.send("/app/message",{},JSON.stringify({
+		            'houseToken':encodeURIComponent($("#houseToken").val()),
+		            'userToken':encodeURIComponent($("#userToken").val()),
+		            'content':encodeURIComponent(content)
+		        }));
+				_this._displayNewMsg({'username':'我是会飞的鱼','owner':true, 'content':content});
             };
+		});
+		// 表情点击事件
+		$("#faceWrapper a").bind('click', function(){
+			var content = $("#content").val();
+			$("#content").focus();
+			content += '[ee_' + $(this).find('img').attr("title") + ']';
+			$("#content").val(content);
 		});
 		// 右键清屏
 		$("#box4 .content").smartMenu([[{
@@ -123,20 +109,33 @@ WeChat.prototype = {
 			}]], {
 			name: "clear"
 		});
+		//监听浏览器关闭前的事件
+		window.onbeforeunload = function(){
+//			var houseToken = $("#houseToken").val();
+//	    	var userToken = $("#userToken").val();
+//	    	$.ajax({
+//		        type: "POST",
+//		        url: base+"api/apiCommon/doDelete", // HouseUser/HouseUser
+//		        data: {"type":"UL014", "houseToken":houseToken,"userToken":userToken},
+//		        dataType:"json",
+//		        success:function (data) {
+//		        	console.log(data.obj);
+//		        	result = $.parseJSON(data.obj);
+//		        }
+//		    });
+			return "确认离开？";
+		};
+		//监听浏览器关闭时
+//		window.onunload = function(){
+//			
+//		};
 	},
 	_initFace: function() {
-		var _this = this;
-		var sjson = Easemob.im.Helper.EmotionPicData;
-        for ( var key in sjson) {
-            var emotions = $('<img>').attr({
-                "id" : key,
-                "src" : sjson[key],
-                "style" : "cursor:pointer;width: 26px; height: 26px;"
-            }).click(function() {
-            	_this._selectEmotionImg(this);
-            });
-            $('<a>').append(emotions).appendTo($('#faceWrapper'));
-        }
+    	var $face = $("#faceWrapper");
+        for (var i = 1; i <= 35; i++) {
+        	var $img = $('<a><img src="images/emoji/ee_'+i+'.png" title="'+i+'" style="width: 26px;  height: 26px;"/></a>');
+        	$face.append($img);
+        };
     },
     // 渲染文本消息
 	_displayNewMsg: function(data) {
@@ -144,27 +143,7 @@ WeChat.prototype = {
 		var ownerClass = (owner && 'wo') || (!owner && '');
         var $arrow = (owner && '<em></em>') || (!owner && '<ol></ol>');
         
-//        var content = this._showFace(data.content); // 过滤表情
-        var	messageContent;
-        if (typeof data.content == 'string') {
-        	messageContent = Easemob.im.Helper.parseTextMessage(data.content);
-        	messageContent = messageContent.body;
-        } else {
-        	messageContent = data.content.data;
-        }
-        
-        var content = '';
-        for (var i = 0; i < messageContent.length; i++) {
-            var msg = messageContent[i];
-            var type = msg.type;
-            var r = msg.data;
-            
-            if (type == "emotion") {
-            	content += '<img src="'+r+'" style="width: 19px;  height: 19px;"/>';
-            }else {
-            	content += r;
-            }
-        }
+        var content = this._showFace(data.content); // 过滤表情
         	
 		var $messageHtml = '<li class="'+ownerClass+'">'
 					+ '<div class="ltian_img"><a><img src="images/tx.gif" /></a></div>'
@@ -175,13 +154,6 @@ WeChat.prototype = {
 		
 		$(".ltian ul").append($messageHtml);
 		$("#box4 .content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
-    },
-    // 表情点击事件
-    _selectEmotionImg:function(selImg){
-    	var content = $("#content").val();
-		content += selImg.id;
-		$("#content").val(content);
-		$("#content").focus();
     },
     
     // 显示符号表情格式化

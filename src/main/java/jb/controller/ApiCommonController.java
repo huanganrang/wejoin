@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import jb.absx.F;
 import jb.pageModel.Json;
+import jb.pageModel.UserToken;
 import jb.util.HttpPostUploadUtil;
 import jb.util.HttpUtil;
 import jb.util.PathUtil;
@@ -78,7 +79,8 @@ public class ApiCommonController extends BaseController {
 			if("UL001".equals(type)) {
 				JSONObject jsonObject = JSON.parseObject(result);
 				if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
-					request.getSession().setAttribute("token", jsonObject.getString("returnValue"));
+					UserToken userToken = jsonObject.getObject("returnObject", UserToken.class);
+					request.getSession().setAttribute("userToken", userToken);
 				}
 			}
 			j.setObj(result);
