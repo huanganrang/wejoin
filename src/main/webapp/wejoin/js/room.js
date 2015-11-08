@@ -1,5 +1,6 @@
 var conn = null;
 var wechat = null;
+var users = [];
 $(function(){
 //	login();
 	wechat = new WeChat();
@@ -27,6 +28,7 @@ function connInit() {
      
     conn.init({
          onOpened : function() {
+        	 console.log("成功登录");
 //		         alert("成功登录");
 	         conn.setPresence();
          },
@@ -88,10 +90,13 @@ function initMembersList() {
         async: false,
         success:function (data) {
         	if(data.obj){
+        		console.log(data.obj);
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			var members = result.returnObject;
         			for(var i in members) {
+        				// TODO 缺少huanxinUid返回
+        				users[members[i].userToken] = members[i];
         				var userIcon = members[i].userIcon || '';
         				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+userIcon+'" />'+members[i].nickName+'</a></a></li>');
         				$(".v_ren ul").append($li);
@@ -165,7 +170,8 @@ WeChat.prototype = {
             	content += r;
             }
         }
-        	
+        
+        // TODO 根据users动态取头像、昵称
 		var $messageHtml = '<li class="'+ownerClass+'">'
 					+ '<div class="ltian_img"><a><img src="images/tx.gif" /></a></div>'
 					+ '<div class="ltian_txt">'
