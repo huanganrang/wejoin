@@ -303,7 +303,7 @@ cursor:pointer;
 .tjcg_list li .putf{width:432px; height:70px;  background: url(../images/bd.png) no-repeat 0 -269px;  font-size:20px; font-family:"微软雅黑"; color:#fff; text-align:center; line-height:70px; cursor:pointer;}
 
 .hidden_area{
-	display:block;
+	display:none;
 	float:left;
 }
 

@@ -143,7 +143,14 @@ $(window).load(function(){
 <div class="main_left">
 	<div class="content mCustomScrollbar content_main" style="height:340px;">
 	<div class="video">
-    	<img src="images/video.gif" />
+    	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="185" height="150" 
+      				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
+		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
+		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+		  	</video> 
+		  	<div class="hidden_area">
+				<iframe id="cameraPush" width="190" height="150"></iframe>
+			</div>
     </div>
     
     <div class="video">
@@ -199,16 +206,9 @@ $(window).load(function(){
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
     <div class="center_max">  
         <div class="main_pic">
-        	<!-- <img src="images/pic.gif" /> -->
-        	<!----> 
-        	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="779" height="425" 
-      				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
-		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
-		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-		  	</video> 
-		  	<div class="hidden_area">
-				<iframe id="cameraPush" width="700" height="500"></iframe>
-			</div>
+        	<img src="images/pic.gif" />
+        	 
+        	
         </div>
     </div>
     <!-- 
