@@ -16,8 +16,8 @@
 <link href="${pageContext.request.contextPath}/mobile/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mobile/css/jquery.mCustomScrollbar.css">
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
-<link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/jslib/video-js/video.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="images/common.css"/>
+
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script>
 var base = '${pageContext.request.contextPath}/';
@@ -91,11 +91,37 @@ if(targetObj.style.display!="none"){
 <div class="appdown">
 	<div class="apptb">
     	<!-- <img src="images/apptb.png"><span><a href="#">快速加载，流畅收听</a></span> -->
-    	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto"
-     				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
-	    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
-	    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-	  	</video> 
+    	<div class="video" id="HLSPlayer" >
+				<SCRIPT LANGUAGE=JavaScript>
+				/*
+				* HLSPlayer参数应用=========================<br>
+				* @Contact QQ:261532593 
+				* @param {Object} vID        ID
+				* @param {Object} vWidth     播放器宽度设置
+				* @param {Object} vHeight    播放器宽度设置
+				* @param {Object} vPlayer    播放器文件
+				* @param {Object} vHLSset    HLS配置
+				* @param {Object} vPic       视频缩略图
+				* @param {Object} vCssurl    移动端CSS应用文件
+				* @param {Object} vHLSurl    HLS(m3u8)地址
+				* ==========================================
+				*/
+				var vID        = ""; 
+				var vWidth     = "100%";                //播放器宽度设置
+				var vHeight    = 400;                   //播放器宽度设置
+				var vPlayer    = "HLSPlayer.swf?v=1.5"; //播放器文件
+				var vHLSset    = "HLS.swf";             //HLS配置
+				var vPic       = "images/start.jpg";    //视频缩略图
+				var vCssurl    = "images/mini.css";     //移动端CSS应用文件
+				
+				//HLS(m3u8)地址,适配PC,安卓,iOS,WP
+				var vHLSurl    = "http://s2.weiqu168.com:80/live/<%=channelId%>/<%=houseId%>/playlist.m3u8";
+				//var vHLSurl    = "http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8";
+
+				//http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8
+				</SCRIPT> 
+				<script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
+				</div>
     </div>
     <div class="app_an"><a href="#">立即下载</a></div>
     <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>
