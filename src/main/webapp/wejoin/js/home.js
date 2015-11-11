@@ -92,7 +92,12 @@ $(function(){
 	    reader.readAsDataURL(file);
 	}
 	$(document).delegate('#uploadFile','change',function () {
-		ProcessFile();
+		if($(this).val() == '') {
+			$('.img-preview').attr('src','images/xj.gif');
+		} else {
+			ProcessFile();
+		}
+		
 	});
 });
 

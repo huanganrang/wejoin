@@ -34,12 +34,16 @@ function connInit() {
          },
          onTextMessage : function(message){
 			console.log(message);
-        	wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message.data});
+			if(message.from != $("#huanxinUid").val()) {
+				wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message.data});
+			}
 		},
 		//收到表情消息时的回调方法
         onEmotionMessage : function(message) {
         	console.log(message);
-        	wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message});
+        	if(message.from != $("#huanxinUid").val()) {
+        		wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message});
+        	}
         },
 		//当连接关闭时的回调方法
 		onClosed : function() {
