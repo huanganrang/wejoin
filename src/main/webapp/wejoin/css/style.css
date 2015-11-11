@@ -305,6 +305,7 @@ cursor:pointer;
 .hidden_area{
 	display:none;
 	float:left;
+	z-index:9999;
 }
 
 

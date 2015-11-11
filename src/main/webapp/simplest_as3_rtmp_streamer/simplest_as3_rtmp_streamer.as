@@ -39,8 +39,8 @@ package {
 		var cam:Camera;
 		var mic:Microphone;
 		
-		var screen_w:int=640;
-		var screen_h:int=480;
+		var screen_w:int=214;
+		var screen_h:int=140;
 		var room:String="";
 
 		public function simplest_as3_rtmp_streamer()
@@ -159,8 +159,8 @@ package {
 
 		private function displayPublishingVideo():void {
 			vid = new Video(screen_w, screen_h);
-			vid.x = 10;
-			vid.y = 10;
+			vid.x = 0;
+			vid.y = 0;
 			vid.attachCamera(cam);
 			addChild(vid);
 		}

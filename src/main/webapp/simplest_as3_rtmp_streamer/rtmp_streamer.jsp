@@ -17,7 +17,7 @@
 	String channelId = request.getParameter("channelId");
 %>
 		<div id="flashContent">
-			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="670" height="480" id="simplest_as3_rtmp_streamer" align="middle">
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="215" height="140" id="simplest_as3_rtmp_streamer" align="middle">
 				<param name="movie" value="simplest_as3_rtmp_streamer.swf" />
 				<param name="quality" value="high" />
 				<param name="bgcolor" value="#006600" />
@@ -31,7 +31,7 @@
 				<param name="allowScriptAccess" value="sameDomain" />
 				<param name="flashVars" value="channel=<%=channelId %>&room=<%=houseId %>" />
 				<!--[if !IE]>-->
-				<object type="application/x-shockwave-flash" data="simplest_as3_rtmp_streamer.swf" width="670" height="480">
+				<object type="application/x-shockwave-flash" data="simplest_as3_rtmp_streamer.swf" width="215" height="140">
 					<param name="movie" value="simplest_as3_rtmp_streamer.swf" />
 					<param name="quality" value="high" />
 					<param name="bgcolor" value="#006600" />
