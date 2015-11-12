@@ -50,16 +50,20 @@ function register() {
         data: {"type":"UL003", "param":JSON.stringify({"mobile":mobile,"nickName":username,"password":password,"validCode":valiCode})},
         dataType:"json",
         success:function (data) {
-//        	alert(data.obj);
-        	var json = JSON.parse(data.obj);
-        	if(json.serverStatus == 0) {
-        		alert("注册成功");
-        		showDjcgBox();	
-        	} else {
-        		// 注册失败
-        		alert(json.returnMessage);
-        	}
-        }
+        	if(data.obj) {
+            	console.log("注册：" + data.obj);
+            	var json = JSON.parse(data.obj);
+            	if(json.serverStatus == 0) {
+            		alert("注册成功");
+            		showDjcgBox();	
+            	} else {
+            		// 注册失败
+            		alert(json.returnMessage);
+            	}
+            } else {
+            	alert("注册失败");
+            }
+    	}
     });
 }
 
@@ -80,14 +84,19 @@ function login() {
         data: {"type":"UL001", "mobile":username, "password":password},
         dataType:"json",
         success:function (data) {
-//        	alert(data.obj);
-        	var json = JSON.parse(data.obj);
-        	if(json.serverStatus == 0) {
-        		window.location.href = 'wejoin/home.jsp';
+        	if(data.obj) {
+        		console.log("登录：" + data.obj);
+            	var json = JSON.parse(data.obj);
+            	if(json.serverStatus == 0) {
+            		window.location.href = 'wejoin/home.jsp';
+            	} else {
+            		// 登录失败
+            		alert(json.returnMessage);
+            	}
         	} else {
-        		// 登录失败
-        		alert(json.returnMessage);
+        		alert("登录失败");
         	}
+        	
         }
     });
 }
@@ -118,15 +127,19 @@ function getValidCode(event) {
         data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":event.data})},
         dataType:"json",
         success:function (data) {
-//        	alert(data.obj);
-        	var json = JSON.parse(data.obj);
-        	if(json.serverStatus == 0) {
-        		// 成功
+        	if(data.obj) {
+        		console.log("获取验证码：" + data.obj);
+            	var json = JSON.parse(data.obj);
+            	if(json.serverStatus == 0) {
+            		// 成功
+            	} else {
+            		alert("获取验证码失败");
+            		clearInterval(interval);
+        			$("#syldBox .validCode_btn").html("点击获取").bind('click', "register", getValidCode);
+        			time = 59;
+            	}
         	} else {
         		alert("获取验证码失败");
-        		clearInterval(interval);
-    			$("#syldBox .validCode_btn").html("点击获取").bind('click', "register", getValidCode);
-    			time = 59;
         	}
         }
         
