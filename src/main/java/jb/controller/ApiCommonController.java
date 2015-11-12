@@ -43,8 +43,9 @@ public class ApiCommonController extends BaseController {
 				fileMap.put("file", uploadFile);
 				String fileToken = HttpPostUploadUtil.formUpload(PathUtil.getUploadUrl(), textMap, fileMap);
 				if(!F.empty(fileToken)) {
+					JSONObject fileTokenJO = JSON.parseObject(fileToken);
 					JSONObject jsonObject = JSON.parseObject(param);
-					jsonObject.put("channelIcon", fileToken);
+					jsonObject.put("channelIcon", fileTokenJO.get("returnValue"));
 					param = JSON.toJSONString(jsonObject);
 				} else {
 					j.fail();

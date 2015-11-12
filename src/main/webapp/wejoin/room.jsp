@@ -115,10 +115,10 @@ $(window).load(function(){
 <body style="overflow: hidden;">
 <input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
 <input type="hidden" id="nickName" value="${sessionScope.userToken.nickName}" />
-<!--  --><input type="hidden" id="huanxinUid" value="${sessionScope.userToken.huanxinUid}" />
-<input type="hidden" id="password" value="${sessionScope.userToken.password}" />
-<!--  <input type="hidden" id="huanxinUid" value="test" />
-<input type="hidden" id="password" value="123456" />-->
+<!-- --><input type="hidden" id="huanxinUid" value="${sessionScope.userToken.huanxinUid}" />
+<input type="hidden" id="password" value="${sessionScope.userToken.password}" /> 
+<!-- <input type="hidden" id="huanxinUid" value="test" />
+<input type="hidden" id="password" value="123456" /> -->
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">

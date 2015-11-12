@@ -1,5 +1,5 @@
 var windowHeight=$(window).height();
-var pageSize = 16;
+var pageSize = 12;
  
 $(function(){
 	$(".close_btn").click(function(){
@@ -46,9 +46,10 @@ $(function(){
 			return true;
 		},
 		success : function(data) {
-			console.log(data);
+			console.log("创建房间data:" + data);
 			data = $.parseJSON(data);
 			if(data.obj){
+				console.log("创建房间data.obj:" + data.obj);
         		var result = $.parseJSON(data.obj);
 				if(result.serverStatus == 0) {
 	        		var channel = result.returnObject;
@@ -208,7 +209,7 @@ function channel_roomPage(channelId, channelToken){
         dataType:"json",
         success:function (data) {
         	if(data.obj){
-        		console.log(data.obj);
+        		console.log("获取房间：" + data.obj);
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			var rooms = result.returnObject;
@@ -235,11 +236,13 @@ function channel_roomPage(channelId, channelToken){
                     				$.ajax({
                     			        type: "POST",
                     			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
-                    			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken,"identification":0})},
+                    			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
                     			        dataType:"json",
                     			        success:function (data) {
+                    			        	console.log("加入房间：" + data.obj);
                     			        	result = $.parseJSON(data.obj);
                     			        	if(result.serverStatus == 0) {
+                    			        		$.cookie(houseToken, true);
                     			        		window.location.href = 'room.jsp?houseToken=' + houseToken
                     			        							+ '&houseId=' + houseId
                     			        							+ '&channelId=' + channelId

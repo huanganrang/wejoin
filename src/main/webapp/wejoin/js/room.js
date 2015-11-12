@@ -2,7 +2,12 @@ var conn = null;
 var wechat = null;
 var users = [];
 $(function(){
-//	login();
+	if($("#userToken").val() == '') {
+		window.location.href = '../login.jsp';
+	}
+	if(!$.cookie($("#houseToken").val())) {
+		window.location.href = 'home.jsp';
+	}
 	wechat = new WeChat();
 	wechat.init();
 	connInit();
@@ -15,12 +20,19 @@ $(function(){
         if (conn) {
         	conn.clear();
 			conn.onClosed();
-            if (navigator.userAgent.indexOf("Firefox") > 0)
-                return ' ';
-            else
-                return '';
         }
+        //  调用退出接口
+		$.ajax({
+	        type: "POST",
+	        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
+	        data: {"type":"UL031", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"userToken":$("#userToken").val()})},
+	        dataType:"json",
+	        success:function (data) {
+	        }
+	    });
+		$.cookie($("#houseToken").val(), null);
     });
+    
 });
 
 function connInit() {
@@ -88,13 +100,13 @@ var WeChat = function() {
 function initMembersList() {
 	$.ajax({
         type: "POST",
-        url: base+"api/apiCommon/doGet", // HouseUser/Users
+        url: base+"api/apiCommon/doGet", // HouseUser/HouseUsers
         data:{"type":"UL030", "houseToken":$("#houseToken").val()},
         dataType:"json",
         async: false,
         success:function (data) {
         	if(data.obj){
-        		console.log(data.obj);
+        		console.log("获取房间用户：" + data.obj);
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			var members = result.returnObject;
