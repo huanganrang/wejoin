@@ -302,6 +302,17 @@ cursor:pointer;
 .tjcg_list li .pute{width:412px; height:101px; background: url(../images/bd.png) no-repeat 0 -134px; text-indent:5px; font-size:20px; font-family:"微软雅黑"; border:none; color:#999; padding:10px; padding-top:15px; margin-bottom:12px;}
 .tjcg_list li .putf{width:432px; height:70px;  background: url(../images/bd.png) no-repeat 0 -269px;  font-size:20px; font-family:"微软雅黑"; color:#fff; text-align:center; line-height:70px; cursor:pointer;}
 
+.content_img{padding:0 15px; height:42px; background:#63b30e; position:relative;}
+.content_tb1{ width:20px; height:20px; float:left; margin-top:13px; margin-right:10px; }
+.content_txt1{ width:40%; height:12px; position:absolute; left:33%;}
+.content_txt1 span{ width:100%; height:3px; background:#fff; line-height:0px; font-size:0px; display:block; margin-top:21px; }
+.content_txt1 span ol{ background:#b1ee1d; display:block; height:3px;}
+.content_txt1 span ol img{ display:block; float:right; margin-top:-2px; margin-right:-3px;}
+.content_tb2{ float:right; }
+.content_tb2 a{ width:24px; height:20px; text-indent:-99999px; display:block; background: url(../images/c3.png) no-repeat; margin-top:12px;}
+.content_tb2 a:hover{background: url(../images/cb.png) no-repeat; margin-top:8px;}
+.content_tb2 a.on{background: url(../images/cb.png) no-repeat; margin-top:8px;}
+
 .hidden_area{
 	display:none;
 	float:left;
