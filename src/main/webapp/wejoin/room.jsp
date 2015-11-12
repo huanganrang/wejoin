@@ -153,7 +153,7 @@ $(window).load(function(){
     </div>
     
     <div class="video hidden_area">
-		<iframe id="cameraPush" width="190" height="150" border=""></iframe>
+		<iframe id="cameraPush" width="190" height="150" frameborder="no"></iframe>
     </div>
     <!-- <div class="video">
     	<img src="images/video.gif" />
@@ -213,9 +213,9 @@ $(window).load(function(){
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
     <div class="center_max">  
         <div class="main_pic">
-        	<img src="images/pic.gif" />
+        	<img id="baibanqu" src="images/pic.gif" />
         	 
-        	
+        	<iframe id="drawer" style="width:100%;height:427px;display:none;" src="${pageContext.request.contextPath}/canvas/example/drawer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>" frameborder="no"></iframe>
         </div>
     </div>
     <!-- 
@@ -383,6 +383,18 @@ $(function(){
 		}
 
 	});
+	var cavas = false;
+	$(".cneter_menu").click(function(){
+		if(cavas == true){
+			$("#baibanqu").show();
+			$("#drawer").hide();
+			cavas = false;
+		}else{
+			$("#baibanqu").hide();
+			$("#drawer").show();
+			cavas = true;
+		}
+	})
 });
 </script>
 </body>
