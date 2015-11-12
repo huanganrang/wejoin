@@ -1,6 +1,6 @@
 var conn = null;
 var wechat = null;
-var users = [];
+var users = []; // 缓存用户，获取昵称
 $(function(){
 	if($("#userToken").val() == '') {
 		window.location.href = '../login.jsp';
@@ -8,11 +8,10 @@ $(function(){
 	if(!$.cookie($("#houseToken").val())) {
 		window.location.href = 'home.jsp';
 	}
+	initMembersList();
 	wechat = new WeChat();
 	wechat.init();
 	connInit();
-	
-	initMembersList();
 	
     login();
     
@@ -47,14 +46,18 @@ function connInit() {
          onTextMessage : function(message){
 			console.log(message);
 			if(message.from != $("#huanxinUid").val()) {
-				wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message.data});
+				var fromUsername = message.from;
+				if(users[message.from]) fromUsername = users[message.from].nickName;
+				wechat._displayNewMsg({'username':fromUsername,'owner':false, 'content':message.data});
 			}
 		},
 		//收到表情消息时的回调方法
         onEmotionMessage : function(message) {
         	console.log(message);
         	if(message.from != $("#huanxinUid").val()) {
-        		wechat._displayNewMsg({'username':message.from,'owner':false, 'content':message});
+        		var fromUsername = message.from;
+				if(users[message.from]) fromUsername = users[message.from].nickName;
+        		wechat._displayNewMsg({'username':fromUsername,'owner':false, 'content':message});
         	}
         },
 		//当连接关闭时的回调方法
@@ -111,8 +114,7 @@ function initMembersList() {
         		if(result.serverStatus == 0) {
         			var members = result.returnObject;
         			for(var i in members) {
-        				// TODO 缺少huanxinUid返回
-        				users[members[i].userToken] = members[i];
+        				users[members[i].huanxin_uid] = members[i];
         				var userIcon = members[i].userIcon || '';
         				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+userIcon+'" />'+members[i].nickName+'</a></a></li>');
         				$(".v_ren ul").append($li);

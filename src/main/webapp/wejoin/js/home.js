@@ -224,8 +224,8 @@ function channel_roomPage(channelId, channelToken){
                     		$roomItem.find(".list_1 em").html("在线：" + (rooms[i].onlineUserCount || 0)); 
                     		$roomItem.find(".list_2 span img").attr("src", "http://" + rooms[i].houseIcon);
 //                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
-                    		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); //TODO 房号不明
-                    		$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName); //TODO 房主不明
+                    		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); 
+                    		$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName); 
                     		$roomItem.find(".list_3 em a").attr({"houseId":rooms[i].id,"houseToken":rooms[i].token,"huanxinRoomId":rooms[i].huanxinRoomId}).bind("click", function(){
                     			var userToken = $("#userToken").val();
                     			if(userToken) {
@@ -235,7 +235,7 @@ function channel_roomPage(channelId, channelToken){
                     				//  调用joinHouse接口
                     				$.ajax({
                     			        type: "POST",
-                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
+                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser/Web
                     			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
                     			        dataType:"json",
                     			        success:function (data) {
