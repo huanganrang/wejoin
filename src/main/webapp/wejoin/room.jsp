@@ -164,13 +164,13 @@ $(window).load(function(){
     </div>
     
     <div class="hy_title">
-    	<span>在线会员</span>
-        <a href="javascript:void(0);" class="le">男</a>
-        <a href="javascript:void(0);">女</a>
+    	<span style="display:none;">在线会员</span>
+        <a href="javascript:void(0);" class="le" style="display:none;">男</a>
+        <a href="javascript:void(0);" style="display:none;">女</a>
     </div>
     
-    <div class="search">
-    	<form action="" method="get">
+    <div class="search" >
+    	<form action="" method="get" style="display:none;">
         <input name="" type="submit" class="tzbm" value=""/>
         <input type="text" class="pt1" onblur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onfocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfield" name="telphone" style="color:#ccc;">
         
@@ -179,7 +179,7 @@ $(window).load(function(){
         <div class="clear"></div>
     </div>
     <div class="content mCustomScrollbar content_buttom">
-    <div class="list_name">
+    <div class="list_name" style="display:none;">
     	<ul>
         	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le_on">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
@@ -200,7 +200,12 @@ $(window).load(function(){
         </ul>
     </div>
     </div>
-    <div class="content_img"><img src="images/c.gif" style="width:100%;"/></div>
+	<div class="content_img">
+	    	<div class="content_tb1"><a href="#"><img src="images/c1.png" /></a></div>
+	        <div class="content_tb1"><a href="#"><img src="images/c2.png" /></a></div>
+	        <div class="content_txt1"><span> <ol style="width:70%;"><img src="images/ca.png" /></ol></span></div>
+	        <div class="content_tb2"><a href="#" class="on" id="camaraControl">图标</a></div>
+	 </div>
 </div>
 
 <div class="main_center" id="box3">
@@ -362,10 +367,20 @@ $(window).load(function(){
 
 <script type="text/javascript">
 $(function(){
-	$(".content_img").click(function(){
-		$(".example_video_1").hide();
-		$(".hidden_area").show();
-		$("#cameraPush").attr("src","${pageContext.request.contextPath}/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>");
+	$("#camaraControl").click(function(){
+		var _this = $("#camaraControl");
+		if(_this.hasClass("on")){
+			_this.removeClass("on");
+			$(".example_video_1").hide();
+			$(".hidden_area").show();
+			$("#cameraPush").attr("src","${pageContext.request.contextPath}/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>");
+		}else{
+			_this.addClass("on");
+			$(".example_video_1").show();
+			$(".hidden_area").hide();
+			$("#cameraPush").attr("src","")
+		}
+
 	});
 });
 </script>
