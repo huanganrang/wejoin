@@ -15,7 +15,7 @@ $(function(){
 	
     login();
     
-    $(window).bind('beforeunload', function() {
+    /*$(window).bind('beforeunload', function() {
         if (conn) {
         	conn.clear();
 			conn.onClosed();
@@ -30,40 +30,80 @@ $(function(){
 	        }
 	    });
 		$.cookie($("#houseToken").val(), null);
-    });
+    });*/
     
 });
 
 function connInit() {
-	 conn = new Easemob.im.Connection();
-     
+	conn = new Easemob.im.Connection();
+   
+	var huanxinUid = $("#huanxinUid").val();
+	
+	var filters = new Array();
+	
+	//通知过滤器，模仿过滤器来做，后续还要改进
+	filters.push({
+		mapper:function(message){			
+			var data = $.parseJSON(message.data);			
+			return data.type != undefined&&data.type!=30;
+		},
+		handle:function(message){
+			var data = $.parseJSON(message.data);			
+		}
+	});
+	
+	filters.push({
+		mapper:function(message){		
+			var data  =  $.parseJSON(message.data);			
+			return message.from != huanxinUid&&data.type != undefined&&data.type==30;
+		},
+		handle:function(message){
+			//var data  =  $.parseJSON(message.data);			
+    		wechat._displayNewMsg(getUserInfo(message));
+		}
+	});
     conn.init({
          onOpened : function() {
         	 console.log("成功登录");
 //		         alert("成功登录");
-	         conn.setPresence();
+	         conn.setPresence();	         
+	         sendNotification(messageFactory.JOIN_ROOM(huanxinUid));
          },
          onTextMessage : function(message){
-			console.log(message);
-			if(message.from != $("#huanxinUid").val()) {
-				var fromUsername = message.from;
-				if(users[message.from]) fromUsername = users[message.from].nickName;
-				wechat._displayNewMsg({'username':fromUsername,'owner':false, 'content':message.data});
+ 			console.log("收到消息");
+ 			console.log(message);
+			//1、通知消息
+			for(var i = 0;i<filters.length;i++){
+				var filter = filters[i];
+				console.log(filter.mapper(message));
+				if(filter.mapper(message)){
+					filter.handle(message);
+					break;
+				}
 			}
 		},
 		//收到表情消息时的回调方法
         onEmotionMessage : function(message) {
         	console.log(message);
-        	if(message.from != $("#huanxinUid").val()) {
-        		var fromUsername = message.from;
-				if(users[message.from]) fromUsername = users[message.from].nickName;
-        		wechat._displayNewMsg({'username':fromUsername,'owner':false, 'content':message});
+        	if(message.from != huanxinUid) {
+        		wechat._displayNewMsg(getUserInfo(message));
         	}
         },
 		//当连接关闭时的回调方法
 		onClosed : function() {
 		}
     });
+}
+
+function getUserInfo(message){
+	var from = message.from;
+	var userIcon = "images/tx.gif";
+	var fromUsername = message.from;
+	if(users[from]){
+		fromUsername = users[from].nickName;
+		userIcon = users[from].userIcon||userIcon;
+	} 
+	return {'username':fromUsername,'owner':false, 'content':message,'userIcon':userIcon};
 }
 
 var login = function(){
@@ -81,6 +121,7 @@ var login = function(){
 };
 
 var sendText = function(msg) {
+	console.log("连接是否开启"+conn.isOpened());
 	if(!conn.isOpened()) {
 		connInit();
 		login();
@@ -92,9 +133,25 @@ var sendText = function(msg) {
 		type : "groupchat"
 	};
 	conn.sendTextMessage(options);
-	msg = msg.replace(/\n/g, '<br>');
-	wechat._displayNewMsg({'username':$("#nickName").val(),'owner':true, 'content':msg});
+	content = msg.content.replace(/\n/g, '<br>');
+	wechat._displayNewMsg({'username':$("#nickName").val(),userIcon:"images/tx.gif",'owner':true, 'content':content});
 };
+
+var sendNotification = function(message){
+	if(!conn.isOpened()) {
+		connInit();
+		login();
+	
+	}
+	var options = {
+		to : $("#huanxinRoomId").val(),
+//		to : '125914257123443160',
+		msg : message,
+		type : "groupchat"
+	};
+	conn.sendTextMessage(options);
+	console.log(options);
+}
 
 var WeChat = function() {
 	//this.stompClient = null;
@@ -134,7 +191,7 @@ WeChat.prototype = {
 			if (e.keyCode == 13 && $.trim(content) != '') {
 				$("#content").val('');
 				// 发送聊天消息
-				sendText(content);
+				sendText(messageFactory.CHART(content));
             };
 		});
 		// 右键清屏
@@ -163,35 +220,38 @@ WeChat.prototype = {
     },
     // 渲染文本消息
 	_displayNewMsg: function(data) {
+		
 		var owner = data.owner;
 		var ownerClass = (owner && 'wo') || (!owner && '');
         var $arrow = (owner && '<em></em>') || (!owner && '<ol></ol>');
         
 //        var content = this._showFace(data.content); // 过滤表情
         var	messageContent;
+        var content = '';
         if (typeof data.content == 'string') {
         	messageContent = Easemob.im.Helper.parseTextMessage(data.content);
         	messageContent = messageContent.body;
+        	console.log(messageContent);
+        	for (var i = 0; i < messageContent.length; i++) {
+                var msg = messageContent[i];
+                var type = msg.type;
+                var r = msg.data;
+                if (type == "emotion") {
+                	content += '<img src="'+r+'" style="width: 19px;  height: 19px;"/>';
+                }else {
+                	content += r;
+                }
+            }
         } else {
-        	messageContent = data.content.data;
+        	messageContent = data.content;
+        	content = $.parseJSON(messageContent.data).content;
         }
         
-        var content = '';
-        for (var i = 0; i < messageContent.length; i++) {
-            var msg = messageContent[i];
-            var type = msg.type;
-            var r = msg.data;
-            
-            if (type == "emotion") {
-            	content += '<img src="'+r+'" style="width: 19px;  height: 19px;"/>';
-            }else {
-            	content += r;
-            }
-        }
+        
         
         // TODO 根据users动态取头像、昵称
 		var $messageHtml = '<li class="'+ownerClass+'">'
-					+ '<div class="ltian_img"><a><img src="images/tx.gif" /></a></div>'
+					+ '<div class="ltian_img"><a><img src="'+data.userIcon+'" /></a></div>'
 					+ '<div class="ltian_txt">'
 					+ '<span>'+data.username+'</span>'
 					+ '<div class="txt_zi">'+content+'</div>' + $arrow
@@ -220,6 +280,31 @@ WeChat.prototype = {
     	return content;
     },
 };
+var messageFactory = {
+	JOIN_ROOM :function(id){
+		return {"type":15,"id":id};
+	},
+	CHART:function(message){
+		return {"type":30,"content":message};
+	}
+}
+/*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
+type =2 视频，{"type":2,"url","http://xxx地址"}
+type =3 音频  {"type":3,"url","http://xxx地址"}
+type=4 频道封面 {"type":4,"url","http://xxx地址"}
+type=5 房间图封面{"type":5,"url","http://xxx地址"}
+type = 6 word {"type":6,"url","http://xxx图片地址"}
+type = 7 excel  {"type":7,"url","http://xxx图片地址"}
+type =8 ppt {"type":8,"url","http://xxx图片地址"}
+type = 9 txt{"type":9,"url","http://xxx地址"}
+type = 10 pdf   {"type":10,"url","http://xxx图片地址"}
+type = 11 图片   {"type":11,"url","http://xxx图片地址"}
+type = 12 用户头像 
+type = 13 打开视频拉流  {"type":13}
+type = 14 关闭视频拉流  {"type":14}
+type = 15 进入房间通知  {"type":15,"id","xxxxxxx环信id"}
+type = 30 聊天         {"type":30,"content","xxxx"}
+type = 50 其他的类型  */
 
 var faceMap = {"):":"1",":D":"2",";)":"3",":-o":"4",":p":"5","(H)":"6",":@":"7",":s":"8",":$":"9",":(":"10",":'(":"11",":|":"12","(a)":"13","8o|":"14","8-|":"15","+o(":"16","<o)":"17","|-)":"18","*-)":"19",":-#":"20",":-*":"21","^o)":"22","8-)":"23","(|)":"24","(u)":"25","(S)":"26","(*)":"27","(#)":"28","(R)":"29","({)":"30","(})":"31","(k)":"32","(F)":"33","(W)":"34","(D)":"35","ee_1":"1","ee_2":"2","ee_3":"3","ee_4":"4","ee_5":"5","ee_6":"6","ee_7":"7","ee_8":"8","ee_9":"9","ee_10":"10","ee_11":"11","ee_12":"12","ee_13":"13","ee_14":"14","ee_15":"15","ee_16":"16","ee_17":"17","ee_18":"18","ee_19":"19","ee_20":"20","ee_21":"21","ee_22":"22","ee_23":"23","ee_24":"24","ee_25":"25","ee_26":"26","ee_27":"27","ee_28":"28","ee_29":"29","ee_30":"30","ee_31":"31","ee_32":"32","ee_33":"33","ee_34":"34","ee_35":"35"};
 var faceReg = "\\[\\):\\]|\\[:D\\]|\\[\\;\\)\\]|\\[:-o\\]|\\[:p\\]|\\[\\(H\\)\\]|\\[:@\\]|\\[:s\\]|\\[:\\$\\]|\\[:\\(\\]|\\[:'\\(\\]|\\[:\\|\\]|\\[\\(a\\)\\]|\\[8o\\|\\]|\\[8-\\|\\]|\\[\\+o\\(\\]|\\[<o\\)\\]|\\[\\|-\\)\\]|\\[\\*-\\)\\]|\\[:-#\\]|\\[:-\\*\\]|\\[\\^o\\)\\]|\\[8-\\)\\]|\\[\\(\\|\\)\\]|\\[\\(u\\)\\]|\\[\\(S\\)\\]|\\[\\(\\*\\)\\]|\\[\\(#\\)\\]|\\[\\(R\\)\\]|\\[\\({\\)\\]|\\[\\(}\\)\\]|\\[\\(k\\)\\]|\\[\\(F\\)\\]|\\[\\(W\\)\\]|\\[\\(D\\)\\]|\\[ee_1\\]|\\[ee_2\\]|\\[ee_3\\]|\\[ee_4\\]|\\[ee_5\\]|\\[ee_6\\]|\\[ee_7\\]|\\[ee_8\\]|\\[ee_9\\]|\\[ee_10\\]|\\[ee_11\\]|\\[ee_12\\]|\\[ee_13\\]|\\[ee_14\\]|\\[ee_15\\]|\\[ee_16\\]|\\[ee_17\\]|\\[ee_18\\]|\\[ee_19\\]|\\[ee_20\\]|\\[ee_21\\]|\\[ee_22\\]|\\[ee_23\\]|\\[ee_24\\]|\\[ee_25\\]|\\[ee_26\\]|\\[ee_27\\]|\\[ee_28\\]|\\[ee_29\\]|\\[ee_30\\]|\\[ee_31\\]|\\[ee_32\\]|\\[ee_33\\]|\\[ee_34\\]|\\[ee_35\\]";
