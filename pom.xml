@@ -4,7 +4,7 @@
 	<artifactId>wejoin</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dive Maven Webapp</name>
+	<name>wejoin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- 加入spring mvc依赖包 -->
@@ -320,7 +320,7 @@
 		<!-- androidpn server 依赖的jar 结束 -->	
 	</dependencies>
 	<build>
-		<finalName>dive</finalName>
+		<finalName>wejoin</finalName>
 		<defaultGoal>compile</defaultGoal>
 		<plugins>
 

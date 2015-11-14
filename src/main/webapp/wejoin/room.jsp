@@ -127,10 +127,10 @@ $(window).load(function(){
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
 	<div class="logo"></div>
-    <ul>
-    	<li class="on"><a href="javascript:void(0);">黑 板</a></li>
-        <li><a href="javascript:void(0);">文 档</a></li>
-        <li><a href="javascript:void(0);">影 音</a></li>
+    <ul class="tab_button">
+        <li id="blackbord" class="hover"><a href="#">黑 板</a></li>
+        <li id="documets"><a href="#">文 档</a></li>
+        <li id="voice"><a href="#">影 音</a></li>
     </ul>
     
     <div class="aa">
@@ -214,12 +214,19 @@ $(window).load(function(){
 </div>
 
 <div class="main_center" id="box3">
+<%--
 	<div class="cneter_menu"><img src="images/gl.gif" /></div>
-    <div class="center_max">  
+--%>
+    <div class="center_max">
         <div class="main_pic">
-        	<img id="baibanqu" src="images/pic.gif" />
-        	 
-        	<iframe id="drawer" style="width:100%;height:427px;display:none;" src="${pageContext.request.contextPath}/canvas/example/drawer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>" frameborder="no"></iframe>
+        	<iframe id="drawer" style="width:100%;height:700px;" src="${pageContext.request.contextPath}/canvas/example/drawer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>" frameborder="no"></iframe>
+        </div>
+
+        <div class="main_pic" style="display: none;">
+            <img src="images/pic.gif" />
+        </div>
+        <div class="main_pic" style="display: none;">
+            <img src="images/pic.gif" />
         </div>
     </div>
     <!-- 

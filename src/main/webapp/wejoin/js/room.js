@@ -88,6 +88,7 @@ function connInit() {
         },
         //当连接关闭时的回调方法
         onClosed: function () {
+
         }
     });
 }
@@ -146,7 +147,6 @@ var sendNotification = function (message) {
     if (!conn.isOpened()) {
         connInit();
         login();
-
     }
     var options = {
         to: $("#huanxinRoomId").val(),
@@ -188,6 +188,7 @@ function initMembersList() {
 }
 
 WeChat.prototype = {
+
     init: function () {
         this._initFace();
         // 回车发送消息
@@ -210,6 +211,7 @@ WeChat.prototype = {
             name: "clear"
         });
     },
+
     _initFace: function () {
         var _this = this;
         var sjson = Easemob.im.Helper.EmotionPicData;
@@ -291,6 +293,12 @@ var messageFactory = {
     },
     CHART: function (message) {
         return {"type": 30, "content": message};
+    },
+    CLOSE_STREAM : function(){
+        return {"type":13};
+    },
+    OPEN_STREAM : function(){
+        return {"type":14};
     }
 }
 var excutors = {
@@ -409,3 +417,14 @@ var faceMap = {
     "ee_35": "35"
 };
 var faceReg = "\\[\\):\\]|\\[:D\\]|\\[\\;\\)\\]|\\[:-o\\]|\\[:p\\]|\\[\\(H\\)\\]|\\[:@\\]|\\[:s\\]|\\[:\\$\\]|\\[:\\(\\]|\\[:'\\(\\]|\\[:\\|\\]|\\[\\(a\\)\\]|\\[8o\\|\\]|\\[8-\\|\\]|\\[\\+o\\(\\]|\\[<o\\)\\]|\\[\\|-\\)\\]|\\[\\*-\\)\\]|\\[:-#\\]|\\[:-\\*\\]|\\[\\^o\\)\\]|\\[8-\\)\\]|\\[\\(\\|\\)\\]|\\[\\(u\\)\\]|\\[\\(S\\)\\]|\\[\\(\\*\\)\\]|\\[\\(#\\)\\]|\\[\\(R\\)\\]|\\[\\({\\)\\]|\\[\\(}\\)\\]|\\[\\(k\\)\\]|\\[\\(F\\)\\]|\\[\\(W\\)\\]|\\[\\(D\\)\\]|\\[ee_1\\]|\\[ee_2\\]|\\[ee_3\\]|\\[ee_4\\]|\\[ee_5\\]|\\[ee_6\\]|\\[ee_7\\]|\\[ee_8\\]|\\[ee_9\\]|\\[ee_10\\]|\\[ee_11\\]|\\[ee_12\\]|\\[ee_13\\]|\\[ee_14\\]|\\[ee_15\\]|\\[ee_16\\]|\\[ee_17\\]|\\[ee_18\\]|\\[ee_19\\]|\\[ee_20\\]|\\[ee_21\\]|\\[ee_22\\]|\\[ee_23\\]|\\[ee_24\\]|\\[ee_25\\]|\\[ee_26\\]|\\[ee_27\\]|\\[ee_28\\]|\\[ee_29\\]|\\[ee_30\\]|\\[ee_31\\]|\\[ee_32\\]|\\[ee_33\\]|\\[ee_34\\]|\\[ee_35\\]";
+$(function(){
+    $(".tab_button li").click(function(i){
+        var _this = $(this);
+        if(!_this.hasClass("hover")){
+            _this.addClass("hover").siblings().removeClass("hover");
+        }
+        var tab = $(".main_pic:eq("+$(".tab_button li").index(_this)+")");
+        tab.show();
+        tab.siblings().hide();
+    });
+});

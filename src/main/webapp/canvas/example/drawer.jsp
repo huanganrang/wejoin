@@ -33,15 +33,6 @@
 			height: 400px;
 		}
 
-		#custom-board-2 {
-			width: 550px;
-			height: 300px;
-		}
-
-		#title-board {
-			width: 600px;
-			height: 270px;
-		}
 		/* custom board styles for the title? no problem*/
 		#title-board .drawing-board-canvas-wrapper {
 			border: none;

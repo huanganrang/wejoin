@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="wejoin:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="dive.war">
+    <root id="archive" name="wejoin.war">
       <element id="artifact" artifact-name="wejoin:war exploded" />
     </root>
   </artifact>
