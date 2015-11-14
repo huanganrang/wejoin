@@ -26,8 +26,8 @@ package {
     import flash.media.Video;
 	import flash.media.Camera;
     import flash.media.Microphone;
-	//import flash.media.H264Profile;  
-    //import flash.media.H264VideoStreamSettings; 
+	import flash.media.H264Profile;
+    import flash.media.H264VideoStreamSettings;
 
     public class simplest_as3_rtmp_streamer extends MovieClip
     {
@@ -111,10 +111,12 @@ package {
 			 * Supported levels are 1, 1b, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
 			 * Level may be increased if required by resolution and frame rate.
 			 */
-			//var h264setting:H264VideoStreamSettings = new H264VideoStreamSettings();  
+			var h264setting:H264VideoStreamSettings = new H264VideoStreamSettings();
             // h264setting.setProfileLevel(H264Profile.MAIN, 4);   
-            
-			
+			h264setting.setMode(320, 240, 30);
+			h264setting.setQuality(0, 100);
+
+
 			//Mic
 			
 			mic = Microphone.getMicrophone();
@@ -151,7 +153,7 @@ package {
 			
 			ns = new NetStream(nc);
 			//H.264 Setting
-			//ns.videoStreamSettings = h264setting; 
+			ns.videoStreamSettings = h264setting;
 			ns.attachCamera(cam);
 			ns.attachAudio(mic);
 			ns.publish(room, "live");
