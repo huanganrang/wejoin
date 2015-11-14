@@ -28,6 +28,7 @@ package {
     import flash.media.Microphone;
 	import flash.media.H264Profile;
     import flash.media.H264VideoStreamSettings;
+	import flash.media.H264Level;
 
     public class simplest_as3_rtmp_streamer extends MovieClip
     {
@@ -40,7 +41,7 @@ package {
 		var mic:Microphone;
 		
 		var screen_w:int=214;
-		var screen_h:int=140;
+		var screen_h:int=150;
 		var room:String="";
 
 		public function simplest_as3_rtmp_streamer()
@@ -81,7 +82,7 @@ package {
              *  height:int — The requested capture height, in pixels. The default value is 120.  
              *  fps:Number — The requested capture frame rate, in frames per second. The default value is 15.  
              */
-			cam.setMode(1280, 960, 120);  
+			//cam.setMode(1280, 960, 120);  
 			
 			/**
 			 * public function setKeyFrameInterval(keyFrameInterval:int):void
@@ -101,7 +102,7 @@ package {
              *    (highest quality, no compression). To specify that picture quality can vary as needed to avoid exceeding bandwidth,   
              *    pass 0 for quality.  
              */
-			cam.setQuality(200000, 90); 
+			//cam.setQuality(200000, 90); 
 			
 			/**
 			 * public function setProfileLevel(profile:String, level:String):void
@@ -112,7 +113,7 @@ package {
 			 * Level may be increased if required by resolution and frame rate.
 			 */
 			var h264setting:H264VideoStreamSettings = new H264VideoStreamSettings();
-            // h264setting.setProfileLevel(H264Profile.MAIN, 4);   
+			h264setting.setProfileLevel(H264Profile.BASELINE, H264Level.LEVEL_5_1);
 			h264setting.setMode(320, 240, 30);
 			h264setting.setQuality(0, 100);
 
