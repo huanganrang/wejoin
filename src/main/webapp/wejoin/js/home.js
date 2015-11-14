@@ -232,27 +232,38 @@ function channel_roomPage(channelId, channelToken){
                     				var houseToken = $(this).attr("houseToken");
                             		var houseId = $(this).attr("houseId");
                             		var huanxinRoomId = $(this).attr("huanxinRoomId");
-                    				//  调用joinHouse接口
-                    				$.ajax({
-                    			        type: "POST",
-                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser/Web
-                    			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
-                    			        dataType:"json",
-                    			        success:function (data) {
-                    			        	console.log("加入房间：" + data.obj);
-                    			        	result = $.parseJSON(data.obj);
-                    			        	if(result.serverStatus == 0) {
-                    			        		$.cookie(houseToken, true);
-                    			        		window.location.href = 'room.jsp?houseToken=' + houseToken
-                    			        							+ '&houseId=' + houseId
-                    			        							+ '&channelId=' + channelId
-                    			        							+ '&huanxinRoomId=' + huanxinRoomId;
-                    			        	} else {
-                    			        		// 加入房间失败
-                    			        		alert(result.returnMessage);
-                    			        	}
-                    			        }
-                    			    });
+                            		$.ajax({
+                            	        type: "POST",
+                            	        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
+                            	        data: {"type":"UL031", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
+                            	        dataType:"json",
+                            	        success:function (data) {
+                            	        	joinHouse();
+                            	        }
+                            	    });
+                            		function joinHouse(){
+	                    				//  调用joinHouse接口
+	                    				$.ajax({
+	                    			        type: "POST",
+	                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser/Web
+	                    			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
+	                    			        dataType:"json",
+	                    			        success:function (data) {
+	                    			        	console.log("加入房间：" + data.obj);
+	                    			        	result = $.parseJSON(data.obj);
+	                    			        	if(result.serverStatus == 0) {
+	                    			        		$.cookie(houseToken, true);
+	                    			        		window.location.href = 'room.jsp?houseToken=' + houseToken
+	                    			        							+ '&houseId=' + houseId
+	                    			        							+ '&channelId=' + channelId
+	                    			        							+ '&huanxinRoomId=' + huanxinRoomId;
+	                    			        	} else {
+	                    			        		// 加入房间失败
+	                    			        		alert(result.returnMessage);
+	                    			        	}
+	                    			        }
+	                    			    });
+                            		}
                     			} else {
                     				alert("您还未登录，请先登录！");
                     			}

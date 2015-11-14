@@ -48,7 +48,8 @@ function connInit() {
 			return data.type != undefined&&data.type!=30;
 		},
 		handle:function(message){
-			var data = $.parseJSON(message.data);			
+			var data = $.parseJSON(message.data);
+			excutors[data.type](data);
 		}
 	});
 	
@@ -101,7 +102,7 @@ function getUserInfo(message){
 	var fromUsername = message.from;
 	if(users[from]){
 		fromUsername = users[from].nickName;
-		userIcon = users[from].userIcon||userIcon;
+		userIcon = users[from].icon||userIcon;
 	} 
 	return {'username':fromUsername,'owner':false, 'content':message,'userIcon':userIcon};
 }
@@ -172,7 +173,7 @@ function initMembersList() {
         			var members = result.returnObject;
         			for(var i in members) {
         				users[members[i].huanxin_uid] = members[i];
-        				var userIcon = members[i].userIcon || '';
+        				var userIcon = members[i].icon || '';
         				var $li = $('<li><a href="javascript:void(0);" userToken="'+members[i].userToken+'"><img src="'+userIcon+'" />'+members[i].nickName+'</a></a></li>');
         				$(".v_ren ul").append($li);
         			}
@@ -287,6 +288,31 @@ var messageFactory = {
 	CHART:function(message){
 		return {"type":30,"content":message};
 	}
+}
+var excutors = {
+	15:function(data){
+		$.ajax({
+	        type: "POST",
+	        url: base+"api/apiCommon/doGet", // HouseUser/HouseUsers
+	        data:{"type":"UL035", "huanxinUid":data.id},
+	        dataType:"json",
+	        async: false,
+	        success:function (data) {
+	        	if(data.obj){
+	        		console.log("获取用户信息：" + data.obj);
+	        		var result = $.parseJSON(data.obj);
+	        		if(result.serverStatus == 0) {
+	        			var member = result.returnObject;
+	        			users[member.huanxin_uid] = member;
+        				users[member.huanxin_uid] = member;
+        				var userIcon = member.icon || '';
+        				var $li = $('<li><a href="javascript:void(0);" userToken="'+member.userToken+'"><img src="'+userIcon+'" />'+member.nickName+'</a></a></li>');
+        				$(".v_ren ul").append($li);
+	        			}
+	        		}
+	        	}		            		
+	   });
+	}	
 }
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
 type =2 视频，{"type":2,"url","http://xxx地址"}
