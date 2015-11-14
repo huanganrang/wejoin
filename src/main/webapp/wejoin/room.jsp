@@ -36,7 +36,11 @@ var base = '${pageContext.request.contextPath}/';
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
+var basePath = '${pageContext.request.contextPath}';
+var ROOM_INFO = {
+    channelId :<%=channelId%> ,
+    houseId:<%=houseId%>
+}
 videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
 
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
@@ -365,37 +369,23 @@ $(window).load(function(){
 </div>
 
 <div class="clear"></div>
+<div style="display:none;">
+    <form method="POST" action="http://139.196.34.76:8080/upload" enctype="multipart/form-data">
+        <!--<form method="POST" action="http://localhost:8080/upload" enctype="multipart/form-data" >-->
+        File:
+        <input type="file" name="file" id="file"/> <br/>
+        houseToken:
+        <input type="text" value="72c5a1561633310572cd2f4031fe52e9" name="houseToken"/>
+        userToken:
+        <input type="text" value="60b46d63-88fb-413a-b02d-1feb58e9c5b0" name="userToken"/>
+        type:
+        <input type="text" value="3" name="type"/>
 
-<script type="text/javascript">
-$(function(){
-	$("#camaraControl").click(function(){
-		var _this = $("#camaraControl");
-		if(_this.hasClass("on")){
-			_this.removeClass("on");
-			$(".example_video_1").hide();
-			$(".hidden_area").show();
-			$("#cameraPush").attr("src","${pageContext.request.contextPath}/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>");
-		}else{
-			_this.addClass("on");
-			$(".example_video_1").show();
-			$(".hidden_area").hide();
-			$("#cameraPush").attr("src","")
-		}
+        </br>
+        <input type="submit" value="Upload" name="upload" id="upload"/>
+    </form>
+</div>
+<script src="${pageContext.request.contextPath}/wejoin/js/camara.js" type="text/javascript" charset="utf-8"></script>
 
-	});
-	var cavas = false;
-	$(".cneter_menu").click(function(){
-		if(cavas == true){
-			$("#baibanqu").show();
-			$("#drawer").hide();
-			cavas = false;
-		}else{
-			$("#baibanqu").hide();
-			$("#drawer").show();
-			cavas = true;
-		}
-	})
-});
-</script>
 </body>
 </html>
