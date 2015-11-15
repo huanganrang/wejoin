@@ -81,9 +81,11 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .main_center{ width:61%; float:left; position:relative; height:100%; line-height:100%; }
-.main_center .cneter_menu{ width:100%; height:42px; background:#e4e4e4;}
+.main_center .cneter_menu{ height:42px; background:#e4e4e4;}
 .main_center .scroll{ height:54px; border:1px solid #ccc; line-height:54px; margin-top:35px; margin-bottom:40px; font-size:15px; }
 .main_center .center_max{ padding:1px 0px 1px 0px; }
+.main_center .cneter_menu a.t4{ margin-top:11px;}
+
 .fax{ position: absolute; right:10px; bottom:0px; }
 .fax a{ width:78px; height:24px; display:block; background:#cccccc; text-align:center; line-height:24px; color:#fff; float:left; }
 .fax a:hover{ background:#63b30e;}

@@ -28,4 +28,17 @@ $(function(){
             //TODO 自动播放
         }
     });
+    //TODO 文件上传
+    $("#uploadDocumet").click(function(){
+        $("#file").click();
+        $(document).delegate('#file','change',function () {
+            var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
+
+            $("#uploadform").submit();
+        });
+    });
+
 });
+function loadSuccess(){
+
+}
