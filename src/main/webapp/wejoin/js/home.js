@@ -146,16 +146,16 @@ function channelPage(pageNo){
                 		var $channelItem = $channelTemplate.clone().removeAttr("id").show();
                 		$("#con_one_1 .list_main1 ul").append($channelItem);
                 		$channelItem.find(".list_1 span").attr('title', channels[i].name).html(channels[i].name);
-                		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount); 
+                		$channelItem.find(".list_1 em").html("在线：" + channels[i].userOnlineCount);
                 		$channelItem.find(".list_2 span img").attr("src", 'http://' + channels[i].displayIconUrl);
-                		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc); 
+                		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc);
                 		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName);
                 		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).attr("channelId", channels[i].id).bind("click", function(){
                 			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
-                		}); 
+                		});
                 	}
         		}
-        	}		            	
+        	}
         }
 	});
 }
@@ -217,65 +217,68 @@ function channel_roomPage(channelId, channelToken){
         				$("#roomsCount").html(rooms.length);
         				var $roomTemplate = $("#channel_roomTemplate");
         				$(".fz_xt ul li:not(:first)").remove();
-                    	for(var i=0; i<rooms.length; i++) {
-                    		var $roomItem = $roomTemplate.clone().removeAttr("id").show();
-                    		$(".fz_xt ul").append($roomItem);
-                    		$roomItem.find(".list_1 span").attr('title', rooms[i].title).html(rooms[i].title);
-                    		$roomItem.find(".list_1 em").html("在线：" + (rooms[i].onlineUserCount || 0)); 
-                    		$roomItem.find(".list_2 span img").attr("src", "http://" + rooms[i].houseIcon);
+						for (var i = 0; i < rooms.length; i++) {
+							var $roomItem = $roomTemplate.clone().removeAttr("id").show();
+							$(".fz_xt ul").append($roomItem);
+							$roomItem.find(".list_1 span").attr('title', rooms[i].title).html(rooms[i].title);
+							$roomItem.find(".list_1 em").html("在线：" + (rooms[i].onlineUserCount || 0));
+							$roomItem.find(".list_2 span img").attr("src", "http://" + rooms[i].houseIcon);
 //                    		$roomItem.find(".list_2 em").html(''); //TODO 不明
-                    		$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id); 
-                    		$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName); 
-                    		$roomItem.find(".list_3 em a").attr({"houseId":rooms[i].id,"houseToken":rooms[i].token,"huanxinRoomId":rooms[i].huanxinRoomId}).bind("click", function(){
-                    			var userToken = $("#userToken").val();
-                    			if(userToken) {
-                    				var houseToken = $(this).attr("houseToken");
-                            		var houseId = $(this).attr("houseId");
-                            		var huanxinRoomId = $(this).attr("huanxinRoomId");
-                            		$.ajax({
-                            	        type: "POST",
-                            	        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser
-                            	        data: {"type":"UL031", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
-                            	        dataType:"json",
-                            	        success:function (data) {
-                            	        	joinHouse();
-                            	        }
-                            	    });
-                            		function joinHouse(){
-	                    				//  调用joinHouse接口
-	                    				$.ajax({
-	                    			        type: "POST",
-	                    			        url: base+"api/apiCommon/doPost", // HouseUser/HouseUser/Web
-	                    			        data: {"type":"UL014", "param":JSON.stringify({"houseToken":houseToken,"userToken":userToken})},
-	                    			        dataType:"json",
-	                    			        success:function (data) {
-	                    			        	console.log("加入房间：" + data.obj);
-	                    			        	result = $.parseJSON(data.obj);
-	                    			        	if(result.serverStatus == 0) {
-	                    			        		$.cookie(houseToken, true);
-	                    			        		window.location.href = 'room.jsp?houseToken=' + houseToken
-	                    			        							+ '&houseId=' + houseId
-	                    			        							+ '&channelId=' + channelId
-	                    			        							+ '&huanxinRoomId=' + huanxinRoomId;
-	                    			        	} else {
-	                    			        		// 加入房间失败
-	                    			        		alert(result.returnMessage);
-	                    			        	}
-	                    			        }
-	                    			    });
-                            		}
-                    			} else {
-                    				alert("您还未登录，请先登录！");
-                    			}
-                    		}); 
-                    	}
-                    	
+							$roomItem.find(".list_3 span:eq(0)").html("房号：" + rooms[i].id);
+							$roomItem.find(".list_3 span:eq(1)").html("房主：" + rooms[i].adminNickName);
+							$roomItem.find(".list_3 em a").attr({
+								"houseId": rooms[i].id,
+								"houseToken": rooms[i].token,
+								"huanxinRoomId": rooms[i].huanxinRoomId
+							}).bind("click", function () {
+								var userToken = $("#userToken").val();
+								var houseToken = $(this).attr("houseToken");
+								var houseId = $(this).attr("houseId");
+								var huanxinRoomId = $(this).attr("huanxinRoomId");
+								function joinHouse() {
+									//  调用joinHouse接口
+									ajaxPost({
+										"type": "UL014",
+										"param": JSON.stringify({"houseToken": houseToken, "userToken": userToken})
+									}, function (data) {
+										$.cookie(houseToken, true);
+										window.location.href = 'room.jsp?houseToken=' + houseToken
+											+ '&houseId=' + houseId
+											+ '&channelId=' + channelId
+											+ '&huanxinRoomId=' + huanxinRoomId;
+									});
+								}
+
+								if (userToken) {
+									ajaxPost({
+										"type": "UL031",
+										"param": JSON.stringify({"houseToken": houseToken, "userToken": userToken})
+									}, function (data) {
+										joinHouse();
+									});
+								} else {
+									ajaxPost({"type": "UL037"}, function (data) {
+										var username = data.huanxinUid;
+										var password = data.password;
+										userToken = data.token;
+										ajaxGet({
+											"type": "UL001",
+											"username": username,
+											"password": password
+										}, function (data) {
+											joinHouse();
+										});
+									});
+								}
+							});
+						}
+
                     	showDjcgBox();
         			} else {
         				alert("亲！该频道下还没有房间！");
         			}
         		}
-        	}		            	
+        	}
         }
 	});
 }
@@ -284,8 +287,8 @@ var communityTotal;
 function communityPage(pageNo){
 	$.ajax({
         type: "POST",
-        url: base+"api/apiCommon/doGet", // 
-        data:{"pageSize":pageSize,"pageNo":pageNo,"type":"UL020"}, 
+        url: base+"api/apiCommon/doGet", //
+        data:{"pageSize":pageSize,"pageNo":pageNo,"type":"UL020"},
         dataType:"json",
         success:function (data) {
         	if(data.obj){
@@ -302,36 +305,24 @@ function communityPage(pageNo){
                 		var $communityItem = $communityTemplate.clone().removeAttr("id").show();
                 		$("#con_one_2 .list_main1 ul").append($communityItem);
                 		$communityItem.find(".list_1 span").html(communitys[i].name);
-                		$communityItem.find(".list_1 em").html("在线：" + communitys[i].userOnlineCount); 
+                		$communityItem.find(".list_1 em").html("在线：" + communitys[i].userOnlineCount);
                 		$communityItem.find(".list_2 span img").attr("src", communitys[i].url + "/" + communitys[i].channelIcon);
-                		$communityItem.find(".list_2 em").html(communitys[i].shortDesc); 
-                		$communityItem.find(".list_3 span").html("创建者：" + communitys[i].nickName); 
-                		$communityItem.find(".list_3 em a").attr("communityId", communitys[i].id); 
+                		$communityItem.find(".list_2 em").html(communitys[i].shortDesc);
+                		$communityItem.find(".list_3 span").html("创建者：" + communitys[i].nickName);
+                		$communityItem.find(".list_3 em a").attr("communityId", communitys[i].id);
                 	}
         		}
-        	}		            	
+        	}
         }
 	});
 }
 
 function getCategorys(type) {
 	var categorys = [];
-	$.ajax({
-        type: "POST",
-        url: base+"api/apiCommon/doGet", // Category/Category
-        data:{"type":type},
-        dataType:"json",
-        async: false,
-        success:function (data) {
-        	if(data.obj){
-        		var result = $.parseJSON(data.obj);
-        		if(result.serverStatus == 0) {
-        			categorys = result.returnObject;
-        		}
-        	}		            	
-    	}
-   });
-	
+
+	ajaxGetSync({"type":type},function(data){
+		categorys = data;
+	});
 	return categorys;
 };
 

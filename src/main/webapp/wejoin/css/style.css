@@ -318,6 +318,7 @@ cursor:pointer;
 .hidden_area{
 	display:none;
 	float:left;
+	height: 150px;
 	z-index:9999;
 }
 
