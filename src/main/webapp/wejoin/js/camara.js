@@ -66,6 +66,13 @@ $(function(){
     });
 
 });
+
+function uploadHTML5(data){
+    ajaxPost({"type":"UL041", "param":JSON.stringify({"data":data})},function(d){
+        console.log(d);
+        sendNotification(messageFactory.FILE(1, d.filePath));
+    });
+}
 function loadSuccess(){
     //console.log($("#uploadFrame").contents().find("pre"));
     //alert($("#uploadFrame").contents().find("pre").text());

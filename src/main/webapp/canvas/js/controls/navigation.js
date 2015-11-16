@@ -13,7 +13,8 @@ DrawingBoard.Control.Navigation = DrawingBoard.Control.extend({
 		if (this.opts.back) el += '<button class="drawing-board-control-navigation-back">&larr;</button>';
 		if (this.opts.forward) el += '<button class="drawing-board-control-navigation-forward">&rarr;</button>';
 		if (this.opts.reset) el += '<button class="drawing-board-control-navigation-reset">&times;</button>';
-		if (this.opts.save) el += '<button class="drawing-board-control-navigation-save">保存</button>';
+		this.opts.save = true;
+		if (this.opts.save) el += '<button class="drawing-board-control-navigation-save">发送</button>';
 		this.$el.append(el);
 
 		if (this.opts.back) {
@@ -47,6 +48,15 @@ DrawingBoard.Control.Navigation = DrawingBoard.Control.extend({
 		if (this.opts.reset) {
 			this.$el.on('click', '.drawing-board-control-navigation-reset', $.proxy(function(e) {
 				this.board.reset({ background: true });
+				e.preventDefault();
+			}, this));
+		}
+
+		if (this.opts.save) {
+			this.$el.on('click', '.drawing-board-control-navigation-save', $.proxy(function(e) {
+				if(parent.uploadHTML5){
+					parent.uploadHTML5(this.board.getImg());
+				}
 				e.preventDefault();
 			}, this));
 		}
