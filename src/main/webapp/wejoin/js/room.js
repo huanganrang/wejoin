@@ -102,6 +102,8 @@ function getUserInfo(message) {
 function getUserInfoByFrom(from) {
     var userIcon = "images/tx.gif";
     var fromUsername = from;
+    console.log(users);
+    console.log(from);
     if (users[from]) {
         fromUsername = users[from].nickName;
         userIcon = users[from].icon || userIcon;
@@ -299,6 +301,9 @@ var messageFactory = {
     },
     OPEN_STREAM : function(){
         return {"type":14};
+    },
+    FILE:function(type,url) {
+        return {"type":type,"url":url};
     }
 }
 var excutors = {
@@ -315,8 +320,7 @@ var excutors = {
                     var result = $.parseJSON(data.obj);
                     if (result.serverStatus == 0) {
                         var member = result.returnObject;
-                        users[member.huanxin_uid] = member;
-                        users[member.huanxin_uid] = member;
+                        users[member.huanxinUid] = member;
                         var userIcon = member.icon || '';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" />' + member.nickName + '</a></a></li>');
                         $(".v_ren ul").append($li);

@@ -25,7 +25,7 @@ $(function(){
     });
     ajaxGet({"type":"UL039", "houseToken":$("#houseToken").val()},function(data){
         if(data!=null&&data.length>0){
-            //TODO 自动播放
+            $(".vjs-big-play-button").click();
         }
     });
     //TODO 文件上传
@@ -33,12 +33,40 @@ $(function(){
         $("#file").click();
         $(document).delegate('#file','change',function () {
             var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
-
-            $("#uploadform").submit();
+            if(fileContentType.indexOf('.txt')>-1){
+                $("#fileType").val(9);
+            }else if(fileContentType.indexOf('.doc')>-1){
+                $("#fileType").val(6);
+            }else if(fileContentType.indexOf('.xls')>-1){
+                $("#fileType").val(7);
+            }
+            //TODO 其他的待定
+            var formData = new FormData($('#uploadform')[0]);
+            $.ajax({
+                url: 'http://139.196.34.76:8080/upload',  //Server script to process data
+                type: 'POST',
+                //Ajax events
+                //beforeSend: beforeSendHandler,
+                //success: completeHandler,
+                //error: errorHandler,
+                // Form data
+                data: formData,
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false,
+                success:function (data) {
+                    var result = $.parseJSON(data);
+                    if(result.serverStatus == 0){
+                        sendNotification(messageFactory.FILE(result.type,result.returnValue));
+                    }
+                }
+            });
         });
     });
 
 });
 function loadSuccess(){
-
+    //console.log($("#uploadFrame").contents().find("pre"));
+    //alert($("#uploadFrame").contents().find("pre").text());
 }

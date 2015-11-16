@@ -262,10 +262,10 @@ function channel_roomPage(channelId, channelToken){
 										var password = data.password;
 										userToken = data.token;
 										ajaxGet({
-											"type": "UL001",
-											"username": username,
+											"type": "UL040",
+											"huanxinUid": username,
 											"password": password
-										}, function (data) {
+										}, function () {
 											joinHouse();
 										});
 									});

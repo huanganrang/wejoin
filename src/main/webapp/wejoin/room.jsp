@@ -253,7 +253,7 @@ $(window).load(function(){
             </div>
         <a href="javascript:void(0);">下一页</a>    
     </div> -->
-  <div class="col" style="top:42px; right:0px; "><a href="javascript:void(0);" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
+  <div class="col" style="top:42px; right:0px;display: none; "><a href="javascript:void(0);" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
     <div class="sj"><a class="a_toggle" href="javascript:;;"><img class="img_x" src="images/1.png" /></a></div>
 </div>
 
@@ -392,11 +392,11 @@ $(window).load(function(){
         userToken:
         <input type="text" value="${sessionScope.userToken.token}" name="userToken"/>
         type:
-        <input type="text" value="3" name="type"/>
+        <input type="text" value="3" name="type" id="fileType"/>
 
         </br>
     </form>
-    <iframe name="uploadFrame" onload="loadSuccess()"></iframe>
+    <iframe name="uploadFrame" id="uploadFrame"></iframe>
 </div>
 <script src="${pageContext.request.contextPath}/wejoin/js/camara.js" type="text/javascript" charset="utf-8"></script>
 

@@ -30,7 +30,10 @@ import com.alibaba.fastjson.JSONObject;
 @Controller
 @RequestMapping("/api/apiCommon")
 public class ApiCommonController extends BaseController {
-	
+
+	public static final String UL040 = "UL040";
+	public static final String UL001 = "UL001";
+
 	@ResponseBody
 	@RequestMapping("/doPost")
 	public Json doPost(String type, String param, @RequestParam(required=false) MultipartFile uploadFile) {
@@ -77,7 +80,7 @@ public class ApiCommonController extends BaseController {
 			}
 			String result = HttpUtil.doGet(PathUtil.getApiUrl(type) + paramStr);
 			// 登录
-			if("UL001".equals(type)) {
+			if(UL001.equals(type)|| UL040.equals(type)) {
 				JSONObject jsonObject = JSON.parseObject(result);
 				if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
 					UserToken userToken = jsonObject.getObject("returnObject", UserToken.class);
