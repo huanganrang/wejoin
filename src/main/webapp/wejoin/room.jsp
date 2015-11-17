@@ -75,7 +75,7 @@ $(function(){
 	  function () {
 		$('.img_x').attr('src','images/2.png');
 		$('.main_right').show();
-		$(".main_center").css("width","61%");
+		//$(".main_center").css("width","61%");
 	  }
 	);
 })
@@ -128,7 +128,7 @@ $(window).load(function(){
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
-	<div class="logo"></div>
+    <div class="logo"></div>
     <ul class="tab_button">
         <li id="blackbord" class="hover"><a href="#">黑 板</a></li>
         <li id="documets"><a href="#">文 档</a></li>
@@ -148,9 +148,9 @@ $(window).load(function(){
 
 
 <div class="main_left">
-	<div class="content mCustomScrollbar content_main" style="height:340px;">
+	<div class="content mCustomScrollbar content_main" style="height:385px;">
 	<div class="video example_video_1">
-    	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="185" height="150" 
+    	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
 		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -159,7 +159,7 @@ $(window).load(function(){
     </div>
     
     <div class="video hidden_area">
-		<iframe id="cameraPush" width="190" height="150" frameborder="no"></iframe>
+		<iframe id="cameraPush" width="220" height="174" frameborder="no"></iframe>
     </div>
     <!-- <div class="video">
     	<img src="images/video.gif" />
@@ -226,13 +226,13 @@ $(window).load(function(){
             <div class="cneter_menu">
                 <a href="#" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
             </div>
-            <img src="images/pic.gif" />
+            <img src="images/pic.gif" width="730"/>
         </div>
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
                 <a href="#" class="t4" id="uploadMovie"><img src="images/t4.png" /></a>
             </div>
-            <img src="images/pic.gif" />
+            <img src="images/pic.gif" width="730"/>
         </div>
     </div>
     <!-- 

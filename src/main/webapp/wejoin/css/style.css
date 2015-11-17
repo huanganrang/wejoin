@@ -20,7 +20,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .header{min-width:1330px; max-width:100%;  height:43px; background:#63b30e;}
-.header .logo{ width:15%; height:43px; background:#4f900a; text-align:center;  float:left;}
+.header .logo{ width:240px; height:43px; background:#4f900a url(../images/logo.png) no-repeat center 5px; text-align:center;  float:left;}
 .header ul{ float:left; margin-left:1%; }
 .header li{ float:left; margin-left:1px;}
 .header li a{ padding:0px 30px; display:block; font-size:17px; color:#fff; height:43px; line-height:43px;}
@@ -40,13 +40,13 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .header .hed_2:hover{ opacity:0.9;}
 .header .qq{ float:left; color:#fff; margin-top:9px; margin-left:2%; line-height:25px; font-size:14px; }
 .header .tel{ width:154px; height:27px; background: url(../images/header.gif) no-repeat 0 -62px; float:left; margin-top:7px; margin-left:10px; }
-.aa{ width:60%; float:right; }
+.aa{ width:55%; float:left; }
 
 
 
 
 
-.main_left{  width:15%; float:left; background:#eee; }
+.main_left{  width:240px; position:absolute; left:0px; top:42px; background:#eee; z-index:100;}
 .main_left .video{ background:#fff; margin:13px 10px 0 10px; position:relative;}
 .main_left .video span{ width:70px; height:29px; background: url(../images/hy.png) no-repeat; position:absolute; left:0px; top:0px; display:block;}
 .main_left .video ol{ width:70px; height:29px; background: url(../images/hy.png) no-repeat 0 -37px; position:absolute; left:0px; top:0px; display:block;}
@@ -78,13 +78,25 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_left .list_name li a.le_on{background:url(../images/be.png) no-repeat 0 -169px; margin-right:10px;  }
 
 .content_buttom{ background:#eee;}
+.content_img{padding:0 15px; height:42px; background:#63b30e; position:relative;}
+.content_tb1{ width:20px; height:20px; float:left; margin-top:13px; margin-right:10px; }
+.content_txt1{ width:40%; height:12px; position:absolute; left:33%;}
+.content_txt1 span{ width:100%; height:3px; background:#fff; line-height:0px; font-size:0px; display:block; margin-top:21px; }
+.content_txt1 span ol{ background:#b1ee1d; display:block; height:3px;}
+.content_txt1 span ol img{ display:block; float:right; margin-top:-2px; margin-right:-3px;}
+.content_tb2{ float:right; }
+.content_tb2 a{ width:24px; height:20px; text-indent:-99999px; display:block; background: url(../images/c3.png) no-repeat; margin-top:12px;}
+.content_tb2 a:hover{background: url(../images/cb.png) no-repeat; margin-top:8px;}
+.content_tb2 a.on{background: url(../images/cb.png) no-repeat; margin-top:8px;}
 
 
-.main_center{ width:61%; float:left; position:relative; height:100%; line-height:100%; }
-.main_center .cneter_menu{ height:42px; background:#e4e4e4;}
-.main_center .scroll{ height:54px; border:1px solid #ccc; line-height:54px; margin-top:35px; margin-bottom:40px; font-size:15px; }
-.main_center .center_max{ padding:1px 0px 1px 0px; }
+.main_center{ width:76%; position:relative; height:100%; line-height:100%; }
+.main_center .cneter_menu{ padding-left:285px; height:42px; background:#e4e4e4;}
+.main_center .cneter_menu a{ float:left; display:block; margin:8px 33px 0 0;}
+.main_center .cneter_menu a.t3{ margin-top:10px;}
 .main_center .cneter_menu a.t4{ margin-top:11px;}
+.main_center .scroll{ height:54px; border:1px solid #ccc; line-height:54px; margin-top:35px; margin-bottom:40px; font-size:15px; }
+.main_center .center_max{ padding:0px 0% 50px 0%; }
 
 .fax{ position: absolute; right:10px; bottom:0px; }
 .fax a{ width:78px; height:24px; display:block; background:#cccccc; text-align:center; line-height:24px; color:#fff; float:left; }
@@ -95,10 +107,10 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_center .fax .span_list a{ width:73px; height:24px; line-height:24px; text-align:center; margin:0 auto; float:none; background:none; color:#333;}
 .main_center .fax .span_list a:hover{ background:#63b30e; color:#fff;}
 .fax_list:hover .span_list{ display:block;}
-.main_pic{ text-align:center;}
+.main_pic{ text-align:center; padding-left:240px;}
 
 
-.main_right{ width:24%; float:left; position:relative;}
+.main_right{ width:24%; position:absolute; right:0px; top:43px;}
 .main_right .ltian{ background:#eee;  padding:20px 20px; }
 .main_right .ltian li{ width:100%; clear:both; margin-bottom:18px; }
 .main_right .ltian_img{ float:left; width:35px; margin-right:15px; margin-top:21px; }
