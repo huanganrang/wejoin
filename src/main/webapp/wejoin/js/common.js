@@ -58,7 +58,7 @@ function ajaxGetSync(parameter,success){
  * @param parameter
  * @param success
  */
-function ajaxPost(parameter,success){
+function ajaxPost(parameter,success,callData){
     $.ajax({
         type: "POST",
         url: base+"api/apiCommon/doPost",
@@ -68,7 +68,12 @@ function ajaxPost(parameter,success){
             console.log(data.obj);
             var result = $.parseJSON(data.obj);
             if(result.serverStatus == 0) {
-                success(result.returnObject);
+            	if(callData){
+            		success(callData(result));
+            	}else{
+            		success(result.returnObject);
+            	}
+                
             } else {
                 alert(result.returnMessage);
             }

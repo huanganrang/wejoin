@@ -150,11 +150,13 @@ $(window).load(function(){
 <div class="main_left">
 	<div class="content mCustomScrollbar content_main" style="height:385px;">
 	<div class="video example_video_1">
-    	<video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
+    	<%-- <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
 		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-		  	</video> 
+		  	</video>  --%>
+		  <iframe id="cameraPull" width="220" height="174" frameborder="no"></iframe>
+		  	
 		  	
     </div>
     

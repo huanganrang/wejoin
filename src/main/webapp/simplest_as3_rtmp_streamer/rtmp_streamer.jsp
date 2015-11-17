@@ -17,9 +17,8 @@
 	String channelId = request.getParameter("channelId");
 %>
 		<div id="flashContent">
-			
-			
-			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="215" height="155" id="simplest_as3_rtmp_streamer" align="middle">
+				
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="220" height="174" id="simplest_as3_rtmp_streamer" align="middle">
 				<param name="movie" value="simplest_as3_rtmp_streamer.swf" />
 				<param name="quality" value="high" />
 				<param name="bgcolor" value="#006600" />
@@ -32,9 +31,8 @@
 				<param name="salign" value="" />
 				<param name="allowScriptAccess" value="sameDomain" />
 				<param name="flashVars" value="channel=<%=channelId %>&room=<%=houseId %>" />
-				
 				<!--[if !IE]>-->
-				<object type="application/x-shockwave-flash" data="simplest_as3_rtmp_streamer.swf" width="215" height="155">
+				<object type="application/x-shockwave-flash" data="simplest_as3_rtmp_streamer.swf" width="220" height="174">
 					<param name="movie" value="simplest_as3_rtmp_streamer.swf" />
 					<param name="quality" value="high" />
 					<param name="bgcolor" value="#006600" />
@@ -47,7 +45,6 @@
 					<param name="salign" value="" />
 					<param name="allowScriptAccess" value="sameDomain" />
 					<param name="flashVars" value="channel=<%=channelId %>&room=<%=houseId %>" />
-					
 				<!--<![endif]-->
 					<a href="http://www.adobe.com/go/getflash">
 						<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获得 Adobe Flash Player" />

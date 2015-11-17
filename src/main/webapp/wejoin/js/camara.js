@@ -7,6 +7,7 @@ $(function(){
             $(".example_video_1").hide();
             $(".hidden_area").show();
             $("#cameraPush").attr("src",basePath+"/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
+            $("#cameraPull").attr("src","")
             ajaxPost({"type":"UL036", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"pullUrl":PULL_STREAM_ROUTE+ROOM_INFO.channelId+"/"+ROOM_INFO.houseId})},function(data){
                 videoToken = data.token
                 //开
@@ -15,6 +16,7 @@ $(function(){
         }else{
             _this.addClass("on");
             $(".example_video_1").show();
+            $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
             $(".hidden_area").hide();
             $("#cameraPush").attr("src","")
             ajaxGet({"type":"UL038", "videoToken":videoToken},function(data){
@@ -25,7 +27,8 @@ $(function(){
     });
     ajaxGet({"type":"UL039", "houseToken":$("#houseToken").val()},function(data){
         if(data!=null&&data.length>0){
-            $(".vjs-big-play-button").click();
+        	 $(".example_video_1").show();
+             $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
         }
     });
     //TODO 文件上传
@@ -68,9 +71,11 @@ $(function(){
 });
 
 function uploadHTML5(data){
-    ajaxPost({"type":"UL041", "param":JSON.stringify({"data":data})},function(d){
-        console.log(d);
-        sendNotification(messageFactory.FILE(1, d.filePath));
+    ajaxPost({"type":"UL041", "param":JSON.stringify({"data":data})},function(filePath){
+        console.log(filePath);
+        sendNotification(messageFactory.FILE(1, filePath));
+    },function(data){
+    	return data.returnValue;
     });
 }
 function loadSuccess(){

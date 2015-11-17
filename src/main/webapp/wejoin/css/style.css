@@ -332,7 +332,7 @@ cursor:pointer;
 .hidden_area{
 	display:none;
 	float:left;
-	height: 150px;
+	height: 174px;
 	z-index:9999;
 }
 
