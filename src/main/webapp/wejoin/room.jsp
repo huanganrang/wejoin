@@ -157,12 +157,21 @@ $(window).load(function(){
 		  	</video>  --%>
 		  <iframe id="cameraPull" width="220" height="174" frameborder="no"></iframe>
 		  	
-		  	
+		  	<div class="name_title" style="z-index:-1">
+                <div class="name_tt">${sessionScope.userToken.nickName}</div>
+                <div class="name_sj"></div>
+            </div>
     </div>
     
     <div class="video hidden_area">
-		<iframe id="cameraPush" width="220" height="174" frameborder="no"></iframe>
+        <div class="name_title" style="z-index:-1">
+            <div class="name_tt">${sessionScope.userToken.nickName}</div>
+            <div class="name_sj"></div>
+        </div>
+		<iframe id="cameraPush" width="220" height="174" frameborder="no" ></iframe>
+
     </div>
+
     <!-- <div class="video">
     	<img src="images/video.gif" />
     </div>

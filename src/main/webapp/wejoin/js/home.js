@@ -150,8 +150,8 @@ function channelPage(pageNo){
                 		$channelItem.find(".list_2 span img").attr("src", 'http://' + channels[i].displayIconUrl);
                 		$channelItem.find(".list_2 em").attr('title', channels[i].shortDesc).html(channels[i].shortDesc);
                 		$channelItem.find(".list_3 span").html("创建者：" + channels[i].nickName);
-                		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).attr("channelId", channels[i].id).bind("click", function(){
-                			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"));
+                		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).attr("channelId", channels[i].id).attr("channelName", channels[i].name).bind("click", function(){
+                			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"),$(this).attr("channelName"));
                 		});
                 	}
         		}
@@ -201,7 +201,7 @@ function nextPage(self, type) {
 	else if(type == 2) communityPage(currentPage+1);
 }
 
-function channel_roomPage(channelId, channelToken){
+function channel_roomPage(channelId, channelToken,channelTitle){
 	$.ajax({
         type: "POST",
         url: base+"api/apiCommon/doGet", // House/Houses
@@ -216,6 +216,7 @@ function channel_roomPage(channelId, channelToken){
         			if(rooms.length > 0) {
         				$("#roomsCount").html(rooms.length);
         				var $roomTemplate = $("#channel_roomTemplate");
+						$(".dj_title span strong").text(channelTitle);
         				$(".fz_xt ul li:not(:first)").remove();
 						for (var i = 0; i < rooms.length; i++) {
 							var $roomItem = $roomTemplate.clone().removeAttr("id").show();
