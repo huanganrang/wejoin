@@ -59,9 +59,10 @@ $(function(){
                 contentType: false,
                 processData: false,
                 success:function (data) {
+                	console.log(data);
                     var result = $.parseJSON(data);
                     if(result.serverStatus == 0){
-                        sendNotification(messageFactory.FILE(result.type,result.returnValue));
+                        sendNotification(messageFactory.FILE(result.type,result.returnObject));
                     }
                 }
             });
