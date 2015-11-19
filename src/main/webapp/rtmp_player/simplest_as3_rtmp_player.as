@@ -71,7 +71,7 @@ package {
         // play a recorded stream on the server
         private function doVideo(nc:NetConnection):void {
             ns = new NetStream(nc);
-			 var clientobj=new Object(); clientobj.onMetaData=function(){}; 
+			 var clientobj=new Object(); clientobj.onMetaData=ns_onMetaData;
 			 ns.client=clientobj; 
             ns.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
 
