@@ -33,9 +33,17 @@ var base = '${pageContext.request.contextPath}/';
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
 <!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
+<link href="${pageContext.request.contextPath}/wejoin/js/slide/slide.css" rel="stylesheet" type="text/css" />
+<script src="${pageContext.request.contextPath}/wejoin/js/slide/slide.js" type="text/javascript" charset="utf-8"></script>
+
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
+
+<style type="text/css">
+	.ck-slide { width: 700px; height: 320px; margin: 0 auto;}
+	.ck-slide ul.ck-slide-wrapper { height: 320px;}
+</style>
 
 <script type="text/javascript">
 var basePath = '${pageContext.request.contextPath}';
@@ -237,7 +245,42 @@ $(window).load(function(){
             <div class="cneter_menu">
                 <a href="#" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
             </div>
-            <img src="images/pic.gif" width="730"/>
+            <!-- <img src="images/pic.gif" width="730"/> -->
+           
+           	<div class="ck-slide">
+				<div class="ck-slide-dir">
+					<ul class="ck-slide-wrapper" style="width: 3500px; margin-left: -2100px;">
+						<li style="float: left; position: relative; margin-left: 0px;">
+		                	<a href="javascript:"><img src="images/1.jpg" alt=""></a>
+						</li>
+						<li style="float: left; position: relative; margin-left: 0px;">
+							<a href="javascript:"><img src="images/2.jpg" alt=""></a>
+						</li>
+						<li style="float: left; position: relative; margin-left: 0px;">
+							<a href="javascript:"><img src="images/3.jpg" alt=""></a>
+						</li>
+						<li style="float: left; position: relative; margin-left: 0px;">
+							<a href="javascript:"><img src="images/4.jpg" alt=""></a>
+						</li>
+						<li style="float: left; position: relative; margin-left: 0px;">
+							<a href="javascript:"><img src="images/5.jpg" alt=""></a>
+						</li>
+					</ul>
+				</div>
+				<a href="javascript:;" class="ctrl-slide ck-prev" style="opacity: 0.6;">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next" style="opacity: 0.6;">下一张</a>
+				<div class="ck-slidebox" style="margin-left: -54px;">
+					<div class="slideWrap">
+						<ul class="dot-wrap">
+							<li class=""><em>1</em></li>
+							<li class=""><em>2</em></li>
+							<li class=""><em>3</em></li>
+							<li class="current"><em>4</em></li>
+							<li><em>5</em></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
         </div>
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
@@ -398,6 +441,7 @@ $(window).load(function(){
         <!--<form method="POST" action="http://localhost:8080/upload" enctype="multipart/form-data" >-->
         File:
         <input type="file" name="file" id="file" /> <br/>
+
         houseToken:
         <input type="text" value="<%=houseToken%>" name="houseToken"/>
         userToken:
@@ -407,9 +451,22 @@ $(window).load(function(){
 
         </br>
     </form>
+    <form method="POST" target="uploadFrame" id="uploadformMovie" action="http://139.196.34.76:8080/upload" enctype="multipart/form-data">
+        <input type="file" name="file" id="moviefile" /> <br/>
+    </form>
     <iframe name="uploadFrame" id="uploadFrame"></iframe>
 </div>
 <script src="${pageContext.request.contextPath}/wejoin/js/camara.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+	$('.ck-slide').ckSlide({
+		autoPlay: true,//默认为不自动播放，需要时请以此设置
+		dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
+		interval:3000//默认间隔2000毫秒
+		
+	});
+});
 
+</script>
 </body>
 </html>
