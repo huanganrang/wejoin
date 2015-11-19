@@ -57,7 +57,9 @@ function connInit() {
         },
         handle: function (message) {
             //var data  =  $.parseJSON(message.data);
-            wechat._displayNewMsg(getUserInfo(message));
+        	var user = getUserInfo(message);
+        	user.content = user.content.data;
+            wechat._displayNewMsg(user);
         }
     });
     conn.init({
@@ -67,8 +69,7 @@ function connInit() {
             sendNotification(messageFactory.JOIN_ROOM(huanxinUid));
         },
         onTextMessage: function (message) {
-            console.log("收到消息");
-            console.log(message);
+            console.log("收到文本消息：" + JSON.stringify(message));
             //1、通知消息
             for (var i = 0; i < filters.length; i++) {
                 var filter = filters[i];
@@ -81,7 +82,7 @@ function connInit() {
         },
         //收到表情消息时的回调方法
         onEmotionMessage: function (message) {
-            console.log(message);
+            console.log("收到表情消息：" + JSON.stringify(message));
             if (message.from != huanxinUid) {
                 wechat._displayNewMsg(getUserInfo(message));
             }
@@ -134,13 +135,14 @@ var sendText = function (msg) {
     var options = {
         to: $("#huanxinRoomId").val(),
 //		to : '125914257123443160',
-        msg: msg,
+        msg: JSON.stringify(msg),
         type: "groupchat"
     };
     conn.sendTextMessage(options);
-    content = msg.content.replace(/\n/g, '<br>');
+    var content = msg.content.replace(/\n/g, '<br>');
+    msg.content = content;
     var userInfo = getUserInfoByFrom(huanxinUid);
-    userInfo.content = content;
+    userInfo.content = JSON.stringify(msg);
     userInfo.owner = true;
     wechat._displayNewMsg(userInfo);
 };
@@ -238,8 +240,8 @@ WeChat.prototype = {
 //        var content = this._showFace(data.content); // 过滤表情
         var messageContent;
         var content = '';
-        if (typeof data.content.data == 'string') {
-            messageContent = Easemob.im.Helper.parseTextMessage($.parseJSON(data.content.data).content);
+        if (typeof data.content == 'string') {
+            messageContent = Easemob.im.Helper.parseTextMessage($.parseJSON(data.content).content);
             messageContent = messageContent.body;
         } else {
             messageContent = data.content.data;
