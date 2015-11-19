@@ -238,25 +238,25 @@ WeChat.prototype = {
 //        var content = this._showFace(data.content); // 过滤表情
         var messageContent;
         var content = '';
-        if (typeof data.content == 'string') {
-            messageContent = Easemob.im.Helper.parseTextMessage(data.content);
+        if (typeof data.content.data == 'string') {
+            messageContent = Easemob.im.Helper.parseTextMessage($.parseJSON(data.content.data).content);
             messageContent = messageContent.body;
-            console.log(messageContent);
-            for (var i = 0; i < messageContent.length; i++) {
-                var msg = messageContent[i];
-                var type = msg.type;
-                var r = msg.data;
-                if (type == "emotion") {
-                    content += '<img src="' + r + '" style="width: 19px;  height: 19px;"/>';
-                } else {
-                    content += r;
-                }
-            }
         } else {
-            messageContent = data.content;
-            content = $.parseJSON(messageContent.data).content;
+            messageContent = data.content.data;
+//            content = $.parseJSON(messageContent.data).content;
+        	
         }
-
+        
+        for (var i = 0; i < messageContent.length; i++) {
+            var msg = messageContent[i];
+            var type = msg.type;
+            var r = msg.data;
+            if (type == "emotion") {
+                content += '<img src="' + r + '" style="width: 19px;  height: 19px;"/>';
+            } else {
+                content += r;
+            }
+        }
 
         // TODO 根据users动态取头像、昵称
         var $messageHtml = '<li class="' + ownerClass + '">'
