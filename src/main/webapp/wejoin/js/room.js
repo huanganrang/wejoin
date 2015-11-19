@@ -42,10 +42,11 @@ function connInit() {
     filters.push({
         mapper: function (message) {
             var data = $.parseJSON(message.data);
-            return data.type != undefined && data.type != 30;
+            return data.type != undefined && data.type != 30 && data.type != 3;
         },
         handle: function (message) {
             var data = $.parseJSON(message.data);
+            if(excutors[data.type])
             excutors[data.type](data);
         }
     });
@@ -60,6 +61,17 @@ function connInit() {
         	var user = getUserInfo(message);
         	user.content = user.content.data;
             wechat._displayNewMsg(user);
+        }
+    });
+    
+    filters.push({
+        mapper: function (message) {
+            var data = $.parseJSON(message.data);
+            return message.from != huanxinUid && data.type != undefined && data.type == 3;
+        },
+        handle: function (message) {
+        	var data = $.parseJSON(message.data);
+        	showDocsImages(data.url);
         }
     });
     conn.init({
@@ -155,12 +167,41 @@ var sendNotification = function (message) {
     var options = {
         to: $("#huanxinRoomId").val(),
 //		to : '125914257123443160',
-        msg: message,
+        msg: JSON.stringify(message),
         type: "groupchat"
     };
     conn.sendTextMessage(options);
     console.log(options);
-}
+};
+
+var showDocsImages = function(images) {
+	if(images && images.length > 0) {
+		$(".ck-slide .ck-slide-wrapper").empty();
+		$(".ck-slide .dot-wrap").empty();
+		for(var i in images) {
+			var pic = (!images[i].pic && images[i]) || images[i].pic;
+			var $li = $("<li></li>").css({
+				'float': 'left', 
+				'position': 'relative', 
+				'margin-left': '0px'
+			}).append('<a href="javascript:void(0);"><img src="http://'+pic+'" alt="" width="730px" height="580px"></a>');
+			$(".ck-slide .ck-slide-wrapper").append($li);
+			var current = (parseInt(i) == 0 && 'current') || '';
+			$li = $("<li></li>").addClass(current).append('<em>'+(parseInt(i)+1)+'</em>');
+			$(".ck-slide .dot-wrap").append($li);
+		}
+		
+		$("#imageBoard").hide();
+		$('.ck-slide').show();
+		
+		$('.ck-slide').ckSlide({
+			autoPlay: true,//默认为不自动播放，需要时请以此设置
+			dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
+			interval:10000//默认间隔2000毫秒
+			
+		});
+	}
+};
 
 var WeChat = function () {
     //this.stompClient = null;
