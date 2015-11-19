@@ -66,6 +66,14 @@ package {
 					break;
 	        }
         }
+function ns_onMetaData(item:Object):void {
+    trace("metaData");
+    // Resize video instance.
+    video.width = item.width;
+    video.height = item.height;
+    // Center video instance on Stage.
+      
+}
 
 		public function onBWDone():void{}
         // play a recorded stream on the server
