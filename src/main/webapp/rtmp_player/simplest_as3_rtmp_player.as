@@ -75,7 +75,7 @@ package {
 			 ns.client=clientobj; 
             ns.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
 
-            video = new Video(220,174);
+            video = new Video();
             video.attachNetStream(ns);
 
             ns.play(room);

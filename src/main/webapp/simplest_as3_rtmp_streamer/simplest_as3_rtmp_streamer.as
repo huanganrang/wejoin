@@ -114,7 +114,7 @@ package {
 			 */
 			var h264setting:H264VideoStreamSettings = new H264VideoStreamSettings();
 			h264setting.setProfileLevel(H264Profile.BASELINE, H264Level.LEVEL_5_1);
-			h264setting.setMode(320, 180, 30);
+			h264setting.setMode(320, 240, 30);
 			h264setting.setQuality(0, 100);
 
 
