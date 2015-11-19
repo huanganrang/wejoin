@@ -46,6 +46,7 @@ function connInit() {
         },
         handle: function (message) {
             var data = $.parseJSON(message.data);
+            if(excutors[data.type])
             excutors[data.type](data);
         }
     });
