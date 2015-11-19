@@ -46,7 +46,7 @@ $(function(){
             //TODO 其他的待定
             var formData = new FormData($('#uploadform')[0]);
             $.ajax({
-                url: 'http://139.196.34.76:8080/upload',  //Server script to process data
+                url: SERVER_URL+'/upload',  //Server script to process data
                 type: 'POST',
                 //Ajax events
                 //beforeSend: beforeSendHandler,
@@ -68,6 +68,29 @@ $(function(){
         });
     });
 
+    $("#uploadMovie").click(function(){
+        $("#moviefile").click();
+        $(document).delegate('#moviefile','change',function () {
+            var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
+            var formData = new FormData($('#uploadformMovie')[0]);
+            $.ajax({
+                url: getVoiceUploadUrl(),  //Server script to process data
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success:function (data) {
+                    console.log(data);
+                    /*var result = $.parseJSON(data);
+                    if(result.serverStatus == 0){
+                        sendNotification(messageFactory.FILE(result.type,result.returnValue));
+                    }*/
+                }
+            });
+        });
+    });
+
 });
 
 function uploadHTML5(data){
@@ -81,4 +104,18 @@ function uploadHTML5(data){
 function loadSuccess(){
     //console.log($("#uploadFrame").contents().find("pre"));
     //alert($("#uploadFrame").contents().find("pre").text());
+}
+function getVoiceUploadUrl(){
+    if(NET_VOICE_URL == "") {
+        jQuery.ajax({
+            type: "GET",
+            url: SERVER_URL + "/System/Upload/Path",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                NET_VOICE_URL = data.returnValue;
+            }
+        });
+    }
+    return NET_VOICE_URL;
 }

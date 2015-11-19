@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <title>File Upload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<form method="POST" action="" enctype="multipart/form-data" id="uploadForm" >
+<!--<form method="POST" action="http://localhost:8080/upload" enctype="multipart/form-data" >-->
+    File:
+    <input type="file" name="file" id="file" /> <br/>
+    </br>
+    <input type="submit" value="Upload" name="upload" id="upload" />
+</form>
+<script src="../jslib/jquery-1.8.3.js"></script>
+<script type="application/javascript">
+    var local = "http://localhost:8080";
+    var remote = "http://139.196.34.76:8080";
+    function getVideo(){
+        var token = $("#token").val();
+        jQuery.ajax({
+            type: "GET",
+            url: remote+"/System/Upload/Path",
+            dataType:"json",
+            success:function (data, status, jqXHR) {
+                $("#uploadForm").attr("action",data.returnValue);
+            }
+        });
+    }
+    getVideo();
+</script>
+
+</body>
+</html>

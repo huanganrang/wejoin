@@ -398,6 +398,7 @@ $(window).load(function(){
         <!--<form method="POST" action="http://localhost:8080/upload" enctype="multipart/form-data" >-->
         File:
         <input type="file" name="file" id="file" /> <br/>
+
         houseToken:
         <input type="text" value="<%=houseToken%>" name="houseToken"/>
         userToken:
@@ -406,6 +407,9 @@ $(window).load(function(){
         <input type="text" value="3" name="type" id="fileType"/>
 
         </br>
+    </form>
+    <form method="POST" target="uploadFrame" id="uploadformMovie" action="http://139.196.34.76:8080/upload" enctype="multipart/form-data">
+        <input type="file" name="file" id="moviefile" /> <br/>
     </form>
     <iframe name="uploadFrame" id="uploadFrame"></iframe>
 </div>

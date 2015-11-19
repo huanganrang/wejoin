@@ -1,5 +1,7 @@
 var PULL_STREAM_ROUTE = "rtmp://s2.weiqu168.com/live/";
 var PUSH_STREAM_ROUTE = "";
+var SERVER_URL = "http://139.196.34.76:8080";
+var NET_VOICE_URL = "";
 
 /**
  * 通用ajax请求
