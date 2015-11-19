@@ -41,7 +41,7 @@ var base = '${pageContext.request.contextPath}/';
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css">
-	.ck-slide { width: 700px; height: 320px; margin: 0 auto;}
+	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
 	.ck-slide ul.ck-slide-wrapper { height: 320px;}
 </style>
 
@@ -245,12 +245,12 @@ $(window).load(function(){
             <div class="cneter_menu">
                 <a href="#" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
             </div>
-            <!-- <img src="images/pic.gif" width="730"/> -->
+            <img src="images/pic.gif" width="730" id="imageBoard"/>
            
-           	<div class="ck-slide">
+           	<div class="ck-slide" style="display: none;">
 				<div class="ck-slide-dir">
-					<ul class="ck-slide-wrapper" style="width: 3500px; margin-left: -2100px;">
-						<li style="float: left; position: relative; margin-left: 0px;">
+					<ul class="ck-slide-wrapper">
+						<!-- <li style="float: left; position: relative; margin-left: 0px;">
 		                	<a href="javascript:"><img src="images/1.jpg" alt=""></a>
 						</li>
 						<li style="float: left; position: relative; margin-left: 0px;">
@@ -264,18 +264,18 @@ $(window).load(function(){
 						</li>
 						<li style="float: left; position: relative; margin-left: 0px;">
 							<a href="javascript:"><img src="images/5.jpg" alt=""></a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<a href="javascript:;" class="ctrl-slide ck-prev" style="opacity: 0.6;">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next" style="opacity: 0.6;">下一张</a>
 				<div class="ck-slidebox" style="margin-left: -54px;">
 					<div class="slideWrap">
 						<ul class="dot-wrap">
-							<li class=""><em>1</em></li>
+							<!-- <li class="current"><em>1</em></li>
 							<li class=""><em>2</em></li>
 							<li class=""><em>3</em></li>
-							<li class="current"><em>4</em></li>
-							<li><em>5</em></li>
+							<li class=""><em>4</em></li>
+							<li><em>5</em></li> -->
 						</ul>
 					</div>
 				</div>
@@ -457,16 +457,6 @@ $(window).load(function(){
     <iframe name="uploadFrame" id="uploadFrame"></iframe>
 </div>
 <script src="${pageContext.request.contextPath}/wejoin/js/camara.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-$(function(){
-	$('.ck-slide').ckSlide({
-		autoPlay: true,//默认为不自动播放，需要时请以此设置
-		dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
-		interval:3000//默认间隔2000毫秒
-		
-	});
-});
 
-</script>
 </body>
 </html>

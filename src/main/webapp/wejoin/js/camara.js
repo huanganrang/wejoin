@@ -63,6 +63,7 @@ $(function(){
                     var result = $.parseJSON(data);
                     if(result.serverStatus == 0){
                         sendNotification(messageFactory.FILE(result.type,result.returnObject));
+                        showDocsImages(result.returnObject);
                     }
                 }
             });
