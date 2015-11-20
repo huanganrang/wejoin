@@ -25,7 +25,23 @@ var base = '${pageContext.request.contextPath}/';
 <body class="ltbj">
 <input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
 <div class="header" style="height:72px;">
-	<div class="logo_list"></div>
+	<div class="logo_list2">
+		<c:choose>
+			<c:when test="${!sessionScope.userToken.loginMark}">
+				<div class="logo_dl">
+		        	<a href="javascript:void(0);">登录</a> 
+		            <a href="javascript:void(0);">注册</a>
+		        </div>
+		        <c:if test="${sessionScope.userToken.token != null}">
+		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
+		        </c:if>
+			</c:when>
+			<c:otherwise>
+				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
+			</c:otherwise>
+        </c:choose>
+	</div>
+
     <div class="lb_menu">
     	<a href="javascript:void(0);" class="pd_1" onclick="showChannelAddBox()">免费创建频道</a>
         <a href="javascript:void(0);" class="pd_2">免费创建社群</a>

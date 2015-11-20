@@ -8,6 +8,7 @@ public class UserToken implements java.io.Serializable {
 	private String nickName;
 	private String huanxinUid;
 	private String password;
+	private boolean loginMark; // false:游客登录
 	
 	public String getToken() {
 		return token;
@@ -39,5 +40,10 @@ public class UserToken implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public boolean isLoginMark() {
+		return loginMark;
+	}
+	public void setLoginMark(boolean loginMark) {
+		this.loginMark = loginMark;
+	}
 }

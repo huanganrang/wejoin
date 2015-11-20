@@ -138,9 +138,9 @@ $(window).load(function(){
 <div class="header">
     <div class="logo"></div>
     <ul class="tab_button">
-        <li id="blackbord" class="hover"><a href="#">黑 板</a></li>
-        <li id="documets"><a href="#">文 档</a></li>
-        <li id="voice"><a href="#">影 音</a></li>
+        <li id="blackbord" class="hover"><a href="javascript:void(0);">黑 板</a></li>
+        <li id="documets"><a href="javascript:void(0);">文 档</a></li>
+        <li id="voice"><a href="javascript:void(0);">影 音</a></li>
     </ul>
     
     <div class="aa">
@@ -205,9 +205,9 @@ $(window).load(function(){
         <div class="clear"></div>
     </div>
     <div class="content mCustomScrollbar content_buttom">
-    <div class="list_name" style="display:none;">
+    <div class="list_name">
     	<ul>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le_on">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+        	<!-- <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le_on">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);" class="on">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
@@ -223,14 +223,15 @@ $(window).load(function(){
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
             <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
+             -->
         </ul>
     </div>
     </div>
 	<div class="content_img">
-	    	<div class="content_tb1"><a href="#"><img src="images/c1.png" /></a></div>
-	        <div class="content_tb1"><a href="#"><img src="images/c2.png" /></a></div>
+	    	<div class="content_tb1"><a href="javascript:void(0);"><img src="images/c1.png" /></a></div>
+	        <div class="content_tb1"><a href="javascript:void(0);"><img src="images/c2.png" /></a></div>
 	        <div class="content_txt1"><span> <ol style="width:70%;"><img src="images/ca.png" /></ol></span></div>
-	        <div class="content_tb2"><a href="#" class="on" id="camaraControl">图标</a></div>
+	        <div class="content_tb2"><a href="javascript:void(0);" class="on" id="camaraControl">图标</a></div>
 	 </div>
 </div>
 
@@ -243,39 +244,19 @@ $(window).load(function(){
 
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
-                <a href="#" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
+                <a href="javascript:void(0);" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
             </div>
             <img src="images/pic.gif" width="730" id="imageBoard"/>
            
            	<div class="ck-slide" style="display: none;">
 				<div class="ck-slide-dir">
 					<ul class="ck-slide-wrapper">
-						<!-- <li style="float: left; position: relative; margin-left: 0px;">
-		                	<a href="javascript:"><img src="images/1.jpg" alt=""></a>
-						</li>
-						<li style="float: left; position: relative; margin-left: 0px;">
-							<a href="javascript:"><img src="images/2.jpg" alt=""></a>
-						</li>
-						<li style="float: left; position: relative; margin-left: 0px;">
-							<a href="javascript:"><img src="images/3.jpg" alt=""></a>
-						</li>
-						<li style="float: left; position: relative; margin-left: 0px;">
-							<a href="javascript:"><img src="images/4.jpg" alt=""></a>
-						</li>
-						<li style="float: left; position: relative; margin-left: 0px;">
-							<a href="javascript:"><img src="images/5.jpg" alt=""></a>
-						</li> -->
 					</ul>
 				</div>
 				<a href="javascript:;" class="ctrl-slide ck-prev" style="opacity: 0.6;">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next" style="opacity: 0.6;">下一张</a>
 				<div class="ck-slidebox" style="margin-left: -54px;">
 					<div class="slideWrap">
 						<ul class="dot-wrap">
-							<!-- <li class="current"><em>1</em></li>
-							<li class=""><em>2</em></li>
-							<li class=""><em>3</em></li>
-							<li class=""><em>4</em></li>
-							<li><em>5</em></li> -->
 						</ul>
 					</div>
 				</div>
@@ -284,7 +265,7 @@ $(window).load(function(){
         </div>
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
-                <a href="#" class="t4" id="uploadMovie"><img src="images/t4.png" /></a>
+                <a href="javascript:void(0);" class="t4" id="uploadMovie"><img src="images/t4.png" /></a>
             </div>
             <img src="images/pic.gif" width="730"/>
         </div>
@@ -330,53 +311,66 @@ $(window).load(function(){
         
         <div class="ltia_2" style="margin-left:5px;">
         	<ol class="gift_div_ac"><img class="img_tb3 gift_div_ac" src="images/tb2.png" /></ol>
-            <div class="v_bc gift_div" style="top: -166px;">
-        	<a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a>
-            <a href="javascript:void(0);">表情图片</a> 
-        </div>
+            <div class="v_bc gift_div" style="top: -226px;">
+        		<a href="javascript:void(0);"><img src="images/tb/balloon.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/bianping-christmas-2014-05.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/bird-toys.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/bird-white.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/bluefaces_12.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/buel.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/catlover.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/christmas-balls.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/cocktail.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/colour_apple_02.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/confettiicon.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/cyan.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/dahuangmao-04.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/dancing-minion-icon.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/disney_dax_pink_03.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/disney_dax_pink_06.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/dog_04.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/dummy-fish.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/email.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/fileexplorer.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/gm.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/goo.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/hatcon.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/iceage-02.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/iceage-06.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/kook.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/labrador.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/loco_roco_03.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/madagascar_01.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/madagascar_02.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/madagascar_03.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/madagascar_04.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/madagascar_08.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/medusa.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/mime_riendo.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/musicherz.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/pig-green.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/popkart_01.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/poulpo.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/psychotic-penguin.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/puppy_dogs_02.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/puppy_dogs_04.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/purple.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/rtm.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/russel.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/santa.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/shengdanlaoren-2014-10.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/snow_leopard_06.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/social_network.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/thememanager.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/twitter4.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/uncle-dumplin.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/updater.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/wabi.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/weather (1).png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/weather.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/wet-dog.png" /></a>
+	            <a href="javascript:void(0);"><img src="images/tb/xmas-wreath.png" /></a>
+        	</div>
         </div>
 
         <div class="ltia_1" style=" width:135px; float:right;">
@@ -384,32 +378,7 @@ $(window).load(function(){
             <div class="ltia_bj someone_div">
             <div class="content" style="height:320px;">
             <div class="v_ren mCustomScrollbar">
-            	<ul>
-                	<!-- <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li>
-                    <li><a href="javascript:void(0);"><img src="images/xt.gif" />我是会飞的鱼</a></li> -->
-                </ul>
+            	<ul></ul>
             </div>
             </div>
             </div>
