@@ -216,6 +216,8 @@ function initMembersList() {
                         var userIcon = members[i].icon || '';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + members[i].userToken + '"><img src="' + userIcon + '" />' + members[i].nickName + '</a></a></li>');
                         $(".v_ren ul").append($li);
+                        $li = $('<li><img src="' + userIcon + '" /><span>' + members[i].nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+                        $(".list_name ul").append($li);
                     }
                 }
             }
@@ -292,7 +294,7 @@ WeChat.prototype = {
             }
         }
 
-        // TODO 根据users动态取头像、昵称
+        //  根据users动态取头像、昵称
         var $messageHtml = '<li class="' + ownerClass + '">'
             + '<div class="ltian_img"><a><img src="' + data.userIcon + '" /></a></div>'
             + '<div class="ltian_txt">'
@@ -339,7 +341,7 @@ var messageFactory = {
     FILE:function(type,url) {
         return {"type":type,"url":url};
     }
-}
+};
 var excutors = {
     1:function(data){
         showDocsImages(data.url);
@@ -363,6 +365,8 @@ var excutors = {
                         var userIcon = member.icon || '';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" />' + member.nickName + '</a></a></li>');
                         $(".v_ren ul").append($li);
+                        $li = $('<li><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+                        $(".list_name ul").append($li);
                     }
                 }
             }
@@ -386,7 +390,7 @@ var excutors = {
     11:function(data){
         showDocsImages(data.url);
     }
-}
+};
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
  type =2 视频，{"type":2,"url","http://xxx地址"}
  type =3 音频  {"type":3,"url","http://xxx地址"}

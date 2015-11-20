@@ -133,6 +133,7 @@ function channelPage(pageNo){
         dataType:"json",
         success:function (data) {
         	if(data.obj){
+        		console.log("获取频道：" + data.obj)
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			if(!channelTotal) {
@@ -230,12 +231,15 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 							$roomItem.find(".list_3 em a").attr({
 								"houseId": rooms[i].id,
 								"houseToken": rooms[i].token,
-								"huanxinRoomId": rooms[i].huanxinRoomId
+								"huanxinRoomId": rooms[i].huanxinRoomId,
+								"adminToken" : rooms[i].adminToken
 							}).bind("click", function () {
 								var userToken = $("#userToken").val();
 								var houseToken = $(this).attr("houseToken");
 								var houseId = $(this).attr("houseId");
 								var huanxinRoomId = $(this).attr("huanxinRoomId");
+								var adminToken = $(this).attr("adminToken");
+								var owner = adminToken == userToken;
 								function joinHouse() {
 									//  调用joinHouse接口
 									ajaxPost({
@@ -246,7 +250,8 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 										window.location.href = 'room.jsp?houseToken=' + houseToken
 											+ '&houseId=' + houseId
 											+ '&channelId=' + channelId
-											+ '&huanxinRoomId=' + huanxinRoomId;
+											+ '&huanxinRoomId=' + huanxinRoomId
+											+ '&owner=' + owner;
 									});
 								}
 

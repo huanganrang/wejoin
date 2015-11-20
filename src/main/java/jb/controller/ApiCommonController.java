@@ -84,6 +84,7 @@ public class ApiCommonController extends BaseController {
 				JSONObject jsonObject = JSON.parseObject(result);
 				if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
 					UserToken userToken = jsonObject.getObject("returnObject", UserToken.class);
+					if(UL001.equals(type)) userToken.setLoginMark(true); 
 					request.getSession().setAttribute("userToken", userToken);
 				}
 			}

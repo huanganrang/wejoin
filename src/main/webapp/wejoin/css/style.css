@@ -113,7 +113,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_pic{ text-align:center; padding-left:240px;}
 
 
-.main_right{ width:24%; position:absolute; right:0px; top:43px;}
+.main_right{ width:24%; position:absolute; right:0px; top:43px; background:#eee;}
 .main_right .ltian{ background:#eee;  padding:20px 20px; }
 .main_right .ltian li{ width:100%; clear:both; margin-bottom:18px; }
 .main_right .ltian_img{ float:left; width:35px; margin-right:15px; margin-top:21px; }
@@ -146,7 +146,8 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .ltian_menu .ltia_2{ width:40px; height:30px; float:left; position:relative; cursor:pointer; margin-left:10px; }
 .ltian_menu .ltia_2 ol{ width:20px; display:block; margin:0 auto; margin-top:4px; }
 .ltian_menu .v_bc{ width:270px; background:#d9d9d9; position:absolute; left:-120px; top:-136px; padding:11px 5px 5px 11px;  border-radius: 5px; display:none;}
-.ltian_menu .v_bc a{ width:26px; height:26px; float:left; margin:0 4px 4px 0; display:block; background:#666; }
+.ltian_menu .v_bc a{ width:26px; height:26px; float:left; margin:0 4px 4px 0; display:block;  text-indent:-99999px; }
+.ltian_menu .v_bc a img{ width:26px; height:26px; overflow:hidden; display:block;}
 
 .ltian_menu .ltia_2:hover .v_bc{ display:block;}
 .ltian_menu .ltia_2:hover{ background:#d0d0d0; border-radius: 5px; border-top-left-radius:0px; border-top-right-radius:0px;}
@@ -339,6 +340,10 @@ cursor:pointer;
 	z-index:9999;
 }
 
+.logo_list2{width:218px; height:57px; background:#4f900a; text-align:center;   color:#fff; float:left; padding-top:15px;}
+.logo_list2 .logo_dl{ width:218px; clear:both; float:none; height:26px;}
+.logo_list2 .logo_dl a{ float:left; background:#7de310; height:26px; line-height:26px; text-align:center; width:40%; margin-left:5%; }
+.logo_list2 .logo_name{ width:218px; text-align:center; height:30px; float:none; line-height:30px; overflow:hidden;}
 
 
 
