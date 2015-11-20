@@ -61,7 +61,7 @@ $(function(){
                 	console.log(data);
                     var result = $.parseJSON(data);
                     if(result.serverStatus == 0){
-                        sendNotification(messageFactory.FILE(result.type,result.returnObject));
+                        sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject));
                         showDocsImages(result.returnObject);
                     }
                 }
