@@ -9,6 +9,7 @@
 	String houseId = request.getParameter("houseId");
 	String channelId = request.getParameter("channelId");
 	String huanxinRoomId = request.getParameter("huanxinRoomId");
+	String owner = request.getParameter("owner");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房间</title>
@@ -244,8 +245,11 @@ $(window).load(function(){
 
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
-                <a href="javascript:void(0);" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
-            </div>
+	            <% if("true".equals(owner)) { %>
+	                <a href="javascript:void(0);" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
+                <% } %>
+	            </div>
+	        
             <img src="images/pic.gif" width="730" id="imageBoard"/>
            
            	<div class="ck-slide" style="display: none;">
