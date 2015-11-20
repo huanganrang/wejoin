@@ -344,7 +344,7 @@ var messageFactory = {
 };
 var excutors = {
     1:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     13: function(){openPullStream()},
     14: function(){closePullStream()},
@@ -373,22 +373,22 @@ var excutors = {
         });
     },
     6:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     7:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     8:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     9:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     10:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     },
     11:function(data){
-        showDocsImages(data.url);
+        showDocsImages([data.url]);
     }
 };
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
