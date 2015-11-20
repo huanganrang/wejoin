@@ -63,17 +63,7 @@ function connInit() {
             wechat._displayNewMsg(user);
         }
     });
-    
-    filters.push({
-        mapper: function (message) {
-            var data = $.parseJSON(message.data);
-            return message.from != huanxinUid && data.type != undefined && data.type == 3;
-        },
-        handle: function (message) {
-        	var data = $.parseJSON(message.data);
-        	showDocsImages(data.url);
-        }
-    });
+
     conn.init({
         onOpened: function () {
             console.log("成功登录");
@@ -175,6 +165,7 @@ var sendNotification = function (message) {
 };
 
 var showDocsImages = function(images) {
+    $("#documets").click();
 	if(images && images.length > 0) {
 		$(".ck-slide .ck-slide-wrapper").empty();
 		$(".ck-slide .dot-wrap").empty();
@@ -340,16 +331,21 @@ var messageFactory = {
         return {"type": 30, "content": message};
     },
     CLOSE_STREAM : function(){
-        return {"type":13};
+        return {"type":14};
     },
     OPEN_STREAM : function(){
-        return {"type":14};
+        return {"type":13};
     },
     FILE:function(type,url) {
         return {"type":type,"url":url};
     }
 }
 var excutors = {
+    1:function(data){
+        showDocsImages(data.url);
+    },
+    13: function(){openPullStream()},
+    14: function(){closePullStream()},
     15: function (data) {
         $.ajax({
             type: "POST",
@@ -371,6 +367,24 @@ var excutors = {
                 }
             }
         });
+    },
+    6:function(data){
+        showDocsImages(data.url);
+    },
+    7:function(data){
+        showDocsImages(data.url);
+    },
+    8:function(data){
+        showDocsImages(data.url);
+    },
+    9:function(data){
+        showDocsImages(data.url);
+    },
+    10:function(data){
+        showDocsImages(data.url);
+    },
+    11:function(data){
+        showDocsImages(data.url);
     }
 }
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}

@@ -27,8 +27,7 @@ $(function(){
     });
     ajaxGet({"type":"UL039", "houseToken":$("#houseToken").val()},function(data){
         if(data!=null&&data.length>0){
-        	 $(".example_video_1").show();
-             $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
+            openPullStream();
         }
     });
     //TODO 文件上传
@@ -120,4 +119,13 @@ function getVoiceUploadUrl(){
         });
     }
     return NET_VOICE_URL;
+}
+function openPullStream(){
+    $(".example_video_1").show();
+    $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
+}
+
+function closePullStream(){
+    $("#cameraPull").attr("src","");
+
 }
