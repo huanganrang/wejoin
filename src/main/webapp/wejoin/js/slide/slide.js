@@ -22,6 +22,9 @@
                 }else{
                     index++;
                 }
+                
+                if(opts && opts.callback)
+                	opts.callback(index);
                 change.call(that, index, old);//调用图片切换方法，.call() 每个JS函数都包含的一个非继承而来的方法，主要用来指定函数的作用域 that ，通常不严谨写法是change()，有可能会函数冲突。
             });
             // prev
@@ -36,6 +39,8 @@
                 }else{                                      
                     index--;
                 }
+                if(opts && opts.callback)
+                	opts.callback(index);
                 change.call(that, index, old);
             });
 			//点击切换相应序号的图片
@@ -43,6 +48,8 @@
                 $(this).on('click.slidebox', function(){
                     change.call(that, cindex, index);
                     index = cindex;
+                    if(opts && opts.callback)
+                    	opts.callback(cindex);
                 });
             });
 			//自己添加——鼠标移入小圆点切换轮播图片
@@ -50,6 +57,8 @@
                 $(this).on('mouseover.slidebox', function(){
                     change.call(that, cindex, index);
                     index = cindex;
+                    if(opts && opts.callback)
+                    	opts.callback(cindex);
                 });
             });
             
@@ -146,6 +155,7 @@
 		autoPlay: false,//默认不自动播放
         dir: null,//默认淡隐淡出效果
         isAnimate: false,//默认按钮可用
-		interval:2000//默认自动2秒切换 
-		 };
+		interval:2000,//默认自动2秒切换 
+		callback: ""	 
+	};
 })(jQuery);
