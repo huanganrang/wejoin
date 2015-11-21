@@ -77,7 +77,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 .fired{ position:fixed; left:0px; top:55px; z-index:199; width:100%;}
 .appdown{ padding:10px; background:#dddfe1; position:relative; height:55px;}
-.appdown .apptb{ float:left; width:65%; }
+.appdown .apptb{ float:left; width:100%; }
 .appdown .apptb img{ width:47px; height:47px; display:block; float:left; margin-top:5px;}
 .appdown .apptb span{ font-size:16px; line-height:55px; text-indent:7px; display:block; letter-spacing:-1px; margin-top:5px;}
 .appdown .app_an{ float:right;}

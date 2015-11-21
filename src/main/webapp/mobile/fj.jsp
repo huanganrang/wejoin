@@ -21,7 +21,6 @@
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script>
 var base = '${pageContext.request.contextPath}/';
-videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
 
 $(function(){
 	changeHeight();
@@ -68,7 +67,7 @@ if(targetObj.style.display!="none"){
 <div style="height:55px;"></div>
 
 
-<div id="box1">
+<%--<div id="box1">
 <div class="fired">
 <div class="top_d">
 	<div class="d_txt">内容++++++++++</div>
@@ -83,7 +82,7 @@ if(targetObj.style.display!="none"){
     <div class="d_clock"><a onClick="openShutManager(this,'box1')"></a></div>
 </div>
 </div>
-</div>
+</div>--%>
 
 
 <div id="box2">
@@ -108,7 +107,7 @@ if(targetObj.style.display!="none"){
 				*/
 				var vID        = ""; 
 				var vWidth     = "100%";                //播放器宽度设置
-				var vHeight    = 400;                   //播放器宽度设置
+				var vHeight    = "100%";                   //播放器宽度设置
 				var vPlayer    = "HLSPlayer.swf?v=1.5"; //播放器文件
 				var vHLSset    = "HLS.swf";             //HLS配置
 				var vPic       = "images/start.jpg";    //视频缩略图
@@ -123,8 +122,8 @@ if(targetObj.style.display!="none"){
 				<script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
 				</div>
     </div>
-    <div class="app_an"><a href="#">立即下载</a></div>
-    <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>
+    <%--<div class="app_an"><a href="#">立即下载</a></div>
+    <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>--%>
 </div>
 </div>
 </div>
