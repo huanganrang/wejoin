@@ -44,9 +44,11 @@ function register() {
 		}
 	}
     
+    var url = "api/apiCommon/doPost"; // User/User
+    if(isHome()) url = base + url;
     $.ajax({
         type: "POST",
-        url: "api/apiCommon/doPost", // User/User
+        url: url,
         data: {"type":"UL003", "param":JSON.stringify({"mobile":mobile,"nickName":username,"password":password,"validCode":valiCode})},
         dataType:"json",
         success:function (data) {
@@ -67,6 +69,10 @@ function register() {
     });
 }
 
+var isHome = function() {
+	return namespace == "home";
+};
+
 function login() {
 	var username = $("#djcgBox #username").val();
 	if(username == "") {
@@ -78,9 +84,11 @@ function login() {
     	$("#djcgBox #password").focus();
 		return false;
 	} 
+    var url = "api/apiCommon/doGet";// User/User
+    if(isHome()) url = base + url;
     $.ajax({
         type: "GET",
-        url: "api/apiCommon/doGet", // User/User
+        url: url,
         data: {"type":"UL001", "mobile":username, "password":password},
         dataType:"json",
         success:function (data) {
@@ -88,7 +96,11 @@ function login() {
         		console.log("登录：" + data.obj);
             	var json = JSON.parse(data.obj);
             	if(json.serverStatus == 0) {
-            		window.location.href = 'wejoin/home.jsp';
+            		if(!isHome()) {
+            			window.location.href = 'wejoin/home.jsp';
+            		} else {
+            			window.location.reload();
+            		}
             	} else {
             		// 登录失败
             		alert(json.returnMessage);
@@ -121,9 +133,11 @@ function getValidCode(event) {
 		}
   	}, 1000);
 	
+	var url = "api/apiCommon/doPost"; // ValidCode/ValidCode
+    if(isHome()) url = base + url;
     $.ajax({
         type: "POST",
-        url: "api/apiCommon/doPost", // ValidCode/ValidCode
+        url: url,
         data: {"type":"UL002", "param":JSON.stringify({"mobile":mobile,"channel":event.data})},
         dataType:"json",
         success:function (data) {

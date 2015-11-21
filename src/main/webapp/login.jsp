@@ -5,8 +5,13 @@
 <html>
 <head>
 <title></title>
+<script type="text/javascript">
+var base = '';
+var namespace = "login";
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
@@ -36,9 +41,9 @@
 			<div class="windowsBg"></div>
 		  	<div class="windows_box">
 				<div class="djcgBox_con">
-					<div class="dj_top"></div>
-		               <div class="dj_con">
-		               	<div class="dj_title">
+					<div class="dj_top_a"></div>
+		               <div class="dj_con_a">
+		               	<div class="dj_title_a">
 		                   	<span></span>
 		                       <div>
 		                       	<ol>用户登录</ol>
@@ -66,16 +71,16 @@
 			  <div class="windowsBg"></div>
 			  <div class="windows_box">
 				<div class="tjcg_con">
-		           	<div class="dj_top"></div>
-		               <div class="tjcg_bj">
-		           	<div class="dj_title">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
 		                   	<span></span>
 		                       <div>
 		                       	<ol>密码找回</ol>
 		                           <em>PASSWORD RETRIEVE</em>
 		                       </div>
 		               </div>
-		               <div class="tjcg_list">
+		               <div class="tjcg_list_b">
 		               	<ul>
 		                   	<form action="" method="get">
 		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
@@ -99,16 +104,16 @@
 			  <div class="windowsBg"></div>
 			  <div class="windows_box">
 				<div class="tjcg_con">
-		           	<div class="dj_top"></div>
-		               <div class="tjcg_bj">
-		           	<div class="dj_title">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
 		                   	<span class="zc_tb"></span>
 		                       <div>
 		                       	<ol>用户注册</ol>
 		                           <em>USER REGISTRATION</em>
 		                       </div>
 		               </div>
-		               <div class="tjcg_list">
+		               <div class="tjcg_list_b">
 		               	<ul>
 		                   	<form action="" method="get">
 		                   	<li><input type="text" class="pt2" placeholder="请输入手机号获取验证码" id="telphone" style="color:#333;"><ol><a href="javascript:void(0);" class="validCode_btn">点击获取</a></ol></li>
