@@ -72,14 +72,16 @@ function connInit() {
         },
         onTextMessage: function (message) {
             console.log("收到文本消息：" + JSON.stringify(message));
-            //1、通知消息
-            for (var i = 0; i < filters.length; i++) {
-                var filter = filters[i];
-                console.log(filter.mapper(message));
-                if (filter.mapper(message)) {
-                    filter.handle(message);
-                    break;
-                }
+            if (message.from != huanxinUid) {
+	            //1、通知消息
+	            for (var i = 0; i < filters.length; i++) {
+	                var filter = filters[i];
+	                console.log(filter.mapper(message));
+	                if (filter.mapper(message)) {
+	                    filter.handle(message);
+	                    break;
+	                }
+	            }
             }
         },
         //收到表情消息时的回调方法
@@ -170,29 +172,39 @@ var showDocsImages = function(images) {
 		$(".ck-slide .ck-slide-wrapper").empty();
 		$(".ck-slide .dot-wrap").empty();
 		for(var i in images) {
-			var pic = (!images[i].pic && images[i]) || images[i].pic;
+			var pic = images[i].pic || images[i];
 			var $li = $("<li></li>").css({
 				'float': 'left', 
 				'position': 'relative', 
 				'margin-left': '0px'
 			}).append('<a href="javascript:void(0);"><img src="http://'+pic+'" alt="" width="730px" height="580px"></a>');
 			$(".ck-slide .ck-slide-wrapper").append($li);
-			var current = (parseInt(i) == 0 && 'current') || '';
-			$li = $("<li></li>").addClass(current).append('<em>'+(parseInt(i)+1)+'</em>');
-			$(".ck-slide .dot-wrap").append($li);
+			if(images.length > 1) {
+				var current = (parseInt(i) == 0 && 'current') || '';
+				$li = $("<li></li>").addClass(current).append('<em>'+(parseInt(i)+1)+'</em>');
+				$(".ck-slide .dot-wrap").append($li);
+			} else {
+				$(".ctrl-slide").hide();
+				$(".ck-slidebox").hide();
+			}
 		}
 		
 		$("#imageBoard").hide();
 		$('.ck-slide').show();
 		
 		$('.ck-slide').ckSlide({
-			autoPlay: true,//默认为不自动播放，需要时请以此设置
+			autoPlay: false,//默认为不自动播放，需要时请以此设置
 			dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
-			interval:10000//默认间隔2000毫秒
-			
+			interval:10000,//默认间隔2000毫秒
+			callback: turnPage
 		});
 	}
 };
+
+function turnPage(index) {
+	if(images && index)
+		sendNotification(messageFactory.FILE($("#fileType").val(),images[index].pic));
+}
 
 var WeChat = function () {
     //this.stompClient = null;

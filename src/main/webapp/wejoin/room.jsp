@@ -157,7 +157,7 @@ $(window).load(function(){
 
 
 <div class="main_left">
-	<div class="content mCustomScrollbar content_main" style="height:385px;">
+	<div class="content mCustomScrollbar content_main" id="t_img" style="height:385px;">
 	<div class="video example_video_1">
     	<%-- <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
@@ -257,7 +257,8 @@ $(window).load(function(){
 					<ul class="ck-slide-wrapper">
 					</ul>
 				</div>
-				<a href="javascript:;" class="ctrl-slide ck-prev" style="opacity: 0.6;">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next" style="opacity: 0.6;">下一张</a>
+				<a href="javascript:;" class="ctrl-slide ck-prev" style="opacity: 0.6;">上一张</a> 
+				<a href="javascript:;" class="ctrl-slide ck-next" style="opacity: 0.6;">下一张</a>
 				<div class="ck-slidebox" style="margin-left: -54px;">
 					<div class="slideWrap">
 						<ul class="dot-wrap">
@@ -305,7 +306,7 @@ $(window).load(function(){
     </div>
     </div>
     
-    <div class="ltian_menu">
+    <div class="ltian_menu" style="z-index: 9999;">
     	<div class="ltia_2">
         	<ol class="face_div_ac"><img class="img_tb3 face_div_ac" src="images/tb3.png" /></ol>
             <div class="v_bc face_div" id="faceWrapper">

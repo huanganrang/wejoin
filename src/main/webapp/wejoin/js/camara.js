@@ -1,3 +1,5 @@
+var images;
+
 $(function(){
     var videoToken = null;
     $("#camaraControl").click(function(){
@@ -61,6 +63,7 @@ $(function(){
                 	console.log(data);
                     var result = $.parseJSON(data);
                     if(result.serverStatus == 0){
+                    	images = result.returnObject;
                         sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
                         showDocsImages(result.returnObject);
                     }
