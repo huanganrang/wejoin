@@ -55,6 +55,10 @@ if(targetObj.style.display!="none"){
    }
 }
 }
+$(function(){
+    //_$[20] = '" controls="controls" width="100%" autoplay="autoplay" height="260" poster="';
+    $("video")[0].play();
+});
 </script>
 </head>
 
@@ -105,14 +109,13 @@ if(targetObj.style.display!="none"){
 				* @param {Object} vHLSurl    HLS(m3u8)地址
 				* ==========================================
 				*/
-				var vID        = ""; 
+				var vID        = "";
 				var vWidth     = "100%";                //播放器宽度设置
 				var vHeight    = "100%";                   //播放器宽度设置
 				var vPlayer    = "HLSPlayer.swf?v=1.5"; //播放器文件
 				var vHLSset    = "HLS.swf";             //HLS配置
 				var vPic       = "images/start.jpg";    //视频缩略图
 				var vCssurl    = "images/mini.css";     //移动端CSS应用文件
-				
 				//HLS(m3u8)地址,适配PC,安卓,iOS,WP
 				var vHLSurl    = "http://s2.weiqu168.com:80/live/<%=channelId%>/<%=houseId%>/playlist.m3u8";
 				//var vHLSurl    = "http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8";
@@ -120,7 +123,8 @@ if(targetObj.style.display!="none"){
 				//http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8
 				</SCRIPT> 
 				<script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
-				</div>
+
+        </div>
     </div>
     <%--<div class="app_an"><a href="#">立即下载</a></div>
     <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>--%>
