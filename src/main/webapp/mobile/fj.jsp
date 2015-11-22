@@ -108,38 +108,39 @@ houseId
 
 <div id="box2">
 <div class="fired">
-<div class="appdown">
+    <SCRIPT LANGUAGE=JavaScript>
+        /*
+         * HLSPlayer参数应用=========================<br>
+         * @Contact QQ:261532593
+         * @param {Object} vID        ID
+         * @param {Object} vWidth     播放器宽度设置
+         * @param {Object} vHeight    播放器宽度设置
+         * @param {Object} vPlayer    播放器文件
+         * @param {Object} vHLSset    HLS配置
+         * @param {Object} vPic       视频缩略图
+         * @param {Object} vCssurl    移动端CSS应用文件
+         * @param {Object} vHLSurl    HLS(m3u8)地址
+         * ==========================================
+         */
+        var vID        = "";
+        var vWidth     = "100%";                //播放器宽度设置
+        var vHeight    = "100%";                   //播放器宽度设置
+        var vPlayer    = "HLSPlayer.swf?v=1.5"; //播放器文件
+        var vHLSset    = "HLS.swf";             //HLS配置
+        var vPic       = "images/start.jpg";    //视频缩略图
+        var vCssurl    = "images/mini.css";     //移动端CSS应用文件
+        //HLS(m3u8)地址,适配PC,安卓,iOS,WP
+        var vHLSurl    = "http://s2.weiqu168.com:80/live/<%=channelId%>/<%=houseId%>/playlist.m3u8";
+        //var vHLSurl    = "http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8";
+
+        //http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8
+    </SCRIPT>
+    <script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
+<div class="appdown" style="display: none;">
 	<div class="apptb">
     	<!-- <img src="images/apptb.png"><span><a href="#">快速加载，流畅收听</a></span> -->
     	<div class="video" id="HLSPlayer" >
-				<SCRIPT LANGUAGE=JavaScript>
-				/*
-				* HLSPlayer参数应用=========================<br>
-				* @Contact QQ:261532593 
-				* @param {Object} vID        ID
-				* @param {Object} vWidth     播放器宽度设置
-				* @param {Object} vHeight    播放器宽度设置
-				* @param {Object} vPlayer    播放器文件
-				* @param {Object} vHLSset    HLS配置
-				* @param {Object} vPic       视频缩略图
-				* @param {Object} vCssurl    移动端CSS应用文件
-				* @param {Object} vHLSurl    HLS(m3u8)地址
-				* ==========================================
-				*/
-				var vID        = "";
-				var vWidth     = "100%";                //播放器宽度设置
-				var vHeight    = "100%";                   //播放器宽度设置
-				var vPlayer    = "HLSPlayer.swf?v=1.5"; //播放器文件
-				var vHLSset    = "HLS.swf";             //HLS配置
-				var vPic       = "images/start.jpg";    //视频缩略图
-				var vCssurl    = "images/mini.css";     //移动端CSS应用文件
-				//HLS(m3u8)地址,适配PC,安卓,iOS,WP
-				var vHLSurl    = "http://s2.weiqu168.com:80/live/<%=channelId%>/<%=houseId%>/playlist.m3u8";
-				//var vHLSurl    = "http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8";
 
-				//http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8
-				</SCRIPT> 
-				<script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
 
         </div>
     </div>
