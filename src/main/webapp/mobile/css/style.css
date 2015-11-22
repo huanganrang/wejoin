@@ -85,8 +85,17 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .appdown .app_clock{ width:40px; height:40px; background: url(../images/tbx.png) no-repeat 0 -1px; background-size:40px 40px; display:block; position:absolute; right:0px; top:0px; }
 .appdown .app_clock a{width:40px; height:40px; display:block;}
 
-.input_wenbi{ background:#f4f4f6; position:fixed; left:0px; bottom:0px; width:100%;}
-.cj_center img{ width:100%; display:block;}
+.input_wenbi{ background:#f4f4f6; position:fixed; left:0px; bottom:0px; width:100%; border-top:1px solid #c3c3c5;}
+.inp_div{ padding:0 5px; overflow:hidden;}
+.inp_div .inp_tb1{ float:left; width:10%;  margin-right:2%; margin-left:1%;}
+.inp_div .inp_tb1 a{ display:block; width:100%; height:35px; padding:10px 0;}
+.inp_div .inp_tb1 a img{ width:30px; height:30px; margin:0 auto; display:block; margin-top:3px;}
+
+.inp_div .inp_tb2{ float:left; width:60%;}
+.inp_div .inp_tb2 .inp_wbe{ width:100%; height:35px; border:1px solid #c3c3c5; background:#fff url(../images/ff.gif); border-radius:5px; margin:10px 0; text-indent:10px; font-size:14px; }
+.inp_div .inp_tb3{ float:left; width:25%; margin-left:2%;}
+.inp_div .inp_tb3 a{ display:block; width:50%; float:left; padding:10px 0; height:35px;}
+.inp_div .inp_tb3 a img{ display:block; width:30px; height:30px; margin:0 auto; margin-top:3px;}.cj_center img{ width:100%; display:block;}
 .cj_tb{ padding:20px 15px 6px 15px; }
 .cj_tb li{ width:25%; float:left;}
 .cj_tb li a{ width:77%; display:block; text-align:center; line-height:30px; font-size:12px; font-weight:bold; letter-spacing:-1px; margin:0 auto; margin-bottom:5px; }

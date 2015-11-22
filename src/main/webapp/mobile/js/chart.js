@@ -212,14 +212,20 @@ WeChat.prototype = {
     init: function () {
         this._initFace();
         // 回车发送消息
-        $("#content").bind('keyup', function (e) {
+        /*$("#content").bind('keyup', function (e) {
             var content = $("#content").val();
             if (e.keyCode == 13 && $.trim(content) != '') {
                 $("#content").val('');
                 // 发送聊天消息
                 sendText(messageFactory.CHART(content));
             }
-            ;
+
+        });*/
+        $("#sendButton").click(function(){
+            var content = $("#content").val();
+            $("#content").val('');
+            // 发送聊天消息
+            sendText(messageFactory.CHART(content));
         });
         // 右键清屏
     },
@@ -284,9 +290,12 @@ WeChat.prototype = {
         + '</div>'
         + '<div class="clear"></div>'
         + '</div>';
-
+        console.log($(".content").children().last());
+        $("#lastOne").remove();
         $(".content").append($messageHtml);
-        $("#box4 .content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
+        $(".content").append('<div style="height:15px;" id="lastOne"></div>');
+        $(".content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
+        $(".content")[0].scrollTop = $(".content")[0].scrollHeight;
     },
     // 表情点击事件
     _selectEmotionImg: function (selImg) {
@@ -389,12 +398,14 @@ function initVisitor(){
  * 生成房间信息
  */
 function initHouse(){
-    /*ajaxPostSync({"type": "UL037"}, function (data) {
-        $("#huanxinUid").val(data.huanxinUid);
-        $("#password").val(data.password);
-        $("#userToken").val(data.token);
+    ajaxGetSync({"type": "UL042","houseId":$("#houseId").val()}, function (data) {
+        $("#houseToken").val(data.token);
+        $("#huanxinRoomId").val(data.huanxinRoomId);
+        //$("#userToken").val(data.token);
+        console.log("生成了房间");
+        $(".hed_title").text(data.title+"("+data.onlineUserCount+")");
         return data;
-    });*/
+    });
 }
 
 /**

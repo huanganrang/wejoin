@@ -72,6 +72,8 @@ $(function(){
 </head>
 
 <body>
+houseId
+<input type="hidden" id="houseId" value="<%=houseId%>"/>
 <input type="hidden" id="userToken"/>
 <input type="hidden" id="nickName"/>
 <input type="hidden" id="huanxinUid"/>
@@ -150,117 +152,26 @@ $(function(){
 
 <div class="scroll_center">
 	<div class="content mCustomScrollbar">
-    <div style="height:15px;"></div>
-	<div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
+    <div style="height:15px;" id="lastOne"></div>
     </div>
-
-    <div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1 wo">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-        	<strong>我是会飞的鱼</strong>
-            <div class="lt_zi">您已申请举手发言<br />请等待管理员批准 <em></em></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1 wo">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-        	<strong>我是会飞的鱼</strong>
-        	<div class="lt_txt">嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用双节<span></span> <ol><a href="#">!</a></ol></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_line">
-    	<div class="yline"></div>
-        <div class="lt_date">6-18 13:08</div>
-    </div>
-    <div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1 wo">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-        	<strong>我是会飞的鱼</strong>
-            <div class="lt_zi">您已申请举手发言<br />请等待管理员批准 <em></em></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1 wo">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-        	<strong>我是会飞的鱼</strong>
-        	<div class="lt_txt">嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用嘿嘿哈嘿快使用双节<span></span> <ol><a href="#">!</a></ol></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_line">
-    	<div class="yline"></div>
-        <div class="lt_date">6-18 13:08</div>
-    </div>
-    <div class="lt_1">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-            <strong>我是会飞的鱼</strong>
-            <div class="lt_txt">
-            我们目前《刀塔传奇》这款游戏有新手礼包哦，亲如果在玩的话可以去看看，里面送的东西不少呢！<span></span></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="lt_1 wo">
-    	<div class="lt_img"><img src="images/tx.gif"></div>
-        <div class="lt_rg">
-        	<strong>我是会飞的鱼</strong>
-        	<div class="lt_txt">嘿嘿哈嘿快使用<span></span> <ol><a href="#">!</a></ol></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    
-    <div style="height:55px;"></div>
-</div>
 </div>
 
 <div class="input_wenbi">
-	<div class="cj_center"><img src="images/cj.gif"></div>
+    <div class="inp_div">
+        <div class="inp_tb1">
+            <a href="javascript:void(0)" onClick="javascript:void(0)"><img src="images/tb16.png"></a>
+        </div>
+        <div class="inp_tb2">
+            <form action="" method="get">
+                <input name="" type="text" class="inp_wbe" id="content">
+            </form>
+        </div>
+        <div class="inp_tb3">
+            <a href="javascript:void(0)"><img src="images/tb17.png"></a>
+            <a href="javascript:void(0)" id="sendButton"style="background:#33af3c; text-align:center; color:#fff; padding:0px; height:57px; line-height:57px; font-size:14px;">发送</a>
+
+        </div>
+    </div>
 </div>
 </body>
 </html>

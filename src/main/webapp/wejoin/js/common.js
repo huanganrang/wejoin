@@ -74,7 +74,8 @@ function ajaxPostSync(parameter,success,callData){
             	if(callData){
             		success(callData(result));
             	}else{
-            		success(result.returnObject);
+                    if(success)
+                        success(result.returnObject);
             	}
                 
             } else {
@@ -90,6 +91,7 @@ function ajaxPostSync(parameter,success,callData){
  * @param callData
  */
 function ajaxPost(parameter,success,callData){
+    console.log(parameter.type);
     $.ajax({
         type: "POST",
         url: base+"api/apiCommon/doPost",
@@ -102,6 +104,7 @@ function ajaxPost(parameter,success,callData){
                 if(callData){
                     success(callData(result));
                 }else{
+                    if(success)
                     success(result.returnObject);
                 }
 
