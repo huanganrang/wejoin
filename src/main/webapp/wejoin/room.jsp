@@ -390,7 +390,7 @@ $(window).load(function(){
         </div>
         
         <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; ">
-        	<input type="checkbox" name="name" value="456" id="an1"><label for="an1">所有人</label>
+        	<input type="checkbox" name="name" value="456" id="an1" checked="checked"><label for="an1">所有人</label>
         </div>
         
     </div>

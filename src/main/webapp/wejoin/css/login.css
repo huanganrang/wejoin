@@ -1,23 +1,10 @@
 @charset "utf-8";
+@import url("style.css");
+
 /*******************************
  * Copyright:(www.webpingfan.com)
  * Description:pc端通用基础CSS
  *******************************/
-body{margin:0; padding:0; font-size:12px;line-height:18px;color:#666;text-align:left; border:none; font-family:微软雅黑;}
-img,html,p,ul,li,input,form,h1,h2,h3,h4,h5,h6,dl,dd,dt,ol,input{margin:0;padding:0;border:0;}
-ul,li{list-style-type:none;}
-img{vertical-align:top;border:0;}
-a{outline:none; blr:expression(this.onFocus=this.blur());}
-a:link{color:#666;text-decoration: none; }
-a:visited{color:#666;text-decoration: none;}
-a:hover{color:#63b30e;text-decoration: none;}
-a:active{color:#63b30e;text-decoration: none;}
-a,area {blr:expression(this.onFocus=this.blur()) } 
-.clear{clear:both;font-size:0px;height:0px;line-height:0px;overflow:hidden;}
-fieldset, img{border:0;}
-input, label, select, option, textarea, button, fieldset, legend{font:12px/18px Verdana, Simsun, Helvetica, Arial, sans-serif; vertical-align:middle}
-
-
 
 .login_bj{background:#000 url(../images/pc-home-bg.jpg) no-repeat;  background-position:50% 50%; background-size:cover; position:absolute; left:0px; top:0px; height:100%; line-height:100%; right:0px; bottom:0px; }
 .login_zt{ position:absolute; left:50%; top:50%; margin-left:-280px; margin-top:-250px; transition:all 0.5s ease 0s; display:inline-block;}
@@ -48,19 +35,20 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 .djcgBox  .windows_box{ width:416px; height:462px; margin:auto; position: relative; z-index:11; top:188px;}
 .dj_top{ width:416px; height:14px; background: url(../images/loginbj1.png) no-repeat; line-height:0px; font-size:0px;}
+.dj_top_a{ width:416px; height:14px; background: url(../images/loginbj1.png) no-repeat; line-height:0px; font-size:0px;}
 .dj_btn{ width:416px; height:14px; background: url(../images/loginbj1.png) no-repeat 0 -114px; line-height:0px; font-size:0px;}
-.dj_con{ width:416px; height:auto; background:#ebebeb; padding-bottom:30px; }
-.dj_title{ width:416px; height:96px; border-bottom:1px solid #d3d3d3;}
-.dj_title span{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat 0 -143px; margin:7px 0 0 19px;}
-.dj_title div{ float:left; margin-left:13px; }
-.dj_title div ol{ font-size:27px; margin:16px 0 5px 0;  line-height:30px;}
-.dj_title div em{ font-size:18px; color:#999; font-style:normal; font-family:"Arial";}
-.dj_con ul{ width:376px; border-top:1px solid #fafafa; padding:40px 20px 0 20px;}
-.dj_con li{ position:relative; margin-bottom:20px; }
+.dj_con_a{ width:416px; height:auto; background:#ebebeb; padding-bottom:30px; }
+.dj_title_a{ width:416px; height:96px; border-bottom:1px solid #d3d3d3;}
+.dj_title_a span{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat 0 -143px; margin:7px 0 0 19px;}
+.dj_title_a div{ float:left; margin-left:13px; }
+.dj_title_a div ol{ font-size:27px; margin:16px 0 5px 0;  line-height:30px;}
+.dj_title_a div em{ font-size:18px; color:#999; font-style:normal; font-family:"Arial";}
+.dj_con_a ul{ width:376px; border-top:1px solid #fafafa; padding:40px 20px 0 20px;}
+.dj_con_a li{ position:relative; margin-bottom:20px; }
 .pt1{ width:373px; height:51px; background: url(../images/loginbj1.png) no-repeat 0 -151px; font-family:"微软雅黑"; font-size:18px; line-height:51px; text-indent:52px;}
-.dj_con li b{ width:38px; height:40px; background: url(../images/logintb1.png) no-repeat; display:block; position:absolute; left:7px; top:5px;}
-.dj_con li p{ width:38px; height:40px; background: url(../images/logintb1.png) no-repeat 0 -65px; display:block; position:absolute; left:7px; top:5px;}
-.dj_con strong{ text-align:center; width:376px; display:block; font-size:16px; margin:30px 0;}
+.dj_con_a li b{ width:38px; height:40px; background: url(../images/logintb1.png) no-repeat; display:block; position:absolute; left:7px; top:5px;}
+.dj_con_a li p{ width:38px; height:40px; background: url(../images/logintb1.png) no-repeat 0 -65px; display:block; position:absolute; left:7px; top:5px;}
+.dj_con_a strong{ text-align:center; width:376px; display:block; font-size:16px; margin:30px 0;}
 .tzam{ width:309px; height:50px; background: url(../images/loginbj1.png) no-repeat 0 -236px; display:block; margin:0 auto; cursor:pointer; color:#fff; font-size:26px; font-family:"微软雅黑";}
 
 
@@ -69,28 +57,20 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 找回密码
  *******************************/
 .tjcgBox  .windows_box{ width:416px; height:582px; margin:auto; position: relative; z-index:11; top:188px;}
-.tjcg_bj{ width:416px; height:auto; background:#ebebeb; padding-bottom:30px; }
-.tjcg_bj .dj_title span{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat -105px -54px; margin:7px 0 0 19px;}
-.tjcg_list{width:376px; border-top:1px solid #fafafa; padding:40px 20px 0 20px;}
+.tjcg_bj_b{ width:416px; height:auto; background:#ebebeb; padding-bottom:30px; }
+.tjcg_bj_b .dj_title_a span{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat -105px -54px; margin:7px 0 0 19px;}
+.tjcg_list_b{width:376px; border-top:1px solid #fafafa; padding:40px 20px 0 20px;}
 .pt2{ width:250px; height:51px; background: url(../images/loginbj1.png) no-repeat 0 -30px; font-family:"微软雅黑"; font-size:18px; line-height:51px; text-indent:12px; float:left; }
-.tjcg_list li{ width:100%; clear:both; height:51px; margin-bottom:20px; }
-.tjcg_list li ol{ float:left; width:113px; height:50px; display:block;  background: url(../images/loginbj1.png) no-repeat 0 -318px; margin-left:12px; }
-.tjcg_list li ol a{width:113px; height:50px; display:block; line-height:50px; text-align:center; font-size:18px; color:#fff;}
+.tjcg_list_b li{ width:100%; clear:both; height:51px; margin-bottom:20px; }
+.tjcg_list_b li ol{ float:left; width:113px; height:50px; display:block;  background: url(../images/loginbj1.png) no-repeat 0 -318px; margin-left:12px; }
+.tjcg_list_b li ol a{width:113px; height:50px; display:block; line-height:50px; text-align:center; font-size:18px; color:#fff;}
 .pt3{ width:373px; height:51px; background: url(../images/loginbj1.png) no-repeat 0 -151px; font-family:"微软雅黑"; font-size:18px; line-height:51px; text-indent:12px;}
-.tjcg_list li span{ float:left; width:122px; display:block; text-align:center; line-height:50px; font-size:18px; color:#777;}
+.tjcg_list_b li span{ float:left; width:122px; display:block; text-align:center; line-height:50px; font-size:18px; color:#777;}
 
 
 /*******************************
 注册帐号
  *******************************/
 .syldBox  .windows_box{ width:416px; height:582px; margin:auto; position: relative; z-index:11; top:188px;}
-.tjcg_bj .dj_title span.zc_tb{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat -105px -143px; margin:7px 0 0 19px;}
-
-
-
-
-
-
-
-
+.tjcg_bj_b .dj_title_a span.zc_tb{ width:70px; height:70px; display:block; float:left; background: url(../images/logintb1.png) no-repeat -105px -143px; margin:7px 0 0 19px;}
 

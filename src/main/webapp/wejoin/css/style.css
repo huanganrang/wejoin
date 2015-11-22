@@ -156,6 +156,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .ltia_1 .v_ren{ width:125px; height:300px;    padding:0px 10px 0px 10px;}
 .ltia_1 .v_ren li img{ float:left; width:28px; height:28px; border-radius:5px; display:block; margin-right:8px; }
 .ltia_1 .v_ren li{ width:100%; height:34px; line-height:32px; font-size:14px; }
+.ltia_1 .v_ren li ol{ display:block; float:left; overflow:hidden; width:85px; background:none; height:34px;}
 .ltia_1 .v_ren li a{ display:block; height:28px; margin-top:6px; width:100%;line-height:28px;}
 .ltia_1 .v_ren li a:hover{  background:#fff; border-radius: 5px; }
 .ltia_bj{background:#e4e4e4; border-radius: 5px; border-bottom-left-radius:0px; border-bottom-right-radius:0px; position:absolute; left:0px; top:-330px; padding:5px 0; display:none;}
@@ -195,7 +196,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 
-.list_left{ width:217px; background:#eeeeee; border-right:1px solid #c3c3c3; position:absolute; left:0px; top:72px; z-index:100;}
+.list_left{ width:217px; background:#eeeeee; border-right:1px solid #c3c3c3; position:absolute; left:0px; top:72px; z-index:10;}
 .list_left div{ width:182px; height:40px; background: url(../images/dian.gif) repeat-x 0 bottom; margin-left:17px; margin-top:28px; margin-bottom:10px; padding-bottom:5px; }
 .list_left div span{ font-size:18px; display:block; line-height:40px; background: url(../images/xtb.png) no-repeat 0px 0px; text-indent:40px; }
 .list_left li{ height:40px; line-height:40px; width:217px; }
@@ -206,7 +207,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .list_left .line{ background:#fff; width:217px; height:2px; line-height:2px; font-size:0px; margin:0px; padding:0px; margin-top:16px; }
 
 .list_right{ margin-left:218px; margin-right:200px;}
-.search_title{ width:100%; height:54px; background: url(../images/xtb.png) repeat-x 0 -347px;}
+.search_title{ width:100%; height:54px; background:#ededed url(../images/xtb.png) repeat-x 0 -347px;}
 .search_title li{ float:left; line-height:54px; font-size:16px; width:131px; cursor:pointer; text-align:center;}
 .search_title li.hover{ background:#fff; color:#4f900a; font-weight:bold;}
 
@@ -216,23 +217,26 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .list_txt{ padding:2% 2% 0 2%; position:relative;} 
-.list_main1 li{width: 32%; border: 1px solid #e2e2e2;margin-right: 1%;float: left;margin-bottom: 1%;}
+.list_main1 li{width:32%;  border:1px solid #e2e2e2; margin-right:1%; float:left; margin-bottom:1%;}
 .list_main1 li .list_1{ height:45px; clear:both;}
 .list_main1 li .list_1 span{ float:left; font-size:18px; width:70%; display:block; height:45px; line-height:45px; text-indent:37px; background: url(../images/xtb.png) no-repeat 2px -92px;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;white-space: normal;word-break: break-all;}
 .list_main1 li .list_1 em{ float:right; font-style:normal; color:#999; line-height:45px; padding-right:15px; }
-.list_main1 li .list_2{ height:100px; clear:both;}
-.list_main1 li .list_2 span{ margin-left:17px; display:block; float:left; }
+.list_main1 li .list_2{ height:100px; clear:both; position:relative; overflow:hidden;}
+.list_main1 li .list_2 span{ margin-left:17px; display:block; float:left; width:100px;}
 .list_main1 li .list_2 span img{ width:100px; height:100px; display:block;}
-.list_main1 li .list_2 em{ font-style:normal; line-height:22px; display:block; padding:0px 5px 0px 10px; overflow:hidden;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;white-space: normal;word-break: break-all;}
-.list_main1 li .list_3{ height:40px; clear:both;}
+.list_main1 li .list_2 em{ font-style:normal; line-height:22px; display:block; overflow:hidden; position:absolute; left:0px; top:0px; padding-left:135px; padding-right:15px;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;white-space: normal;word-break: break-all;}
+.list_main1 li .list_3{ height:40px; clear:both; position:relative;}
+.list_main1 li .list_3 ol{ width:100%; position:absolute; left:0px; bottom:11px; text-align:center; z-index:2;}
+.list_main1 li .list_3 ol a{ color:#4f900a;}
 .list_main1 li .list_3 span{ float:left; line-height:40px; text-indent:17px; }
-.list_main1 li .list_3 em{ float:right; font-style:normal; line-height:45px; padding-right:15px; }
+.list_main1 li .list_3 em{ float:right; font-style:normal; line-height:45px; padding-right:15px; position:absolute; right:0px; bottom:-2px; z-index:3;}
 .list_main1 li .list_3 em a{ color:#4f900a; background: url(../images/xtb.png) no-repeat -10px -274px; display:block; padding-left:20px; }
 .list_main1 li:hover{ background:#63b30e url(../images/xdd.gif) repeat-x 0 bottom; color:#fff;}
 .list_main1 li:hover .list_1 span{ background: url(../images/jj.png) no-repeat 16px 15px;}
 .list_main1 li:hover .list_1 em{ color:#fff;}
 .list_main1 li:hover .list_3 { color:#fff100;}
 .list_main1 li:hover .list_3 em a{color:#fff100; background: url(../images/jj.png) no-repeat 0px -44px;}
+.list_main1 li:hover .list_3 ol a{color:#fff100;}
 
 .hot_list{ width:230px; background:#eee url(../images/xtb.png) repeat-x 0 -347px; position:absolute; right:0px; top:72px; padding-top:72px;}
 .hot_list div{ width:185px; height:40px; background: url(../images/dian.gif) repeat-x 0 bottom; margin-left:25px;  margin-bottom:10px; padding-bottom:5px; }
@@ -248,16 +252,16 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .windows {width: 100%;height: 100%;position:fixed;top: 0px;left: 0;display: ; z-index:100;}
 .windowsBg{width: 100%;height: 100%; background:#000;  z-index:6;top: 0px; left: 0;filter:alpha(opacity=70);opacity:0.7;position:absolute; _background:url(../images/50#000.png); }
 .close_btn {position: absolute;right:19px;top: 27px;width: 32px;z-index: 100;height: 32px;background: url(../images/logintb1.png) no-repeat -142px 0;display: block; cursor:pointer;}
-.djcgBox  .windows_box{ width:797px; height:560px; margin:auto; position: relative; z-index:11; top:258px;}
-.dj_top{ width:797px; height:11px; background: url(../images/b-2.png) no-repeat; line-height:0px; font-size:0px;}
-.dj_btn{ width:797px; height:13px; background: url(../images/b_1.png) no-repeat; line-height:0px; font-size:0px;}
+.chcBox  .windows_box{ width:797px; height:560px; margin:auto; position: relative; z-index:11; top:258px;}
+.dj_top_c{ width:797px; height:11px; background: url(../images/b-2.png) no-repeat; line-height:0px; font-size:0px;}
+.dj_btn_c{ width:797px; height:13px; background: url(../images/b_1.png) no-repeat; line-height:0px; font-size:0px;}
 
-.dj_title{ width:797px; height:68px; background:#f2f2f2;}
-.dj_title span{ font-size:20px; display:block; float:left; line-height:64px; color:#999; padding-left:68px; background: url(../images/ta2.png) no-repeat 33px 12px;}
-.dj_title span strong{ font-weight:normal; color:#333;}
-.dj_title ol{ float:left; font-size:15px; color:#999; display:block; padding-left:30px; background: url(../images/ta2.png) no-repeat 0px -102px; margin:27px 0 0 30px;}
-.dj_title ol strong{ font-weight:normal; color:#333;}
-.dj_con{ background:#fff; padding-bottom:15px; }
+.dj_title_c{ width:797px; height:68px; background:#ebebeb;}
+.dj_title_c span{ font-size:20px; display:block; float:left; line-height:64px; color:#999; padding-left:68px; background: url(../images/ta2.png) no-repeat 33px 12px;}
+.dj_title_c span strong{ font-weight:normal; color:#333;}
+.dj_title_c ol{ float:left; font-size:15px; color:#999; display:block; padding-left:30px; background: url(../images/ta2.png) no-repeat 0px -102px; margin:27px 0 0 30px;}
+.dj_title_c ol strong{ font-weight:normal; color:#333;}
+.dj_con_c{ background:#fff; padding-bottom:15px; }
 
 .fz_xt{ width:730px; height:410px;  margin:30px 0 0 33px; }
 .fz_xt li{ width:340px; height:190px; border:1px solid #e2e2e2; border-bottom:none; background: url(../images/xdd.gif) repeat-x 0 bottom; float:left; margin:0 18px 18px 0;}
@@ -280,7 +284,8 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 
-.syldBox  .windows_box{ width:507px; height:660px; margin:auto; position: relative; z-index:11; top:258px;}
+.chaBox .close_btn {position: absolute;right:19px;top: 22px;width: 32px;z-index: 100;height: 32px;background: url(../images/logintb1.png) no-repeat -142px 0;display: block; cursor:pointer;}
+.chaBox  .windows_box{ width:507px; height:660px; margin:auto; position: relative; z-index:11; top:8px;}
 .dj_top1{ width:507px; height:12px; background: url(../images/b-3.png) no-repeat; line-height:0px; font-size:0px;}
 .dj_btn1{ width:507px; height:10px; background: url(../images/b-4.png) no-repeat; line-height:0px; font-size:0px;}
 .dj_title1{width:507px; height:62px; background:#f2f2f2;}
@@ -312,7 +317,7 @@ font-size: 100px; /* 增大不同浏览器的可点击区域 */
 opacity: 0; /* 实现的关键点 */
 filter:alpha(opacity=0);/* 兼容IE */
 cursor:pointer;
-} 
+}
 
 .tjcg_list li{margin-left:37px;  clear:both; width:432px; }
 .tjcg_list li .putc{ width:432px; height:52px; line-height:52px;  background: url(../images/bd.png) no-repeat; text-indent:10px; font-size:20px; font-family:"微软雅黑"; margin-bottom:12px;} 
@@ -339,6 +344,36 @@ cursor:pointer;
 	height: 174px;
 	z-index:9999;
 }
+
+.ahbBox .close_btn {position: absolute;right:19px;top: 22px;width: 32px;z-index: 100;height: 32px;background: url(../images/logintb1.png) no-repeat -142px 0;display: block; cursor:pointer;}
+.ahbBox  .windows_box{ width:419px; height:460px; margin:auto; position: relative; z-index:11; top:8px;}
+.tjcgBox  .windows_box{ width:419px; height:582px; margin:auto; position: relative; z-index:11; top:188px;}
+.dj_top2{ width:419px; height:12px; background: url(../images/tpn.png) no-repeat;}
+.dj_btn2{ width:419px; height:12px; background: url(../images/tpb.png) no-repeat;}
+.sz_ta_txt{ border-top:1px solid #fff; padding-top:40px;}
+.sz_ta_txt .sz_1{ width:195px; height:54px; line-height:54px;  margin:0 auto; }
+.sz_ta_txt .sz_1 a{ line-height:54px; font-size:22px; display:block; text-indent:62px; background: url(../images/dl.png) no-repeat;}
+.sz_ta_txt .sz_1 a.sz_2{background: url(../images/dl.png) no-repeat 0 -67px; display:block;}
+.sz_lu{ width:195px; height:50px; margin:0 auto;}
+.sz_ta_txt .on{ background:#d8d8d8;}
+.sz_ta_txt .sz_1:hover{background:#d8d8d8;}
+.syl_an{ width:220px; height:30px; margin-left:112px; padding-bottom:30px;}
+.syl_an a{ width:100px; height:30px; line-height:30px; text-align:center; display:block; float:left; background:#46c34f; color:#fff; margin-right:10px;}
+.syl_an a.cxz{ background:#999;} 
+
+.sz_ta{ width:419px; height:auto; background:#ebebeb; }
+.sz_ta_title{ width:419px; height:55px; border-bottom:1px solid #cacaca; line-height:45px; font-size:22px; text-indent:24px;}
+
+
+
+
+.loginBox  .windows_box{ background:url(../images/login_bg.png); width:507px; height:377px; margin:auto; position: relative; z-index:11; top:8px;}
+.log_list{width:507px; background:#f1f1f1; padding-bottom:20px;}
+.log_list ul{ border-top:1px solid #ddd; padding-top:20px; }
+.log_list li{margin-left:37px;  clear:both; width:432px; }
+.log_list li .putc{ width:432px; height:52px; line-height:52px;  background: url(../images/bd.png) no-repeat; text-indent:10px; font-size:20px; font-family:"微软雅黑"; margin-bottom:12px;} 
+.log_list li .putf{width:432px; height:70px;  background: url(../images/bd.png) no-repeat 0 -269px;  font-size:20px; font-family:"微软雅黑"; color:#fff; text-align:center; line-height:70px; cursor:pointer;}
+
 
 .logo_list2{width:218px; height:57px; background:#4f900a; text-align:center;   color:#fff; float:left; padding-top:15px;}
 .logo_list2 .logo_dl{ width:218px; clear:both; float:none; height:26px;}

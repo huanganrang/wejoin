@@ -103,18 +103,25 @@ $(function(){
 });
 
 
-function showDjcgBox(){
+function showChcBox(){
 	$(".windows").hide();
-	$("#djcgBox").show();
+	$("#chcBox").show();
 	var top=(windowHeight-473)/2;
-	$("#djcgBox .windows_box").css("top",top);
+	$("#chcBox .windows_box").css("top",top);
+}
+
+function showLoginBox(){
+	$(".windows").hide();
+	$("#loginBox").show();
+	var top=(windowHeight-577)/2
+	$("#loginBox .windows_box").css("top",top)		
 }
 
 function showChannelAddBox(){
 	$(".windows").hide();
-	$("#syldBox").show();
-	var top=(windowHeight-parseInt($("#syldBox .windows_box").height()))/2;
-	$("#syldBox .windows_box").css("top",top);	
+	$("#chaBox").show();
+	var top=(windowHeight-parseInt($("#chaBox .windows_box").height()))/2;
+	$("#chaBox .windows_box").css("top",top);	
 	
 	$("#categoryId").empty();
 	var categorys = getCategorys("UL013");
@@ -279,7 +286,7 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 							});
 						}
 
-                    	showDjcgBox();
+						showChcBox();
         			} else {
         				alert("亲！该频道下还没有房间！");
         			}

@@ -8,8 +8,10 @@
 <title>微区首页</title>
 <script type="text/javascript">
 var base = '${pageContext.request.contextPath}/';
+var namespace = "home";
 </script>
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
@@ -19,7 +21,8 @@ var base = '${pageContext.request.contextPath}/';
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body class="ltbj">
@@ -29,8 +32,8 @@ var base = '${pageContext.request.contextPath}/';
 		<c:choose>
 			<c:when test="${!sessionScope.userToken.loginMark}">
 				<div class="logo_dl">
-		        	<a href="javascript:void(0);">登录</a> 
-		            <a href="javascript:void(0);">注册</a>
+		        	<a href="javascript:void(0);" onclick="showDjcgBox()">登录</a> 
+		            <a href="javascript:void(0);" onclick="showSyldBox()">注册</a>
 		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
 		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
@@ -77,7 +80,7 @@ var base = '${pageContext.request.contextPath}/';
             </ul>
             <div class="lise_se">
                 <form action="" method="get">
-               	  <input type="text" class="puta" onblur="if(this.value==''){this.value='请输入房间 / 室主号';this.style.color='#ccc'}" onfocus="if(this.value=='请输入房间 / 室主号'){this.value='';this.style.color='#333'}" value="请输入房间 / 室主号" id="textfield" name="telphone" style="color:#ccc;">
+               	  <input type="text" class="puta" placeholder="请输入房间 / 室主号" id="textfield" name="telphone" style="color:#333;">
                     <input name="" type="submit" value="" class="putb"/>
                 </form>
           </div>
@@ -88,13 +91,17 @@ var base = '${pageContext.request.contextPath}/';
            	  <div class="list_main1">
            	    <ul>
                	  <li id="channelTemplate" style="display:none;">
-                       	  <div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
-                          <div class="list_2"><span><img src="" /></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
-                          <div class="list_3"><span>创建者：会飞的鱼</span>  <em><a href="javascript:void(0);" class="a_1">进入频道</a></em></div>
+                  		<div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
+                      		<div class="list_2"><span><img src="" /></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
+                      		<div class="list_3">
+                      			<span>创建者：会飞的鱼</span>  
+                      			<ol><a onclick="showLoginBox()" class="btn_ckxd" href="javascript:void(0);">创建房间</a></ol>
+                      			<em><a href="javascript:void(0);" class="a_1">进入频道</a></em>
+                      		</div>
                   </li>
                 </ul>
                    <div class="clear"></div> 
-                  <div class="fax" style="right:60px; bottom:-30px;">
+                  <div class="fax" style="right:60px; bottom:-30px; z-index: 999;">
                       <a href="javascript:void(0);" onclick="previousPage(this, 1);">上一页</a>
                           <div class="fax_list">
                               <span>1</span>
@@ -155,13 +162,13 @@ var base = '${pageContext.request.contextPath}/';
 </div>
 
 
-<div class="windows djcgBox" id="djcgBox" style="display:none;" >
+<div class="windows chcBox" id="chcBox" style="display:none;" >
 		  <div class="windowsBg"></div>
 		  <div class="windows_box">
 			<div class="djcgBox_con">
-				<div class="dj_top"></div>
-                <div class="dj_con">
-                	<div class="dj_title">
+				<div class="dj_top_c"></div>
+                <div class="dj_con_c">
+                	<div class="dj_title_c">
                     	<span><strong>会飞的鱼</strong> 的频道</span>
                         <ol>房间数：<strong id="roomsCount"></strong></ol>
                     </div>
@@ -178,14 +185,14 @@ var base = '${pageContext.request.contextPath}/';
                         </div>
                     </div>
                 </div>
-                <div class="dj_btn"></div>
+                <div class="dj_btn_c"></div>
 			</div>
 			<div class="close_btn"></div>
 		  </div>
 </div>
 
 
-<div class="windows syldBox" id="syldBox" style="display:none;" >
+<div class="windows chaBox" id="chaBox" style="display:none;" >
 		  <div class="windowsBg"></div>
 		  <div class="windows_box">
 			<div class="tjcg_con">
@@ -222,5 +229,130 @@ var base = '${pageContext.request.contextPath}/';
 			<div class="close_btn"></div>
 		  </div>
 	</div>
+	
+	<!--创建房间 开始-->
+<div class="windows loginBox" id="loginBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+			<div class="windows_box">
+			<div class="tjcg_con">
+            	<div class="dj_top1"></div>
+                <div class="tjcg_bj">
+            	<div class="dj_title1">
+                	<span>创建房间</span>
+                </div>
+                <div class="log_list">
+                	<form action="" method="get">
+                	<ul>
+                    	<li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="房间标题" onfocus="if(this.value=='房间标题'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='房间标题';this.style.color='#999'}" class="putc"></li>
+                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="直播密码" onfocus="if(this.value=='直播密码'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='直播密码';this.style.color='#999'}" class="putc"></li>
+                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="开始时间" onfocus="if(this.value=='开始时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='开始时间';this.style.color='#999'}" class="putc"></li>
+                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="结束时间" onfocus="if(this.value=='结束时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='结束时间';this.style.color='#999'}" class="putc"></li>
+                        <li><input name="" type="submit" value="创建房间" class="putf"/></li>
+                        </form>
+                    </ul>
+                </div>
+                </div>
+                <div class="dj_btn1"></div>
+            </div>
+			<div class="close_btn"></div>
+  </div>
+</div>
+<!--创建房间 结束-->
+
+
+<!--登录 开始-->
+		<div class="windows djcgBox" id="djcgBox" style="display:none;" >
+			<div class="windowsBg"></div>
+		  	<div class="windows_box">
+				<div class="djcgBox_con">
+					<div class="dj_top_a"></div>
+		               <div class="dj_con_a">
+		               	<div class="dj_title_a">
+		                   	<span></span>
+		                       <div>
+		                       	<ol>用户登录</ol>
+		                           <em>USER LOGIN</em>
+		                       </div>
+		                   </div>
+		                   <ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username" style="color:#333;"><b></b></li>
+		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password" style="color:#333;"><p></p></li>
+		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
+		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               <div class="dj_btn"></div>
+				</div>
+				<div class="close_btn"></div>
+			</div>
+		</div>
+		<!--登录 结束-->
+
+		<!--找回密码 开始-->
+		<div class="windows tjcgBox" id="tjcgBox" style="display:none;" >
+			  <div class="windowsBg"></div>
+			  <div class="windows_box">
+				<div class="tjcg_con">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
+		                   	<span></span>
+		                       <div>
+		                       	<ol>密码找回</ol>
+		                           <em>PASSWORD RETRIEVE</em>
+		                       </div>
+		               </div>
+		               <div class="tjcg_list_b">
+		               	<ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <input name="" type="submit" value="确  定" class="tzam"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               </div>
+		               <div class="dj_btn"></div>
+		           </div>
+				<div class="close_btn"></div>
+			  </div>
+		</div>
+		<!--找回密码 结束-->
+
+		<!--注册 开始-->
+		<div class="windows syldBox" id="syldBox" style="display:none;" >
+			  <div class="windowsBg"></div>
+			  <div class="windows_box">
+				<div class="tjcg_con">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
+		                   	<span class="zc_tb"></span>
+		                       <div>
+		                       	<ol>用户注册</ol>
+		                           <em>USER REGISTRATION</em>
+		                       </div>
+		               </div>
+		               <div class="tjcg_list_b">
+		               	<ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt2" placeholder="请输入手机号获取验证码" id="telphone" style="color:#333;"><ol><a href="javascript:void(0);" class="validCode_btn">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" placeholder="请输入验证码" id="validCode" style="color:#333;"></li>
+		                       <li><span>用户昵称：</span><input type="text" class="pt2" placeholder="请输入用户昵称" id="username" style="color:#333;"></li>
+		                       <li style="margin-bottom:40px; "><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" placeholder="请输入密码" id="password" style="color:#333;"></li>
+		                       <input name="" type="button" value="注  册" class="tzam" id="register_btn"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               </div>
+		               <div class="dj_btn"></div>
+		           </div>
+				<div class="close_btn"></div>
+			  </div>
+		</div>
 </body>
 </html>
