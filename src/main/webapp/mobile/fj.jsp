@@ -15,9 +15,16 @@
 <link href="${pageContext.request.contextPath}/mobile/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/mobile/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mobile/css/jquery.mCustomScrollbar.css">
-<script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="images/common.css"/>
 
+<script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="${pageContext.request.contextPath}/mobile/js/chart.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script>
 var base = '${pageContext.request.contextPath}/';
@@ -57,12 +64,20 @@ if(targetObj.style.display!="none"){
 }
 $(function(){
     //_$[20] = '" controls="controls" width="100%" autoplay="autoplay" height="260" poster="';
+    //视频自动播放
+    if($("video")[0])
     $("video")[0].play();
 });
 </script>
 </head>
 
 <body>
+<input type="hidden" id="userToken"/>
+<input type="hidden" id="nickName"/>
+<input type="hidden" id="huanxinUid"/>
+<input type="hidden" id="password"/>
+<input type="hidden" id="houseToken"/>
+<input type="hidden" id="huanxinRoomId"/>
 <div class="hed_100">
 	<a href="#" class="left1"></a>
     <a href="#" class="right1"></a>
@@ -145,10 +160,7 @@ $(function(){
         </div>
         <div class="clear"></div>
     </div>
-    <div class="lt_line">
-    	<div class="yline"></div>
-        <div class="lt_date">6-18 13:08</div>
-    </div>
+
     <div class="lt_1">
     	<div class="lt_img"><img src="images/tx.gif"></div>
         <div class="lt_rg">
@@ -249,32 +261,6 @@ $(function(){
 
 <div class="input_wenbi">
 	<div class="cj_center"><img src="images/cj.gif"></div>
-    
-    
-    <!--插件区域
-    <div class="cj_tb">
-    	<ul>
-        	<li><a href="#"><img src="images/tb4.png">白板</a></li>
-            <li><a href="#"><img src="images/tb5.png">视频</a></li>
-            <li><a href="#"><img src="images/tb6.png">语音视频</a></li>
-            <li><a href="#"><img src="images/tb7.png">录制</a></li>
-            <li><a href="#"><img src="images/tb8.png">福利</a></li>
-            <li><a href="#"><img src="images/tb9.png">分享</a></li>
-            <li><a href="#"><img src="images/tb10.png">房间设置</a></li>
-            <li><a href="#"><img src="images/tb11.png">联系客服</a></li>
-            <div class="clear"></div>
-        </ul>
-    </div>  
-    
-    <div class="cjpic"><img src="images/cjpic.gif"></div>
-    <div class="cj_mu">
-    	<a href="#" class="mu_1">举手申请上麦</a>
-        <a href="#" class="mu_2">上麦申请中</a>
-        <a href="#" class="mu_3">点击 说话</a>
-        <a href="#" class="mu_4"><span></span></a>
-    </div>
-    -->
-    
 </div>
 </body>
 </html>

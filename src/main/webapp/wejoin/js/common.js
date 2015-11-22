@@ -60,12 +60,13 @@ function ajaxGetSync(parameter,success){
  * @param parameter
  * @param success
  */
-function ajaxPost(parameter,success,callData){
+function ajaxPostSync(parameter,success,callData){
     $.ajax({
         type: "POST",
         url: base+"api/apiCommon/doPost",
         data: parameter,
         dataType:"json",
+        async: false,
         success:function (data) {
             console.log(data.obj);
             var result = $.parseJSON(data.obj);
@@ -76,6 +77,34 @@ function ajaxPost(parameter,success,callData){
             		success(result.returnObject);
             	}
                 
+            } else {
+                alert(result.returnMessage);
+            }
+        }
+    });
+}
+/**
+ *
+ * @param parameter
+ * @param success
+ * @param callData
+ */
+function ajaxPost(parameter,success,callData){
+    $.ajax({
+        type: "POST",
+        url: base+"api/apiCommon/doPost",
+        data: parameter,
+        dataType:"json",
+        success:function (data) {
+            console.log(data.obj);
+            var result = $.parseJSON(data.obj);
+            if(result.serverStatus == 0) {
+                if(callData){
+                    success(callData(result));
+                }else{
+                    success(result.returnObject);
+                }
+
             } else {
                 alert(result.returnMessage);
             }
