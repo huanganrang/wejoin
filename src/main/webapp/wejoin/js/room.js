@@ -222,13 +222,13 @@ function initMembersList() {
         async: false,
         success: function (data) {
             if (data.obj) {
-                console.log("获取房间用户：" + data.obj);
+//                console.log("获取房间用户：" + data.obj);
                 var result = $.parseJSON(data.obj);
                 if (result.serverStatus == 0) {
                     var members = result.returnObject;
                     for (var i in members) {
                         users[members[i].huanxin_uid] = members[i];
-                        var userIcon = members[i].icon || '';
+                        var userIcon = members[i].icon || 'images/tx.gif';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + members[i].userToken + '"><img src="' + userIcon + '" /><ol>' + members[i].nickName + '</ol></a></li>');
                         $(".v_ren ul").append($li);
                         $li = $('<li><img src="' + userIcon + '" /><span>' + members[i].nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
@@ -377,7 +377,7 @@ var excutors = {
                     if (result.serverStatus == 0) {
                         var member = result.returnObject;
                         users[member.huanxinUid] = member;
-                        var userIcon = member.icon || '';
+                        var userIcon = member.icon || 'images/tx.gif';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
                         $(".v_ren ul").append($li);
                         $li = $('<li><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');

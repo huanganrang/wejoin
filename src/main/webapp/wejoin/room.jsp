@@ -15,8 +15,10 @@
 <title>房间</title>
 <script type="text/javascript">
 var base = '${pageContext.request.contextPath}/';
+var namespace = "room";
 </script>
 <link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
@@ -40,6 +42,9 @@ var base = '${pageContext.request.contextPath}/';
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
@@ -137,7 +142,22 @@ $(window).load(function(){
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
-    <div class="logo"></div>
+    <div class="logo_list2" style="width: 240px;">
+    	<c:choose>
+			<c:when test="${!sessionScope.userToken.loginMark}">
+				<div class="logo_dl">
+		        	<a href="javascript:void(0);" onclick="showDjcgBox()">登录</a> 
+		            <a href="javascript:void(0);" onclick="showSyldBox()">注册</a>
+		        </div>
+		        <c:if test="${sessionScope.userToken.token != null}">
+		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
+		        </c:if>
+			</c:when>
+			<c:otherwise>
+				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
+			</c:otherwise>
+        </c:choose>
+    </div>
     <ul class="tab_button">
         <li id="blackbord" class="hover"><a href="javascript:void(0);">黑 板</a></li>
         <li id="documets"><a href="javascript:void(0);">文 档</a></li>
@@ -157,7 +177,7 @@ $(window).load(function(){
 
 
 <div class="main_left">
-	<div class="content mCustomScrollbar content_main" id="t_img" style="height:385px;">
+	<div class="content mCustomScrollbar content_main" id="" style="height:285px;">
 	<div class="video example_video_1">
     	<%-- <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
@@ -190,7 +210,7 @@ $(window).load(function(){
     </div> -->
     </div>
     
-    <div class="hy_title">
+   <!-- -->  <div class="hy_title">
     	<span style="display:none;">在线会员</span>
         <a href="javascript:void(0);" class="le" style="display:none;">男</a>
         <a href="javascript:void(0);" style="display:none;">女</a>
@@ -250,7 +270,7 @@ $(window).load(function(){
                 <% } %>
 	            </div>
 	        
-            <img src="images/pic.gif" width="730" id="imageBoard"/>
+            <img src="images/pic.gif" width="730" id="imageBoard" height="550px;"/>
            
            	<div class="ck-slide" style="display: none;">
 				<div class="ck-slide-dir">
@@ -306,7 +326,7 @@ $(window).load(function(){
     </div>
     </div>
     
-    <div class="ltian_menu" style="z-index: 9999;">
+    <div class="ltian_menu" style="z-index: 3;">
     	<div class="ltia_2">
         	<ol class="face_div_ac"><img class="img_tb3 face_div_ac" src="images/tb3.png" /></ol>
             <div class="v_bc face_div" id="faceWrapper">
@@ -432,5 +452,100 @@ $(window).load(function(){
 </div>
 <script src="${pageContext.request.contextPath}/wejoin/js/camara.js" type="text/javascript" charset="utf-8"></script>
 
+
+<!--登录 开始-->
+		<div class="windows djcgBox" id="djcgBox" style="display:none;" >
+			<div class="windowsBg"></div>
+		  	<div class="windows_box">
+				<div class="djcgBox_con">
+					<div class="dj_top_a"></div>
+		               <div class="dj_con_a">
+		               	<div class="dj_title_a">
+		                   	<span></span>
+		                       <div>
+		                       	<ol>用户登录</ol>
+		                           <em>USER LOGIN</em>
+		                       </div>
+		                   </div>
+		                   <ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username" style="color:#333;"><b></b></li>
+		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password" style="color:#333;"><p></p></li>
+		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
+		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               <div class="dj_btn"></div>
+				</div>
+				<div class="close_btn"></div>
+			</div>
+		</div>
+		<!--登录 结束-->
+
+		<!--找回密码 开始-->
+		<div class="windows tjcgBox" id="tjcgBox" style="display:none;" >
+			  <div class="windowsBg"></div>
+			  <div class="windows_box">
+				<div class="tjcg_con">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
+		                   	<span></span>
+		                       <div>
+		                       	<ol>密码找回</ol>
+		                           <em>PASSWORD RETRIEVE</em>
+		                       </div>
+		               </div>
+		               <div class="tjcg_list_b">
+		               	<ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                       <input name="" type="submit" value="确  定" class="tzam"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               </div>
+		               <div class="dj_btn"></div>
+		           </div>
+				<div class="close_btn"></div>
+			  </div>
+		</div>
+		<!--找回密码 结束-->
+
+		<!--注册 开始-->
+		<div class="windows syldBox" id="syldBox" style="display:none;" >
+			  <div class="windowsBg"></div>
+			  <div class="windows_box">
+				<div class="tjcg_con">
+		           	<div class="dj_top_a"></div>
+		               <div class="tjcg_bj_b">
+		           	<div class="dj_title_a">
+		                   	<span class="zc_tb"></span>
+		                       <div>
+		                       	<ol>用户注册</ol>
+		                           <em>USER REGISTRATION</em>
+		                       </div>
+		               </div>
+		               <div class="tjcg_list_b">
+		               	<ul>
+		                   	<form action="" method="get">
+		                   	<li><input type="text" class="pt2" placeholder="请输入手机号获取验证码" id="telphone" style="color:#333;"><ol><a href="javascript:void(0);" class="validCode_btn">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" placeholder="请输入验证码" id="validCode" style="color:#333;"></li>
+		                       <li><span>用户昵称：</span><input type="text" class="pt2" placeholder="请输入用户昵称" id="username" style="color:#333;"></li>
+		                       <li style="margin-bottom:40px; "><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" placeholder="请输入密码" id="password" style="color:#333;"></li>
+		                       <input name="" type="button" value="注  册" class="tzam" id="register_btn"/>
+		                       </form>
+		                   </ul>
+		               </div>
+		               </div>
+		               <div class="dj_btn"></div>
+		           </div>
+				<div class="close_btn"></div>
+			  </div>
+		</div>
 </body>
 </html>

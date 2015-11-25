@@ -46,7 +46,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 
-.main_left{  width:240px; position:absolute; left:0px; top:42px; background:#eee; z-index:100;}
+.main_left{  width:240px; position:absolute; left:0px; top:42px; background:#eee; z-index:5;}
 .main_left .video{ background:#fff; margin:13px 10px 0 10px; position:relative;}
 .main_left .video span{ width:70px; height:29px; background: url(../images/hy.png) no-repeat; position:absolute; left:0px; top:0px; display:block;}
 .main_left .video ol{ width:70px; height:29px; background: url(../images/hy.png) no-repeat 0 -37px; position:absolute; left:0px; top:0px; display:block;}
