@@ -60,75 +60,86 @@ var ROOM_INFO = {
 videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
 
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-var openTip = oOpenTip || "";
-var shutTip = oShutTip || "";
-if(targetObj.style.display!="none"){
-   if(shutAble) return;
-   targetObj.style.display="none";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = shutTip;
-   }
-} else {
-   targetObj.style.display="block";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = openTip;
-   }
-}
-}
-$(function(){
-	changeHeightRight();
-	//changeHeightLeft();
-	$(".a_toggle").toggle(
-	  function () {
-		$('.img_x').attr('src','images/1.png');
-		$('.main_right').hide();
-		$(".main_center").css("width","85%");
-	  },
-	  function () {
-		$('.img_x').attr('src','images/2.png');
-		$('.main_right').show();
-		//$(".main_center").css("width","61%");
-	  }
-	);
-})
-$(function(){
-	//changeHeight();
-	//changeHeightLeft();
-})
-	$(window).resize(function() {
+	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+	var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+	var openTip = oOpenTip || "";
+	var shutTip = oShutTip || "";
+	if(targetObj.style.display!="none"){
+	   if(shutAble) return;
+	   targetObj.style.display="none";
+	   if(openTip && shutTip){
+	    sourceObj.innerHTML = shutTip;
+	   }
+	} else {
+	   targetObj.style.display="block";
+	   if(openTip && shutTip){
+	    sourceObj.innerHTML = openTip;
+	   }
+	}
+	}
+	$(function(){
 		changeHeightRight();
+		//changeHeightLeft();
+		$(".a_toggle").toggle(
+		  function () {
+			$('.img_x').attr('src','images/1.png');
+			$('.main_right').hide();
+			$(".main_center").css("width","100%");
+		  },
+		  function () {
+			$('.img_x').attr('src','images/2.png');
+			$('.main_right').show();
+			$(".main_center").css("width","76%");
+		  }
+		);
+	})
+	$(function(){
+	    changeHeightRight();
 		changeHeightLeft();
-	});
-function changeHeightRight(){
-	var head_h = $('.header').height();
-	var ltian_menu_h = $('.ltian_menu').height();
-	var ltian_form_h = $('.ltian_form').height();
-	var itian_tb_h = $('.itian_tb').height();
-	var b_h = $(window).height();
-	var content_h = b_h - head_h - ltian_menu_h - ltian_form_h - itian_tb_h;
-	$('.content_right').height(content_h)
-}
-function changeHeightLeft(){
-	var head_h = $('.header').height();
-	var hy_title_h = $('.hy_title').height();
-	var search_h = parseInt($('.search').height());
-	var m_search_t = parseInt($('.search').css('margin-top').replace('px', ''));
-	var m_search_b = parseInt($('.search').css('margin-bottom').replace('px', ''));
-	
-	var content_buttom_h = $('.content_buttom').height();
-	var content_img_h = $('.content_img').height();
-	var b_h = $(window).height();
-	var content_h = b_h - head_h - hy_title_h - content_buttom_h - search_h - content_img_h;
-
-	$('.content_main').height((b_h - head_h)/2);
-	$('.content_buttom').height((b_h - head_h)/2-hy_title_h-(search_h+m_search_t+m_search_b)-content_img_h);
-	$('.main_left').height(content_h);
-}
-$(window).load(function(){
-	changeHeightLeft();
-})
+	})
+		$(window).resize(function() {
+			changeHeightRight();
+			changeHeightLeft();
+		});
+	function changeHeightRight(){
+		var head_h = $('.header').height();
+		var ltian_menu_h = $('.ltian_menu').height();
+		var ltian_form_h = $('.ltian_form').height();
+		var itian_tb_h = $('.itian_tb').height();
+		var b_h = $(window).height();
+		var content_h = b_h - head_h - ltian_menu_h - ltian_form_h - itian_tb_h;
+		$('.content_right').height(content_h)
+	}
+	function changeHeightLeft(){
+		InitLeftVideo();
+		var head_h = $('.header').height();
+		var content_main_h = $('.content_main').height();
+		var hy_title_h = $('.hy_title').height();
+		var search_h = $('.search').height();
+		var content_img_h = $('.content_img').height();
+		var b_h = $(window).height();
+		var content_h = b_h - head_h - content_main_h - hy_title_h - search_h - content_img_h ;
+		console.log(content_h);
+		
+		if(content_h<=0){
+			$('.content_main').height(195);
+			content_h = b_h - head_h - content_main_h - hy_title_h - search_h - content_img_h ;
+		}
+		$('.content_buttom').height(content_h);
+	}
+	function InitLeftVideo(){
+		var _l = $('#t_img .video').size();
+		var obj_img = $('#t_img');
+		if(_l==0){
+			obj_img.height(0);
+		}
+		if(_l==1){
+			obj_img.height(195);
+		}
+		if(_l>=2){
+			obj_img.height(385);
+		}
+	}
 </script>
 </head>
 
@@ -177,7 +188,7 @@ $(window).load(function(){
 
 
 <div class="main_left">
-	<div class="content mCustomScrollbar content_main" id="" style="height:285px;">
+	<div class="content mCustomScrollbar content_main" id="t_img" style="height:385px;">
 	<div class="video example_video_1">
     	<%-- <video id="example_video_1" class="video-js vjs-default-skin" class="video-js vjs-default-skin" controls preload="auto" width="220" height="174"
       				poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
@@ -192,8 +203,10 @@ $(window).load(function(){
             </div>
     </div>
     
-    <div class="video hidden_area">
-        <div class="name_title" style="z-index:-1">
+  <!-- <div class="video hidden_area"> -->  
+  <!-- -->   <div class="">
+       <!--  <div class="name_title" style="z-index:-1"> --> 
+       <!--  --> <div class="" style="z-index:-1">
             <div class="name_tt">${sessionScope.userToken.nickName}</div>
             <div class="name_sj"></div>
         </div>
@@ -210,16 +223,15 @@ $(window).load(function(){
     </div> -->
     </div>
     
-   <!-- -->  <div class="hy_title">
-    	<span style="display:none;">在线会员</span>
-        <a href="javascript:void(0);" class="le" style="display:none;">男</a>
-        <a href="javascript:void(0);" style="display:none;">女</a>
-    </div>
+   <div class="hy_title">
+    	<span>在线会员</span>
+        <a href="#" class="le">男</a>
+        <a href="#">女</a>    </div>
     
-    <div class="search" >
-    	<form action="" method="get" style="display:none;">
+    <div class="search">
+    	<form action="" method="get">
         <input name="" type="submit" class="tzbm" value=""/>
-        <input type="text" class="pt1" onblur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onfocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfield" name="telphone" style="color:#ccc;">
+        <input type="text" class="pt1" onBlur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onFocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfield" name="telphone" style="color:#ccc;">
         
         <span></span>
         </form>
