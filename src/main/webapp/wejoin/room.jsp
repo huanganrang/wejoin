@@ -36,7 +36,7 @@ var base = '${pageContext.request.contextPath}/';
 <!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
 <link href="${pageContext.request.contextPath}/wejoin/js/slide/slide.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/wejoin/js/slide/slide.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
