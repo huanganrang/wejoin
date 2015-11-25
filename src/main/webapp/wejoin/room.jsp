@@ -43,8 +43,8 @@ var namespace = "room";
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
 
-<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
+<%--<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>--%>
 
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
@@ -148,8 +148,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 <input type="hidden" id="nickName" value="${sessionScope.userToken.nickName}" />
 <!-- --><input type="hidden" id="huanxinUid" value="${sessionScope.userToken.huanxinUid}" />
 <input type="hidden" id="password" value="${sessionScope.userToken.password}" /> 
-<!-- <input type="hidden" id="huanxinUid" value="test" />
-<input type="hidden" id="password" value="123456" /> -->
+
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
@@ -231,7 +230,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
     <div class="search">
     	<form action="" method="get">
         <input name="" type="submit" class="tzbm" value=""/>
-        <input type="text" class="pt1" onBlur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onFocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfield" name="telphone" style="color:#ccc;">
+        <input type="text" class="pt1" onBlur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onFocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfieldUser" name="telphone" style="color:#ccc;">
         
         <span></span>
         </form>
@@ -481,8 +480,8 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 		                   </div>
 		                   <ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username" style="color:#333;"><b></b></li>
-		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password" style="color:#333;"><p></p></li>
+		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username11" style="color:#333;"><b></b></li>
+		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password11" style="color:#333;"><p></p></li>
 		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
 		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
 		                       </form>
@@ -512,10 +511,10 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 		               <div class="tjcg_list_b">
 		               	<ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
-		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield" name="telphone" style="color:#ccc;"></li>
-		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
-		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield" name="telphone" style="color:#ccc;"></li>
+		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield11" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield12" name="telphone" style="color:#ccc;"></li>
+		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield13" name="telphone" style="color:#ccc;"></li>
+		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield14" name="telphone" style="color:#ccc;"></li>
 		                       <input name="" type="submit" value="确  定" class="tzam"/>
 		                       </form>
 		                   </ul>
