@@ -45,7 +45,7 @@ function register() {
 	}
     
     var url = "api/apiCommon/doPost"; // User/User
-    if(isHome()) url = base + url;
+    if(!isHome()) url = base + url;
     $.ajax({
         type: "POST",
         url: url,
@@ -70,7 +70,7 @@ function register() {
 }
 
 var isHome = function() {
-	return namespace == "home";
+	return namespace == "login";
 };
 
 function login() {
@@ -85,7 +85,7 @@ function login() {
 		return false;
 	} 
     var url = "api/apiCommon/doGet";// User/User
-    if(isHome()) url = base + url;
+    if(!isHome()) url = base + url;
     $.ajax({
         type: "GET",
         url: url,
@@ -96,7 +96,7 @@ function login() {
         		console.log("登录：" + data.obj);
             	var json = JSON.parse(data.obj);
             	if(json.serverStatus == 0) {
-            		if(!isHome()) {
+            		if(isHome()) {
             			window.location.href = 'wejoin/home.jsp';
             		} else {
             			window.location.reload();
@@ -134,7 +134,7 @@ function getValidCode(event) {
   	}, 1000);
 	
 	var url = "api/apiCommon/doPost"; // ValidCode/ValidCode
-    if(isHome()) url = base + url;
+    if(!isHome()) url = base + url;
     $.ajax({
         type: "POST",
         url: url,

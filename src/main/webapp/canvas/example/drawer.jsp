@@ -30,7 +30,7 @@
 
 		#default-board {
 			width: 700px;
-			height: 400px;
+			height: 580px;
 		}
 
 		/* custom board styles for the title? no problem*/
