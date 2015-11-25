@@ -72,6 +72,7 @@ function connInit() {
         },
         onTextMessage: function (message) {
             console.log("收到文本消息：" + JSON.stringify(message));
+            message.data = $.base64.atob(message.data, true);
             if (message.from != huanxinUid) {
 	            //1、通知消息
 	            for (var i = 0; i < filters.length; i++) {
@@ -139,7 +140,7 @@ var sendText = function (msg) {
     var options = {
         to: $("#huanxinRoomId").val(),
 //		to : '125914257123443160',
-        msg: JSON.stringify(msg),
+        msg: $.base64.btoa(JSON.stringify(msg)),
         type: "groupchat"
     };
     conn.sendTextMessage(options);
@@ -159,7 +160,7 @@ var sendNotification = function (message) {
     var options = {
         to: $("#huanxinRoomId").val(),
 //		to : '125914257123443160',
-        msg: JSON.stringify(message),
+        msg: $.base64.btoa(JSON.stringify(message)),
         type: "groupchat"
     };
     conn.sendTextMessage(options);
