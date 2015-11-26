@@ -310,6 +310,18 @@ WeChat.prototype = {
             }
         }
 
+        //过滤礼物表情
+        for(var i = 1;i<65;i++){
+            var istr = "";
+            if(i<10){
+                istr = "0"+i;
+            }else{
+                istr = i;
+            }
+            var html = $(".gift_div a").eq(i-1).html();
+            content = content.replace(new RegExp("\\[\\(\\<"+istr+"\\>\\)\\]", 'g'),html);
+        }
+
         //  根据users动态取头像、昵称
         var $messageHtml = '<li class="' + ownerClass + '">'
             + '<div class="ltian_img"><a><img src="' + data.userIcon + '" /></a></div>'
@@ -513,4 +525,15 @@ $(function(){
         tab.show();
         tab.siblings().hide();
     });
+    $(".gift_div a").click(function(){
+        var _this = $(this);
+        var index = $(".gift_div a").index(_this)+1;
+        var msg
+        if(index>9){
+            msg = "[(<"+index+">)]"
+        }else{
+            msg = "[(<0"+index+">)]"
+        }
+        $("#content").val($("#content").val()+msg);
+    })
 });
