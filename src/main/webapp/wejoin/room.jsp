@@ -43,8 +43,8 @@ var namespace = "room";
 <script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
 
-<%--<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>--%>
+<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
@@ -147,7 +147,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 <input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
 <input type="hidden" id="nickName" value="${sessionScope.userToken.nickName}" />
 <!-- --><input type="hidden" id="huanxinUid" value="${sessionScope.userToken.huanxinUid}" />
-<input type="hidden" id="password" value="${sessionScope.userToken.password}" /> 
+<input type="hidden" id="huanxinPsw" value="${sessionScope.userToken.password}" /> 
 
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
@@ -480,8 +480,8 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 		                   </div>
 		                   <ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username11" style="color:#333;"><b></b></li>
-		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password11" style="color:#333;"><p></p></li>
+		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username" style="color:#333;"><b></b></li>
+		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password" style="color:#333;"><p></p></li>
 		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
 		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
 		                       </form>

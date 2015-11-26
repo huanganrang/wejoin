@@ -14,7 +14,7 @@ $(function () {
     wechat = new WeChat();
     wechat.init();
     connInit();
-    login();
+    loginHx();
 
     /*$(window).bind('beforeunload', function() {
      if (conn) {
@@ -117,9 +117,9 @@ function getUserInfoByFrom(from) {
     return {'username': fromUsername, 'owner': false, 'content': "", 'userIcon': userIcon};
 }
 
-var login = function () {
+var loginHx = function () {
     var user = $("#huanxinUid").val();
-    var pass = $("#password").val();
+    var pass = $("#huanxinPsw").val();
     //根据用户名密码登录系统
     conn.open({
         apiUrl: Easemob.im.config.apiURL,
@@ -135,7 +135,7 @@ var sendText = function (msg) {
     console.log("连接是否开启" + conn.isOpened());
     if (!conn.isOpened()) {
         connInit();
-        login();
+        loginHx();
     }
     var options = {
         to: $("#huanxinRoomId").val(),
@@ -155,7 +155,7 @@ var sendText = function (msg) {
 var sendNotification = function (message) {
     if (!conn.isOpened()) {
         connInit();
-        login();
+        loginHx();
     }
     var options = {
         to: $("#huanxinRoomId").val(),
