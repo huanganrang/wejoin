@@ -3,6 +3,7 @@ var wechat = null;
 var users = []; // 缓存用户，获取昵称
 var huanxinUid;
 $(function () {
+    $.base64.utf8encode = true;
     huanxinUid = $("#huanxinUid").val();
     if ($("#userToken").val() == '') {
         window.location.href = '../login.jsp';
@@ -345,7 +346,12 @@ var messageFactory = {
         return {"type": 15, "id": id};
     },
     CHART: function (message) {
-        return {"type": 30, "content": message};
+        message = message.trim();
+        var myid = $("#huanxinUid").val();
+        var user = users[myid]||{};
+        var result = {"type": 30, "content": message,"myid":myid,"myname":user.nickName||"","myicon":user.icon||""};
+        console.log(result);
+        return result;
     },
     CLOSE_STREAM : function(){
         return {"type":14};
