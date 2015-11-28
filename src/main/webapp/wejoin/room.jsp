@@ -22,20 +22,26 @@ var namespace = "room";
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />
-<!-- <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script> -->
+<%--<link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />--%>
+<link href="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script> -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/jquery-1.11.1.js"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/stomp.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js" type="text/javascript" charset="utf-8"></script>
+<%--
 <script src="${pageContext.request.contextPath}/jslib/video-js/video.js" type="text/javascript" charset="utf-8"></script>
+--%>
 <script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
-<!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/jquery-ui.min.js"></script>
+
+	<!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
 <link href="${pageContext.request.contextPath}/wejoin/js/slide/slide.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/wejoin/js/slide/slide.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
@@ -49,6 +55,9 @@ var namespace = "room";
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
 	.ck-slide ul.ck-slide-wrapper { height: 320px;}
+	#voiceLine .ui-slider-range { background: #b1ee1d; }
+	#voiceLine .ui-slider-handle { border-color: #b1ee1d; }
+	#voiceLine .ui-slider-handle{height:0.4em;top: -.15em;}
 </style>
 
 <script type="text/javascript">
@@ -57,7 +66,7 @@ var ROOM_INFO = {
     channelId :<%=channelId%> ,
     houseId:<%=houseId%>
 }
-videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
+//videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
 
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 	var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
@@ -140,6 +149,16 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 			obj_img.height(385);
 		}
 	}
+$(function() {
+	// 设置主音量
+	$( "#voiceLine" ).slider({
+		value: 60,
+		orientation: "horizontal",
+		range: "min",
+		animate: true,stop: function( event, ui ) {console.log(ui)}
+	});
+
+});
 </script>
 </head>
 
@@ -262,7 +281,9 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 	<div class="content_img">
 	    	<div class="content_tb1"><a href="javascript:void(0);"><img src="images/c1.png" /></a></div>
 	        <div class="content_tb1"><a href="javascript:void(0);"><img src="images/c2.png" /></a></div>
-	        <div class="content_txt1"><span> <ol style="width:70%;"><img src="images/ca.png" /></ol></span></div>
+	        <div class="content_txt1" >
+				<div id="voiceLine" style="width:100px;margin-top: 20px;height: 3px;"></div>
+			</div>
 	        <div class="content_tb2"><a href="javascript:void(0);" class="on" id="camaraControl">图标</a></div>
 	 </div>
 </div>
