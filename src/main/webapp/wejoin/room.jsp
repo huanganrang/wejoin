@@ -155,10 +155,17 @@ $(function() {
 		value: 60,
 		orientation: "horizontal",
 		range: "min",
-		animate: true,stop: function( event, ui ) {console.log(ui)}
+		animate: true,stop: function( event, ui ) {
+			$("#cameraPull")[0].contentWindow.changeVoiceNumber(ui.value);
+			console.log(ui.value)
+		}
 	});
 
 });
+function setVoiceNumber(voice){
+
+	$( "#voiceLine" ).slider( "value",voice);
+}
 </script>
 </head>
 
@@ -213,7 +220,7 @@ $(function() {
 		    	<source src="rtmp://s2.weiqu168.com/live/<%=channelId %>/<%=houseId %>" type="rtmp/mp4"/>
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 		  	</video>  --%>
-		  <iframe id="cameraPull" width="220" height="174" frameborder="no"></iframe>
+		  <iframe id="cameraPull" width="220" height="182" frameborder="no" scrolling="no"></iframe>
 		  	
 		  	<div class="name_title" style="z-index:-1">
                 <div class="name_tt">${sessionScope.userToken.nickName}</div>

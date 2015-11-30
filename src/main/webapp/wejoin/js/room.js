@@ -101,20 +101,26 @@ function connInit() {
 }
 
 function getUserInfo(message) {
-    var user = getUserInfoByFrom(message.from);
+    var user = getUserInfoByFrom(message.from,message);
     user.content = message;
     return user;
 }
 
-function getUserInfoByFrom(from) {
+function getUserInfoByFrom(from,message) {
     var userIcon = "images/tx.gif";
     var fromUsername = from;
     console.log(users);
-    console.log(from);
-    if (users[from]) {
-        fromUsername = users[from].nickName;
-        userIcon = users[from].icon || userIcon;
+    if(message){
+        var data = $.parseJSON(message.data);
+        fromUsername = data.myname;
+        userIcon = data.myicon;
+    }else{
+        if (users[from]) {
+            fromUsername = users[from].nickName;
+            userIcon = users[from].icon || userIcon;
+        }
     }
+
     return {'username': fromUsername, 'owner': false, 'content': "", 'userIcon': userIcon};
 }
 
@@ -332,6 +338,8 @@ WeChat.prototype = {
 
         $(".ltian ul").append($messageHtml);
         $("#box4 .content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
+        $("#box4 .content")[0].scrollTop = $("#box4 .content")[0].scrollHeight;
+
     },
     // 表情点击事件
     _selectEmotionImg: function (selImg) {

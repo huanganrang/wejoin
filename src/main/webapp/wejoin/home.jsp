@@ -243,7 +243,7 @@ var namespace = "home";
                 <div class="log_list">
                 	<form action="" method="get">
                 	<ul>
-                    	<li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="房间标题" onfocus="if(this.value=='房间标题'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='房间标题';this.style.color='#999'}" class="putc"></li>
+                    	<li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" maxlength="10" value="房间标题" onfocus="if(this.value=='房间标题'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='房间标题';this.style.color='#999'}" class="putc"></li>
                         <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="直播密码" onfocus="if(this.value=='直播密码'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='直播密码';this.style.color='#999'}" class="putc"></li>
                         <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="开始时间" onfocus="if(this.value=='开始时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='开始时间';this.style.color='#999'}" class="putc"></li>
                         <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="结束时间" onfocus="if(this.value=='结束时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='结束时间';this.style.color='#999'}" class="putc"></li>
