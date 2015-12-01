@@ -222,19 +222,19 @@ function setVoiceNumber(voice){
 		  	</video>  --%>
 		  <iframe id="cameraPull" width="220" height="182" frameborder="no" scrolling="no"></iframe>
 		  	
-		  	<div class="name_title" style="z-index:-1">
+		  	<%--<div class="name_title" style="z-index:-1">
                 <div class="name_tt">${sessionScope.userToken.nickName}</div>
                 <div class="name_sj"></div>
-            </div>
+            </div>--%>
     </div>
     
   <!-- <div class="video hidden_area"> -->  
-  <!-- -->   <div class="">
+  <!-- -->   <div class="hidden_area">
        <!--  <div class="name_title" style="z-index:-1"> --> 
-       <!--  --> <div class="" style="z-index:-1">
+       <!--  --> <%--<div class="" style="z-index:-1">
             <div class="name_tt">${sessionScope.userToken.nickName}</div>
             <div class="name_sj"></div>
-        </div>
+        </div>--%>
 		<iframe id="cameraPush" width="220" height="174" frameborder="no" ></iframe>
 
     </div>
@@ -254,12 +254,10 @@ function setVoiceNumber(voice){
         <a href="#">女</a>    </div>
     
     <div class="search">
-    	<form action="" method="get">
-        <input name="" type="submit" class="tzbm" value=""/>
+        <input name="" type="button" class="tzbm" value=""/>
         <input type="text" class="pt1" onBlur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onFocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfieldUser" name="telphone" style="color:#ccc;">
         
         <span></span>
-        </form>
         <div class="clear"></div>
     </div>
     <div class="content mCustomScrollbar content_buttom">

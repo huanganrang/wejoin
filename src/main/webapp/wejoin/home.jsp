@@ -27,6 +27,8 @@ var namespace = "home";
 
 <body class="ltbj">
 <input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
+<input type="hidden" id="userNickName" value="${sessionScope.userToken.nickName}" />
+
 <div class="header" style="height:72px;">
 	<div class="logo_list2">
 		<c:choose>
@@ -37,10 +39,12 @@ var namespace = "home";
 		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
 		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
-		        </c:if>
+					<a href="javascript:void(0)" onclick="logout()">退出</a>
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
+				<a href="javascript:void(0)" onclick="logout()">退出</a>
 			</c:otherwise>
         </c:choose>
 	</div>

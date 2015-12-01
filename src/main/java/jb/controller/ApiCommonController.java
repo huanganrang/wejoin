@@ -33,6 +33,7 @@ public class ApiCommonController extends BaseController {
 
 	public static final String UL040 = "UL040";
 	public static final String UL001 = "UL001";
+	public static final String USER_TOKEN = "userToken";
 
 	@ResponseBody
 	@RequestMapping("/doPost")
@@ -85,7 +86,7 @@ public class ApiCommonController extends BaseController {
 				if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
 					UserToken userToken = jsonObject.getObject("returnObject", UserToken.class);
 					if(UL001.equals(type)) userToken.setLoginMark(true); 
-					request.getSession().setAttribute("userToken", userToken);
+					request.getSession().setAttribute(USER_TOKEN, userToken);
 				}
 			}
 			j.setObj(result);
@@ -119,5 +120,10 @@ public class ApiCommonController extends BaseController {
 		}		
 		return j;
 	}
-	
+
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request){
+		request.getSession().removeAttribute(USER_TOKEN);
+		return "/login";
+	}
 }

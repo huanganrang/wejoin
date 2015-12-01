@@ -72,7 +72,12 @@ function register() {
 var isHome = function() {
 	return namespace == "login";
 };
-
+function logout(){
+	var url = "api/apiCommon/logout";
+	if(!isHome()) url = base + url;
+	alert(url);
+	window.location.href = url;
+}
 function login() {
 	var username = $("#djcgBox #username").val();
 	if(username == "") {

@@ -113,7 +113,7 @@ function getUserInfoByFrom(from,message) {
     if(message){
         var data = $.parseJSON(message.data);
         fromUsername = data.myname;
-        userIcon = data.myicon;
+        userIcon = data.myicon||userIcon;
     }else{
         if (users[from]) {
             fromUsername = users[from].nickName;
@@ -543,5 +543,24 @@ $(function(){
             msg = "[(<0"+index+">)]"
         }
         $("#content").val($("#content").val()+msg);
-    })
+        $("#content").focus();
+    });
+
+    $(".search #textfieldUser").bind('keyup', function (e) {
+        if(e.keyCode == 13) {
+            var searchValue = $(".search #textfieldUser").val().trim();
+            if(searchValue == ""){
+                $(".list_name ul li").show();
+                return;
+            }
+            $(".list_name ul li").each(function () {
+                var userNickName = $(this).find("span").text();
+                if (userNickName.indexOf(searchValue) > -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            })
+        }
+    });
 });
