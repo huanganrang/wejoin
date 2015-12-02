@@ -178,7 +178,7 @@ function setVoiceNumber(voice){
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
-    <div class="logo_list2" style="width: 240px;">
+    <div class="logo_list3" style="width: 240px;">
     	<c:choose>
 			<c:when test="${!sessionScope.userToken.loginMark}">
 				<div class="logo_dl">
@@ -186,11 +186,15 @@ function setVoiceNumber(voice){
 		            <a href="javascript:void(0);" onclick="showSyldBox()">注册</a>
 		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
-		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
-		        </c:if>
+		        	<%--<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
+					<a href="javascript:void(0)" onclick="logoutRoom()">退出</a>--%>
+
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
+				<a href="javascript:void(0)" onclick="logoutRoom()">退出</a>
+
 			</c:otherwise>
         </c:choose>
     </div>
@@ -250,8 +254,8 @@ function setVoiceNumber(voice){
     
    <div class="hy_title">
     	<span>在线会员</span>
-        <a href="#" class="le">男</a>
-        <a href="#">女</a>    </div>
+        <a href="#" class="le" onclick="setSearchScope(true)">男</a>
+        <a href="#" onclick="setSearchScope(false)">女</a>    </div>
     
     <div class="search">
         <input name="" type="button" class="tzbm" value=""/>

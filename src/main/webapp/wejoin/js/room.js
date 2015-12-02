@@ -229,7 +229,7 @@ function initMembersList() {
         async: false,
         success: function (data) {
             if (data.obj) {
-//                console.log("获取房间用户：" + data.obj);
+                console.log("获取房间用户：" + data.obj);
                 var result = $.parseJSON(data.obj);
                 if (result.serverStatus == 0) {
                     var members = result.returnObject;
@@ -238,7 +238,7 @@ function initMembersList() {
                         var userIcon = members[i].icon || 'images/tx.gif';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + members[i].userToken + '"><img src="' + userIcon + '" /><ol>' + members[i].nickName + '</ol></a></li>');
                         $(".v_ren ul").append($li);
-                        $li = $('<li><img src="' + userIcon + '" /><span>' + members[i].nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+                        $li = $('<li data-identification="'+members[i].identification+'"><img src="' + userIcon + '" /><span>' + members[i].nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
                         $(".list_name ul").append($li);
                     }
                 }
@@ -390,6 +390,7 @@ var excutors = {
     13: function(){openPullStream()},
     14: function(){closePullStream()},
     15: function (data) {
+        if(users[data.id])return;
         $.ajax({
             type: "POST",
             url: base + "api/apiCommon/doGet", // HouseUser/HouseUsers
@@ -406,7 +407,7 @@ var excutors = {
                         var userIcon = member.icon || 'images/tx.gif';
                         var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
                         $(".v_ren ul").append($li);
-                        $li = $('<li><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+                        $li = $('<li data-identification="'+member.identification+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
                         $(".list_name ul").append($li);
                     }
                 }
@@ -548,19 +549,49 @@ $(function(){
 
     $(".search #textfieldUser").bind('keyup', function (e) {
         if(e.keyCode == 13) {
-            var searchValue = $(".search #textfieldUser").val().trim();
-            if(searchValue == ""){
-                $(".list_name ul li").show();
-                return;
-            }
-            $(".list_name ul li").each(function () {
-                var userNickName = $(this).find("span").text();
-                if (userNickName.indexOf(searchValue) > -1) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            })
+            searchUser(false)
         }
     });
 });
+/**
+ * 搜索用户
+ * @param isManager
+ */
+function searchUser(isManager){
+    var searchValue = $(".search #textfieldUser").val().trim();
+    if(searchValue == ""&&!isManager){
+        $(".list_name ul li").show();
+        return;
+    }
+    $(".list_name ul li").each(function () {
+        var $this = $(this);
+        var userNickName = $this.find("span").text();
+        var identification = $this.data("identification");
+        if ((isManager&&identification == "2")||(!isManager&&userNickName.indexOf(searchValue) > -1)) {
+            $this.show();
+        } else {
+            $this.hide();
+        }
+    })
+}
+/**
+ * 暂时约定点击按钮搜索一次
+ * @param isManager
+ */
+function setSearchScope(isManager){
+    $(".search #textfieldUser").val("");
+
+    searchUser(isManager)
+}
+/**
+ * 退出房间
+ */
+function logoutRoom(){
+    ajaxPost({"type":"UL031", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"userToken":$("#userToken").val()})},function(filePath){
+        console.log(filePath);
+        sendNotification(messageFactory.FILE(1, filePath));
+    },function(){
+        $.cookie($("#houseToken").val(), null);
+        window.location.href = "home.jsp";
+    });
+}

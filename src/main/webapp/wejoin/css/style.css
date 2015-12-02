@@ -94,7 +94,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .main_center{ width:76%; position:relative; height:100%; line-height:100%; }
-.main_center .cneter_menu{ padding-left:285px; height:42px; background:#e4e4e4;}
+.main_center .cneter_menu{ padding-left:5px; height:42px; background:#e4e4e4;}
 .main_center .cneter_menu a{ float:left; display:block; margin:8px 33px 0 0;}
 .main_center .cneter_menu a.t3{ margin-top:10px;}
 .main_center .cneter_menu a.t4{ margin-top:11px;}
@@ -378,6 +378,11 @@ cursor:pointer;
 .logo_list2 .logo_dl a{ float:left; background:#7de310; height:26px; line-height:26px; text-align:center; width:40%; margin-left:5%; }
 .logo_list2 .logo_name{ width:218px; text-align:center; height:30px; float:none; line-height:30px; overflow:hidden;}
 
+
+.logo_list3{width:218px;height:57px; background:#4f900a; text-align:center;   color:#fff; float:left;padding-top:6px;}
+.logo_list3 .logo_dl{ width:218px; clear:both; float:none; height:26px;}
+.logo_list3 .logo_dl a{ float:left; background:#7de310; height:26px; line-height:26px; text-align:center; width:40%; margin-left:5%; }
+.logo_list3 .logo_name{ width:218px; text-align:center;  float:none;  overflow:hidden;}
 
 
 
