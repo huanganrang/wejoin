@@ -2,37 +2,49 @@ var images;
 
 $(function(){
     var videoToken = null;
+    //如果是房主
+    if(ROOM_INFO.isOwner()){
+        $(".example_video_1").hide();
+        $(".hidden_area").show();
+    }else{
+        $(".example_video_1").show();
+        $(".hidden_area").hide();
+    }
     $("#camaraControl").click(function(){
         var _this = $("#camaraControl");
         if(_this.hasClass("on")){
             _this.removeClass("on");
-            $(".example_video_1").hide();
-            $(".hidden_area").show();
-            $("#cameraPush").attr("src",basePath+"/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
-            $("#cameraPull").attr("src","")
-            ajaxPost({"type":"UL036", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"pullUrl":PULL_STREAM_ROUTE+ROOM_INFO.channelId+"/"+ROOM_INFO.houseId})},function(data){
-                videoToken = data.token
-                //开
-                sendNotification(messageFactory.OPEN_STREAM());
-            });
+            if(ROOM_INFO.isOwner()){
+                $("#cameraPush").attr("src",basePath+"/simplest_as3_rtmp_streamer/rtmp_streamer.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
+                ajaxPost({"type":"UL036", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"pullUrl":PULL_STREAM_ROUTE+ROOM_INFO.channelId+"/"+ROOM_INFO.houseId})},function(data){
+                    videoToken = data.token
+                    //开
+                    sendNotification(messageFactory.OPEN_STREAM());
+                });
+            }else{
+                $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
+            }
+
         }else{
             _this.addClass("on");
-            $(".example_video_1").show();
-            $("#cameraPull").attr("src",basePath+"/rtmp_player/rtmp_player.jsp?houseId="+ROOM_INFO.houseId+"&channelId="+ROOM_INFO.channelId);
-            $(".hidden_area").hide();
-            $("#cameraPush").attr("src","")
-            ajaxGet({"type":"UL038", "videoToken":videoToken},function(data){
-                videoToken = null;
-                sendNotification(messageFactory.CLOSE_STREAM());
-            });
+            if(ROOM_INFO.isOwner()) {
+                $("#cameraPush").attr("src","");
+                ajaxGet({"type":"UL038", "videoToken":videoToken},function(data){
+                    videoToken = null;
+                    sendNotification(messageFactory.CLOSE_STREAM());
+                });
+            }else{
+                $("#cameraPull").attr("src","");
+            }
         }
     });
-    ajaxGet({"type":"UL039", "houseToken":$("#houseToken").val()},function(data){
-        if(data!=null&&data.length>0){
-            openPullStream();
-        }
-    });
-    //TODO 文件上传
+    if (!ROOM_INFO.isOwner()) {
+        ajaxGet({"type": "UL039", "houseToken": $("#houseToken").val()}, function (data) {
+            if (data != null && data.length > 0) {
+                openPullStream();
+            }
+        });
+    }
     $("#uploadDocumet").click(function(){
         $("#file").click();
         $(document).delegate('#file','change',function () {
@@ -43,6 +55,10 @@ $(function(){
                 $("#fileType").val(6);
             }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
                 $("#fileType").val(7);
+            }else if(fileContentType.indexOf('pdf')>-1){
+                $("#fileType").val(10);
+            }else if(fileContentType.indexOf('ppt')>-1){
+                $("#fileType").val(8);
             }
             //TODO 其他的待定
             var formData = new FormData($('#uploadform')[0]);

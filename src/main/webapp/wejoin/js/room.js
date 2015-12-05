@@ -120,6 +120,9 @@ function getUserInfoByFrom(from,message) {
             userIcon = users[from].icon || userIcon;
         }
     }
+    if(userIcon.indexOf("file.")==0){
+        userIcon = "http://"+userIcon;
+    }
 
     return {'username': fromUsername, 'owner': false, 'content': "", 'userIcon': userIcon};
 }
@@ -175,40 +178,44 @@ var sendNotification = function (message) {
 };
 
 var showDocsImages = function(images) {
-    $("#documets").click();
-	if(images && images.length > 0) {
-		$(".ck-slide .ck-slide-wrapper").empty();
-		$(".ck-slide .dot-wrap").empty();
-		for(var i in images) {
-			var pic = images[i].pic || images[i];
-			var $li = $("<li></li>").css({
-				'float': 'left', 
-				'position': 'relative', 
-				'margin-left': '0px'
-			}).append('<a href="javascript:void(0);"><img src="http://'+pic+'" alt="" width="730px" height="580px"></a>');
-			$(".ck-slide .ck-slide-wrapper").append($li);
-			
-			var current = (parseInt(i) == 0 && 'current') || '';
-			$li = $("<li></li>").addClass(current).append('<em>'+(parseInt(i)+1)+'</em>');
-			$(".ck-slide .dot-wrap").append($li);
-		}
-		
-		
-		if(images.length <= 1) {
-			$(".ctrl-slide").hide();
-			$(".ck-slidebox").hide();
-		}
-		
-		$("#imageBoard").hide();
-		$('.ck-slide').show();
-		
-		$('.ck-slide').ckSlide({
-			autoPlay: false,//默认为不自动播放，需要时请以此设置
-			dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
-			interval:10000,//默认间隔2000毫秒
-			callback: turnPage
-		});
-	}
+    try {
+        $("#documets").click();
+        if (images && images.length > 0) {
+            $(".ck-slide .ck-slide-wrapper").empty();
+            $(".ck-slide .dot-wrap").empty();
+            for (var i in images) {
+                var pic = images[i].pic || images[i];
+                var $li = $("<li></li>").css({
+                    'float': 'left',
+                    'position': 'relative',
+                    'margin-left': '0px'
+                }).append('<a href="javascript:void(0);"><img src="http://' + pic + '" alt="" width="730px" height="580px"></a>');
+                $(".ck-slide .ck-slide-wrapper").append($li);
+
+                var current = (parseInt(i) == 0 && 'current') || '';
+                $li = $("<li></li>").addClass(current).append('<em>' + (parseInt(i) + 1) + '</em>');
+                $(".ck-slide .dot-wrap").append($li);
+            }
+
+
+            if (images.length <= 1) {
+                $(".ctrl-slide").hide();
+                $(".ck-slidebox").hide();
+            }
+
+            $("#imageBoard").hide();
+            $('.ck-slide').show();
+
+            $('.ck-slide').ckSlide({
+                autoPlay: false,//默认为不自动播放，需要时请以此设置
+                dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
+                interval: 10000,//默认间隔2000毫秒
+                callback: turnPage
+            });
+        }
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 function turnPage(index) {
@@ -235,11 +242,8 @@ function initMembersList() {
                     var members = result.returnObject;
                     for (var i in members) {
                         users[members[i].huanxin_uid] = members[i];
-                        var userIcon = members[i].icon || 'images/tx.gif';
-                        var $li = $('<li><a href="javascript:void(0);" userToken="' + members[i].userToken + '"><img src="' + userIcon + '" /><ol>' + members[i].nickName + '</ol></a></li>');
-                        $(".v_ren ul").append($li);
-                        $li = $('<li data-identification="'+members[i].identification+'"><img src="' + userIcon + '" /><span>' + members[i].nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
-                        $(".list_name ul").append($li);
+                        members[i].huanxinUid = members[i].huanxin_uid;
+                        appendUser(members[i]);
                     }
                 }
             }
@@ -365,6 +369,9 @@ var messageFactory = {
     JOIN_ROOM: function (id) {
         return {"type": 15, "id": id};
     },
+    LOGOUT_ROOM : function(id){
+        return {"type": 16, "id": id};
+    },
     CHART: function (message) {
         message = message.trim();
         var myid = $("#huanxinUid").val();
@@ -404,13 +411,28 @@ var excutors = {
                     if (result.serverStatus == 0) {
                         var member = result.returnObject;
                         users[member.huanxinUid] = member;
-                        var userIcon = member.icon || 'images/tx.gif';
-                        var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
-                        $(".v_ren ul").append($li);
-                        $li = $('<li data-identification="'+member.identification+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
-                        $(".list_name ul").append($li);
+                        appendUser(member);
                     }
                 }
+            }
+        });
+    },
+    16:function(data){
+       //退出房间
+        var huanxinUid = data.id;
+        console.log("退出房间"+huanxinUid);
+
+        $(".list_name ul li").each(function(){
+            var $this = $(this);
+            console.log($this)
+            if(huanxinUid == $this.data("huanxinuid")){
+                $this.remove();
+            }
+        });
+        $(".v_ren ul li").each(function(){
+            var $this = $(this);
+            if(huanxinUid == $this.data("huanxinuid")){
+                $this.remove();
             }
         });
     },
@@ -433,6 +455,20 @@ var excutors = {
         showDocsImages([data.url]);
     }
 };
+/**
+ * 渲染员工
+ * @param member
+ */
+function appendUser(member){
+    var userIcon = member.icon || 'images/tx.gif';
+    if(userIcon.indexOf("file.")==0){
+        userIcon = "http://"+userIcon;
+    }
+    var $li = $('<li data-huanxinuid="'+member.huanxinUid+'"><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
+    $(".v_ren ul").append($li);
+    $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+    $(".list_name ul").append($li);
+}
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
  type =2 视频，{"type":2,"url","http://xxx地址"}
  type =3 音频  {"type":3,"url","http://xxx地址"}
@@ -563,11 +599,14 @@ function searchUser(isManager){
         $(".list_name ul li").show();
         return;
     }
+    function checkIsManager(identification){
+        return identification=="2"||identification=="4";
+    }
     $(".list_name ul li").each(function () {
         var $this = $(this);
         var userNickName = $this.find("span").text();
         var identification = $this.data("identification");
-        if ((isManager&&identification == "2")||(!isManager&&userNickName.indexOf(searchValue) > -1)) {
+        if ((isManager&&checkIsManager(identification))||(!isManager&&userNickName.indexOf(searchValue) > -1)) {
             $this.show();
         } else {
             $this.hide();
@@ -587,11 +626,9 @@ function setSearchScope(isManager){
  * 退出房间
  */
 function logoutRoom(){
-    ajaxPost({"type":"UL031", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"userToken":$("#userToken").val()})},function(filePath){
-        console.log(filePath);
-        sendNotification(messageFactory.FILE(1, filePath));
-    },function(){
+    ajaxPost({"type":"UL031", "param":JSON.stringify({"houseToken":$("#houseToken").val(),"userToken":$("#userToken").val()})},function(){
         $.cookie($("#houseToken").val(), null);
+        sendNotification(messageFactory.LOGOUT_ROOM($("#huanxinUid").val()));
         window.location.href = "home.jsp";
     });
 }

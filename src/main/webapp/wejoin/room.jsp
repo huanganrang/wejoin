@@ -63,8 +63,12 @@ var namespace = "room";
 <script type="text/javascript">
 var basePath = '${pageContext.request.contextPath}';
 var ROOM_INFO = {
-    channelId :<%=channelId%> ,
-    houseId:<%=houseId%>
+	channelId:<%=channelId%>,
+	houseId:<%=houseId%>,
+	owner: '<%=owner%>',
+	isOwner: function () {
+		return "true" == ROOM_INFO.owner;
+	}
 }
 //videojs.options.flash.swf = base + "jslib/video-js/video-js.swf";
 
@@ -588,5 +592,8 @@ function setVoiceNumber(voice){
 				<div class="close_btn"></div>
 			  </div>
 		</div>
+<div class="loader">
+	<div class="progress-bar"><div class="progress-stripes"></div><div class="percentage">0%</div></div>
+</div>
 </body>
 </html>

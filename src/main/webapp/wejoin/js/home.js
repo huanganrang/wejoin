@@ -150,7 +150,7 @@ function channelPage(pageNo){
         			var channels = result.returnObject;
                 	var $channelTemplate = $("#channelTemplate");
                 	$("#con_one_1 .list_main1 ul li:not(:first)").remove();
-					var userTokenName = $("#userNickName").val();
+					var userTokenName = $("#userToken").val();
                 	for(var i=0; i<channels.length; i++) {
                 		var $channelItem = $channelTemplate.clone().removeAttr("id").show();
                 		$("#con_one_1 .list_main1 ul").append($channelItem);
@@ -162,7 +162,7 @@ function channelPage(pageNo){
                 		$channelItem.find(".list_3 em a").attr('channelToken', channels[i].token).attr("channelId", channels[i].id).attr("channelName", channels[i].name).bind("click", function(){
                 			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"),$(this).attr("channelName"));
                 		});
-						if(userTokenName === channels[i].nickName){
+						if(userTokenName === channels[i].userToken){
 							$channelItem.find(".list_3 ol").show();
 						}
                 	}
@@ -258,11 +258,13 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 										"param": JSON.stringify({"houseToken": houseToken, "userToken": userToken})
 									}, function (data) {
 										$.cookie(houseToken, true);
-										window.location.href = 'room.jsp?houseToken=' + houseToken
+										var href = 'room.jsp?houseToken=' + houseToken
 											+ '&houseId=' + houseId
 											+ '&channelId=' + channelId
 											+ '&huanxinRoomId=' + huanxinRoomId
 											+ '&owner=' + owner;
+										//window.location.href
+										window.open(href);
 									});
 								}
 
