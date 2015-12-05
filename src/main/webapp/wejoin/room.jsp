@@ -1,3 +1,4 @@
+<%@ page import="jb.listener.Application" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -5,6 +6,7 @@
 <html>
 <head>
 <%
+	String staticVersion = Application.version;
 	String houseToken = request.getParameter("houseToken");
 	String houseId = request.getParameter("houseId");
 	String channelId = request.getParameter("channelId");
@@ -17,40 +19,40 @@
 var base = '${pageContext.request.contextPath}/';
 var namespace = "room";
 </script>
-<link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/style.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/login.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/js/RightMenu/smartMenu.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
 <%--<link href="${pageContext.request.contextPath}/jslib/video-js/video-js.css" rel="stylesheet" type="text/css" />--%>
-<link href="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/css/jquery-ui.min.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
 
 	<!-- <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script> -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/jquery-1.11.1.js"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/jquery-1.11.1.js?v=<%=staticVersion%>"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 <!-- <script src="${pageContext.request.contextPath}/wejoin/js/sockjs.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/stomp.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/knockout.js" type="text/javascript" charset="utf-8"></script> -->
-<script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/RightMenu/jquery-smartMenu.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 <%--
 <script src="${pageContext.request.contextPath}/jslib/video-js/video.js" type="text/javascript" charset="utf-8"></script>
 --%>
-<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/jquery-ui.min.js"></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js?v=<%=staticVersion%>'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js?v=<%=staticVersion%>'></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js?v=<%=staticVersion%>"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js?v=<%=staticVersion%>"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-ui-1.10.4/jquery-ui.min.js?v=<%=staticVersion%>"></script>
 
 	<!-- <script src="${pageContext.request.contextPath}/wejoin/js/easemob.js" type="text/javascript" charset="utf-8"></script> -->
-<link href="${pageContext.request.contextPath}/wejoin/js/slide/slide.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/wejoin/js/slide/slide.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/room.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
+<link href="${pageContext.request.contextPath}/wejoin/js/slide/slide.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<script src="${pageContext.request.contextPath}/wejoin/js/slide/slide.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/jslib/jquery.base64.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/room.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/common.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 
-<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/login.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
@@ -592,8 +594,6 @@ function setVoiceNumber(voice){
 				<div class="close_btn"></div>
 			  </div>
 		</div>
-<div class="loader">
-	<div class="progress-bar"><div class="progress-stripes"></div><div class="percentage">0%</div></div>
-</div>
+
 </body>
 </html>

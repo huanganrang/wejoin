@@ -325,7 +325,7 @@ function communityPage(pageNo){
                 		$("#con_one_2 .list_main1 ul").append($communityItem);
                 		$communityItem.find(".list_1 span").html(communitys[i].name);
                 		$communityItem.find(".list_1 em").html("在线：" + communitys[i].userOnlineCount);
-                		$communityItem.find(".list_2 span img").attr("src", communitys[i].url + "/" + communitys[i].channelIcon);
+                		$communityItem.find(".list_2 span img").attr("src",  "http://" + communitys[i].channelIcon);
                 		$communityItem.find(".list_2 em").html(communitys[i].shortDesc);
                 		$communityItem.find(".list_3 span").html("创建者：" + communitys[i].nickName);
                 		$communityItem.find(".list_3 em a").attr("communityId", communitys[i].id);

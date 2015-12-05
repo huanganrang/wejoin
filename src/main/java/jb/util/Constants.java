@@ -84,5 +84,5 @@ public interface Constants {
 	public static final String GLOBAL_BOOLEAN_FALSE = "0";
 	
 	public static final String DETAIL_HTML_PATH = "api/apiCommon/html?type=TYPE&id=ID";
-	
+
 }

@@ -1,6 +1,10 @@
+<%@ page import="jb.listener.Application" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String staticVersion = Application.version;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +14,19 @@
 var base = '${pageContext.request.contextPath}/';
 var namespace = "home";
 </script>
-<link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/style.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/login.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-easyui-1.3.3/jquery.easyui.min.js" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/tab.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/home.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath}/wejoin/js/check.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/tab.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/home.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/common.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/login.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/check.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body class="ltbj">
@@ -96,7 +100,7 @@ var namespace = "home";
            	    <ul>
                	  <li id="channelTemplate" style="display:none;">
                   		<div class="list_1"><span>稻米之家</span>  <em>在线：292680</em></div>
-                      		<div class="list_2"><span><img src="" /></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
+                      		<div class="list_2"><span><img src="" onerror="javascript:this.src='images/dog.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
                       		<div class="list_3">
                       			<span>创建者：会飞的鱼</span>  
                       			<ol><a onclick="showLoginBox()" class="btn_ckxd" href="javascript:void(0);">创建房间</a></ol>
@@ -248,13 +252,14 @@ var namespace = "home";
                 	<form action="" method="get">
                 	<ul>
                     	<li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" maxlength="10" value="房间标题" onfocus="if(this.value=='房间标题'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='房间标题';this.style.color='#999'}" class="putc"></li>
-                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="直播密码" onfocus="if(this.value=='直播密码'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='直播密码';this.style.color='#999'}" class="putc"></li>
+                        <li><input type="text"  name="telphone" id="textfield" value="直播密码" onfocus="if(this.value=='直播密码'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='直播密码';this.style.color='#999'}" class="putc"  style="color: rgb(153, 153, 153);width: 380px;">启用<input type="checkbox"></li>
                         <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="开始时间" onfocus="if(this.value=='开始时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='开始时间';this.style.color='#999'}" class="putc"></li>
                         <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="结束时间" onfocus="if(this.value=='结束时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='结束时间';this.style.color='#999'}" class="putc"></li>
                         <li><input name="" type="submit" value="创建房间" class="putf"/></li>
-                        </form>
                     </ul>
-                </div>
+					</form>
+
+				</div>
                 </div>
                 <div class="dj_btn1"></div>
             </div>
