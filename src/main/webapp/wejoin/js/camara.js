@@ -60,7 +60,6 @@ $(function(){
             }else if(fileContentType.indexOf('ppt')>-1){
                 $("#fileType").val(8);
             }
-            //TODO 其他的待定
             var formData = new FormData($('#uploadform')[0]);
             $.ajax({
                 url: SERVER_URL+'/upload',  //Server script to process data
@@ -103,7 +102,9 @@ $(function(){
                 success:function (data) {
                     console.log(data);
                     ajaxGet({"type": "UL043", "encode": data}, function (data) {
-                        console.log("点播地址："+data)
+                        console.log("点播地址："+data);
+                        sendNotification(messageFactory.VEDIO(data));
+                        playVideoFromUpload(data);
                     },function(result){
                         return result.returnValue;
                     });
@@ -117,6 +118,10 @@ $(function(){
     });
 
 });
+
+function playVideoFromUpload(url){
+    $("#videoIframe")[0].src= basePath+"/jslib/video-js/video.jsp?videoUrl="+url;
+}
 
 function uploadHTML5(data){
     ajaxPost({"type":"UL041", "param":JSON.stringify({"data":data})},function(filePath){

@@ -339,7 +339,10 @@ function setVoiceNumber(voice){
             <div class="cneter_menu">
                 <a href="javascript:void(0);" class="t4" id="uploadMovie"><img src="images/t4.png" /></a>
             </div>
+<%--
             <img src="images/pic.gif" width="730"/>
+--%>
+			<iframe id="videoIframe" width="730" height="500"></iframe>
         </div>
     </div>
     <!-- 

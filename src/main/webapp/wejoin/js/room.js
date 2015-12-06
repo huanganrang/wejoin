@@ -176,7 +176,14 @@ var sendNotification = function (message) {
     conn.sendTextMessage(options);
     console.log(options);
 };
-
+var showVedios = function(url) {
+    try {
+        $("#voice").click();
+        console.log("收到影音："+url);
+    }catch(e){
+        console.error(e);
+    }
+}
 var showDocsImages = function(images) {
     try {
         $("#documets").click();
@@ -380,6 +387,8 @@ var messageFactory = {
         console.log(result);
         return result;
     },
+    VOICE:function(url){return {"type": 3, "url": url};},
+    VEDIO:function(url){return {"type": 2, "url": url};},
     CLOSE_STREAM : function(){
         return {"type":14};
     },
@@ -393,6 +402,13 @@ var messageFactory = {
 var excutors = {
     1:function(data){
         showDocsImages([data.url]);
+    },
+    2:function(data){
+        showVedios(data.url);
+    },
+    3:function(data){
+        //音频
+        showVedios(data.url);
     },
     13: function(){openPullStream()},
     14: function(){closePullStream()},
