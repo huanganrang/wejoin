@@ -47,73 +47,72 @@ $(function(){
     }
     $("#uploadDocumet").click(function(){
         $("#file").click();
-        $(document).delegate('#file','change',function () {
-            var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3].toLowerCase(); //这个文件类型正则很有用：）
-            if(fileContentType.indexOf('txt')>-1){
-                $("#fileType").val(9);
-            }else if(fileContentType.indexOf('doc')>-1 || fileContentType.indexOf('docx')>-1){
-                $("#fileType").val(6);
-            }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
-                $("#fileType").val(7);
-            }else if(fileContentType.indexOf('pdf')>-1){
-                $("#fileType").val(10);
-            }else if(fileContentType.indexOf('ppt')>-1){
-                $("#fileType").val(8);
-            }
-            var formData = new FormData($('#uploadform')[0]);
-            $.ajax({
-                url: SERVER_URL+'/upload',  //Server script to process data
-                type: 'POST',
-                //Ajax events
-                //beforeSend: beforeSendHandler,
-                //success: completeHandler,
-                //error: errorHandler,
-                // Form data
-                data: formData,
-                //Options to tell jQuery not to process data or worry about content-type.
-                cache: false,
-                contentType: false,
-                processData: false,
-                success:function (data) {
-                	console.log(data);
-                    var result = $.parseJSON(data);
-                    if(result.serverStatus == 0){
-                    	images = result.returnObject;
-                        sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
-                        showDocsImages(result.returnObject);
-                    }
+    });
+    $(document).delegate('#file','change',function () {
+        var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3].toLowerCase(); //这个文件类型正则很有用：）
+        if(fileContentType.indexOf('txt')>-1){
+            $("#fileType").val(9);
+        }else if(fileContentType.indexOf('doc')>-1 || fileContentType.indexOf('docx')>-1){
+            $("#fileType").val(6);
+        }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
+            $("#fileType").val(7);
+        }else if(fileContentType.indexOf('pdf')>-1){
+            $("#fileType").val(10);
+        }else if(fileContentType.indexOf('ppt')>-1){
+            $("#fileType").val(8);
+        }
+        var formData = new FormData($('#uploadform')[0]);
+        $.ajax({
+            url: SERVER_URL+'/upload',  //Server script to process data
+            type: 'POST',
+            //Ajax events
+            //beforeSend: beforeSendHandler,
+            //success: completeHandler,
+            //error: errorHandler,
+            // Form data
+            data: formData,
+            //Options to tell jQuery not to process data or worry about content-type.
+            cache: false,
+            contentType: false,
+            processData: false,
+            success:function (data) {
+                console.log(data);
+                var result = $.parseJSON(data);
+                if(result.serverStatus == 0){
+                    images = result.returnObject;
+                    sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
+                    showDocsImages(result.returnObject);
                 }
-            });
+            }
         });
     });
-
     $("#uploadMovie").click(function(){
         $("#moviefile").click();
-        $(document).delegate('#moviefile','change',function () {
-            var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
-            var formData = new FormData($('#uploadformMovie')[0]);
-            $.ajax({
-                url: getVoiceUploadUrl(),  //Server script to process data
-                type: 'POST',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success:function (data) {
-                    console.log(data);
-                    ajaxGet({"type": "UL043", "encode": data}, function (data) {
-                        console.log("点播地址："+data);
-                        sendNotification(messageFactory.VEDIO(data));
-                        playVideoFromUpload(data);
-                    },function(result){
-                        return result.returnValue;
-                    });
-                    /*var result = $.parseJSON(data);
-                    if(result.serverStatus == 0){
-                        sendNotification(messageFactory.FILE(result.type,result.returnValue));
-                    }*/
-                }
-            });
+    });
+    $(document).delegate('#moviefile','change',function () {
+        var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
+        var formData = new FormData($('#uploadformMovie')[0]);
+        $.ajax({
+            url: getVoiceUploadUrl(),  //Server script to process data
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success:function (data) {
+                console.log(data);
+                ajaxGet({"type": "UL043", "encode": data}, function (data) {
+                    console.log("点播地址："+data);
+                    sendNotification(messageFactory.VEDIO(data));
+                    playVideoFromUpload(data);
+                },function(result){
+                    return result.returnValue;
+                });
+                /*var result = $.parseJSON(data);
+                 if(result.serverStatus == 0){
+                 sendNotification(messageFactory.FILE(result.type,result.returnValue));
+                 }*/
+            }
         });
     });
 
