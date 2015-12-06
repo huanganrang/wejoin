@@ -8,7 +8,7 @@ var NET_VOICE_URL = "";
  * @param parameter
  * @param success
  */
-function ajaxGet(parameter,success){
+function ajaxGet(parameter,success,callData){
     $.ajax({
         type: "GET",
         url: base+"api/apiCommon/doGet",
@@ -19,7 +19,11 @@ function ajaxGet(parameter,success){
                 console.log(data.obj);
                 var json = JSON.parse(data.obj);
                 if(json.serverStatus == 0) {
-                    success(json.returnObject);
+                    if(callData){
+                        success(callData(json));
+                    }else{
+                        success(json.returnObject);
+                    }
                 } else {
                     // 登录失败
                     alert(json.returnMessage);

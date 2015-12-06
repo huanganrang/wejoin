@@ -102,6 +102,11 @@ $(function(){
                 processData: false,
                 success:function (data) {
                     console.log(data);
+                    ajaxGet({"type": "UL043", "encode": data}, function (data) {
+                        console.log("点播地址："+data)
+                    },function(result){
+                        return result.returnValue;
+                    });
                     /*var result = $.parseJSON(data);
                     if(result.serverStatus == 0){
                         sendNotification(messageFactory.FILE(result.type,result.returnValue));
