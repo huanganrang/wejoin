@@ -253,34 +253,27 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 								var owner = adminToken == userToken;
 								function joinHouse() {
 									//  调用joinHouse接口
-									ajaxPost({
+									ajaxPostSync({
 										"type": "UL014",
 										"param": JSON.stringify({"houseToken": houseToken, "userToken": userToken})
-									}, function (data) {
+									}, function () {
 										$.cookie(houseToken, true);
-										var href = 'room.jsp?houseToken=' + houseToken
-											+ '&houseId=' + houseId
-											+ '&channelId=' + channelId
-											+ '&huanxinRoomId=' + huanxinRoomId
-											+ '&owner=' + owner;
-										//window.location.href
-										window.open(href);
 									});
 								}
 
 								if (userToken) {
-									ajaxPost({
+									ajaxPostSync({
 										"type": "UL031",
 										"param": JSON.stringify({"houseToken": houseToken, "userToken": userToken})
-									}, function (data) {
+									}, function () {
 										joinHouse();
 									});
 								} else {
-									ajaxPost({"type": "UL037"}, function (data) {
+									ajaxPostSync({"type": "UL037"}, function (data) {
 										var username = data.huanxinUid;
 										var password = data.password;
 										userToken = data.token;
-										ajaxGet({
+										ajaxGetSync({
 											"type": "UL040",
 											"huanxinUid": username,
 											"password": password
@@ -289,6 +282,13 @@ function channel_roomPage(channelId, channelToken,channelTitle){
 										});
 									});
 								}
+
+								var href = 'room.jsp?houseToken=' + houseToken
+									+ '&houseId=' + houseId
+									+ '&channelId=' + channelId
+									+ '&huanxinRoomId=' + huanxinRoomId
+									+ '&owner=' + owner;
+								window.open(href);
 							});
 						}
 
