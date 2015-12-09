@@ -123,7 +123,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 		var itian_tb_h = $('.itian_tb').height();
 		var b_h = $(window).height();
 		var content_h = b_h - head_h - ltian_menu_h - ltian_form_h - itian_tb_h;
-		$('.content_right').height(content_h)
+		$('.content_right').height(content_h);
 	}
 	function changeHeightLeft(){
 		InitLeftVideo();
@@ -467,6 +467,7 @@ function setVoiceNumber(voice){
     <div class="ltian_form">
     	<form action="" method="get">
         <textarea name="" cols="" rows="" class="pt3" id="content"></textarea>
+        <input name="" type="button" value="发送" class="tzfs" id="sendMsg"/>
         </form>
     </div> 
     <div class="itian_tb">
@@ -597,6 +598,38 @@ function setVoiceNumber(voice){
 				<div class="close_btn"></div>
 			  </div>
 		</div>
+
+
+<!--上传进度条 开始-->
+<div class="windows dhdBox" id="dhdBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="tjcg_con">
+            	<div class="dj_top2"></div>
+                <div class="sz_ta">
+                	<div class="sz_ta_title">文件上传</div>
+                    <div class="up_center">
+                            <div id="ff">   
+                            <div class="up_par">
+                            	<!-- <input type="file" id="f" class="up_style" size="30" /> -->
+                                <div class="up_zi" id="fileUpload">选择文件</div>
+                                <input type="button" id="b" class="up_an" value="上传" onclick="upload()"/> 
+                                
+                                <div id="up">   
+                                <span class="spa">载入中,请稍等...</span>   
+                                <input id="chart" type="text" size="54" class="put" readOnly />   
+                                <input id="percent" type="text" size="20" class="put2" readOnly />   
+                                </div>
+                            </div>
+                        </div>  
+                    </div> 
+                </div>
+                <div class="dj_btn2"></div>
+            </div>
+			<div class="close_btn"></div>
+		  </div>
+	</div>
+<!--上传进度条 结束-->
 
 </body>
 </html>

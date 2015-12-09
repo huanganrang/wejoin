@@ -46,46 +46,17 @@ $(function(){
         });
     }
     $("#uploadDocumet").click(function(){
-        $("#file").click();
+//        $("#file").click();
+    	showdhdBox();
+    	flag = true;
     });
-    $(document).delegate('#file','change',function () {
-        var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3].toLowerCase(); //这个文件类型正则很有用：）
-        if(fileContentType.indexOf('txt')>-1){
-            $("#fileType").val(9);
-        }else if(fileContentType.indexOf('doc')>-1 || fileContentType.indexOf('docx')>-1){
-            $("#fileType").val(6);
-        }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
-            $("#fileType").val(7);
-        }else if(fileContentType.indexOf('pdf')>-1){
-            $("#fileType").val(10);
-        }else if(fileContentType.indexOf('ppt')>-1){
-            $("#fileType").val(8);
-        }
-        var formData = new FormData($('#uploadform')[0]);
-        $.ajax({
-            url: SERVER_URL+'/upload',  //Server script to process data
-            type: 'POST',
-            //Ajax events
-            //beforeSend: beforeSendHandler,
-            //success: completeHandler,
-            //error: errorHandler,
-            // Form data
-            data: formData,
-            //Options to tell jQuery not to process data or worry about content-type.
-            cache: false,
-            contentType: false,
-            processData: false,
-            success:function (data) {
-                console.log(data);
-                var result = $.parseJSON(data);
-                if(result.serverStatus == 0){
-                    images = result.returnObject;
-                    sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
-                    showDocsImages(result.returnObject);
-                }
-            }
-        });
+    $("#fileUpload").click(function(){
+    	if(!$("#up").is(":hidden")) return;
+    	$("#file").click();
     });
+//    $(document).delegate('#file','change',function () {
+//    	fileUpload();
+//    });
     $("#uploadMovie").click(function(){
         $("#moviefile").click();
     });
@@ -157,3 +128,89 @@ function closePullStream(){
     $("#cameraPull").attr("src","");
 
 }
+
+function fileUpload() {
+	var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3].toLowerCase(); //这个文件类型正则很有用：）
+    if(fileContentType.indexOf('txt')>-1){
+        $("#fileType").val(9);
+    }else if(fileContentType.indexOf('doc')>-1 || fileContentType.indexOf('docx')>-1){
+        $("#fileType").val(6);
+    }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
+        $("#fileType").val(7);
+    }else if(fileContentType.indexOf('pdf')>-1){
+        $("#fileType").val(10);
+    }else if(fileContentType.indexOf('ppt')>-1){
+        $("#fileType").val(8);
+    }
+    var formData = new FormData($('#uploadform')[0]);
+    $.ajax({
+        url: SERVER_URL+'/upload',  //Server script to process data
+        type: 'POST',
+        //Ajax events
+        //beforeSend: beforeSendHandler,
+        //success: completeHandler,
+        //error: errorHandler,
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function (data) {
+            console.log(data);
+            var result = $.parseJSON(data);
+            if(result.serverStatus == 0){
+            	document.getElementById("percent").value = "100%"; 
+            	$(".windows").hide();
+            	bar=0;   
+            	line="||";   
+            	amount="";   
+            	document.getElementById("up").style.display="none";
+            	document.getElementById("b").disabled  = false;  
+            	flag = false;
+            	
+                images = result.returnObject;
+                sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
+                showDocsImages(result.returnObject);
+            }
+        }
+    });
+}
+
+var bar=0;   
+var line="||";   
+var amount="";   
+document.getElementById("up").style.display="none";
+var flag = true;
+
+function upload() {
+	count();
+	fileUpload();
+}
+    
+function count(){   
+	if(!flag) return;
+    var f = document.getElementById("file");   
+    var b = document.getElementById("b");   
+    b.disabled  = true;   
+    if(f.value==""){   
+    	b.disabled  = false;   
+    	alert("请添加上传文件");   
+    	return false;   
+    }   
+    document.getElementById("up").style.display="inline";   
+    bar = bar+2;   
+    amount = amount+line;   
+    document.getElementById("chart").value = amount;   
+    document.getElementById("percent").value = bar+"%";   
+    if(bar<98){   
+    	setTimeout("count()", 200);   
+    }else{   
+    	document.getElementById("percent").value = "99%";   
+    	//b.disabled  = false;   
+    	//f.disabled  = false;   
+    	//alert("加载完毕！");   
+    	//document.getElementById("up").style.display="none";   
+    }   
+} 
+

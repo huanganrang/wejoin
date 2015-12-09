@@ -129,8 +129,9 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_right li.wo .ltian_txt .txt_zi{ background:#46c34f; color:#fff;}
 .main_right li.wo .ltian_txt span{ font-size:12px; color:#999; text-align:right; display:block;}
 .ltian_menu{ width:100%; height:30px; background:#e4e4e4; position:relative;}
-.ltian_form{ border:1px solid #dadada;}
-.ltian_form .pt3{height:50px; background:#fff; border:none; box-shadow:0 0 1px #d3d3d3, 2px 3px 3px #e5e5e5 inset; width:96%; padding:2%; }
+.ltian_form{ border:1px solid #dadada; position:relative;}
+.ltian_form .pt3{height:50px; background:#fff; border:none; box-shadow:0 0 1px #d3d3d3, 2px 3px 3px #e5e5e5 inset; width:96%; padding:2%; overflow-y:hidden;}
+.ltian_form .tzfs{ width:80px; height:32px; border:1px solid #ddd; background:#fff; text-align:center; color:#666; font-weight:bold; cursor:pointer; position:absolute; right:2px; bottom:2px;}
 
 .ltian_menu .ltia_1{ width:145px; height:30px; float:right; position:relative; cursor:pointer;}
 .ltian_menu .ltia_1 span{background: url(../images/sj.gif) no-repeat 0px -58px; width:11px; height:6px; display:block; height:30px; width:100px;  text-align:center; line-height:30px; font-size:14px; margin:0 auto;}
@@ -383,6 +384,20 @@ cursor:pointer;
 .logo_list3 .logo_dl{ width:218px; clear:both; float:none; height:26px;}
 .logo_list3 .logo_dl a{ float:left; background:#7de310; height:26px; line-height:26px; text-align:center; width:40%; margin-left:5%; }
 .logo_list3 .logo_name{ width:218px; text-align:center;  float:none;  overflow:hidden;}
+
+.dhdBox .close_btn {position: absolute;right:19px;top: 22px;width: 32px;z-index: 100;height: 32px;background: url(../images/logintb1.png) no-repeat -142px 0;display: block; cursor:pointer;}
+.dhdBox  .windows_box{ width:419px; margin:auto; position: relative; z-index:11; top:8px;}
+.tjcgBox  .windows_box{ width:419px;  margin:auto; position: relative; z-index:11; top:188px;}
+.up_center{ width:419px; height:200px; border-top:1px solid #fff; padding-top:20px;}
+.spa{  font-size:12px;   color:#666; display:block; margin-bottom:5px;}   
+.put{ font-size:12px;  font-family:Arial;  color:#fff;  background:#63b30e; padding:0px; border-style:none; float:left; width:320px; padding-left:10px;}   
+.put2{ font-size:12px; color:#666; width:55px; text-align:center; border-width:medium;   border-style:none; background:none; float:left;}
+#up{ display:none; position:absolute; left:20px; top:100px;} 
+.up_par{ width:419px;  position:relative;}
+.up_zi{ width:275px; height:40px; background:#c8c8c8; position:absolute; left:20px; top:40px; text-align:center; font-size:14px; line-height:40px; z-index:1;}
+.up_style{ background:#c8c8c8; opacity:0; width:275px; height:40px; position:absolute; left:20px; top:40px; z-index:10;}
+.up_an{ width:75px; height:40px; line-height:40px; text-align:center; font-size:14px; position:absolute; right:30px; top:40px; background:#63b30e; color:#fff;  font-family:"微软雅黑"; cursor:pointer;}
+
 
 
 

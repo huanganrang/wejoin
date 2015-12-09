@@ -262,6 +262,16 @@ WeChat.prototype = {
 
     init: function () {
         this._initFace();
+        // 发送按钮发送消息
+        $("#sendMsg").bind("click", function(){
+        	var content = $("#content").val();
+        	 if ($.trim(content) != '') {
+                 // 发送聊天消息
+                 sendText(messageFactory.CHART(content));
+             }
+        	 $("#content").val('').focus();
+        });
+        
         // 回车发送消息
         $("#content").bind('keyup', function (e) {
             var content = $("#content").val();
@@ -270,7 +280,6 @@ WeChat.prototype = {
                 // 发送聊天消息
                 sendText(messageFactory.CHART(content));
             }
-            ;
         });
         // 右键清屏
         $("#box4 .content").smartMenu([[{

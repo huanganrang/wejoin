@@ -204,3 +204,10 @@ function showTjcgBox(){
 	var top=(windowHeight-parseInt($("#tjcgBox .windows_box").height()))/2;
 	$("#tjcgBox .windows_box").css("top",top);			
 }
+
+function showdhdBox(){
+	$(".windows").hide();
+	$("#dhdBox").show();
+	var top=(windowHeight-577)/2;
+	$("#dhdBox .windows_box").css("top",top);	
+}
