@@ -20,6 +20,7 @@ var namespace = "home";
 <link href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css?v=<%=staticVersion%>" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-easyui-1.3.3/jquery.easyui.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/My97DatePicker/WdatePicker.js"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/tab.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/jquery.cookie.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
@@ -32,7 +33,6 @@ var namespace = "home";
 <body class="ltbj">
 <input type="hidden" id="userToken" value="${sessionScope.userToken.token}" />
 <input type="hidden" id="userNickName" value="${sessionScope.userToken.nickName}" />
-
 <div class="header" style="height:72px;">
 	<div class="logo_list2">
 		<c:choose>
@@ -103,7 +103,7 @@ var namespace = "home";
                       		<div class="list_2"><span><img src="" onerror="javascript:this.src='images/dog.gif'"/></span>  <em>有人把微社区当成移动互联网时代的网上家园，有人把微社区当成平行于现实生活轨道的虚拟空间，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区，每个人眼里都有一个不同的微社区</em></div>
                       		<div class="list_3">
                       			<span>创建者：会飞的鱼</span>  
-                      			<ol><a onclick="showLoginBox()" class="btn_ckxd" href="javascript:void(0);">创建房间</a></ol>
+                      			<ol><a class="btn_ckxd" href="javascript:void(0);">创建房间</a></ol>
                       			<em><a href="javascript:void(0);" class="a_1">进入频道</a></em>
                       		</div>
                   </li>
@@ -249,16 +249,28 @@ var namespace = "home";
                 	<span>创建房间</span>
                 </div>
                 <div class="log_list">
-                	<form action="" method="get">
-                	<ul>
-                    	<li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" maxlength="10" value="房间标题" onfocus="if(this.value=='房间标题'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='房间标题';this.style.color='#999'}" class="putc"></li>
-                        <li><input type="text"  name="telphone" id="textfield" value="直播密码" onfocus="if(this.value=='直播密码'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='直播密码';this.style.color='#999'}" class="putc"  style="color: rgb(153, 153, 153);width: 380px;">启用<input type="checkbox"></li>
-                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="开始时间" onfocus="if(this.value=='开始时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='开始时间';this.style.color='#999'}" class="putc"></li>
-                        <li><input type="text" style="color: rgb(153, 153, 153);" name="telphone" id="textfield" value="结束时间" onfocus="if(this.value=='结束时间'){this.value='';this.style.color='#333'}" onblur="if(this.value==''){this.value='结束时间';this.style.color='#999'}" class="putc"></li>
-                        <li><input name="" type="submit" value="创建房间" class="putf"/></li>
-                    </ul>
+                	<form action="" method="get" id="createRoomForm">
+                		<input type="hidden" name="type"> 
+                		<input type="hidden" name="param"> 
+                		<input type="hidden" id="channelToken_addRoom"> 
+                		<input type="hidden" id="channelId_addRoom"> 
+                		<input type="hidden" id="channelName_addRoom"> 
+	                	<ul>
+	                    	<li><input type="text" id="roomTitle" maxlength="10" placeholder="房间标题" class="putc" style="color:#333;"></li>
+	                        <li><input type="text" id="livePsw" placeholder="直播密码" class="putc"  style="color: #333;width: 380px;">启用<input type="checkbox"></li>
+	                        <li>
+	                        	<input class="putc" id="startTime" placeholder="开始时间"
+										onclick="WdatePicker({minDate:'%y-%M-%d',maxDate:'#F{$dp.$D(\'endTime\')}',dateFmt:'yyyy-MM-dd'})"
+										readonly="readonly" style="color: #333;"/>
+	                        </li>
+	                        <li>
+	                        	<input class="putc" id="endTime" placeholder="结束时间"
+										onclick="WdatePicker({minDate:'#F{$dp.$D(\'startTime\')}',dateFmt:'yyyy-MM-dd'})"
+										readonly="readonly" style="color: #333;"/>
+	                        </li>
+	                        <li><input type="button" value="创建房间" class="putf" onclick="javascript:$('#createRoomForm').submit();"/></li>
+	                    </ul>
 					</form>
-
 				</div>
                 </div>
                 <div class="dj_btn1"></div>

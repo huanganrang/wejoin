@@ -75,6 +75,57 @@ $(function(){
 		}
 	});
 	
+	$('#createRoomForm').form({
+		url : base+"api/apiCommon/doPost", //
+		onSubmit : function() {
+			var userToken = $("#userToken").val();
+			if(!userToken) {
+				alert("您还未登录，请先登录！");
+				return false;
+			}
+			
+			var roomTitle = $("#roomTitle").val();
+		    if(roomTitle == '') {
+		    	$("#roomTitle").focus();
+				return false;
+			}
+		    var livePsw = $("#livePsw").val();
+		    if(livePsw == '') {
+		    	$("#livePsw").focus();
+		    	return false;
+		    }
+		    var startTime = $("#startTime").val();
+		    if(startTime == '') {
+				$("#startTime").focus();
+				return false;
+			}
+		    var endTime = $("#endTime").val();
+			if(endTime == '') {
+				$("#endTime").focus();
+				return false;
+			}
+			var channelToken = $("#channelToken_addRoom").val();
+			$(this).find("[name=type]").val("UL042");
+			$(this).find("[name=param]").val(JSON.stringify({"title":roomTitle,"password":livePsw,"startTime":startTime,"endTime":endTime,"channelToken":channelToken,"userToken":userToken}));
+			
+			return true;
+		},
+		success : function(data) {
+			console.log("创建房间data:" + data);
+			data = $.parseJSON(data);
+			if(data.obj){
+				console.log("创建房间data.obj:" + data.obj);
+        		var result = $.parseJSON(data.obj);
+				if(result.serverStatus == 0) {
+					channel_roomPage($("#channelId_addRoom").val(), $("#channelToken_addRoom").val(),$("#channelName_addRoom").val());
+	        	} else {
+	        		// 创建失败
+	        		alert(result.returnMessage);
+	        	}
+			}
+		}
+	});
+	
 	channelPage(1); // 频道列表
 	communityPage(1); // 社区列表
 	channelCategory(); // 频道分类
@@ -113,8 +164,8 @@ function showChcBox(){
 function showLoginBox(){
 	$(".windows").hide();
 	$("#loginBox").show();
-	var top=(windowHeight-577)/2
-	$("#loginBox .windows_box").css("top",top)		
+	var top=(windowHeight-577)/2;
+	$("#loginBox .windows_box").css("top",top);		
 }
 
 function showChannelAddBox(){
@@ -140,7 +191,7 @@ function channelPage(pageNo){
         dataType:"json",
         success:function (data) {
         	if(data.obj){
-        		console.log("获取频道：" + data.obj)
+        		console.log("获取频道：" + data.obj);
         		var result = $.parseJSON(data.obj);
         		if(result.serverStatus == 0) {
         			if(!channelTotal) {
@@ -163,7 +214,12 @@ function channelPage(pageNo){
                 			channel_roomPage($(this).attr("channelId"), $(this).attr("channelToken"),$(this).attr("channelName"));
                 		});
 						if(userTokenName === channels[i].userToken){
-							$channelItem.find(".list_3 ol").show();
+							$channelItem.find(".list_3 ol").attr({'channelToken': channels[i].token, 'channelId': channels[i].id, 'channelName': channels[i].name}).show().bind("click", function(){
+								$("#channelToken_addRoom").val($(this).attr("channelToken"));
+								$("#channelId_addRoom").val($(this).attr("channelId"));
+								$("#channelName_addRoom").val($(this).attr("channelName"));
+								showLoginBox();
+							});
 						}
                 	}
         		}
