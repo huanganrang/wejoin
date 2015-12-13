@@ -29,13 +29,13 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 /* 房产页面 */
-.hed_100{ width:100%; height:55px; background:#33af3c; position:fixed; left:0px; top:0px; z-index:999;}
+.hed_100{ width:100%; height:55px; background:#33af3c; left:0px; top:0px; z-index:999;}
 .hed_100 a.left1{ width:50px; height:55px; display:block; background: url(../images/tb1.png) no-repeat center 14px; float:left; background-size:25px 25px; position:relative; z-index:10;}
 .hed_100 a.right1{ width:50px; height:55px; display:block; background: url(../images/tb2.png) no-repeat center 14px; float:right; background-size:25px 25px; position:relative; z-index:10;}
 .hed_100 .hed_title{ width:100%; height:55px; display:block; position:absolute; left:0px; top:0px; line-height:55px; color:#fff; font-size:18px; text-align:center; z-index:1;}
 
 
-.scroll_center{ width:100%; overflow:auto; background:#eee; height:100%;}
+.scroll_center{ width:100%; overflow:auto;margin-top: -5px; background:#eee;}
 .lt_1{ padding:8px;}
 .lt_1 .lt_img{ float:left; width:40px; height:40px; margin-top:6px;}
 .lt_1 .lt_img img{width:40px; height:40px; display:block; border-radius:8px;}
@@ -75,7 +75,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .d_clock{ width:100%; height:25px; position:absolute; left:0px; bottom:55px;}
 .d_clock a{ width:25px; height:25px; display:block; background: url(../images/sj.png) no-repeat center 0; margin:0 auto; background-size:23px 23px; }
 
-.fired{ position:fixed; left:0px; top:55px; z-index:199; width:100%;}
+.fired{  left:0px; z-index:199; width:100%;}
 .appdown{ padding:10px; background:#dddfe1; position:relative; height:55px;}
 .appdown .apptb{ float:left; width:100%; }
 .appdown .apptb img{ width:47px; height:47px; display:block; float:left; margin-top:5px;}

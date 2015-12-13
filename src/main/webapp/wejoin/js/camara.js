@@ -179,8 +179,10 @@ function fileUpload() {
 
 var bar=0;   
 var line="||";   
-var amount="";   
-document.getElementById("up").style.display="none";
+var amount="";
+$(function() {
+    document.getElementById("up").style.display = "none";
+});
 var flag = true;
 
 function upload() {

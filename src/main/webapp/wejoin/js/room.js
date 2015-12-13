@@ -16,6 +16,7 @@ $(function () {
     wechat.init();
     connInit();
     loginHx();
+    getUserByHuanxinuid($("#huanxinUid").val());
 
     /*$(window).bind('beforeunload', function() {
      if (conn) {
@@ -423,24 +424,8 @@ var excutors = {
     14: function(){closePullStream()},
     15: function (data) {
         if(users[data.id])return;
-        $.ajax({
-            type: "POST",
-            url: base + "api/apiCommon/doGet", // HouseUser/HouseUsers
-            data: {"type": "UL035", "huanxinUid": data.id},
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                if (data.obj) {
-                    console.log("获取用户信息：" + data.obj);
-                    var result = $.parseJSON(data.obj);
-                    if (result.serverStatus == 0) {
-                        var member = result.returnObject;
-                        users[member.huanxinUid] = member;
-                        appendUser(member);
-                    }
-                }
-            }
-        });
+        getUserByHuanxinuid(data.id);
+
     },
     16:function(data){
        //退出房间
@@ -480,6 +465,15 @@ var excutors = {
         showDocsImages([data.url]);
     }
 };
+
+function getUserByHuanxinuid(uid){
+    ajaxGet({"type": "UL035", "huanxinUid": uid}, function (member) {
+        //已经存在
+        if(users[member.huanxinUid])return;
+        users[member.huanxinUid] = member;
+        appendUser(member);
+    });
+}
 /**
  * 渲染员工
  * @param member

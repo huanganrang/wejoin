@@ -18,6 +18,7 @@ $(function () {
     wechat.init();
     connInit();
     login();
+    getUserByHuanxinuid(huanxinUid);
 
     $(window).bind('beforeunload', function () {
         if (conn) {
@@ -108,15 +109,24 @@ function getUserInfo(message) {
     return user;
 }
 
-function getUserInfoByFrom(from) {
+function getUserInfoByFrom(from,message) {
     var userIcon = "images/tx.gif";
     var fromUsername = from;
     console.log(users);
-    console.log(from);
-    if (users[from]) {
-        fromUsername = users[from].nickName;
-        userIcon = users[from].icon || userIcon;
+    if(message){
+        var data = $.parseJSON(message.data);
+        fromUsername = data.myname;
+        userIcon = data.myicon||userIcon;
+    }else{
+        if (users[from]) {
+            fromUsername = users[from].nickName;
+            userIcon = users[from].icon || userIcon;
+        }
     }
+    if(userIcon.indexOf("file.")==0){
+        userIcon = "http://"+userIcon;
+    }
+
     return {'username': fromUsername, 'owner': false, 'content': "", 'userIcon': userIcon};
 }
 
@@ -297,7 +307,7 @@ WeChat.prototype = {
         $("#lastOne").remove();
         $(".content").append($messageHtml);
         $(".content").append('<div style="height:15px;" id="lastOne"></div>');
-        $(".content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
+        //$(".content").mCustomScrollbar("scrollTo", "bottom"); // 滚动至底部
         $(".content")[0].scrollTop = $(".content")[0].scrollHeight;
     },
     // 表情点击事件
@@ -349,28 +359,8 @@ var excutors = {
     13: function(){openPullStream()},
     14: function(){closePullStream()},
     15: function (data) {
-        $.ajax({
-            type: "POST",
-            url: base + "api/apiCommon/doGet", // HouseUser/HouseUsers
-            data: {"type": "UL035", "huanxinUid": data.id},
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                if (data.obj) {
-                    console.log("获取用户信息：" + data.obj);
-                    var result = $.parseJSON(data.obj);
-                    if (result.serverStatus == 0) {
-                        var member = result.returnObject;
-                        users[member.huanxinUid] = member;
-                        var userIcon = member.icon || '';
-                        var $li = $('<li><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" />' + member.nickName + '</a></a></li>');
-                        $(".v_ren ul").append($li);
-                        $li = $('<li><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
-                        $(".list_name ul").append($li);
-                    }
-                }
-            }
-        });
+        if(users[data.id])return;
+        getUserByHuanxinuid(data.id);
     },
     6:function(data){
         showDocsImages([data.url]);
@@ -411,8 +401,17 @@ function initHouse(){
         $("#huanxinRoomId").val(data.huanxinRoomId);
         //$("#userToken").val(data.token);
         console.log("生成了房间");
-        $(".hed_title").text(data.title+"("+data.onlineUserCount+")");
+        document.title = data.title+"("+data.onlineUserCount+")";
+        //$(".hed_title").text(data.title+"("+data.onlineUserCount+")");
         return data;
+    });
+}
+function getUserByHuanxinuid(uid){
+    ajaxGet({"type": "UL035", "huanxinUid": uid}, function (member) {
+        //已经存在
+        if(users[member.huanxinUid])return;
+        users[member.huanxinUid] = member;
+        //appendUser(member);
     });
 }
 

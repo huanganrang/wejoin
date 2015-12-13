@@ -14,7 +14,9 @@
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <link href="${pageContext.request.contextPath}/mobile/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/mobile/css/jquery.style.css" rel="stylesheet" type="text/css" />
+<%--
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mobile/css/jquery.mCustomScrollbar.css">
+--%>
 <link rel="stylesheet" type="text/css" href="images/common.css"/>
 
 <script src="${pageContext.request.contextPath}/jslib/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
@@ -26,7 +28,9 @@
 <script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="${pageContext.request.contextPath}/mobile/js/chart.js" type="text/javascript" charset="utf-8"></script>
+<%--
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
+--%>
 <script>
 var base = '${pageContext.request.contextPath}/';
 
@@ -34,16 +38,16 @@ $(function(){
 	changeHeight();
 })
 	$(window).resize(function() {
-		changeHeight();
+		//changeHeight();
 	});
 	
-	function changeHeight(){
-		var head_h = $('.hed_100').height();
-		var footer_h = $('.input_wenbi').height();
-		var b_h = $(window).height();
-		var content_h = b_h - head_h - footer_h;
-		$('.content').height(content_h)
-	}
+function changeHeight(){
+    var head_h = $('#box2').height();
+    var footer_h = $('.input_wenbi').height();
+    var b_h = $(window).height();
+    var content_h = b_h - head_h - footer_h+5;
+    $('.content').height(content_h)
+}
 //=点击展开关闭效果=
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
@@ -73,7 +77,7 @@ $(function(){
 </head>
 
 <body>
-houseId
+
 <input type="hidden" id="houseId" value="<%=houseId%>"/>
 <input type="hidden" id="userToken"/>
 <input type="hidden" id="nickName"/>
@@ -81,12 +85,11 @@ houseId
 <input type="hidden" id="password"/>
 <input type="hidden" id="houseToken"/>
 <input type="hidden" id="huanxinRoomId"/>
-<div class="hed_100">
+<div class="hed_100" style="display: none;">
 	<a href="#" class="left1"></a>
     <a href="#" class="right1"></a>
     <div class="hed_title">房间标题（<%=houseId%>）</div>
 </div>
-<div style="height:55px;"></div>
 
 
 <%--<div id="box1">
