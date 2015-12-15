@@ -28,6 +28,9 @@
 <script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="${pageContext.request.contextPath}/mobile/js/chart.js" type="text/javascript" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath}/mobile/js/tab.js" type="text/javascript" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath}/mobile/js/swiper.min.js"></script>
+
 <%--
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
 --%>
@@ -42,10 +45,11 @@ $(function(){
 	});
 	
 function changeHeight(){
+    var video_H = $('.video').height();
     var head_h = $('#box2').height();
     var footer_h = $('.input_wenbi').height();
     var b_h = $(window).height();
-    var content_h = b_h - head_h - footer_h+5;
+    var content_h = b_h - head_h - footer_h-video_H+5;
     $('.content').height(content_h)
 }
 //=点击展开关闭效果=
@@ -110,8 +114,7 @@ $(function(){
 </div>--%>
 
 
-<div id="box2">
-<div class="fired">
+<div class="video">
     <SCRIPT LANGUAGE=JavaScript>
         /*
          * HLSPlayer参数应用=========================<br>
@@ -140,43 +143,221 @@ $(function(){
         //http://b.cuplayer.net:8011/hls2-vod/test.mp4.m3u8
     </SCRIPT>
     <script type="text/javascript" src="js/hls.min.js?rand=20141217"></script>
-<div class="appdown" style="display: none;">
-	<div class="apptb">
-    	<!-- <img src="images/apptb.png"><span><a href="#">快速加载，流畅收听</a></span> -->
-    	<div class="video" id="HLSPlayer" >
-
-
+</div>
+<div id="box2">
+    <div class="fired">
+        <div class="appdown">
+            <div class="apptb">
+                <img src="images/apptb.png"><span><a href="#">下载APP，直播更流畅</a></span>    </div>
+            <div class="app_an"><a href="#">立即下载</a></div>
+            <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>
         </div>
     </div>
-    <%--<div class="app_an"><a href="#">立即下载</a></div>
-    <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>--%>
 </div>
-</div>
-</div>
+
+
+
+
 
 
 <div class="scroll_center">
-	<div class="content mCustomScrollbar">
-    <div style="height:15px;" id="lastOne"></div>
+    <div class="content mCustomScrollbar">
+        <div style="height:15px;"></div>
     </div>
 </div>
 
 <div class="input_wenbi">
     <div class="inp_div">
         <div class="inp_tb1">
-            <a href="javascript:void(0)" onClick="javascript:void(0)"><img src="images/tb16.png"></a>
+            <a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb16.png"></a>
         </div>
         <div class="inp_tb2">
-            <form action="" method="get">
-                <input name="" type="text" class="inp_wbe" id="content">
-            </form>
+                <input name="" id="content" type="text" class="inp_wbe">
         </div>
         <div class="inp_tb3">
-            <a href="javascript:void(0)"><img src="images/tb17.png"></a>
-            <a href="javascript:void(0)" id="sendButton"style="background:#33af3c; text-align:center; color:#fff; padding:0px; height:57px; line-height:57px; font-size:14px;">发送</a>
+
+            <a onClick="openShutManager(this,'box6')" style="width: 33%"><img src="images/tb17.png"></a>
+            <a onClick="openShutManager(this,'box7')" style="width: 33%"><img src="images/tb18.png"></a>
+            <a href="javascript:void(0)" id="sendButton" style="width: 33%">发送</a>
 
         </div>
     </div>
+
+    <div class="ys_center" id="box6" style="display:none; height:212px; position:relative;">
+        <div class="ys_title">
+            <ul>
+                <li class="hover" onclick="setTab('one',1,2)" id="one1">表情</li>
+                <li onclick="setTab('one',2,2)" id="one2">礼物</li>
+                <ol><a href="javascript:void(0)" >发送</a></ol>
+            </ul>
+        </div>
+
+        <!-- 表情 -->
+        <div id="con_one_1">
+            <div class="swiper-container fadeInDown animated">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="qqexp">
+                            <ul>
+                                <li><a href="#"><img src="qqexp/1.png"></a></li>
+                                <li><a href="#"><img src="qqexp/2.png"></a></li>
+                                <li><a href="#"><img src="qqexp/3.png"></a></li>
+                                <li><a href="#"><img src="qqexp/4.png"></a></li>
+                                <li><a href="#"><img src="qqexp/5.png"></a></li>
+                                <li><a href="#"><img src="qqexp/6.png"></a></li>
+                                <li><a href="#"><img src="qqexp/7.png"></a></li>
+                                <li><a href="#"><img src="qqexp/8.png"></a></li>
+                                <li><a href="#"><img src="qqexp/9.png"></a></li>
+                                <li><a href="#"><img src="qqexp/10.png"></a></li>
+                                <li><a href="#"><img src="qqexp/11.png"></a></li>
+                                <li><a href="#"><img src="qqexp/12.png"></a></li>
+                                <li><a href="#"><img src="qqexp/13.png"></a></li>
+                                <li><a href="#"><img src="qqexp/14.png"></a></li>
+                                <li><a href="#"><img src="qqexp/15.png"></a></li>
+                                <li><a href="#"><img src="qqexp/16.png"></a></li>
+                                <li><a href="#"><img src="qqexp/17.png"></a></li>
+                                <li><a href="#"><img src="qqexp/18.png"></a></li>
+                                <li><a href="#"><img src="qqexp/19.png"></a></li>
+                                <li><a href="#"><img src="qqexp/20.png"></a></li>
+                                <li><a href="#"><img src="qqexp/x.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="qqexp">
+                            <ul>
+                                <li><a href="#"><img src="qqexp/21.png"></a></li>
+                                <li><a href="#"><img src="qqexp/22.png"></a></li>
+                                <li><a href="#"><img src="qqexp/23.png"></a></li>
+                                <li><a href="#"><img src="qqexp/24.png"></a></li>
+                                <li><a href="#"><img src="qqexp/25.png"></a></li>
+                                <li><a href="#"><img src="qqexp/26.png"></a></li>
+                                <li><a href="#"><img src="qqexp/27.png"></a></li>
+                                <li><a href="#"><img src="qqexp/28.png"></a></li>
+                                <li><a href="#"><img src="qqexp/29.png"></a></li>
+                                <li><a href="#"><img src="qqexp/30.png"></a></li>
+                                <li><a href="#"><img src="qqexp/31.png"></a></li>
+                                <li><a href="#"><img src="qqexp/32.png"></a></li>
+                                <li><a href="#"><img src="qqexp/33.png"></a></li>
+                                <li><a href="#"><img src="qqexp/34.png"></a></li>
+                                <li><a href="#"><img src="qqexp/35.png"></a></li>
+                                <li><a href="#"><img src="qqexp/36.gif"></a></li>
+                                <li><a href="#"><img src="qqexp/x.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- 表情 -->
+
+        <!-- 礼物 -->
+        <div id="con_one_2">
+            <div class="swiper-container2 fadeInDown animated">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="qqexp">
+                            <ul>
+                                <li><a href="#"><img src="tb/1.png"></a></li>
+                                <li><a href="#"><img src="tb/2.png"></a></li>
+                                <li><a href="#"><img src="tb/3.png"></a></li>
+                                <li><a href="#"><img src="tb/4.png"></a></li>
+                                <li><a href="#"><img src="tb/5.png"></a></li>
+                                <li><a href="#"><img src="tb/6.png"></a></li>
+                                <li><a href="#"><img src="tb/7.png"></a></li>
+                                <li><a href="#"><img src="tb/8.png"></a></li>
+                                <li><a href="#"><img src="tb/9.png"></a></li>
+                                <li><a href="#"><img src="tb/10.png"></a></li>
+                                <li><a href="#"><img src="tb/11.png"></a></li>
+                                <li><a href="#"><img src="tb/12.png"></a></li>
+                                <li><a href="#"><img src="tb/13.png"></a></li>
+                                <li><a href="#"><img src="tb/14.png"></a></li>
+                                <li><a href="#"><img src="tb/15.png"></a></li>
+                                <li><a href="#"><img src="tb/16.png"></a></li>
+                                <li><a href="#"><img src="tb/17.png"></a></li>
+                                <li><a href="#"><img src="tb/18.png"></a></li>
+                                <li><a href="#"><img src="tb/19.png"></a></li>
+                                <li><a href="#"><img src="tb/20.png"></a></li>
+                                <li><a href="#"><img src="qqexp/x.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="qqexp">
+                            <ul>
+                                <li><a href="#"><img src="tb/21.png"></a></li>
+                                <li><a href="#"><img src="tb/22.png"></a></li>
+                                <li><a href="#"><img src="tb/23.png"></a></li>
+                                <li><a href="#"><img src="tb/24.png"></a></li>
+                                <li><a href="#"><img src="tb/25.png"></a></li>
+                                <li><a href="#"><img src="tb/26.png"></a></li>
+                                <li><a href="#"><img src="tb/27.png"></a></li>
+                                <li><a href="#"><img src="tb/28.png"></a></li>
+                                <li><a href="#"><img src="tb/29.png"></a></li>
+                                <li><a href="#"><img src="tb/30.png"></a></li>
+                                <li><a href="#"><img src="tb/31.png"></a></li>
+                                <li><a href="#"><img src="tb/32.png"></a></li>
+                                <li><a href="#"><img src="tb/33.png"></a></li>
+                                <li><a href="#"><img src="tb/34.png"></a></li>
+                                <li><a href="#"><img src="tb/35.png"></a></li>
+                                <li><a href="#"><img src="tb/36.png"></a></li>
+                                <li><a href="#"><img src="tb/37.png"></a></li>
+                                <li><a href="#"><img src="tb/38.png"></a></li>
+                                <li><a href="#"><img src="tb/39.png"></a></li>
+                                <li><a href="#"><img src="tb/40.png"></a></li>
+                                <li><a href="#"><img src="qqexp/x.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="qqexp">
+                            <ul>
+                                <li><a href="#"><img src="tb/41.png"></a></li>
+                                <li><a href="#"><img src="tb/42.png"></a></li>
+                                <li><a href="#"><img src="tb/43.png"></a></li>
+                                <li><a href="#"><img src="tb/44.png"></a></li>
+                                <li><a href="#"><img src="tb/45.png"></a></li>
+                                <li><a href="#"><img src="tb/46.png"></a></li>
+                                <li><a href="#"><img src="tb/47.png"></a></li>
+                                <li><a href="#"><img src="tb/48.png"></a></li>
+                                <li><a href="#"><img src="tb/49.png"></a></li>
+                                <li><a href="#"><img src="tb/50.png"></a></li>
+                                <li><a href="#"><img src="tb/51.png"></a></li>
+                                <li><a href="#"><img src="tb/52.png"></a></li>
+                                <li><a href="#"><img src="tb/53.png"></a></li>
+                                <li><a href="#"><img src="tb/54.png"></a></li>
+                                <li><a href="#"><img src="tb/55.png"></a></li>
+                                <li><a href="#"><img src="tb/56.png"></a></li>
+                                <li><a href="#"><img src="tb/57.png"></a></li>
+                                <li><a href="#"><img src="tb/58.png"></a></li>
+                                <li><a href="#"><img src="qqexp/x.png"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination2"></div>
+            </div>
+        </div>
+        <!-- 礼物 -->
+    </div>
+
+    <!-- 功能设置 -->
+    <div class="cj_tb swiper-container2 fadeInDown animated" id="box7" style="display:none;">
+        <ul>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb4.png">白板</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb5.png">视频</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb6.png">语音视频</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb7.png">录制</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb8.png">福利</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb9.png">分享</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb10.png">房间设置</a></li>
+            <li><a href="javascript:void(0)" onClick="javascript:alert('使用音视频功能，请下载APP')"><img src="images/tb11.png">联系客服</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <!-- 功能设置 -->
+
 </div>
 </body>
 </html>
