@@ -14,6 +14,8 @@
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 <link href="${pageContext.request.contextPath}/mobile/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/mobile/css/jquery.style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+
 <%--
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mobile/css/jquery.mCustomScrollbar.css">
 --%>
@@ -24,12 +26,13 @@
 <script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
+
 <script src="${pageContext.request.contextPath}/wejoin/js/common.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="${pageContext.request.contextPath}/mobile/js/chart.js" type="text/javascript" charset="utf-8"></script>
-    <script src="${pageContext.request.contextPath}/mobile/js/tab.js" type="text/javascript" charset="utf-8"></script>
-    <script src="${pageContext.request.contextPath}/mobile/js/swiper.min.js"></script>
+<script src="${pageContext.request.contextPath}/mobile/js/tab.js" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/mobile/js/swiper.min.js"></script>
 
 <%--
 <script src="${pageContext.request.contextPath}/mobile/js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -54,24 +57,42 @@ function changeHeight(){
 }
 //=点击展开关闭效果=
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
-var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-var openTip = oOpenTip || "";
-var shutTip = oShutTip || "";
-if(targetObj.style.display!="none"){
-   if(shutAble) return;
-   targetObj.style.display="none";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = shutTip;
-   }
-} else {
-   targetObj.style.display="block";
-   if(openTip && shutTip){
-    sourceObj.innerHTML = openTip;
-   }
+    var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+    var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+    var openTip = oOpenTip || "";
+    var shutTip = oShutTip || "";
+    if(targetObj.style.display!="none"){
+        if(shutAble) return;
+        targetObj.style.display="none";
+        if(openTip && shutTip){
+            sourceObj.innerHTML = shutTip;
+        }
+        $(".video").show();
+    } else {
+        $(".video").hide();
+        $("#box6").hide();
+        $("#box7").hide();
+        targetObj.style.display="block";
+        if(openTip && shutTip){
+            sourceObj.innerHTML = openTip;
+        }
+
+    }
+    //changeHeight();
 }
+function closeBox2(){
+    $("#box2").hide();
 }
 $(function(){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination : '.swiper-pagination',
+        paginationClickable :true
+    })
+
+    var mySwiper2 = new Swiper('.swiper-container2',{
+        pagination : '.swiper-pagination2',
+        paginationClickable :true
+    })
     //_$[20] = '" controls="controls" width="100%" autoplay="autoplay" height="260" poster="';
     //视频自动播放
     if($("video")[0])
@@ -150,7 +171,7 @@ $(function(){
             <div class="apptb">
                 <img src="images/apptb.png"><span><a href="#">下载APP，直播更流畅</a></span>    </div>
             <div class="app_an"><a href="#">立即下载</a></div>
-            <div class="app_clock"><a onClick="openShutManager(this,'box2')"></a></div>
+            <div class="app_clock"><a onClick="closeBox2()"></a></div>
         </div>
     </div>
 </div>
@@ -175,11 +196,8 @@ $(function(){
                 <input name="" id="content" type="text" class="inp_wbe">
         </div>
         <div class="inp_tb3">
-
-            <a onClick="openShutManager(this,'box6')" style="width: 33%"><img src="images/tb17.png"></a>
-            <a onClick="openShutManager(this,'box7')" style="width: 33%"><img src="images/tb18.png"></a>
-            <a href="javascript:void(0)" id="sendButton" style="width: 33%">发送</a>
-
+            <a onClick="openShutManager(this,'box6')"><img src="images/tb17.png"></a>
+            <a onClick="openShutManager(this,'box7')"><img src="images/tb18.png"></a>
         </div>
     </div>
 
@@ -188,7 +206,7 @@ $(function(){
             <ul>
                 <li class="hover" onclick="setTab('one',1,2)" id="one1">表情</li>
                 <li onclick="setTab('one',2,2)" id="one2">礼物</li>
-                <ol><a href="javascript:void(0)" >发送</a></ol>
+                <ol><a href="javascript:void(0)" id="sendButton" >发送</a></ol>
             </ul>
         </div>
 
