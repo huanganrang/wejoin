@@ -75,7 +75,6 @@ var isHome = function() {
 function logout(){
 	var url = "api/apiCommon/logout";
 	if(!isHome()) url = base + url;
-	alert(url);
 	window.location.href = url;
 }
 function login() {

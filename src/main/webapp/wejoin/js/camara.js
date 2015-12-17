@@ -46,7 +46,10 @@ $(function(){
         });
     }
     $("#uploadDocumet").click(function(){
-//        $("#file").click();
+    	if(!ROOM_INFO.isOwner()) {
+    		alert("您不是房主身份，不能使用文件上传功能！");
+    		return;
+    	}
     	showdhdBox();
     	flag = true;
     });

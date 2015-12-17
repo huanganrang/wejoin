@@ -312,10 +312,8 @@ function setVoiceNumber(voice){
 
         <div class="main_pic" style="display: none;">
             <div class="cneter_menu">
-	            <% if("true".equals(owner)) { %>
-	                <a href="javascript:void(0);" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
-                <% } %>
-	            </div>
+	               <a href="javascript:void(0);" class="t4" id="uploadDocumet"><img src="images/t4.png" /></a>
+	         </div>
 	        
             <img src="images/pic.gif" width="730" id="imageBoard" height="550px;"/>
            

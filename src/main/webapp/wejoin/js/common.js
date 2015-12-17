@@ -16,7 +16,7 @@ function ajaxGet(parameter,success,callData){
         dataType:"json",
         success:function (data) {
             if(data.obj) {
-                console.log(data.obj);
+                console.log("type["+parameter.type+"]:" + data.obj);
                 var json = JSON.parse(data.obj);
                 if(json.serverStatus == 0) {
                     if(callData){
@@ -44,7 +44,7 @@ function ajaxGetSync(parameter,success){
         async: false,
         success:function (data) {
             if(data.obj) {
-                console.log(data.obj);
+            	console.log("type["+parameter.type+"]:" + data.obj);
                 var json = JSON.parse(data.obj);
                 if(json.serverStatus == 0) {
                     success(json.returnObject);
@@ -72,7 +72,7 @@ function ajaxPostSync(parameter,success,callData){
         dataType:"json",
         async: false,
         success:function (data) {
-            console.log(data.obj);
+        	console.log("type["+parameter.type+"]:" + data.obj);
             var result = $.parseJSON(data.obj);
             if(result.serverStatus == 0) {
             	if(callData){
@@ -102,7 +102,7 @@ function ajaxPost(parameter,success,callData){
         data: parameter,
         dataType:"json",
         success:function (data) {
-            console.log(data.obj);
+        	console.log("type["+parameter.type+"]:" + data.obj);
             var result = $.parseJSON(data.obj);
             if(result.serverStatus == 0) {
                 if(callData){
