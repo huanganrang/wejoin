@@ -124,6 +124,6 @@ public class ApiCommonController extends BaseController {
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request){
 		request.getSession().removeAttribute(USER_TOKEN);
-		return "/login";
+		return "/index";
 	}
 }
