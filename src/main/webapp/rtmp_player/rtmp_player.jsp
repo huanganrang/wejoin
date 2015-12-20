@@ -51,6 +51,9 @@
 <body>
 
 	<script type="text/javascript">
+		document.ondblclick= function(){
+			parent.changeCamaraLocation("cameraPull");
+		};
 
 		function setVoiceNumber(voice){
 			if(parent){

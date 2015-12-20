@@ -16,6 +16,11 @@
 	String houseId = request.getParameter("houseId");
 	String channelId = request.getParameter("channelId");
 %>
+	<script type="text/javascript">
+		document.ondblclick= function(){
+			parent.changeCamaraLocation("cameraPush");
+		};
+	</script>
 		<div id="flashContent">
 				
 			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="220" height="174" id="simplest_as3_rtmp_streamer" align="middle">

@@ -155,19 +155,7 @@ function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 			obj_img.height(385);
 		}
 	}
-$(function() {
-	// 设置主音量
-	$( "#voiceLine" ).slider({
-		value: 60,
-		orientation: "horizontal",
-		range: "min",
-		animate: true,stop: function( event, ui ) {
-			$("#cameraPull")[0].contentWindow.changeVoiceNumber(ui.value);
-			console.log(ui.value)
-		}
-	});
 
-});
 function setVoiceNumber(voice){
 
 	$( "#voiceLine" ).slider( "value",voice);
@@ -231,16 +219,16 @@ function setVoiceNumber(voice){
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 		  	</video>  --%>
 		  <iframe id="cameraPull" width="220" height="182" frameborder="no" scrolling="no"></iframe>
-		  	
+
 		  	<%--<div class="name_title" style="z-index:-1">
                 <div class="name_tt">${sessionScope.userToken.nickName}</div>
                 <div class="name_sj"></div>
             </div>--%>
     </div>
-    
-  <!-- <div class="video hidden_area"> -->  
+
+  <!-- <div class="video hidden_area"> -->
   <!-- -->   <div class="hidden_area">
-       <!--  <div class="name_title" style="z-index:-1"> --> 
+       <!--  <div class="name_title" style="z-index:-1"> -->
        <!--  --> <%--<div class="" style="z-index:-1">
             <div class="name_tt">${sessionScope.userToken.nickName}</div>
             <div class="name_sj"></div>
@@ -252,12 +240,12 @@ function setVoiceNumber(voice){
     <!-- <div class="video">
     	<img src="images/video.gif" />
     </div>
-    
+
     <div class="video">
     	<img src="images/video.gif" />
     </div> -->
     </div>
-    
+
    <div class="hy_title">
     	<span>在线会员</span>
         <a href="#" class="le" onclick="setSearchScope(true)">男</a>
@@ -628,6 +616,8 @@ function setVoiceNumber(voice){
 		  </div>
 	</div>
 <!--上传进度条 结束-->
-
+<!-- ui-dialog -->
+<div id="dialog">
+</div>
 </body>
 </html>
