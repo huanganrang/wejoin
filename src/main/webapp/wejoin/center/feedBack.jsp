@@ -14,14 +14,14 @@
 var base = '${pageContext.request.contextPath}/';
 var namespace = "home";
 </script>
-<link href="${pageContext.request.contextPath}/wejoin/center/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/center/css/login.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/wejoin/center/css/jquery.style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/wejoin/center/css/jquery.mCustomScrollbar.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/wejoin/center/js/jquery-1.5.1.min.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/wejoin/center/js/tab.js" ></script>
-<script src="${pageContext.request.contextPath}/wejoin/center/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="${pageContext.request.contextPath}/wejoin/center/js/js.js"></script>
+<link href="${pageContext.request.contextPath}/wejoin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/login.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/wejoin/css/jquery.style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/wejoin/css/jquery.mCustomScrollbar.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/wejoin/js/jquery-1.5.1.min.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/wejoin/js/tab.js" ></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/js.js"></script>
 <script type="text/javascript">
 function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
 var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
