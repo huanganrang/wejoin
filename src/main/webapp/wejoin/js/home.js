@@ -5,7 +5,6 @@ $(function(){
 	$(".close_btn").click(function(){
 		$(this).parent().parent().hide();			  
 	});
-	
 //	$("#createChannelBtn").bind('click', function(){
 //		$("#createChannelForm").submit();
 //	});
@@ -422,3 +421,7 @@ function communityCategory(){
 		$("#communityCategory").append($li);
 	}
 }
+function goUserCenter(){
+	var url = base+"wejoin/center/spaceManage.jsp";
+	window.location.href = url;
+}	

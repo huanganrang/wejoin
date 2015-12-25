@@ -43,11 +43,13 @@ var namespace = "home";
 		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
 		        	<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
+		        	<a href="javascript:void(0)" onclick="goUserCenter()">个人中心</a>
 					<a href="javascript:void(0)" onclick="logout()">退出</a>
 				</c:if>
 			</c:when>
 			<c:otherwise>
 				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
+				<a href="javascript:void(0)" onclick="goUserCenter()">个人中心</a>
 				<a href="javascript:void(0)" onclick="logout()">退出</a>
 			</c:otherwise>
         </c:choose>
