@@ -6,7 +6,7 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/jslib/extBrowser.js"
-	charset="utf-8"></script>
+	charset="utf-8"></script> 
 
 <!-- 引入my97日期时间控件 -->
 <script type="text/javascript"
