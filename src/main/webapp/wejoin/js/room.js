@@ -485,7 +485,7 @@ function appendUser(member){
     }
     var $li = $('<li data-huanxinuid="'+member.huanxinUid+'"><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
     $(".v_ren ul").append($li);
-    $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);" class="le_on">语音</a><a href="javascript:void(0);">视频</a></li>');
+    $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);">视频</a></li>');
     $(".list_name ul").append($li);
 }
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}

@@ -104,7 +104,7 @@ function connInit() {
 }
 
 function getUserInfo(message) {
-    var user = getUserInfoByFrom(message.from);
+    var user = getUserInfoByFrom(message.from,message);
     user.content = message;
     return user;
 }
@@ -288,12 +288,6 @@ WeChat.prototype = {
         }
 
         //  根据users动态取头像、昵称
-        var $messageHtml = '<li class="' + ownerClass + '">'
-            + '<div class="ltian_img"><a><img src="' + data.userIcon + '" /></a></div>'
-            + '<div class="ltian_txt">'
-            + '<span>' + data.username + '</span>'
-            + '<div class="txt_zi">' + content + '</div>' + $arrow
-            + '</div><div class="clear"></div></li>';
         var $messageHtml = '<div class="lt_1 '+ownerClass+'">'
         + '<div class="lt_img"><img src="' + data.userIcon + '"></div>'
         + '<div class="lt_rg">'

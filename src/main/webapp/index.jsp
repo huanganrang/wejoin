@@ -20,7 +20,7 @@ var namespace = "login";
 	<div class="login_bj"></div>
 		<div class="login_zt">
 			<span></span>
-		    <a href="javascript:void(0);" class="a1">下载APP</a>
+		    <a href="/download/weiqu.apk" target="_blank" class="a1">下载APP</a>
 		    <a href="javascript:void(0);" class="a2">下载客户端</a>
 		    <div class="clear"></div>
 		    <ol><a href="${pageContext.request.contextPath}/wejoin/home.jsp">进入微社区</a></ol>

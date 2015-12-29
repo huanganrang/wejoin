@@ -198,7 +198,7 @@ function setVoiceNumber(voice){
         <li id="voice"><a href="javascript:void(0);">影 音</a></li>
     </ul>
     
-    <div class="aa">
+    <div class="aa" style="width:50%;">
     <!--<span>游客：我是会飞的鱼</span>
     <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
     <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>

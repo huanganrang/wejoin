@@ -141,6 +141,10 @@
     <servlet-name>default</servlet-name>
     <url-pattern>*.fla</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.apk</url-pattern>
+    </servlet-mapping>
   <servlet-mapping>
     <servlet-name>druidStatView</servlet-name>
     <url-pattern>/druid/*</url-pattern>

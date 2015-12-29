@@ -62,7 +62,7 @@ var namespace = "home";
         <a href="javascript:void(0);" class="pd_4">使用帮助</a>
     </div>
     
-    <div class="aa" style="width:48%; margin-top:13px;">
+    <div class="aa" style=" margin-top:13px;">
     <!--<span>游客：我是会飞的鱼</span>
     <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
     <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
