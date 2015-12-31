@@ -487,6 +487,8 @@ function appendUser(member){
     $(".v_ren ul").append($li);
     $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);">视频</a></li>');
     $(".list_name ul").append($li);
+    alert(1);
+    $("#onlineNum").html($(".v_ren ul").children().length+"人");
 }
 /*type = 1 白板 {"type":1,"url","http://xxx图片地址"}
  type =2 视频，{"type":2,"url","http://xxx地址"}

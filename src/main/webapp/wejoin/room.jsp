@@ -248,8 +248,10 @@ function setVoiceNumber(voice){
 
    <div class="hy_title">
     	<span>在线会员</span>
-        <a href="#" class="le" onclick="setSearchScope(true)">男</a>
-        <a href="#" onclick="setSearchScope(false)">女</a>    </div>
+        <%--<a href="#" class="le" onclick="setSearchScope(true)">男</a>
+        <a href="#" onclick="setSearchScope(false)">女</a> --%>
+	   	<span style="float:right;margin-right:15px;">人数:2</span>
+   </div>
     
     <div class="search">
         <input name="" type="button" class="tzbm" value=""/>
@@ -435,7 +437,7 @@ function setVoiceNumber(voice){
         </div>
 
         <div class="ltia_1" style=" width:135px; float:right;">
-        	<span>选择成员</span>
+        	<span>所有人</span>
             <div class="ltia_bj someone_div">
             <div class="content" style="height:320px;">
             <div class="v_ren mCustomScrollbar">
@@ -445,7 +447,7 @@ function setVoiceNumber(voice){
             </div>
         </div>
         
-        <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; ">
+        <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; display: none; ">
         	<input type="checkbox" name="name" value="456" id="an1" checked="checked"><label for="an1">所有人</label>
         </div>
         
