@@ -250,11 +250,11 @@ function setVoiceNumber(voice){
     	<span>在线会员</span>
         <%--<a href="#" class="le" onclick="setSearchScope(true)">男</a>
         <a href="#" onclick="setSearchScope(false)">女</a> --%>
-	   	<span style="float:right;margin-right:15px;">人数:2</span>
+	   	<span style="float:right;margin-right:15px;" id="onlineNum"></span>
    </div>
     
     <div class="search">
-        <input name="" type="button" class="tzbm" value=""/>
+        <input name="" type="button" class="tzbm" id="searchUser" value=""/>
         <input type="text" class="pt1" onBlur="if(this.value==''){this.value='查找用户';this.style.color='#ccc'}" onFocus="if(this.value=='查找用户'){this.value='';this.style.color='#333'}" value="查找用户" id="textfieldUser" name="telphone" style="color:#ccc;">
         
         <span></span>
