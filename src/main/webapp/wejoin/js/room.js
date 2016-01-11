@@ -659,47 +659,61 @@ function logoutRoom(){
 
 
 function changeCamaraLocation(id){
-    var jDom = $("#"+id);
+    var jDom = $("#" + id);
     var parentDiv = jDom.parents(".content_main");
-    if(parentDiv[0]){
-        $( "#dialog").append(jDom);
-        $( "#dialog" ).dialog( "open" );
-        jDom.attr("width","100%");
-        jDom.attr("height","100%");
+    if (parentDiv[0]) {
+        $("#dialog").append(jDom);
+        $("#dialog").dialog("open");
+        jDom.attr("width", "100%");
+        jDom.attr("height", "100%");
     }
 }
-
+function screamDialogOpen(){
+    $("#dialog").dialog("open");
+    resizeScream();
+}
 $(function() {
     // 设置主音量
-    $( "#voiceLine" ).slider({
+    $("#voiceLine").slider({
         value: 60,
         orientation: "horizontal",
         range: "min",
-        animate: true,stop: function( event, ui ) {
+        animate: true, stop: function (event, ui) {
             $("#cameraPull")[0].contentWindow.changeVoiceNumber(ui.value);
             console.log(ui.value)
         }
     });
-    $( "#dialog" ).dialog({
+    $("#dialog").dialog({
         autoOpen: false,
         width: 400,
-        close: function(event, ui) {
+        close: function (event, ui) {
             var domJar = $("#dialog > iframe");
-            var id  = domJar.attr("id");
+            var id = domJar.attr("id");
             var contentDiv = $("#mCSB_1_container").children();
-            domJar.attr("width","220");
-            if(id == "cameraPull"){
+            domJar.attr("width", "220");
+            if (id == "cameraPull") {
                 contentDiv.eq(0).append(domJar);
-                domJar.attr("height","182");
-            }else{
+                domJar.attr("height", "182");
+            } else {
                 contentDiv.eq(1).append(domJar);
-                domJar.attr("height","174");
+                domJar.attr("height", "174");
             }
         },
-        resizeStop:function(){
-            var domJar = $("#dialog > iframe");
-            domJar.attr("width","100%");
-            domJar.attr("height","100%");
+        resizeStop: function (event, ui) {
+            resizeScream();
         }
     });
+
+
+
 });
+var resizeScream = function(){
+    var width = $('#dialog').dialog('option', 'width');
+    var height = $('#dialog').dialog('option', 'height');
+    var domJar = $("#dialog > iframe");
+    domJar.attr("width", "100%");
+    domJar.attr("height", "100%");
+    if(domJar[0].contentWindow.setObjectSize){
+        domJar[0].contentWindow.setObjectSize(width*1.5,height*1.5);
+    }
+}

@@ -52,15 +52,22 @@
 
 	<script type="text/javascript">
 		document.ondblclick= function(){
-			parent.changeCamaraLocation("cameraPull");
+			//openDialog();
 		};
-
+		function openDialog(num){
+			parent.changeCamaraLocation("cameraPull");
+		}
 		function setVoiceNumber(voice){
 			if(parent){
 				parent.setVoiceNumber(voice);
 			}
 		}
 
+		function setObjectSize(width,height){
+			var object = document.getElementsByTagName("object")[0];
+			object.width = width;
+			object.height = height;
+		}
 		window.changeVoiceNumber = function(voice){
 			document.getElementById("simplest_as3_rtmp_player").jsCallback(voice);
 		}

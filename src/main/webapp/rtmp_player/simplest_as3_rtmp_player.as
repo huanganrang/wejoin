@@ -19,13 +19,16 @@
 package {
 import flash.display.Sprite;
 import flash.display.StageAlign;
+import flash.display.StageDisplayState;
 import flash.display.StageScaleMode;
+import flash.events.MouseEvent;
 import flash.events.NetStatusEvent;
 import flash.external.ExternalInterface;
 import flash.media.Video;
 import flash.net.NetConnection;
 import flash.net.NetStream;
 import flash.system.Security;
+import flash.system.fscommand;
 
 public class simplest_as3_rtmp_player extends Sprite {
     var nc:NetConnection;
@@ -43,7 +46,7 @@ public class simplest_as3_rtmp_player extends Sprite {
         if (tempUrl != null && tempUrl.length() == 0) {
             resourceUrl = tempUrl;
         }
-        stage.scaleMode = StageScaleMode.NO_SCALE;
+        //stage.fullScreenHeight;
         stage.align = StageAlign.TOP_LEFT;
         nc.connect(resourceUrl);
 
@@ -55,6 +58,8 @@ public class simplest_as3_rtmp_player extends Sprite {
         return false;
     }
     private function loadVarsDemo():void {
+        stage.doubleClickEnabled=true;
+        stage.addEventListener(MouseEvent.DOUBLE_CLICK ,test);
         var channel = stage.loaderInfo.parameters["channel"];
         var house = stage.loaderInfo.parameters["room"];
         if(isNull(channel)||isNull(house)){
@@ -62,6 +67,11 @@ public class simplest_as3_rtmp_player extends Sprite {
         }else{
             room = channel+"/"+house;
         }
+    }
+
+    function test(e:MouseEvent):void{
+        ExternalInterface.call('alert', 444);
+        ExternalInterface.call('openDialog', 111);
     }
 
     private function netStatusHandler(event:NetStatusEvent):void {
@@ -84,8 +94,8 @@ public class simplest_as3_rtmp_player extends Sprite {
     function ns_onMetaData(item:Object):void {
         trace("metaData");
         // Resize video instance.
-        video.width = item.width;
-        video.height = item.height;
+        //video.width = item.width;
+        //video.height = item.height;
         // Center video instance on Stage.
 
     }
@@ -103,6 +113,8 @@ public class simplest_as3_rtmp_player extends Sprite {
 
         video = new Video();
         video.attachNetStream(ns);
+        //video.width = 320;
+        //video.height = 240;
 
         ns.play(room);
         addChild(video);
@@ -111,6 +123,7 @@ public class simplest_as3_rtmp_player extends Sprite {
             ExternalInterface.addCallback("jsCallback", changeVoiceNumber);
             ExternalInterface.call('setVoiceNumber', ns.soundTransform.volume);
         }
+        fscommand("fullscreen","true");
     }
 
     public function changeVoiceNumber(volume:int):void {
