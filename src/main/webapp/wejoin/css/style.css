@@ -20,7 +20,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 
 
 .header{min-width:1330px; max-width:100%;  height:43px; background:#63b30e; position:relative; z-index:2;}
-.header .logo{ width:240px; height:43px; background:#4f900a url(../images/logo.png) no-repeat center 5px; text-align:center;  float:left;}
+.header .logo{ width:240px; height:43px; background:#4f900a url(../images/pnglogo.png) no-repeat center 5px; text-align:center;  float:left;}
 .header ul{ float:left; margin-left:1%; }
 .header li{ float:left; margin-left:1px;}
 .header li a{ padding:0px 30px; display:block; font-size:17px; color:#fff; height:43px; line-height:43px;}
@@ -31,28 +31,31 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .header li.hover{ background: url(../images/hvv.gif) no-repeat;  text-align:center; color:#63b30e; display:block; font-size:17px; height:43px; }
 .header li.hover a{color:#63b30e; }
 .header span{ color:#fff; float:left; font-size:14px; margin-top:41px; display:block; }
-.header ol{ float:left; display:block; margin-top:41px; color:#fff; margin-left:20px; }
+.header ol{ float:left; display:block; margin-top:12px; color:#fff; margin-left:10px; }
 .header ol a{ color:#fff; margin:0 10px;}
 .header .hed_1{ float:left; width:97px; height:26px; background: url(../images/header.gif) no-repeat; text-align:center; line-height:26px;  font-size:14px; margin-top:9px; }
 .header .hed_1:hover{ opacity:0.9;}
 .header a{ color:#fff; }
 .header .hed_2{float:left; width:127px; height:26px; background: url(../images/header.gif) no-repeat 0 -26px; text-align:center; line-height:26px; margin-top:9px; margin-left:5px;}
 .header .hed_2:hover{ opacity:0.9;}
-.header .qq{ float:left; color:#fff; margin-top:9px; margin-left:2%; line-height:25px; font-size:14px; }
+.header .qq{ float:left; color:#fff; margin-top:9px; margin-left:13px; line-height:25px; font-size:14px; }
 .header .tel{ width:154px; height:27px; background: url(../images/header.gif) no-repeat 0 -62px; float:left; margin-top:7px; margin-left:10px; }
-.aa{ width:40%; float:left; margin-left:5%;}
-
-
-
+.aa{  margin-left:30px;}
+.sz_pr{ position:absolute; right:10px; top:0px;}
+.sz_pr a{ text-indent:-99999px; width:42px; height:42px; display:block; float:left; }
+.sz_pr a.tb1{ background: url(../images/b2.png) no-repeat center 8px;} 
+.sz_pr a.tb2{ background: url(../images/b3.png) no-repeat center 10px;} 
 
 
 .main_left{  width:240px; position:absolute; left:0px; top:42px; background:#eee; z-index:5;}
 .main_left .video{ background:#fff; margin:13px 10px 0 10px; position:relative;}
 .main_left .video span{ width:70px; height:29px; background: url(../images/hy.png) no-repeat; position:absolute; left:0px; top:0px; display:block;}
 .main_left .video ol{ width:70px; height:29px; background: url(../images/hy.png) no-repeat 0 -37px; position:absolute; left:0px; top:0px; display:block;}
-.col{ width:20px; height:20px; position:absolute; right:11px; top:11px; }
+.col{ width:20px; height:20px; position:absolute; right:11px; top:11px; z-index:10; display:none;}
 .main_left .video img{ width:100%; }
-.main_left .name_title{ position:absolute; left:0px; top:0px; height:29px;}
+.main_left .name_title{ position:absolute; left:0px; top:0px; height:29px; z-index:10; display:none;}
+.video:hover .name_title{ display:block;}
+.video:hover .col{ display:block;}
 .name_title .name_tt{ background:#63b30e; color:#fff; font-size:14px; height:29px; line-height:29px; padding:0 10px; float:left;}
 .name_title .name_sj{ width:16px; height:29px; background: url(../images/rsj.png) no-repeat; float:left;}
 
@@ -63,7 +66,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_left .hy_title a:hover{ background: url(../images/ren.gif) no-repeat 0 2px;}
 .main_left .hy_title a.le:hover{background: url(../images/ren.gif) no-repeat 0 -58px;}
 .main_left .search{ height:50px; width:100%; background:#eee;}
-.main_left .hy_title ol{ display:block; font-size:14px; float:right; line-height:39px; padding-right:10px; }
+.main_left .hy_title ol{ display:block; font-size:14px; float:right; line-height:39px; padding-right:10px; background: url(../images/b1.gif) no-repeat 0 10px; text-indent:19px;}
 
 
 .main_left .search .tzbm{ float:left; width:20%; height:33px; background: url(../images/sek.gif) no-repeat; cursor:pointer; margin-left:15px; margin-top:10px;}
@@ -101,7 +104,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_center .cneter_menu a{ float:left; display:block; margin:8px 33px 0 0;}
 .main_center .cneter_menu a.t3{ margin-top:10px;}
 .main_center .cneter_menu a.t4{ margin-top:11px;}
-.main_center .scroll{ height:54px; border:1px solid #ccc; line-height:54px; margin-top:35px; margin-bottom:40px; font-size:15px; }
+.main_center .scroll{ height:54px; line-height:54px; font-size:15px; padding-lefT:240px; position: absolute; left:0px; bottom:0px; z-index:30;}
 .main_center .center_max{ padding:0px 0% 50px 0%; }
 
 .fax{ position: absolute; right:10px; bottom:0px; }
@@ -113,7 +116,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_center .fax .span_list a{ width:73px; height:24px; line-height:24px; text-align:center; margin:0 auto; float:none; background:none; color:#333;}
 .main_center .fax .span_list a:hover{ background:#63b30e; color:#fff;}
 .fax_list:hover .span_list{ display:block;}
-.main_pic{ text-align:center; padding-left:240px;}
+.main_pic{ text-align:center; padding-left:240px; position:relative;}
 
 
 .main_right{ width:24%; position:absolute; right:0px; top:43px; background:#eee;}
@@ -132,7 +135,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_right li.wo .ltian_txt .txt_zi{ background:#46c34f; color:#fff;}
 .main_right li.wo .ltian_txt span{ font-size:12px; color:#999; text-align:right; display:block;}
 .ltian_menu{ width:100%; height:30px; background:#e4e4e4; position:relative;}
-.ltian_form{ border:1px solid #dadada; clear:both; height:70px;}
+.ltian_form{ border:1px solid #dadada; clear:both; height:80px; }
 .ltian_form .pt3{height:50px; background:#fff; height:60px; border:none; box-shadow:0 0 1px #d3d3d3, 2px 3px 3px #e5e5e5 inset; width:76%;   overflow-y:hidden; padding:0% 2%; padding-top:8px; float:left; line-height:24px; text-indent:0px;}
 .ltian_form .tzfs{ width:20%; height:70px;  border:1px solid #ddd; background:#46c34f; text-align:center; color:#fff; font-weight:bold; cursor:pointer; float:right;}
 

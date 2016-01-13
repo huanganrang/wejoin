@@ -53,6 +53,8 @@ var namespace = "room";
 
 <script src="${pageContext.request.contextPath}/wejoin/js/login.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/wejoin/js/check.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/wejoin/js/js.js?v=<%=staticVersion%>" type="text/javascript" charset="utf-8"></script>
+
 
 <style type="text/css">
 	.ck-slide { width: 730px; height: 580px; margin: 0 auto;}
@@ -172,12 +174,12 @@ function setVoiceNumber(voice){
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
-    <div class="logo_list3" style="width: 240px;">
+    <!--<div class="logo_list3" style="width: 240px;">
     	<c:choose>
 			<c:when test="${!sessionScope.userToken.loginMark}">
 				<div class="logo_dl">
-		        	<a href="javascript:void(0);" onclick="showDjcgBox()">登录</a> 
-		            <a href="javascript:void(0);" onclick="showSyldBox()">注册</a>
+		        	<a href="javascript:void(0);" onClick="showDjcgBox()">登录</a> 
+		            <a href="javascript:void(0);" onClick="showSyldBox()">注册</a>
 		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
 		        	<%--<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
@@ -187,26 +189,37 @@ function setVoiceNumber(voice){
 			</c:when>
 			<c:otherwise>
 				<div class="logo_name">会员：${sessionScope.userToken.nickName} 您好！ </div>
-				<a href="javascript:void(0)" onclick="logoutRoom()">退出</a>
+				<a href="javascript:void(0)" onClick="logoutRoom()">退出</a>
 
 			</c:otherwise>
         </c:choose>
-    </div>
+    </div>-->
+    
+    <div class="logo"></div>
+    
     <ul class="tab_button">
         <li id="blackbord" class="hover"><a href="javascript:void(0);">黑 板</a></li>
         <li id="documets"><a href="javascript:void(0);">文 档</a></li>
         <li id="voice"><a href="javascript:void(0);">影 音</a></li>
     </ul>
     
-    <div class="aa" style="width:50%;">
-    <!--<span>游客：我是会飞的鱼</span>
-    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
+    <div class="aa">
+    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol> 
+    <!--登录后的状态 <ol>会员：<a href="javascript:void(0);">会飞的鱼</a>  |   <a href="javascript:void(0);">退出</a></ol> -->
+   
+    
     <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
     <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
-    <div class="qq">客服QQ <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1794691101&site=qq&menu=yes"><img src="images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a></div>
+    <div class="qq"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1794691101&site=qq&menu=yes"><img src="images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a></div>
     <div class="tel"></div>
     <div class="clear"></div>
     </div>
+    
+    <div class="sz_pr">
+    	<a href="#" class="tb1">分享</a>
+        <a href="#" onclick="showromBox()" class="tb2">房间设置</a>
+    </div>
+    
 </div>
 
 
@@ -219,7 +232,8 @@ function setVoiceNumber(voice){
 		    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 		  	</video>  --%>
 		  <iframe id="cameraPull" width="220" height="182" frameborder="no" scrolling="no"></iframe>
-
+			<div class="col"><a href="#"><img src="images/x.gif"></a></div>
+       		<div class="name_title"><div class="name_tt">房主：全飞的鱼</div><div class="name_sj"></div></div>
 		  	<%--<div class="name_title" style="z-index:-1">
                 <div class="name_tt">${sessionScope.userToken.nickName}</div>
                 <div class="name_sj"></div>
@@ -250,7 +264,7 @@ function setVoiceNumber(voice){
     	<span>在线会员</span>
         <%--<a href="#" class="le" onclick="setSearchScope(true)">男</a>
         <a href="#" onclick="setSearchScope(false)">女</a> --%>
-	   	<span style="float:right;margin-right:15px;" id="onlineNum"></span>
+	   	<ol id="onlineNum"></ol>
    </div>
     
     <div class="search">
@@ -263,28 +277,36 @@ function setVoiceNumber(voice){
     <div class="content mCustomScrollbar content_buttom">
     <div class="list_name">
     	<ul>
-        	<!-- <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le_on">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);" class="on">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-            <li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <a href="javascript:void(0);" class="le">语音</a> <a href="javascript:void(0);">视频</a>  </li>
-             -->
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#" class="on">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
         </ul>
     </div>
     </div>
 	<div class="content_img">
-	    	<div class="content_tb1"><a href="javascript:void(0);"><img src="images/c1.png" /></a></div>
+	    	<div class="content_tb1"><a onclick="showvdoBox()" href="#"><img src="images/c1.png"></a></div>
 	        <div class="content_tb1"><a href="javascript:void(0);"><img src="images/c2.png" /></a></div>
 	        <div class="content_txt1" >
 				<div id="voiceLine" style="width:100px;margin-top: 20px;height: 3px;"></div>
@@ -297,7 +319,8 @@ function setVoiceNumber(voice){
 
     <div class="center_max">
         <div class="main_pic">
-        	<iframe id="drawer" style="width:100%;height:700px;" src="${pageContext.request.contextPath}/canvas/example/drawer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>" frameborder="no"></iframe>
+        	<iframe id="drawer" style="width:100%;height:630px;" src="${pageContext.request.contextPath}/canvas/example/drawer.jsp?houseId=<%=houseId %>&channelId=<%=channelId %>" frameborder="no"></iframe>
+            <div class="scroll"><marquee direction="left" id="notice" scrollamount="3">☆☆《投资宝典》已经上线，内含老师技术教学视频以及投资心得，免费领取,详情请咨询【高级客服QQ】↑↑↑</marquee></div>
         </div>
 
         <div class="main_pic" style="display: none;">
@@ -351,7 +374,7 @@ function setVoiceNumber(voice){
             </div>
         <a href="javascript:void(0);">下一页</a>    
     </div> -->
-  <div class="col" style="top:42px; right:0px;display: none; "><a href="javascript:void(0);" onclick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
+  <div class="col" style="top:42px; right:0px;display: none; "><a href="javascript:void(0);" onClick="openShutManager(this,'box3')"><img src="images/x.gif" /></a></div>
     <div class="sj"><a class="a_toggle" href="javascript:;;"><img class="img_x" src="images/1.png" /></a></div>
 </div>
 
@@ -436,7 +459,11 @@ function setVoiceNumber(voice){
         	</div>
         </div>
 
-        <div class="ltia_1" style=" width:135px; float:right;">
+		<div style=" width:75px; text-align:center; padding-left:5px; " class="ltia_1">
+        	<input type="checkbox" id="an1" value="456" name="name"><label for="an1">所有人</label>
+        </div>
+        
+        <!--<div class="ltia_1" style=" width:135px; float:right;">
         	<span>所有人</span>
             <div class="ltia_bj someone_div">
             <div class="content" style="height:320px;">
@@ -445,7 +472,7 @@ function setVoiceNumber(voice){
             </div>
             </div>
             </div>
-        </div>
+        </div>-->
         
         <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; display: none; ">
         	<input type="checkbox" name="name" value="456" id="an1" checked="checked"><label for="an1">所有人</label>
@@ -458,13 +485,14 @@ function setVoiceNumber(voice){
         <input name="" type="button" value="发送" class="tzfs" id="sendMsg"/>
         </form>
     </div> 
+    <!--
     <div class="itian_tb">
     	<span><a href="javascript:void(0);" class="a1">录制</a></span>
         <span><a href="javascript:void(0);" class="a2">屏幕共享</a></span>
         <span><a href="javascript:void(0);" class="a3">分享</a></span>
         <span><a href="javascript:void(0);" class="a4">房间设置</a></span>
         <div class="clear"></div>
-    </div>
+    </div>-->
     
 </div>
 
@@ -510,7 +538,7 @@ function setVoiceNumber(voice){
 		                   	<form action="" method="get">
 		                   	<li><input type="text" class="pt1" placeholder="请输入用户名" id="username" style="color:#333;"><b></b></li>
 		                       <li><input type="password" class="pt1" placeholder="请输入密码" id="password" style="color:#333;"><p></p></li>
-		                       <strong><a href="javascript:void(0);" onclick="showTjcgBox()">找回密码</a></strong>
+		                       <strong><a href="javascript:void(0);" onClick="showTjcgBox()">找回密码</a></strong>
 		                       <input name="" type="button" value="登  录" class="tzam" id="login_btn"/>
 		                       </form>
 		                   </ul>
@@ -539,10 +567,10 @@ function setVoiceNumber(voice){
 		               <div class="tjcg_list_b">
 		               	<ul>
 		                   	<form action="" method="get">
-		                   	<li><input type="text" class="pt2" onblur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield11" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
-		                       <li><input type="text" class="pt3" onblur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield12" name="telphone" style="color:#ccc;"></li>
-		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield13" name="telphone" style="color:#ccc;"></li>
-		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onblur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onfocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield14" name="telphone" style="color:#ccc;"></li>
+		                   	<li><input type="text" class="pt2" onBlur="if(this.value==''){this.value='请输入手机号获取验证码';this.style.color='#ccc'}" onFocus="if(this.value=='请输入手机号获取验证码'){this.value='';this.style.color='#333'}" value="请输入手机号获取验证码" id="textfield11" name="telphone" style="color:#ccc;"><ol><a href="#">点击获取</a></ol></li>
+		                       <li><input type="text" class="pt3" onBlur="if(this.value==''){this.value='请输入验证码';this.style.color='#ccc'}" onFocus="if(this.value=='请输入验证码'){this.value='';this.style.color='#333'}" value="请输入验证码" id="textfield12" name="telphone" style="color:#ccc;"></li>
+		                       <li><span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span><input type="password" class="pt2" onBlur="if(this.value==''){this.value='请输入新密码';this.style.color='#ccc'}" onFocus="if(this.value=='请输入新密码'){this.value='';this.style.color='#333'}" value="请输入新密码" id="textfield13" name="telphone" style="color:#ccc;"></li>
+		                       <li style="margin-bottom:40px; "><span>确认密码：</span><input type="password" class="pt2" onBlur="if(this.value==''){this.value='请重复输入新密码';this.style.color='#ccc'}" onFocus="if(this.value=='请重复输入新密码'){this.value='';this.style.color='#333'}" value="请重复输入新密码" id="textfield14" name="telphone" style="color:#ccc;"></li>
 		                       <input name="" type="submit" value="确  定" class="tzam"/>
 		                       </form>
 		                   </ul>
@@ -601,7 +629,7 @@ function setVoiceNumber(voice){
                             <div class="up_par">
                             	<!-- <input type="file" id="f" class="up_style" size="30" /> -->
                                 <div class="up_zi" id="fileUpload">选择文件</div>
-                                <input type="button" id="b" class="up_an" value="上传" onclick="upload()"/> 
+                                <input type="button" id="b" class="up_an" value="上传" onClick="upload()"/> 
                                 
                                 <div id="up">   
                                 <span class="spa">载入中,请稍等...</span>   
@@ -621,5 +649,152 @@ function setVoiceNumber(voice){
 <!-- ui-dialog -->
 <div id="dialog">
 </div>
+
+
+<!--房间设置 开始-->
+<div class="windows romBox" id="romBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="house_see">
+            	<ul>
+                	<form action="" method="get">
+                	<li>
+                    	<span>房间密码</span>
+                        <input name="" type="text" class="house_put"/>
+                        <div class="vdo_seelist">
+                            <input type="checkbox" name="mm" value="" id="mm" class="vd_style"/>
+                            <label for="mm">开启密码</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>房间密码</span>
+                        <div class="vdo_seelist">
+                            <input type="checkbox" name="aa" value="" id="aa" class="vd_style"/>
+                            <label for="aa">允许发言</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="checkbox" name="bb" value="" id="bb" class="vd_style"/>
+                            <label for="bb">允许图文</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>自由讨论</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="cc" value="1" id="cc1" class="vd_style"/>
+                            <label for="cc1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="cc" value="2" id="cc2" class="vd_style"/>
+                            <label for="cc2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>开放试听</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="dd" value="1" id="dd1" class="vd_style"/>
+                            <label for="dd1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="dd" value="2" id="dd2" class="vd_style"/>
+                            <label for="dd2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>只限成员</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="ee" value="1" id="ee1" class="vd_style"/>
+                            <label for="ee1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="ee" value="2" id="ee2" class="vd_style"/>
+                            <label for="ee2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>允许所有</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="ff" value="1" id="ff1" class="vd_style"/>
+                            <label for="ff1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="ff" value="2" id="ff2" class="vd_style"/>
+                            <label for="ff2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>锁定教室</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="gg" value="1" id="gg1" class="vd_style"/>
+                            <label for="gg1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="gg" value="2" id="gg2" class="vd_style"/>
+                            <label for="gg2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>录播方式</span>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="hh" value="1" id="hh1" class="vd_style"/>
+                            <label for="hh1">开启</label>
+                    	</div>
+                        <div class="vdo_seelist">
+                            <input type="radio" name="hh" value="2" id="hh2" class="vd_style"/>
+                            <label for="hh2">禁止</label>
+                    	</div>
+                    </li>
+                    <li>
+                    	<span>房间地址</span>
+                        <strong><a href="#">http://www.weixun.com/class/83</a></strong>
+                        <ol><a href="#">复制</a></ol>
+                    </li>
+                    <div class="vdosee_an" style="padding-left:10px; margin-top:10px; ">
+                    	<a href="#" class="okcolor">确 定</a>
+                        <a href="#">取 消</a>
+                    </div>
+                    </form>
+                </ul>
+            </div>
+			<div class="close_btn"></div>
+		  </div>
+	</div>
+<!--房间设置 结束-->
+
+
+<!--视频设置 开始-->
+<div class="windows vdoBox" id="vdoBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="video_see">
+            	<form action="" method="get">
+                	<div class="vdo_seelist">
+                        <input type="radio" name="butt" value="1" id="buttt1" checked="checked" class="vd_style"/>
+                        <label for="buttt1">320*240</label>
+                    </div>
+                    <div class="vdo_seelist">
+                        <input type="radio" name="butt" value="2" id="buttt2" class="vd_style"/>
+                        <label for="buttt2">640*480</label>
+                    </div>
+                    <div class="vdo_seelist">
+                        <input type="radio" name="butt" value="3" id="buttt3" class="vd_style"/>
+                        <label for="buttt3">1920*1080</label>
+                    </div>
+                    <div class="vdo_seelist">
+                        <input type="radio" name="butt" value="4" id="buttt4" class="vd_style"/>
+                        <label for="buttt4">自适应</label>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="vdosee_an">
+                    	<a href="#" class="okcolor">确 定</a>
+                        <a href="#">取 消</a>
+                    </div>
+                </form>
+            </div>
+			<div class="close_btn"></div>
+		  </div>
+	</div>
+<!--视频设置 结束-->
+
+
 </body>
 </html>
