@@ -20,7 +20,10 @@
 
 package {
     import flash.display.MovieClip;
-    import flash.net.NetConnection;
+import flash.display.StageAlign;
+import flash.events.MouseEvent;
+import flash.external.ExternalInterface;
+import flash.net.NetConnection;
     import flash.events.NetStatusEvent;
     import flash.net.NetStream;
     import flash.media.Video;
@@ -55,11 +58,25 @@ package {
         }
 		private function loadVarsDemo():void
         {
-          	room += stage.loaderInfo.parameters["channel"];
-			room+="/";
-            room += stage.loaderInfo.parameters["room"];
-            //lblVars.text = room;
+			var channel = stage.loaderInfo.parameters["channel"];
+			var house = stage.loaderInfo.parameters["room"];
+			stage.doubleClickEnabled=true;
+			stage.addEventListener(MouseEvent.DOUBLE_CLICK ,test);
+			stage.align = StageAlign.TOP_LEFT;
+			if(isNull(channel)||isNull(house)){
+				room = "421/378";
+			}else{
+				room = channel+"/"+house;
+			}
+			//lblVars.text = room;
         }
+
+		private function isNull(str:String):Boolean{
+			if(str == null||str.length == 0){
+				return true;
+			}
+			return false;
+		}
 		public function onBWDone():void{}
 		private function onNetStatus(event:NetStatusEvent):void{
 			trace(event.info.code);
@@ -69,7 +86,9 @@ package {
 				//displayPlaybackVideo();
 			}
 		}
-
+		function test(e:MouseEvent):void{
+			ExternalInterface.call('openDialog', 111);
+		}
 		private function publishCamera() {
 			
 			//Cam
@@ -162,6 +181,7 @@ package {
 
 		private function displayPublishingVideo():void {
 			vid = new Video(screen_w, screen_h);
+			//vid = new Video();
 			vid.x = 0;
 			vid.y = 0;
 			vid.attachCamera(cam);

@@ -174,13 +174,22 @@ function setVoiceNumber(voice){
 <input type="hidden" id="houseToken" value="<%=houseToken %>" />
 <input type="hidden" id="huanxinRoomId" value="<%=huanxinRoomId %>" />
 <div class="header">
-    <!--<div class="logo_list3" style="width: 240px;">
+
+    
+    <div class="logo"></div>
+    
+    <ul class="tab_button">
+        <li id="blackbord" class="hover"><a href="javascript:void(0);">黑 板</a></li>
+        <li id="documets"><a href="javascript:void(0);">文 档</a></li>
+        <li id="voice"><a href="javascript:void(0);">影 音</a></li>
+    </ul>
+    
+    <div class="aa">
+    <ol>
     	<c:choose>
 			<c:when test="${!sessionScope.userToken.loginMark}">
-				<div class="logo_dl">
-		        	<a href="javascript:void(0);" onClick="showDjcgBox()">登录</a> 
+		        	<a href="javascript:void(0);" onClick="showDjcgBox()">登录</a> |
 		            <a href="javascript:void(0);" onClick="showSyldBox()">注册</a>
-		        </div>
 		        <c:if test="${sessionScope.userToken.token != null}">
 		        	<%--<div class="logo_name">${sessionScope.userToken.nickName} 您好！ </div>
 					<a href="javascript:void(0)" onclick="logoutRoom()">退出</a>--%>
@@ -193,18 +202,7 @@ function setVoiceNumber(voice){
 
 			</c:otherwise>
         </c:choose>
-    </div>-->
-    
-    <div class="logo"></div>
-    
-    <ul class="tab_button">
-        <li id="blackbord" class="hover"><a href="javascript:void(0);">黑 板</a></li>
-        <li id="documets"><a href="javascript:void(0);">文 档</a></li>
-        <li id="voice"><a href="javascript:void(0);">影 音</a></li>
-    </ul>
-    
-    <div class="aa">
-    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol> 
+		  </ol>
     <!--登录后的状态 <ol>会员：<a href="javascript:void(0);">会飞的鱼</a>  |   <a href="javascript:void(0);">退出</a></ol> -->
    
     
