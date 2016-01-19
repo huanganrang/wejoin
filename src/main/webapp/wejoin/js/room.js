@@ -180,6 +180,7 @@ var sendNotification = function (message) {
 var showVedios = function(url) {
     try {
         $("#voice").click();
+        playVideoFromUpload(url);
         console.log("收到影音："+url);
     }catch(e){
         console.error(e);
@@ -485,7 +486,27 @@ function appendUser(member){
     }
     var $li = $('<li data-huanxinuid="'+member.huanxinUid+'"><a href="javascript:void(0);" userToken="' + member.userToken + '"><img src="' + userIcon + '" /><ol>' + member.nickName + '</ol></a></li>');
     $(".v_ren ul").append($li);
-    $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><a href="javascript:void(0);">视频</a></li>');
+    var movieClass=""//on
+    //1：普通用户，2：管理员，3：游客，4：房间创建者，5：教师
+    var identificationName = "成员";
+    switch(member.identification) {
+        case 5:
+            identificationName = "讲师";
+            break;
+        case 4:
+            identificationName = "房主";
+            break;
+        case 3:
+            identificationName = "游客";
+            break;
+        case 2:
+            identificationName = "管理员";
+            break;
+        default :
+            identificationName = "成员";
+    }
+
+    $li = $('<li data-identification="'+member.identification+'" data-huanxinuid="'+member.huanxinUid+'"><img src="' + userIcon + '" /><span>' + member.nickName + '</span><ol>'+identificationName+'</ol> <a href="#" class="'+movieClass+'">视频</a></li>');
     $(".list_name ul").append($li);
     //alert($(".v_ren ul").children().length);
     $("#onlineNum").html($(".v_ren ul").children().length+"人");

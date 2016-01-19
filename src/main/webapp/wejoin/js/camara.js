@@ -1,5 +1,5 @@
 var images;
-
+var uploadTag = "";
 $(function(){
     var videoToken = null;
     //如果是房主
@@ -50,48 +50,59 @@ $(function(){
     		alert("您不是房主身份，不能使用文件上传功能！");
     		return;
     	}
+        uploadTag = "document";
     	showdhdBox();
-    	flag = true;
+    	uploadOpenTag = true;
     });
     $("#fileUpload").click(function(){
     	if(!$("#up").is(":hidden")) return;
-    	$("#file").click();
+        if("document" == uploadTag)
+    	    $("#file").click();
+        else{
+          $("#moviefile").click();
+        }
     });
-//    $(document).delegate('#file','change',function () {
-//    	fileUpload();
-//    });
+
     $("#uploadMovie").click(function(){
-        $("#moviefile").click();
+        uploadTag = "movie";
+        showdhdBox();
+        uploadOpenTag = true;
+
     });
-    $(document).delegate('#moviefile','change',function () {
-        var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
-        var formData = new FormData($('#uploadformMovie')[0]);
-        $.ajax({
-            url: getVoiceUploadUrl(),  //Server script to process data
-            type: 'POST',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success:function (data) {
-                console.log(data);
-                ajaxGet({"type": "UL043", "encode": data}, function (data) {
-                    console.log("点播地址："+data);
-                    sendNotification(messageFactory.VEDIO(data));
-                    playVideoFromUpload(data);
-                },function(result){
-                    return result.returnValue;
-                });
-                /*var result = $.parseJSON(data);
-                 if(result.serverStatus == 0){
-                 sendNotification(messageFactory.FILE(result.type,result.returnValue));
-                 }*/
-            }
-        });
-    });
+
 
 });
-
+function uploadMovie(){
+    var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
+    var formData = new FormData($('#uploadformMovie')[0]);
+    $.ajax({
+        url: getVoiceUploadUrl(),  //Server script to process data
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function (data) {
+            console.log(data);
+            uploadComplete();
+            ajaxGet({"type": "UL043", "encode": data}, function (data) {
+                console.log("点播地址："+data);
+                sendNotification(messageFactory.VEDIO(data));
+                playVideoFromUpload(data);
+            },function(result){
+                return result.returnValue;
+            });
+            /*var result = $.parseJSON(data);
+             if(result.serverStatus == 0){
+             sendNotification(messageFactory.FILE(result.type,result.returnValue));
+             }*/
+        },
+        error: function() {
+            alert("上传失败");
+            uploadComplete();
+        }
+    });
+}
 function playVideoFromUpload(url){
     $("#videoIframe")[0].src= basePath+"/jslib/video-js/video.jsp?videoUrl="+url;
 }
@@ -163,39 +174,54 @@ function fileUpload() {
             console.log(data);
             var result = $.parseJSON(data);
             if(result.serverStatus == 0){
-            	document.getElementById("percent").value = "100%"; 
-            	$(".windows").hide();
-            	bar=0;   
-            	line="||";   
-            	amount="";   
-            	document.getElementById("up").style.display="none";
-            	document.getElementById("b").disabled  = false;  
-            	flag = false;
-            	
+                uploadComplete();
                 images = result.returnObject;
                 sendNotification(messageFactory.FILE($("#fileType").val(),result.returnObject[0].pic));
                 showDocsImages(result.returnObject);
             }
+        },
+        error: function() {
+            alert("上传失败");
+            uploadComplete();
         }
+
     });
 }
-
+function uploadComplete(){
+    document.getElementById("percent").value = "100%";
+    $(".windows").hide();
+    bar=0;
+    line="||";
+    amount="";
+    document.getElementById("up").style.display="none";
+    document.getElementById("b").disabled  = false;
+    uploadOpenTag = false;
+}
 var bar=0;   
 var line="||";   
 var amount="";
 $(function() {
     document.getElementById("up").style.display = "none";
 });
-var flag = true;
+var uploadOpenTag = true;
 
 function upload() {
-	count();
-	fileUpload();
+    if(uploadTag == "document"){
+        fileUpload();
+    }else{
+        uploadMovie();
+    }
+    count();
 }
     
-function count(){   
-	if(!flag) return;
-    var f = document.getElementById("file");   
+function count(){
+	if(!uploadOpenTag) return;
+    var f;
+    if("document" == uploadTag)
+        f = document.getElementById("file");
+    else{
+        f = document.getElementById("moviefile");
+    }
     var b = document.getElementById("b");   
     b.disabled  = true;   
     if(f.value==""){   
@@ -211,11 +237,7 @@ function count(){
     if(bar<98){   
     	setTimeout("count()", 200);   
     }else{   
-    	document.getElementById("percent").value = "99%";   
-    	//b.disabled  = false;   
-    	//f.disabled  = false;   
-    	//alert("加载完毕！");   
-    	//document.getElementById("up").style.display="none";   
+    	document.getElementById("percent").value = "99%";
     }   
 } 
 

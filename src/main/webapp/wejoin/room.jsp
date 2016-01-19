@@ -275,31 +275,7 @@ function setVoiceNumber(voice){
     <div class="content mCustomScrollbar content_buttom">
     <div class="list_name">
     	<ul>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#" class="on">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
-        	<li><img src="images/xt.gif" /><span>我是会飞的鱼</span> <ol>房主</ol> <a href="#">视频</a></li>
+
         </ul>
     </div>
     </div>
@@ -351,7 +327,7 @@ function setVoiceNumber(voice){
 <%--
             <img src="images/pic.gif" width="730"/>
 --%>
-			<iframe id="videoIframe" width="730" height="500"></iframe>
+			<iframe id="videoIframe" style="width:100%;height:630px;" frameborder="no"></iframe>
         </div>
     </div>
     <!-- 
@@ -461,7 +437,7 @@ function setVoiceNumber(voice){
         	<input type="checkbox" id="an1" value="456" name="name"><label for="an1">所有人</label>
         </div>
         
-        <!--<div class="ltia_1" style=" width:135px; float:right;">
+        <div class="ltia_1" style=" width:135px; float:right; display: none;">
         	<span>所有人</span>
             <div class="ltia_bj someone_div">
             <div class="content" style="height:320px;">
@@ -470,11 +446,8 @@ function setVoiceNumber(voice){
             </div>
             </div>
             </div>
-        </div>-->
-        
-        <div class="ltia_1" style=" width:75px; text-align:center; padding-left:5px; display: none; ">
-        	<input type="checkbox" name="name" value="456" id="an1" checked="checked"><label for="an1">所有人</label>
         </div>
+
         
     </div>
     <div class="ltian_form">
