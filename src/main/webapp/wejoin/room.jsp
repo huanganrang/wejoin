@@ -206,7 +206,7 @@ function setVoiceNumber(voice){
     <!--登录后的状态 <ol>会员：<a href="javascript:void(0);">会飞的鱼</a>  |   <a href="javascript:void(0);">退出</a></ol> -->
    
     
-    <div class="hed_1"><a href="javascript:void(0);">下载APP</a></div>
+    <div class="hed_1"><a href="http://www.weiqu168.com/weixun.latest.apk" target="_blank">下载APP</a></div>
     <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
     <div class="qq"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1794691101&site=qq&menu=yes"><img src="images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a></div>
     <div class="tel"></div>
