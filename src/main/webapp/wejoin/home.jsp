@@ -63,8 +63,8 @@ var namespace = "home";
     </div>
     
     <div class="aa" style=" margin-top:13px;">
-    <!--<span>游客：我是会飞的鱼</span>
-    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>-->
+    <span>游客：我是会飞的鱼</span>
+    <ol><a href="javascript:void(0);">注册</a>  |   <a href="javascript:void(0);">登录</a>   </ol>
     <div class="hed_1"><a href="http://www.weiqu168.com/weixun.latest.apk" target="_blank">下载APP</a></div>
     <div class="hed_2"><a href="javascript:void(0);">下载PC客户端</a></div>
     <div class="tel"></div>
