@@ -104,7 +104,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .main_center .cneter_menu a{ float:left; display:block; margin:8px 33px 0 0;}
 .main_center .cneter_menu a.t3{ margin-top:10px;}
 .main_center .cneter_menu a.t4{ margin-top:11px;}
-.main_center .scroll{ height:54px; line-height:54px; font-size:15px; padding-lefT:240px; position: absolute; left:0px; bottom:0px; z-index:30;}
+.main_center .scroll{ height:54px; line-height:54px; font-size:15px; padding-lefT:240px; position: absolute; left:0px; bottom:0px; z-index:0;}
 .main_center .center_max{ padding:0px 0% 50px 0%; }
 
 .fax{ position: absolute; right:10px; bottom:0px; }
