@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link href="css/channel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/js.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#secondpane p.menu_head").click(function()
+    {
+	     $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+	});
+});
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+$(function() {
+			$('.circle').each(function(index, el) {
+				var num = $(this).find('span').text() * 3.6;
+				if (num<=180) {
+					$(this).find('.right').css('transform', "rotate(" + num + "deg)");
+				} else {
+					$(this).find('.right').css('transform', "rotate(180deg)");
+					$(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+				};
+			});
+
+		});
+</script>
+</head>
+<body class="bj">
+<div class="post_header_100">
+	<div class="post_header">
+		<div class="post_logo"><a href="#"><img src="images/wq_logo.png" /></a></div>
+		<div class="center_memu">
+			<ul>
+				<li class="on"><a href="#" class="tb1">频道</a></li>
+				<li><a href="#" class="tb2">社群</a></li>
+				<li><a href="#" class="tb3">点播</a></li>
+				<li><a href="#" class="tb4">帮助</a></li>
+			</ul>
+		</div>
+		<div class="post_login">
+			<a href="#" class="a2">登录</a>
+			<a href="#">注册</a>
+		</div>
+		<div class="post_app">
+			<a href="#">APP</a>
+			<a href="#" class="a2">PC客户端</a>
+		</div>
+		<div class="clear"></div>
+		<div class="post_search">
+			<form action="" method="get">
+				<input type="text" class="p1" onBlur="if(this.value==''){this.value='名人堂卢勇授课成功学';this.style.color='#ccc'}" onFocus="if(this.value=='名人堂卢勇授课成功学'){this.value='';this.style.color='#333'}" value="名人堂卢勇授课成功学" id="textfield" name="email" style="color:#ccc;">
+				<input name="" type="submit" value="" class="p2">
+			</form>
+		</div>
+		<div class="post_scroll">
+			<marquee scrollamount="3" id="notice" direction="left">微区APP正式上线，公测中充值有礼物苏打绿可</marquee>
+		</div>
+	</div>
+</div>
+
+<div class="post_center">
+	<div class="post_left">
+		<div class="post_menu">
+			<div class="left_tt">社群分类</div>
+			 	<div class="menu_list polist" id="secondpane">
+    			<p class="menu_head">视频教育 <em>245.300</em></p>
+    			<div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+   				 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			<p class="menu_head">个人专区 <em>245.300</em></p>
+    			<div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			 <p class="menu_head">视频教育 <em>245.300</em></p>
+  			 	 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+    			 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+    			 <p class="menu_head">个人专区 <em>245.300</em></p>
+    			 <div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+ 			 </div>
+		</div>
+	</div>
+	
+	
+	<div class="post_right">
+		<div class="advertising"></div>
+		<div class="ly_book">
+			<form action="" method="get">
+				<ul>
+					<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写帖子标题';this.style.color='#ccc'}" onFocus="if(this.value=='请填写帖子标题'){this.value='';this.style.color='#333'}" value="请填写帖子标题" name="email" style="color:#ccc;"></li>
+					<li>
+						<textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='内容（需要20个字以上）') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='内容（需要20个字以上）';this.style.color='#ccc';}" onKeyUp="checkLength(this);">内容（需要20个字以上）</textarea>
+						<div class="ly_an">
+							<span>
+								<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+							</span>
+							<div class="ly_a"><a href="#">确定发帖</a></div>
+						</div>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+</body>
+</html>

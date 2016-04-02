@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* 公共样式 */
+body{margin:0; padding:0; font-size:12px;line-height:18px;color:#666;text-align:left; border:none; background:#fff; font-family:"microsoft yahei",Helvetica,Arial,"瀹嬩綋",sans-serif; overflow:-Scroll;overflow-x:hidden;}
+img,html,p,ul,li,input,form,h1,h2,h3,h4,h5,h6,dl,dd,dt,ol,input{margin:0;padding:0;border:0;}
+ul,li{list-style-type:none;}
+img{vertical-align:top;border:0;}
+a{outline:none; blr:expression(this.onFocus=this.blur());}
+a:link{color:#666;text-decoration: none; }
+a:visited{color:#666;text-decoration: none;}
+a:hover{color:#63b30e;text-decoration: none;}
+a:active{color:#63b30e;text-decoration: none;}
+a,area {blr:expression(this.onFocus=this.blur()) }
+.clear{clear:both;font-size:0px;height:0px;line-height:0px;overflow:hidden;}
+fieldset, img{border:0;}
+input, label, select, option, textarea, button, fieldset, legend{font:12px/18px Verdana, Simsun, Helvetica, Arial, sans-serif; vertical-align:middle}
+
+
+.login_bj{background:#fff url(../images/log_bj.jpg) no-repeat;  background-position:50% 50%; background-size:cover; position:absolute; left:0px; top:0px; height:100%; line-height:100%; right:0px; bottom:0px; }
+.ct-center{ width:338px; margin:0 auto;}
+.login_center{ display:inline-block; left:50%; top:50%; margin-left:-500px; margin-top:-220px; position:absolute;}
+.login_center span{ display:block; width:258px; height:105px; margin:0 auto; margin-bottom:45px;}
+.login_center li{position:relative;}
+.login_center li em{ font-style:normal; font-size:17px; line-height:55px; height:55px; color:#333; position:absolute; left:20px; top:0px; }
+.login_center li input{border-radius:3px; margin-bottom:13px; font-size:17px; text-indent:53px; width:338px; height:55px; line-height:55px; background:#fff url(../images/log_tb2.gif) no-repeat 12px 11px;}
+.login_center li.bjno input{ background:#fff; text-indent:64px;}
+.login_center li.bjno1 input{ background:#fff; text-indent:38px; width:160px; float:left;}
+.login_center li.bjno1 b{border-radius:3px; font-size:14px; display:block; background:#e9efef; float:right; font-weight:normal; width:160px; height:55px; line-height:55px; text-align:center;}
+.login_center li .p2{background:#fff url(../images/log_tb2.gif) no-repeat 14px -50px;}
+.login_center .p3{cursor:pointer; text-shadow: 0px 0px 1px #666; border-radius:3px; width:338px; height:50px; line-height:50px; background:#ffcc00; color:#fff; font-size:18px; box-shadow: 1px 1px 5px #7d7d7d;}
+.login_center ol{ display:block; font-size:14px; color:#fff; margin-top:20px;}
+.login_center ol a{color:#002aff; padding-left:5px;}
+.login_center ol em{ font-style:normal; float:right;}
+.bottom_an{ width:862px; padding-left:138px; height:auto;  background: url(../images/d.png) repeat-x; margin:0 auto; margin-top:55px;}
+.bottom_an a{ margin-left:40px; width:192px; height:41px; background: url(../images/log_tb.png) no-repeat; display:block; float:left; color:#fff; font-size:14px; text-indent:50px; line-height:40px; margin-top:40px;} 
+.bottom_an a.tb2{ background-position:0 -53px;}
+.bottom_an a.tb3{ background-position:0 -106px;}
+.bottom_an b{position:relative; float:left; font-weight:normal;}
+.hov_a{ width:400px; height:459px; display:none; background: url(../images/mm.png) no-repeat; position:absolute; left:-60px; bottom:55px;}
+.bottom_an b:hover .hov_a{ display:block;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

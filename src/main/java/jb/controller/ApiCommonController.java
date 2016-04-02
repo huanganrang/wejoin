@@ -65,7 +65,31 @@ public class ApiCommonController extends BaseController {
 		}		
 		return j;
 	}
-	
+
+
+	@RequestMapping("/GET")
+	public String post(String apiType,String pageUrl, HttpServletRequest request) {
+
+		Map<String, String[]> paramMap = request.getParameterMap();
+		String paramStr = "";
+		for(String key : paramMap.keySet()) {
+			if("apiType".equals(key)||"pageUrl".equals(key)) continue;
+			paramStr += "".equals(paramStr) ? "?" : "&";
+			paramStr += key + "=" + paramMap.get(key)[0];
+		}
+		String result = HttpUtil.doGet(PathUtil.getApiUrl(apiType) + paramStr);
+		// 登录
+		if(UL001.equals(apiType)|| UL040.equals(apiType)) {
+			JSONObject jsonObject = JSON.parseObject(result);
+			if(jsonObject != null && jsonObject.getInteger("serverStatus") == 0) {
+				UserToken userToken = jsonObject.getObject("returnObject", UserToken.class);
+				if(UL001.equals(apiType)) userToken.setLoginMark(true);
+				request.getSession().setAttribute(USER_TOKEN, userToken);
+			}
+		}
+		return pageUrl;
+	}
+
 	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping("/doGet")

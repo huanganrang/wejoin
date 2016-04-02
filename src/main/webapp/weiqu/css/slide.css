@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+body,html{ height:100%; line-height:100%;}
+.slides{width:100%;height:100%;position:relative;overflow:hidden;}
+.slideInner{height:100%;position:relative;left:0;margin-left:0;}
+.slideInner a{display:block;height:100%;background-size:cover;background-position:center center;position:relative;text-align:center;z-index:1;}
+.slideInner a div.img1{width:702px;position:absolute;left:50%; margin-left:-570px; top:50%; margin-top:-270px;}
+.slideInner a div.img2{width:380px;position:absolute; right:50%; margin-right:-570px; text-align:left; color:#fff; top:50%; margin-top:-190px;}
+.slideInner a div.img2 span{ display:block; font-size:46px; height:46px; line-height:46px; text-shadow: 0px 1px 5px #666;}
+.slideInner a div.img2 em{ font-style:normal; font-size:19px; display:block; margin-top:40px; line-height:25px;}
+.slideInner a div.img2 ol{ display:block; width:298px; height:60px; background:#1eb713; box-shadow: 0px 1px 3px #7d7d7d; border-radius:3px; text-align:center; font-size:25px; line-height:60px; margin-top:80px; text-shadow: 0px 0px 2px #666;}
+
+.slideInner a div.img3{width:547px; position:absolute; right:50%; margin-right:-500px;  top:50%; margin-top:-270px;}
+.slideInner a div.img3 img{width:77%;}
+.slideInner a div.img4{width:340px;position:absolute; left:50%; margin-left:-350px; text-align:left; color:#fff; top:50%; margin-top:-190px;}
+.slideInner a div.img4 span{ display:block; text-indent:50px; font-size:46px; height:46px; line-height:46px; text-shadow: 0px 1px 5px #666;}
+.slideInner a div.img4 em{ font-style:normal; font-size:19px; display:block; margin-top:40px; line-height:25px;}
+.slideInner a div.img4 ol{margin-left:22px; display:block; width:298px; height:60px; background:#1eb713; box-shadow: 0px 1px 3px #7d7d7d; border-radius:3px; text-align:center; font-size:25px; line-height:60px; margin-top:80px; text-shadow: 0px 0px 2px #666;}
+
+.slideInner a div.img5{width:702px;position:absolute;left:50%; margin-left:-520px; top:50%; margin-top:-250px;}
+.slideInner a div.img6{width:380px;position:absolute; right:50%; margin-right:-570px; text-align:left; color:#fff; top:50%; margin-top:-240px;}
+.slideInner a div.img6 span{ display:block; font-size:46px; height:46px; line-height:46px; text-shadow: 0px 1px 5px #666;}
+.slideInner a div.img6 em{ font-style:normal; font-size:19px; display:block; margin-top:40px; line-height:25px;}
+.slideInner a div.img6 ol{ display:block; width:298px; height:60px; background:#1eb713; box-shadow: 0px 1px 3px #7d7d7d; border-radius:3px; text-align:center; font-size:25px; line-height:60px; margin-top:80px; text-shadow: 0px 0px 2px #666;}
+
+
+.nav{width:1200px;position:relative;left:50%;margin-left:-600px;display:none;}
+.nav a{display:block;width:41px;height:119px;opacity:.2;z-index:9;}
+.nav a.prev{position:absolute;left:0;top:-350px;margin-top:-58px;background:url(../img/ban_pre.png) no-repeat;}
+.nav a.next{position:absolute;right:0;top:-350px;margin-top:-58px;background:url(../img/ban_next.png) no-repeat;}
+.navListBox{position:absolute;left:50%;bottom:95px;z-index:99;}
+.navListBox li{width:19px;height:19px; float:left; margin-left:25px; overflow:hidden;}
+.navListBox li a{width:19px;height:19px; display:block; background: url(../images/dian.png) no-repeat 0 -33px;}
+.navListBox li a.active{background: url(../images/dian.png) no-repeat;}
+
+
+.in_bottom100{ width:100%; height:72px; background: url(../images/bdbj.png) repeat-x; position:fixed; z-index:9999; left:0px; bottom:0px;}
+.in_bottom{ width:1000px; height:72px; margin:0 auto;}
+.bot_left{ float:left; font-size:14px;}
+.bot_left span{ float:left; margin-top:10px; display:block;}
+.bot_left a{ color:#fff; line-height:72px; margin-left:21px; float:left; }
+
+.bot_right{ float:right; font-size:14px;}
+.bot_right a{ display:block; float:left; margin-left:15px;}
+.bot_right a.a1{width:92px; height:32px; margin-top:20px; border:1px solid #fff; line-height:32px; background:#eaeaea; color:#333; box-shadow: 0px 1px 3px #7d7d7d; border-radius:3px; text-align:center; }
+.bot_right a.a2{width:92px; height:32px; margin-top:20px; border:1px solid #fff; line-height:32px; background:#eaeaea; color:#333; box-shadow: 0px 1px 3px #7d7d7d; border-radius:3px; text-align:center; }
+.bot_right a.a3{width:105px; height:72px; line-height:72px; color:#fff; background: url(../images/in_tb.png) no-repeat 0 17px; text-indent:32px; margin-left:27px;}
+.bot_right a.a4{width:115px; height:72px; line-height:72px; color:#fff; background: url(../images/in_tb.png) no-repeat 0 -77px; text-indent:40px; margin-left:0px;}
+
+
+
+
+
+

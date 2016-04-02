@@ -164,7 +164,7 @@
 		</dependency>
 		
 		<!-- androidpn server 依赖的jar 开始 -->
-		<dependency>
+		<!--<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.0</version>
@@ -219,11 +219,11 @@
 			    </exclusion>
 			</exclusions> 
 		</dependency>
-		<!-- <dependency>
+		&lt;!&ndash; <dependency>
 		  <groupId>org.apache.commons</groupId>
 		  <artifactId>commons-email</artifactId>
 		  <version>1.2</version>
-		</dependency> -->
+		</dependency> &ndash;&gt;
 		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
@@ -316,7 +316,7 @@
 			      <artifactId>*</artifactId>
 			    </exclusion>
 			</exclusions> 
-		</dependency>
+		</dependency>-->
 		<!-- androidpn server 依赖的jar 结束 -->	
 	</dependencies>
 	<build>

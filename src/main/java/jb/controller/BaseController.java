@@ -1,37 +1,12 @@
 package jb.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import jb.absx.F;
-import jb.android.push.NotificationManager;
 import jb.interceptors.TokenManage;
 import jb.listener.Application;
-import jb.pageModel.BaseData;
-import jb.pageModel.Colum;
-import jb.pageModel.DataGrid;
-import jb.pageModel.Json;
-import jb.pageModel.SessionInfo;
+import jb.pageModel.*;
 import jb.util.Constants;
 import jb.util.StringEscapeEditor;
 import jb.util.Util;
-
-import org.androidpn.server.xmpp.XmppServer;
-import org.androidpn.server.xmpp.session.ClientSession;
-import org.androidpn.server.xmpp.session.SessionManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -43,6 +18,18 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * 基础控制器
@@ -166,22 +153,7 @@ public class BaseController {
 		}	
 	}
 	
-	public void notification(String rs) {
-		if (!F.empty(rs)) {
-			NotificationManager notif = (NotificationManager) XmppServer
-					.getInstance().getBean("notificationManager");
-			Collection<ClientSession> sessions = SessionManager.getInstance()
-					.getSessions();
-			Set<ClientSession> usernames = new HashSet<ClientSession>();
-			for (ClientSession cs : sessions) {
-					usernames.add(cs);
 
-			}
-			notif.sendNotifcationToSession("1234567890", "Admin", "timtle", rs,
-					"uri",
-					usernames.toArray(new ClientSession[usernames.size()]));
-		}
-	}
 	
 	public String uploadFile(HttpServletRequest request, String dirName, MultipartFile file,  String fileName){
 		if(file==null||file.isEmpty())

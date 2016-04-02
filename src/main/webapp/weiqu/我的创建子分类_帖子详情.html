@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link href="css/channel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/js.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#secondpane p.menu_head").click(function()
+    {
+	     $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+	});
+});
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+$(function() {
+			$('.circle').each(function(index, el) {
+				var num = $(this).find('span').text() * 3.6;
+				if (num<=180) {
+					$(this).find('.right').css('transform', "rotate(" + num + "deg)");
+				} else {
+					$(this).find('.right').css('transform', "rotate(180deg)");
+					$(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+				};
+			});
+
+		});
+</script>
+</head>
+<body class="bj">
+<div class="post_header_100">
+	<div class="post_header">
+		<div class="post_logo"><a href="#"><img src="images/wq_logo.png" /></a></div>
+		<div class="center_memu">
+			<ul>
+				<li class="on"><a href="#" class="tb1">频道</a></li>
+				<li><a href="#" class="tb2">社群</a></li>
+				<li><a href="#" class="tb3">点播</a></li>
+				<li><a href="#" class="tb4">帮助</a></li>
+			</ul>
+		</div>
+		<div class="post_login">
+			<a href="#" class="a2">登录</a>
+			<a href="#">注册</a>
+		</div>
+		<div class="post_app">
+			<a href="#">APP</a>
+			<a href="#" class="a2">PC客户端</a>
+		</div>
+		<div class="clear"></div>
+		<div class="post_search">
+			<form action="" method="get">
+				<input type="text" class="p1" onBlur="if(this.value==''){this.value='名人堂卢勇授课成功学';this.style.color='#ccc'}" onFocus="if(this.value=='名人堂卢勇授课成功学'){this.value='';this.style.color='#333'}" value="名人堂卢勇授课成功学" id="textfield" name="email" style="color:#ccc;">
+				<input name="" type="submit" value="" class="p2">
+			</form>
+		</div>
+		<div class="post_scroll">
+			<marquee scrollamount="3" id="notice" direction="left">微区APP正式上线，公测中充值有礼物苏打绿可</marquee>
+		</div>
+	</div>
+</div>
+
+<div class="post_center">
+	<div class="post_left">
+		<div class="post_menu">
+			<div class="left_tt">社群分类</div>
+			 	<div class="menu_list polist" id="secondpane">
+    			<p class="menu_head">视频教育 <em>245.300</em></p>
+    			<div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+   				 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			<p class="menu_head">个人专区 <em>245.300</em></p>
+    			<div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			 <p class="menu_head">视频教育 <em>245.300</em></p>
+  			 	 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+    			 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+    			 <p class="menu_head">个人专区 <em>245.300</em></p>
+    			 <div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+ 			 </div>
+		</div>
+	</div>
+	
+	
+	<div class="post_right">
+		<div class="advertising"></div>
+        <div class="ib_rtitle">
+        	<em>电商运营之路I吧</em>
+            <b><a href="#">回复</a></b>  
+        </div>
+        <div class="ib_tzlist">
+        	<dl>
+            	<dt>
+                	<a href="#">
+                    	<img src="images/img.gif" />
+                        <span>我是会飞的鱼</span>
+                        <em></em>                    
+                    </a>                    
+                </dt>
+               <dd>
+               		<div class="dd_center">
+                    要求：寒假期间能够有充足的时间处理贴吧事务。<br />
+                    没有充足时间，不愿花费精力，三分钟热度总是半途而废的，请勿申请，以免浪费你我的时间。<br />
+                    实习期4周，每周删贴量最后一名淘汰。<br />
+                    9级以上可申请。<br />
+                    <br />
+                    <br />
+                    申请格式：<br />
+                    ID：<br />
+                    级别：<br />
+                    日均在线时长：<br /><br />
+                    <img src="images/dimg.gif" />
+                    </div>
+                    <em>1楼 &nbsp;&nbsp;  沙发 &nbsp;&nbsp; 2015-12-29 15:30 &nbsp;&nbsp;  <a onclick="openShutManager(this,'box1',false,'收起回复','回复')">回复</a></em>
+                    <div class="d_colk" id="box1" style="display:none;">
+                    	<span>我也说一句</span>
+                        <form action="" method="get">
+                        	<textarea name="" cols="" rows="" class="i_p1"></textarea>
+                            <input name="" type="submit" value="发表" class="tzam"/>
+                            <div class="clear"></div>
+                        </form>
+                        <ol></ol>
+                    </div>
+               </dd>
+               <div class="clear"></div>
+               <div class="dl_hov">
+               		<span><a href="#">删除</a></span>
+               		<ol>地板</ol>
+               </div>
+            </dl>
+            
+            <dl>
+            	<dt>
+                	<a href="#">
+                    	<img src="images/img.gif" />
+                        <span>我是会飞的鱼</span>                 
+                    </a>                    
+                </dt>
+               <dd>
+               		<div class="dd_center">
+                    要求：寒假期间能够有充足的时间处理贴吧事务。<br />
+                    没有充足时间，不愿花费精力，三分钟热度总是半途而废的，请勿申请，以免浪费你我的时间。<br />
+                    实习期4周，每周删贴量最后一名淘汰。<br />
+                    9级以上可申请。<br />
+                    <br />
+                    <br />
+                    申请格式：<br />
+                    ID：<br />
+                    级别：<br />
+                    日均在线时长：<br /><br />
+                    </div>
+                    <em>2楼 &nbsp;&nbsp;  板凳 &nbsp;&nbsp;   2015-12-29 15:30 &nbsp;&nbsp;  <a onclick="openShutManager(this,'box2',false,'收起回复','回复')">回复</a></em>
+                    <div class="d_colk" id="box2" style="display:none;">
+                    	<span>我也说一句</span>
+                        <form action="" method="get">
+                        	<textarea name="" cols="" rows="" class="i_p1"></textarea>
+                            <input name="" type="submit" value="发表" class="tzam"/>
+                            <div class="clear"></div>
+                        </form>
+                        <ol></ol>
+                    </div>
+               </dd>
+               <div class="clear"></div>
+               <div class="dl_hov">
+               		<span><a href="#">删除</a></span>
+               		<ol>地板</ol>
+               </div>
+            </dl>
+            
+            <dl>
+            	<dt>
+                	<a href="#">
+                    	<img src="images/img.gif" />
+                        <span>我是会飞的鱼</span>                 
+                    </a>                    
+                </dt>
+               <dd>
+               		<div class="dd_center">
+                    要求：寒假期间能够有充足的时间处理贴吧事务。<br />
+                    没有充足时间，不愿花费精力，三分钟热度总是半途而废的，请勿申请，以免浪费你我的时间。<br />
+                    实习期4周，每周删贴量最后一名淘汰。<br />
+                    9级以上可申请。<br />
+                    <br />
+                    <br />
+                    申请格式：<br />
+                    ID：<br />
+                    级别：<br />
+                    日均在线时长：<br /><br />
+                    </div>
+                    <em>1楼 &nbsp;&nbsp;   2015-12-29 15:30 &nbsp;&nbsp;  <a onclick="openShutManager(this,'box3',false,'收起回复','回复')">回复</a></em>
+                    <div class="d_colk" id="box3" style="display:none;">
+                    	<span>我也说一句</span>
+                        <form action="" method="get">
+                        	<textarea name="" cols="" rows="" class="i_p1"></textarea>
+                            <input name="" type="submit" value="发表" class="tzam"/>
+                            <div class="clear"></div>
+                        </form>
+                        <ol></ol>
+                    </div>
+               </dd>
+               <div class="clear"></div>
+               <div class="dl_hov">
+               		<span><a href="#">删除</a></span>
+               		<ol>地板</ol>
+               </div>
+            </dl>
+        </div>
+        
+        <div class="firliex" style=" float:none; margin:25px 0 20px 0;">
+			<a href="#" class="on">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">7</a>
+			<a href="#">上一页</a>
+			<a href="#">下一页</a>
+		</div>
+        
+        <div class="ib_pl">
+        	<span>我要回复</span>
+            <div class="ib_plk">
+            	<div class="ib_pltitle">
+                	<div class="b_pro">
+                    	<ol>图片</ol>
+                    	<input type="file" class="up_n" name="_f">
+                    </div>
+                    <div class="ib_bc">
+                    	<ol>表情</ol>
+                        <div class="v_bc">
+                            <a href="#">表情图片aaa</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <a href="#">表情图片</a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form action="" method="get">
+                	<textarea name="" cols="" rows="" class="ib_p2"></textarea>
+                    <input name="" type="submit" value="发 表" class="ib_an"/>
+                </form>
+            </div>
+        </div>	
+		
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

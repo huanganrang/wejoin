@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link href="css/channel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/js.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#secondpane p.menu_head").click(function()
+    {
+	     $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+	});
+});
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+</script>
+</head>
+<body class="bj">
+<div class="header_left">
+	<div class="left_log">
+		<span><a href="#"onclick="showuplodBox()"><img src="images/wq_logo.png" /></a></span>
+	</div>
+	<div class="left_tt">个人中心</div>
+	<div>
+
+  <div class="menu_list">
+    <p class="menu_head"><a href="#" class="a1">我的创建 <em>247</em></a></p>
+    <p class="menu_head on"><a href="#" class="a2">我的关注 <em>245.300</em></a></p>
+    <p class="menu_head"><a href="#" class="a3">我的空间 <em>327MB/1gb</em></a></p>   
+    <p class="menu_head"><a href="#" class="a4">我的消息 <em>245.300</em></a></p>
+    <p class="menu_head"><a href="#" class="a5">意见反馈 <em>245.300</em></a></p>
+  </div>
+	<div class="hd_bottom"><span></span></div>
+</div>
+	
+	
+</div>
+
+<div class="header_center">
+	
+	<div class="fex_1">
+	<div class="fex_2">
+	<div class="center_memu">
+		<ul>
+			<li><a href="#"onclick="showdemandBox()" class="tb1">频道</a></li>
+			<li><a href="#"onclick="showchannelBox()" class="tb2">社群</a></li>
+			<li><a href="#"onclick="showroomBox()" class="tb3">点播</a></li>
+			<li><a href="#" class="tb4">帮助</a></li>
+		</ul>
+	</div>
+	<div class="center_r">
+		<a href="#">APP</a>
+		<a href="#" class="a2">PC客户端</a>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="center_gao">
+		<div class="center_search">
+			<form action="" method="get">
+				<input type="text" class="p1" onBlur="if(this.value==''){this.value='名人堂卢勇授课成功学';this.style.color='#ccc'}" onFocus="if(this.value=='名人堂卢勇授课成功学'){this.value='';this.style.color='#333'}" value="名人堂卢勇授课成功学" id="textfield" name="email" style="color:#ccc;">
+				<input name="" type="submit" value="" class="p2">
+			</form>
+		</div>
+		<div class="center_scroll">
+			<marquee scrollamount="3" id="notice" direction="left">微区APP正式上线，公测中充值有礼物苏打绿可</marquee>
+		</div>
+	</div>
+	</div>
+	
+	</div>
+	
+	<div class="personal">
+		<div class="per_left">
+			<div class="per_img">
+				<a href="#"onclick="showportraitBox()">
+				<img src="images/tb5.gif" />
+				<span>编辑</span>
+				</a>
+			</div>
+			<div class="per_txt">
+				<span><em>账号：251145454</em>   <em>昵称：我就是我啊</em>    <a href="#"onclick="shownickBox()">编辑</a></span>
+				<ol>账号安全：<strong>未保护</strong>    <a href="#"onclick="showphoneBox()">绑定</a></ol>
+			</div>
+		</div>
+		<div class="per_right"><a href="#">退出当前账号</a></div>
+		<div class="clear"></div>
+	</div>
+	<div class="lst_title">我的消息（<em>247</em>） <div class="tb"><a href="#">清空我的消息</a></div> </div>
+	
+	<div class="glob_news">
+		<ul>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+			<li>
+				<span>
+					<em><a href="#">收藏 是前苏联作家尼古拉·奥斯特洛夫斯基所著的一部长篇小说</a></em>
+					<ol>2015年6月27日 21:26:18</ol>
+				</span>
+				<strong><a href="#">删除</a></strong>
+			</li>
+		</ul>
+	</div>
+
+	
+	
+	<div style="height:60px;"></div>
+	<div class="center_firex">
+		<span>
+			<a href="#"> < </a>
+			<a href="#"> <strong>8</strong> </a>
+			<a href="#"> > </a>
+		</span>
+	</div>
+</div>
+
+
+
+<div class="header_right">
+	<div class="head_log">
+		<a href="#" class="a2">登录</a>
+		<a href="#">注册</a>
+	</div>
+	<div class="rt_title">房间人气排行榜</div>
+	<div class="right_list">
+		<ul>
+			<li><a href="#"><em style="background:#cb0000;">1</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em style="background:#e37000;">2</em><span>语言言培训  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em style="background:#70b615;">3</em><span>个人专言言区 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>4</em><span>艺术文言言体  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>5</em><span>娱乐模言块       </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>6</em><span>行业言言培训  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>7</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>8</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>9</em><span>个人专言言区 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>10</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+		</ul>
+	</div>
+</div>
+
+
+<!--创建点播 开始-->
+<div class="windows uplodBox" id="uplodBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span>上传影音文件</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写影音名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写影音名称'){this.value='';this.style.color='#333'}" value="请填写影音名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='听音简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='听音简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">听音简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建点播 结束-->
+
+
+
+<!--创建房间 开始-->
+<div class="windows demandBox" id="demandBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">社群列表小图</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写房间名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写房间名称'){this.value='';this.style.color='#333'}" value="请填写房间名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li>
+							<span>
+								<select name="" class="putd">
+                              		<option>这里写分类</option>
+                                    <option>这里写分类22</option>
+                            	</select>
+                            </span> 
+						</li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='房间简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='房间简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">房间简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建房间 结束-->
+
+<!--创建频道 开始-->
+<div class="windows channelBox" id="channelBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">频道列表小图</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写频道名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写频道名称'){this.value='';this.style.color='#333'}" value="请填写频道名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li>
+							<span>
+								<select name="" class="putd">
+                              		<option>这里写分类</option>
+                                    <option>这里写分类22</option>
+                            	</select>
+                            </span> 
+						</li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='频道简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='频道简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">频道简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建频道 结束-->
+
+<!--房间列表 开始-->
+<div class="windows roomBox" id="roomBox" style="display:none;" >
+	<div class="windowsBg"></div>
+	<div class="windows_box">
+		<div class="room_center">
+			<ul>
+				<div class="content mCustomScrollbar" style="height:550px;">
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密111团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box1')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box1" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box2')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box2" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box3')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box3" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				</div>
+			</ul>
+		</div>
+		<div class="up_an"><a href="#" class="a2">确定创建</a></div>		
+		<div class="close_btn"><a href="#">取消返回</a></div>
+	</div>
+</div>
+<!--房间列表 结束-->
+
+
+<!--编辑头像 开始-->
+<div class="windows portraitBox" id="portraitBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">上传新的头像图片</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--编辑头像 结束-->
+
+<!--编辑昵称 开始-->
+<div class="windows nickBox" id="nickBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="nick"><input type="text" class="p1" onBlur="if(this.value==''){this.value='请输入新的昵称';this.style.color='#ccc'}" onFocus="if(this.value=='请输入新的昵称'){this.value='';this.style.color='#333'}" value="请输入新的昵称" id="textfield" name="email" style="color:#ccc;"></div>
+				<div class="up_an">
+					<a href="#" class="a2">确定修改</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--编辑昵称 结束-->
+
+<!--验证手机 开始-->
+<div class="windows phoneBox" id="phoneBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="nick">
+					<input type="text" class="p1" onBlur="if(this.value==''){this.value='请输入新的昵称';this.style.color='#ccc'}" onFocus="if(this.value=='请输入新的昵称'){this.value='';this.style.color='#333'}" value="请输入新的昵称" id="textfield" name="email" style="color:#ccc; margin:17px 15px 13px 15px;">
+					<input type="text" class="p2" onBlur="if(this.value==''){this.value='请输入收到的验证码';this.style.color='#ccc'}" onFocus="if(this.value=='请输入收到的验证码'){this.value='';this.style.color='#333'}" value="请输入收到的验证码" id="textfield" name="email" style="color:#ccc; margin:0px 15px;">
+					<a href="#">点击发送验证码</a>
+					<div class="clear"></div>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定修改</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--验证手机 结束-->
+
+<!--房间设置 开始-->
+<div class="windows settingBox" id="settingBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="setting">
+					<form action="" method="get">
+					<ul>
+						<li>
+							<ol>直播模式</ol>
+							<div class="see_1">
+								<span>集中管理</span>
+								<div class="vdo_seelist">
+                            		<input type="checkbox" name="aa" value="" id="aa" class="vd_style"/>
+                            		<label for="aa">允许发言</label>
+                    			</div>
+                        		<div class="vdo_seelist">
+                            		<input type="checkbox" name="bb" value="" id="bb" class="vd_style"/>
+                            		<label for="bb">允许图文</label>
+                    			</div>
+							</div>
+							<div class="see_1">
+								<span>自由讨论</span>
+								<div class="vdo_seelist">
+                            		<input type="radio" name="cc" value="1" id="cc1" class="vd_style"/>
+                            		<label for="cc1">开启</label>
+                    			</div>
+                        		<div class="vdo_seelist">
+                            		<input type="radio" name="cc" value="2" id="cc2" class="vd_style"/>
+                            		<label for="cc2">禁止</label>
+                    			</div>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<ol>进入权限</ol>
+							<div class="see_1">
+								<span>权限设置</span>
+								<div class="vdo_seelist">
+                            		<input type="radio" name="dd" value="1" id="dd1" class="vd_style"/>
+                            		<label for="dd1">所有</label>
+                    			</div>
+                        		<div class="vdo_seelist">
+                            		<input type="radio" name="dd" value="2" id="dd2" class="vd_style"/>
+                            		<label for="dd2">会员</label>
+                    			</div>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<ol>教室状态</ol>
+							<div class="see_1">
+								<span>锁定教室</span>
+								<div class="vdo_seelist">
+                            		<input type="radio" name="ee" value="1" id="ee1" class="vd_style"/>
+                            		<label for="ee1">锁定</label>
+                    			</div>
+                        		<div class="vdo_seelist">
+                            		<input type="radio" name="ee" value="2" id="ee2" class="vd_style"/>
+                            		<label for="ee2">开启</label>
+                    			</div>
+							</div>
+							<div class="see_1">
+								<span>开放试听</span>
+								<div class="vdo_seelist">
+                            		<input type="radio" name="ff" value="1" id="ff1" class="vd_style"/>
+                            		<label for="ff1">开放</label>
+                            		<input type="text" class="p1" onBlur="if(this.value==''){this.value='30';this.style.color='#ccc'}" onFocus="if(this.value=='30'){this.value='';this.style.color='#333'}" value="30" id="textfield" name="email" style="color:#ccc; margin:7px 0 0 10px;">
+                            		<b>分钟</b>
+                    			</div>
+                        		<div class="vdo_seelist">
+                            		<input type="radio" name="ff" value="2" id="ff2" class="vd_style"/>
+                            		<label for="ff2">关闭</label>
+                    			</div>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<ol>房间地址</ol>
+							<div class="see_1">
+								<span>房间地址</span>
+								<em>http://www.weixun.com/class/83</em>
+							</div>
+							<div class="clear"></div>
+						</li>
+					</ul>
+					</form>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定修改</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--房间设置 结束-->
+</body>
+</html>

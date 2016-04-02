@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/channel.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<script type="text/javascript" language="javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/js.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#secondpane p.menu_head").click(function()
+    {
+	     $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+	});
+});
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+</script>
+</head>
+<body>
+<div class="header_left">
+	<div class="left_log">
+		<span><a href="#"onclick="showuplodBox()"><img src="images/wq_logo.png" /></a></span>
+	</div>
+	<div class="left_tt">频道分类</div>
+	<div>
+
+  <div class="menu_list" id="secondpane">
+    <p class="menu_head">视频教育 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">语言培训 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">个人专区 <em>245.300</em></p>
+    <div class="menu_body"> 
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+     <p class="menu_head">视频教育 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">语言培训 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">个人专区 <em>245.300</em></p>
+    <div class="menu_body"> 
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+  </div>
+	
+	<div class="left_an">
+		<a href="#">+ 创 建</a>
+	</div>
+	
+	<div class="hd_bottom"><span></span></div>
+</div>
+	
+	
+</div>
+
+<div class="header_center">
+	
+	<div class="fex_1">
+	<div class="fex_2">
+	<div class="center_memu">
+		<ul>
+			<li><a href="#"onclick="showdemandBox()" class="tb1">频道</a></li>
+			<li><a href="#"onclick="showchannelBox()" class="tb2">社群</a></li>
+			<li><a href="#"onclick="showroomBox()" class="tb3">点播</a></li>
+			<li><a href="#" class="tb4">帮助</a></li>
+		</ul>
+	</div>
+	<div class="center_r">
+		<a href="#">APP</a>
+		<a href="#" class="a2">PC客户端</a>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="center_gao">
+		<div class="center_search">
+			<form action="" method="get">
+				<input type="text" class="p1" onBlur="if(this.value==''){this.value='名人堂卢勇授课成功学';this.style.color='#ccc'}" onFocus="if(this.value=='名人堂卢勇授课成功学'){this.value='';this.style.color='#333'}" value="名人堂卢勇授课成功学" id="textfield" name="email" style="color:#ccc;">
+				<input name="" type="submit" value="" class="p2">
+			</form>
+		</div>
+		<div class="center_scroll">
+			<marquee scrollamount="3" id="notice" direction="left">微区APP正式上线，公测中充值有礼物苏打绿可</marquee>
+		</div>
+	</div>
+	</div>
+	
+	</div>
+	<div class="center_list">
+		<ul>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<li>
+				<div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
+				<div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
+				<div class="clear"></div>
+				<div class="st_3">
+					<span><a href="#">ID：13818680753</a></span>
+					<b><a href="#">+加入频道</a></b>
+					<ol><a href="#">关注</a></ol>
+				</div>
+			</li>
+			<div class="clear"></div>
+		</ul>
+	</div>
+	
+	<div style="height:60px;"></div>
+	<div class="center_firex">
+		<span>
+			<a href="#"> < </a>
+			<a href="#"> <strong>8</strong> </a>
+			<a href="#"> > </a>
+		</span>
+	</div>
+</div>
+
+
+
+<div class="header_right">
+	<div class="head_log">
+		<a href="#" class="a2">登录</a>
+		<a href="#">注册</a>
+	</div>
+	<div class="rt_title">房间人气排行榜</div>
+	<div class="right_list">
+		<ul>
+			<li><a href="#"><em style="background:#cb0000;">1</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em style="background:#e37000;">2</em><span>语言言培训  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em style="background:#70b615;">3</em><span>个人专言言区 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>4</em><span>艺术文言言体  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>5</em><span>娱乐模言块       </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>6</em><span>行业言言培训  </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>7</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>8</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>9</em><span>个人专言言区 </span><ol>245.300</ol></a></li>
+			<li><a href="#"><em>10</em><span>视频教是是 </span><ol>245.300</ol></a></li>
+		</ul>
+	</div>
+</div>
+
+
+<!--创建点播 开始-->
+<div class="windows uplodBox" id="uplodBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span>上传影音文件</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写影音名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写影音名称'){this.value='';this.style.color='#333'}" value="请填写影音名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='听音简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='听音简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">听音简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建点播 结束-->
+
+
+
+<!--创建房间 开始-->
+<div class="windows demandBox" id="demandBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">社群列表小图</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写房间名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写房间名称'){this.value='';this.style.color='#333'}" value="请填写房间名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li>
+							<span>
+								<select name="" class="putd">
+                              		<option>这里写分类</option>
+                                    <option>这里写分类22</option>
+                            	</select>
+                            </span> 
+						</li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='房间简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='房间简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">房间简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建房间 结束-->
+
+<!--创建频道 开始-->
+<div class="windows channelBox" id="channelBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">频道列表小图</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写频道名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写频道名称'){this.value='';this.style.color='#333'}" value="请填写频道名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li>
+							<span>
+								<select name="" class="putd">
+                              		<option>这里写分类</option>
+                                    <option>这里写分类22</option>
+                            	</select>
+                            </span> 
+						</li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='频道简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='频道简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">频道简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定创建</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--创建频道 结束-->
+
+<!--房间列表 开始-->
+<div class="windows roomBox" id="roomBox" style="display:none;" >
+	<div class="windowsBg"></div>
+	<div class="windows_box">
+		<div class="room_center">
+			<ul>
+				<div class="content mCustomScrollbar" style="height:550px;">
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密111团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box1')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box1" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box2')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box2" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color" onClick="openShutManager(this,'box3')">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<div class="room_box" id="box3" style="display:none;">
+					<div class="room_l1">
+						<img src="images/tb5.gif" />
+						<span>讲师：Ben</span>
+					</div>
+					<div class="room_l2">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里</div>
+					<div class="room_sj"></div>
+					<div class="clear"></div>
+				</div>
+				
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="room_img"><a href="#"><img src="images/tb3.gif" /></a></div>
+					<div class="room_right">
+						<div class="moo_1">
+							<span><a href="#">秘密团队的秘密</a></span>
+							<ol>开放试听</ol>
+							<div class="clear"></div>
+						</div>
+						<div class="moo_2">
+							<span><a href="#" class="color">老师介绍</a></span>
+							<span><a href="#">课程介绍</a></span>
+							<span><a href="#">时间安排</a></span>
+							<ol>在线 5</ol>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</li>
+				</div>
+			</ul>
+		</div>
+		<div class="up_an"><a href="#" class="a2">确定创建</a></div>		
+		<div class="close_btn"><a href="#">取消返回</a></div>
+	</div>
+</div>
+<!--房间列表 结束-->
+</body>
+</html>

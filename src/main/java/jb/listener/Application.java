@@ -1,20 +1,17 @@
 package jb.listener;
 
-import java.util.Date;
-import java.util.Map;
+import com.alibaba.fastjson.JSON;
+import jb.pageModel.BaseData;
+import jb.service.BasedataServiceI;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import jb.pageModel.BaseData;
-import jb.service.BasedataServiceI;
-
-import jb.util.Constants;
-import org.androidpn.server.util.ConfigManager;
-import org.androidpn.server.xmpp.XmppServer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 系统全局容器
@@ -25,23 +22,27 @@ public class Application implements ServletContextListener {
 	private static ServletContext context;
 	private static String PREFIX = "SV.";
 	public static String version = "123456789";
+	public static String apiJson = "";
 	@Override
 	public void contextInitialized(ServletContextEvent event) {	
 		 context = event.getServletContext();	
 		 initAppVariable();
 		 version = new Date().getTime()+"";
-		 //XmppServer.getInstance();
-		// ConfigManager.getInstance().getConfig().setProperty("server.home.dir", Application.class.getResource("/").getPath());
-		
 	}
 
 	private static void initAppVariable(){
 		ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(context); 
 		BasedataServiceI service = app.getBean(BasedataServiceI.class);
 		Map<String,BaseData> map = service.getAppVariable();
+		Map<String,BaseData> apiMap = new HashMap<String, BaseData>();
 		for(String key : map.keySet()){
-			context.setAttribute(PREFIX+key, map.get(key));
+			BaseData baseData = map.get(key);
+			context.setAttribute(PREFIX+key, baseData);
+			if("UL".equals(baseData.getBasetypeCode())){
+				apiMap.put(key,baseData);
+			}
 		}
+		apiJson = JSON.toJSONString(apiMap);
 	}
 	
 	/**

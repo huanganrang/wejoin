@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+<link href="css/channel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/js.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#secondpane p.menu_head").click(function()
+    {
+	     $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+	});
+});
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = shutTip;
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip && shutTip){
+    sourceObj.innerHTML = openTip;
+   }
+}
+}
+$(function() {
+			$('.circle').each(function(index, el) {
+				var num = $(this).find('span').text() * 3.6;
+				if (num<=180) {
+					$(this).find('.right').css('transform', "rotate(" + num + "deg)");
+				} else {
+					$(this).find('.right').css('transform', "rotate(180deg)");
+					$(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+				};
+			});
+
+		});
+</script>
+</head>
+<body class="bj">
+<div class="post_header_100">
+	<div class="post_header">
+		<div class="post_logo"><a href="#"><img src="images/wq_logo.png" /></a></div>
+		<div class="center_memu">
+			<ul>
+				<li class="on"><a href="#" class="tb1">频道</a></li>
+				<li><a href="#" class="tb2">社群</a></li>
+				<li><a href="#" class="tb3">点播</a></li>
+				<li><a href="#" class="tb4">帮助</a></li>
+			</ul>
+		</div>
+		<div class="post_login">
+			<a href="#" class="a2">登录</a>
+			<a href="#">注册</a>
+		</div>
+		<div class="post_app">
+			<a href="#">APP</a>
+			<a href="#" class="a2">PC客户端</a>
+		</div>
+		<div class="clear"></div>
+		<div class="post_search">
+			<form action="" method="get">
+				<input type="text" class="p1" onBlur="if(this.value==''){this.value='名人堂卢勇授课成功学';this.style.color='#ccc'}" onFocus="if(this.value=='名人堂卢勇授课成功学'){this.value='';this.style.color='#333'}" value="名人堂卢勇授课成功学" id="textfield" name="email" style="color:#ccc;">
+				<input name="" type="submit" value="" class="p2">
+			</form>
+		</div>
+		<div class="post_scroll">
+			<marquee scrollamount="3" id="notice" direction="left">微区APP正式上线，公测中充值有礼物苏打绿可</marquee>
+		</div>
+	</div>
+</div>
+
+<div class="post_center">
+	<div class="post_left">
+		<div class="post_menu">
+			<div class="left_tt">社群分类</div>
+			 	<div class="menu_list polist" id="secondpane">
+    			<p class="menu_head">视频教育 <em>245.300</em></p>
+    			<div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+   				 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			<p class="menu_head">个人专区 <em>245.300</em></p>
+    			<div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			</div>
+    			 <p class="menu_head">视频教育 <em>245.300</em></p>
+  			 	 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+   				 <p class="menu_head">语言培训 <em>245.300</em></p>
+    			 <div class="menu_body">
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+    			 <p class="menu_head">个人专区 <em>245.300</em></p>
+    			 <div class="menu_body"> 
+    				<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    				<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    				<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    			 </div>
+ 			 </div>
+		</div>
+	</div>
+	
+	
+	<div class="post_right">
+		<div class="post_video"><img src="images/vd.jpg" /></div>
+		<div class="vdo_text">
+			<div class="vdo_title">
+				<span>电商的运营之路--钻展投放</span>
+				<ol>播放：56次</ol>
+				<em><a href="#">56次</a></em>
+				<div class="clear"></div>
+			</div>
+			<div class="vdo_zi">
+				<span>视频简介：</span>
+				可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的空间费。
+			</div>
+		</div>
+		
+		<div class="vdo_pl">
+			<span>评论（287）</span>
+			<ol><img src="images/tx7.png" /></ol>
+			<textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='听完了大师的点播，想说点什么吗') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='听完了大师的点播，想说点什么吗';this.style.color='#ccc';}" onKeyUp="checkLength(this);">听完了大师的点播，想说点什么吗</textarea>
+			<div class="clear"></div>
+			<a href="#">确定提交</a>
+		</div>
+		
+		<div class="vdo_list">
+			<ul>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+				<li>
+					<div class="list_img"><img src="images/tx7.png" /></div>
+					<div class="list_zi">
+						<span>我是会飞的鱼     <em>2016/03/24    21:43</em></span>
+						<ol>可视对讲是刘德华非矢量的房间是两地分居是龙打飞机失联飞机塑料壳京东方矢量的减肥矢量的减肥失落的房间矢量的减肥了三等奖飞洛杉矶的法兰式空间的费历史课减肥塑料壳的房间矢量的咖啡金塑料壳的房间矢量的减肥聊是看得见凡士林的</ol>
+						<b><a href="#">删除</a></b>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="firliex">
+			<a href="#" class="on">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#">7</a>
+			<a href="#">上一页</a>
+			<a href="#">下一页</a>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
