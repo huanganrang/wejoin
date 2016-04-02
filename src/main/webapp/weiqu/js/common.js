@@ -9,6 +9,7 @@ var NET_VOICE_URL = "";
  * @param success
  */
 function ajaxGet(parameter,success,callData){
+    Util.trimJson(parameter);
     $.ajax({
         type: "GET",
         url: base+"api/apiCommon/doGet",
@@ -36,6 +37,7 @@ function ajaxGet(parameter,success,callData){
     });
 }
 function ajaxGetSync(parameter,success){
+    Util.trimJson(parameter);
     $.ajax({
         type: "GET",
         url: base+"api/apiCommon/doGet",
@@ -65,6 +67,9 @@ function ajaxGetSync(parameter,success){
  * @param success
  */
 function ajaxPostSync(parameter,success,callData){
+    var param = parameter.param;
+    Util.trimJson(param);
+    parameter.param = JSON.stringify(param);
     $.ajax({
         type: "POST",
         url: base+"api/apiCommon/doPost",
@@ -114,7 +119,9 @@ function weiquDebug(parameter,data){
  * @param callData
  */
 function ajaxPost(parameter,success,callData){
-    console.log(parameter.type);
+    var param = parameter.param;
+    Util.trimJson(param);
+    parameter.param = JSON.stringify(param);
     $.ajax({
         type: "POST",
         url: base+"api/apiCommon/doPost",
@@ -164,4 +171,11 @@ Util.checkInputNull = function(input){
         return true;
     }
     return false;
+}
+
+Util.trimJson = function(json){
+    for(var i in json){
+        var val = json[i];
+        json[i] = val.trim();
+    }
 }
