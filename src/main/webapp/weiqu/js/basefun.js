@@ -4,12 +4,12 @@ var WEIQU_BASE_FUN = {
 //登陆功能
 WEIQU_BASE_FUN.login = function(){
 	var username = $("#username").val();
-	if (username == "") {
+	if (Util.checkInputNull($("#username"))) {
 		$("#username").focus();
 		return false;
 	}
 	var password = $("#password").val();
-	if (password == "") {
+	if (Util.checkInputNull($("#password"))) {
 		$("#password").focus();
 		return false;
 	}
@@ -38,7 +38,7 @@ WEIQU_BASE_FUN.checkMobile = function(mobile){
 WEIQU_BASE_FUN.register = function() {
 
 	var username = $("#username").val();
-	if(username == '') {
+	if(Util.checkInputNull($("#username"))) {
 		$("#username").focus();
 		return;
 	}
@@ -48,13 +48,13 @@ WEIQU_BASE_FUN.register = function() {
 		return;
 	}
 	var valiCode = $("#validCode").val();
-	if(valiCode == '') {
+	if(Util.checkInputNull($("#validCode"))) {
 		$("#validCode").focus();
 		return;
 	}
 
 	var password = $("#password").val();
-	if(password == '') {
+	if(Util.checkInputNull($("#password"))) {
 		$("#password").focus();
 		return;
 	} else {

@@ -157,3 +157,11 @@ Util.checkphone = function(v) {
     }
     return false;
 }
+
+Util.checkInputNull = function(input){
+    var val = input.val().trim();
+    if(val==""||val == input[0].defaultValue){
+        return true;
+    }
+    return false;
+}
