@@ -74,6 +74,7 @@
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.9" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-excelant:3.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml-schemas:3.9" level="project" />
@@ -82,21 +83,7 @@
     <orderEntry type="library" name="Maven: org.apache.ant:ant:1.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant-launcher:1.8.2" level="project" />
     <orderEntry type="library" name="Maven: jmimemagic:jmimemagic:0.1.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.4" level="project" />
-    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
-    <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.6" level="project" />
-    <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-client:1.18" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.18" level="project" />
-    <orderEntry type="library" name="Maven: org.gnu.inet:libidn:1.15" level="project" />
-    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.mina:mina-integration-beans:2.0.0-RC1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.mina:mina-core:2.0.0-RC1" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.igniterealtime:tinder:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: xpp3:xpp3:1.1.4c" level="project" />
   </component>
 </module>
