@@ -3,6 +3,7 @@ package jb.listener;
 import com.alibaba.fastjson.JSON;
 import jb.pageModel.BaseData;
 import jb.service.BasedataServiceI;
+import jb.util.FileUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -43,6 +44,7 @@ public class Application implements ServletContextListener {
 			}
 		}
 		apiJson = JSON.toJSONString(apiMap);
+		FileUtil.updateCommonJs(apiJson);
 	}
 	
 	/**

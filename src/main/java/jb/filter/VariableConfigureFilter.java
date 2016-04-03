@@ -20,7 +20,6 @@ public class VariableConfigureFilter extends GenericFilterBean {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         request.setAttribute("GET","/api/apiCommon/get");
         request.setAttribute("staticVersion", Application.version);
-        request.setAttribute("apiJson", Application.apiJson);
         request.setAttribute(ApiCommonController.USER_TOKEN,request.getSession().getAttribute(ApiCommonController.USER_TOKEN));
         filterChain.doFilter(servletRequest,servletResponse);
     }
