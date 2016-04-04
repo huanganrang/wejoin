@@ -183,7 +183,11 @@ Util.trimJson = function(json){
 
 //克隆dom,并渲染text,data是存储的data,viewData展示的数据
 Util.cloneDom = function(templateId,data,viewData){
-    var template = $("#"+templateId).clone();
+    var template;
+    if(typeof templateId == "string")
+        template = $("#"+templateId).clone();
+    else
+        template = templateId.clone();
     template.data(data);
     var view = viewData||data;
     var id = data.id||view.id;
