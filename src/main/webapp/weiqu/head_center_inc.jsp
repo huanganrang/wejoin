@@ -10,8 +10,8 @@
   <div class="fex_2">
     <div class="center_memu">
       <ul>
-        <li><a href="#"onclick="showdemandBox()" class="tb1">频道</a></li>
-        <li><a href="#"onclick="showchannelBox()" class="tb2">社群</a></li>
+        <li><a href="channel.jsp" class="tb1">频道</a></li>
+        <li><a href="#"onclick="showdemandBox()" class="tb2">社群</a></li>
         <li><a href="#"onclick="showroomBox()" class="tb3">点播</a></li>
         <li><a href="#" class="tb4">帮助</a></li>
       </ul>

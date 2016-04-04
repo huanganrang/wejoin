@@ -10,6 +10,7 @@
 <html>
 <head>
   <jsp:include page="channel_inc.jsp"></jsp:include>
+  <script src="js/channel.js?v=${staticVersion}"></script>
   <script type="text/javascript">
     $(document).ready(function()
     {
@@ -100,116 +101,7 @@
   <jsp:include page="head_center_inc.jsp"></jsp:include>
   <div class="center_list">
     <ul>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
-      <li>
-        <div class="st_tt"><span><a href="#">专业PC户主</a></span><ol>在线：346<ol></div>
-        <div class="st_2"><a href="#"><img src="images/p1.gif" /></a><ol><a href="#">创建者谁离开大家死定了空间死定了空间死定了空间苏打绿可死定了空间私</a></ol></div>
-        <div class="clear"></div>
-        <div class="st_3">
-          <span><a href="#">ID：13818680753</a></span>
-          <b><a href="#">+加入频道</a></b>
-          <ol><a href="#">关注</a></ol>
-        </div>
-      </li>
+
       <div class="clear"></div>
     </ul>
   </div>
@@ -229,6 +121,7 @@
 <div class="header_right">
   <jsp:include page="head_right_inc.jsp"></jsp:include>
 </div>
+<jsp:include page="channel_template.jsp"></jsp:include>
 
 
 <jsp:include page="windows_inc.jsp"></jsp:include>

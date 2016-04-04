@@ -176,6 +176,7 @@ Util.checkInputNull = function(input){
 Util.trimJson = function(json){
     for(var i in json){
         var val = json[i];
+        if(val&&typeof val == "string")
         json[i] = val.trim();
     }
 }
