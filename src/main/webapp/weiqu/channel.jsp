@@ -86,9 +86,14 @@
       </div>
     </div>
 
-    <div class="left_an">
-      <a href="#">+ 创 建</a>
-    </div>
+
+    <c:choose>
+      <c:when test="${userToken.loginMark}">
+        <div class="left_an">
+          <a href="#">+ 创 建</a>
+        </div>
+      </c:when>
+    </c:choose>
 
     <div class="hd_bottom"><span></span></div>
   </div>
