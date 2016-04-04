@@ -179,3 +179,36 @@ Util.trimJson = function(json){
         json[i] = val.trim();
     }
 }
+
+//克隆dom,并渲染text,data是存储的data,viewData展示的数据
+Util.cloneDom = function(templateId,data,viewData){
+    var template = $("#"+templateId).clone();
+    template.data(data);
+    var view = viewData||data;
+    var id = data.id||view.id;
+    if(!id){
+        template.removeAttr("id");
+    }else{
+        templateId = templateId+"_"+id;
+        template.attr("id",templateId);
+    }
+    for(var i in view){
+        template.find("[name='"+i+"']").html(view[i]);
+    }
+    template.show();
+    return template;
+}
+
+//深度克隆json
+Util.cloneJson = function(oldObject){
+    var newObject = jQuery.extend(true, {}, oldObject);
+    return newObject;
+}
+
+//首字母答谢
+Util.firstUpper = function(str){
+    str = str.toLowerCase();
+    return str.replace(/\b(\w)|\s(\w)/g, function(m){
+        return m.toUpperCase();
+    });
+}

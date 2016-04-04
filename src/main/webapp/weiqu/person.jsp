@@ -97,6 +97,7 @@
   <jsp:include page="head_right_inc.jsp"></jsp:include>
 </div>
 
+<jsp:include page="person_template.jsp"></jsp:include>
 
 <jsp:include page="windows_inc.jsp"></jsp:include>
 
