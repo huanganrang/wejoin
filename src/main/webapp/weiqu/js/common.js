@@ -94,9 +94,9 @@ function ajaxPostSync(parameter,success,callData){
 }
 
 function weiquDebug(parameter,data){
-    if(!ACTION_MAP)return;
+    if(ACTION_MAP == undefined)return;
     var cfg = ACTION_MAP[parameter.type];
-    if(!cfg)return;
+    if(cfg == undefined)return;
 
     var map = {
         apiName:cfg.description,
