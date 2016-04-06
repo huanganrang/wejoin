@@ -10,6 +10,7 @@
 <html>
 <head>
   <jsp:include page="channel_inc.jsp"></jsp:include>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-easyui-1.3.3/jquery.easyui.min.js" charset="utf-8"></script>
   <script src="js/channel.js?v=${staticVersion}"></script>
   <script type="text/javascript">
     $(document).ready(function()
@@ -48,42 +49,7 @@
   <div>
 
     <div class="menu_list" id="secondpane">
-      <p class="menu_head">视频教育 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
-      <p class="menu_head">语言培训 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
-      <p class="menu_head">个人专区 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
-      <p class="menu_head">视频教育 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
-      <p class="menu_head">语言培训 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
-      <p class="menu_head">个人专区 <em>245.300</em></p>
-      <div class="menu_body">
-        <a href="#"><span>英语</span>  <ol>45.300</ol></a>
-        <a href="#"><span>法语</span>  <ol>5.300</ol></a>
-        <a href="#"><span>德语</span>  <ol>45.300</ol></a>
-      </div>
+
     </div>
 
 

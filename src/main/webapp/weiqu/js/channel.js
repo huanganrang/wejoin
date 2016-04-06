@@ -1,17 +1,75 @@
 //频道模块
 var WEIQU_CHANNEL = {};
 $(document).ready(function () {
-    //创建按钮
-    $(".left_an a").click(function () {
-        showchannelBox();
-    });
 
+    WEIQU_CHANNEL.init();
+});
+
+WEIQU_CHANNEL.init = function(){
+    //频道列表结尾dom
+    WEIQU_CHANNEL.channelClearDom = $(".center_list ul >.clear");
     //获取第一页
     WEIQU_CHANNEL.page(1);
-});
+    //分类信息
+    WEIQU_CHANNEL.initCategories();
+    //构建频道窗口
+    WEIQU_CHANNEL.channelWidow.init();
+}
+//分类
+WEIQU_CHANNEL.categories = [];
+WEIQU_CHANNEL.initCategories = function() {
+    var type = "UL013";
+    ajaxGet({"type":type},function(data){
+        WEIQU_CHANNEL.categories = data;
+        WEIQU_CHANNEL.renderWithCategories(data);
+    });
+};
+//用分类渲染
+WEIQU_CHANNEL.renderWithCategories = function(data){
+    var categories = data;
+    for(var i in categories) {
+        var category = categories[i];
+        var $li = '<p class="menu_head" categoryId="'+category.id+'">'+category.name+'<em>245.300</em></p>';
+        $("#secondpane").append($li);
+        var $option = $('<option value="'+category.id+'">'+category.name+'</option>');
+        $("#categoryId").append($option);
+    }
+    $("#secondpane p.menu_head").click(function(){
+        $(this).css({backgroundImage:"url(images/hov.gif)" , color:"#70b615"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+        $(this).siblings().css({backgroundImage:"" , color:"#666666"});
+    });
+}
+
+//频道窗口
+WEIQU_CHANNEL.channelWidow = {
+    window:null,
+    init:function(){
+        WEIQU_CHANNEL.channelWidow.window = $("#channelBox");
+        $(".left_an a").click(function () {
+            WEIQU_CHANNEL.channelWidow.show();
+        });
+        $("#channelBox .up_an .a2").click(function () {
+            $('#createChannelForm').submit();
+        });
+        $("#channelBox .close_btn a").click(function () {
+            WEIQU_CHANNEL.channelWidow.hide();
+        });
+        WEIQU_CHANNEL.initCreateChannel();
+    },
+    show:function(){
+        $(".windows").hide();
+        WEIQU_CHANNEL.channelWidow.window.show();
+        var top=(windowHeight-630)/2
+        $("#channelBox .windows_box").css("top",top);
+    },
+    hide:function(){
+        WEIQU_CHANNEL.channelWidow.window.hide();
+    }
+}
+
 //分页函数 type为分类，keyword为搜索条件
 WEIQU_CHANNEL.page = function (pageNumber, type, keyword) {
-    var clearDom = $(".center_list ul >.clear");
+    var clearDom = WEIQU_CHANNEL.channelClearDom;
     ajaxGet({"pageSize": 20, "pageNo": pageNumber, "type": "UL010"}, function (json) {
         //$(".center_list ul").remove();
         //总数
@@ -19,14 +77,7 @@ WEIQU_CHANNEL.page = function (pageNumber, type, keyword) {
         var channels = result.returnObject;
         for (var i = 0; i < channels.length; i++) {
             var channel = channels[i];
-            var viewData = Util.cloneJson(channel);
-            viewData.userOnlineCount = "在线：" + viewData.userOnlineCount;
-            viewData.displayIconUrl = "http://" + viewData.displayIconUrl || "images/p1.gif";
-            viewData.displayIconUrl = '<img src="' + viewData.displayIconUrl + '" />';
-            viewData.nickName = 'ID：' + viewData.nickName;
-            var dom = Util.cloneDom("template_channel", data, viewData);
-            WEIQU_CHANNEL.channelBind(dom, channel);
-            clearDom.before(dom);
+            WEIQU_CHANNEL.buildChannel(channel);
         }
     }, function (data) {
         return data;
@@ -34,13 +85,25 @@ WEIQU_CHANNEL.page = function (pageNumber, type, keyword) {
     //TODO 现在没有数据遭点模拟数据,接口有数据这个可以去掉
     for (var i = 0; i < 10; i++) {
         var channel = {"nickName": 12344555 + i};
-        var viewData = Util.cloneJson(channel);
-        viewData.nickName = 'ID：' + viewData.nickName;
-        var dom = Util.cloneDom("template_channel", channel, viewData);
-        WEIQU_CHANNEL.channelBind(dom, channel);
-        clearDom.before(dom);
+        WEIQU_CHANNEL.buildChannel(channel);
     }
 }
+
+WEIQU_CHANNEL.channelClearDom = null;
+
+//构建频道dom
+WEIQU_CHANNEL.buildChannel = function(channel){
+    var viewData = Util.cloneJson(channel);
+    viewData.userOnlineCount = "在线：" + (viewData.userOnlineCount||0);
+    viewData.displayIconUrl = viewData.displayIconUrl?"http://" + viewData.displayIconUrl:"images/p1.gif";
+    viewData.displayIconUrl = '<img src="' + viewData.displayIconUrl + '" />';
+    viewData.nickName = 'ID：' + viewData.nickName;
+    var dom = Util.cloneDom("template_channel", channel, viewData);
+    WEIQU_CHANNEL.channelBind(dom, channel);
+    WEIQU_CHANNEL.channelClearDom.before(dom);
+    return dom;
+}
+
 
 WEIQU_CHANNEL.channelBind = function (dom, channel) {
     dom.find("b a").click(channel, WEIQU_CHANNEL.joinChannel);
@@ -76,4 +139,52 @@ WEIQU_CHANNEL.joinChannel = function (event) {
     //显示房间列别弹出层
     showroomBox();
     scrollDom.mCustomScrollbar();
+}
+
+//初始化创建频道
+WEIQU_CHANNEL.initCreateChannel = function(){
+    $('#createChannelForm').form({
+        url : base+"api/apiCommon/doPost", //
+        onSubmit : function() {
+
+            var channelIcon = $("#uploadFile").val();
+            if(channelIcon == '') {
+                alert("请选择频道封面照");
+                return false;
+            }
+            var name = $("#channelName");
+            if(Util.checkInputNull(name)) {
+                $("#channelName").focus();
+                return false;
+            }
+            var categoryId = $("#categoryId");
+            if(Util.checkInputNull(categoryId)) {
+                alert("请选择频道类别");
+                return false;
+            }
+            var shortDesc = $("#shortDesc");
+            if(Util.checkInputNull(shortDesc)) {
+                $("#shortDesc").focus();
+                return false;
+            }
+            $("#type").val("UL011");
+            $("#param").val(JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"userToken":userToken.token}));
+            return true;
+        },
+        success : function(data) {
+            console.log("创建频道data:" + data);
+            data = $.parseJSON(data);
+            if(data.obj){
+                var result = $.parseJSON(data.obj);
+                if(result.serverStatus == 0) {
+                    var channel = result.returnObject;
+                    WEIQU_CHANNEL.buildChannel(channel);
+                    WEIQU_CHANNEL.channelWidow.hide();
+                } else {
+                    // 创建失败
+                    alert(result.returnMessage);
+                }
+            }
+        }
+    });
 }

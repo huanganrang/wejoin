@@ -12,4 +12,5 @@
 <script type="text/javascript" src="js/common.js?v=${staticVersion}"></script>
 <script type="text/javascript">
   var base = '${pageContext.request.contextPath}/';
+  var userToken = ${userTokenJson};
 </script>
