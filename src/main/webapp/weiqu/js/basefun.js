@@ -14,7 +14,7 @@ WEIQU_BASE_FUN.login = function () {
     }
     ajaxGet({"type": "UL001", "identifier": username, "password": password}, function (data) {
         if (data.serverStatus == 0) {
-            window.location.href = "/weiqu/channel.jsp";
+            window.location.href = "channel.jsp";
         } else {
             alert(data.returnMessage);
         }
@@ -68,7 +68,7 @@ WEIQU_BASE_FUN.register = function () {
         "param": {"mobile": mobile, "nickName": username, "password": password, "validCode": valiCode}
     }, function (json) {
         if (json.serverStatus == 0) {
-            window.location.href = "/weiqu/login.jsp";
+            window.location.href = "login.jsp";
         } else {
             // 注册失败
             alert(json.returnMessage);

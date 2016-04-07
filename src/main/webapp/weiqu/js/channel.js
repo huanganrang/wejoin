@@ -8,8 +8,8 @@ $(document).ready(function () {
 WEIQU_CHANNEL.init = function(){
     //频道列表结尾dom
     WEIQU_CHANNEL.channelClearDom = $(".center_list ul >.clear");
-    //获取第一页
-    WEIQU_CHANNEL.page(1);
+    //分页
+    WEIQU_CHANNEL.scroll.init();
     //分类信息
     WEIQU_CHANNEL.initCategories();
     //构建频道窗口
@@ -69,12 +69,12 @@ WEIQU_CHANNEL.channelWidow = {
 
 //分页函数 type为分类，keyword为搜索条件
 WEIQU_CHANNEL.page = function (pageNumber, type, keyword) {
-    var clearDom = WEIQU_CHANNEL.channelClearDom;
-    ajaxGet({"pageSize": 20, "pageNo": pageNumber, "type": "UL010"}, function (json) {
+    ajaxGet({"pageSize": WEIQU_CHANNEL.scroll.size, "pageNo": pageNumber, "type": "UL010"}, function (json) {
         //$(".center_list ul").remove();
         //总数
-        var channelTotal = result.returnValue;
-        var channels = result.returnObject;
+        var channelTotal = json.returnValue;
+        WEIQU_CHANNEL.scroll.total = channelTotal;
+        var channels = json.returnObject;
         for (var i = 0; i < channels.length; i++) {
             var channel = channels[i];
             WEIQU_CHANNEL.buildChannel(channel);
@@ -82,11 +82,6 @@ WEIQU_CHANNEL.page = function (pageNumber, type, keyword) {
     }, function (data) {
         return data;
     });
-    //TODO 现在没有数据遭点模拟数据,接口有数据这个可以去掉
-    for (var i = 0; i < 10; i++) {
-        var channel = {"nickName": 12344555 + i};
-        WEIQU_CHANNEL.buildChannel(channel);
-    }
 }
 
 WEIQU_CHANNEL.channelClearDom = null;
@@ -126,8 +121,23 @@ WEIQU_CHANNEL.joinChannel = function (event) {
     var center = $(".room_center > ul");
     center.children().remove();
     center.append(scrollDom)
+    ajaxPost({
+        "type": "UL012",
+        "param": {"channelToken": channel.token}
+    }, function (rooms) {
+        for(var i in rooms){
+            var room = rooms[i];
+            var dom = Util.cloneDom(template.children().eq(0), room, viewData);
+            var domTeacher = Util.cloneDom(template.children().eq(1), room, viewData);
+            domTeacher.hide();
+            scrollDom.append(dom).append(domTeacher);
+            dom.find(".moo_2 a:eq(0)").click(function(){
+                $(this).parents("li:eq(0)").next().toggle();
+            });
+        }
+    });
     //TODO 去加载层的内容
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         var dom = Util.cloneDom(template.children().eq(0), channel, viewData);
         var domTeacher = Util.cloneDom(template.children().eq(1), channel, viewData);
         domTeacher.hide();
@@ -168,7 +178,7 @@ WEIQU_CHANNEL.initCreateChannel = function(){
                 return false;
             }
             $("#type").val("UL011");
-            $("#param").val(JSON.stringify({"shortDesc":shortDesc,"name":name,"categoryId":categoryId,"userToken":userToken.token}));
+            $("#param").val(JSON.stringify({"shortDesc":shortDesc.val(),"name":name.val(),"categoryId":categoryId.val(),"userToken":userToken.token}));
             return true;
         },
         success : function(data) {
@@ -188,3 +198,28 @@ WEIQU_CHANNEL.initCreateChannel = function(){
         }
     });
 }
+//滚动分页
+WEIQU_CHANNEL.scroll = {
+    init:function(){
+        //获取第一页
+        WEIQU_CHANNEL.page(WEIQU_CHANNEL.scroll.page);
+        $(window).scroll(function () {
+            /*console.log("滚动条到顶部的垂直高度: " + $(document).scrollTop());
+            console.log("页面的文档高度 ：" + $(document).height());
+            console.log('浏览器的高度：' + $(window).height());*/
+            var totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
+
+            if ($(document).height() <= totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
+            {
+                WEIQU_CHANNEL.page(++WEIQU_CHANNEL.scroll.page);
+            }
+        });
+    },
+    page:1,//第几页
+    size:30,//每页多少
+    total:0 //总记录数
+}
+
+
+
+
