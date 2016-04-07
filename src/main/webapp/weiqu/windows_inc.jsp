@@ -119,7 +119,7 @@
 
       </ul>
     </div>
-    <div class="up_an"><a href="#" class="a2">确定创建</a></div>
+    <div class="up_an"><a href="#" class="a2">进入房间</a></div>
     <div class="close_btn"><a href="#">取消返回</a></div>
   </div>
 </div>

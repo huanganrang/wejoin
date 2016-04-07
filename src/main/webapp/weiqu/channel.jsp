@@ -80,9 +80,9 @@
   <div style="height:60px;"></div>
   <div class="center_firex">
 		<span>
-			<a href="#"> < </a>
+			<%--<a href="#"> < </a>
 			<a href="#"> <strong>8</strong> </a>
-			<a href="#"> > </a>
+			<a href="#"> > </a>--%>
 		</span>
   </div>
 </div>
