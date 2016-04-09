@@ -14,4 +14,6 @@
   </ul>
 </div>
 <script src="js/person_create.js?v=${staticVersion}"></script>
+<jsp:include page="person_create_room.jsp"></jsp:include>
+
 

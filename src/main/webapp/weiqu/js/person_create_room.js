@@ -1,20 +1,15 @@
-//个人中心_我的创建
+//个人中心_我的创建_房间列表
 (function(person){
-	person.CREATE = {};
-	var CREATE = person.CREATE;
-	//我的创建列表页面
+	person.CREATEROOM = {};
+	var ROOM = person.CREATEROOM;
 	var GridTable = function(){
 		var table = this;
 		//渲染
 		this.render = function(data){
 			var viewData = Util.cloneJson(data);
-			viewData.userOnlineCount = "在线：" + (viewData.userOnlineCount||0);
-			viewData.displayIconUrl = viewData.displayIconUrl?"http://" + viewData.displayIconUrl:"images/p1.gif";
-			viewData.displayIconUrl = '<img src="' + viewData.displayIconUrl + '" />';
-			viewData.nickName = 'ID：' + viewData.nickName;
-			var dom =  Util.cloneDom("template_my_create",data,viewData);
+			var dom =  Util.cloneDom("template_my_create_room",data,viewData);
+			table.ul.append(dom);
 			table.bindClick(dom,data);
-			table.clearDom.before(dom);
 		};
 		//ajax请求
 		this.request= function(params){
@@ -35,7 +30,7 @@
 		this.bindClick = function(dom,data){
 			dom.find("b a").click(data, table.delete);
 			dom.find("ol a").click(data, table.edit);
-			dom.dblclick(data,table.dbClick);
+			//dom.dblclick(data,table.dbClick);
 		}
 		//修改事件
 		this.edit = function(event){
@@ -48,24 +43,20 @@
 			$(".person_create_room").show();
 			$(".person_create_room ol").prevAll().remove();
 			$(".person_create_room ol").before(data.name+'-房间列表（<em>247</em> )');
-			person.CREATEROOM.gridTable.load();
 		}
 		//删除事件
 		this.delete = function(event){
 			var data  = event.data;
 		}
 		this.init = function(){
-			table.clearDom = $(".person_create ul >.clear");
 			table.countDom = $(".person_create >em");
+			table.ul = $(".person_create_room >ul");
 
 		}
 		this.clear = function(){
 			//清除
-			table.clearDom.prevAll().remove();
+			table.ul.children().remove();
 			table.countDom.text(0);
-			$("[class*='person_create']").hide();
-			$(".person_create").show();
-
 		}
 		this.load = function(){
 			table.clear();
@@ -74,7 +65,7 @@
 		this.init();
 	}
 	//实例化表格对象
-	CREATE.gridTable = new GridTable();
+	ROOM.gridTable = new GridTable();
 })(WEIQU_PERSON);
 
 
