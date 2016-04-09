@@ -78,6 +78,9 @@ function ajaxPostSync(parameter,success,callData){
         async: false,
         success:function (data) {
             weiquDebug(parameter,data);
+            if(!data.obj) {
+                return;
+            }
             var result = $.parseJSON(data.obj);
             if(result.serverStatus == 0) {
             	if(callData){
@@ -129,6 +132,9 @@ function ajaxPost(parameter,success,callData){
         dataType:"json",
         success:function (data) {
             weiquDebug(parameter,data);
+            if(!data.obj) {
+                return;
+            }
             var result = $.parseJSON(data.obj);
             if(result.serverStatus == 0) {
                 if(callData){

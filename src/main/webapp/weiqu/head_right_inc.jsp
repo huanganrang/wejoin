@@ -14,7 +14,12 @@
       <a href="register.jsp">注册</a>
     </c:when>
     <c:otherwise>
-      <a href="person.jsp">个人中心</a>
+      <div class="log_you">
+        <a href="person.jsp">
+          <img src="images/yktx.png" />
+          <span>游客：${userToken.nickName}</span>
+        </a>
+      </div>
     </c:otherwise>
   </c:choose>
 </div>

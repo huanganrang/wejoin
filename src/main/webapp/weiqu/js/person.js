@@ -25,12 +25,7 @@ WEIQU_PERSON.bind = function(){
 }
 //点击我的创建加载事件
 WEIQU_PERSON.loadCreate = function(){
-	var data = {"channelName":"我是测试的","online":777,"description":"我是个搬砖的"};
-	var viewDate = Util.cloneJson(data);
-	viewDate.online = "在线:"+data.online;
-	var dom =  Util.cloneDom("template_my_create",data,viewDate);
-	//将dom对象插入
-	$(".person_create ul >.clear").before(dom);
+	WEIQU_PERSON.CREATE.gridTable.load();
 }
 //加载我的关注
 WEIQU_PERSON.loadAttention = function(){
@@ -61,6 +56,90 @@ WEIQU_PERSON.resize = function(){
 
 }
 
+//个人基本信息模块
+$(function(){
+	//基本信息显示
+	var BaseView= function(){
+		this.baseInfo = userToken||{};
+		var view = this;
+		this.render = function(){
+
+		}
+
+		this.request = function(){
+			view.render();
+		}
+
+		this.init = function(){
+			view.request();
+		}
+		this.init();
+	}
+
+	var baseView = new BaseView();
+
+	WEIQU_PERSON.BASE_VIEW = baseView;
+
+	//编辑
+	var EditPanel = function(baseView){
+		var panel = this;
+		this.render = function(){
+			var data = baseView.baseInfo;
+
+		}
+		this.show = function(){
+			$(".windows").hide();
+			$("#nickBox").show();
+			var top=(windowHeight-250)/2
+			$("#nickBox .windows_box").css("top",top)
+		}
+		this.init = function(){
+			//弹出框
+			$(".personal .per_txt a:eq(0)").click(panel.show);
+		}
+		this.init();
+	}
+	new EditPanel(baseView);
+	//绑定
+	var BindPanel = function(baseView){
+		var panel = this;
+		this.show = function(){
+			$(".windows").hide();
+			$("#phoneBox").show();
+			var top=(windowHeight-300)/2
+			$("#phoneBox .windows_box").css("top",top)
+		}
+		this.render = function(){
+			var data = baseView.baseInfo;
+
+		}
+		this.init = function(){
+			$(".personal .per_txt a:eq(1)").click(panel.show);
+		}
+		this.init();
+	}
+	new BindPanel(baseView);
+
+	//上传图像
+	var ImagePanel = function(baseView){
+		var panel = this;
+		this.show = function(){
+			$(".windows").hide();
+			$("#portraitBox").show();
+			var top=(windowHeight-350)/2
+			$("#portraitBox .windows_box").css("top",top);
+		}
+		this.render = function(){
+			var data = baseView.baseInfo;
+
+		}
+		this.init = function(){
+			$(".personal .per_img a").click(panel.show);
+		}
+		this.init();
+	}
+	new ImagePanel(baseView);
+});
 
 
 

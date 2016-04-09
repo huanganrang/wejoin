@@ -22,6 +22,12 @@ $(function(){
 	$(".a_3").click(function(){
 		showDjcgBox();							   
 	})
+	$(".a_4").click(function(){
+		showDjcgBox();							   
+	})
+	$(".a_5").click(function(){
+		showDjcgBox();							   
+	})
 });
 
 function showuplodBox(){
@@ -78,4 +84,18 @@ function showsettingBox(){
 	$("#settingBox").show();
 	var top=(windowHeight-600)/2
 	$("#settingBox .windows_box").css("top",top)		
+}
+
+function showdianlistBox(){
+	$(".windows").hide();
+	$("#dianlistBox").show();
+	var top=(windowHeight-300)/2
+	$("#dianlistBox .windows_box").css("top",top)		
+}
+
+function showdianbjBox(){
+	$(".windows").hide();
+	$("#dianbjBox").show();
+	var top=(windowHeight-630)/2
+	$("#dianbjBox .windows_box").css("top",top)		
 }

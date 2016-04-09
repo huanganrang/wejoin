@@ -11,7 +11,7 @@
     <div class="center_memu">
       <ul>
         <li><a href="channel.jsp" class="tb1">频道</a></li>
-        <li><a href="#"onclick="showdemandBox()" class="tb2">社群</a></li>
+        <li><a href="community.jsp" class="tb2">社群</a></li>
         <li><a href="#" class="tb3">点播</a></li>
         <li><a href="#" class="tb4">帮助</a></li>
       </ul>

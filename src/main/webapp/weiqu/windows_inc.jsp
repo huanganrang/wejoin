@@ -34,11 +34,14 @@
 
 
 
-<!--创建房间 开始-->
+<!--创建社区 开始-->
 <div class="windows demandBox" id="demandBox" style="display:none;" >
   <div class="windowsBg"></div>
   <div class="windows_box">
     <div class="uplodBox_con">
+      <form action="" method="post" enctype="multipart/form-data" id="createCommunityForm">
+        <input type="hidden" name="type">
+        <input type="hidden" name="param">
       <div class="up_yy">
         <span class="tb2">社群列表小图</span>
         <input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
@@ -46,12 +49,11 @@
       <div class="up_list">
         <ul>
           <form action="" method="get">
-            <li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写房间名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写房间名称'){this.value='';this.style.color='#333'}" value="请填写房间名称" id="textfield" name="email" style="color:#ccc;"></li>
+            <li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写房间名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写房间名称'){this.value='';this.style.color='#333'}" value="请填写房间名称" name="email" style="color:#ccc;"></li>
             <li>
 							<span>
 								<select name="" class="putd">
-                                  <option>这里写分类</option>
-                                  <option>这里写分类22</option>
+
                                 </select>
                             </span>
             </li>
@@ -59,6 +61,7 @@
           </form>
         </ul>
       </div>
+      </form>
       <div class="up_an">
         <a href="#" class="a2">确定创建</a>
       </div>

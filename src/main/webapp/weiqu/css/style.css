@@ -26,6 +26,7 @@ input, label, select, option, textarea, button, fieldset, legend{font:12px/18px 
 .login_center li.bjno1 input{ background:#fff; text-indent:38px; width:160px; float:left;}
 .login_center li.bjno1 b{border-radius:3px; font-size:14px; display:block; background:#e9efef; float:right; font-weight:normal; width:160px; height:55px; line-height:55px; text-align:center;}
 .login_center li .p2{background:#fff url(../images/log_tb2.gif) no-repeat 14px -50px;}
+.login_center li strong{ font-size:15px; font-weight:normal; line-height:55px; height:55px; color:#ffcc00; position:absolute; right:-80px; top:0px; }
 .login_center .p3{cursor:pointer; text-shadow: 0px 0px 1px #666; border-radius:3px; width:338px; height:50px; line-height:50px; background:#ffcc00; color:#fff; font-size:18px; box-shadow: 1px 1px 5px #7d7d7d;}
 .login_center ol{ display:block; font-size:14px; color:#fff; margin-top:20px;}
 .login_center ol a{color:#002aff; padding-left:5px;}

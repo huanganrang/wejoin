@@ -61,14 +61,14 @@
   <div class="personal">
     <div class="per_left">
       <div class="per_img">
-        <a href="#"onclick="showportraitBox()">
+        <a href="#">
           <img src="images/tb5.gif" />
           <span>编辑</span>
         </a>
       </div>
       <div class="per_txt">
-        <span><em>账号：251145454</em>   <em>昵称：我就是我啊</em>    <a href="#"onclick="shownickBox()">编辑</a></span>
-        <ol>账号安全：<strong>未保护</strong>    <a href="#"onclick="showphoneBox()">绑定</a></ol>
+        <span><em>账号：${userToken.nickName}</em>   <em>昵称：${userToken.nickName}</em>    <a href="#">编辑</a></span>
+        <ol>账号安全：<strong>未保护</strong>    <a href="#">绑定</a></ol>
       </div>
     </div>
     <div class="per_right"><a href="#">退出当前账号</a></div>

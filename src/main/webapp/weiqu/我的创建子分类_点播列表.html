@@ -37,21 +37,57 @@ if(targetObj.style.display!="none"){
 }
 </script>
 </head>
-<body class="bj">
+<bod>
 <div class="header_left">
 	<div class="left_log">
 		<span><a href="#"onclick="showuplodBox()"><img src="images/wq_logo.png" /></a></span>
 	</div>
-	<div class="left_tt">个人中心</div>
+	<div class="left_tt">点播分类</div>
 	<div>
 
-  <div class="menu_list">
-    <p class="menu_head"><a href="#" class="a1">我的创建 <em>247</em></a></p>
-    <p class="menu_head on"><a href="#" class="a2">我的关注 <em>245.300</em></a></p>
-    <p class="menu_head"><a href="#" class="a3">我的空间 <em>327MB/1gb</em></a></p>   
-    <p class="menu_head"><a href="#" class="a4">我的消息 <em>245.300</em></a></p>
-    <p class="menu_head"><a href="#" class="a5">意见反馈 <em>245.300</em></a></p>
+  <div class="menu_list" id="secondpane">
+    <p class="menu_head">视频教育 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">语言培训 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">个人专区 <em>245.300</em></p>
+    <div class="menu_body"> 
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+     <p class="menu_head">视频教育 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">语言培训 <em>245.300</em></p>
+    <div class="menu_body">
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
+    <p class="menu_head">个人专区 <em>245.300</em></p>
+    <div class="menu_body"> 
+    	<a href="#"><span>英语</span>  <ol>45.300</ol></a>
+    	<a href="#"><span>法语</span>  <ol>5.300</ol></a>
+    	<a href="#"><span>德语</span>  <ol>45.300</ol></a>
+    </div>
   </div>
+	
+	<div class="left_an">
+		<a href="#">+ 创 建</a>
+	</div>
+	
 	<div class="hd_bottom"><span></span></div>
 </div>
 	
@@ -64,7 +100,7 @@ if(targetObj.style.display!="none"){
 	<div class="fex_2">
 	<div class="center_memu">
 		<ul>
-			<li><a href="#"onclick="showdemandBox()" class="tb1">频道</a></li>
+			<li class="on"><a href="#"onclick="showdemandBox()" class="tb1">频道</a></li>
 			<li><a href="#"onclick="showchannelBox()" class="tb2">社群</a></li>
 			<li><a href="#"onclick="showroomBox()" class="tb3">点播</a></li>
 			<li><a href="#" class="tb4">帮助</a></li>
@@ -91,83 +127,63 @@ if(targetObj.style.display!="none"){
 	
 	</div>
 	
-	<div class="personal">
+	<div class="personal" id="bj3">
 		<div class="per_left">
 			<div class="per_img">
 				<a href="#"onclick="showportraitBox()">
 				<img src="images/tb5.gif" />
-				<span>编辑</span>
 				</a>
 			</div>
-			<div class="per_txt">
-				<span><em>账号：251145454</em>   <em>昵称：我就是我啊</em>    <a href="#"onclick="shownickBox()">编辑</a></span>
-				<ol>账号安全：<strong>未保护</strong>    <a href="#"onclick="showphoneBox()">绑定</a></ol>
+			<div class="bj3_txt">
+				<span>课程：<strong>18</strong></span>
+				<ol>
+					<b>点播简介：</b>
+					<em>说多了几分熟练度附近熟练度附近熟练度附近熟练度附近是打飞机上来的风科技是懒得开房间是懒得开房
+                  间是旅客的风景是旅客的风景</em>
+				</ol>
 			</div>
 		</div>
-		<div class="per_right"><a href="#">退出当前账号</a></div>
+		<div class="bj3_right">
+			<a href="#">关注</a>
+			<a href="#"onclick="showdianlistBox()" class="a1">编辑</a>
+		</div>
 		<div class="clear"></div>
 	</div>
-	<div class="lst_title">这里调用频道名称-添加房间   <ol><a href="#">+返回</a></ol> <span><a href="#">+添加房间</a></span></div>
+	<div class="lst_title">这里调用频道名称-点播列表（<em>247</em>）   <ol><a href="#">+返回</a></ol> <span><a href="#">+影音上传</a></span></div>
 	
-	<div class="currl">
-		<div class="currl_left">
-			<form action="" method="get">
-				<ul>
-					<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='请填写房间名称';this.style.color='#ccc'}" onFocus="if(this.value=='请填写房间名称'){this.value='';this.style.color='#333'}" value="请填写房间名称" id="textfield" name="email" style="color:#ccc;"></li>
-					<div class="clear"></div>
-					<li>
-						<span>是否开启房间密码：</span>
-						<label><input name="Fruit" type="radio" value="" />否 </label> 
-						<label><input name="Fruit" type="radio" value="" />是 </label>
-						<input type="text" name="fname" class="p2"/> 
-						<div class="clear"></div>
-					</li>
-					<li>
-						<ol>讲师介绍（<em>非必填</em>）</ol>
-						<textarea name="yj" cols="" rows="" class="p3"></textarea>
-					</li>
-					<li>
-						<ol>课程介绍（<em>非必填</em>）</ol>
-						<textarea name="yj" cols="" rows="" class="p3"></textarea>
-					</li>
-				</ul>
-			</form>
-		</div>
-		
-		
-		<div class="currl_right">
-			<ol>时间安排（<em>非必填</em>）</ol>
-			<div class="date_left">
-				<span>开始时间：</span>
-				<input type="text" class="p1" onBlur="if(this.value==''){this.value='2015/08/28';this.style.color='#ccc'}" onFocus="if(this.value=='2015/08/28'){this.value='';this.style.color='#333'}" value="2015/08/28" id="textfield" name="email" style="color:#ccc;">
-				<input type="text" class="p1" onBlur="if(this.value==''){this.value='12:30';this.style.color='#ccc'}" onFocus="if(this.value=='12:30'){this.value='';this.style.color='#333'}" value="12:30" id="textfield" name="email" style="color:#ccc; width:65px;">
+	<div class="fj_list">
+		<ul>
+			<li>
+				<div class="fj_tbimg"><img src="images/tbn.jpg" /></div>
+				<div class="fj_weizi">
+					<span>这里是标题</span>
+					<em>影音介绍：未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写</em>
+				</div>
+				<div class="fj_a">
+					<span>388</span>
+					<span class="tb1">468</span>
+					<span class="tb2"><a href="#"onclick="showdianbjBox()">编辑</a></span>
+					<span class="tb3"><a href="#">删除</a></span>
+				</div>
 				<div class="clear"></div>
-			</div>
-			<div class="date_left">
-				<span>结束时间：</span>
-				<input type="text" class="p1" onBlur="if(this.value==''){this.value='2015/08/28';this.style.color='#ccc'}" onFocus="if(this.value=='2015/08/28'){this.value='';this.style.color='#333'}" value="2015/08/28" id="textfield" name="email" style="color:#ccc;">
-				<input type="text" class="p1" onBlur="if(this.value==''){this.value='12:30';this.style.color='#ccc'}" onFocus="if(this.value=='12:30'){this.value='';this.style.color='#333'}" value="12:30" id="textfield" name="email" style="color:#ccc; width:65px;">
-			</div>
-			<div class="jia_date" id="box10" style="display:none;">
-				<span>
-					<input type="text" class="p1" onBlur="if(this.value==''){this.value='2015/08/28';this.style.color='#ccc'}" onFocus="if(this.value=='2015/08/28'){this.value='';this.style.color='#333'}" value="2015/08/28" id="textfield" name="email" style="color:#ccc;">
-					<input type="text" class="p1" onBlur="if(this.value==''){this.value='12:30';this.style.color='#ccc'}" onFocus="if(this.value=='12:30'){this.value='';this.style.color='#333'}" value="12:30" id="textfield" name="email" style="color:#ccc; width:65px;">
-				</span>
-				<span>
-					<input type="text" class="p1" onBlur="if(this.value==''){this.value='2015/08/28';this.style.color='#ccc'}" onFocus="if(this.value=='2015/08/28'){this.value='';this.style.color='#333'}" value="2015/08/28" id="textfield" name="email" style="color:#ccc;">
-					<input type="text" class="p1" onBlur="if(this.value==''){this.value='12:30';this.style.color='#ccc'}" onFocus="if(this.value=='12:30'){this.value='';this.style.color='#333'}" value="12:30" id="textfield" name="email" style="color:#ccc; width:65px;">
-				</span>
-			</div>
+			</li>
+			<li>
+				<div class="fj_tbimg"><img src="images/tbn.jpg" /></div>
+				<div class="fj_weizi">
+					<span>这里是标题</span>
+					<em>影音介绍：未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写未填写</em>
+				</div>
+				<div class="fj_a">
+					<span>388</span>
+					<span class="tb1">468</span>
+					<span class="tb2"><a href="#">编辑</a></span>
+					<span class="tb3"><a href="#">删除</a></span>
+				</div>
+				<div class="clear"></div>
+			</li>
 			<div class="clear"></div>
-			<div class="ja_an">
-				<a onClick="openShutManager(this,'box10')">+增加时间</a> 
-				<a onClick="openShutManager(this,'box10')">-删除时间</a>
-				<div class="clear"></div>
-			</div>
-			<div class="currl_an"><span><a href="#">确定添加房间</a></span></div>
-		</div>
+		</ul>
 	</div>
-	<div class="clear"></div>
 	
 	<div style="height:60px;"></div>
 	<div class="center_firex">
@@ -183,8 +199,12 @@ if(targetObj.style.display!="none"){
 
 <div class="header_right">
 	<div class="head_log">
-		<a href="#" class="a2">登录</a>
-		<a href="#">注册</a>
+		<div class="log_you">
+			<a href="#">
+			<img src="images/yktx.png" />
+			<span>游客：52548754</span>
+			</a>
+		</div>
 	</div>
 	<div class="rt_title">房间人气排行榜</div>
 	<div class="right_list">
@@ -569,5 +589,59 @@ if(targetObj.style.display!="none"){
 		  </div>
 	</div>
 <!--验证手机 结束-->
+
+
+<!--编辑点播列表 开始-->
+<div class="windows dianlistBox" id="dianlistBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='调用原来影音名称';this.style.color='#ccc'}" onFocus="if(this.value=='调用原来影音名称'){this.value='';this.style.color='#333'}" value="调用原来影音名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='调用原来简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='调用原来简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">调用原来简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+				<div class="up_an">
+					<a href="#" class="a2">确定修改</a>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">取消返回</a></div>
+		  </div>
+	</div>
+<!--编辑点播列表 结束-->
+
+<!--编辑点播 开始-->
+<div class="windows dianbjBox" id="dianbjBox" style="display:none;" >
+		  <div class="windowsBg"></div>
+		  <div class="windows_box">
+			<div class="uplodBox_con">
+				<div class="up_yy">
+					<span class="tb2">重新上传点播列表小图</span>
+					<input type="file" name="uploadFile" size="3" tabindex="3" title="支持jpg、jpeg、gif、png格式，文件小于5M" class="filePrew">
+				</div>
+				<div class="up_list">
+					<ul>
+						<form action="" method="get">
+						<li><input type="text" class="p1" onBlur="if(this.value==''){this.value='调用原来点播名称';this.style.color='#ccc'}" onFocus="if(this.value=='调用原来点播名称'){this.value='';this.style.color='#333'}" value="调用原来点播名称" id="textfield" name="email" style="color:#ccc;"></li>
+						<li>
+							<span>
+								<select name="" class="putd">
+                              		<option>调用原来这里写分类</option>
+                                    <option>调用原来这里写分类</option>
+                            	</select>
+                            </span> 
+						</li>
+						<li><textarea name="Content" rows="4" class="pute" style="color:#ccc" onFocus="if(this.value=='调用原来点播简介') {this.value='';}this.style.color='#333';" onBlur="if(this.value=='') {this.value='调用原来点播简介';this.style.color='#ccc';}" onKeyUp="checkLength(this);">调用原来点播简介</textarea></li>
+						</form>
+					</ul>
+				</div>
+			</div>
+			<div class="close_btn"><a href="#">确 定</a></div>
+		  </div>
+	</div>
+<!--编辑点播 结束-->
 </body>
 </html>
