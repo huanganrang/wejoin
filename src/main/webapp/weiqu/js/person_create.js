@@ -46,8 +46,7 @@
 			var data  = event.data;
 			$("[class*='person_create']").hide();
 			$(".person_create_room").show();
-			$(".person_create_room ol").prevAll().remove();
-			$(".person_create_room ol").before(data.name+'-房间列表（<em>247</em> )');
+			$(".person_create_room div1").text(data.name);
 			table.select = data;
 			person.CREATEROOM.gridTable.load();
 		}

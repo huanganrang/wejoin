@@ -50,6 +50,7 @@
 					var room = rooms[i];
 					table.render(room);
 				}
+				$(".person_create_room:eq(0) em").text(rooms.length);
 			});
 		};
 		this.bindClick = function(dom,data){

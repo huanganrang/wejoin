@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="lst_title person_create_room">这里调用频道名称-房间列表（<em>247</em>）   <ol><a href="#">+返回</a></ol> <span><a href="#">+添加房间</a></span></div>
+<div class="lst_title person_create_room"><div1>这里调用频道名称</div1>-房间列表（<em>247</em>）   <ol><a href="#">+返回</a></ol> <span><a href="#">+添加房间</a></span></div>
 
 <div class="fj_list person_create_room">
   <ul>
