@@ -204,7 +204,17 @@ Util.cloneDom = function(templateId,data,viewData){
         template.attr("id",templateId);
     }
     for(var i in view){
-        template.find("[name='"+i+"']").html(view[i]);
+        template.find("[name='"+i+"']").each(function(){
+            var val = view[i];
+            if(val){
+                var _this = $(this);
+                if(_this.is("img")){
+                    _this.attr("src",val);
+                }else{
+                    _this.html(val);
+                }
+            }
+        });
     }
     template.show();
     return template;
@@ -223,3 +233,23 @@ Util.firstUpper = function(str){
         return m.toUpperCase();
     });
 }
+/**
+ * @author John
+ *
+ * @requires jQuery
+ *
+ * 将form表单元素的值序列化成对象
+ *
+ * @returns object
+ */
+$.serializeObject = function(form) {
+    var o = {};
+    $.each(form.serializeArray(), function(index) {
+        if (o[this['name']]) {
+            o[this['name']] = o[this['name']] + "," + this['value'];
+        } else {
+            o[this['name']] = this['value'];
+        }
+    });
+    return o;
+};

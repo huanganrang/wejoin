@@ -7,24 +7,49 @@
 		//渲染
 		this.render = function(data){
 			var viewData = Util.cloneJson(data);
+			viewData.onlineUserCount = "在线："+viewData.onlineUserCount;
 			var dom =  Util.cloneDom("template_my_create_room",data,viewData);
+			dom.find(".fj_1 b a").click(function(){
+				var target =dom.find(".fj_1 .fj_box");
+				var isHidden = target.is(":hidden");
+				$(".person_create_room ul .fj_box").hide();
+				if(isHidden){
+					target.show();
+				}else{
+					target.hide();
+				}
+			});
+			dom.find(".fj_2:eq(0) b a").click(function(){
+				var target = dom.find(".fj_2:eq(0) .fj_box");
+				var isHidden = target.is(":hidden");
+				$(".person_create_room ul .fj_box").hide();
+				if(isHidden){
+					target.show();
+				}else{
+					target.hide();
+				}
+			});
+			dom.find(".fj_2:eq(1) b a").click(function(){
+				var target =dom.find(".fj_2:eq(1) .fj_box");
+				var isHidden = target.is(":hidden");
+				$(".person_create_room ul .fj_box").hide();
+				if(isHidden){
+					target.show();
+				}else{
+					target.hide();
+				}
+			});
 			table.ul.append(dom);
 			table.bindClick(dom,data);
 		};
 		//ajax请求
 		this.request= function(params){
-			params = $.extend({"pageSize": 1000, "pageNo": 1,"type": "UL101"},params)
-			ajaxGet(params, function (json) {
-				//总数
-				var channelTotal = json.returnValue;
-				table.countDom.text(channelTotal);
-				var channels = json.returnObject;
-				for (var i = 0; i < channels.length; i++) {
-					var channel = channels[i];
-					table.render(channel);
+			params = $.extend({"type": "UL012"},params)
+			ajaxGet(params, function (rooms) {
+				for(var i in rooms){
+					var room = rooms[i];
+					table.render(room);
 				}
-			}, function (data) {
-				return data;
 			});
 		};
 		this.bindClick = function(dom,data){
@@ -38,11 +63,7 @@
 		}
 		//双击事件
 		this.dbClick = function(event){
-			var data  = event.data;
-			$("[class*='person_create']").hide();
-			$(".person_create_room").show();
-			$(".person_create_room ol").prevAll().remove();
-			$(".person_create_room ol").before(data.name+'-房间列表（<em>247</em> )');
+
 		}
 		//删除事件
 		this.delete = function(event){
@@ -51,7 +72,10 @@
 		this.init = function(){
 			table.countDom = $(".person_create >em");
 			table.ul = $(".person_create_room >ul");
-
+			$(".person_create_room span>a").click(function(){
+				$(".person_create_room:eq(1)").toggle();
+				$(".person_create_room_create").toggle();
+			})
 		}
 		this.clear = function(){
 			//清除
@@ -60,12 +84,37 @@
 		}
 		this.load = function(){
 			table.clear();
-			table.request({"userToken":userToken.token});
+			var select = person.CREATE.gridTable.select;
+			table.request({"channelToken":select.token});
 		}
 		this.init();
 	}
 	//实例化表格对象
 	ROOM.gridTable = new GridTable();
+
+	//创建房间表单
+	$(".currl_right .currl_an a").click(function(){
+		var data = $.serializeObject($(".currl_left form"));
+		var rightData = $.serializeObject($(".currl_right form"));
+		var schedules = [];
+		data.schedules = schedules;
+		var startDate = rightData.startDate.replace(/\//g,"-");
+		startDate = startDate.split(",");
+		var startTime = rightData.startTime.split(",");
+		var endDate = rightData.endDate.replace(/\//g,"-");
+		endDate = endDate.split(",");
+		var endTime = rightData.endTime.split(",");
+		$(startDate).each(function(i){
+			schedules.push({"startDate":startDate[i]+" "+startTime[i],"endDate":endDate[i]+" "+endTime[i]})
+		})
+		var select = person.CREATE.gridTable.select;
+		data.channelToken = select.token;
+		data.userToken = userToken.token;
+		ajaxPost({"type":"UL042","param":data},function(data){},function (data) {
+			return data;
+		})
+	});
+
 })(WEIQU_PERSON);
 
 

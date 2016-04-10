@@ -48,6 +48,7 @@
 			$(".person_create_room").show();
 			$(".person_create_room ol").prevAll().remove();
 			$(".person_create_room ol").before(data.name+'-房间列表（<em>247</em> )');
+			table.select = data;
 			person.CREATEROOM.gridTable.load();
 		}
 		//删除事件

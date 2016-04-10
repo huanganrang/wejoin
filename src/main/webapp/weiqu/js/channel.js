@@ -114,20 +114,31 @@ WEIQU_CHANNEL.attention = function (event) {
 //加入频道
 WEIQU_CHANNEL.joinChannel = function (event) {
     var channel = event.data;
-    var viewData = Util.cloneJson(channel);
     var template = $("#template_room");
     var scrollDom = template.clone().show().removeAttr("id");
     scrollDom.children().remove();
     var center = $(".room_center > ul");
     center.children().remove();
     center.append(scrollDom)
-    ajaxPost({
+    ajaxGet({
         "type": "UL012",
-        "param": {"channelToken": channel.token}
+        "channelToken": channel.token
     }, function (rooms) {
         for(var i in rooms){
             var room = rooms[i];
+            var viewData = Util.cloneJson(room);
+            viewData.onlineUserCount = "在线 "+viewData.onlineUserCount;
             var dom = Util.cloneDom(template.children().eq(0), room, viewData);
+            dom.find(".moo_2 a").each(function(i){
+                var _this = $(this);
+                if(i==0&&viewData.isDescNull==1){
+                    _this.hide();
+                }else if(i==1&&viewData.isLessonDescNull==1){
+                    _this.hide();
+                }else if(i==2&&viewData.isPasswordNull==1){
+                    _this.hide();
+                }
+            });
             var domTeacher = Util.cloneDom(template.children().eq(1), room, viewData);
             domTeacher.hide();
             scrollDom.append(dom).append(domTeacher);
@@ -135,20 +146,10 @@ WEIQU_CHANNEL.joinChannel = function (event) {
                 $(this).parents("li:eq(0)").next().toggle();
             });
         }
+        //显示房间列别弹出层
+        showroomBox();
+        scrollDom.mCustomScrollbar();
     });
-    //TODO 去加载层的内容
-    for (var i = 0; i < 5; i++) {
-        var dom = Util.cloneDom(template.children().eq(0), channel, viewData);
-        var domTeacher = Util.cloneDom(template.children().eq(1), channel, viewData);
-        domTeacher.hide();
-        scrollDom.append(dom).append(domTeacher);
-        dom.find(".moo_2 a:eq(0)").click(function(){
-            $(this).parents("li:eq(0)").next().toggle();
-        });
-    }
-    //显示房间列别弹出层
-    showroomBox();
-    scrollDom.mCustomScrollbar();
 }
 
 //初始化创建频道

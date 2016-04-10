@@ -23,12 +23,12 @@
 	<div class="fj_1">
 		<strong><a href="#"><img src="images/tb3.gif" /></a></strong>
 		<ol>
-			<em><a href="#">专业PC户主</a></em>
-			<b>老师介绍：<a onClick="openShutManager(this,'box11')">查看介绍</a>
-				<div class="fj_box" id="box11" style="display:none;">
+			<em><a href="#" name="title">专业PC户主</a></em>
+			<b>老师介绍：<a>查看介绍</a>
+				<div class="fj_box"  style="display:none;">
 					<div class="fj_img"><img src="images/tb5.gif" /><span>讲师：Ben</span></div>
 					<div class="content mCustomScrollbar" style="height:130px; margin-right:25px;">
-						<div class="fj_zi">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
+						<div class="fj_zi" name="desc">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 							程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 							程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 							程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
@@ -39,13 +39,13 @@
 		</ol>
 	</div>
 	<div class="fj_2">
-		课程介绍：<b><a onClick="openShutManager(this,'box12')">查看介绍</a>
-		<div class="fj_box" id="box12" style="display:none; left:-152px;">
-			<div class="fj_tt">
+		课程介绍：<b><a>查看介绍</a>
+		<div class="fj_box" style="display:none; left:-152px;">
+			<div class="fj_tt" name="title">
 				这里显示房间标题
 			</div>
 			<div class="content mCustomScrollbar" style="height:195px; margin-right:25px;">
-				<div class="fj_zi">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
+				<div class="fj_zi" name="lessonDesc">这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 					程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 					程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
 					程的介绍这里这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介绍这里是课程的介这里是课程的介绍这里是课程的介绍这里是课
@@ -55,8 +55,8 @@
 	</b>
 	</div>
 	<div class="fj_2">
-		时间安排：<b><a onClick="openShutManager(this,'box13')">查看介绍</a>
-		<div class="fj_box" id="box13" style="display:none; left:-152px;">
+		时间安排：<b><a>查看介绍</a>
+		<div class="fj_box" style="display:none; left:-152px;">
 			<div class="fj_tt">
 				03月01日~03月10日 共20节
 			</div>
@@ -92,7 +92,7 @@
 	</div>
 	<div class="fj_4">
 		<div class="fj_r">
-			<ol>在线：346</ol>
+			<ol name="onlineUserCount">在线：346</ol>
 			<span>开放试听</span>
 		</div>
 		<div class="fj_b">
