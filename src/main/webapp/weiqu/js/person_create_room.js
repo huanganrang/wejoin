@@ -2,6 +2,10 @@
 (function(person){
 	person.CREATEROOM = {};
 	var ROOM = person.CREATEROOM;
+	//获取当前选择的房间
+	function getSelectChannel(){
+		return person.CREATE.gridTable.select;
+	}
 	var GridTable = function(){
 		var table = this;
 		//渲染
@@ -77,6 +81,9 @@
 				$(".person_create_room:eq(1)").toggle();
 				$(".person_create_room_create").toggle();
 			})
+			$(".person_create_room ol>a").click(function(){
+				person.CREATE.gridTable.show();
+			});
 		}
 		this.clear = function(){
 			//清除
@@ -85,7 +92,7 @@
 		}
 		this.load = function(){
 			table.clear();
-			var select = person.CREATE.gridTable.select;
+			var select = getSelectChannel();
 			table.request({"channelToken":select.token});
 		}
 		this.init();
@@ -108,7 +115,7 @@
 		$(startDate).each(function(i){
 			schedules.push({"startDate":startDate[i]+" "+startTime[i],"endDate":endDate[i]+" "+endTime[i]})
 		})
-		var select = person.CREATE.gridTable.select;
+		var select = getSelectChannel();
 		data.channelToken = select.token;
 		data.userToken = userToken.token;
 		ajaxPost({"type":"UL042","param":data},function(data){},function (data) {

@@ -63,9 +63,11 @@
 			//清除
 			table.clearDom.prevAll().remove();
 			table.countDom.text(0);
+			table.show();
+		}
+		this.show = function(){
 			$("[class*='person_create']").hide();
 			$(".person_create").show();
-
 		}
 		this.load = function(){
 			table.clear();
