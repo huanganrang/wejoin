@@ -1,0 +1,1119 @@
+html {
+  min-width: 1280px;
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+.header, .footer {
+  min-width: 1280px;
+}
+
+.header > .holder, .footer > .holder {
+  position: relative;
+  height: 100%;
+  padding-left: 15%;
+  padding-right: 19%;
+}
+.header > .holder > *, .footer > .holder > * {
+  height: 100%;
+}
+.header > .holder .left, .footer > .holder .left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15%;
+}
+.header > .holder .left .logo, .footer > .holder .left .logo {
+  position: relative;
+  display: block;
+  border: none;
+  margin: 0 auto;
+  top: 13%;
+  height: 74%;
+}
+.header > .holder .right, .footer > .holder .right {
+  position: absolute;
+  width: 19%;
+  top: 0;
+  right: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #999;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #C9C9C9;
+  border-radius: 3px;
+}
+
+::-webkit-resizer {
+  background-color: #666;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 70px;
+  line-height: 70px;
+  background-color: #70B615;
+}
+.header .middle {
+  font-size: 17px;
+  color: white;
+  background-image: url(../../img/room/border.png);
+  background-repeat: repeat-y;
+  background-size: 2px auto;
+  background-position: left top;
+}
+.header .middle .functions {
+  float: left;
+}
+.header .middle .functions > span {
+  float: left;
+  display: inline-block;
+  cursor: default;
+  background-image: url(../../img/room/border.png);
+  background-repeat: repeat-y;
+  background-size: 2px auto;
+  background-position: left top;
+}
+.header .middle .functions > span:first-child {
+  background-image: none;
+}
+.header .middle .functions > span > span {
+  display: inline-block;
+  padding-right: 30px;
+  letter-spacing: 6px;
+  text-shadow: 1px 1px #545454;
+  background-repeat: no-repeat;
+  background-position: 30px center;
+}
+.header .middle .functions > span:hover > span {
+  background-color: #397508;
+}
+.header .middle .functions > span.selected > span {
+  background-color: #254C05;
+}
+.header .middle .functions > span.whiteboard > span {
+  padding-left: 70px;
+  background-image: url(../../img/room/whiteboard.png);
+  background-size: auto 27px;
+}
+.header .middle .functions > span.document > span {
+  padding-left: 72px;
+  background-image: url(../../img/room/doc.png);
+  background-size: auto 24px;
+}
+.header .middle .functions > span.media > span {
+  padding-left: 70px;
+  background-image: url(../../img/room/media.png);
+  background-size: auto 27px;
+}
+.header .middle .downloads {
+  float: right;
+}
+.header .middle .downloads > span {
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+  padding-right: 17px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.header .middle .downloads > span:hover {
+  background-color: #5E9E0A;
+}
+.header .middle .downloads > span.app {
+  padding-left: 44px;
+  background-image: url(../../img/room/app.png);
+  background-size: auto 80%;
+}
+.header .middle .downloads > span.pc {
+  padding-left: 52px;
+  background-image: url(../../img/room/pc.png);
+  background-size: 25px auto;
+}
+.header .right {
+  position: relative;
+  padding-left: 1px;
+  background-image: url(../../img/room/border.png);
+  background-repeat: repeat-y;
+  background-size: 2px auto;
+  background-position: left top;
+}
+.header .right .user-info {
+  display: none;
+}
+.header .right .user-info img {
+  display: inline-block;
+  height: 80%;
+  margin-left: 20px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.header .right .user-info label {
+  color: #F7F7F7;
+  margin-left: 16px;
+}
+.header .right .btn {
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  width: 70px;
+  height: 25px;
+  line-height: 25px;
+  cursor: default;
+  background-color: white;
+  border-radius: 3px;
+}
+.header .right .btn.login {
+  margin-left: 12px;
+  color: #FE7A0F;
+}
+.header .right .btn.register {
+  margin-left: 14px;
+  color: #4E810C;
+}
+.header .right .setting {
+  position: absolute;
+  top: 50%;
+  margin-top: -19px;
+  width: 38px;
+  height: 38px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.header .right .setting:hover {
+  background-color: #254C05;
+}
+.header .right .setting {
+  right: 12px;
+  background-image: url(../../img/room/gear1.png);
+  background-size: auto 25px;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 34px;
+  line-height: 34px;
+  background-color: #F3F3F3;
+  border-top: solid 1px #AAAAAA;
+}
+.footer .left {
+  border-right: solid 1px #A2A2A2;
+}
+.footer .left .setting {
+  position: absolute;
+  display: inline-block;
+  left: 16px;
+  top: 50%;
+  margin-top: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../img/room/gear2.png);
+  background-size: 100%;
+}
+.footer .left .volume {
+  position: absolute;
+  left: 50px;
+  padding-left: 30px;
+  display: inline-block;
+  top: 50%;
+  margin-top: -9px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url(../../img/room/sound-volume.png);
+  background-size: auto 100%;
+}
+.footer .left .volume.disabled {
+  background-image: url(../../img/room/sound-volume-disabled.png);
+}
+.footer .left .volume .volume-control {
+  position: relative;
+  width: 70px;
+  height: 100%;
+  overflow: visible;
+}
+.footer .left .volume .volume-control .rail, .footer .left .volume .volume-control .position {
+  position: absolute;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  margin-top: -1.5px;
+}
+.footer .left .volume .volume-control > .rail {
+  width: 100%;
+  background-color: white;
+}
+.footer .left .volume .volume-control .position {
+  width: 50%;
+  height: 8px;
+  margin-top: -4px;
+}
+.footer .left .volume .volume-control .position img {
+  position: absolute;
+  height: 100%;
+  right: -3px;
+  z-index: 1;
+}
+.footer .left .volume .volume-control .position > .rail {
+  width: 100%;
+  background-color: #B1EE1D;
+}
+.footer .left .camera {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  right: 19px;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../img/room/camera.png);
+  background-size: auto 100%;
+}
+.footer .left .camera.disabled {
+  background-image: url(../../img/room/camera-disabled.png);
+}
+.footer .middle {
+  position: relative;
+  color: #666666;
+}
+.footer .middle .custom-service.qq {
+  position: relative;
+  display: inline-block;
+  padding-left: 34px;
+  margin-left: 15px;
+}
+.footer .middle .custom-service.qq img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -13px;
+  width: 26px;
+  height: 26px;
+}
+.footer .middle .custom-service.tel {
+  margin-left: 24px;
+}
+.footer .middle .custom-service.tel a {
+  color: #666666;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 18px;
+}
+.footer .middle .pagination {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  margin-top: -0.7em;
+  height: 1.4em;
+  line-height: 1.4em;
+}
+.footer .middle .pagination .previous, .footer .middle .pagination .next {
+  display: inline-block;
+  width: 1.4em;
+  border-radius: 3px;
+  text-align: center;
+  cursor: default;
+}
+.footer .middle .pagination .previous:hover, .footer .middle .pagination .next:hover {
+  color: white;
+  background-color: #70B615;
+}
+.footer .right {
+  position: relative;
+  border-left: solid 1px #A2A2A2;
+}
+.footer .right .share {
+  position: absolute;
+  right: 80px;
+  padding: 0 15px 0 49px;
+  background-image: url(../../img/room/share.png);
+  background-repeat: no-repeat;
+  background-size: 22px auto;
+  background-position: 15px center;
+  color: #666666;
+  font-size: 16px;
+  cursor: default;
+  text-decoration: none;
+}
+.footer .right .help {
+  position: absolute;
+  right: 0;
+  padding: 0 15px 0 49px;
+  background-image: url(../../img/room/help.png);
+  background-repeat: no-repeat;
+  background-size: 22px auto;
+  background-position: 15px center;
+  color: #666666;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.main {
+  position: relative;
+  height: 100%;
+  padding-left: 15%;
+  padding-right: 19%;
+  background-image: url(../../img/room/content-bg.png);
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: 100% 100%;
+}
+.main .content {
+  position: relative;
+  text-align: center;
+  overflow: auto;
+}
+.main .content .wrapper {
+  position: relative;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin: 15px;
+  text-align: left;
+}
+.main .content .active-video {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -205px;
+  padding: 8px;
+  width: 410px;
+  height: 300px;
+  background-color: #EFEFEF;
+  border: solid 1px #A3A3A3;
+  box-shadow: 0 0 5px #999999;
+}
+.main .content .active-video .toggle {
+  position: absolute;
+  display: none;
+  top: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background-image: url(../../img/room/close.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100%;
+}
+.main .content .active-video:hover .toggle {
+  display: inline-block;
+}
+.main .content .active-video .video {
+  text-align: center;
+}
+.main .content .active-video .video img {
+  width: 100%;
+}
+.main .content .whiteboard, .main .content .document, .main .content .media {
+  display: none;
+  margin: 0 auto;
+  box-shadow: 7px 7px 7px #737373;
+}
+.main .content .whiteboard, .main .content .document {
+  position: relative;
+  width: 800px;
+  height: 885px;
+  background-color: white;
+}
+.main .content .whiteboard .loading-tip, .main .content .document .loading-tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -112px;
+  margin-left: -129px;
+  width: 258px;
+  height: 224px;
+  text-align: center;
+  color: black;
+}
+.main .content .whiteboard .loading-tip .progress .percentage, .main .content .document .loading-tip .progress .percentage {
+  text-align: center;
+  color: black;
+}
+.main .content .whiteboard .loading-tip .progress .percentage span, .main .content .document .loading-tip .progress .percentage span {
+  font-size: 38px;
+}
+.main .content .whiteboard .loading-tip .progress .percentage label, .main .content .document .loading-tip .progress .percentage label {
+  font-size: 12px;
+}
+.main .content .whiteboard .loading-tip .progress .bar, .main .content .document .loading-tip .progress .bar {
+  height: 7px;
+  background-color: #B9B9B9;
+  margin: 30px auto 53px;
+  border-radius: 10px;
+}
+.main .content .whiteboard .loading-tip .progress .bar .completed, .main .content .document .loading-tip .progress .bar .completed {
+  height: 100%;
+  width: 35%;
+  border-radius: 10px;
+  background-color: #33AF3C;
+}
+.main .content .media {
+  position: relative;
+  width: 1058px;
+  height: 726px;
+  background-color: black;
+}
+.main .content .media .loading-tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -112px;
+  margin-left: -80px;
+  width: 160px;
+  height: 224px;
+  text-align: center;
+  color: white;
+}
+.main .content .media .loading-tip img {
+  display: block;
+  margin-bottom: 25px;
+  width: 160px;
+}
+.main.whiteboard .content .whiteboard {
+  display: block;
+}
+.main.document .content .document {
+  display: block;
+}
+.main.media .content .media {
+  display: block;
+}
+.main .aside {
+  height: 100%;
+  overflow: hidden;
+}
+
+.main .toolbar {
+  display: none;
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  overflow: visible;
+  border-top: solid 1px #CBCCCC;
+  border-bottom: solid 1px #AAAAAA;
+  background-color: #F2F2F2;
+}
+.main .toolbar > span {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  margin-left: 30px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: auto 100%;
+}
+.main .toolbar > span.upload {
+  background-image: url(../../img/room/upload.png);
+}
+.main .toolbar > span.new {
+  background-image: url(../../img/room/new.png);
+}
+.main .toolbar > span.color {
+  background-color: black;
+}
+.main .toolbar > span.pencil {
+  width: 22px;
+  background-image: url(../../img/room/pencil.png);
+}
+.main .toolbar > span.earaser {
+  width: 22px;
+  background-image: url(../../img/room/earaser.png);
+}
+.main .toolbar > span.font {
+  background-image: url(../../img/room/font.png);
+}
+.main .toolbar > span.paintbucket {
+  width: 24px;
+  background-image: url(../../img/room/paintbucket.png);
+}
+.main .toolbar > span.canvas-resize {
+  width: 80px;
+}
+.main .toolbar > span.canvas-resize > div {
+  position: relative;
+  height: 100%;
+  overflow: visible;
+}
+.main .toolbar > span.canvas-resize > div .rail, .main .toolbar > span.canvas-resize > div .position {
+  position: absolute;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  margin-top: -1.5px;
+}
+.main .toolbar > span.canvas-resize > div > .rail {
+  width: 100%;
+  background-color: white;
+}
+.main .toolbar > span.canvas-resize > div .position {
+  width: 50%;
+  height: 8px;
+  margin-top: -4px;
+}
+.main .toolbar > span.canvas-resize > div .position img {
+  position: absolute;
+  height: 100%;
+  right: -3px;
+  z-index: 1;
+}
+.main .toolbar > span.canvas-resize > div .position > .rail {
+  width: 100%;
+  background-color: #B1EE1D;
+}
+.main .toolbar > span.revert {
+  background-size: 100% auto;
+  background-image: url(../../img/room/revert.png);
+}
+.main .toolbar > span.recover {
+  background-size: 100% auto;
+  background-image: url(../../img/room/recover.png);
+}
+.main .toolbar > span.clear {
+  position: absolute;
+  display: inline-block;
+  right: 20px;
+  top: 50%;
+  margin-top: -9px;
+  padding: 0 6px 0 32px;
+  color: #7F7F7F;
+  width: auto;
+  background-image: url(../../img/room/clear.png);
+  background-repeat: no-repeat;
+  background-position: 6px center;
+  background-size: auto 100%;
+  cursor: default;
+}
+.main .toolbar > span .title {
+  z-index: 1;
+  position: absolute;
+  display: none;
+  top: 110%;
+  left: 50%;
+  margin-left: -1.5em;
+  width: 3em;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  background-image: url(../../img/room/title-corner.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto 7px;
+}
+.main .toolbar > span .title label {
+  display: block;
+  margin-top: 5px;
+  border-radius: 3px;
+  padding: 0 0.5em;
+  background-color: #262626;
+}
+.main .toolbar > span:hover .title {
+  display: inline-block;
+}
+.main .toolbar > span.canvas-resize .title {
+  width: 5em;
+  margin-left: -2.5em;
+}
+
+.main.whiteboard .toolbar.whiteboard {
+  display: block;
+}
+
+.main.document .toolbar.document {
+  display: block;
+}
+
+.main.media .toolbar.media {
+  display: block;
+}
+
+.main .aside.left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15%;
+  border-right: solid 1px #A2A2A2;
+}
+.main .aside.left .videos {
+  position: relative;
+  overflow: auto;
+}
+.main .aside.left .videos > div {
+  position: relative;
+  margin: 9px;
+  *margin-right: 25px;
+  padding: 8px;
+  background-color: #EFEFEF;
+  border: solid 1px #A3A3A3;
+}
+.main .aside.left .videos > div:hover {
+  box-shadow: 0 0 5px #999999;
+}
+.main .aside.left .videos > div .toggle {
+  position: absolute;
+  display: none;
+  top: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background-image: url(../../img/room/video-toggle1.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100%;
+}
+.main .aside.left .videos > div:hover .toggle {
+  display: inline-block;
+}
+.main .aside.left .videos > div .video {
+  text-align: center;
+}
+.main .aside.left .videos > div .video img {
+  width: 100%;
+}
+.main .aside.left .members {
+  position: relative;
+  overflow: auto;
+}
+.main .aside.left .members > .title {
+  line-height: 30px;
+  padding: 0 11px;
+  font-size: 14px;
+  color: #7F7F7F;
+  border-top: solid 1px #CCCCCC;
+  border-bottom: solid 1px #CCCCCC;
+  box-shadow: 0 1px #E5E5E5;
+  background-color: #F3F3F3;
+}
+.main .aside.left .members > .search {
+  background-color: #F6F6F6;
+  padding: 9px 16px;
+}
+.main .aside.left .members > .search > .holder {
+  padding-left: 39px;
+  padding-right: 10px;
+  border-radius: 15px;
+  height: 33px;
+  line-height: 33px;
+  background-color: white;
+  background-image: url(../../img/room/search.png);
+  background-repeat: no-repeat;
+  background-position: 7px 4px;
+  background-size: auto 27px;
+}
+.main .aside.left .members > .search > .holder .input-holder {
+  height: 100%;
+}
+.main .aside.left .members > .search > .holder input {
+  border: none;
+  outline: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  height: 33px\9;
+  line-height: normal;
+  line-height: 33px\9;
+}
+.main .aside.left .members > .list {
+  position: relative;
+  background-color: #F6F6F6;
+}
+.main .aside.left .members > .list > div {
+  position: relative;
+  padding: 0 11px;
+  height: 55px;
+  padding-left: 42px;
+  border-bottom: solid 1px #E5E5E5;
+}
+.main .aside.left .members > .list > div img {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  margin-top: -17px;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  vertical-align: middle;
+}
+.main .aside.left .members > .list > div .role {
+  display: inline-block;
+  margin-left: 7px;
+  line-height: 16px;
+  color: white;
+  width: 44px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.main .aside.left .members > .list > div .role.creator {
+  background-color: #FFAE00;
+}
+.main .aside.left .members > .list > div .role.administrator {
+  background-color: #70B615;
+}
+.main .aside.left .members > .list > div .role.instructor {
+  background-color: #FF6C00;
+}
+.main .aside.left .members > .list > div .nickname {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 9px;
+  max-width: 4em;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main .aside.left .members > .list > div .sign {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 12px;
+  margin-left: 7px;
+  overflow: hidden;
+}
+.main .aside.left .members > .list > div .sign.palm {
+  background-image: url(../../img/room/palm.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto 100%;
+}
+.main .aside.left .members > .list > div .sign.msg-count {
+  position: absolute;
+  right: 5px;
+  bottom: 51%;
+  background-color: #70B615;
+  border-radius: 50%;
+  color: white;
+  *color: inherit;
+  *background-color: transparent;
+}
+.main .aside.left .members > .list > div .sign.camera {
+  background-image: url(../../img/room/camera.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto 100%;
+}
+.main .aside.left .members > .list > div > div.top {
+  position: absolute;
+  bottom: 51%;
+}
+.main .aside.left .members > .list > div > div.bottom {
+  position: absolute;
+  top: 51%;
+  padding-left: 7px;
+}
+.main .aside.left .members > .list > div > div.bottom .sign {
+  float: left;
+  margin-left: 0;
+}
+
+.main .aside.right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 19%;
+  background-color: #F6F6F6;
+  border-left: solid 1px #A2A2A2;
+}
+.main .aside.right .conversation-visibility {
+  height: 36px;
+  line-height: 36px;
+  font-size: 12px;
+  border-top: solid 1px #CBCCCC;
+  border-bottom: solid 1px #AAAAAA;
+  background-color: #F2F2F2;
+  box-shadow: 0 2px 3px #CECECE;
+}
+.main .aside.right .conversation-visibility > span {
+  float: left;
+  display: block;
+  width: 50%;
+  text-align: center;
+  color: #999999;
+  cursor: default;
+}
+.main .aside.right .conversation-visibility > span.selected {
+  color: #70B615;
+}
+.main .aside.right .conversation-visibility > span.private {
+  background-image: url(../../img/room/border1.png);
+  background-repeat: repeat-y;
+  background-size: 2px auto;
+  background-position: left top;
+}
+.main .aside.right .conversation {
+  position: relative;
+  overflow: auto;
+}
+.main .aside.right .conversation .datetime {
+  font-size: 12px;
+  color: #666666;
+  text-align: center;
+  margin-top: 1em;
+}
+.main .aside.right .conversation .msg {
+  position: relative;
+  margin-top: 1em;
+  min-height: 70px;
+}
+.main .aside.right .conversation .msg .user-img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 16px;
+}
+.main .aside.right .conversation .msg .nickname {
+  font-size: 13px;
+  color: #999999;
+  padding-left: 10px;
+}
+.main .aside.right .conversation .msg .content {
+  margin-top: 6px;
+}
+.main .aside.right .conversation .msg .content > div {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  line-height: 1.5em;
+  min-height: 1.5em;
+  padding: 11px;
+  border-radius: 3px;
+  word-break: break-all;
+  text-align: left;
+}
+.main .aside.right .conversation .msg.received {
+  padding-left: 80px;
+}
+.main .aside.right .conversation .msg.received .user-img {
+  left: 19px;
+}
+.main .aside.right .conversation .msg.received .nickname {
+  padding-left: 10px;
+}
+.main .aside.right .conversation .msg.received .content {
+  float: left;
+  padding-left: 10px;
+  margin-right: 5px;
+  background-image: url(../../img/room/msg-received.png);
+  background-repeat: no-repeat;
+  background-size: 10px auto;
+  background-position: 0 15px;
+}
+.main .aside.right .conversation .msg.received .content > div {
+  background-color: white;
+  border-right: solid 1px #BEBEBE;
+  border-bottom: solid 1px #BEBEBE;
+  box-shadow: 1px 1px 1px #E4E4E4;
+}
+.main .aside.right .conversation .msg.sent, .main .aside.right .conversation .msg.system {
+  padding-right: 80px;
+}
+.main .aside.right .conversation .msg.sent .user-img, .main .aside.right .conversation .msg.system .user-img {
+  right: 19px;
+}
+.main .aside.right .conversation .msg.sent .nickname, .main .aside.right .conversation .msg.system .nickname {
+  text-align: right;
+  padding-right: 10px;
+}
+.main .aside.right .conversation .msg.sent .content, .main .aside.right .conversation .msg.system .content {
+  float: right;
+  margin-left: 5px;
+}
+.main .aside.right .conversation .msg.sent .content {
+  background-image: url(../../img/room/msg-sent.png);
+  background-repeat: no-repeat;
+  background-size: 10px auto;
+  background-position: right 15px;
+}
+.main .aside.right .conversation .msg.sent .content {
+  padding-right: 10px;
+}
+.main .aside.right .conversation .msg.sent .content > div {
+  color: white;
+  background-color: #46C34F;
+  border-right: solid 1px #BEBEBE;
+  border-bottom: solid 1px #BEBEBE;
+}
+.main .aside.right .input-toolbar {
+  position: relative;
+  height: 31px;
+  line-height: 31px;
+  border-top: solid 1px #CCCCCC;
+  border-bottom: solid 1px #CCCCCC;
+  background-color: #F3F3F3;
+}
+.main .aside.right .input-toolbar .tool {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  background-size: auto 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.main .aside.right .input-toolbar .tool.emotion {
+  background-image: url(../../img/room/emotion.png);
+}
+.main .aside.right .input-toolbar .tool.gift {
+  background-image: url(../../img/room/gift.png);
+}
+.main .aside.right .input-toolbar .tool.palm {
+  background-image: url(../../img/room/palm.png);
+}
+.main .aside.right .input-toolbar .send {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  right: 4px;
+  margin-top: -12px;
+  width: 65px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 3px;
+  color: white;
+  background-color: #AEAEB2;
+  text-align: center;
+  cursor: default;
+}
+.main .aside.right .input-toolbar .emotions, .main .aside.right .input-toolbar .gifts {
+  position: absolute;
+  display: none;
+  bottom: 120%;
+  left: 0;
+  width: 100%;
+}
+.main .aside.right .input-toolbar .emotions > .holder, .main .aside.right .input-toolbar .gifts > .holder {
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 11px 4px 4px 11px;
+  margin-right: -7px;
+  width: 270px;
+  background-color: #FEFEFE;
+  border-left: solid 1px #EEEEEE;
+  border-right: solid 1px #C5C5C5;
+  border-bottom: solid 1px #B3B3B3;
+  box-shadow: 2px 2px 5px #C5C5C5;
+}
+.main .aside.right .input-toolbar .emotions > .holder > span, .main .aside.right .input-toolbar .gifts > .holder > span {
+  float: left;
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  padding-right: 7px;
+  padding-bottom: 7px;
+}
+.main .aside.right .input-toolbar .emotions > .holder > span > span, .main .aside.right .input-toolbar .gifts > .holder > span > span {
+  display: block;
+  height: 100%;
+  background-color: #E6E6E7;
+}
+.main .aside.right .input {
+  height: 16%;
+}
+.main .aside.right .input > div {
+  padding: 3px 5px;
+  height: 100%;
+  background-color: white;
+}
+.main .aside.right .input textarea {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: transparent;
+}
+
+.msgbox-content {
+  display: none;
+}
+
+.msgbox-content.global-setting {
+  text-align: left;
+  padding: 0 34px 22px;
+}
+.msgbox-content.global-setting > div {
+  position: relative;
+  padding-left: 6.5em;
+  margin-top: 22px;
+}
+.msgbox-content.global-setting > div > label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 6em;
+  margin-right: 20px;
+  font-size: 16px;
+  color: black;
+}
+.msgbox-content.global-setting > div > div {
+  font-size: 14px;
+  color: #999999;
+}
+.msgbox-content.global-setting .trial input[type=text] {
+  border: none;
+  outline: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: black;
+  width: 3em;
+  line-height: normal;
+  background-color: #E7E7E7;
+  text-align: center;
+  height: 33px\9;
+  line-height: 33px\9;
+}

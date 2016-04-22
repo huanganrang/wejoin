@@ -1,0 +1,164 @@
+.header{
+	position: relative;
+	width: 100%;
+	left: 0;
+	top: 0;
+	height: 70px;
+	line-height: 70px;
+	background-color: #70B615;
+	
+	.middle{
+		font-size: 17px;
+		color: white;
+		background-image: url(../../img/room/border.png);
+		background-repeat: repeat-y;
+		background-size: 2px auto;
+		background-position: left top;
+		
+		.functions{
+			float: left;
+			
+			> span{
+				float: left;
+				display: inline-block;
+				cursor: default;
+				background-image: url(../../img/room/border.png);
+				background-repeat: repeat-y;
+				background-size: 2px auto;
+				background-position: left top;
+				
+				&:first-child{
+					background-image: none;
+				}
+				> span{
+					display: inline-block;
+					padding-right: 30px;
+					letter-spacing: 6px;
+					text-shadow: 1px 1px #545454;
+					background-repeat: no-repeat;
+					background-position: 30px center;
+				}
+				&:hover > span{
+					background-color: #397508;
+				}
+				&.selected > span{
+					background-color: #254C05;
+				}
+				&.whiteboard > span{
+					padding-left: 70px;
+					background-image: url(../../img/room/whiteboard.png);
+					background-size: auto 27px;
+				}
+				&.document > span{
+					padding-left: 72px;
+					background-image: url(../../img/room/doc.png);
+					background-size: auto 24px;
+				}
+				&.media > span{
+					padding-left: 70px;
+					background-image: url(../../img/room/media.png);
+					background-size: auto 27px;
+				}
+			}
+		}
+		
+		.downloads{
+			float: right;
+			
+			> span{
+				float: left;
+				display: inline-block;
+				cursor: pointer;
+				padding-right: 17px;
+				background-repeat: no-repeat;
+				background-position: 10px center;
+				
+				&:hover{
+					background-color: #5E9E0A;
+				}
+				&.app{
+					padding-left: 44px;
+					background-image: url(../../img/room/app.png);
+					background-size: auto 80%;
+				}
+				&.pc{
+					padding-left: 52px;
+					background-image: url(../../img/room/pc.png);
+					background-size: 25px auto;
+				}
+			}
+		}
+	}
+	.right{
+		position: relative;
+		padding-left: 1px;
+		background-image: url(../../img/room/border.png);
+		background-repeat: repeat-y;
+		background-size: 2px auto;
+		background-position: left top;
+		
+		.user-info{
+			display: none;
+			
+			img{
+				display: inline-block;
+				// width: 36px;
+				// height: 36px;
+				height: 80%;
+				margin-left: 20px;
+				vertical-align: middle;
+				border-radius: 50%;
+			}
+			label{
+				color: #F7F7F7;
+				margin-left: 16px;
+			}
+		}
+		.btn{
+			display: inline-block;
+			// display: none;
+			
+			font-size: 14px;
+			text-align: center;
+			width: 70px;
+			height: 25px;
+			line-height: 25px;
+			cursor: default;
+			// background-image: url(../../img/room/btn-bg.png);
+			// background-repeat: no-repeat;
+			// background-position: left top;
+			// background-size: 100%;
+			background-color: white;
+			border-radius: 3px;
+			
+			&.login{
+				margin-left: 12px;
+				color: #FE7A0F;
+			}
+			&.register{
+				margin-left: 14px;
+				color: #4E810C;
+			}
+		}
+		.setting{
+			position: absolute;
+			// display: inline-block;
+			top: 50%;
+			margin-top: -19px;
+			width: 38px;
+			height: 38px;
+			border-radius: 3px;
+			background-repeat: no-repeat;
+			background-position: center;
+			
+			&:hover{
+				background-color: #254C05;
+			}
+		}
+		.setting{
+			right: 12px;
+			background-image: url(../../img/room/gear1.png);
+			background-size: auto 25px;
+		}
+	}
+}

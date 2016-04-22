@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+html{
+	min-width: 1280px;
+	height: 100%;
+}
+body{
+	position: relative;
+	// padding-top: 70px;
+	// padding-bottom: 34px;
+}
+.header, .footer{
+	min-width: 1280px;
+}
+.header > .holder, .footer > .holder{
+	position: relative;
+	height: 100%;
+	padding-left: 15%;
+	padding-right: 19%;
+	
+	> *{
+		height: 100%;
+	}
+	.left{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 15%;
+		
+		.logo{
+			position: relative;
+			display: block;
+			border: none;
+			margin: 0 auto;
+			top: 13%;
+			height: 74%;
+		}
+	}
+	.right{
+		position: absolute;
+		width: 19%;
+		top: 0;
+		right: 0;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {  background-color: #999;}
+::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+::-webkit-scrollbar-thumb{
+	height: 50px;
+	background-color: #C9C9C9;
+	border-radius: 3px;
+}
+::-webkit-resizer { background-color: #666;}
+
+@import "room-header";
+@import "room-footer";
+@import "room-main";
+@import "room-segment";

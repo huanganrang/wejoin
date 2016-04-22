@@ -1,0 +1,79 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Microsoft Yahei", sans-serif, serif;
+  font-size: 14px;
+  color: #333333;
+  background: #F2F2F2;
+}
+
+body {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.clear-float {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  clear: both;
+}
+
+.context-menu {
+  position: fixed;
+  display: none;
+  width: auto;
+  font-size: 14px;
+  color: #333333;
+  border-radius: 5px;
+  border-right: solid 1px #AEAEAE;
+  border-bottom: solid 1px #AEAEAE;
+  background-color: white;
+  box-shadow: 2px 2px 2px #C3C3C3;
+}
+.context-menu .item {
+  position: relative;
+  padding-left: 36px;
+  line-height: 42px;
+}
+.context-menu .item:hover {
+  background-color: #F1F1F1;
+}
+.context-menu .item > .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 36px;
+  height: 100%;
+  background-color: #F1F1F1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 21px;
+}
+.context-menu .item > label {
+  display: block;
+  padding: 0 12px;
+  text-align: left;
+}
+.context-menu .item.chat > .icon {
+  background-image: url(../img/room/chat.png);
+}
+.context-menu .item.set-as-admin > .icon {
+  background-image: url(../img/room/admin.png);
+}
+.context-menu .item.kick-out > .icon {
+  background-image: url(../img/room/kick-out.png);
+}
+.context-menu .seperator {
+  height: 1px;
+  background-color: #D6D6D6;
+}

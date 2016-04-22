@@ -14,6 +14,8 @@ WEIQU_CHANNEL.init = function(){
     WEIQU_CHANNEL.initCategories();
     //构建频道窗口
     WEIQU_CHANNEL.channelWidow.init();
+    //房间列表窗口
+    WEIQU_CHANNEL.roomWindow.init();
 }
 //分类
 WEIQU_CHANNEL.categories = [];
@@ -124,6 +126,57 @@ WEIQU_CHANNEL.joinChannel = function (event) {
         "type": "UL012",
         "channelToken": channel.token
     }, function (rooms) {
+        WEIQU_CHANNEL.roomWindow.rendering(rooms,template,scrollDom);
+    });
+}
+
+WEIQU_CHANNEL.roomWindow = {
+    show:function(){
+        $(".windows").hide();
+        $("#roomBox").show();
+        var top=(windowHeight-630)/2
+        $("#roomBox .windows_box").css("top",top)
+    },
+    init:function(){
+        //加入房间
+        $("#roomBox .up_an").click(function(){
+           var select = WEIQU_CHANNEL.roomWindow.select;
+            var room = $(select).data();
+            function joinHouse() {
+                //  调用joinHouse接口
+                ajaxPostSync({
+                    "type": "UL014",
+                    "param": {"houseToken": room.token, "userToken": userToken.token}
+                }, function () {
+                    //$.cookie(houseToken, true);
+                });
+            }
+
+            if (userToken&&userToken.token) {
+                ajaxPostSync({
+                    "type": "UL031",
+                    "param": {"houseToken": room.token, "userToken": userToken.token}
+                }, function () {
+                    joinHouse();
+                });
+            } else {
+                ajaxPostSync({"type": "UL037"}, function (data) {
+                    var username = data.huanxinUid;
+                    var password = data.password;
+                    userToken = data.token;
+                    ajaxGetSync({
+                        "type": "UL040",
+                        "huanxinUid": username,
+                        "password": password
+                    }, function () {
+                        joinHouse();
+                    });
+                });
+            }
+            window.open("room.jsp");
+        });
+    },
+    rendering:function(rooms,template,scrollDom){
         for(var i in rooms){
             var room = rooms[i];
             var viewData = Util.cloneJson(room);
@@ -139,6 +192,7 @@ WEIQU_CHANNEL.joinChannel = function (event) {
                     _this.hide();
                 }
             });
+            WEIQU_CHANNEL.roomWindow.bindClick(dom);
             var domTeacher = Util.cloneDom(template.children().eq(1), room, viewData);
             domTeacher.hide();
             scrollDom.append(dom).append(domTeacher);
@@ -147,9 +201,15 @@ WEIQU_CHANNEL.joinChannel = function (event) {
             });
         }
         //显示房间列别弹出层
-        showroomBox();
+        WEIQU_CHANNEL.roomWindow.show();
         scrollDom.mCustomScrollbar();
-    });
+    },
+    select:null,
+    bindClick:function(dom){
+        dom.click(function(){
+            WEIQU_CHANNEL.roomWindow.select = this;
+        });
+    }
 }
 
 //初始化创建频道

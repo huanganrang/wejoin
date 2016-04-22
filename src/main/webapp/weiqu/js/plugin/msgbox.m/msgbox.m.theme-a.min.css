@@ -1,0 +1,191 @@
+.MsgBox-Mask{
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+.MsgBox-Container{
+	position: fixed;
+	z-index: 2;
+	min-width: 200px;
+	border-radius: 2px;
+	background: #F3F3F3;
+	color: #222222;
+}
+.MsgBox-Container > .title{
+	display: none;
+	font-size: 17px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	color: #535353;
+	background: #E7E7E7;
+	border-radius: 5px;
+}
+.MsgBox-Container > .content{
+	padding: 17px;
+	font-size: 13px;
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: auto;
+	color: #535353;
+}
+.MsgBox-Container > .button-container{
+	height: 39px;
+	line-height: 39px;
+	font-size: 14px;
+	border-top: solid 1px #E8E8E8;
+}
+.MsgBox-Container > .button-container > .button:hover{
+	background: white;
+}
+.MsgBox-Container.alert > .button-container > .button.confirm{
+	cursor: default;
+	color: #333333;
+	text-align: center;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.MsgBox-Container.confirm > .button-container > .button.confirm{
+	cursor: default;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	*overflow: hidden;
+	float: left;
+	width: 50%;
+	color: #333333;
+	text-align: center;
+	border-left: solid 1px #E8E8E8;
+	margin-left: -1px;
+	border-bottom-right-radius: 5px;
+}
+.MsgBox-Container.confirm > .button-container > .button.cancel{
+	cursor: default;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	*overflow: hidden;
+	float: left;
+	width: 50%;
+	color: #666666;
+	text-align: center;
+	border-bottom-left-radius: 5px;
+}
+.MsgBox-Container.prompt > .content > .input-wrapper{
+	padding: 12px 10px;
+	border: solid 1px #CACACA;
+	border-radius: 3px;
+	background: white;
+}
+.MsgBox-Container.prompt > .content > .input-wrapper > input{
+	padding: 0;
+	font-size: 13px;
+	line-height: 13px;
+	font-family: inherit;
+	color: #535353;
+	border: none;
+	outline: none;
+	max-width: 100%;
+}
+.MsgBox-Container.prompt.not-cancelable > .button-container > .button.confirm{
+	cursor: default;
+	display: block;
+	color: #333333;
+	width: 100%;
+	text-align: center;
+	border-left: none;
+	margin-left: 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.MsgBox-Container.prompt > .button-container > .button.confirm{
+	cursor: default;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	*overflow: hidden;
+	float: left;
+	width: 50%;
+	color: #333333;
+	text-align: center;
+	border-left: solid 1px #E8E8E8;
+	margin-left: -1px;
+	border-bottom-right-radius: 5px;
+}
+.MsgBox-Container.prompt > .button-container > .button.cancel{
+	cursor: default;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	*overflow: hidden;
+	float: left;
+	width: 50%;
+	color: #666666;
+	text-align: center;
+	border-bottom-left-radius: 5px;
+}
+
+@-webkit-keyframes MsgBox_showIn{
+	from{
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes MsgBox_showIn{
+	from{
+		-moz-transform: scale(1.2);
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to{
+		-moz-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-ms-keyframes MsgBox_showIn{
+	from{
+		-ms-transform: scale(1.2);
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to{
+		-ms-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-o-keyframes MsgBox_showIn{
+	from{
+		-o-transform: scale(1.2);
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to{
+		-o-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@keyframes MsgBox_showIn{
+	from{
+		transform: scale(1.2);
+		opacity: 0;
+	}
+	to{
+		transform: scale(1);
+		opacity: 1;
+	}
+}
