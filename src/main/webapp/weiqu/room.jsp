@@ -302,6 +302,17 @@
         </div>
     </div>
     <jsp:include page="inc_base.jsp"></jsp:include>
+    <script type="text/javascript">
+       var $house = {
+           cfg:{
+               houseToken: '${param.houseToken}',
+               houseId:${param.houseId},
+               channelId:${param.channelId},
+               huanxinRoomId: ${param.huanxinRoomId},
+               owner:${param.owner}
+           }
+        }
+    </script>
     <script type = "text/javascript" src = "js/plugin/msgbox.m/msgbox.m.min.js"></script>
 
 	<script type = "text/javascript" src = "js/pages/room/layout.js"></script>
@@ -312,6 +323,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
     <script type = "text/javascript" src = "js/chart.js"></script>
+    <script type = "text/javascript" src = "js/room.js"></script>
     <script type = "text/javascript" src = "js/room_chart.js"></script>
 
 
@@ -329,7 +341,5 @@
 		}
 	}).show();
 	</script>
-    <script type = "text/javascript" src = "js/room_chart.js"></script>
-
 </body>
 </html>

@@ -128,6 +128,7 @@ WEIQU_CHANNEL.joinChannel = function (event) {
     }, function (rooms) {
         WEIQU_CHANNEL.roomWindow.rendering(rooms,template,scrollDom);
     });
+    WEIQU_CHANNEL.roomWindow.selectChannel = channel;
 }
 
 WEIQU_CHANNEL.roomWindow = {
@@ -142,11 +143,11 @@ WEIQU_CHANNEL.roomWindow = {
         $("#roomBox .up_an").click(function(){
            var select = WEIQU_CHANNEL.roomWindow.select;
             var room = $(select).data();
-            function joinHouse() {
+            function joinHouse(token) {
                 //  调用joinHouse接口
                 ajaxPostSync({
                     "type": "UL014",
-                    "param": {"houseToken": room.token, "userToken": userToken.token}
+                    "param": {"houseToken": room.token, "userToken": token}
                 }, function () {
                     //$.cookie(houseToken, true);
                 });
@@ -157,23 +158,31 @@ WEIQU_CHANNEL.roomWindow = {
                     "type": "UL031",
                     "param": {"houseToken": room.token, "userToken": userToken.token}
                 }, function () {
-                    joinHouse();
+                    joinHouse(userToken.token);
                 });
             } else {
+                //游客
                 ajaxPostSync({"type": "UL037"}, function (data) {
                     var username = data.huanxinUid;
                     var password = data.password;
-                    userToken = data.token;
+                    var _userToken = data.token;
                     ajaxGetSync({
                         "type": "UL040",
                         "huanxinUid": username,
                         "password": password
                     }, function () {
-                        joinHouse();
+                        joinHouse(_userToken);
                     });
                 });
             }
-            window.open("room.jsp");
+            var channel = WEIQU_CHANNEL.roomWindow.selectChannel;
+            //room.adminToken
+            var href = 'room.jsp?houseToken=' + room.token
+                + '&houseId=' + room.id
+                + '&channelId=' + channel.id
+                + '&huanxinRoomId=' + room.huanxinRoomId
+                + '&owner=' + true;
+            window.open(href);
         });
     },
     rendering:function(rooms,template,scrollDom){
@@ -205,6 +214,7 @@ WEIQU_CHANNEL.roomWindow = {
         scrollDom.mCustomScrollbar();
     },
     select:null,
+    selectChannel:null,
     bindClick:function(dom){
         dom.click(function(){
             WEIQU_CHANNEL.roomWindow.select = this;
