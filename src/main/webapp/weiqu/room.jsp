@@ -301,6 +301,7 @@
             </div>
         </div>
     </div>
+    <jsp:include page="room_template.jsp"></jsp:include>
     <jsp:include page="inc_base.jsp"></jsp:include>
     <script type="text/javascript">
        var $house = {

@@ -16,6 +16,6 @@ Easemob.im.config = {
         连接时提供appkey
     */
 //    appkey: "xuwenming-1987#mylove",
-    appkey: "weiqu1686#weiqu168",
+    appkey: "329270348#weiqu",
     https : true
 }

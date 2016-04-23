@@ -29,9 +29,28 @@
             if(val){
                 //发送消息
                 chart.sendText(val);
+                input.val("");
+                chart.addBubble(val);
             }
         });
         chart.toolbar = toolbar;
     }
+
+    //初始化对话框
+    function initDialog(chart){
+        var dialog = {};
+        chart.dialog = dialog;
+        dialog.container = $('.right .conversation');
+    }
+
+    //添加自己的气泡
+    chart.addBubble = function(message){
+        var container = chart.dialog.container;
+        var data = {message:message,nickName:userToken.nickName};
+        var messageDom =  Util.cloneDom("chartMessage",data);
+        container.append(messageDom);
+    }
+
     initToolbar(house.chart);
+    initDialog(house.chart);
 })($house);

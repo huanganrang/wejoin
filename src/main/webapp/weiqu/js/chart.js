@@ -10,8 +10,8 @@ var $chart = function(option){
                 option.onOpened(conn);
             },
             onTextMessage: function (message) {
-                console.log("收到文本消息：" + JSON.stringify(message));
                 message.data = $.base64.atob(message.data, true);
+                console.log("收到文本消息：" + JSON.stringify(message));
                 if (message.from != option.huanxinUid) {
                     option.onTextMessage(message);
                 }
