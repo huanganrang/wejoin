@@ -309,7 +309,7 @@
                houseToken: '${param.houseToken}',
                houseId:${param.houseId},
                channelId:${param.channelId},
-               huanxinRoomId: ${param.huanxinRoomId},
+               huanxinRoomId: '${param.huanxinRoomId}',
                owner:${param.owner}
            }
         }
@@ -319,10 +319,11 @@
 	<script type = "text/javascript" src = "js/pages/room/layout.js"></script>
     <script type = "text/javascript" src = "js/pages/room/action.js"></script>
     <script src="${pageContext.request.contextPath}/jslib/jquery.base64.js" type="text/javascript" charset="utf-8"></script>
-    <script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/strophe.js'></script>
-    <script type='text/javascript' src='${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/json2.js'></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/sdk/easemob.im-1.0.7.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/web-im-1.0.7.2/easemob.im.config.js"></script>
+    <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/sdk/strophe.js"></script>
+    <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/sdk/easemob.im-1.1.js"></script>
+    <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/sdk/easemob.im-1.1.shim.js"></script><!--兼容老版本sdk需引入此文件-->
+    <!--config-->
+    <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/js/easemob.im.config.js"></script>
     <script type = "text/javascript" src = "js/chart.js"></script>
     <script type = "text/javascript" src = "js/room.js"></script>
     <script type = "text/javascript" src = "js/room_chart.js"></script>
