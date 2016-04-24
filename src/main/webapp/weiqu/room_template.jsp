@@ -24,3 +24,15 @@
 	<div class = "clear-float"> </div>
 </div>
 
+<div class = "member" id="userMember" style="display: none;">
+	<img src = "img/room/user1.png" name="icon"/>
+	<div class = "top">
+		<span class = "nickname" name="nickName">会飞的企鹅会飞的企鹅</span>
+	</div>
+	<div class = "bottom">
+		<span class = "sign camera"></span>
+		<span class = "sign palm"></span>
+		<div class = "clear-float"> </div>
+	</div>
+</div>
+

@@ -88,10 +88,10 @@
 			lastX = e.screenX;
 			lastY = e.screenY;
 			
-			e.preventDefault();
+			//e.preventDefault();
 		});
 		$(document).bind("blur mouseup", function(e){
-			e.preventDefault();
+			//e.preventDefault();
 			
 			isDragging = false;
 			document.documentElement.style.cursor = "auto";
@@ -132,10 +132,10 @@
 			
 			lastX = e.screenX;
 			
-			e.preventDefault();
+			//e.preventDefault();
 		});
 		$(document).bind("blur mouseup", function(e){
-			e.preventDefault();
+			//e.preventDefault();
 			
 			isDragging = false;
 		});
@@ -232,7 +232,7 @@
 			e.preventDefault();
 		});
 		$(document).bind("blur mouseup", function(e){
-			e.preventDefault();
+			//e.preventDefault();
 			
 			isDragging = false;
 		});

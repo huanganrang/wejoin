@@ -59,6 +59,7 @@
         var dialog = {};
         chart.dialog = dialog;
         dialog.container = $('.right .conversation');
+        dialog.container.children().remove();
     }
 
     initToolbar(house.chart);

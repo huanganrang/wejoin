@@ -9,26 +9,30 @@
 	
 	<link rel = "stylesheet" href = "css/common.css"/>
 	<link rel = "stylesheet" href = "css/pages/room.css"/>
-	
+    <!-- in a production environment, you can include the minified css. It contains the css of the board and the default controls (size, nav, colors):
+    <link rel="stylesheet" href="../dist/drawingboard.min.css"> -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/canvas/css/drawingboard.css">
 	<title>教室</title>
 </head>
 <body>
     <jsp:include page="room_head.jsp"></jsp:include>
-	<div class = "main media">
-        <div class = "toolbar whiteboard">
+    <div class = "main media" id="default-board">
+        <div class = "toolbar whiteboard" style="text-align:left;">
             <span class = "tool new"><span class = "title"><label>新建</label></span></span>
             <span class = "tool color"><span class = "title"><label>色彩</label></span></span>
             <span class = "tool pencil"><span class = "title"><label>画笔</label></span></span>
             <span class = "tool earaser"><span class = "title"><label>笔擦</label></span></span>
+<%--
             <span class = "tool font"><span class = "title"><label>字体</label></span></span>
+--%>
             <span class = "tool paintbucket"><span class = "title"><label>背景</label></span></span>
             <span class = "tool canvas-resize">
                 <div>
-                    <span class = "rail"></span>
+                    <%--<span class = "rail"></span>
                     <span class = "position">
                         <img src = "img/room/sound-ctrl-btn.png"/>
                         <span class = "rail"></span>
-                    </span>
+                    </span>--%>
                 </div>
                 <span class = "title"><label>画布缩放</label></span>
             </span>
@@ -324,10 +328,24 @@
     <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/sdk/easemob.im-1.1.shim.js"></script><!--兼容老版本sdk需引入此文件-->
     <!--config-->
     <script src="${pageContext.request.contextPath}/jslib/web-im-1.1.0/static/js/easemob.im.config.js"></script>
+
+    <!--白板开始-->
+    <script src="${pageContext.request.contextPath}/canvas/js/drawingboard.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/board_wq.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/control_wq.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/color_wq.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/drawingmode_wq.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/navigation_wq.js"></script>
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/size_wq.js"></script>
+<%--
+    <script src="${pageContext.request.contextPath}/canvas/js/controls/download.js"></script>
+--%>
+    <script src="${pageContext.request.contextPath}/canvas/js/utils.js"></script>
+    <!--白板结束-->
+
     <script type = "text/javascript" src = "js/chart.js"></script>
     <script type = "text/javascript" src = "js/room.js"></script>
     <script type = "text/javascript" src = "js/room_chart.js"></script>
-
 
     <script type = "text/javascript">
 	/** 弹窗：是否同意举手发言 */
