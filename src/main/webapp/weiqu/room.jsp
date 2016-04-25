@@ -346,6 +346,7 @@
     <script type = "text/javascript" src = "js/chart.js"></script>
     <script type = "text/javascript" src = "js/room.js"></script>
     <script type = "text/javascript" src = "js/room_chart.js"></script>
+    <script type = "text/javascript" src = "js/room_camara.js"></script>
 
     <script type = "text/javascript">
 	/** 弹窗：是否同意举手发言 */

@@ -44,6 +44,7 @@
 		<script type="text/javascript">
 			function openDialog(num){
 				parent.changeCamaraLocation("cameraPush");
+				parent.pushStart();
 			}
 
 			function setObjectSize(width,height){

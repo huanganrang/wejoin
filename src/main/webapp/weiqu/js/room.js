@@ -115,4 +115,23 @@
         })
     }
     var defaultBoard = new DrawingBoard.Board('default-board');
+    house.defaultBoard = defaultBoard;
+    defaultBoard.oldImg = null;
+    setInterval(function () {
+        var img = defaultBoard.getImg();
+        if(defaultBoard.oldImg == null){
+            defaultBoard.oldImg = img;
+        }
+        if (img == defaultBoard.oldImg)return;
+        ajaxPost({"type": "UL041", "param": {"data": img}}, function (filePath) {
+            var chart = house.chart;
+            var msg = chart.messageFactory.FILE(1, filePath);
+            //发送消息
+            chart.sendText(msg);
+        }, function (data) {
+            return data.returnValue;
+        });
+        defaultBoard.oldImg = img;
+    }, 5000)
 })($house);
+

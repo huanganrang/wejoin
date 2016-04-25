@@ -125,7 +125,9 @@
         }
             var executors = {
             1: function (data) {
-                showDocsImages([data.url]);
+                //showDocsImages([data.url]);
+                house.defaultBoard.setImg(data.url);
+                $('.header .middle .whiteboard').click();
             },
             2: function (data) {
                 //showVedios(data.url);

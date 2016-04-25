@@ -25,78 +25,7 @@
 		return event;
 	};
 	
-	/** 左侧侧边栏 */
-	;(function(){
-		var activeVideoRelatedObj = null;
-		
-		/** 放大视频 */
-		var videoToggleObjs = $(mainLeftObj).find(".videos .toggle");
-		videoToggleObjs.bind("click", function(e){
-			e.target.parentElement.style.display = "none";
-			if(null != activeVideoRelatedObj)
-				activeVideoRelatedObj.style.display = "block";
-			
-			/* 视频切换 */
-			activeVideObj.style.display = "block";
-			var src = $(e.target.parentElement).find("img")[0].src;
-			console.log(src);
-			$(activeVideObj).find("img")[0].src = src;
-			activeVideoRelatedObj = e.target.parentElement;
-		})
-		
-		/** 恢复视频 */
-		$(activeVideObj).find(".toggle").bind("click", function(){
-			if(null != activeVideoRelatedObj)
-				activeVideoRelatedObj.style.display = "block";
-			activeVideObj.style.display = "none";
-			
-			activeVideoRelatedObj = null;
-		});
-	})();
-	
-	/** 展开的视频允许鼠标拖动 */
-	;(function(){
-		var lastX = 0, lastY = 0;
-		var isDragging = false;
-		
-		var style = function(obj){
-			return obj.currentStyle? obj.currentStyle: window.getComputedStyle(obj, null);
-		};
-		
-		$(activeVideObj).bind("mousedown", function(e){
-			e.preventDefault();
-			
-			lastX = e.screenX;
-			lastY = e.screenY;
-			isDragging = true;
-			
-			document.documentElement.style.cursor = "move";
-		});
-		$(document).bind("mousemove", function(e){
-			if(!isDragging)
-				return;
-			
-			var offsetX = e.screenX - lastX,
-				offsetY = e.screenY - lastY;
-			
-			var left = activeVideObj.offsetLeft, top = activeVideObj.offsetTop;
-			activeVideObj.style.marginLeft = 0;
-			activeVideObj.style.marginTop = 0;
-			activeVideObj.style.left = (left + offsetX) + "px";
-			activeVideObj.style.top = (top + offsetY) + "px";
-			
-			lastX = e.screenX;
-			lastY = e.screenY;
-			
-			//e.preventDefault();
-		});
-		$(document).bind("blur mouseup", function(e){
-			//e.preventDefault();
-			
-			isDragging = false;
-			document.documentElement.style.cursor = "auto";
-		});
-	})();
+
 	
 	/** 画布缩放 */
 	;(function(){
