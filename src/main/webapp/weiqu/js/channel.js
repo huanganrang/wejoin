@@ -176,12 +176,12 @@ WEIQU_CHANNEL.roomWindow = {
                 });
             }
             var channel = WEIQU_CHANNEL.roomWindow.selectChannel;
-            //room.adminToken
+            var isOwner = userToken&&(room.adminToken==userToken.token)?true:false;
             var href = 'room.jsp?houseToken=' + room.token
                 + '&houseId=' + room.id
                 + '&channelId=' + channel.id
                 + '&huanxinRoomId=' + room.huanxinRoomId
-                + '&owner=' + true;
+                + '&owner=' + isOwner;
             window.open(href);
         });
     },

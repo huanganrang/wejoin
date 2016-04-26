@@ -22,18 +22,60 @@
         },
         username: userToken.huanxinUid,
         password: userToken.password,
-        huanxinRoomId:cfg.huanxinRoomId
+        huanxinRoomId:cfg.huanxinRoomId,
+
+        methods:{
+            //初始化表情和礼物
+            initEmoji:function(){
+                Easemob.im.EMOTIONS.path = "images/emoji/";
+                var emojiContainer = $('.emotions .holder');
+                emojiContainer.children().remove();
+                //绑定事件
+                var json = Easemob.im.Helper.EmotionPicData;
+                for (var key in json) {
+                    var emotions = $('<img>').attr({
+                        "id": key,
+                        "src": Easemob.im.EMOTIONS.path+json[key],
+                        "style": "cursor:pointer;width: 23px; height: 23px;"
+                    }).click(function () {
+                        house.chart.selectEmotionImg(this);
+                    });
+                    $('<span>').append($('<span>').append(emotions)).appendTo(emojiContainer);
+                }
+                emojiContainer.append('<div class = "clear-float"> </div>');
+
+                var gifts = $(".gifts .holder>span>span>img");
+                gifts.css("width","23px").css("height","23px").css("cursor","pointer").click(function(){
+                    var _this = $(this);
+                    var index = gifts.index(_this)+1;
+                    var msg
+                    if(index>9){
+                        msg = "[(<"+index+">)]"
+                    }else{
+                        msg = "[(<0"+index+">)]"
+                    }
+                    var textarea = chart.textarea;
+                    textarea.val(textarea.val()+msg).focus();
+                });
+            },
+            selectEmotionImg:function(img){
+                var textarea = chart.textarea;
+                textarea.val(textarea.val()+img.id).focus();
+            }
+        }
     };
     //实例化聊天对象
     var chart = new $chart(option);
     house.chart = chart;
-
+    chart.textarea = $('.right .input textarea');
+    //初始化表情
+    chart.initEmoji();
     //初始化聊天按钮
     function initToolbar(chart){
         var toolbar = {};
         //发送按钮
         toolbar.send = $('.input-toolbar .send');
-        var textarea = $('.right .input textarea');
+        var textarea = chart.textarea;
         toolbar.send.click(function(){
             var input = textarea;
             var val = input.val().trim();
@@ -67,6 +109,7 @@
 
     //添加自己的气泡
     chart.addBubble = function(message){
+        message = chart.convertFace(message);
         var myid = userToken.huanxinUid;
         var users = chart.userList||{};
         var user = users[myid]||{};
@@ -81,8 +124,38 @@
         container[0].scrollTop = container[0].scrollHeight;
     }
 
+    //表情转换和礼物
+    chart.convertFace = function(message){
+        var messageContent = Easemob.im.Helper.parseTextMessage(message,new Object());
+        messageContent = messageContent.body;
+        var content = "";
+        for (var i = 0; i < messageContent.length; i++) {
+            var msg = messageContent[i];
+            var type = msg.type;
+            var r = msg.data;
+            if (type == "emotion") {
+                content += '<img src="' + r + '" style="width: 19px;  height: 19px;"/>';
+            } else {
+                content += r;
+            }
+        }
+        //过滤礼物表情
+        for(var i = 1;i<65;i++){
+            var istr = "";
+            if(i<10){
+                istr = "0"+i;
+            }else{
+                istr = i;
+            }
+            var html = $(".gifts .holder>span>span").eq(i-1).html();
+            content = content.replace(new RegExp("\\[\\(\\<"+istr+"\\>\\)\\]", 'g'),html);
+        }
+        return content;
+    }
+
     //添加其他成员消息
     chart.addUserBubble = function(message){
+        message = chart.convertFace(message);
         var container = chart.dialog.container;
         var data = {message:message.content,nickName:message.myname,icon:message.myicon};
         if(data.icon.indexOf("http://")<0){

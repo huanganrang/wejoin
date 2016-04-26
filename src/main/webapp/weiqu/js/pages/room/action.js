@@ -190,16 +190,7 @@
 		});
 	})();
 	
-	/** 视频控制 */
-	;(function(){
-		var isDisabled = false;
-		
-		var cameraObj = $(footerObj).find(".camera");
-		$(cameraObj).bind("click", function(e){
-			isDisabled = !isDisabled;
-			$(this)[isDisabled? "addClass": "removeClass"]("disabled");
-		});
-	})();
+
 	
 	/** 会员右键菜单 */
 	;(function(){

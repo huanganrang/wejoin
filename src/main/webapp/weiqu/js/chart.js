@@ -58,4 +58,8 @@ var $chart = function(option){
         conn.sendTextMessage(options);
     }
     this.init();
+    var methods = option.methods;
+    for(var i in methods){
+        this[i] = methods[i];
+    }
 }

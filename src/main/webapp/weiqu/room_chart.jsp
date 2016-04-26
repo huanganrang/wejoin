@@ -62,16 +62,70 @@
 		<span class = "tool palm"></span>
 		<span class = "send">发送</span>
 
-		<div class = "emotions"><div class = "holder">
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
-			<div class = "clear-float"> </div>
-		</div></div>
+		<div class="emotions">
+			<div class="holder">
+
+			</div>
+		</div>
 		<div class = "gifts"><div class = "holder">
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
-			<span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span><span><span></span></span>
+			<span><span><img src="images/tb/balloon.png" /></span></span>
+			<span><span><img src="images/tb/bianping-christmas-2014-05.png" /></span></span>
+			<span><span><img src="images/tb/bird-toys.png" /></span></span>
+			<span><span><img src="images/tb/bird-white.png" /></span></span>
+			<span><span><img src="images/tb/bluefaces_12.png" /></span></span>
+			<span><span><img src="images/tb/buel.png" /></span></span>
+			<span><span><img src="images/tb/catlover.png" /></span></span>
+			<span><span><img src="images/tb/christmas-balls.png" /></span></span>
+			<span><span><img src="images/tb/cocktail.png" /></span></span>
+			<span><span><img src="images/tb/colour_apple_02.png" /></span></span>
+			<span><span><img src="images/tb/confettiicon.png" /></span></span>
+			<span><span><img src="images/tb/cyan.png" /></span></span>
+			<span><span><img src="images/tb/dahuangmao-04.png" /></span></span>
+			<span><span><img src="images/tb/dancing-minion-icon.png" /></span></span>
+			<span><span><img src="images/tb/disney_dax_pink_03.png" /></span></span>
+			<span><span><img src="images/tb/disney_dax_pink_06.png" /></span></span>
+			<span><span><img src="images/tb/dog_04.png" /></span></span>
+			<span><span><img src="images/tb/dummy-fish.png" /></span></span>
+			<span><span><img src="images/tb/email.png" /></span></span>
+			<span><span><img src="images/tb/fileexplorer.png" /></span></span>
+			<span><span><img src="images/tb/gm.png" /></span></span>
+			<span><span><img src="images/tb/goo.png" /></span></span>
+			<span><span><img src="images/tb/hatcon.png" /></span></span>
+			<span><span><img src="images/tb/iceage-02.png" /></span></span>
+			<span><span><img src="images/tb/iceage-06.png" /></span></span>
+			<span><span><img src="images/tb/kook.png" /></span></span>
+			<span><span><img src="images/tb/labrador.png" /></span></span>
+			<span><span><img src="images/tb/loco_roco_03.png" /></span></span>
+			<span><span><img src="images/tb/madagascar_01.png" /></span></span>
+			<span><span><img src="images/tb/madagascar_02.png" /></span></span>
+			<span><span><img src="images/tb/madagascar_03.png" /></span></span>
+			<span><span><img src="images/tb/madagascar_04.png" /></span></span>
+			<span><span><img src="images/tb/madagascar_08.png" /></span></span>
+			<span><span><img src="images/tb/medusa.png" /></span></span>
+			<span><span><img src="images/tb/mime_riendo.png" /></span></span>
+			<span><span><img src="images/tb/musicherz.png" /></span></span>
+			<span><span><img src="images/tb/pig-green.png" /></span></span>
+			<span><span><img src="images/tb/popkart_01.png" /></span></span>
+			<span><span><img src="images/tb/poulpo.png" /></span></span>
+			<span><span><img src="images/tb/psychotic-penguin.png" /></span></span>
+			<span><span><img src="images/tb/puppy_dogs_02.png" /></span></span>
+			<span><span><img src="images/tb/puppy_dogs_04.png" /></span></span>
+			<span><span><img src="images/tb/purple.png" /></span></span>
+			<span><span><img src="images/tb/rtm.png" /></span></span>
+			<span><span><img src="images/tb/russel.png" /></span></span>
+			<span><span><img src="images/tb/santa.png" /></span></span>
+			<span><span><img src="images/tb/shengdanlaoren-2014-10.png" /></span></span>
+			<span><span><img src="images/tb/snow_leopard_06.png" /></span></span>
+			<span><span><img src="images/tb/social_network.png" /></span></span>
+			<span><span><img src="images/tb/thememanager.png" /></span></span>
+			<span><span><img src="images/tb/twitter4.png" /></span></span>
+			<span><span><img src="images/tb/uncle-dumplin.png" /></span></span>
+			<span><span><img src="images/tb/updater.png" /></span></span>
+			<span><span><img src="images/tb/wabi.png" /></span></span>
+			<span><span><img src="images/tb/weather (1).png" /></span></span>
+			<span><span><img src="images/tb/weather.png" /></span></span>
+			<span><span><img src="images/tb/wet-dog.png" /></span></span>
+			<span><span><img src="images/tb/xmas-wreath.png" /></span></span>
 			<div class = "clear-float"> </div>
 		</div></div>
 	</div>

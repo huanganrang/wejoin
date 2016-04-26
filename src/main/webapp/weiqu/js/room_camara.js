@@ -3,10 +3,14 @@ function pushStart(){
 }
 (function (house) {
     var cfg = house.cfg;
+    var footerObj = $(".footer")[0];
     var video = function(){
         this.container = $('.aside .video:eq(0)');
+        this.containerActive = $(".main .active-video .video");
+
         this.icon = Util.cloneDom(this.container.children(),{});
         this.videoIframe = $('<iframe width="100%" height="100%" frameborder="no" scrolling="no"></iframe>');
+        this.isOpen = false;
         var _this = this;
         var methods = {
             init:function(){
@@ -17,12 +21,9 @@ function pushStart(){
                     this.videoIframe.attr("src", base + "rtmp_player/rtmp_player.jsp?houseId=" + cfg.houseId + "&channelId=" + cfg.channelId);
                 }
                 this.initDrag();
-                this.play();
-                if (cfg.owner) {
-                    setTimeout(function(){
-                        $(".main .aside.left .videos .toggle:eq(0)").click();
-                    },1000);
-                }
+            },
+            clear:function(obj){
+                obj.children().remove();
             },
             initDrag:function(){
                 /** 左侧侧边栏 */
@@ -42,29 +43,38 @@ function pushStart(){
 
                         /* 视频切换 */
                         activeVideObj.style.display = "block";
-                        var activeVideObjContainer = $(activeVideObj).find('.video');
-                        activeVideObjContainer.css("height","100%");
-                        console.log(activeVideObjContainer)
-                        activeVideObjContainer.children().remove();
-                        activeVideObjContainer.append(_this.videoIframe);
+                        var containerActive = _this.containerActive;
+                        containerActive.css("height","100%");
+                        containerActive.children().remove();
                         activeVideoRelatedObj = e.target.parentElement;
-                        if (cfg.owner) {
-                            _this.close();
+                        _this.clear(containerActive);
+                        if(_this.isOpen) {
+                            containerActive.append(_this.videoIframe);
+                            setTimeout(function () {
+                                //if($house.video.isStartPush) {
+                                var domJar = _this.videoIframe[0];
+                                if (domJar.contentWindow.setObjectSize) {
+                                    domJar.contentWindow.setObjectSize(containerActive.width() * 2, containerActive.height() * 2);
+                                }
+                                //}
+                            }, 10000);
+                        }else{
+                            containerActive.append(Util.cloneDom(_this.icon,{}));
                         }
-                        setInterval(function(){
-                            //if($house.video.isStartPush) {
-                            var domJar = _this.videoIframe[0];
-                            if (domJar.contentWindow.setObjectSize) {
-                                domJar.contentWindow.setObjectSize(activeVideObjContainer.width() * 2, activeVideObjContainer.height() * 2);
-                            }
-                            //}
-                        },10000);
                     })
 
                     /** 恢复视频 */
                     $(activeVideObj).find(".toggle").bind("click", function(){
-                        if(null != activeVideoRelatedObj)
+                        if(null != activeVideoRelatedObj){
                             activeVideoRelatedObj.style.display = "block";
+                            _this.clear(_this.container);
+                            if(_this.isOpen){
+                                _this.container.append(_this.videoIframe);
+                            }else{
+                                _this.container.append(Util.cloneDom(_this.icon,{}));
+                            }
+                        }
+
                         activeVideObj.style.display = "none";
 
                         activeVideoRelatedObj = null;
@@ -115,14 +125,31 @@ function pushStart(){
                         document.documentElement.style.cursor = "auto";
                     });
                 })();
+
+                /** 视频控制 */
+                ;(function(){
+                    var cameraObj = $(footerObj).find(".camera");
+                    cameraObj.addClass("disabled");
+                    $(cameraObj).bind("click", function(e){
+                        var isDisabled = !$(this).hasClass("disabled");
+                        $(this)[isDisabled? "addClass": "removeClass"]("disabled");
+                        if(isDisabled){
+                            $house.video.close();
+                        }else{
+                            $house.video.play();
+                        }
+                    });
+                })();
             },
             //播放
             play:function(){
+                this.isOpen = true;
                 this.container.children().remove();
                 this.container.append(this.videoIframe);
             },
             //关闭
             close:function(){
+                this.isOpen = false;
                 this.container.children().remove();
                 this.container.append(Util.cloneDom(this.icon,{}))
             }
