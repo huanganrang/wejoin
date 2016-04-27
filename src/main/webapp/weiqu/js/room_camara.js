@@ -11,6 +11,7 @@ function pushStart(){
         this.icon = Util.cloneDom(this.container.children(),{});
         this.videoIframe = $('<iframe width="100%" height="100%" frameborder="no" scrolling="no"></iframe>');
         this.isOpen = false;
+        this.changerBtn = $(footerObj).find(".camera");
         var _this = this;
         var methods = {
             init:function(){
@@ -128,15 +129,18 @@ function pushStart(){
 
                 /** 视频控制 */
                 ;(function(){
-                    var cameraObj = $(footerObj).find(".camera");
+                    var cameraObj = _this.changerBtn;
                     cameraObj.addClass("disabled");
-                    $(cameraObj).bind("click", function(e){
-                        var isDisabled = !$(this).hasClass("disabled");
-                        $(this)[isDisabled? "addClass": "removeClass"]("disabled");
+                    $(cameraObj).bind("click", function(){
+                        var chart = house.chart;
+                        var isDisabled = !cameraObj.hasClass("disabled");
                         if(isDisabled){
-                            $house.video.close();
+                            chart.sendText(chart.messageFactory.CLOSE_STREAM());
+                            house.video.close();
                         }else{
-                            $house.video.play();
+                            chart.sendText(chart.messageFactory.OPEN_STREAM());
+                            house.video.play();
+
                         }
                     });
                 })();
@@ -145,11 +149,13 @@ function pushStart(){
             play:function(){
                 this.isOpen = true;
                 this.container.children().remove();
+                this.changerBtn.removeClass("disabled");
                 this.container.append(this.videoIframe);
             },
             //关闭
             close:function(){
                 this.isOpen = false;
+                this.changerBtn.addClass("disabled");
                 this.container.children().remove();
                 this.container.append(Util.cloneDom(this.icon,{}))
             }

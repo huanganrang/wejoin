@@ -155,7 +155,8 @@
 
     //添加其他成员消息
     chart.addUserBubble = function(message){
-        message = chart.convertFace(message);
+
+        message.content = chart.convertFace(message.content);
         var container = chart.dialog.container;
         var data = {message:message.content,nickName:message.myname,icon:message.myicon};
         if(data.icon.indexOf("http://")<0){
@@ -199,7 +200,8 @@
             var executors = {
             1: function (data) {
                 //showDocsImages([data.url]);
-                house.defaultBoard.setImg(data.url);
+                house.defaultBoard.clearWebStorage();
+                house.defaultBoard.setImg("http://"+data.url);
                 $('.header .middle .whiteboard').click();
             },
             2: function (data) {
@@ -210,10 +212,12 @@
                 //showVedios(data.url);
             },
             13: function () {
-                //openPullStream()
+                house.video.play();
             },
             14: function () {
                 //closePullStream()
+                house.video.close();
+
             },
             15: function (data) {
                 /*if (users[data.id])return;

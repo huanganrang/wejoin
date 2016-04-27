@@ -1,5 +1,6 @@
 var $chart = function(option){
     var $this = this;
+    $.base64.utf8encode = true;
     this.init = function(){
         var conn = new Easemob.im.Connection();
         conn.init({
@@ -13,7 +14,12 @@ var $chart = function(option){
                 message.data = $.base64.atob(message.data, true);
                 console.log("收到文本消息：" + JSON.stringify(message));
                 if (message.from != option.huanxinUid) {
-                    option.onTextMessage(message);
+                    try{
+                        option.onTextMessage(message);
+                    }catch(e){
+                        console.log(e);
+                    }
+
                 }
             },
             //收到表情消息时的回调方法
@@ -50,11 +56,13 @@ var $chart = function(option){
         if (!conn.isOpened()) {
             $this.reOpen();
         }
+        msg = $.base64.btoa(JSON.stringify(msg));
         var options = {
             to: option.huanxinRoomId,
-            msg: $.base64.btoa(JSON.stringify(msg)),
+            msg: msg,
             type: "groupchat"
         };
+        console.log("发送消息："+msg);
         conn.sendTextMessage(options);
     }
     this.init();
