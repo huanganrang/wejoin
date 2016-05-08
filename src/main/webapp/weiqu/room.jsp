@@ -42,7 +42,7 @@
         </div>
         <div class = "toolbar document">
             <span class = "tool upload"><span class = "title"><label>上传</label></span></span>
-            <span class = "tool color"><span class = "title"><label>色彩</label></span></span>
+            <%--<span class = "tool color"><span class = "title"><label>色彩</label></span></span>
             <span class = "tool pencil"><span class = "title"><label>画笔</label></span></span>
             <span class = "tool earaser"><span class = "title"><label>笔擦</label></span></span>
             <span class = "tool font"><span class = "title"><label>字体</label></span></span>
@@ -56,7 +56,7 @@
                     </span>
                 </div>
                 <span class = "title"><label>画布缩放</label></span>
-            </span>
+            </span>--%>
             <span class = "clear">清空</span>
         </div>
         <div class = "toolbar media">
@@ -92,14 +92,14 @@
                     <span class = "toggle"></span>
                     <div class = "video"><img src = "img/room/video.png"/></div>
                 </div>
-                <div>
+                <%--<div>
                     <span class = "toggle"></span>
                     <div class = "video"><img src = "img/room/video1.png"/></div>
                 </div>
                 <div>
                     <span class = "toggle"></span>
                     <div class = "video"><img src = "img/room/video.png"/></div>
-                </div>
+                </div>--%>
             </div>
             <div class = "members">
                 <div class = "title">在线会员（<span class = "count">1568</span>）</div>
@@ -350,7 +350,7 @@
 
     <script type = "text/javascript">
 	/** 弹窗：是否同意举手发言 */
-	MsgBox({content: "是否同意该用户的拒收发言申请", type: MsgBox.CONFIRM,
+	/*MsgBox({content: "是否同意该用户的拒收发言申请", type: MsgBox.CONFIRM,
 		containerStyle: "width: 400px", contentStyle: "text-align: center",
 		confirmText: "同意", cancelText: "拒绝",
 		confirmCallback: function(){
@@ -360,7 +360,7 @@
 			this.close();
 			console.log("n");
 		}
-	}).show();
+	}).show();*/
 	</script>
 </body>
 </html>

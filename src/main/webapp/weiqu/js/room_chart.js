@@ -196,6 +196,7 @@
             }
         });
         var showDocsImages = function(images) {
+            house.document.showDocsImages(images);
         }
             var executors = {
             1: function (data) {

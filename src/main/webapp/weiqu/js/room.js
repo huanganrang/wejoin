@@ -133,5 +133,174 @@
         });
         defaultBoard.oldImg = img;
     }, 5000)
+
+
+
+    //文档模块
+    var DocumentModule = function(house){
+        var _d = this;
+        this.loading = $('.content .document .loading-tip').clone();
+        this.content = $('.content .document');
+        this.fileType = $('#uploadForm input[name="type"]');
+        var methods ={
+            init:function(){
+                $('.document .upload').click(function(){
+                    $("#file").click();
+                });
+                $("#file").change(function(){
+                    _d.upload();
+                });
+            },
+            showLoading:function(){
+                _d.content.html(_d.loading);
+            },
+            hideLoading:function(){
+                _d.content.find('.loading-tip').remove();
+            },
+            showDocsImages:function(images,index){
+                if(images == undefined) return;
+                _d.images = images;
+                _d.index = index||0;
+                if(images[_d.index]) {
+                    var pic = images[_d.index].pic || images[_d.index];
+                    var image = $('<img src="http://' + pic + '" alt="" width="100%" height="100%">');
+                    _d.content.html(image);
+                }
+            },
+            showDocsImagesAndSendMessage:function(images,index){
+                if(images == undefined) return;
+                var chart = house.chart;
+                var image = images[index];
+                if(image == undefined) return;
+                var pic = image.pic || image;
+                var msg = chart.messageFactory.FILE(_d.fileType.val(),pic);
+                //发送消息
+                chart.sendText(msg);
+                _d.showDocsImages(images,index);
+            },
+            upload:function(){
+                _d.showLoading();
+                var fileContentType = $("#file").val().match(/^(.*)(\.)(.{1,8})$/)[3].toLowerCase(); //这个文件类型正则很有用：）
+                var _fileType = _d.fileType;
+                $('#uploadForm input[name="houseToken"]').val(house.cfg.houseToken);
+                $('#uploadForm input[name="userToken"]').val(userToken.token);
+                if(fileContentType.indexOf('txt')>-1){
+                    _fileType.val(9);
+                }else if(fileContentType.indexOf('doc')>-1 || fileContentType.indexOf('docx')>-1){
+                    _fileType.val(6);
+                }else if(fileContentType.indexOf('xls')>-1 || fileContentType.indexOf('xlsx')>-1){
+                    _fileType.val(7);
+                }else if(fileContentType.indexOf('pdf')>-1){
+                    _fileType.val(10);
+                }else if(fileContentType.indexOf('ppt')>-1){
+                    _fileType.val(8);
+                }
+                var formData = new FormData($('#uploadForm')[0]);
+                $.ajax({
+                    url: SERVER_URL+'/upload',  //Server script to process data
+                    type: 'POST',
+                    //Ajax events
+                    //beforeSend: beforeSendHandler,
+                    //success: completeHandler,
+                    //error: errorHandler,
+                    // Form data
+                    data: formData,
+                    //Options to tell jQuery not to process data or worry about content-type.
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success:function (data) {
+                        console.log(data);
+                        var result = $.parseJSON(data);
+                        if(result.serverStatus == 0){
+                            var images = result.returnObject;
+                            var chart = house.chart;
+                            var msg = chart.messageFactory.FILE(_fileType.val(),images[0].pic);
+                            //发送消息
+                            chart.sendText(msg);
+                            _d.hideLoading();
+                            _d.showDocsImages(images);
+                        }
+                    },
+                    error: function() {
+                        alert("上传失败");
+                    }
+
+                });
+            }
+        }
+        for(var i in methods){
+            this[i] = methods[i];
+        }
+        this.init();
+    }
+    house.document = new DocumentModule(house);
+
+    //分页
+    var Pagination = function(){
+
+        this.index = 0;
+        this.data = [];
+        this.previousDom = $('.pagination .previous');
+        this.indexDom = $('.pagination .index');
+        this.nextDom = $('.pagination .next');
+        var _p = this;
+
+        var methods = {
+            model:function(){
+                return $('.header .functions>span').index($('.header .functions .selected'));
+            },
+            refresh:function(){
+
+                _p.handle();
+            },
+            buildData:function(){
+                var model = _p.model();
+                //文档
+                if(model == 1){
+                    _p.data = house.document.images||[];
+                    //_p.index = house.document.index||0;
+                }
+            },
+            handle:function(){
+                _p.buildData();
+                var model = _p.model();
+                if(model == 1){
+                    house.document.showDocsImagesAndSendMessage(_p.data,_p.index);
+                }
+                console.log(_p.index)
+                _p.indexDom.html(_p.index+1);
+
+            },
+            previous:function(){
+                _p.index--;
+                _p.handle();
+            },
+            next:function(){
+                _p.index++;
+                _p.handle();
+            },
+            init:function(){
+                _p.previousDom.click(function(){
+                    console.log(_p.index)
+
+                    _p.previous();
+                });
+                _p.nextDom.click(function(){
+                    _p.next();
+                });
+            }
+        }
+        for(var i in methods){
+            this[i] = methods[i];
+        }
+        house.pagination = this;
+        this.init();
+    }
+    new Pagination();
+
+    $('.header .functions>span').click(function(){
+        house.pagination.refresh();
+    })
 })($house);
 
