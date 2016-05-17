@@ -84,6 +84,7 @@
 			<div class = "active-video">
 				<span class = "toggle"></span>
 				<div class = "video"><img src = "img/room/video.png"/></div>
+                <div class = "video" style="display: none;"><iframe id="videoIframe" style="width:100%;height:630px;" frameborder="no"></iframe></div>
 			</div>
         </div></div>
         <div class = "aside left">

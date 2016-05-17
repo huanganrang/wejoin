@@ -26,13 +26,18 @@
 		<div class = "clear-float"> </div>
 	</div>
 	<div class = "right">
-			<span class = "user-info">
+		<c:choose>
+			<c:when test="${!userToken.loginMark}">
+				<span class = "btn login">登录</span>
+				<span class = "btn register">注册</span>
+			</c:when>
+			<c:otherwise>
+				<span class = "user-info" style="display: block;">
                 <img src = "img/room/user.png"/>
-                <label>游客：32039202</label>
+                <label>游客：${userToken.nickName}</label>
             </span>
-		<span class = "btn login">登录</span>
-		<span class = "btn register">注册</span>
-
+			</c:otherwise>
+		</c:choose>
 		<span class = "setting" title = "设置"></span>
 	</div>
 	<div class = "clear-float"> </div>

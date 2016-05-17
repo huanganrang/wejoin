@@ -25,7 +25,7 @@
       });
       //立即进入按钮
       $(".moveElem ol").click(function(){
-        window.location.href=base+"/weiqu/channel.jsp";
+        window.location.href=base+"weiqu/channel.jsp";
       });
     });
   </script>

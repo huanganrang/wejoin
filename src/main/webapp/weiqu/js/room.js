@@ -236,6 +236,82 @@
     }
     house.document = new DocumentModule(house);
 
+    //影音模块
+    var MovieModule = function (house) {
+        var _this = this;
+        var methods = {
+            init:function(){
+                $('.media .upload').click(function(){
+                    $("#moviefile").click();
+                });
+                $("#moviefile").change(function(){
+                    _this.upload();
+                });
+            },
+            upload: function uploadMovie() {
+                var fileContentType = $("#moviefile").val().match(/^(.*)(\.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
+                var formData = new FormData($('#uploadformMovie')[0]);
+                $.ajax({
+                    url: _this.getVoiceUploadUrl(),  //Server script to process data
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log(data);
+                        _this.uploadComplete();
+                        ajaxGet({"type": "UL043", "encode": data}, function (data) {
+                            console.log("点播地址：" + data);
+                            var chart = house.chart;
+                            var msg = chart.messageFactory.VEDIO(data);
+                            //发送消息
+                            chart.sendText(msg);
+                            _this.playVideoFromUpload(data);
+                        }, function (result) {
+                            return result.returnValue;
+                        });
+                        /*var result = $.parseJSON(data);
+                         if(result.serverStatus == 0){
+                         sendNotification(messageFactory.FILE(result.type,result.returnValue));
+                         }*/
+                    },
+                    error: function () {
+                        alert("上传失败");
+                        _this.uploadComplete();
+                    }
+                });
+            },
+            playVideoFromUpload: function playVideoFromUpload(url) {
+                $('.active-video .video:eq(1)').show();
+                $('.active-video .video:eq(0)').hide();
+                $("#videoIframe")[0].src = base + "jslib/video-js/video.jsp?videoUrl=" + url;
+            },
+            uploadComplete: function () {
+
+            },
+            getVoiceUploadUrl: function () {
+                if (NET_VOICE_URL == "") {
+                    jQuery.ajax({
+                        type: "GET",
+                        url: SERVER_URL + "/System/Upload/Path",
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            NET_VOICE_URL = data.returnValue;
+                        }
+                    });
+                }
+                return NET_VOICE_URL;
+            }
+
+        }
+        for(var i in methods){
+            this[i] = methods[i];
+        }
+        this.init();
+    }
+    house.movie = new MovieModule(house);
     //分页
     var Pagination = function(){
 
